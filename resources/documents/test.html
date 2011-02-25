@@ -1,0 +1,55 @@
+﻿<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#btnCheck").click(function(){
+					validatePhotoList();
+				});
+				
+				$("#btnShow").click(function(){
+					showPhotoList();
+				});
+			});
+			
+			function validatePhotoList() {			
+				var parts = $.trim($("[id$=txtPhotos]").val()).split("\n");
+				var photos = new Array();
+				var photo = new Object();
+				var checkLink = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/m;
+				for(var i = 0; i < parts.length; i++) {
+					var split = parts[i].split("|");
+					if (checkLink.test($.trim(split[0])) && $.trim(split[0]).search(/\s/g) == -1) {
+						photo = {
+							url : $.trim(split[0]),
+							text : $.trim(split[1])
+						};
+						photos[i] = photo;
+					}
+					else {
+						$("[id$=lblError]").text("Danh sách ảnh không hợp lệ");
+						return false;
+					}
+				}
+				$("[id$=lblError]").text("");
+				$("[id$=txtPhotos]").data("photosArray", photos);
+				return true;
+			}
+			
+			function showPhotoList() {
+				if(validatePhotoList()) {
+					var photos = $("[id$=txtPhotos]").data("photosArray");
+					for(var i = 0; i < photos.length; i++) {
+						alert(photos[i].url + " + " + photos[i].text);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<textarea id="txtPhotos" rows="8"></textarea>
+		<input id="btnCheck" type="button" value="Check!" />
+		<input id="btnShow" type="button" value="Show!" />
+		<p><span id="lblError"></span></p>
+	</body>
+</html>
