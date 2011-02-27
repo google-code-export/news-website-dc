@@ -62,8 +62,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\" />
-    <Folder Include="Config\" />
+    <Folder Include="Account\Guest\" />
+    <Folder Include="Account\Mod\" />
+    <Folder Include="Account\SiteAdmin\" />
+    <Folder Include="Account\SysAdmin\" />
     <Folder Include="Images\" />
     <Folder Include="Modules\" />
     <Folder Include="Scripts\" />
@@ -78,6 +80,12 @@
       <Project>{F2EEBBB4-CD78-4B75-A29B-62B66405C749}</Project>
       <Name>NewsSvn.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\UserControls.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\UrlRewritings.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
