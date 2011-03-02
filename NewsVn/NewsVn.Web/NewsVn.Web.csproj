@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{98128B84-8EF9-45A5-8E80-65C368339CC7}</ProjectGuid>
+    <ProjectGuid>{1446811A-38F6-4534-A040-5D665BC50A75}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NewsSvn.Website</RootNamespace>
-    <AssemblyName>NewsSvn.Website</AssemblyName>
+    <RootNamespace>NewsVn.Web</RootNamespace>
+    <AssemblyName>NewsVn.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Intelligencia.UrlRewriter">
-      <HintPath>..\..\resources\assemblies\Intelligencia.UrlRewriter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -66,26 +63,22 @@
     <Folder Include="Account\Mod\" />
     <Folder Include="Account\SiteAdmin\" />
     <Folder Include="Account\SysAdmin\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Config\" />
     <Folder Include="Images\" />
     <Folder Include="Modules\" />
     <Folder Include="Scripts\" />
     <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NewsSvn.Core\NewsSvn.Core.csproj">
-      <Project>{83D17B50-FF4A-4681-81CA-1B43544091D4}</Project>
-      <Name>NewsSvn.Core</Name>
+    <ProjectReference Include="..\NewsVn.Core\NewsVn.Core.csproj">
+      <Project>{DF858061-5E24-4D12-B071-D1F7AEA28337}</Project>
+      <Name>NewsVn.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NewsSvn.Data\NewsSvn.Data.csproj">
-      <Project>{F2EEBBB4-CD78-4B75-A29B-62B66405C749}</Project>
-      <Name>NewsSvn.Data</Name>
+    <ProjectReference Include="..\NewsVn.Data\NewsVn.Data.csproj">
+      <Project>{5D11F580-502D-4C60-9103-4EFF0D80BE20}</Project>
+      <Name>NewsVn.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Config\UserControls.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Config\UrlRewritings.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -95,7 +88,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1047</DevelopmentServerPort>
+          <DevelopmentServerPort>1035</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

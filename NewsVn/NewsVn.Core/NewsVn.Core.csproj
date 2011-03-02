@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{83D17B50-FF4A-4681-81CA-1B43544091D4}</ProjectGuid>
+    <ProjectGuid>{DF858061-5E24-4D12-B071-D1F7AEA28337}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NewsSvn.Core</RootNamespace>
-    <AssemblyName>NewsSvn.Core</AssemblyName>
+    <RootNamespace>NewsVn.Core</RootNamespace>
+    <AssemblyName>NewsVn.Core</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
