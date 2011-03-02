@@ -1,5 +1,0 @@
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Data\bin\Debug\NewsVn.Data.dll
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Data\bin\Debug\NewsVn.Data.pdb
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Data\obj\Debug\ResolveAssemblyReference.cache
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Data\obj\Debug\NewsVn.Data.dll
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Data\obj\Debug\NewsVn.Data.pdb
