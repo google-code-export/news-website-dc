@@ -34,8 +34,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,12 +42,6 @@
   <ItemGroup>
     <Compile Include="Caching\HttpContextCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NewsVn.Data\NewsVn.Data.csproj">
-      <Project>{5D11F580-502D-4C60-9103-4EFF0D80BE20}</Project>
-      <Name>NewsVn.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />

@@ -1,19 +1,28 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
+using System.Data.Objects.DataClasses;
+using NewsVn.Data;
+using NewsVn.Core.Caching;
 using System.Text;
 using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.BaseUI
 {
     public class BasePage : System.Web.UI.Page
-    {
+    {        
         public string SiteTitle { get; set; }
+       
         public string InfoBar { get; set; }
         public string ErrorBar { get; set; }
+        
         public string HostName { get; set; }
 
+        protected string _CacheName;
+        
         protected IQueryable<Data.AdBox> _AdBoxes;
         protected IQueryable<Data.AdCategory> _AdCategories;
         protected IQueryable<Data.AdPost> _AdPosts;
@@ -22,8 +31,8 @@ namespace NewsVn.Web.BaseUI
         protected IQueryable<Data.Post> _Post;
         protected IQueryable<Data.UserMessage> _UserMessage;
         protected IQueryable<Data.UserProfileComment> _UserProfileComment;
-        protected IQueryable<Data.UserProfile> _UserProfile; 
-
+        protected IQueryable<Data.UserProfile> _UserProfile;            
+        
         protected override void OnInit(EventArgs e)
         {
             SiteTitle = "NewsVN - xxx :: ";
@@ -40,11 +49,13 @@ namespace NewsVn.Web.BaseUI
             sb.Append("<b>Cảnh báo:</b> {0}</p></div></div></li>");
             ErrorBar = sb.ToString();
 
-            HostName = NewsVn.Web.Utils.ApplicationManager.HostName;
+            HostName = ApplicationManager.HostName;
 
-            _AdBoxes = ApplicationManager.SetCacheData<Data.AdBox >(ApplicationManager.Entities.AdBoxes , t => !t.Actived );
-            _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory >(ApplicationManager.Entities.AdCategories , p => p.Actived);
-            _AdPosts = ApplicationManager.SetCacheData<Data.AdPost >(ApplicationManager.Entities.AdPosts , null);
+            
+
+            //_AdBoxes = ApplicationManager.SetCacheData<Data.AdBox >(ApplicationManager.Entities.AdBoxes , t => !t.Actived );
+            //_AdCategories = ApplicationManager.SetCacheData<Data.AdCategory >(ApplicationManager.Entities.AdCategories , p => p.Actived);
+            //_AdPosts = ApplicationManager.SetCacheData<Data.AdPost >(ApplicationManager.Entities.AdPosts , null);
             _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, null);
             _PostComment = ApplicationManager.SetCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments, null);
             _Post = ApplicationManager.SetCacheData<Data.Post>(ApplicationManager.Entities.Posts, t => !t.Approved && t.Actived );
