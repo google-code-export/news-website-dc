@@ -64,7 +64,7 @@
     <Folder Include="Account\SiteAdmin\" />
     <Folder Include="Account\SysAdmin\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Config\" />
+    <Folder Include="BaseUI\" />
     <Folder Include="Images\" />
     <Folder Include="Modules\" />
     <Folder Include="Scripts\" />
@@ -79,6 +79,12 @@
       <Project>{5D11F580-502D-4C60-9103-4EFF0D80BE20}</Project>
       <Name>NewsVn.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\UserControls.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\RewriteUrls.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
