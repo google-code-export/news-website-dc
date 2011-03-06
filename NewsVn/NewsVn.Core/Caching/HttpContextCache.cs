@@ -22,7 +22,7 @@ namespace NewsVn.Core.Caching
         {
             lock (_lockObject)
             {
-                _cache.Insert(key, data);
+                _cache.Insert(key, data, null, Cache.NoAbsoluteExpiration, TimeSpan.FromHours(24), CacheItemPriority.AboveNormal, null);
             }
         }
 
