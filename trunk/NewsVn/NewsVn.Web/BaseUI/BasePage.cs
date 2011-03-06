@@ -45,15 +45,12 @@ namespace NewsVn.Web.BaseUI
             _AdBoxes = ApplicationManager.SetCacheData<Data.AdBox >(ApplicationManager.Entities.AdBoxes , t => !t.Actived );
             _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory >(ApplicationManager.Entities.AdCategories , p => p.Actived);
             _AdPosts = ApplicationManager.SetCacheData<Data.AdPost >(ApplicationManager.Entities.AdPosts , null);
-            //_slides = ApplicationManager.SetCacheData<Data.Slide>(ApplicationManager.Entities.Slides, null);
-            //_albums = ApplicationManager.SetCacheData<Data.Album>(ApplicationManager.Entities.Albums, null);
-            //_cust = ApplicationManager.SetCacheData<Data.Customer>(ApplicationManager.Entities.Customers, t => !t.Deleted);
-            //_waterconsump = ApplicationManager.SetCacheData<Data.WaterComsumption>(ApplicationManager.Entities.WaterComsumptions, t => !t.Deleted);
-            //_docs = ApplicationManager.SetCacheData<Data.CONGVAN>(ApplicationManager.Entities.CONGVANs, t => !t.Hidden);
-            //_dscq = ApplicationManager.SetCacheData<Data.DSCQ>(ApplicationManager.Entities.DSCQs, null);
-            //_tlvb = ApplicationManager.SetCacheData<Data.TLVB>(ApplicationManager.Entities.TLVBs, null);
-            //_dsdv = ApplicationManager.SetCacheData<Data.DSDV>(ApplicationManager.Entities.DSDVs, null);
-            //_bgd = ApplicationManager.SetCacheData<Data.BGD>(ApplicationManager.Entities.BGDs, null);
+            _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, null);
+            _PostComment = ApplicationManager.SetCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments, null);
+            _Post = ApplicationManager.SetCacheData<Data.Post>(ApplicationManager.Entities.Posts, t => !t.Approved && t.Actived );
+            _UserMessage = ApplicationManager.SetCacheData<Data.UserMessage>(ApplicationManager.Entities.UserMessages, null);
+            _UserProfileComment = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
+            _UserProfile = ApplicationManager.SetCacheData<Data.UserProfile>(ApplicationManager.Entities.UserProfiles, null);
             
             base.OnInit(e);
         }

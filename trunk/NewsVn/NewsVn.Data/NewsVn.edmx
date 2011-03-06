@@ -78,6 +78,7 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="SeoName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="SeoUrl" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" />
@@ -115,6 +116,7 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="SeoName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="SeoUrl" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="UpdatedOn" Type="datetime" />
@@ -420,6 +422,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="SeoName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="SeoUrl" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" />
@@ -459,6 +462,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="SeoName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="SeoUrl" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
           <Property Name="UpdatedOn" Type="DateTime" />
@@ -645,6 +649,7 @@
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="SeoName" ColumnName="SeoName" />
             <ScalarProperty Name="SeoUrl" ColumnName="SeoUrl" />
             <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
             <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
@@ -674,6 +679,7 @@
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="SeoName" ColumnName="SeoName" />
             <ScalarProperty Name="SeoUrl" ColumnName="SeoUrl" />
             <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
             <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
@@ -861,9 +867,9 @@
     <Diagrams>
       <Diagram Name="NewsVn" ZoomLevel="77">
         <EntityTypeShape EntityType="NewsVn.Data.AdBox" Width="1.5" PointX="2.75" PointY="7.75" Height="3.3263964843749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.AdCategory" Width="1.5" PointX="5.75" PointY="7.875" Height="2.9417936197916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.AdCategory" Width="1.5" PointX="5.75" PointY="7.875" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.AdPost" Width="1.5" PointX="8" PointY="7" Height="4.6725065104166665" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.Category" Width="1.5" PointX="5.75" PointY="2" Height="2.9417936197916652" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.Category" Width="1.5" PointX="5.75" PointY="1.875" Height="3.1340950520833331" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.MemberProfile" Width="1.5" PointX="10.75" PointY="5.75" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.PostComment" Width="1.5" PointX="10.25" PointY="2.375" Height="2.3648893229166661" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.Post" Width="1.5" PointX="8" PointY="1.125" Height="4.8648079427083317" IsExpanded="true" />
@@ -872,24 +878,24 @@
         <EntityTypeShape EntityType="NewsVn.Data.UserProfileComment" Width="1.5" PointX="3" PointY="4.875" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.UserProfile" Width="1.5" PointX="0.75" PointY="1.125" Height="6.4032194010416674" IsExpanded="true" />
         <AssociationConnector Association="NewsVn.Data.FK_AdCategories_AdCategories" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.2819230769230767" PointY="10.816793619791667" />
-          <ConnectorPoint PointX="6.2819230769230767" PointY="11.066793619791667" />
-          <ConnectorPoint PointX="6.7284615384615378" PointY="11.066793619791667" />
-          <ConnectorPoint PointX="6.7284615384615378" PointY="10.816793619791667" />
+          <ConnectorPoint PointX="6.2819230769230767" PointY="11.009095052083332" />
+          <ConnectorPoint PointX="6.2819230769230767" PointY="11.259095052083332" />
+          <ConnectorPoint PointX="6.7284615384615378" PointY="11.259095052083332" />
+          <ConnectorPoint PointX="6.7284615384615378" PointY="11.009095052083332" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_AdPosts_AdCategories" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.25" PointY="9.3458968098958337" />
-          <ConnectorPoint PointX="8" PointY="9.3458968098958337" />
+          <ConnectorPoint PointX="7.25" PointY="9.4420475260416659" />
+          <ConnectorPoint PointX="8" PointY="9.4420475260416659" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_Categories_Categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.2819230769230767" PointY="4.9417936197916656" />
-          <ConnectorPoint PointX="6.2819230769230767" PointY="5.1917936197916656" />
-          <ConnectorPoint PointX="6.7284615384615378" PointY="5.1917936197916656" />
-          <ConnectorPoint PointX="6.7284615384615378" PointY="4.9417936197916656" />
+          <ConnectorPoint PointX="6.2819230769230767" PointY="5.0090950520833335" />
+          <ConnectorPoint PointX="6.2819230769230767" PointY="5.2590950520833335" />
+          <ConnectorPoint PointX="6.7284615384615378" PointY="5.2590950520833335" />
+          <ConnectorPoint PointX="6.7284615384615378" PointY="5.0090950520833335" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_Posts_Categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.25" PointY="3.4708968098958328" />
-          <ConnectorPoint PointX="8" PointY="3.4708968098958328" />
+          <ConnectorPoint PointX="7.25" PointY="3.4420475260416667" />
+          <ConnectorPoint PointX="8" PointY="3.4420475260416667" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_PostComments_Posts" ManuallyRouted="false">
           <ConnectorPoint PointX="9.5" PointY="3.5574446614583328" />
