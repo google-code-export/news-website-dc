@@ -96,7 +96,9 @@
     <Content Include="Config\UserControls.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\RewriteUrls.config" />
+    <Content Include="Config\RewriteUrls.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

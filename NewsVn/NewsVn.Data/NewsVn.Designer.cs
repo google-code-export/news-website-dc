@@ -20,7 +20,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("NewsVn.Data", "FK_UserProfileComments_UserProfiles2", "UserProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NewsVn.Data.UserProfile), "UserProfileComments", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NewsVn.Data.UserProfileComment))]
 
 // Original file name:
-// Generation date: 3/6/2011 1:43:47 PM
+// Generation date: 3/6/2011 3:19:32 PM
 namespace NewsVn.Data
 {
     
@@ -712,16 +712,18 @@ namespace NewsVn.Data
         /// <param name="id">Initial value of ID.</param>
         /// <param name="name">Initial value of Name.</param>
         /// <param name="description">Initial value of Description.</param>
+        /// <param name="seoName">Initial value of SeoName.</param>
         /// <param name="seoUrl">Initial value of SeoUrl.</param>
         /// <param name="createdOn">Initial value of CreatedOn.</param>
         /// <param name="actived">Initial value of Actived.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static AdCategory CreateAdCategory(int id, string name, string description, string seoUrl, global::System.DateTime createdOn, bool actived)
+        public static AdCategory CreateAdCategory(int id, string name, string description, string seoName, string seoUrl, global::System.DateTime createdOn, bool actived)
         {
             AdCategory adCategory = new AdCategory();
             adCategory.ID = id;
             adCategory.Name = name;
             adCategory.Description = description;
+            adCategory.SeoName = seoName;
             adCategory.SeoUrl = seoUrl;
             adCategory.CreatedOn = createdOn;
             adCategory.Actived = actived;
@@ -808,6 +810,33 @@ namespace NewsVn.Data
         partial void OnDescriptionChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for property SeoName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string SeoName
+        {
+            get
+            {
+                return this._SeoName;
+            }
+            set
+            {
+                this.OnSeoNameChanging(value);
+                this.ReportPropertyChanging("SeoName");
+                this._SeoName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("SeoName");
+                this.OnSeoNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _SeoName;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoNameChanged();
         /// <summary>
         /// There are no comments for property SeoUrl in the schema.
         /// </summary>
@@ -1593,16 +1622,18 @@ namespace NewsVn.Data
         /// <param name="id">Initial value of ID.</param>
         /// <param name="name">Initial value of Name.</param>
         /// <param name="description">Initial value of Description.</param>
+        /// <param name="seoName">Initial value of SeoName.</param>
         /// <param name="seoUrl">Initial value of SeoUrl.</param>
         /// <param name="createdOn">Initial value of CreatedOn.</param>
         /// <param name="actived">Initial value of Actived.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Category CreateCategory(int id, string name, string description, string seoUrl, global::System.DateTime createdOn, bool actived)
+        public static Category CreateCategory(int id, string name, string description, string seoName, string seoUrl, global::System.DateTime createdOn, bool actived)
         {
             Category category = new Category();
             category.ID = id;
             category.Name = name;
             category.Description = description;
+            category.SeoName = seoName;
             category.SeoUrl = seoUrl;
             category.CreatedOn = createdOn;
             category.Actived = actived;
@@ -1689,6 +1720,33 @@ namespace NewsVn.Data
         partial void OnDescriptionChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for property SeoName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string SeoName
+        {
+            get
+            {
+                return this._SeoName;
+            }
+            set
+            {
+                this.OnSeoNameChanging(value);
+                this.ReportPropertyChanging("SeoName");
+                this._SeoName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("SeoName");
+                this.OnSeoNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _SeoName;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoNameChanged();
         /// <summary>
         /// There are no comments for property SeoUrl in the schema.
         /// </summary>
