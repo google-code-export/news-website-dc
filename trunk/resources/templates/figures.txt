@@ -1,0 +1,8 @@
+#bd0d0f
+#0f4585
+
+wrapper: 1000px
+left: 680px
+right: 310px
+spacing: 10px
+padding: 15px
