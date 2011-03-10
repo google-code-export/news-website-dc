@@ -1,0 +1,18 @@
+﻿@import url('reset.css');
+
+body
+{
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 13px;
+}
+
+.wrapper
+{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#header, #content, #footer
+{
+    width: 100%;
+}
