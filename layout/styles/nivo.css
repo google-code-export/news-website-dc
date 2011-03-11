@@ -1,16 +1,3 @@
-/*
- * jQuery Nivo Slider v2.3
- * http://nivo.dev7studios.com
- *
- * Copyright 2010, Gilbert Pellegrom
- * Free to use and abuse under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- * 
- * March 2010
- */
- 
- 
-/* The Nivo Slider styles */
 .nivoSlider {
 	position:relative;
 }
@@ -61,33 +48,6 @@
     display:none;
 }
 
-/* Specific usage - added on 12/15/2010 by Waston Nguyen */
-
-#nivo {
-    width:340px;
-    height:250px;
-    background:url(../images/nivo/loading.gif) no-repeat 50% 50%; 
-    *z-index: -1;    
-}
-#nivo img {
-    position:absolute;
-    top:0px;
-    left:0px;
-    display:none;
-}
-#nivo a {
-    border:0;
-    display:block;
-}
-#nivo .nivo-caption p
-{
-    background:#00459a;
-}
-#nivo .nivo-caption p
-{
-    height: 30px;
-    line-height: 30px;
-}
 .nivo-controlNav {
 	position:absolute;
 	left: 125px;
@@ -112,4 +72,32 @@
 	width:340px;
 	height:30px;
 	background:url(../images/nivo/shadow.png) no-repeat;
+}
+
+#nivo {
+    width:340px;
+    height:250px;
+    background:url(../images/nivo/loading.gif) no-repeat 50% 50%; 
+    *z-index: -1;    
+}
+#nivo img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+#nivo a {
+    border:0;
+    display:block;
+}
+#nivo .nivo-caption p
+{
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    background:#104687;
+}
+#nivo-description
+{
+    margin-top: 30px;
 }

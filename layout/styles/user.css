@@ -6,6 +6,11 @@ body
     font-size: 13px;
 }
 
+p
+{
+    line-height: 18px;
+}
+
 .wrapper
 {
     width: 1000px;
@@ -125,16 +130,33 @@ body
     text-transform: none;
 }
 
+.portlet a
+{
+    color: #104687;
+}
+
+.portlet .post-title
+{
+    font-weight: bold;
+    display: block;
+    text-align: justify;
+}
+
 .special-posts.portlet
 {
     width: 340px;
-    height: 700px;
+    height: 480px;
+}
+
+.special-posts.portlet .description
+{
+    display: none;
 }
 
 .latest-posts.portlet
 {
     width: 270px;
-    height: 700px;
+    height: 480px;
 }
 
 .special-events.portlet
