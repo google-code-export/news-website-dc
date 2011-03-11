@@ -1,13 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserExtra.master" %>
 
-<asp:Content ContentPlaceHolderID="extraHead" runat="server">
-    <link href="<%= Page.ResolveUrl("~/styles/nivo.css") %>" rel="stylesheet" type="text/css" />
-    <script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.nivo.slider.pack.js") %>" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#nivo").nivoSlider({ directionNav: false, width: 340 });
-        });
-    </script>
+<asp:Content ContentPlaceHolderID="extraHead" runat="server">    
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <nsn:SpecialPostsPortlet CssClass="left" runat="server" />

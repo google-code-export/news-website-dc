@@ -25,7 +25,16 @@
 
 <asp:Panel ID="container" CssClass="latest-posts portlet" runat="server">
     <h2>Tin mới nhất</h2>
-    <div class="content">
-        
-    </div>
+    <ul class="post-item-list">
+        <li>
+            <span class="post-comment">105</span>
+            <a class="post-title latest" href="#">
+                Mẹo tiết kiệm nhiên liệu cho thời "bão giá"
+            </a>
+            <span class="post-info">
+                <span class="cate">Kinh tế, Việt Nam</span>
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+            </span>
+        </li>
+    </ul>
 </asp:Panel>
