@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Modules\UC_Test.ascx" />
+    <Content Include="Test.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -68,8 +70,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modules\UC_Test.ascx.cs">
+      <DependentUpon>UC_Test.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\UC_Test.ascx.designer.cs">
+      <DependentUpon>UC_Test.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ApplicationManager.cs" />
+    <Compile Include="Utils\CodeExpressionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\Guest\" />
@@ -78,7 +95,6 @@
     <Folder Include="Account\SysAdmin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Modules\" />
     <Folder Include="Scripts\" />
     <Folder Include="Styles\" />
   </ItemGroup>
@@ -108,7 +124,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1035</DevelopmentServerPort>
+          <DevelopmentServerPort>2963</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
