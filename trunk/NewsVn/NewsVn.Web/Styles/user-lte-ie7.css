@@ -1,0 +1,11 @@
+﻿#header #menu_bar li
+{
+    display: inline;
+    zoom: 1;
+    margin-right: 4px;
+}
+
+#header #menu_bar li.tail
+{
+    margin: 0;
+}
