@@ -6,6 +6,8 @@
 
     public bool ClearLayout { get; set; }
 
+    public object DataSource { get; set; }
+
     protected override void OnLoad(EventArgs e)
     {
         if (!string.IsNullOrEmpty(CssClass))
@@ -20,19 +22,87 @@
             this.Controls.Add(clearDiv);
         }
     }
+
+    protected override void OnDataBinding(EventArgs e)
+    {
+        
+    }
     
 </script>
 
 <asp:Panel ID="container" CssClass="latest-posts portlet" runat="server">
-    <h2>Tin mới nhất</h2>
+    <h2>
+        Tin mới nhất
+        <a class="rss" href="#"></a>
+   </h2>
     <ul class="post-item-list">
-        <li>
+        <li class="head">
             <span class="post-comment">105</span>
-            <a class="post-title latest" href="#">
+            <a class="post-title wrap" href="#">
                 Mẹo tiết kiệm nhiên liệu cho thời "bão giá"
             </a>
             <span class="post-info">
                 <span class="cate">Kinh tế, Việt Nam</span>
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+            </span>
+        </li>
+        <li>
+            <span class="post-comment">12</span>
+            <a class="post-title wrap" href="#">
+                Truy tìm dấu vết UFO
+            </a>
+            <span class="post-info">
+                <span class="cate">Khoa học</span>
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+            </span>
+        </li>
+        <li>
+            <span class="post-comment">105</span>
+            <a class="post-title wrap" href="#">
+                Mẹo tiết kiệm nhiên liệu cho thời "bão giá"
+            </a>
+            <span class="post-info">
+                <span class="cate">Kinh tế, Việt Nam</span>
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+            </span>
+        </li>
+        <li>
+            <span class="post-comment">12</span>
+            <a class="post-title wrap" href="#">
+                Truy tìm dấu vết UFO
+            </a>
+            <span class="post-info">
+                <span class="cate">Khoa học</span>
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+            </span>
+        </li>
+        <li>
+            <span class="post-comment">105</span>
+            <a class="post-title wrap" href="#">
+                Mẹo tiết kiệm nhiên liệu cho thời "bão giá"
+            </a>
+            <span class="post-info">
+                <span class="cate">Kinh tế, Việt Nam</span>
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+            </span>
+        </li>
+        <li>
+            <span class="post-comment">12</span>
+            <a class="post-title wrap" href="#">
+                Truy tìm dấu vết UFO
+            </a>
+            <span class="post-info">
+                <span class="cate">Khoa học</span>
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+            </span>
+        </li>
+        <li>
+            <span class="post-comment">12</span>
+            <a class="post-title wrap" href="#">
+                Truy tìm dấu vết UFO
+            </a>
+            <span class="post-info">
+                <span class="cate">Khoa học</span>
                 <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
             </span>
         </li>

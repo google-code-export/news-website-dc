@@ -42,7 +42,10 @@
 </script>
 
 <asp:Panel ID="container" CssClass="special-posts portlet" runat="server">
-    <h2>Tin nổi bật</h2>
+    <h2>
+        Tin nổi bật
+        <a class="rss" href="#"></a>
+    </h2>
     <div id="nivo">
         <asp:HyperLink NavigateUrl="#" ToolTip="Tiêu đề 1" runat="server">
             <asp:Image ImageUrl="~/resources/posts/t510695.jpg" ToolTip="Tiêu đề 1" runat="server" />
