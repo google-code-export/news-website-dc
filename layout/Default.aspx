@@ -14,7 +14,7 @@
     <nsn:PostsPortlet Title="Khoa học" Figure="567" CssClass="right" ClearLayout="true" runat="server" />
     <nsn:PostsPortlet Title="Du lịch - Ẩm thực" Figure="2125" CssClass="left" runat="server" />
     <nsn:PostsPortlet Title="Tình yêu - Gia đình" Figure="1124" CssClass="right" ClearLayout="true" runat="server" />
-    <nsn:PostsPortlet Title="Rao nhanh" Figure="314" CssClass="left" runat="server" />
+    <nsn:PostsPortlet Title="Rao nhanh" Figure="314" CssClass="left" NoComments="true" runat="server" />
     <nsn:PostsPortlet Title="Thư giãn" Figure="6554" CssClass="right" ClearLayout="true" runat="server" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
