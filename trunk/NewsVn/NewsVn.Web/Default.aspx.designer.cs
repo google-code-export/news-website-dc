@@ -20,5 +20,32 @@ namespace NewsVn.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::NewsVn.Web.Modules.SpecialPostsPortlet pletHotNews;
+        
+        /// <summary>
+        /// pletLatestNews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.LatestPostsPortlet pletLatestNews;
+        
+        /// <summary>
+        /// pletSpecialEvents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.SpecialEventsPortlet pletSpecialEvents;
+        
+        /// <summary>
+        /// rptUCPortletPosts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptUCPortletPosts;
     }
 }

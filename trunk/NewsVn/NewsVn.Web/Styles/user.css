@@ -4,11 +4,7 @@ body
 {
     font-family: Tahoma, Arial, Sans-Serif;
     font-size: 13px;
-}
-
-p
-{
-    line-height: 18px;
+    line-height: 1.4em;
 }
 
 .wrapper
@@ -123,11 +119,28 @@ p
     line-height: 40px;
     background: url('../images/content_sep.jpg') repeat-x 0 100%;
     margin-bottom: 15px;
+    position: relative;
 }
 
 .portlet h2 span, .portlet h2 a
 {
     text-transform: none;
+}
+
+.portlet h2 .rss
+{
+    position: absolute;
+    top: 13px;
+    right: 0;
+    width: 22px;
+    height: 15px;
+    background: url('../images/post_rss.png') no-repeat;
+}
+
+.portlet .wrap
+{
+    margin-right: 35px;    
+    text-align: justify;
 }
 
 .portlet a
@@ -140,6 +153,37 @@ p
     font-weight: bold;
     display: block;
     text-align: justify;
+}
+
+.portlet .post-title.inline
+{
+    display: inline;    
+}
+
+.portlet .post-comment
+{
+    width: 23px;
+    height: 21px;
+    display: block;
+    background: url('../images/post_cmt.png') no-repeat;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 14px;
+    position: absolute;
+    right: 0; 
+}
+
+.portlet .post-info
+{
+    font-size: 10px;
+    font-style: italic;
+}
+
+.portlet .post-info .cate
+{
+    font-weight: bold;    
 }
 
 .special-posts.portlet
@@ -162,11 +206,68 @@ p
 .special-events.portlet
 {
     width: 650px;
-    height: 200px;
+    height: 180px;
+}
+
+.special-events #event-list li
+{
+    width: 155px;    
+}
+
+.special-events #event-list img
+{
+    width: 155px;
+    height: 90px;
 }
 
 .cate-posts.portlet
 {
     width: 305px;
-    height: 200px;
+}
+
+.cate-posts.portlet .post-avatar
+{
+    width: 238px;
+    height: 143px;
+}
+
+.cate-posts.portlet .avatar-thumb-list li
+{
+    width: 55px;
+    margin-bottom: 1px;
+}
+
+.cate-posts.portlet .avatar-thumb-list li img
+{
+    width: 55px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.cate-posts.portlet .active-post-item
+{
+    margin: 15px 0;
+    position: relative;    
+}
+
+.cate-posts.portlet .active-post-item p
+{
+    margin-top: 0;       
+}
+
+.cate-posts.portlet .description
+{
+    display: none;
+}
+
+.post-item-list li
+{
+    padding: 7px 0;
+    border-bottom: 1px dotted #333;
+    position: relative;
+}
+
+.post-item-list li.head
+{
+    padding: 0 0 7px;    
 }
