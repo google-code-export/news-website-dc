@@ -3,8 +3,6 @@
 <script runat="server">
     
     public string Title { get; set; }
-
-    public int Figure { get; set; }
     
     public string CssClass { get; set; }
 
@@ -71,7 +69,7 @@
     </script>
 
     <h2>
-        <%= Title %> <span>(<%= string.Format("{0:N0}", Figure) %> mục tin)</span>
+        <%= Title %>
         <a class="rss" href="#"></a>
     </h2>
     <asp:Image ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" runat="server" />

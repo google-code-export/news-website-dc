@@ -23,8 +23,8 @@
     <div id="nivo">
         <asp:Repeater ID="rptHotNews" runat="server">
             <ItemTemplate>
-                <asp:HyperLink ID="hlnkTitle" NavigateUrl='<%# Eval("SeoUrl") %>' ToolTip='<%# Eval("Titlle") %>'  runat="server">
-                <asp:Image ID="imgPresentation" ImageUrl='<%# Eval("Avatar") %>' runat="server" ToolTip='<%# Eval("Titlle") %>' />
+                <asp:HyperLink ID="hlnkTitle" NavigateUrl='<%# Eval("SeoUrl") %>' ToolTip='<%# Eval("Title") %>'  runat="server">
+                <asp:Image ID="imgPresentation" ImageUrl='<%# Eval("Avatar") %>' runat="server" ToolTip='<%# Eval("Title") %>' />
                 <asp:Label ID="lblDescription" Text='<%# Eval("Description") %>' runat="server" CssClass="description" ></asp:Label>    
                 </asp:HyperLink>
             </ItemTemplate>

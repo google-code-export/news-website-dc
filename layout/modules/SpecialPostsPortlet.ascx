@@ -6,6 +6,8 @@
 
     public bool ClearLayout { get; set; }
 
+    public object DataSource { get; set; }
+
     protected override void OnLoad(EventArgs e)
     {
         if (!string.IsNullOrEmpty(CssClass))

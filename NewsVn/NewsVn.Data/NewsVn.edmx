@@ -155,7 +155,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Titlle" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="Avatar" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="300" />
           <Property Name="Content" Type="ntext" Nullable="false" />
@@ -503,7 +503,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Titlle" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Avatar" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -707,7 +707,7 @@
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Posts"><EntityTypeMapping TypeName="NewsVn.Data.Post"><MappingFragment StoreEntitySet="Posts">
             <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Titlle" ColumnName="Titlle" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
             <ScalarProperty Name="Avatar" ColumnName="Avatar" />
             <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="Content" ColumnName="Content" />
@@ -865,7 +865,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="NewsVn" ZoomLevel="77">
+      <Diagram Name="NewsVn" ZoomLevel="95">
         <EntityTypeShape EntityType="NewsVn.Data.AdBox" Width="1.5" PointX="2.75" PointY="7.75" Height="3.3263964843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.AdCategory" Width="1.5" PointX="5.75" PointY="7.875" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.AdPost" Width="1.5" PointX="8" PointY="7" Height="4.6725065104166665" IsExpanded="true" />
