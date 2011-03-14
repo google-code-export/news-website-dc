@@ -28,10 +28,10 @@ namespace NewsVn.Web.BaseUI
         protected IQueryable<Data.AdPost> _AdPosts;
         protected IQueryable<Data.Category> _Categories;
         protected IQueryable<Data.PostComment> _PostComment;
-        protected IQueryable<Data.Post> _Post;
-        protected IQueryable<Data.UserMessage> _UserMessage;
-        protected IQueryable<Data.UserProfileComment> _UserProfileComment;
-        protected IQueryable<Data.UserProfile> _UserProfile;            
+        protected IQueryable<Data.Post> _Posts;
+        protected IQueryable<Data.UserMessage> _UserMessages;
+        protected IQueryable<Data.UserProfileComment> _UserProfileComments;
+        protected IQueryable<Data.UserProfile> _UserProfiles;            
         
         protected override void OnInit(EventArgs e)
         {
@@ -58,10 +58,10 @@ namespace NewsVn.Web.BaseUI
             _AdPosts = ApplicationManager.SetCacheData<Data.AdPost >(ApplicationManager.Entities.AdPosts , p => p.Actived);
             _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p=> p.Actived);
             _PostComment = ApplicationManager.SetCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments, null);
-            _Post = ApplicationManager.SetCacheData<Data.Post>(ApplicationManager.Entities.Posts, t => t.Approved && t.Actived );
-            _UserMessage = ApplicationManager.SetCacheData<Data.UserMessage>(ApplicationManager.Entities.UserMessages, null);
-            _UserProfileComment = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
-            _UserProfile = ApplicationManager.SetCacheData<Data.UserProfile>(ApplicationManager.Entities.UserProfiles, null);
+            _Posts = ApplicationManager.SetCacheData<Data.Post>(ApplicationManager.Entities.Posts, t => t.Approved && t.Actived );
+            _UserMessages = ApplicationManager.SetCacheData<Data.UserMessage>(ApplicationManager.Entities.UserMessages, null);
+            _UserProfileComments = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
+            _UserProfiles = ApplicationManager.SetCacheData<Data.UserProfile>(ApplicationManager.Entities.UserProfiles, null);
             
             base.OnInit(e);
         }

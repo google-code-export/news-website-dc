@@ -10,16 +10,11 @@ namespace NewsVn.Web.Modules
 {
     public partial class SpecialEventsPortlet : System.Web.UI.UserControl
     {
-        public List<Data.Post> DataSource { get; set; }
         public string CssClass { get; set; }
         public bool ClearLayout { get; set; }
+        public object DataSource { get; set; }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-       
-        protected override void OnLoad(EventArgs e)
+        public SpecialEventsPortlet()
         {
             if (!string.IsNullOrEmpty(CssClass))
             {
@@ -33,6 +28,7 @@ namespace NewsVn.Web.Modules
                 this.Controls.Add(clearDiv);
             }
         }
+
         protected override void OnDataBinding(EventArgs e)
         {
             rptSpecialEvents.DataSource = DataSource;

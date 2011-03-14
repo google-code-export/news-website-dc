@@ -20,7 +20,11 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("NewsVn.Data", "FK_UserProfileComments_UserProfiles2", "UserProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NewsVn.Data.UserProfile), "UserProfileComments", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NewsVn.Data.UserProfileComment))]
 
 // Original file name:
+<<<<<<< .mine
+// Generation date: 3/15/2011 2:49:39 AM
+=======
 // Generation date: 3/15/2011 12:24:43 AM
+>>>>>>> .r66
 namespace NewsVn.Data
 {
     
@@ -2497,7 +2501,7 @@ namespace NewsVn.Data
         /// Create a new Post object.
         /// </summary>
         /// <param name="id">Initial value of ID.</param>
-        /// <param name="titlle">Initial value of Titlle.</param>
+        /// <param name="title">Initial value of Title.</param>
         /// <param name="avatar">Initial value of Avatar.</param>
         /// <param name="description">Initial value of Description.</param>
         /// <param name="content">Initial value of Content.</param>
@@ -2509,11 +2513,11 @@ namespace NewsVn.Data
         /// <param name="approved">Initial value of Approved.</param>
         /// <param name="actived">Initial value of Actived.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Post CreatePost(int id, string titlle, string avatar, string description, string content, string seoUrl, bool checkPageView, global::System.DateTime createdOn, string createdBy, bool allowComments, bool approved, bool actived)
+        public static Post CreatePost(int id, string title, string avatar, string description, string content, string seoUrl, bool checkPageView, global::System.DateTime createdOn, string createdBy, bool allowComments, bool approved, bool actived)
         {
             Post post = new Post();
             post.ID = id;
-            post.Titlle = titlle;
+            post.Title = title;
             post.Avatar = avatar;
             post.Description = description;
             post.Content = content;
@@ -2554,32 +2558,32 @@ namespace NewsVn.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnIDChanged();
         /// <summary>
-        /// There are no comments for property Titlle in the schema.
+        /// There are no comments for property Title in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string Titlle
+        public string Title
         {
             get
             {
-                return this._Titlle;
+                return this._Title;
             }
             set
             {
-                this.OnTitlleChanging(value);
-                this.ReportPropertyChanging("Titlle");
-                this._Titlle = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Titlle");
-                this.OnTitlleChanged();
+                this.OnTitleChanging(value);
+                this.ReportPropertyChanging("Title");
+                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Title");
+                this.OnTitleChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _Titlle;
+        private string _Title;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTitlleChanging(string value);
+        partial void OnTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTitlleChanged();
+        partial void OnTitleChanged();
         /// <summary>
         /// There are no comments for property Avatar in the schema.
         /// </summary>
