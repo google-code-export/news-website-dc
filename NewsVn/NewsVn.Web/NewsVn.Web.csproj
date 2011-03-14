@@ -92,6 +92,7 @@
     <Content Include="resources\posts\t510698.jpg" />
     <Content Include="resources\posts\t623236.gif" />
     <Content Include="resources\posts\t623236.jpg" />
+    <Content Include="resources\Xml\TinMoiNong_Newsvn.xml" />
     <Content Include="Scripts\plugins\jquery-1.4.2-vsdoc.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2.min.js" />

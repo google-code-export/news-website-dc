@@ -10,17 +10,17 @@ namespace NewsVn.Web.Modules
 {
     public partial class PostsPortlet : System.Web.UI.UserControl
     {
-        public string Title { get; set; }
-
-        public int Figure { get; set; }
+        public string Title { get; set; }       
 
         public string CssClass { get; set; }
 
         public bool ClearLayout { get; set; }
 
-        public bool NoComments { get; set; }
+        public bool NoComments { get; set; }                       
 
-        public List<Data.Post> DataSource { get; set; }
+        public Data.Post ActivePost { get; set; }
+
+        public object OtherPosts { get; set; }
 
         protected override void OnLoad(EventArgs e)
         {
@@ -39,17 +39,8 @@ namespace NewsVn.Web.Modules
 
         protected override void OnDataBinding(EventArgs e)
         {
-            demo.Value = Title;
-        }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-            this.PreRender += new EventHandler(Product_PreRender);
-
-        }
-        void Product_PreRender(object sender, EventArgs e)
-        {
-            demo.Value = Title;
+            rptOtherItems.DataSource = OtherPosts;
+            rptOtherItems.DataBind();
         }
     }
 }

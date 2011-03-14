@@ -10,8 +10,10 @@ namespace NewsVn.Web.Modules
 {
     public partial class SpecialPostsPortlet : BaseUI.BaseModule
     {
-        public List<Data.Post> DataSource { get; set; }
+        public object DataSource { get; set; }
+        
         public string CssClass { get; set; }
+        
         public bool ClearLayout { get; set; }
         protected override void OnDataBinding(EventArgs e)
         {
