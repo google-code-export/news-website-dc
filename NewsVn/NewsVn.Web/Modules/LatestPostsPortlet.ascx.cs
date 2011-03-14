@@ -30,13 +30,10 @@ namespace NewsVn.Web.Modules
                 this.Controls.Add(clearDiv);
             }
         }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            
-        }
+        
         protected override void OnDataBinding(EventArgs e)
         {
-            rptLatestNews.DataSource =DataSource;
+            rptLatestNews.DataSource = DataSource;
             rptLatestNews.DataBind();
         }
 
