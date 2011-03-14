@@ -20,7 +20,7 @@ namespace NewsVn.Web
 
         private void load_pletPosts()
         {
-            DataTable dt = new DataTable();
+            /*DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("Cat_Name", Type.GetType("System.String")));
             dt.Columns.Add(new DataColumn("Position", Type.GetType("System.String")));
             for (int i = 0; i < 10; i++)
@@ -39,22 +39,59 @@ namespace NewsVn.Web
                 dt.Rows.Add(row);
             }
             rptUCPortletPosts.DataSource = dt;
-            rptUCPortletPosts.DataBind();
+            rptUCPortletPosts.DataBind();*/
+
+            //for (int i = 0; i < _Categories.Count(); i++)
+            //{
+            //    var cate = _Categories.ElementAt(i);
+
+            //    var postPorlet = new Modules.PostsPortlet
+            //    {
+            //        Title = cate.Name,
+            //        ActivePost = _Post.OrderByDescending(p => p.CreatedOn).ElementAt(0),
+            //        OtherPosts = _Post.Where(p => p.Category.ID == cate.ID).Select(p => new
+            //        {
+            //            p.ID,
+            //            p.Titlle,
+            //            p.Description,
+            //            p.Avatar,
+            //            p.CreatedOn,
+            //            Comments = p.PostComments.Count
+            //        }).OrderByDescending(p => p.CreatedOn).Skip(1).Take(4).ToList()
+            //    };
+
+            //    if (i % 2 == 1)
+            //    {
+            //        postPorlet.CssClass = "right";
+            //        postPorlet.ClearLayout = true;
+            //    }
+            //    else
+            //    {
+            //        postPorlet.CssClass = "left";
+            //    }
+
+            //    postPorlet.DataBind();
+
+            //    Page.Controls.Add(postPorlet);
+            //}
+
+            //this.DataBind();
         }
         void load_pletHotNews()
         {
             //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len
+
             pletHotNews.DataSource = _Post.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
-            //thay .ToList() tren = doan code ben duoi , bi loi~, xem giup
-            //.Select(p => new
-            //{
-            //    p.Titlle,
-            //    p.Description,
-            //    p.Avatar,
-            //    p.ID,
-            //    p.ApprovedOn
-            //}).ToList();
+                && p.CheckPageView == true).Select(p => new { 
+                    p.ID, p.Titlle,
+                    p.Description,
+                    p.Avatar, 
+                    p.SeoUrl,
+                    p.ApprovedOn
+           }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
+
+            //DataTable dt = new DataTable();
+            //dt=dt.ReadXml()
             pletHotNews.DataBind();
         }
         void load_pletSpecialEvents()

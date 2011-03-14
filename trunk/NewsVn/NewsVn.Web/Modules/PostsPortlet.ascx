@@ -35,7 +35,7 @@
     </script>
     <asp:HiddenField ID="demo" runat="server" Value="" />
     <h2>
-        <%= demo.Value%> <span>(<%= string.Format("{0:N0}", Figure) %> mục tin)</span>
+        <%= Title %>
         <a class="rss" href="#"></a>
     </h2>
     <asp:Image ID="Image1" ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" runat="server" />
@@ -47,51 +47,25 @@
     </ul>
     <div class="clear"></div>
     <div class="active-post-item">
-        <% if (!NoComments){ %><span class="post-comment">26</span><% } %>
-        <a href="#" class="post-title">Tiêu đề 1</a>        
-        <span class="post-info"><%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %></span>
-        <p>1. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</p>
+        <% if (!NoComments){ %><span class="post-comment"><%= "" %></span><% } %>
+        <a href="#" class="post-title"><%= ActivePost.Titlle %></a>        
+        <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %></span>
+        <p><%# Eval("Description") %></p>
     </div>
     <ul class="post-item-list other">
-        <li class="head item-2">
-            <% if (!NoComments){ %><span class="post-comment">11</span><% } %>
-            <% if (!NoComments){ %><div class="wrap"><% } %>
-                <a class="post-title inline" href="#">Tiêu đề 2</a> -
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
-                </span>
-            <% if (!NoComments){ %></div><% } %>
-            <span class="description">2. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</span>
-        </li>
-        <li class="item-3">
-            <% if (!NoComments){ %><span class="post-comment">16</span><% } %>            
-            <% if (!NoComments){ %><div class="wrap"><% } %>
-                <a class="post-title inline" href="#">Tiêu đề 3</a> -
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
-                </span>
-            <% if (!NoComments){ %></div><% } %>
-            <span class="description">3. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</span>
-        </li>
-        <li class="item-4">
-            <% if (!NoComments){ %><span class="post-comment">68</span><% } %>            
-            <% if (!NoComments){ %><div class="wrap"><% } %>
-                <a class="post-title inline" href="#">Tiêu đề 4</a> -
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
-                </span>
-            <% if (!NoComments){ %></div><% } %>
-            <span class="description">4. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</span>
-        </li>
-        <li class="item-5">
-            <% if (!NoComments){ %><span class="post-comment">87</span><% } %>            
-            <% if (!NoComments){ %><div class="wrap"><% } %>
-                <a class="post-title inline" href="#">Tiêu đề 5</a> -
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
-                </span>
-            <% if (!NoComments){ %></div><% } %>
-            <span class="description">5. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</span>
-        </li>
+        <asp:Repeater ID="rptOtherItems" runat="server">
+            <ItemTemplate>
+                <li class='item-<%# Eval("ID") %>'>
+                    <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
+                    <% if (!NoComments){ %><div class="wrap"><% } %>
+                        <a class="post-title inline" href="#"><%# Eval("Title") %></a> -
+                        <span class="post-info">
+                            <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %>
+                        </span>
+                    <% if (!NoComments){ %></div><% } %>
+                    <span class="description"><%# Eval("Description") %></span>
+                </li>
+            </ItemTemplate>
+        </asp:Repeater>        
     </ul>
 </asp:Panel>

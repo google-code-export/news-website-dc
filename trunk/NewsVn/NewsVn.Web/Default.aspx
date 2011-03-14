@@ -16,11 +16,12 @@
     <nsn:PostsPortlet Title="Tình yêu - Gia đình" Figure="1124" CssClass="right" ClearLayout="true" runat="server" />
     <nsn:PostsPortlet Title="Rao nhanh" Figure="314" CssClass="left" runat="server" />
     <nsn:PostsPortlet Title="Thư giãn" Figure="6554" CssClass="right" ClearLayout="true" runat="server" />--%>
-    <asp:Repeater runat="server" ID="rptUCPortletPosts">
+    <%--<asp:Repeater runat="server" ID="rptUCPortletPosts">
         <ItemTemplate>
            <nsn:PostsPortlet ID="PostsPortlet1" Title='<%#Eval("Cat_Name") %>' Figure="121" CssClass='<%#Eval("Position") %>' runat="server" />
         </ItemTemplate>
-    </asp:Repeater>
+    </asp:Repeater>--%>
+    <nsn:PostsPortlet Title="Rao nhanh" Figure="314" CssClass="left" runat="server" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
