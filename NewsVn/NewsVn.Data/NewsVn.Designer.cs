@@ -20,7 +20,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("NewsVn.Data", "FK_UserProfileComments_UserProfiles2", "UserProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NewsVn.Data.UserProfile), "UserProfileComments", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NewsVn.Data.UserProfileComment))]
 
 // Original file name:
-// Generation date: 3/6/2011 3:19:32 PM
+// Generation date: 3/15/2011 12:24:43 AM
 namespace NewsVn.Data
 {
     

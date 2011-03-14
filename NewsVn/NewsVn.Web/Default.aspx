@@ -6,6 +6,7 @@
     <nsn:SpecialPostsPortlet CssClass="left" runat="server" ID="pletHotNews" />
     <nsn:LatestPostsPortlet CssClass="right" ClearLayout="true" runat="server" ID="pletLatestNews"/>
     <nsn:SpecialEventsPortlet runat="server"  ID="pletSpecialEvents"/>
+    <div id="postArea" runat="server"></div>
     <%--<nsn:PostsPortlet Title="Kinh tế" Figure="121" CssClass="left" runat="server" />
     <nsn:PostsPortlet Title="Xã hội" Figure="215" CssClass="right" ClearLayout="true" runat="server" />
     <nsn:PostsPortlet Title="Văn hóa" Figure="446" CssClass="left" runat="server" />
@@ -21,7 +22,7 @@
            <nsn:PostsPortlet ID="PostsPortlet1" Title='<%#Eval("Cat_Name") %>' Figure="121" CssClass='<%#Eval("Position") %>' runat="server" />
         </ItemTemplate>
     </asp:Repeater>--%>
-    <nsn:PostsPortlet Title="Rao nhanh" Figure="314" CssClass="left" runat="server" />
+    <%--<nsn:PostsPortlet Title="Rao nhanh" Figure="314" ID="duynp" CssClass="left" runat="server" />--%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
