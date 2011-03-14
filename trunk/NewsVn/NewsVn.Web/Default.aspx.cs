@@ -20,62 +20,51 @@ namespace NewsVn.Web
 
         private void load_pletPosts()
         {
-            /*DataTable dt = new DataTable();
-            dt.Columns.Add(new DataColumn("Cat_Name", Type.GetType("System.String")));
-            dt.Columns.Add(new DataColumn("Position", Type.GetType("System.String")));
-            for (int i = 0; i < 10; i++)
+            int indexArea = 0;
+            for (int i = 0; i < _Categories.Count(); i++)
             {
-                DataRow row = dt.NewRow();
-                if (i % 2 == 0)
+                var cate = _Categories.ElementAt(i);
+                Control UC_PortletPost = LoadControl("~/Modules/PostsPortlet.ascx");
+                var ctrPortletPost = ((Modules.PostsPortlet)UC_PortletPost);
+                ctrPortletPost.Title = cate.Name;
+                if (cate.Parent != null)
                 {
-                    row["Cat_Name"] = i.ToString();
-                    row["Position"] = "Left";
+                    continue;
                 }
+                //load 1st news
+                ctrPortletPost.oActivePost = _Post.Where(p => p.Category.ID == cate.ID  && cate.Actived==true)
+                    .Select(p => new
+                    {
+                        p.ID,
+                        p.Titlle,
+                        p.Description,
+                        p.Avatar,
+                        p.CreatedOn,
+                        Comments = p.PostComments.Count
+                    }).OrderByDescending(p => p.CreatedOn).Take(1).ToList();
+                //load 4th news
+                ctrPortletPost.OtherPosts = _Post.Where(p => p.Category.ID == cate.ID  && cate.Actived==true).Select(p => new
+                    {
+                        p.ID,
+                        p.Titlle,
+                        p.Description,
+                        p.Avatar,
+                        p.CreatedOn,
+                        Comments = p.PostComments.Count
+                    }).OrderByDescending(p => p.CreatedOn).Skip(1).Take(4).ToList();
+                //set position
+                if (indexArea % 2 == 0)
+                    ctrPortletPost.CssClass = "left";
                 else
                 {
-                    row["Cat_Name"] = i.ToString();
-                    row["Position"] = "Right";
+                    ctrPortletPost.CssClass = "right";
+                    ctrPortletPost.ClearLayout = true;
                 }
-                dt.Rows.Add(row);
+                //bind control
+                ctrPortletPost.DataBind();
+                postArea.Controls.Add(ctrPortletPost);
+                indexArea += 1;
             }
-            rptUCPortletPosts.DataSource = dt;
-            rptUCPortletPosts.DataBind();*/
-
-            //for (int i = 0; i < _Categories.Count(); i++)
-            //{
-            //    var cate = _Categories.ElementAt(i);
-
-            //    var postPorlet = new Modules.PostsPortlet
-            //    {
-            //        Title = cate.Name,
-            //        ActivePost = _Post.OrderByDescending(p => p.CreatedOn).ElementAt(0),
-            //        OtherPosts = _Post.Where(p => p.Category.ID == cate.ID).Select(p => new
-            //        {
-            //            p.ID,
-            //            p.Titlle,
-            //            p.Description,
-            //            p.Avatar,
-            //            p.CreatedOn,
-            //            Comments = p.PostComments.Count
-            //        }).OrderByDescending(p => p.CreatedOn).Skip(1).Take(4).ToList()
-            //    };
-
-            //    if (i % 2 == 1)
-            //    {
-            //        postPorlet.CssClass = "right";
-            //        postPorlet.ClearLayout = true;
-            //    }
-            //    else
-            //    {
-            //        postPorlet.CssClass = "left";
-            //    }
-
-            //    postPorlet.DataBind();
-
-            //    Page.Controls.Add(postPorlet);
-            //}
-
-            //this.DataBind();
         }
         void load_pletHotNews()
         {
@@ -91,7 +80,10 @@ namespace NewsVn.Web
            }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
 
             //DataTable dt = new DataTable();
-            //dt=dt.ReadXml()
+            DataSet ds = new DataSet();
+
+            ds.ReadXml(Server.MapPath(@"resources/Xml/TinMoiNong_Newsvn.xml").ToString());
+            pletHotNews.DataSource = ds.Tables[0];
             pletHotNews.DataBind();
         }
         void load_pletSpecialEvents()

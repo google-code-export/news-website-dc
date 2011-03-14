@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PostsPortlet.ascx.cs" Inherits="NewsVn.Web.Modules.PostsPortlet" %>
-
 <asp:Panel ID="container" CssClass="cate-posts portlet" runat="server">
     
     <script type="text/javascript">
@@ -33,39 +32,50 @@
             });
         });
     </script>
-    <asp:HiddenField ID="demo" runat="server" Value="" />
     <h2>
         <%= Title %>
         <a class="rss" href="#"></a>
     </h2>
-    <asp:Image ID="Image1" ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" runat="server" />
+    <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server" />
     <ul class="avatar-thumb-list right">
-        <li><asp:Image ID="Image2" ImageUrl="~/resources/posts/t510696.jpg" AlternateText="Tiêu đề 2" ToolTip="Tiêu đề 2" CssClass="item-2" runat="server" /></li>
-        <li><asp:Image ID="Image3" ImageUrl="~/resources/posts/t510697.jpg" AlternateText="Tiêu đề 3" ToolTip="Tiêu đề 3" CssClass="item-3" runat="server" /></li>
-        <li><asp:Image ID="Image4" ImageUrl="~/resources/posts/t510698.jpg" AlternateText="Tiêu đề 4" ToolTip="Tiêu đề 4" CssClass="item-4" runat="server" /></li>
-        <li><asp:Image ID="Image5" ImageUrl="~/resources/posts/t623236.gif" AlternateText="Tiêu đề 5" ToolTip="Tiêu đề 5" CssClass="item-5" runat="server" /></li>        
+        <asp:Repeater runat="server" ID="rptSubAvatar" onitemdatabound="rptFirstItem_ItemDataBound">
+            <ItemTemplate>
+                <li>
+                    <asp:Image ID="imgSub" ImageUrl='<%#Eval("Avatar") %>' AlternateText='<%#Eval("Titlle") %>' ToolTip='<%#Eval("Titlle") %>' CssClass="item-2" runat="server" />
+                </li>
+            </ItemTemplate>
+        </asp:Repeater>
     </ul>
     <div class="clear"></div>
     <div class="active-post-item">
-        <% if (!NoComments){ %><span class="post-comment"><%= "" %></span><% } %>
-        <a href="#" class="post-title"><%= ActivePost.Titlle %></a>        
-        <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %></span>
-        <p><%# Eval("Description") %></p>
+        <asp:Repeater runat="server" ID="rptFirstItem" 
+            onitemdatabound="rptFirstItem_ItemDataBound">
+            <ItemTemplate>
+                <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
+                <a href="#" class="post-title"><%#Eval("Titlle") %></a>        
+                <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %></span>
+                <p><%# Eval("Description") %></p>
+            </ItemTemplate>
+        </asp:Repeater>
     </div>
     <ul class="post-item-list other">
-        <asp:Repeater ID="rptOtherItems" runat="server">
+        <asp:Repeater ID="rptOtherItems" runat="server" >
             <ItemTemplate>
                 <li class='item-<%# Eval("ID") %>'>
                     <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                     <% if (!NoComments){ %><div class="wrap"><% } %>
-                        <a class="post-title inline" href="#"><%# Eval("Title") %></a> -
+                        <a class="post-title inline" href="#"><%# Eval("Titlle") %></a> -
                         <span class="post-info">
                             <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %>
                         </span>
                     <% if (!NoComments){ %></div><% } %>
                     <span class="description"><%# Eval("Description") %></span>
+                    
                 </li>
             </ItemTemplate>
         </asp:Repeater>        
     </ul>
+    <div style="display:none">
+        <asp:HiddenField runat="server" ID="hid_Avatar" Value="" />
+    </div>
 </asp:Panel>

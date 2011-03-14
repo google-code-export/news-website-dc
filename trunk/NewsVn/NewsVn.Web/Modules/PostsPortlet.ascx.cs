@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.Data.Entity;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class PostsPortlet : System.Web.UI.UserControl
+    public partial class PostsPortlet :  BaseUI.BaseModule
     {
         public string Title { get; set; }       
 
@@ -19,6 +20,7 @@ namespace NewsVn.Web.Modules
         public bool NoComments { get; set; }                       
 
         public Data.Post ActivePost { get; set; }
+        public object oActivePost { get; set; }
 
         public object OtherPosts { get; set; }
 
@@ -39,8 +41,26 @@ namespace NewsVn.Web.Modules
 
         protected override void OnDataBinding(EventArgs e)
         {
+            //load 1st news
+            rptFirstItem.DataSource = oActivePost;
+            rptFirstItem.DataBind();
+            //load 4th news
             rptOtherItems.DataSource = OtherPosts;
             rptOtherItems.DataBind();
+            //load 4th avatar
+            rptSubAvatar.DataSource = OtherPosts;
+            rptOtherItems.DataBind();
+        }
+
+        protected void rptFirstItem_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType==ListItemType.Item)
+            {
+                //load 1st avatar
+                imgMain.ImageUrl = DataBinder.Eval(e.Item.DataItem, "Avatar").ToString();
+                imgMain.AlternateText = DataBinder.Eval(e.Item.DataItem, "Titlle").ToString();
+                imgMain.ToolTip = DataBinder.Eval(e.Item.DataItem, "Titlle").ToString();
+            }
         }
     }
 }
