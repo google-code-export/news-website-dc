@@ -1,5 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LatestPostsPortlet.ascx.cs" Inherits="NewsVn.Web.Modules.LatestPostsPortlet" %>
-
+<script type="text/javascript">
+    $(function () {
+        $(".head-latest-post").each(function (index) {
+            $(this).removeClass();
+            if (index == 0) {
+                $(this).addClass("head-latest-post");
+            }
+        });
+    })
+</script>
 <asp:Panel ID="container" CssClass="latest-posts portlet" runat="server">
     <h2>
         Tin mới nhất
@@ -8,7 +17,7 @@
     <ul class="post-item-list">
     <asp:Repeater runat="server" ID="rptLatestNews">
         <ItemTemplate>
-            <li class="head">
+            <li class="head-latest-post">
             <asp:Label runat="server" ID="lblNo_Comment" CssClass="post-comment">105</asp:Label>
                 <asp:HyperLink runat="server" ID="hlnkTitle" NavigateUrl="#"
                 Text='<%#Eval("Titlle") %>' CssClass="post-title wrap"/>
