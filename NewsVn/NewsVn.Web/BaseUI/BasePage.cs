@@ -27,7 +27,7 @@ namespace NewsVn.Web.BaseUI
         protected IQueryable<Data.AdCategory> _AdCategories;
         protected IQueryable<Data.AdPost> _AdPosts;
         protected IQueryable<Data.Category> _Categories;
-        protected IQueryable<Data.PostComment> _PostComment;
+        protected IQueryable<Data.PostComment> _PostComments;
         protected IQueryable<Data.Post> _Posts;
         protected IQueryable<Data.UserMessage> _UserMessages;
         protected IQueryable<Data.UserProfileComment> _UserProfileComments;
@@ -57,7 +57,7 @@ namespace NewsVn.Web.BaseUI
             _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory >(ApplicationManager.Entities.AdCategories , p => p.Actived);
             _AdPosts = ApplicationManager.SetCacheData<Data.AdPost >(ApplicationManager.Entities.AdPosts , p => p.Actived);
             _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p=> p.Actived);
-            _PostComment = ApplicationManager.SetCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments, null);
+            _PostComments = ApplicationManager.SetCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments, null);
             _Posts = ApplicationManager.SetCacheData<Data.Post>(ApplicationManager.Entities.Posts, t => t.Approved && t.Actived );
             _UserMessages = ApplicationManager.SetCacheData<Data.UserMessage>(ApplicationManager.Entities.UserMessages, null);
             _UserProfileComments = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
