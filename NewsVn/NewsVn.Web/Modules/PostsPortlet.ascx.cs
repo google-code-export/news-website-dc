@@ -58,8 +58,8 @@ namespace NewsVn.Web.Modules
             {
                 //load 1st avatar
                 imgMain.ImageUrl = DataBinder.Eval(e.Item.DataItem, "Avatar").ToString();
-                imgMain.AlternateText = DataBinder.Eval(e.Item.DataItem, "Titlle").ToString();
-                imgMain.ToolTip = DataBinder.Eval(e.Item.DataItem, "Titlle").ToString();
+                imgMain.AlternateText = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
+                imgMain.ToolTip = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
             }
         }
     }

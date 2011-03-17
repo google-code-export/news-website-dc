@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ListSpecialPost xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SpecialPostItem TinTucID="28">
-    <Titlle>Kết thúc tốt đẹp chuyến thăm và làm việc của Bộ trưởng Hà Hùng Cường tại CHDCND Lào</Titlle>
+    <Title>Kết thúc tốt đẹp chuyến thăm và làm việc của Bộ trưởng Hà Hùng Cường tại CHDCND Lào</Title>
     <Cat_Name>Kinh Tế</Cat_Name>
     <Description>Ngày 12/3, Bộ trưởng Hà Hùng Cường cùng đoàn công tác của Bộ Tư pháp đã kết thúc tốt đẹp chuyến thăm và làm việc tại CHDCND Lào sau khi tiếp kiến Thủ tướng Bouasone Bouphavanh, thăm và làm việc với Viện KSNDTC và Đại sứ quán Việt Nam tại Lào.</Description>
     <SeoUrl>/ct/tintuc/Lists/HDLanhDaoBo/View_Detail.aspx?ItemID=1272</SeoUrl>
     <Avatar>~/resources/posts/t510695.jpg</Avatar>
   </SpecialPostItem>
   <SpecialPostItem TinTucID="30">
-    <Titlle>Giải pháp ngăn thảm họa hạt nhân</Titlle>
+    <Title>Giải pháp ngăn thảm họa hạt nhân</Title>
     <Cat_Name>Xã Hội</Cat_Name>
     <Description>Khả năng ngăn chặn nguy cơ phát tán chất phóng xạ diện rộng tại nhà máy điện hạt nhân của Nhật Bản phụ thuộc rất nhiều vào may mắn và mức độ kịp thời của các hành động can thiệp.</Description>
     <SeoUrl>/ct/tintuc/Lists/Cc t chc chnh tr/View_Detail.aspx?ItemID=248</SeoUrl>
     <Avatar>~/resources/posts/t510696.jpg</Avatar>
   </SpecialPostItem>
   <SpecialPostItem TinTucID="29">
-    <Titlle>Lao động VN ở gần tâm động đất Nhật Bản vẫn an toàn</Titlle>
+    <Title>Lao động VN ở gần tâm động đất Nhật Bản vẫn an toàn</Title>
     <Cat_Name>Điểm tin báo chí</Cat_Name>
     <Description>
       Chiều 14/3, Cục Quản lý lao động ngoài nước đã xác định có 71 tu nghiệp sinh Việt Nam đang tu nghiệp tại 5 tỉnh của Nhật Bản bị ảnh hưởng bởi động đất và sóng thần. Tất cả vẫn an toàn, một số chuẩn bị về nước.
@@ -24,14 +24,14 @@
     <Avatar>~/resources/posts/t510697.jpg</Avatar>
   </SpecialPostItem>
   <SpecialPostItem TinTucID="25">
-    <Titlle>Chuyển đổi Phòng công chứng sang đơn vị sự nghiệp</Titlle>
+    <Title>Chuyển đổi Phòng công chứng sang đơn vị sự nghiệp</Title>
     <Cat_Name>Tin tức</Cat_Name>
     <Description>Theo quy định tại khoản 2 Điều 24 của Luật Công chứng thì Phòng công chứng là đơn vị sự nghiệp thuộc Sở Tư pháp. Đồng thời, theo quy định tại khoản 2 Điều 66 của Luật Công chứng thì trong thời hạn sáu tháng</Description>
     <SeoUrl>/ttcongchung/Lists/TinTuc/View_Detail.aspx?ItemID=34</SeoUrl>
     <Avatar>~/resources/posts/t510695.jpg</Avatar>
   </SpecialPostItem>
   <SpecialPostItem TinTucID="27">
-    <Titlle>Ngành Thi hành án dân sự: Khẩn trương kiện toàn tổ chức trong năm 2010</Titlle>
+    <Title>Ngành Thi hành án dân sự: Khẩn trương kiện toàn tổ chức trong năm 2010</Title>
     <Cat_Name>Hoạt động của cơ quan bộ tư pháp</Cat_Name>
     <Description>Tiếp tục Hội nghị chuyên đề về công tác thi hành án dân sự (THADS), sáng qua (13/01), lãnh đạo các Cục THADS địa phương đã cùng nhau trao đổi, thảo luận rất nhiều vấn đề nhằm triển khai hiệu quả nhiệm vụ của ngành trong năm 2010.</Description>
     <SeoUrl>/ct/tintuc/Lists/Hot ng ca c quan t php/View_Detail.aspx?ItemID=1207</SeoUrl>

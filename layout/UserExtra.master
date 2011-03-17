@@ -8,6 +8,9 @@
         <asp:ContentPlaceHolder id="mainContent" runat="server" />
     </div>
     <div id="side_content" class="right">
+		<nsn:QuickSearchBox runat="server" />
+		<nsn:AdBoxList runat="server" />
+		<nsn:HotVideoList runat="server" />
         <asp:ContentPlaceHolder id="sideContent" runat="server" />
     </div>
     <div class="clear"></div>

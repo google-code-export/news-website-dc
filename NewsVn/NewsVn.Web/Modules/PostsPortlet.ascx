@@ -41,7 +41,7 @@
         <asp:Repeater runat="server" ID="rptSubAvatar" onitemdatabound="rptFirstItem_ItemDataBound">
             <ItemTemplate>
                 <li>
-                    <asp:Image ID="imgSub" ImageUrl='<%#Eval("Avatar") %>' AlternateText='<%#Eval("Titlle") %>' ToolTip='<%#Eval("Titlle") %>' CssClass="item-2" runat="server" />
+                    <asp:Image ID="imgSub" ImageUrl='<%#Eval("Avatar") %>' AlternateText='<%#Eval("Title") %>' ToolTip='<%#Eval("Title") %>' CssClass="item-2" runat="server" />
                 </li>
             </ItemTemplate>
         </asp:Repeater>
@@ -52,7 +52,7 @@
             onitemdatabound="rptFirstItem_ItemDataBound">
             <ItemTemplate>
                 <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
-                <a href="#" class="post-title"><%#Eval("Titlle") %></a>        
+                <a href="#" class="post-title"><%#Eval("Title") %></a>        
                 <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %></span>
                 <p><%# Eval("Description") %></p>
             </ItemTemplate>
@@ -64,7 +64,7 @@
                 <li class='item-<%# Eval("ID") %>'>
                     <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                     <% if (!NoComments){ %><div class="wrap"><% } %>
-                        <a class="post-title inline" href="#"><%# Eval("Titlle") %></a> -
+                        <a class="post-title inline" href="#"><%# Eval("Title") %></a> -
                         <span class="post-info">
                             <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %>
                         </span>
