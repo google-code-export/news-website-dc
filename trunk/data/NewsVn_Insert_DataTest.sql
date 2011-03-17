@@ -14,11 +14,11 @@ INSERT INTO [Categories] VALUES(N'Tình yêu - Gia đình',N'','tinh-yeu-gia-din
 INSERT INTO [Categories] VALUES(N'Thư giãn',N'','thu-gian','',GETDATE(),NULL,1,NULL)
 DECLARE @ParentID int
 SELECT @ParentID = [ID] from [Categories] where [SeoName] = 'kinh-te'
-INSERT INTO [Categories] VALUES(N'Chứng khoán',N'','chung-khoan','',GETDATE(),NULL,1,@ParentID)
-INSERT INTO [Categories] VALUES(N'Bất động sản',N'','bat-dong-san','',GETDATE(),NULL,1,@ParentID)
-INSERT INTO [Categories] VALUES(N'Doanh nhân',N'','doanh-nhan','',GETDATE(),NULL,1,@ParentID)
-INSERT INTO [Categories] VALUES(N'Quốc tế',N'','quoc-te','',GETDATE(),NULL,1,@ParentID)
-INSERT INTO [Categories] VALUES(N'Mua sắm',N'','mua-sam','',GETDATE(),NULL,1,@ParentID)
+INSERT INTO [Categories] VALUES(N'Chứng khoán',N'','kinh-te/chung-khoan','',GETDATE(),NULL,1,@ParentID)
+INSERT INTO [Categories] VALUES(N'Bất động sản',N'','kinh-te/bat-dong-san','',GETDATE(),NULL,1,@ParentID)
+INSERT INTO [Categories] VALUES(N'Doanh nhân',N'','kinh-te/doanh-nhan','',GETDATE(),NULL,1,@ParentID)
+INSERT INTO [Categories] VALUES(N'Quốc tế',N'','kinh-te/quoc-te','',GETDATE(),NULL,1,@ParentID)
+INSERT INTO [Categories] VALUES(N'Mua sắm',N'','kinh-te/mua-sam','',GETDATE(),NULL,1,@ParentID)
 SELECT @ParentID = [ID] from [Categories] where [SeoName] = 'xa-hoi'
 INSERT INTO [Categories] VALUES(N'Giáo dục',N'','giao-duc','',GETDATE(),NULL,1,@ParentID)
 INSERT INTO [Categories] VALUES(N'Du học',N'','du-hoc','',GETDATE(),NULL,1,@ParentID)
