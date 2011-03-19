@@ -24,7 +24,7 @@ namespace NewsVn.Web.Modules
 
         public object OtherPosts { get; set; }
 
-        public PostsPortlet()
+        protected override void OnLoad(EventArgs e)
         {
             if (!string.IsNullOrEmpty(CssClass))
             {

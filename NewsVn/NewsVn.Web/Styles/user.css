@@ -1,4 +1,6 @@
 ﻿@import url('reset.css');
+@import url('ui.css');
+@import url('form.css');
 
 body
 {
@@ -134,7 +136,7 @@ body
     right: 0;
     width: 22px;
     height: 15px;
-    background: url('../images/post_rss.png') no-repeat;
+    background: url('../images/icons/post_rss.png') no-repeat;
 }
 
 .portlet .wrap
@@ -165,12 +167,12 @@ body
     width: 23px;
     height: 21px;
     display: block;
-    background: url('../images/post_cmt.png') no-repeat;
+    background: url('../images/icons/post_cmt.png') no-repeat;
     text-align: center;
-    font-size: 10px;
+    font-size: 8px;
     font-weight: bold;
     color: #fff;
-    line-height: 14px;
+    line-height: 16px;
     position: absolute;
     right: 0; 
 }
@@ -260,6 +262,23 @@ body
     display: none;
 }
 
+.side-part.portlet 
+{
+	width: 280px;
+}
+
+.side-part.search.portlet
+{
+	position: relative;
+}
+
+.side-part.search.portlet .ui-icon-search
+{
+    position: absolute;
+    right: 20px;
+    top: 62px;    
+}
+
 .post-item-list li
 {
     padding: 7px 0;
@@ -271,7 +290,146 @@ body
 {
     padding: 0 0 7px;    
 }
-.post-item-list li.head-latest-post
+
+.side-part-list li
+{
+	margin-bottom: 5px;
+}
+
+.side-part-list li.tail
+{
+	margin: 0;
+}
+
+.side-part-list li img
+{
+	width: 280px !important;
+	display: block;
+	border: 0;
+}
+
+#footer
+{
+	background: #ffbcb6;
+	border-top: 5px solid #ffd6d4;
+	margin-top: 10px;
+	position: relative;
+}
+
+#footer .wrapper
+{
+	min-height: 350px;
+	z-index: 50;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+#footer .section
+{
+    padding: 0 15px 15px;
+    margin: 15px 0 10px;
+}
+
+#footer .section h2
+{
+    font-size: 13px;
+    color: #bd0d0d;
+    text-transform: uppercase;
+    height: 30px; width: 100%;
+    line-height: 30px;
+    background: url('../images/footer_sep.jpg') repeat-x 0 100%;
+    margin-bottom: 15px;
+}
+
+#footer .section a
+{
+    color: #104687;
+}
+
+#footer .section.intro
+{
+	width: 305px;	
+}
+
+#footer .section.intro .intro-button
+{
+	background: #ffd6d4;
+	padding: 7px 0;
+	margin: 5px 0 0 5px;
+	text-align: center;
+}
+
+#footer .section.intro .intro-button.short
+{
+	width: 120px;
+}
+
+#footer .section.intro .intro-button.long
+{
+	width: 150px;
+}
+
+#footer .section.intro .intro-button img
+{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+#footer .section.cate-list
+{
+	width: 305px;
+	margin: 15px 10px 10px;
+}
+
+#footer .section.link-network
+{
+	width: 280px;
+}
+
+#footer .item-list li
+{
+    padding: 7px 0;
+    border-bottom: 1px dotted #333;
+    position: relative;
+}
+
+#footer .item-list li.head
 {
     padding: 0 0 7px;    
+}
+
+#footer .item-list li .rss
+{
+    position: absolute;
+    top: 9px;
+    right: 0;
+    width: 22px;
+    height: 15px;
+    background: url('../images/icons/post_rss.png') no-repeat;
+}
+
+#footer .item-list li img
+{
+	vertical-align: middle;
+	margin: 3px 10px 3px 0;	
+}
+
+#footer #grass_overlay
+{
+	width: 100%;
+	height: 100px;
+	background: url('../images/footer_grass.jpg') repeat-x;
+	bottom: 55px;
+	position: absolute;
+}
+
+#footer #copyright
+{
+	width: 100%;
+	height: 55px;
+	background: url('../images/footer_bg.jpg') repeat-x;
+	text-align: center;
+	color: #fff;
+	line-height: 60px;
+	overflow: hidden;
 }

@@ -52,7 +52,37 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\footer_bg.jpg" />
+    <Content Include="Images\footer_grass.jpg" />
+    <Content Include="Images\icons\facebook.png" />
+    <Content Include="Images\icons\feed.png" />
+    <Content Include="Images\icons\home.png" />
+    <Content Include="Images\icons\mail.png" />
+    <Content Include="Images\icons\post_cmt.png" />
+    <Content Include="Images\icons\post_rss.png" />
+    <Content Include="Images\icons\twitter.png" />
+    <Content Include="Images\icons\user.png" />
+    <Content Include="Images\icons\youtube.png" />
+    <Content Include="Images\ui\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Images\ui\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Images\ui\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Images\ui\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Images\ui\ui-bg_hexagon_90_dddddd_12x10.png" />
+    <Content Include="Images\ui\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Images\ui\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Images\ui\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Images\ui\ui-bg_highlight-soft_25_ffd6d4_1x100.png" />
+    <Content Include="Images\ui\ui-icons_104687_256x240.png" />
+    <Content Include="Images\ui\ui-icons_2694e8_256x240.png" />
+    <Content Include="Images\ui\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Images\ui\ui-icons_ffffff_256x240.png" />
+    <Content Include="Modules\AdBoxList.ascx" />
+    <Content Include="Modules\FooterCopyright.ascx" />
+    <Content Include="Modules\FooterIntro.ascx" />
+    <Content Include="Modules\FooterLinkList.ascx" />
+    <Content Include="Modules\FooterNetworkList.ascx" />
     <Content Include="Global.asax" />
+    <Content Include="Modules\HotVideoList.ascx" />
     <Content Include="Images\content_sep.jpg" />
     <Content Include="Images\fancybox\blank.gif" />
     <Content Include="Images\fancybox\fancybox-x.png" />
@@ -83,10 +113,11 @@
     <Content Include="Images\nivo\shadow.png" />
     <Content Include="Images\trans_bg.jpg" />
     <Content Include="Modules\AdBoxesPortlet.ascx" />
+    <Content Include="Modules\FooterCategoryList.ascx" />
     <Content Include="Modules\LatestPostsPortlet.ascx" />
     <Content Include="Modules\MenuBar.ascx" />
     <Content Include="Modules\PostsPortlet.ascx" />
-    <Content Include="Modules\SearchBox.ascx" />
+    <Content Include="Modules\QuickSearchBox.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
     <Content Include="Resources\posts\t510695.jpg" />
@@ -96,9 +127,11 @@
     <Content Include="Resources\posts\t623236.gif" />
     <Content Include="Resources\posts\t623236.jpg" />
     <Content Include="Resources\Xml\TinMoiNong_Newsvn.xml" />
+    <Content Include="Scripts\newsvn.ui-init.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2-vsdoc.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2.min.js" />
+    <Content Include="Scripts\plugins\jquery-ui-1.8.10.min.js" />
     <Content Include="Scripts\plugins\jquery.bxcarousel.min.js" />
     <Content Include="Scripts\plugins\jquery.easing.1.3.js" />
     <Content Include="Scripts\plugins\jquery.fancybox-1.3.4.pack.js" />
@@ -106,10 +139,14 @@
     <Content Include="Scripts\plugins\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Scripts\plugins\jquery.nivo.slider.pack.js" />
     <Content Include="Scripts\plugins\jquery.text-overflow.js" />
+    <Content Include="Scripts\plugins\jquery.ui.datepicker-vi.js" />
+    <Content Include="Scripts\plugins\jquery.ui.selectmenu.js" />
     <Content Include="Scripts\plugins\swfobject.js" />
     <Content Include="Styles\fancybox.css" />
+    <Content Include="Styles\form.css" />
     <Content Include="Styles\nivo.css" />
     <Content Include="Styles\reset.css" />
+    <Content Include="Styles\ui.css" />
     <Content Include="Styles\user-lte-ie7.css" />
     <Content Include="Styles\user.css" />
     <Content Include="Web.config" />
@@ -128,8 +165,50 @@
     <Compile Include="BaseUI\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Modules\AdBoxList.ascx.cs">
+      <DependentUpon>AdBoxList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AdBoxList.ascx.designer.cs">
+      <DependentUpon>AdBoxList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FooterCopyright.ascx.cs">
+      <DependentUpon>FooterCopyright.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\FooterCopyright.ascx.designer.cs">
+      <DependentUpon>FooterCopyright.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FooterIntro.ascx.cs">
+      <DependentUpon>FooterIntro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\FooterIntro.ascx.designer.cs">
+      <DependentUpon>FooterIntro.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FooterLinkList.ascx.cs">
+      <DependentUpon>FooterLinkList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\FooterLinkList.ascx.designer.cs">
+      <DependentUpon>FooterLinkList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FooterNetworkList.ascx.cs">
+      <DependentUpon>FooterNetworkList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\FooterNetworkList.ascx.designer.cs">
+      <DependentUpon>FooterNetworkList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HotVideoList.ascx.cs">
+      <DependentUpon>HotVideoList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\HotVideoList.ascx.designer.cs">
+      <DependentUpon>HotVideoList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\AdBoxesPortlet.ascx.cs">
       <DependentUpon>AdBoxesPortlet.ascx</DependentUpon>
@@ -137,6 +216,13 @@
     </Compile>
     <Compile Include="Modules\AdBoxesPortlet.ascx.designer.cs">
       <DependentUpon>AdBoxesPortlet.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FooterCategoryList.ascx.cs">
+      <DependentUpon>FooterCategoryList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\FooterCategoryList.ascx.designer.cs">
+      <DependentUpon>FooterCategoryList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\LatestPostsPortlet.ascx.cs">
       <DependentUpon>LatestPostsPortlet.ascx</DependentUpon>
@@ -159,12 +245,12 @@
     <Compile Include="Modules\PostsPortlet.ascx.designer.cs">
       <DependentUpon>PostsPortlet.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\SearchBox.ascx.cs">
-      <DependentUpon>SearchBox.ascx</DependentUpon>
+    <Compile Include="Modules\QuickSearchBox.ascx.cs">
+      <DependentUpon>QuickSearchBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\SearchBox.ascx.designer.cs">
-      <DependentUpon>SearchBox.ascx</DependentUpon>
+    <Compile Include="Modules\QuickSearchBox.ascx.designer.cs">
+      <DependentUpon>QuickSearchBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SpecialEventsPortlet.ascx.cs">
       <DependentUpon>SpecialEventsPortlet.ascx</DependentUpon>
@@ -211,8 +297,6 @@
     <Folder Include="Account\SiteAdmin\" />
     <Folder Include="Account\SysAdmin\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Images\icons\" />
-    <Folder Include="Images\ui\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewsVn.Core\NewsVn.Core.csproj">

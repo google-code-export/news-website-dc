@@ -1,0 +1,25 @@
+﻿.textbox
+{
+    padding: 7px 5px;
+    width: 270px;
+    border: 1px solid #104687;
+    *vertical-align: middle;  
+}
+
+/* Overrides 'selectmenu' styles */
+.select
+{
+    color: #333;
+    border: 1px solid #104687 !important;
+    background: #fff !important;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 3px 3px;
+}
+
+.select-item
+{
+    color: #333 !important;
+    padding: 4px 7px !important;
+    font-weight: normal;
+}

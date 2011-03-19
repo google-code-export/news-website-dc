@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class SearchBox : System.Web.UI.UserControl
+    public partial class HotVideoList : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
