@@ -2,10 +2,12 @@
 
 <script type="text/javascript">
     $(function () {
-        var linkSelector = $("#<%= linkSelector.ClientID %>");
+        var selectorID = "#<%= linkSelector.ClientID %>";
+		var linkSelector = $(selectorID);
         linkSelector.selectmenu({ width: "274px" });
         linkSelector.next(".ui-selectmenu").addClass("select");
         linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
+		$(selectorID + "-menu").width(280);
     });
 </script>
 

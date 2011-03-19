@@ -24,8 +24,10 @@
 	}
 </script>
 
-<div class="side-part search portlet">
+<div class="side-part portlet">
 	<h2>Tìm kiếm</h2>
-	<asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" />
-    <asp:LinkButton CssClass="ui-icon ui-icon-search" runat="server" />
+	<div class="textbox-icon">
+        <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" />
+        <asp:LinkButton CssClass="ui-icon ui-icon-search" runat="server" />
+    </div>
 </div>
