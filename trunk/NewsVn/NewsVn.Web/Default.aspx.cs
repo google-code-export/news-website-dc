@@ -50,7 +50,7 @@ namespace NewsVn.Web
                         p.Description,
                         p.Avatar,
                         p.CreatedOn,
-                        Comments = p.PostComments.Count
+                        Comments = p.PostComments.Count()
                     }).OrderByDescending(p => p.CreatedOn).Skip(1).Take(4).ToList();
                 //set position
                 if (indexArea % 2 == 0)
@@ -94,8 +94,15 @@ namespace NewsVn.Web
         }
         void load_pletLatestNews()
         {
+            //p.PostComments.Count
             pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
+                && p.CheckPageView == true).Select(p => new {
+                    p.ID,
+                    p.Title,
+                    p.ApprovedOn,
+                    Cat_Name=p.Category.Name,
+                    Comments = p.PostComments.Count()
+                }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
             pletLatestNews.DataBind();
 
         }

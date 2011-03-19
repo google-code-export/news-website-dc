@@ -38,10 +38,11 @@
     </h2>
     <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server" />
     <ul class="avatar-thumb-list right">
-        <asp:Repeater runat="server" ID="rptSubAvatar" onitemdatabound="rptFirstItem_ItemDataBound">
+        <asp:Repeater runat="server" ID="rptSubAvatar" 
+           >
             <ItemTemplate>
                 <li>
-                    <asp:Image ID="imgSub" ImageUrl='<%#Eval("Avatar") %>' AlternateText='<%#Eval("Title") %>' ToolTip='<%#Eval("Title") %>' CssClass="item-2" runat="server" />
+                    <img id="imgSub" src='<%#Eval("Avatar") %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class='item-<%#Container.ItemIndex+2%>' />
                 </li>
             </ItemTemplate>
         </asp:Repeater>
@@ -61,7 +62,7 @@
     <ul class="post-item-list other">
         <asp:Repeater ID="rptOtherItems" runat="server" >
             <ItemTemplate>
-                <li class='item-<%# Eval("ID") %>'>
+                <li class='head item-<%#Container.ItemIndex+2%>'>
                     <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                     <% if (!NoComments){ %><div class="wrap"><% } %>
                         <a class="post-title inline" href="#"><%# Eval("Title") %></a> -

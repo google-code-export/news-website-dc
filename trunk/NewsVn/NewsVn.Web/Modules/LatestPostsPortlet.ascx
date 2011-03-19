@@ -18,11 +18,11 @@
     <asp:Repeater runat="server" ID="rptLatestNews">
         <ItemTemplate>
             <li class="head-latest-post">
-            <asp:Label runat="server" ID="lblNo_Comment" CssClass="post-comment">105</asp:Label>
+            <asp:Label runat="server" ID="lblNo_Comment" CssClass="post-comment"><%#Eval("Comments")%></asp:Label>
                 <asp:HyperLink runat="server" ID="hlnkTitle" NavigateUrl="#"
                 Text='<%#Eval("Title") %>' CssClass="post-title wrap"/>
                 <span class="post-info">
-                <asp:Label runat="server" ID="lblTitle" CssClass="cate" Text='<%#Eval("Category.Name") %>' />
+                <asp:Label runat="server" ID="lblTitle" CssClass="cate" Text='<%#Eval("Cat_Name") %>' />
                     <asp:Label ID="lblApproveOn" runat="server" Text='<%#Eval("ApprovedOn")%>' />
                 </span>
             </li>

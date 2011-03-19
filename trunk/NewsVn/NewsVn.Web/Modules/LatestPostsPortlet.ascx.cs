@@ -10,7 +10,8 @@ namespace NewsVn.Web.Modules
 {
     public partial class LatestPostsPortlet : System.Web.UI.UserControl
     {
-        public List<Data.Post> DataSource { get; set; }
+        //public List<Data.Post> DataSource { get; set; }
+        public object DataSource { get; set; }
 
         public string CssClass { get; set; }
 
