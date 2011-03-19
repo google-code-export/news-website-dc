@@ -6,20 +6,26 @@
 	});
 </script>
 
-<div class="side-part portlet">
-	<h2>Quảng cáo</h2>
-	<ul class="side-part-list">
+<div class="side-part portlet">	
+	<br />
+    <ul class="side-part-list">
 		<li>
 			<a href="#" title="Quảng cáo 1" target="_blank" rel="nofollow">
 				<img src="http://doanhnhansaigon.vn/files/articles/2010/1040959/advertising-creative-large.jpg" alt="Quảng cáo 1" />
 			</a>
 		</li>
 		<li>
+			<iframe title="Adam Lambert Interview" width="280" height="180" src="http://www.youtube.com/embed/0a3mV57i2QA" frameborder="0" allowfullscreen></iframe>
+		</li>
+    </ul>
+    <h2>Quảng cáo</h2>
+    <ul class="side-part-list">
+		<li>
 			<a href="#" title="Quảng cáo 2" target="_blank" rel="nofollow">
 				<img src="http://images01.trafficz.com/cache/h3w4/500_1191365659_10057984.jpg" alt="Quảng cáo 2" />
 			</a>
-		</li>
-		<li>
+		</li>        
+        <li>
 			<a href="#" title="Quảng cáo 3" target="_blank" rel="nofollow">
 				<img src="http://www.tapchimarketing.vn/wp-content/uploads/2011/03/advertising_.jpg" alt="Quảng cáo 3" />
 			</a>
