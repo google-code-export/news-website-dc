@@ -1,6 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserExtra.master" %>
 
-<asp:Content ContentPlaceHolderID="extraHead" runat="server">    
+<asp:Content ContentPlaceHolderID="extraHead" runat="server">
+    <script type="text/javascript">
+        $(".portlet.left").each(function () {
+            var rightPortlet = $(this).next(".portlet.right");
+            if ($(this).height() < rightPortlet.height()) {
+                $(this).height(rightPortlet.height());
+            }
+            else {
+                rightPortlet.height($(this).height());
+            }
+        });
+    </script>    
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <nsn:SpecialPostsPortlet CssClass="left" runat="server" />
