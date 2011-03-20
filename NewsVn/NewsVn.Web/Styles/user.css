@@ -8,6 +8,10 @@ body
     font-size: 13px;
     line-height: 1.4em;
 }
+body a
+{
+	cursor:pointer;
+	}
 
 .wrapper
 {
@@ -62,6 +66,7 @@ body
     height: 50px;
     padding-right: 11px;
     background: url('../images/menu_sep.jpg') no-repeat 100% 18px;
+    position: relative;
 }
 
 #header #menu_bar li.head
@@ -75,7 +80,7 @@ body
     padding: 0;
 }
 
-#header #menu_bar a
+#header #menu_bar .menu-item
 {
     color: #fff;
     font-weight: bold;
@@ -86,6 +91,38 @@ body
     padding-left: 9px;
     overflow: hidden;
     display: block;
+    filter:progid:DXImageTransform.Microsoft.DropShadow(color='#000000',offX='1',offY='1');
+}
+
+#header #menu_bar .sub-menu
+{
+    position: absolute;
+    display: none;
+    padding: 0 10px;
+    background: #e42d1f;
+    z-index: 150;
+    -moz-box-shadow: 2px 2px 3px #9c0900;
+    -webkit-box-shadow: 2px 2px 3px #9c0900;
+    box-shadow: 2px 2px 3px #9c0900;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color='#9c0900',direction='120',strength='2');
+}
+
+#header #menu_bar .sub-menu a
+{
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    white-space: nowrap;
+    border-top: 1px dashed #9c0900;
+}
+
+#header #menu_bar .sub-menu a:hover
+{
+    text-decoration: underline;    
 }
 
 #content
@@ -112,7 +149,7 @@ body
     margin-top: 10px;
 }
 
-.portlet h2
+.portlet h2, .portlet h2 .cate-title
 {
     font-size: 13px;
     color: #bd0d0d;
@@ -124,7 +161,12 @@ body
     position: relative;
 }
 
-.portlet h2 span, .portlet h2 a
+.portlet h2 .cate-title
+{
+    background: none;   
+}
+
+.portlet h2 span
 {
     text-transform: none;
 }
@@ -267,16 +309,46 @@ body
 	width: 280px;
 }
 
-.side-part.search.portlet
+.side-part .idTabs li
 {
-	position: relative;
+    display: inline;
 }
 
-.side-part.search.portlet .ui-icon-search
+.side-part h2 .idTabs a
 {
-    position: absolute;
-    right: 20px;
-    top: 62px;    
+    color: #bd0d0d;
+    text-transform: uppercase;
+}
+
+.side-part h2 .idTabs a.selected
+{
+    text-decoration: underline;
+}
+
+.side-part .ui-table
+{
+    width: 282px;
+    margin: 10px 0;
+}
+
+.side-part .ui-table td
+{
+    text-align: center;    
+}
+
+.side-part .ui-table.align-left td
+{
+    text-align: left;    
+}
+
+.side-part .credit
+{
+    width: 280px;
+    text-align: right;
+    display: block;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 11px;
 }
 
 .post-item-list li

@@ -10,6 +10,13 @@ namespace NewsVn.Web
 {
     public partial class Default : BaseUI.BasePage
     {
+        protected override void OnInit(EventArgs e)
+        {
+            BaseUI.BaseMaster.SiteTitle = "- Báo điện tử 24/07";
+            BaseUI.BaseMaster.MetaKeyWords = "NewsVn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
+            BaseUI.BaseMaster.MetaKeyDes = "Tờ báo điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07 thông tin Việt nam - Thế giới về Kinh tế";
+            base.OnInit(e);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             load_pletHotNews();
@@ -32,8 +39,6 @@ namespace NewsVn.Web
                     continue;
                 }
                 //load 1st news
-
-                //object a = _Categories.Where(c => c.Parent.ID == cate.ID).ToList(); p.category.parent==null?cate.id=cate.id?p.category.parent.id==cate.id)
                 var oActivePost = _Posts.Where(p => p.Category.ID == cate.ID  || (p.Category.Parent != null && p.Category.Parent.ID == cate.ID) && cate.Actived == true)
                     .Select(p => new
                     {
@@ -74,7 +79,6 @@ namespace NewsVn.Web
         void load_pletHotNews()
         {
             //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len
-
             pletHotNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
                 && p.CheckPageView == true).Select(p => new { 
                     p.ID, p.Title,
@@ -107,7 +111,7 @@ namespace NewsVn.Web
                     p.ApprovedOn,
                     Cat_Name=p.Category.Name,
                     Comments = p.PostComments.Count()
-                }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
+                }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
             pletLatestNews.DataBind();
 
         }

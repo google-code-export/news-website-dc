@@ -10,33 +10,33 @@
 namespace NewsVn.Web.Modules {
     
     
-    public partial class MenuBar {
+    public partial class SideTabsBox {
         
         /// <summary>
-        /// HyperLink1 control.
+        /// txtGoldDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.TextBox txtGoldDate;
         
         /// <summary>
-        /// rptMenu control.
+        /// txtCurrencyDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptMenu;
+        protected global::System.Web.UI.WebControls.TextBox txtCurrencyDate;
         
         /// <summary>
-        /// HyperLink43 control.
+        /// regionSelector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink43;
+        protected global::System.Web.UI.WebControls.DropDownList regionSelector;
     }
 }
