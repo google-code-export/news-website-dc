@@ -6,10 +6,10 @@
             $(".portlet.left").each(function () {
                 var rightPortlet = $(this).next(".portlet.right");
                 if ($(this).height() < rightPortlet.height()) {
-                    $(this).height(rightPortlet.height());
+                    $(this).height(rightPortlet.height() - 7);
                 }
                 else {
-                    rightPortlet.height($(this).height());
+                    rightPortlet.height($(this).height() - 7);
                 }
             });
         });
