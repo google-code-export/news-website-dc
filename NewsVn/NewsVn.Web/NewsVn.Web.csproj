@@ -112,7 +112,6 @@
     <Content Include="Images\nivo\nav_tracker.png" />
     <Content Include="Images\nivo\shadow.png" />
     <Content Include="Images\trans_bg.jpg" />
-    <Content Include="Modules\AdBoxesPortlet.ascx" />
     <Content Include="Modules\FooterCategoryList.ascx" />
     <Content Include="Modules\LatestPostsPortlet.ascx" />
     <Content Include="Modules\MenuBar.ascx" />
@@ -120,12 +119,12 @@
     <Content Include="Modules\QuickSearchBox.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
-    <Content Include="Resources\posts\t510695.jpg" />
-    <Content Include="Resources\posts\t510696.jpg" />
-    <Content Include="Resources\posts\t510697.jpg" />
-    <Content Include="Resources\posts\t510698.jpg" />
-    <Content Include="Resources\posts\t623236.gif" />
-    <Content Include="Resources\posts\t623236.jpg" />
+    <Content Include="Resources\Posts\t510695.jpg" />
+    <Content Include="Resources\Posts\t510696.jpg" />
+    <Content Include="Resources\Posts\t510697.jpg" />
+    <Content Include="Resources\Posts\t510698.jpg" />
+    <Content Include="Resources\Posts\t623236.gif" />
+    <Content Include="Resources\Posts\t623236.jpg" />
     <Content Include="Resources\Xml\TinMoiNong_Newsvn.xml" />
     <Content Include="Scripts\newsvn.ui-init.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2-vsdoc.js" />
@@ -209,13 +208,6 @@
     </Compile>
     <Compile Include="Modules\HotVideoList.ascx.designer.cs">
       <DependentUpon>HotVideoList.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\AdBoxesPortlet.ascx.cs">
-      <DependentUpon>AdBoxesPortlet.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\AdBoxesPortlet.ascx.designer.cs">
-      <DependentUpon>AdBoxesPortlet.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\FooterCategoryList.ascx.cs">
       <DependentUpon>FooterCategoryList.ascx</DependentUpon>
@@ -321,6 +313,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="UserExtra.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Connections.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
