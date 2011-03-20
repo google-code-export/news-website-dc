@@ -3,7 +3,7 @@
 <div class="section cate-list left">
 	<h2>Danh mục chủ đề</h2>
 	<ul class="item-list">
-		<li class="head">
+		<li>
 			<a href="default.aspx">Trang chủ</a>						
 		</li>
 		<li>
