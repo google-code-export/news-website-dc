@@ -2,14 +2,16 @@
 
 <asp:Content ContentPlaceHolderID="extraHead" runat="server">
     <script type="text/javascript">
-        $(".portlet.left").each(function () {
-            var rightPortlet = $(this).next(".portlet.right");
-            if ($(this).height() < rightPortlet.height()) {
-                $(this).height(rightPortlet.height());
-            }
-            else {
-                rightPortlet.height($(this).height());
-            }
+        $(function () {
+            $(".portlet.left").each(function () {
+                var rightPortlet = $(this).next(".portlet.right");
+                if ($(this).height() < rightPortlet.height()) {
+                    $(this).height(rightPortlet.height());
+                }
+                else {
+                    rightPortlet.height($(this).height());
+                }
+            });
         });
     </script>    
 </asp:Content>
