@@ -2,15 +2,34 @@
 {
     padding: 7px 5px;
     width: 270px;
-    border: 1px solid #104687;
+    border: 1px solid #aed0ea;
     *vertical-align: middle;  
+}
+
+.textbox-icon
+{
+    position: relative;    
+}
+
+.textbox-icon .ui-icon,
+.textbox-icon img
+{
+    position: absolute;
+    right: 4px;
+    top: 8px;    
+}
+
+.textbox-icon img
+{
+    right: 8px;
+    cursor: pointer;
 }
 
 /* Overrides 'selectmenu' styles */
 .select
 {
     color: #333;
-    border: 1px solid #104687 !important;
+    border: 1px solid #aed0ea !important;
     background: #fff !important;
     display: inline-block;
     vertical-align: middle;
@@ -22,4 +41,21 @@
     color: #333 !important;
     padding: 4px 7px !important;
     font-weight: normal;
+}
+
+.ui-table
+{
+    border-collapse: collapse;    
+    border: 1px solid #aed0ea;
+    width: 100%;
+}
+
+.ui-table .even
+{
+    background: #d7ebf9;  
+}
+
+.ui-table th, .ui-table td
+{
+    padding: 7px;
 }

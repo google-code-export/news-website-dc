@@ -9,8 +9,9 @@
     </div>
     <div id="side_content" class="right">
 		<nsn:QuickSearchBox ID="QuickSearchBox1" runat="server" />
-		<nsn:AdBoxList runat="server" />
+		<nsn:AdBoxList ID="AdBoxList1" runat="server" />
 		<nsn:HotVideoList ID="HotVideoList1" runat="server" />
+        <nsn:SideTabsBox runat="server" />
         <asp:ContentPlaceHolder id="sideContent" runat="server" />
     </div>
     <div class="clear"></div>

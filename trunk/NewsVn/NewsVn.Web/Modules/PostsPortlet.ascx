@@ -30,11 +30,12 @@
                 $(this).attr("alt", cloneAvatar.attr("alt"));
                 $(this).attr("title", cloneAvatar.attr("title"));
             });
+            $(boundary + " .post-item-list li:first-child").addClass("head");
         });
     </script>
     <h2>
-        <%= Title %>
-        <a class="rss" href="#"></a>
+       <a class="cate-title" href="category.aspx"><%= Title %></a>
+       <a class="rss" href="#"></a>
     </h2>
     <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server" />
     <ul class="avatar-thumb-list right">
@@ -62,7 +63,7 @@
     <ul class="post-item-list other">
         <asp:Repeater ID="rptOtherItems" runat="server" >
             <ItemTemplate>
-                <li class='head item-<%#Container.ItemIndex+2%>'>
+                <li class='item-<%#Container.ItemIndex+2%>'>
                     <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                     <% if (!NoComments){ %><div class="wrap"><% } %>
                         <a class="post-title inline" href="#"><%# Eval("Title") %></a> -

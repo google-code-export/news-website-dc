@@ -40,6 +40,15 @@ namespace NewsVn.Web {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmUser;
         
         /// <summary>
+        /// CtrMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.MenuBar CtrMenu;
+        
+        /// <summary>
         /// body control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace NewsVn.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder body;
+        
+        /// <summary>
+        /// CtrFooterCateList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.FooterCategoryList CtrFooterCateList;
     }
 }
