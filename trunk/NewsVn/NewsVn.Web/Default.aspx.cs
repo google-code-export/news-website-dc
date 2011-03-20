@@ -32,7 +32,9 @@ namespace NewsVn.Web
                     continue;
                 }
                 //load 1st news
-                ctrPortletPost.oActivePost = _Posts.Where(p => p.Category.ID == cate.ID  && cate.Actived==true)
+
+                //object a = _Categories.Where(c => c.Parent.ID == cate.ID).ToList(); p.category.parent==null?cate.id=cate.id?p.category.parent.id==cate.id)
+                var oActivePost = _Posts.Where(p => p.Category.ID == cate.ID  || (p.Category.Parent != null && p.Category.Parent.ID == cate.ID) && cate.Actived == true)
                     .Select(p => new
                     {
                         p.ID,
@@ -42,8 +44,11 @@ namespace NewsVn.Web
                         p.CreatedOn,
                         Comments = p.PostComments.Count
                     }).OrderByDescending(p => p.CreatedOn).Take(1).ToList();
+
+                ctrPortletPost.oActivePost = oActivePost;
                 //load 4th news
-                ctrPortletPost.OtherPosts = _Posts.Where(p => p.Category.ID == cate.ID  && cate.Actived==true).Select(p => new
+                ctrPortletPost.OtherPosts = _Posts.Where(p => p.Category.ID == cate.ID || (p.Category.Parent != null && p.Category.Parent.ID == cate.ID) && cate.Actived == true)
+                    .Select(p => new
                     {
                         p.ID,
                         p.Title,
