@@ -6,6 +6,8 @@
 
     public bool ClearLayout { get; set; }
 
+    public bool NoCategoryName { get; set; }
+
     public object DataSource { get; set; }
 
     protected override void OnLoad(EventArgs e)
@@ -42,8 +44,8 @@
                 Mẹo tiết kiệm nhiên liệu cho thời "bão giá"
             </a>
             <span class="post-info">
-                <span class="cate">Kinh tế, Việt Nam</span>
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+                <% if (!NoCategoryName) { %><span class="cate">Kinh tế, Việt Nam</span><% } %>
+                &nbsp;<%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %>
             </span>
         </li>
         <li>
@@ -52,8 +54,8 @@
                 Truy tìm dấu vết UFO
             </a>
             <span class="post-info">
-                <span class="cate">Khoa học</span>
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+                <% if (!NoCategoryName) { %><span class="cate">Khoa học</span><% } %>
+                &nbsp;<%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %>
             </span>
         </li>
         <li>
@@ -62,8 +64,8 @@
                 Mẹo tiết kiệm nhiên liệu cho thời "bão giá"
             </a>
             <span class="post-info">
-                <span class="cate">Kinh tế, Việt Nam</span>
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+                <% if (!NoCategoryName) { %><span class="cate">Kinh tế, Việt Nam</span><% } %>
+                &nbsp;<%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %>
             </span>
         </li>
         <li>
@@ -72,8 +74,8 @@
                 Truy tìm dấu vết UFO
             </a>
             <span class="post-info">
-                <span class="cate">Khoa học</span>
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+                <% if (!NoCategoryName) { %><span class="cate">Khoa học</span><% } %>
+                &nbsp;<%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %>
             </span>
         </li>
         <li>
@@ -82,8 +84,8 @@
                 Mẹo tiết kiệm nhiên liệu cho thời "bão giá"
             </a>
             <span class="post-info">
-                <span class="cate">Kinh tế, Việt Nam</span>
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+                <% if (!NoCategoryName) { %><span class="cate">Kinh tế, Việt Nam</span><% } %>
+                &nbsp;<%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %>
             </span>
         </li>
         <li>
@@ -92,8 +94,8 @@
                 Truy tìm dấu vết UFO
             </a>
             <span class="post-info">
-                <span class="cate">Khoa học</span>
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+                <% if (!NoCategoryName) { %><span class="cate">Khoa học</span><% } %>
+                &nbsp;<%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %>
             </span>
         </li>
         <li>
@@ -102,8 +104,8 @@
                 Truy tìm dấu vết UFO
             </a>
             <span class="post-info">
-                <span class="cate">Khoa học</span>
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now)%>
+                <% if (!NoCategoryName) { %><span class="cate">Khoa học</span><% } %>
+                &nbsp;<%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %>
             </span>
         </li>
     </ul>
