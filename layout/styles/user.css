@@ -90,6 +90,12 @@ body
     filter:progid:DXImageTransform.Microsoft.DropShadow(color='#000000',offX='1',offY='1');
 }
 
+#header #menu_bar .menu-item:hover,
+#header #menu_bar .menu-item.selected
+{
+    text-decoration: underline;
+}
+
 #header #menu_bar .sub-menu
 {
     position: absolute;
@@ -229,7 +235,6 @@ body
 .special-posts.portlet
 {
     width: 340px;
-    height: 480px;
 }
 
 .special-posts.portlet .description
@@ -240,13 +245,11 @@ body
 .latest-posts.portlet
 {
     width: 270px;
-    height: 480px;
 }
 
 .special-events.portlet
 {
     width: 650px;
-    height: 180px;
 }
 
 .special-events #event-list li
@@ -274,7 +277,7 @@ body
 .cate-posts.portlet .avatar-thumb-list li
 {
     width: 55px;
-    margin-bottom: 1px;
+    margin-bottom: 5px;
 }
 
 .cate-posts.portlet .avatar-thumb-list li img
@@ -282,11 +285,12 @@ body
     width: 55px;
     height: 32px;
     cursor: pointer;
+    display: block;
 }
 
 .cate-posts.portlet .active-post-item
 {
-    margin: 15px 0;
+    margin: 10px 0;
     position: relative;    
 }
 
@@ -345,6 +349,25 @@ body
     font-style: italic;
     font-weight: bold;
     font-size: 11px;
+}
+
+.focus-posts.portlet .post-avatar
+{
+    width: 115px;
+    height: 70px;
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.focus-posts.portlet .post-title
+{
+    display: inline-block;
+    width: 155px;
+}
+
+.focus-posts.portlet ul li
+{
+    margin-top: 10px;    
 }
 
 .post-item-list li

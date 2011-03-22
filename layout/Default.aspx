@@ -6,14 +6,14 @@
             $(".portlet.left").each(function () {
                 var rightPortlet = $(this).next(".portlet.right");
                 if ($(this).height() < rightPortlet.height()) {
-                    $(this).height(rightPortlet.height() - 7);
+                    $(this).height(rightPortlet.height());
                 }
-                else {
-                    rightPortlet.height($(this).height() - 7);
+                else if ($(this).height() > rightPortlet.height()) {
+                    rightPortlet.height($(this).height());
                 }
             });
         });
-    </script>    
+    </script>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <nsn:SpecialPostsPortlet CssClass="left" runat="server" />

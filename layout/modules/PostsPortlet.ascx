@@ -83,7 +83,7 @@
     <div class="clear"></div>
     <div class="active-post-item">
         <% if (!NoComments){ %><span class="post-comment">26</span><% } %>
-        <a href="#" class="post-title">Tiêu đề 1</a>        
+        <a href="#" class="post-title wrap">Tiêu đề 1</a>        
         <span class="post-info"><%= string.Format("{0:dddd, dd/MM/yyyy}", DateTime.Now) %></span>
         <p>1. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</p>
     </div>

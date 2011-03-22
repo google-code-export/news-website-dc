@@ -14,7 +14,6 @@
         }, function () {
             $(this).children(".sub-menu").css({ "display": "none" });
         });
-
     });
 </script>
 
