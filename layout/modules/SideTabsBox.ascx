@@ -22,9 +22,6 @@
         </ul>
     </h2>
     <div id="gold">
-        <div class="textbox-icon">
-            <asp:TextBox ID="txtGoldDate" CssClass="datepicker" runat="server" />
-        </div>
         <table class="ui-table" cellpadding="0" cellspacing="0" border="0">
             <tr>
                 <th>Loại</th>
@@ -56,9 +53,6 @@
         <span class="credit">Nguồn: VnExpress.net | ĐV: VNĐ</span>
     </div>
     <div id="currency">
-        <div class="textbox-icon">
-            <asp:TextBox ID="txtCurrencyDate" CssClass="datepicker" runat="server" />
-        </div>
         <table class="ui-table" cellpadding="0" cellspacing="0" border="0">
             <tr>
                 <th>Loại</th>
@@ -95,7 +89,7 @@
 			<asp:ListItem Value="8">Pleiku</asp:ListItem>
 			<asp:ListItem Selected="True" Value="9">TP HCM</asp:ListItem>
         </asp:DropDownList>
-        <table class="ui-table align-left" border="0" cellpadding="0" cellspacing="0">            
+        <table class="ui-table align-left" style="margin:10px 0;" border="0" cellpadding="0" cellspacing="0">            
             <tr>
                 <td colspan="2">
                     <b>Mây thay đổi</b>
