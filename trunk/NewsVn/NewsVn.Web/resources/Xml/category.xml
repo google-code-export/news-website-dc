@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Special: su kien noi bat, Target: tieu diem-->
+<Categories>
+	<Category ID="" Type="Special">
+		<Posts>
+			<Post ID="1">
+				<Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+			</Post>
+      <Post ID="2">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="3">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+		</Posts>
+	</Category>
+  <Category ID="1" Type="Target">
+    <Posts>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+    </Posts>
+  </Category>
+  <Category ID="2" Type="Target">
+    <Posts>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+      <Post ID="1">
+        <Title></Title>
+        <Avatar></Avatar>
+        <SeoUrl></SeoUrl>
+        <ApprovedOn></ApprovedOn>
+      </Post>
+    </Posts>
+  </Category>
+</Categories>

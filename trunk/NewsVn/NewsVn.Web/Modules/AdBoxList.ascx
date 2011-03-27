@@ -15,8 +15,14 @@
 			</a>
 		</li>
 		<li>
-			<iframe title="Adam Lambert Interview" width="280" height="180" src="http://www.youtube.com/embed/0a3mV57i2QA" frameborder="0" allowfullscreen></iframe>
+			<iframe title="Adam Lambert Interview" width="280" height="200" src="http://www.youtube.com/embed/0a3mV57i2QA" frameborder="0" allowfullscreen></iframe>
 		</li>
+        <li>
+               <%-- <param name="movie" value="http://static.mp3.zing.vn/skins/mp3_main/flash/mp3playlist.swf?xmlURL=http://mp3.zing.vn/xml/playlist/LmJHyZnNVNWvVmcyLFJyDnZn?autoplay=false&wmode=transparent" />
+                <param name="quality" value="high" />
+                <param name="wmode" value="transparent" />--%>
+                <embed width="280" height="380" src="http://static.mp3.zing.vn/skins/mp3_main/flash/mp3playlist.swf?xmlURL=http://mp3.zing.vn/xml/playlist/LmJHyZnNVNWvVmcyLFJyDnZn?autoplay=false&wmode=transparent" quality="high" wmode="transparent" type="application/x-shockwave-flash"></embed>
+        </li>
     </ul>
     <h2>Quảng cáo</h2>
     <ul class="side-part-list">
