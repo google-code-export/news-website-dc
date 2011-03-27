@@ -30,5 +30,6 @@
     <nsn:PostsPortlet Title="Thư giãn" CssClass="left" runat="server" />
     <nsn:PostsPortlet Title="Rao nhanh" NoComments="true" CssClass="right" ClearLayout="true" runat="server" />
 </asp:Content>
-<asp:Content ContentPlaceHolderID="sideContent" runat="server">
+<asp:Content ContentPlaceHolderID="sideContentBottom" runat="server">
+    <nsn:SideTabsBox runat="server" />
 </asp:Content>

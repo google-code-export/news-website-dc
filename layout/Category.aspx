@@ -20,7 +20,7 @@
     <nsn:LatestPostsPortlet CssClass="right" ClearLayout="true" NoCategoryName="true" runat="server" />
     <nsn:CategorizedPostList runat="server" />
 </asp:Content>
-<asp:Content ContentPlaceHolderID="sideContent" runat="server">
+<asp:Content ContentPlaceHolderID="sideContentTop" runat="server">
     <nsn:FocusPostsPortlet runat="server" />
 </asp:Content>
 
