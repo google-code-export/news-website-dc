@@ -52,6 +52,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Category.aspx" />
     <Content Include="Images\footer_bg.jpg" />
     <Content Include="Images\footer_grass.jpg" />
     <Content Include="Images\icons\calendar.png" />
@@ -181,6 +182,12 @@
     </Compile>
     <Compile Include="BaseUI\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Category.aspx.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category.aspx.designer.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\AdBoxList.ascx.cs">
       <DependentUpon>AdBoxList.ascx</DependentUpon>
