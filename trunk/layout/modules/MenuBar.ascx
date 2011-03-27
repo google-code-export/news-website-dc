@@ -97,6 +97,6 @@
         <asp:HyperLink runat="server" NavigateUrl="~/category.aspx">Thư giãn</asp:HyperLink>
     </li>
 	<li>
-        <asp:HyperLink runat="server" NavigateUrl="#">Rao nhanh</asp:HyperLink>
+        <asp:HyperLink runat="server" NavigateUrl="~/adcategory.aspx">Rao nhanh</asp:HyperLink>
     </li>
 </ul>

@@ -43,7 +43,7 @@
 			<a class="rss" href="#"></a>
 		</li>
 		<li>
-			<a href="#">Rao nhanh (100 mục tin)</a>
+			<a href="adcategory.aspx">Rao nhanh (100 mục tin)</a>
 			<a class="rss" href="#"></a>
 		</li>
 	</ul>
