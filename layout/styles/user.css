@@ -399,6 +399,26 @@ body
 	border: 0;
 }
 
+.categorized-posts.portlet
+{
+    background: none;    
+}
+
+.categorized-posts.portlet .head
+{
+    padding-top: 14px; 
+}
+
+.categorized-posts.portlet .post-avatar
+{
+    width: 130px;    
+}
+
+.categorized-posts.portlet .post-item
+{
+    width: 500px;
+}
+
 #footer
 {
 	background: #ffbcb6;

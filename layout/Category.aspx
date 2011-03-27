@@ -18,6 +18,7 @@
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <nsn:SpecialPostsPortlet CssClass="left" runat="server" />
     <nsn:LatestPostsPortlet CssClass="right" ClearLayout="true" NoCategoryName="true" runat="server" />
+    <nsn:CategorizedPostList runat="server" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
     <nsn:FocusPostsPortlet runat="server" />

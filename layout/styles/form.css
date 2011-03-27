@@ -59,3 +59,11 @@
 {
     padding: 7px;
 }
+
+.link-button
+{
+	background: #ffd6d4;
+	padding: 7px;
+	text-align: center;
+    color: #104687;
+}
