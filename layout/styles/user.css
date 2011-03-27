@@ -421,7 +421,7 @@ body
 .detailed-post.portlet
 {
     background: none;
-    border: none;
+    padding-top: 14px;
 }
 
 .detailed-post.portlet h1 
@@ -429,6 +429,66 @@ body
     font-size: 16px;
     text-align: justify;
     width: 100%;    
+}
+
+.detailed-post .info-bar
+{
+    margin: 10px 0;
+    padding: 7px 0;
+    border: 1px dotted #9c0900;
+}
+
+.detailed-post .info-bar.head
+{    
+    border-width: 0 0 1px;
+}
+
+.detailed-post .info-bar.tail
+{    
+    border-width: 1px 0 0;
+    margin-bottom: 0;
+    padding: 14px 0 0;
+}
+
+#comment_box .comment-list
+{
+    width: 510px;    
+}
+
+#comment_box .list-command
+{
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 5px;  
+}
+
+#comment_box .list-command .data-pager a
+{
+    color: #104687;
+    text-decoration: underline;
+}
+
+#comment_box .comment-list ul
+{
+    height: 450px;
+    overflow: auto;
+    padding-right: 10px;
+}
+
+#comment_box .comment-list ul li
+{
+    border-top: 1px dotted #9c0900;
+    padding: 5px 0;
+}
+
+#comment_box .comment-list ul li.head
+{
+    border: 0;    
+}
+
+#comment_box .ui-form
+{
+    width: 348px;
 }
 
 #footer
