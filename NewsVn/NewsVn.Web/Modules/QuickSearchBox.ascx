@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="QuickSearchBox.ascx.cs" Inherits="NewsVn.Web.Modules.QuickSearchBox" %>
-
+<script src="../Scripts/plugins/jquery.autocomplete.js" type="text/javascript"></script>
+<link href="../Styles/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(function () {
         var initText = "Tìm nhanh...";
@@ -22,6 +23,10 @@
         searchInput.val(initText);
         searchInput.css({ "font-style": "italic" });
     }
+
+    $(document).ready(function () {
+        $("#<%=txtSearch.ClientID%>").autocomplete('AutoCompleteService.ashx');
+    });      
 </script>
 
 <div class="side-part search portlet">
