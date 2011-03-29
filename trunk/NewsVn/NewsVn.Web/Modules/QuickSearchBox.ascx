@@ -1,6 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="QuickSearchBox.ascx.cs" Inherits="NewsVn.Web.Modules.QuickSearchBox" %>
-<script src="../Scripts/plugins/jquery.autocomplete.js" type="text/javascript"></script>
-<link href="../Styles/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
+ <link href="<%= Page.ResolveUrl("~/Styles/jquery.autocomplete.css") %>" rel="stylesheet" type="text/css" />
+ <script src="<%= Page.ResolveUrl("~/Scripts/plugins/jquery.autocomplete.js") %>" type="text/javascript"></script>
+<%--<link href= rel="stylesheet" type="text/css" />
+<script src="../Scripts/plugins/jquery.autocomplete.js" type="text/javascript"></script>--%>
+
 <script type="text/javascript">
     $(function () {
         var initText = "Tìm nhanh...";
@@ -25,12 +28,14 @@
     }
 
     $(document).ready(function () {
-        $("#<%=txtSearch.ClientID%>").autocomplete('AutoCompleteService.ashx');
+        $("#<%= txtSearch.ClientID %>").autocomplete('Utils/AutoCompleteSV.ashx');
     });      
 </script>
 
-<div class="side-part search portlet">
+<div class="side-part portlet">
 	<h2>Tìm kiếm</h2>
-	<asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" />
-    <asp:LinkButton ID="LinkButton1" CssClass="ui-icon ui-icon-search" runat="server" />
+	<div class="textbox-icon">
+        <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" Width="250px" />
+        &nbsp;<asp:LinkButton ID="LinkButton1" CssClass="ui-icon ui-icon-search" runat="server" />
+    </div>
 </div>

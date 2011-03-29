@@ -19,7 +19,7 @@
         <ItemTemplate>
             <li class="head-latest-post">
             <asp:Label runat="server" ID="lblNo_Comment" CssClass="post-comment"><%#Eval("Comments")%></asp:Label>
-                <asp:HyperLink runat="server" ID="hlnkTitle" NavigateUrl="#"
+                <asp:HyperLink runat="server" ID="hlnkTitle" NavigateUrl='<%#Eval("SeoUrl") %>'
                 Text='<%#Eval("Title") %>' CssClass="post-title wrap"/>
                 <span class="post-info">
                 <asp:Label runat="server" ID="lblTitle" CssClass="cate" Text='<%#Eval("Cat_Name") %>' />

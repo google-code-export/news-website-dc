@@ -8,10 +8,6 @@ body
     font-size: 13px;
     line-height: 1.4em;
 }
-body a
-{
-	cursor:pointer;
-	}
 
 .wrapper
 {
@@ -92,6 +88,12 @@ body a
     overflow: hidden;
     display: block;
     filter:progid:DXImageTransform.Microsoft.DropShadow(color='#000000',offX='1',offY='1');
+}
+
+#header #menu_bar .menu-item:hover,
+#header #menu_bar .menu-item.selected
+{
+    text-decoration: underline;
 }
 
 #header #menu_bar .sub-menu
@@ -233,7 +235,6 @@ body a
 .special-posts.portlet
 {
     width: 340px;
-    height: 480px;
 }
 
 .special-posts.portlet .description
@@ -244,13 +245,11 @@ body a
 .latest-posts.portlet
 {
     width: 270px;
-    height: 480px;
 }
 
 .special-events.portlet
 {
     width: 650px;
-    height: 180px;
 }
 
 .special-events #event-list li
@@ -278,7 +277,7 @@ body a
 .cate-posts.portlet .avatar-thumb-list li
 {
     width: 55px;
-    margin-bottom: 1px;
+    margin-bottom: 5px;
 }
 
 .cate-posts.portlet .avatar-thumb-list li img
@@ -286,11 +285,12 @@ body a
     width: 55px;
     height: 32px;
     cursor: pointer;
+    display: block;
 }
 
 .cate-posts.portlet .active-post-item
 {
-    margin: 15px 0;
+    margin: 10px 0;
     position: relative;    
 }
 
@@ -327,8 +327,7 @@ body a
 
 .side-part .ui-table
 {
-    width: 282px;
-    margin: 10px 0;
+    width: 282px;    
 }
 
 .side-part .ui-table td
@@ -349,6 +348,25 @@ body a
     font-style: italic;
     font-weight: bold;
     font-size: 11px;
+}
+
+.focus-posts.portlet .post-avatar
+{
+    width: 115px;
+    height: 70px;
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.focus-posts.portlet .post-title
+{
+    display: inline-block;
+    width: 155px;
+}
+
+.focus-posts.portlet ul li
+{
+    margin-top: 10px;    
 }
 
 .post-item-list li
@@ -378,6 +396,99 @@ body a
 	width: 280px !important;
 	display: block;
 	border: 0;
+}
+
+.categorized-posts.portlet
+{
+    background: none;    
+}
+
+.categorized-posts.portlet .head
+{
+    padding-top: 14px; 
+}
+
+.categorized-posts.portlet .post-avatar
+{
+    width: 130px;    
+}
+
+.categorized-posts.portlet .post-item
+{
+    width: 500px;
+}
+
+.detailed-post.portlet
+{
+    background: none;
+    padding-top: 14px;
+}
+
+.detailed-post.portlet h1 
+{
+    font-size: 16px;
+    text-align: justify;
+    width: 100%;    
+}
+
+.detailed-post .info-bar
+{
+    margin: 10px 0;
+    padding: 7px 0;
+    border: 1px dotted #9c0900;
+}
+
+.detailed-post .info-bar.head
+{    
+    border-width: 0 0 1px;
+}
+
+.detailed-post .info-bar.tail
+{    
+    border-width: 1px 0 0;
+    margin-bottom: 0;
+    padding: 14px 0 0;
+}
+
+#comment_box .comment-list
+{
+    width: 510px;    
+}
+
+#comment_box .list-command
+{
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 5px;  
+}
+
+#comment_box .list-command .data-pager a
+{
+    color: #104687;
+    text-decoration: underline;
+}
+
+#comment_box .comment-list ul
+{
+    height: 450px;
+    overflow: auto;
+    padding-right: 10px;
+}
+
+#comment_box .comment-list ul li
+{
+    border-top: 1px dotted #9c0900;
+    padding: 5px 0;
+}
+
+#comment_box .comment-list ul li.head
+{
+    border: 0;    
+}
+
+#comment_box .ui-form
+{
+    width: 348px;
 }
 
 #footer

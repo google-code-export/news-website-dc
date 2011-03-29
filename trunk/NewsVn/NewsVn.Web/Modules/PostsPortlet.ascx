@@ -34,7 +34,7 @@
         });
     </script>
     <h2>
-       <a class="cate-title" href="category.aspx"><%= Title %></a>
+       <a class="cate-title" href='category.aspx?ct=<%=SeoName %>'><%= Title %></a>
        <a class="rss" href="#"></a>
     </h2>
     <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server" />
@@ -54,7 +54,7 @@
             onitemdatabound="rptFirstItem_ItemDataBound">
             <ItemTemplate>
                 <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
-                <a href="#" class="post-title"><%#Eval("Title") %></a>        
+                <a href='<%#Eval("SeoUrl") %>' class="post-title"><%#Eval("Title") %></a>        
                 <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %></span>
                 <p><%# Eval("Description") %></p>
             </ItemTemplate>
@@ -66,7 +66,7 @@
                 <li class='item-<%#Container.ItemIndex+2%>'>
                     <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                     <% if (!NoComments){ %><div class="wrap"><% } %>
-                        <a class="post-title inline" href="#"><%# Eval("Title") %></a> -
+                        <a class="post-title inline" href='<%#Eval("SeoUrl") %>'><%# Eval("Title") %></a> -
                         <span class="post-info">
                             <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %>
                         </span>

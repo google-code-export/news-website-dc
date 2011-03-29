@@ -10,24 +10,24 @@
 namespace NewsVn.Web.Modules {
     
     
-    public partial class SpecialTargetManagement {
+    public partial class CategorizedPostList {
         
         /// <summary>
-        /// form1 control.
+        /// rptCatePostList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Repeater rptCatePostList;
         
         /// <summary>
-        /// txtSearch control.
+        /// txtGoldDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtGoldDate;
     }
 }

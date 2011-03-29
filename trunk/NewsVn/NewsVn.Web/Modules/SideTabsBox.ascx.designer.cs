@@ -13,24 +13,6 @@ namespace NewsVn.Web.Modules {
     public partial class SideTabsBox {
         
         /// <summary>
-        /// txtGoldDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGoldDate;
-        
-        /// <summary>
-        /// txtCurrencyDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurrencyDate;
-        
-        /// <summary>
         /// regionSelector control.
         /// </summary>
         /// <remarks>
