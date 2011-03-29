@@ -4,7 +4,8 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" Runat="Server">
     <nsn:DetailedPostItem AllowComments="true" runat="server" />
-    <nsn:CommentBox runat="server" /> 
+    <nsn:CommentBox runat="server" />
+    <nsn:RelatedPostList runat="server" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContentTop" Runat="Server">
     <nsn:FocusPostsPortlet runat="server" />
