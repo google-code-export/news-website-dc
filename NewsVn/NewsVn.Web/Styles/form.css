@@ -59,3 +59,27 @@
 {
     padding: 7px;
 }
+
+.link-button
+{
+	background: #ffd6d4;
+	padding: 7px;
+	text-align: center;
+    color: #104687;
+}
+
+.ui-form li
+{
+    padding: 5px 0;    
+}
+
+.ui-form label
+{
+    display: inline-block;
+    width: 60px;    
+}
+
+.ui-form label.forarea
+{
+    vertical-align: top;    
+}

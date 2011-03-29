@@ -612,7 +612,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
 		});
 		
 		if( options.width > 0 )
-			element.css("width", options.width);
+			element.css("width", options.width);//duynp fix width 270 + 10
 			
 		needsInit = false;
 	} 
@@ -722,7 +722,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
 		show: function() {
 			var offset = $(input).offset();
 			element.css({
-				width: typeof options.width == "string" || options.width > 0 ? options.width : $(input).width(),
+				width: typeof options.width == "string" || options.width > 0 ? options.width+10 : $(input).width()+10,
 				top: offset.top + input.offsetHeight,
 				left: offset.left
 			}).show();

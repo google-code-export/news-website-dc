@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using NewsVn.Web.Utils;
 
 namespace NewsVn.Web
 {
@@ -19,10 +20,13 @@ namespace NewsVn.Web
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            load_pletHotNews();
-            load_pletSpecialEvents();
-            load_pletLatestNews();
-            load_pletPosts();
+            if (!IsPostBack)
+            {
+                load_pletHotNews();
+                load_pletSpecialEvents();
+                load_pletLatestNews();
+                load_pletPosts();    
+            }
         }
 
         private void load_pletPosts()
@@ -34,6 +38,7 @@ namespace NewsVn.Web
                 Control UC_PortletPost = LoadControl("~/Modules/PostsPortlet.ascx");
                 var ctrPortletPost = ((Modules.PostsPortlet)UC_PortletPost);
                 ctrPortletPost.Title = cate.Name;
+                ctrPortletPost.SeoName = cate.SeoName;
                 if (cate.Parent != null)
                 {
                     continue;
@@ -46,6 +51,7 @@ namespace NewsVn.Web
                         p.Title,
                         p.Description,
                         p.Avatar,
+                        p.SeoUrl,
                         p.CreatedOn,
                         Comments = p.PostComments.Count
                     }).OrderByDescending(p => p.CreatedOn).Take(1).ToList();
@@ -59,6 +65,7 @@ namespace NewsVn.Web
                         p.Title,
                         p.Description,
                         p.Avatar,
+                        p.SeoUrl,
                         p.CreatedOn,
                         Comments = p.PostComments.Count()
                     }).OrderByDescending(p => p.CreatedOn).Skip(1).Take(4).ToList();
@@ -75,6 +82,26 @@ namespace NewsVn.Web
                 postArea.Controls.Add(ctrPortletPost);
                 indexArea += 1;
             }
+            //Bind Control Quang Cao
+            Control UC_PortletPost_Ad = LoadControl("~/Modules/PostsPortlet.ascx");
+            var ctrPortletPost_Ad = ((Modules.PostsPortlet)UC_PortletPost_Ad);
+            ctrPortletPost_Ad.Title = "Quang cao";
+            ctrPortletPost_Ad.CssClass = "right";
+            ctrPortletPost_Ad.ClearLayout = true;
+            //bind control
+            ctrPortletPost_Ad.oActivePost = _Posts.Where(p => p.Category.ID == 1 || (p.Category.Parent != null && p.Category.Parent.ID == 1))
+                    .Select(p => new
+                    {
+                        p.ID,
+                        p.Title,
+                        p.Description,
+                        p.Avatar,
+                        p.SeoUrl,
+                        p.CreatedOn,
+                        Comments = p.PostComments.Count
+                    }).OrderByDescending(p => p.CreatedOn).Take(1).ToList();
+            ctrPortletPost_Ad.DataBind();
+            postArea.Controls.Add(ctrPortletPost_Ad);
         }
         void load_pletHotNews()
         {
@@ -97,8 +124,10 @@ namespace NewsVn.Web
         }
         void load_pletSpecialEvents()
         {
-            pletSpecialEvents.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
+            //pletSpecialEvents.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
+            //    && p.CheckPageView == true).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
+            
+            pletSpecialEvents.DataSource = clsPost.Load_Post_From_XML("Special", -1);
             pletSpecialEvents.DataBind();
         }
         void load_pletLatestNews()
@@ -109,6 +138,7 @@ namespace NewsVn.Web
                     p.ID,
                     p.Title,
                     p.ApprovedOn,
+                    p.SeoUrl,
                     Cat_Name=p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();

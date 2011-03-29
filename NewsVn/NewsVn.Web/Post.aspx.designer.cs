@@ -7,27 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NewsVn.Web.Modules {
+namespace NewsVn.Web {
     
     
-    public partial class SpecialTargetManagement {
+    public partial class Post {
         
         /// <summary>
-        /// form1 control.
+        /// pletPostDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::NewsVn.Web.Modules.DetailedPostItem pletPostDetail;
         
         /// <summary>
-        /// txtSearch control.
+        /// pletCommentBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::NewsVn.Web.Modules.CommentBox pletCommentBox;
+        
+        /// <summary>
+        /// pletFocusPost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.FocusPostsPortlet pletFocusPost;
     }
 }

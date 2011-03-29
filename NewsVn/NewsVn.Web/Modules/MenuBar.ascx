@@ -29,7 +29,7 @@
                 <div class="sub-menu">
                     <asp:Repeater runat="server" ID="rptSubMenu">
                         <ItemTemplate>
-                            <asp:HyperLink ID="hplnkSubMenu" runat="server" NavigateUrl='<%#Eval("SeoUrl") %>'><%#Eval("Name") %></asp:HyperLink>
+                            <a href='<%#Eval("SeoUrl") %>'><%#Eval("Name") %></a>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>

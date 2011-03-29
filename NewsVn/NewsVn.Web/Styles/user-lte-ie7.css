@@ -2,10 +2,16 @@
 {
     display: inline;
     zoom: 1;
-    margin-right: 4px;
+    margin-right: 3px;
+	z-index: 100;
 }
 
 #header #menu_bar li.tail
 {
     margin: 0;
+}
+
+#header #menu_bar .sub-menu
+{
+	
 }
