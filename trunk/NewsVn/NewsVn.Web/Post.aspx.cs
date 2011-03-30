@@ -60,11 +60,11 @@ namespace NewsVn.Web
             pletPostDetail.Datasource = postData;
             pletPostDetail.DataBind();
             //commentbox
-            pletCommentBox.PostID = postID;
-            pletCommentBox.PostTitle = postData.Title;
-            pletCommentBox.CommentNumbers = postComment.Count();
-            pletCommentBox.Datasource = postComment;
-            pletCommentBox.DataBind();
+            //pletCommentBox.PostID = postID;
+            //pletCommentBox.PostTitle = postData.Title;
+            //pletCommentBox.CommentNumbers = postComment.Count();
+            //pletCommentBox.Datasource = postComment;
+            //pletCommentBox.DataBind();
         }
         //lay tieu_diem theo chu de
         void load_pletFocusPost()
