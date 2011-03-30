@@ -1,4 +1,6 @@
-﻿$(function () {
+﻿var serviceUrl = "Utils/NewsVnService.asmx/";
+
+$(function () {
     //text input
     $(":text,:password,textarea").addClass("textbox");
 

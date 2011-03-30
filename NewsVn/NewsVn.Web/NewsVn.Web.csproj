@@ -167,6 +167,7 @@
     <Content Include="Styles\ui.css" />
     <Content Include="Styles\user-lte-ie7.css" />
     <Content Include="Styles\user.css" />
+    <Content Include="Utils\NewsVnService.asmx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -185,6 +186,9 @@
     </Compile>
     <Compile Include="BaseUI\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseUI\BaseService.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Category.aspx.cs">
       <DependentUpon>Category.aspx</DependentUpon>
@@ -370,6 +374,10 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\NewsVnService.asmx.cs">
+      <DependentUpon>NewsVnService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
