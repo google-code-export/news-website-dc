@@ -9,6 +9,10 @@
             width: 900
         });
         $("#comment_box .comment-list li:first-child").addClass("head");
+        $("#comment_box .comment-list ul").height($(window).height() - 150);
+        $(".comment-button, .comment-link").click(function () {
+            $("#comment_box").dialog("open");
+        });
         var selectorID = "#<%= ddlOrder.ClientID %>";
         var linkSelector = $(selectorID);
         linkSelector.selectmenu({ width: "84px" });
@@ -20,30 +24,25 @@
 
 <script type="text/javascript">
     $(function () {
-        showCommentList(15, 1);
-        showCommentPager(15);
+        showCommentDialogTitle();
+        showCommentList(1);
+        showCommentPager();
     });
 
-    function showTestString() {
+    function showCommentDialogTitle() {
         $.ajax({
-            url: serviceUrl + "HelloWorld",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: "{}",
+            url: serviceUrl + "",
+            data: "{'postID':<%= PostID %>}",
             success: function (result) {
-                alert(result.d);
+                $("#comment_box").attr("title", result.d);
             }
         });
     }
 
-    function showCommentList(postID, pageIndex) {
+    function showCommentList(pageIndex) {
         $.ajax({
             url: serviceUrl + "LoadCommentList",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: "{'postID':" + postID + ",'pageIndex':" + pageIndex + ",'pageSize':1}",
+            data: "{'postID':<%= PostID %>,'pageIndex':" + pageIndex + ",'pageSize':<%= ListPageSize %>}",
             success: function (result) {
                 $("#comment_box_list").html(result.d);                
             }
@@ -53,24 +52,21 @@
     function showCommentPager(postID) {
         $.ajax({
             url: serviceUrl + "GeneratePagerContent",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: "{'postID':" + postID + ",'pageSize':1}",
+            data: "{'postID':<%= PostID %>,'pageSize':<%= ListPageSize %>}",
             success: function (result) {
                 $("#comment_box_pager").html(result.d);
                 $("#comment_box_pager a").each(function () {
                     $(this).click(function () {
-                        showCommentList(15, $(this).text());
+                        showCommentList($(this).text());
                     });
                 });
             }
-        });        
+        });
     }
 
 </script>
 
-<div id="comment_box" title="Bình luận: Hot girl “siêu hot” đến từ Hàn Quốc bên xế khủng (47)">        
+<div id="comment_box">        
     <ul class="ui-form ui-widget left">
         <li>
             <b>Bình luận của bạn:</b>
@@ -98,9 +94,7 @@
     </ul>
     <div class="comment-list right">
         <div class="list-command">
-            <div id="comment_box_pager" class="data-pager left">
-                
-            </div>
+            <div id="comment_box_pager" class="data-pager left"></div>
             <div class="right">
                 Sắp xếp theo:
                 <asp:DropDownList ID="ddlOrder" runat="server">
@@ -110,9 +104,7 @@
             </div>
             <div class="clear"></div>
         </div>
-        <ul id="comment_box_list">
-            
-        </ul>
+        <ul id="comment_box_list"></ul>
     </div>
     <div class="clear"></div>
 </div>

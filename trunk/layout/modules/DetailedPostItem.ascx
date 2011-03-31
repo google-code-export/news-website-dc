@@ -16,11 +16,7 @@
             titlePosition: 'inside',
             cyclic: true
         });
-        $(".detailed-post .content img").lazyload({ threshold: 150, effect: "fadeIn" });
-        $("#comment_box .comment-list ul").height($(window).height() - 150);
-        $(".comment-button, .comment-link").click(function () {
-            $("#comment_box").dialog("open");
-        });
+        $(".detailed-post .content img").lazyload({ threshold: 150, effect: "fadeIn" });        
     });
 </script>
 

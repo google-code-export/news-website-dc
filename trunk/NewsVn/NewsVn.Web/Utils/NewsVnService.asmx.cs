@@ -18,12 +18,6 @@ namespace NewsVn.Web.Utils
     // [System.Web.Script.Services.ScriptService]
     public class NewsVnService : BaseUI.BaseService
     {
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
         #region CommentBox
 
         [WebMethod]
@@ -33,22 +27,28 @@ namespace NewsVn.Web.Utils
         }
 
         [WebMethod]
-        public string GetPostTitle(int postID)
+        public string GetCommentDialogTitle(int postID)
         {
-            return _Posts.FirstOrDefault(p => p.ID == postID).Title;
+            return string.Format("Bình luận: {0} ({1})",
+                _Posts.FirstOrDefault(p => p.ID == postID).Title,
+                this.CountPostComments(postID));
         }
 
         [WebMethod]
         public string GeneratePagerContent(int postID, int pageSize)
         {
-            var html = new StringBuilder();
-            html.Append("<span>Trang:</span><span>1</span>");
+            int numOfComments = this.CountPostComments(postID);
 
-            int numOfPages = this.CountPostComments(postID) / pageSize;
+            if (numOfComments <= pageSize) return "";
+            
+            var html = new StringBuilder();
+            html.Append("<span>Trang:</span>\n<span>1</span>");
+
+            int numOfPages = numOfComments / pageSize;
 
             for (int i = 1; i < numOfPages; i++)
             {
-                html.AppendFormat("<a href=\"javascript:void(0)\">{0}</a>", i + 1);
+                html.AppendFormat("\n<a href=\"javascript:void(0)\">{0}</a>", i + 1);
             }
 
             return html.ToString();
