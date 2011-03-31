@@ -1,5 +1,12 @@
 ﻿var serviceUrl = "Utils/NewsVnService.asmx/";
 
+$.ajaxSetup({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    data: "{}"
+});
+
 $(function () {
     //text input
     $(":text,:password,textarea").addClass("textbox");

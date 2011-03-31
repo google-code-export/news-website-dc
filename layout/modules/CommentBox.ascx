@@ -9,6 +9,10 @@
             width: 900
         });
         $("#comment_box .comment-list li:first-child").addClass("head");
+		$("#comment_box .comment-list ul").height($(window).height() - 150);
+        $(".comment-button, .comment-link").click(function () {
+            $("#comment_box").dialog("open");
+        });
         var selectorID = "#<%= ddlOrder.ClientID %>";
         var linkSelector = $(selectorID);
         linkSelector.selectmenu({ width: "84px" });

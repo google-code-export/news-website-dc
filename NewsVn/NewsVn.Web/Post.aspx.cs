@@ -29,7 +29,7 @@ namespace NewsVn.Web
             //params querystring post: PostID,SeoName
             if (!IsPostBack)
             {
-                if (!int.TryParse(Request.QueryString["cp"], out postID) || Request.QueryString["ct"] == null || !checkCateID_By_SEONAME(Request.QueryString["ct"].ToString()))
+                if (!int.TryParse(Request.QueryString["cp"], out postID) || Request.QueryString["ct"] == null)
                 {
                     //response ve page thong bao 404
                     Response.Redirect("Default.aspx");
@@ -60,11 +60,7 @@ namespace NewsVn.Web
             pletPostDetail.Datasource = postData;
             pletPostDetail.DataBind();
             //commentbox
-            //pletCommentBox.PostID = postID;
-            //pletCommentBox.PostTitle = postData.Title;
-            //pletCommentBox.CommentNumbers = postComment.Count();
-            //pletCommentBox.Datasource = postComment;
-            //pletCommentBox.DataBind();
+            pletCommentBox.PostID = postID;            
         }
         //lay tieu_diem theo chu de
         void load_pletFocusPost()
