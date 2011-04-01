@@ -20,8 +20,7 @@ namespace NewsVn.Web.Utils
     {
         #region CommentBox
 
-        [WebMethod]
-        public int CountPostComments(int postID)
+        private int CountPostComments(int postID)
         {
             return _PostComments.Where(c => c.Post.ID == postID).Count();
         }
@@ -35,29 +34,37 @@ namespace NewsVn.Web.Utils
         }
 
         [WebMethod]
-        public string GeneratePagerContent(int postID, int pageSize)
+        public string GeneratePagerContent(int postID, int pageSize, int pageIndex)
         {
             int numOfComments = this.CountPostComments(postID);
 
             if (numOfComments <= pageSize) return "";
             
             var html = new StringBuilder();
-            html.Append("<span>Trang:</span>\n<span>1</span>");
+            html.Append("<span>Trang:</span>");
 
             int numOfPages = numOfComments / pageSize;
 
-            for (int i = 1; i < numOfPages; i++)
+            for (int i = 0; i < numOfPages; i++)
             {
-                html.AppendFormat("\n<a href=\"javascript:void(0)\">{0}</a>", i + 1);
+                if (i + 1 == pageIndex)
+                    html.AppendFormat("\n<span>{0}</span>", i + 1);
+                else
+                    html.AppendFormat("\n<a href=\"javascript:void(0)\">{0}</a>", i + 1);
             }
 
             return html.ToString();
         }
 
         [WebMethod]
-        public string LoadCommentList(int postID, int pageSize, int pageIndex)
+        public string LoadCommentList(int postID, int pageSize, int pageIndex, bool oldestOnTop)
         {
-            var postComments = _PostComments.Where(c => c.Post.ID == postID).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
+            var postComments = _PostComments.Where(c => c.Post.ID == postID);
+
+            if (oldestOnTop)
+                postComments = postComments.OrderBy(c => c.CreatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
+            else
+                postComments = postComments.OrderByDescending(c => c.CreatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
 
             var html = new StringBuilder();
 
