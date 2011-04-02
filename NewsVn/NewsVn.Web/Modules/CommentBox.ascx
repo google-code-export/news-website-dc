@@ -4,20 +4,36 @@
     $(function () {
         showCommentDialog();
         showCommentList(1, false);
+        showSimpleCaptcha();
 
         $("#<%= ddlOrder.ClientID %>").change(function () {
             showCommentList(1, $(this).val());
         });
 
+        $("#<%= btnReCaptcha.ClientID %>").click(function () {
+            showSimpleCaptcha();
+        });
+
         $("#<%= btnSend.ClientID %>").click(function () {
-            alert("Send!");
+            sendComment(
+                $("#<%= txtName.ClientID %>").val(),
+                $("#<%= txtEmail.ClientID %>").val(),
+                $("#<%= txtTitle.ClientID %>").val(),
+                $("#<%= txtComment.ClientID %>").val(),
+                <%= PostID %>,
+                $("#comment_box_captchaKey").val(),
+                $("#<%= txtCaptchaAnswer.ClientID %>").val()
+            );
         });
     });
 
     function showCommentDialog() {
+        
+        var dataObj = { postID: <%= PostID %> }
+        
         $.ajax({
             url: serviceUrl + "GetCommentDialogTitle",
-            data: "{'postID':<%= PostID %>}",
+            data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
             success: function (result) {
                 $("#comment_box").attr("title", result.d);
                 $("#comment_box").dialog({
@@ -25,8 +41,7 @@
                     resizable: false,
                     modal: true,
                     width: 900
-                });
-                $("#comment_box .comment-list li:first-child").addClass("head");
+                });                
                 $("#comment_box .comment-list ul").height($(window).height() - 150);
                 $(".comment-button, .comment-link").click(function () {
                     $("#comment_box").dialog("open");
@@ -36,20 +51,36 @@
     }
 
     function showCommentList(pageIndex, oldestOnTop) {
+        
+        var dataObj = {
+            postID: <%= PostID %>,
+            pageIndex: pageIndex,
+            pageSize: <%= ListPageSize %>,
+            oldestOnTop: oldestOnTop
+        };
+        
         $.ajax({
             url: serviceUrl + "LoadCommentList",
-            data: "{'postID':<%= PostID %>,'pageIndex':" + pageIndex + ",'pageSize':<%= ListPageSize %>,'oldestOnTop':" + oldestOnTop + "}",
+            data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
             success: function (result) {
                 $("#comment_box_list").html(result.d);
+                $("#comment_box .comment-list li:first-child").addClass("head");
                 showCommentPager(pageIndex);
             }
         });
     }
 
     function showCommentPager(pageIndex) {
+        
+        var dataObj = {
+            postID: <%= PostID %>,
+            pageIndex: pageIndex,
+            pageSize: <%= ListPageSize %>
+        };
+        
         $.ajax({
             url: serviceUrl + "GeneratePagerContent",
-            data: "{'postID':<%= PostID %>,'pageIndex':" + pageIndex + ",'pageSize':<%= ListPageSize %>}",
+            data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
             success: function (result) {
                 $("#comment_box_pager").html(result.d);
                 $("#comment_box_pager a").each(function () {
@@ -61,12 +92,41 @@
         });
     }
 
-    function showSimpleCaptcha(current) {
+    function showSimpleCaptcha() {
+        
+        var key = $("#comment_box_captchaKey").val();
+        if(key == undefined) key = "";
+
+        var dataObj = { omitKey: key };
+        
         $.ajax({
             url: serviceUrl + "GenerateFormCaptcha",
-            data: "{'omitKey':" + current + "}",
-            success: function (result) {
+            data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
+            success: function (result) {                
+                $("#comment_box_captcha").html(result.d);
+            }
+        });
+    }
 
+    function sendComment(createdBy, title, email, content, postID, captchaKey, captchaAnswer) {
+        
+        var dataObj = {
+            comment: {
+                CreatedBy: createdBy,
+                Title: title,
+                Email: email,
+                Content: content
+            },
+            postID: postID,
+            captchaKey: captchaKey,
+            captchaAnswer: captchaAnswer
+        }        
+        
+        $.ajax({
+            url: serviceUrl + "InsertComment",
+            data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
+            success: function (result) {
+                $("#comment_box > ul").append("<li>" + result.d + "</li>")
             }
         });
     }
@@ -106,8 +166,8 @@
             <asp:TextBox ID="txtComment" TextMode="MultiLine" Rows="8" runat="server" />
         </li>
         <li>
-            <asp:Label AssociatedControlID="lblCaptcha" Text="Captcha:" runat="server" />
-            <asp:Label ID="lblCaptcha" runat="server" />
+            <label for="comment_box_captcha" class="left">Captcha:</label>
+            <div id="comment_box_captcha" class="left"></div>
             <asp:Button ID="btnReCaptcha" Text="Khác" CssClass="button right" runat="server" />
             <div class="clear"></div>
         </li>
