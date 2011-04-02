@@ -136,6 +136,7 @@
     <Content Include="Resources\Posts\t510698.jpg" />
     <Content Include="Resources\Posts\t623236.gif" />
     <Content Include="Resources\Posts\t623236.jpg" />
+    <Content Include="Resources\Xml\Captcha.xml" />
     <Content Include="Resources\Xml\category.xml">
       <SubType>Designer</SubType>
     </Content>

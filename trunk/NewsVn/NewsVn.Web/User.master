@@ -22,8 +22,7 @@
 </head>
 <body>
     <form id="frmUser" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
+    <asp:ScriptManager ID="smUser" runat="server" />
     <div id="header">
         <div class="wrapper">
             <div id="banner_bar">
