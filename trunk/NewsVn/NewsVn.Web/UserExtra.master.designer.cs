@@ -40,39 +40,12 @@ namespace NewsVn.Web {
         protected global::NewsVn.Web.Modules.QuickSearchBox QuickSearchBox1;
         
         /// <summary>
-        /// sideContentTop control.
+        /// sideContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder sideContentTop;
-        
-        /// <summary>
-        /// AdBoxList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::NewsVn.Web.Modules.AdBoxList AdBoxList1;
-        
-        /// <summary>
-        /// HotVideoList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::NewsVn.Web.Modules.HotVideoList HotVideoList1;
-        
-        /// <summary>
-        /// sideContentBottom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder sideContentBottom;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder sideContent;
     }
 }

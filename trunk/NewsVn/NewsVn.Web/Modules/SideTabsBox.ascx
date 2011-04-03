@@ -55,7 +55,7 @@
         <span class="credit">Nguồn: VnExpress.net | ĐV: VNĐ</span>
     </div>
     <div id="currency">
-        <asp:GridView runat="server" ID="grvCurrency" CssClass="ui-table" CellPadding="0" CellSpacing="0" BorderWidth="0" AutoGenerateColumns="false">
+        <asp:GridView runat="server" ID="grvCurrency" EmptyDataText="Không Tìm Thấy Dữ Liệu" CssClass="ui-table" CellPadding="0" CellSpacing="0" BorderWidth="0" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField  DataField="CurrencyCode" HeaderText="Loại"/>
                 <asp:BoundField  DataField="Buy" HeaderText="Mua vào" DataFormatString="{0:#,###}"/>

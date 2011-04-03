@@ -12,12 +12,14 @@ namespace NewsVn.Web
     public partial class Category : BaseUI.BasePage
     {
         private int intCateID = -1;
+        private string CateTitle = "Tin Nổi Bật";
         private bool checkCateID_By_SEONAME(string seoNAME)
         {
-            var cate=_Categories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID }).ToList();
+            var cate=_Categories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID,c.Name }).ToList();
             if (cate.Count() > 0)
             {
                 intCateID = cate[0].ID;
+                this.CateTitle =cate[0].Name;
                 return true;
             }
             else
@@ -79,6 +81,7 @@ namespace NewsVn.Web
             DataSet ds = new DataSet();
 
             ds.ReadXml(Server.MapPath(@"resources/Xml/TinMoiNong_Newsvn.xml").ToString());
+            pletHotNews.CateTitle = CateTitle;
             pletHotNews.DataSource = ds.Tables[0];
             //pletHotNews.DataSource = listData;
             pletHotNews.DataBind();

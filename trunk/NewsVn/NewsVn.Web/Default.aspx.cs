@@ -135,6 +135,7 @@ namespace NewsVn.Web
         void load_pletHotNews()
         {
             //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len
+            pletHotNews.CateTitle = "Tin Nổi Bật";
             pletHotNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
                 && p.CheckPageView == true).Select(p => new { 
                     p.ID, p.Title,
