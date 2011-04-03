@@ -39,11 +39,12 @@ namespace NewsVn.Web
                 load_pletRelationPostList();
             }
         }
+       
 
         private void load_postDetail(int postID)
         {
             var postData = _Posts.Where(p => p.Actived == true && p.Approved == true
-               && p.CheckPageView == true && p.ID == postID).FirstOrDefault();
+              && p.ID == postID).FirstOrDefault();
             if (postData==null)
             {
                 //response ve page thong bao 404
@@ -61,23 +62,57 @@ namespace NewsVn.Web
             pletPostDetail.Datasource = postData;
             pletPostDetail.DataBind();
             //commentbox
-            pletCommentBox.PostID = postID;            
+            pletCommentBox.PostID = postID;    
+            //check_PageView  - khong su dung pageview thi ko can update
+            if (postData.CheckPageView)
+            {
+                Allow_Update_PageView();
+            }
         }
-        //lay tieu_diem theo chu de
+        private void Allow_Update_PageView()
+        {
+            if (Session[HttpContext.Current.Session.SessionID] == null)
+            {
+                Session[HttpContext.Current.Session.SessionID] = postID.ToString() + ",";
+                update_PageView();
+            }
+            else
+            {
+                var array = Session[HttpContext.Current.Session.SessionID].ToString().Split(',');
+                var isExist = Array.FindAll(array, item => item.Equals(postID.ToString())); 
+                //session chua xem:length=0,
+                if (isExist.Length == 0)
+                {
+                    Session[HttpContext.Current.Session.SessionID] = Session[HttpContext.Current.Session.SessionID].ToString() + postID.ToString() + ",";
+                    update_PageView();
+                }
+            }
+        }
+        private void update_PageView()
+        {
+            var post = ApplicationManager.Entities.Posts.Where(p => p.ID == postID).FirstOrDefault();
+            if (post != null)
+            {
+                post.PageView += 1;
+                ApplicationManager.Entities.SaveChanges();
+                ApplicationManager.UpdateCacheData<Data.Post>(ApplicationManager.Entities.Posts.Where( t => t.Approved && t.Actived));//set lai cache
+            }
+        }
+        //lay tieu_diem theo chu de, pageview cao nhat trong thang
         void load_pletFocusPost()
         {
             var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
-               && p.CheckPageView == true && p.ApprovedOn.Value.Month == DateTime.Now.Month
-               && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
-               {
-                   p.ID,
-                   p.Title,
-                   p.Description,
-                   p.Avatar,
-                   p.SeoUrl,
-                   p.ApprovedOn,
-                   p.PageView
-               }).OrderByDescending(p => p.PageView).Take(5).ToList();
+                && p.CheckPageView == true && p.ApprovedOn.Value.Month == DateTime.Now.Month
+                && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
+                {
+                    p.ID,
+                    p.Title,
+                    p.Description,
+                    p.Avatar,
+                    p.SeoUrl,
+                    p.ApprovedOn,
+                    p.PageView
+                }).OrderByDescending(p => p.PageView).Take(5).ToList();
 
             //var data = clsPost.Load_Post_From_XML("Focus",5);
             pletFocusPost.Datasource = listData;
@@ -87,7 +122,6 @@ namespace NewsVn.Web
         void load_pletRelationPostList()
         {
             var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
-               && p.CheckPageView == true //&& p.ApprovedOn < ApprovedOn 
                && p.Category.ID == intCateID).Select(p => new
                {
                    p.ID,
@@ -98,8 +132,6 @@ namespace NewsVn.Web
                    p.ApprovedOn,
                    p.PageView
                }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
-
-            //var data = clsPost.Load_Post_From_XML("Focus",5);
             pletRelateionPostList.Datasource = listData;
             pletRelateionPostList.DataBind();
         }

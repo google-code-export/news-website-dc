@@ -37,7 +37,6 @@ namespace NewsVn.Web
             //setting sau.
             //load ti gia
             pletSideTabBar.Datasource = clsCurrency.Get_Currency_From_Bank("http://www.vietcombank.com.vn/ExchangeRates/ExrateXML.aspx");
-            
             //load thoi tiet
             XElement element = XElement.Load(HttpContext.Current.Server.MapPath(@"~/Resources/Xml/category.xml"));
             var City = element.Element("Weather").Elements("City").Select(c => new
@@ -49,7 +48,6 @@ namespace NewsVn.Web
 
             pletSideTabBar.DataBind();
         }
-        
 
         private void load_pletPosts()
         {
@@ -134,10 +132,9 @@ namespace NewsVn.Web
         }
         void load_pletHotNews()
         {
-            //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len
+            //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len||
             pletHotNews.CateTitle = "Tin Nổi Bật";
-            pletHotNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true).Select(p => new { 
+            pletHotNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new { 
                     p.ID, p.Title,
                     p.Description,
                     p.Avatar, 
@@ -160,8 +157,7 @@ namespace NewsVn.Web
         void load_pletLatestNews()
         {
             //p.PostComments.Count
-            pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true).Select(p => new {
+            pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new {
                     p.ID,
                     p.Title,
                     p.ApprovedOn,
