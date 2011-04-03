@@ -381,6 +381,16 @@ body
     padding: 0 0 7px;    
 }
 
+.post-item-list .post-avatar
+{
+    width: 130px;    
+}
+
+.post-item-list .post-item
+{
+    width: 500px;
+}
+
 .side-part-list li
 {
 	margin-bottom: 5px;
@@ -406,16 +416,6 @@ body
 .categorized-posts.portlet .head
 {
     padding-top: 14px; 
-}
-
-.categorized-posts.portlet .post-avatar
-{
-    width: 130px;    
-}
-
-.categorized-posts.portlet .post-item
-{
-    width: 500px;
 }
 
 .detailed-post.portlet
@@ -448,6 +448,28 @@ body
     border-width: 1px 0 0;
     margin-bottom: 0;
     padding: 14px 0 0;
+}
+
+.special-adpost.portlet h2 span
+{
+    color: #000;
+    font-weight: normal;
+}
+
+.special-adpost.portlet h2 a
+{
+    text-transform: none;
+    font-weight: normal;
+}
+
+.special-adpost.portlet li
+{
+    border: 0;
+}
+
+.special-adpost.portlet .post-item
+{
+    margin-left: 20px;
 }
 
 #comment_box .comment-list

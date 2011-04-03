@@ -73,6 +73,11 @@
     padding: 5px 0;    
 }
 
+.ui-form li.head
+{
+    padding-top: 0;    
+}
+
 .ui-form label
 {
     display: inline-block;
