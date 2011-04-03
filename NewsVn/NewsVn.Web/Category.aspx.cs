@@ -24,7 +24,6 @@ namespace NewsVn.Web
             }
             else
                 return false;
-            
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,7 +56,7 @@ namespace NewsVn.Web
                 }).OrderByDescending(p => p.ApprovedOn).Skip(7).Take(20).ToList();
             pletCatePostList.DataBind();
         }
-        //lay tin_hot theo chu de
+        //lay tin_hot theo chu de  va theo pageview cao nhat trong ngay
         void load_pletHotNews()
         {
             //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len
@@ -91,7 +90,7 @@ namespace NewsVn.Web
         {
             //p.PostComments.Count
             pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
+                &&  p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
                 {
                     p.ID,
                     p.Title,
