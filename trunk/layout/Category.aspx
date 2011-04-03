@@ -20,7 +20,10 @@
     <nsn:LatestPostsPortlet CssClass="right" ClearLayout="true" NoCategoryName="true" runat="server" />
     <nsn:CategorizedPostList runat="server" />
 </asp:Content>
-<asp:Content ContentPlaceHolderID="sideContentTop" runat="server">
+<asp:Content ContentPlaceHolderID="sideContent" runat="server">
+    <nsn:QuickSearchBox runat="server" />        
     <nsn:FocusPostsPortlet runat="server" />
+    <nsn:AdBoxList runat="server" />
+    <nsn:HotVideoList runat="server" />
 </asp:Content>
 

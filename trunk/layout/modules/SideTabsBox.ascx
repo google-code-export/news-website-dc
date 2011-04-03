@@ -9,7 +9,6 @@
         linkSelector.next(".ui-selectmenu").addClass("select");
         linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
         $(selectorID + "-menu").width(280);
-        $(".side-part .datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
     });
 </script>
 

@@ -127,6 +127,9 @@
             data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
             success: function (result) {
                 $("#comment_box > ul").append("<li>" + result.d + "</li>")
+            },
+            complete: function() {
+                showSimpleCaptcha();
             }
         });
     }

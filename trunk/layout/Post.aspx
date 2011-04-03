@@ -7,6 +7,6 @@
     <nsn:CommentBox runat="server" />
     <nsn:RelatedPostList runat="server" />
 </asp:Content>
-<asp:Content ContentPlaceHolderID="sideContentTop" Runat="Server">
+<asp:Content ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:FocusPostsPortlet runat="server" />
 </asp:Content>

@@ -8,6 +8,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="sideContentBottom" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="sideContent" Runat="Server">
 </asp:Content>
 
