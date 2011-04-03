@@ -13,6 +13,8 @@ namespace NewsVn.Web.Modules
         //public List<Data.Post> DataSource { get; set; }
         public object DataSource { get; set; }
 
+        public bool NoComments { get; set; }                       
+
         public string CssClass { get; set; }
 
         public bool ClearLayout { get; set; }
@@ -36,6 +38,13 @@ namespace NewsVn.Web.Modules
         {
             rptLatestNews.DataSource = DataSource;
             rptLatestNews.DataBind();
+        }
+
+        protected void rptLatestNews_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item)
+            { this.NoComments = Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "AllowComments")); }
+            
         }
 
        

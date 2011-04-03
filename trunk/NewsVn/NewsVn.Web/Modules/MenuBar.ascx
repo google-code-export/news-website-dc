@@ -5,7 +5,7 @@
         $("#menu_bar li:last-child").addClass("tail");
         $("#menu_bar li > a").addClass("menu-item");
         $("#menu_bar .sub-menu").each(function () {
-            $(this).css({ "min-width": $(this).parent().width() - 10 });
+            $(this).css({ "min-width": $(this).parent().width() * 2 });
         });
         $("#menu_bar .sub-menu a:first-child").css({ border: 0 });
         $("#menu_bar li").hover(function () {

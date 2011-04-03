@@ -15,10 +15,11 @@
         <a class="rss" href="#"></a>
    </h2>
     <ul class="post-item-list">
-    <asp:Repeater runat="server" ID="rptLatestNews">
+    <asp:Repeater runat="server" ID="rptLatestNews" 
+            onitemdatabound="rptLatestNews_ItemDataBound">
         <ItemTemplate>
             <li class="head-latest-post">
-            <asp:Label runat="server" ID="lblNo_Comment" CssClass="post-comment"><%#Eval("Comments")%></asp:Label>
+            <% if (!NoComments){ %><asp:Label runat="server" ID="lblNo_Comment" CssClass="post-comment"><%#Eval("Comments")%></asp:Label><% } %>
                 <asp:HyperLink runat="server" ID="hlnkTitle" NavigateUrl='<%#Eval("SeoUrl") %>'
                 Text='<%#Eval("Title") %>' CssClass="post-title wrap"/>
                 <span class="post-info">

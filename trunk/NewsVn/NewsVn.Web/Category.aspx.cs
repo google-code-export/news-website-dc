@@ -50,6 +50,7 @@ namespace NewsVn.Web
                     p.Avatar,
                     p.SeoUrl,
                     p.ApprovedOn,
+                    p.AllowComments,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Skip(7).Take(20).ToList();
             pletCatePostList.DataBind();
@@ -93,6 +94,7 @@ namespace NewsVn.Web
                     p.Title,
                     p.SeoUrl,
                     p.ApprovedOn,
+                    p.AllowComments,
                     Cat_Name = p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();

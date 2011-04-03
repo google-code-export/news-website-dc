@@ -163,5 +163,46 @@ namespace NewsVn.Web.Utils
         }
 
         #endregion
+
+        #region Weather
+        [WebMethod]
+        //get weather from yahoo
+        public string GetWeather(string Zipcode)
+        {
+            string query = String.Format("http://weather.yahooapis.com/forecastrss?w=" + Zipcode);
+            XDocument thisDoc = XDocument.Load(query);
+            XNamespace ns = "http://xml.weather.yahoo.com/ns/rss/1.0";
+            var condition = (from i in thisDoc.Descendants(ns + "condition") select i);
+            var atmosphere = (from i in thisDoc.Descendants(ns + "atmosphere") select i);
+
+            var html = new System.Text.StringBuilder();
+            string code = "";
+            string codeName = "";
+            string humidity = "";
+            string temp = "";
+            foreach (var c in condition)
+            {
+                code = c.Attribute("code").Value;
+                codeName = skyStatus[int.Parse(code) == 3200 ? 48 : int.Parse(code)];
+            }
+
+            foreach (var c in condition)
+            {
+                int tempF = 0;
+                temp = c.Attribute("temp").Value;
+                int.TryParse(temp, out tempF);
+                //(°F – 32) / 1.8
+                temp = Math.Round(((tempF - 32) / 1.8), 1).ToString();
+            }
+
+            foreach (var h in atmosphere)
+            {
+                humidity = h.Attribute("humidity").Value;
+            }
+            html.AppendFormat("<table class=\"ui-table align-left\" style=\"margin:10px 0;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td ><b>{3}</b></td><td ><img src=\"http://l.yimg.com/a/i/us/we/52/{4}.gif\"/></td></tr><tr><td>Nhiệt độ</td><td>{0}<sup>o</sup>C</td></tr><tr><td>Độ ẩm</td><td>{1}%</td></tr><tr><td>Gió đông tốc độ</td><td>{2} m/s</td></tr></table>", temp, humidity, 7, codeName, code);
+
+            return html.ToString();
+        }
+        #endregion
     }
 }

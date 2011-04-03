@@ -9,9 +9,19 @@ namespace NewsVn.Web.Modules
 {
     public partial class SideTabsBox : System.Web.UI.UserControl
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public string CurrencySource { get; set; }
+        public List<Utils.clsCurrency> Datasource { get; set; }
+        public object Datasource_Weather { get; set; }
+        protected override void OnDataBinding(EventArgs e)
         {
 
+            grvCurrency.DataSource = Datasource;
+            grvCurrency.DataBind();
+
+            regionSelector.DataSource = Datasource_Weather;
+            regionSelector.DataTextField = "Name";
+            regionSelector.DataValueField = "WOEID";
+            regionSelector.DataBind();
         }
     }
 }
