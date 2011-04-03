@@ -9,7 +9,7 @@ namespace NewsVn.Web.BaseUI
     public class BaseService : System.Web.Services.WebService
     {
         public string HostName { get; set; }
-
+        public static string[] skyStatus { get; set; }
         protected string _CacheName;
 
         protected IQueryable<Data.AdBox> _AdBoxes;
@@ -22,8 +22,10 @@ namespace NewsVn.Web.BaseUI
         protected IQueryable<Data.UserProfileComment> _UserProfileComments;
         protected IQueryable<Data.UserProfile> _UserProfiles;
 
+        
         public BaseService()
         {
+            skyStatus = ApplicationManager.skyStatus;
             _AdBoxes = ApplicationManager.SetCacheData<Data.AdBox>(ApplicationManager.Entities.AdBoxes, t => t.Actived);
             _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
             _AdPosts = ApplicationManager.SetCacheData<Data.AdPost>(ApplicationManager.Entities.AdPosts, p => p.Actived);

@@ -91,4 +91,98 @@
       </Post>
     </Posts>
   </Category>
+  <Weather>
+    <City>
+      <Name>Bà Rịa - Vũng Tàu</Name>
+      <WOEID>1252672</WOEID>
+    </City>
+    <City>
+      <Name>Bắc Giang</Name>
+      <WOEID>1229284</WOEID>
+    </City>
+    <City>
+      <Name>Bình Định</Name>
+      <WOEID>1245842</WOEID>
+    </City>
+    <City>
+      <Name>Bình Thuận</Name>
+      <WOEID>1252537</WOEID>
+    </City>
+    <City>
+      <Name>Cà Mau</Name>
+      <WOEID>12502425</WOEID>
+    </City>
+    <City>
+      <Name>Cần Thơ</Name>
+      <WOEID>1252351</WOEID>
+    </City>
+    <City>
+      <Name>Cao Bằng</Name>
+      <WOEID>1252353</WOEID>
+    </City>
+    <City>
+      <Name>Đồng Nai</Name>
+      <WOEID>1232334</WOEID>
+    </City>
+    <City>
+      <Name>Hà Nội</Name>
+      <WOEID>1236594</WOEID>
+    </City>
+    <City>
+      <Name>Hải Phòng</Name>
+      <WOEID>1236690</WOEID>
+    </City>
+    <City>
+      <Name>Hồ Chí Minh</Name>
+      <WOEID>1252431</WOEID>
+    </City>
+    <City>
+      <Name>Nha Trang</Name>
+      <WOEID>1252522</WOEID>
+    </City>
+    <City>
+      <Name>Kiên Giang</Name>
+      <WOEID>1244351</WOEID>
+    </City>
+    <City>
+      <Name>Nam Định</Name>
+      <WOEID>1252512</WOEID>
+    </City>
+    <City>
+      <Name>Nghệ An</Name>
+      <WOEID>1252662</WOEID>
+    </City>
+    <City>
+      <Name>Phú Thọ</Name>
+      <WOEID>1252661</WOEID>
+    </City>
+    <City>
+      <Name>Phú Yên</Name>
+      <WOEID>12522965</WOEID>
+    </City>
+    <City>
+      <Name>Quảng Bình</Name>
+      <WOEID>1252392</WOEID>
+    </City>
+    <City>
+      <Name>Quảng Ninh</Name>
+      <WOEID>12502389</WOEID>
+    </City>
+    <City>
+      <Name>Thanh Hóa</Name>
+      <WOEID>1252608</WOEID>
+    </City>
+    <City>
+      <Name>Huế</Name>
+      <WOEID>1252438</WOEID>
+    </City>
+    <City>
+      <Name>Tiền Giang</Name>
+      <WOEID>1252498</WOEID>
+    </City>
+    <City>
+      <Name>Quảng Ninh</Name>
+      <WOEID>12502389</WOEID>
+    </City>
+  </Weather>
 </Categories>

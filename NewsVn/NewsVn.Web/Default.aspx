@@ -21,5 +21,5 @@
     <div id="postArea" runat="server"></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContentBottom" runat="server">
-    <nsn:SideTabsBox runat="server"  />
+    <nsn:SideTabsBox runat="server" ID="pletSideTabBar"  />
 </asp:Content>

@@ -11,6 +11,24 @@
         $(selectorID + "-menu").width(280);
         $(".side-part .datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
     });
+
+    $(function () {
+        showWeather();
+        $("#<%=regionSelector.ClientID %>").change(function () {
+            showWeather();
+        });
+    });
+
+    function showWeather() {
+        var WOEID = $("#<%=regionSelector.ClientID %>").val();
+        $.ajax({
+            url: serviceUrl + "GetWeather",
+            data: "{'Zipcode':'" + WOEID + "'}",
+            success: function (result) {
+                $("#weatherWidget").html(result.d);
+            }
+        });
+    }
 </script>
 
 <div class="side-part portlet">
@@ -28,86 +46,27 @@
                 <th>Mua vào</th>
                 <th>Bán ra</th>
             </tr>
-            <tr>
-                <td><b>Vàng SBJ</b></td><td><b>3.705.000</b></td><td><b>3.715.000</b></td>
-            </tr>
-            <tr>
-                <td><b>Vàng SJC</b></td><td><b>3.704.000</b></td><td><b>3.718.000</b></td>
-            </tr>
-            <tr>
-                <td>Vàng 24K</td><td>3.687.000</td><td>3.718.000</td>
-            </tr>
-            <tr>
-                <td>Vàng 95%</td><td>3.496.000</td><td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>Vàng 75%</td><td>2.707.000</td><td>2.804.000</td>
-            </tr>
-            <tr>
-                <td>Vàng 58.3%</td><td>2.116.000</td><td>2.194.000</td>
-            </tr>
-            <tr>
-                <td>Vàng 41.7%</td><td>1.497.000</td><td>1.575.000</td>
-            </tr>
+            <script language='javascript' type='text/javascript' src='http://vnexpress.net/Service/Gold_Content.js'></script>
+                <script language='javascript' type='text/javascript'>
+                document.writeln('<tr><td><b>Vàng SBJ</b></td><td>', vGoldSbjBuy, '</td>', '<td>', vGoldSbjSell, '</td>');
+                document.writeln('<tr><td><b>Vàng SJC</b></td><td>', vGoldSjcBuy, '</td>', '<td>', vGoldSjcSell, '</td>');
+                </script>
         </table>
         <span class="credit">Nguồn: VnExpress.net | ĐV: VNĐ</span>
     </div>
     <div id="currency">
-        <table class="ui-table" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-                <th>Loại</th>
-                <th>Mua vào</th>
-                <th>Bán ra</th>
-            </tr>
-            <tr>
-			    <td>AUD</td><td>20.476,95</td><td>21.499,23</td>
-		    </tr>
-            <tr>
-			    <td>EUR</td><td>29.103,77</td><td>30.403,91</td>
-		    </tr>
-            <tr>
-			    <td>GBP</td><td>33.300,75</td><td>34.928,52</td>
-		    </tr>
-            <tr>
-			    <td>JPY</td><td>251,57</td><td>266,26</td>
-		    </tr>
-            <tr>
-			    <td>USD</td><td>20.865,00</td><td>20.870,00</td>
-		    </tr>
-        </table>
-        <span class="credit">Nguồn: Ngoisao.net | ĐV: VNĐ</span>
+        <asp:GridView runat="server" ID="grvCurrency" CssClass="ui-table" CellPadding="0" CellSpacing="0" BorderWidth="0" AutoGenerateColumns="false">
+            <Columns>
+                <asp:BoundField  DataField="CurrencyCode" HeaderText="Loại"/>
+                <asp:BoundField  DataField="Buy" HeaderText="Mua vào" DataFormatString="{0:#,###}"/>
+                <asp:BoundField  DataField="Sell" HeaderText="Bán ra" DataFormatString="{0:#,###}"/>
+            </Columns>
+        </asp:GridView>
+     <span class="credit">Nguồn: vietcombank.com.vn | ĐV: VNĐ</span>
     </div>
     <div id="weather">
         <asp:DropDownList ID="regionSelector" runat="server">
-            <asp:ListItem Value="1">Sơn La</asp:ListItem>
-			<asp:ListItem Value="2">Việt Trì</asp:ListItem>
-			<asp:ListItem Value="3">Hải Phòng</asp:ListItem>
-			<asp:ListItem Value="4">Hà Nội</asp:ListItem>
-			<asp:ListItem Value="5">Vinh</asp:ListItem>
-			<asp:ListItem Value="6">Đà Nẵng</asp:ListItem>
-			<asp:ListItem Value="7">Nha Trang</asp:ListItem>
-			<asp:ListItem Value="8">Pleiku</asp:ListItem>
-			<asp:ListItem Selected="True" Value="9">TP HCM</asp:ListItem>
         </asp:DropDownList>
-        <table class="ui-table align-left" style="margin:10px 0;" border="0" cellpadding="0" cellspacing="0">            
-            <tr>
-                <td colspan="2">
-                    <b>Mây thay đổi</b>
-                </td>                
-            </tr>
-            <tr>
-                <td>Nhiệt độ</td>
-                <td>20<sup>o</sup>C</td>
-            </tr>
-            <tr>
-                <td>Độ ẩm</td>
-                <td>82%</td>
-            </tr>
-            <tr>
-                <td>Gió đông tốc độ</td>
-                <td>7 m/s</td>
-            </tr>
-        </table>
-        <span class="credit">Nguồn: Thanhnien.vn</span>
+        <div id="weatherWidget"></div>
     </div>
 </div>

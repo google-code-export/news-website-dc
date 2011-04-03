@@ -29,13 +29,14 @@ namespace NewsVn.Web
             //params querystring post: PostID,SeoName
             if (!IsPostBack)
             {
-                if (!int.TryParse(Request.QueryString["cp"], out postID) || Request.QueryString["ct"] == null)
+                if (!int.TryParse(Request.QueryString["cp"], out postID) || Request.QueryString["ct"] == null || !checkCateID_By_SEONAME(Request.QueryString["ct"]))
                 {
                     //response ve page thong bao 404
                     Response.Redirect("Default.aspx");
                 }
                 load_postDetail(postID);
                 load_pletFocusPost();
+                load_pletRelationPostList();
             }
         }
 
@@ -81,6 +82,26 @@ namespace NewsVn.Web
             //var data = clsPost.Load_Post_From_XML("Focus",5);
             pletFocusPost.Datasource = listData;
             pletFocusPost.DataBind();
+        }
+        //lay post theo chu de  & <= post.approvedon && != viewstate('visitedID')
+        void load_pletRelationPostList()
+        {
+            var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
+               && p.CheckPageView == true //&& p.ApprovedOn < ApprovedOn 
+               && p.Category.ID == intCateID).Select(p => new
+               {
+                   p.ID,
+                   p.Title,
+                   p.Description,
+                   p.Avatar,
+                   p.SeoUrl,
+                   p.ApprovedOn,
+                   p.PageView
+               }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
+
+            //var data = clsPost.Load_Post_From_XML("Focus",5);
+            pletRelateionPostList.Datasource = listData;
+            pletRelateionPostList.DataBind();
         }
     }
 }

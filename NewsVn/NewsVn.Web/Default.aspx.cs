@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using NewsVn.Web.Utils;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace NewsVn.Web
 {
@@ -25,9 +27,29 @@ namespace NewsVn.Web
                 load_pletHotNews();
                 load_pletSpecialEvents();
                 load_pletLatestNews();
-                load_pletPosts();    
+                load_pletPosts();
+                load_sideTabBar();
             }
         }
+
+        private void load_sideTabBar()
+        {
+            //setting sau.
+            //load ti gia
+            pletSideTabBar.Datasource = clsCurrency.Get_Currency_From_Bank("http://www.vietcombank.com.vn/ExchangeRates/ExrateXML.aspx");
+            
+            //load thoi tiet
+            XElement element = XElement.Load(HttpContext.Current.Server.MapPath(@"~/Resources/Xml/category.xml"));
+            var City = element.Element("Weather").Elements("City").Select(c => new
+            {
+                Name = c.Element("Name").Value,
+                WOEID = c.Element("WOEID").Value
+            }).ToList();
+            pletSideTabBar.Datasource_Weather = City;
+
+            pletSideTabBar.DataBind();
+        }
+        
 
         private void load_pletPosts()
         {
@@ -53,6 +75,7 @@ namespace NewsVn.Web
                         p.Avatar,
                         p.SeoUrl,
                         p.CreatedOn,
+                        p.AllowComments,
                         Comments = p.PostComments.Count
                     }).OrderByDescending(p => p.CreatedOn).Take(1).ToList();
 
@@ -67,6 +90,7 @@ namespace NewsVn.Web
                         p.Avatar,
                         p.SeoUrl,
                         p.CreatedOn,
+                        p.AllowComments,
                         Comments = p.PostComments.Count()
                     }).OrderByDescending(p => p.CreatedOn).Skip(1).Take(4).ToList();
                 //set position
@@ -77,6 +101,7 @@ namespace NewsVn.Web
                     ctrPortletPost.CssClass = "right";
                     ctrPortletPost.ClearLayout = true;
                 }
+                
                 //bind control
                 ctrPortletPost.DataBind();
                 postArea.Controls.Add(ctrPortletPost);
@@ -85,21 +110,25 @@ namespace NewsVn.Web
             //Bind Control Quang Cao
             Control UC_PortletPost_Ad = LoadControl("~/Modules/PostsPortlet.ascx");
             var ctrPortletPost_Ad = ((Modules.PostsPortlet)UC_PortletPost_Ad);
-            ctrPortletPost_Ad.Title = "Quang cao";
+            ctrPortletPost_Ad.Title = "Rao Nhanh";
+            ctrPortletPost_Ad.SeoName = "../AdCategory.aspx";
             ctrPortletPost_Ad.CssClass = "right";
             ctrPortletPost_Ad.ClearLayout = true;
             //bind control
-            ctrPortletPost_Ad.oActivePost = _Posts.Where(p => p.Category.ID == 1 || (p.Category.Parent != null && p.Category.Parent.ID == 1))
-                    .Select(p => new
-                    {
-                        p.ID,
-                        p.Title,
-                        p.Description,
-                        p.Avatar,
-                        p.SeoUrl,
-                        p.CreatedOn,
-                        Comments = p.PostComments.Count
-                    }).OrderByDescending(p => p.CreatedOn).Take(1).ToList();
+            ctrPortletPost_Ad.oActivePost = _AdPosts.Where(adp => adp.Actived == true && adp.ExpiredOn >= DateTime.Now)
+                .Select(adp => new
+                {
+                    adp.ID,
+                    adp.Title,
+                    Description=adp.Content,
+                    adp.Avatar,
+                    adp.SeoUrl,
+                    adp.CreatedOn,
+                    AllowComments = true,
+                    adp.Payment,
+                    Comments = 0
+                }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.CreatedOn).Take(5).ToList();
+                
             ctrPortletPost_Ad.DataBind();
             postArea.Controls.Add(ctrPortletPost_Ad);
         }
@@ -124,9 +153,6 @@ namespace NewsVn.Web
         }
         void load_pletSpecialEvents()
         {
-            //pletSpecialEvents.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
-            //    && p.CheckPageView == true).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
-            
             pletSpecialEvents.DataSource = clsPost.Load_Post_From_XML("Special", -1);
             pletSpecialEvents.DataBind();
         }
@@ -139,6 +165,7 @@ namespace NewsVn.Web
                     p.Title,
                     p.ApprovedOn,
                     p.SeoUrl,
+                    p.AllowComments,
                     Cat_Name=p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();

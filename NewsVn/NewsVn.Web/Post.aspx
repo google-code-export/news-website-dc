@@ -5,6 +5,7 @@
 <asp:Content ContentPlaceHolderID="mainContent" Runat="Server">
     <nsn:DetailedPostItem AllowComments="true" runat="server" ID="pletPostDetail" />
     <nsn:CommentBox runat="server" ID="pletCommentBox" ListPageSize="1" /> 
+    <nsn:RelatedPostList runat="server" id="pletRelateionPostList" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContentTop" Runat="Server">
     <nsn:FocusPostsPortlet ID="pletFocusPost" runat="server" />

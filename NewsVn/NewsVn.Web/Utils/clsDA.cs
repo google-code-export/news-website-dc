@@ -58,5 +58,28 @@ namespace NewsVn.Web.Utils
             }).Take(intTake == -1 ? 20 : intTake).ToList();
         }
     }
-    
+    public class clsCurrency
+    {
+        public string CurrencyCode { get; set; }
+        public decimal Buy { get; set; }
+        public decimal Sell { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="CategoryType"></param>
+        /// <param name="intTake"></param>
+        /// <returns></returns>
+        public static List<clsCurrency> Get_Currency_From_Bank(string url)
+        {
+            XElement xCurrency = XElement.Load(url);
+            var data = xCurrency.Elements("Exrate").Select(p => new clsCurrency()
+            {
+                CurrencyCode = p.Attribute("CurrencyCode").Value,
+                Buy = Convert.ToDecimal( p.Attribute("Buy").Value),
+                Sell =Convert.ToDecimal( p.Attribute("Sell").Value),
+            }).ToList();
+
+            return data;
+        }
+    }
 }

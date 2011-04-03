@@ -59,6 +59,7 @@ namespace NewsVn.Web.Modules
             if (e.Item.ItemType==ListItemType.Item)
             {
                 //load 1st avatar
+                this.NoComments =Convert.ToBoolean( DataBinder.Eval(e.Item.DataItem, "AllowComments"));
                 imgMain.ImageUrl = DataBinder.Eval(e.Item.DataItem, "Avatar").ToString();
                 imgMain.AlternateText = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
                 imgMain.ToolTip = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
