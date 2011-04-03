@@ -124,6 +124,7 @@
     <Content Include="Modules\MenuBar.ascx" />
     <Content Include="Modules\PostsPortlet.ascx" />
     <Content Include="Modules\QuickSearchBox.ascx" />
+    <Content Include="Modules\RelatedPostList.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
@@ -305,6 +306,13 @@
     </Compile>
     <Compile Include="Modules\QuickSearchBox.ascx.designer.cs">
       <DependentUpon>QuickSearchBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RelatedPostList.ascx.cs">
+      <DependentUpon>RelatedPostList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\RelatedPostList.ascx.designer.cs">
+      <DependentUpon>RelatedPostList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SideTabsBox.ascx.cs">
       <DependentUpon>SideTabsBox.ascx</DependentUpon>
