@@ -10,6 +10,8 @@ namespace NewsVn.Web.Modules
 {
     public partial class SpecialPostsPortlet : BaseUI.BaseModule
     {
+        public string CateTitle { get; set; }
+
         public object DataSource { get; set; }
         
         public string CssClass { get; set; }

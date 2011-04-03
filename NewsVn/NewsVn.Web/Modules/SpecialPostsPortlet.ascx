@@ -19,7 +19,7 @@
 </script>
 
 <asp:Panel ID="container" CssClass="special-posts portlet" runat="server">
-    <h2>Tin nổi bật</h2>
+    <h2><%=CateTitle %></h2>
     <div id="nivo">
         <asp:Repeater ID="rptHotNews" runat="server">
             <ItemTemplate>

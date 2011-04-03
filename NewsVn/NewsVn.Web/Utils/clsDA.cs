@@ -71,15 +71,24 @@ namespace NewsVn.Web.Utils
         /// <returns></returns>
         public static List<clsCurrency> Get_Currency_From_Bank(string url)
         {
-            XElement xCurrency = XElement.Load(url);
-            var data = xCurrency.Elements("Exrate").Select(p => new clsCurrency()
+            try
             {
-                CurrencyCode = p.Attribute("CurrencyCode").Value,
-                Buy = Convert.ToDecimal( p.Attribute("Buy").Value),
-                Sell =Convert.ToDecimal( p.Attribute("Sell").Value),
-            }).ToList();
+                XElement xCurrency = XElement.Load(url);
+                var data = xCurrency.Elements("Exrate").Select(p => new clsCurrency()
+                {
+                    CurrencyCode = p.Attribute("CurrencyCode").Value,
+                    Buy = Convert.ToDecimal(p.Attribute("Buy").Value),
+                    Sell = Convert.ToDecimal(p.Attribute("Sell").Value),
+                }).ToList();
 
-            return data;
+                return data;
+            }
+            catch (Exception)
+            {
+                return new List<clsCurrency>();
+            }
+            
+            
         }
     }
 }
