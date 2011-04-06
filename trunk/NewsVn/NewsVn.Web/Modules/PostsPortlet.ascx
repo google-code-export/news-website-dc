@@ -53,7 +53,7 @@
         <asp:Repeater runat="server" ID="rptFirstItem" 
             onitemdatabound="rptFirstItem_ItemDataBound">
             <ItemTemplate>
-                <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
+                <% if (NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                 <a href='<%#Eval("SeoUrl") %>' class="post-title"><%#Eval("Title") %></a>        
                 <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %></span>
                 <p><%# Eval("Description") %></p>
@@ -64,13 +64,13 @@
         <asp:Repeater ID="rptOtherItems" runat="server" >
             <ItemTemplate>
                 <li class='item-<%#Container.ItemIndex+2%>'>
-                    <% if (!NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
-                    <% if (!NoComments){ %><div class="wrap"><% } %>
+                    <% if (NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
+                    <% if (NoComments){ %><div class="wrap"><% } %>
                         <a class="post-title inline" href='<%#Eval("SeoUrl") %>'><%# Eval("Title") %></a> -
                         <span class="post-info">
                             <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy}") %>
                         </span>
-                    <% if (!NoComments){ %></div><% } %>
+                    <% if (NoComments){ %></div><% } %>
                     <span class="description"><%# Eval("Description") %></span>
                     
                 </li>

@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CommentBox.ascx.cs" Inherits="NewsVn.Web.Modules.CommentBox" %>
 
 <script type="text/javascript">
+    
     $(function () {
         showCommentDialog();
         showCommentList(1, false);

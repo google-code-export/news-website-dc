@@ -22,6 +22,33 @@ namespace NewsVn.Web.Modules {
         protected global::System.Web.UI.WebControls.Repeater rptCatePostList;
         
         /// <summary>
+        /// lnkbtnPrevious control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnPrevious;
+        
+        /// <summary>
+        /// lnkbtnNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnNext;
+        
+        /// <summary>
+        /// btnView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnView;
+        
+        /// <summary>
         /// txtGoldDate control.
         /// </summary>
         /// <remarks>

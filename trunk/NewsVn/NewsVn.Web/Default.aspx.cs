@@ -24,8 +24,8 @@ namespace NewsVn.Web
         {
             if (!IsPostBack)
             {
-                load_pletHotNews();
                 load_pletSpecialEvents();
+                load_pletHotNews();
                 load_pletLatestNews();
                 load_pletPosts();
                 load_sideTabBar();
@@ -122,7 +122,7 @@ namespace NewsVn.Web
                     adp.Avatar,
                     adp.SeoUrl,
                     adp.CreatedOn,
-                    AllowComments = true,
+                    AllowComments = false,
                     adp.Payment,
                     Comments = 0
                 }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.CreatedOn).Take(5).ToList();
@@ -156,14 +156,13 @@ namespace NewsVn.Web
         }
         void load_pletLatestNews()
         {
-            //p.PostComments.Count
             pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new {
                     p.ID,
                     p.Title,
                     p.ApprovedOn,
                     p.SeoUrl,
                     p.AllowComments,
-                    Cat_Name=p.Category.Name,
+                    Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
             pletLatestNews.DataBind();
