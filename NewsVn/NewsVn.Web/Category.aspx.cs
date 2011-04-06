@@ -35,25 +35,55 @@ namespace NewsVn.Web
                 }
                 load_pletHotNews();
                 load_pletLatestNews();
-                load_pletCatePostList();
+                DateTime searchDate = DateTime.Now;
+                int pageindex=0;
+                int.TryParse(Request.QueryString["p"] ,out pageindex);
+                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"], out searchDate))
+                {
+                    load_pletCatePostList(pageindex, true);    
+                }
+                else
+                {
+                    load_pletCatePostList(pageindex, false);
+                }
                 load_pletFocusPost();
             }
         }
         //lay tin tuc theo chu de
-        private void load_pletCatePostList()
+        private void load_pletCatePostList(int pageindex, bool isSearchByDate)
         {
-            pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
-                {
-                    p.ID,
-                    p.Title,
-                    p.Description,
-                    p.Avatar,
-                    p.SeoUrl,
-                    p.ApprovedOn,
-                    p.AllowComments,
-                    Comments = p.PostComments.Count()
-                }).OrderByDescending(p => p.ApprovedOn).Skip(7).Take(20).ToList();
+            if (isSearchByDate)
+            {
+                 pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
+                       && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
+                       ).Where(p=>  p.ApprovedOn.Value == DateTime.Parse(Request.QueryString["d"]))
+                      .Select(p => new
+                      {
+                          p.ID,
+                          p.Title,
+                          p.Description,
+                          p.Avatar,
+                          p.SeoUrl,
+                          p.ApprovedOn,
+                          p.AllowComments,
+                          Comments = p.PostComments.Count()
+                      }).OrderByDescending(p => p.ApprovedOn).ToList();
+            }
+            else
+            {
+                pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
+                     && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
+                    {
+                        p.ID,
+                        p.Title,
+                        p.Description,
+                        p.Avatar,
+                        p.SeoUrl,
+                        p.ApprovedOn,
+                        p.AllowComments,
+                        Comments = p.PostComments.Count()
+                    }).OrderByDescending(p => p.ApprovedOn).Skip(pageindex * 3).Take(3).ToList();
+            }
             pletCatePostList.DataBind();
         }
         //lay tin_hot theo chu de  va theo pageview cao nhat trong ngay
@@ -88,7 +118,6 @@ namespace NewsVn.Web
         //lay tin_moi_nhat theo chu de
         void load_pletLatestNews()
         {
-            //p.PostComments.Count
             pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
                 &&  p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
                 {
@@ -97,7 +126,7 @@ namespace NewsVn.Web
                     p.SeoUrl,
                     p.ApprovedOn,
                     p.AllowComments,
-                    Cat_Name = p.Category.Name,
+                    Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
             pletLatestNews.DataBind();
@@ -107,8 +136,10 @@ namespace NewsVn.Web
         void load_pletFocusPost()
         {
             var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true && p.ApprovedOn.Value.Month==DateTime.Now.Month
-                && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
+                && p.CheckPageView == true 
+                && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
+                .Where(p=> p.ApprovedOn.Value.AddDays(30)>=DateTime.Now)
+                .Select(p => new
                 {
                     p.ID,
                     p.Title,
@@ -119,7 +150,6 @@ namespace NewsVn.Web
                     p.PageView
                 }).OrderByDescending(p => p.PageView).Take(5).ToList();
 
-            //var data = clsPost.Load_Post_From_XML("Focus",5);
             pletFocusPost.Datasource = listData;
             pletFocusPost.DataBind();
         }

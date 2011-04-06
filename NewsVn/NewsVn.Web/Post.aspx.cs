@@ -102,8 +102,10 @@ namespace NewsVn.Web
         void load_pletFocusPost()
         {
             var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true && p.ApprovedOn.Value.Month == DateTime.Now.Month
-                && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
+                && p.CheckPageView == true
+                && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
+                .Where(p => p.ApprovedOn.Value.AddDays(30) >= DateTime.Now)
+                .Select(p => new
                 {
                     p.ID,
                     p.Title,
@@ -114,7 +116,6 @@ namespace NewsVn.Web
                     p.PageView
                 }).OrderByDescending(p => p.PageView).Take(5).ToList();
 
-            //var data = clsPost.Load_Post_From_XML("Focus",5);
             pletFocusPost.Datasource = listData;
             pletFocusPost.DataBind();
         }

@@ -409,7 +409,7 @@ $.Autocompleter.defaults = {
 	inputClass: "ac_input",
 	resultsClass: "ac_results",
 	loadingClass: "ac_loading",
-	minChars: 2,
+	minChars: 1,
 	delay: 400,
 	matchCase: false,
 	matchSubset: true,
@@ -612,7 +612,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
 		});
 		
 		if( options.width > 0 )
-			element.css("width", options.width);//duynp fix width 270 + 10
+			element.css("width", options.width);//duynp fix width 
 			
 		needsInit = false;
 	} 
@@ -722,7 +722,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
 		show: function() {
 			var offset = $(input).offset();
 			element.css({
-				width: typeof options.width == "string" || options.width > 0 ? options.width+10 : $(input).width()+10,
+				width: typeof options.width == "string" || options.width > 0 ? options.width : $(input).width(),
 				top: offset.top + input.offsetHeight,
 				left: offset.left
 			}).show();
