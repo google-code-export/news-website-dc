@@ -8,6 +8,7 @@
     <nsn:RelatedPostList runat="server" id="pletRelateionPostList" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" Runat="Server">
+    <nsn:QuickSearchBox ID="QuickSearchBox1" runat="server" />
     <nsn:FocusPostsPortlet ID="pletFocusPost" runat="server" />
     <nsn:AdBoxList ID="AdBoxList1" runat="server" />
     <nsn:HotVideoList ID="HotVideoList1" runat="server" />
