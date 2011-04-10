@@ -91,4 +91,22 @@ namespace NewsVn.Web.Utils
             
         }
     }
+    /// <summary>
+    /// "0:Toàn quốc", "1:Hà Nội", "2:Hồ Chí Minh", "3:Các tỉnh miền Bắc", "4:Các tỉnh miền Nam"
+    /// </summary>
+    public class clsCommon
+    {
+        public static string getLocationName(int LocationID)
+        {
+            string[] Location = { "Toàn quốc", "Hà Nội", "Hồ Chí Minh", "Các tỉnh miền Bắc", "Các tỉnh miền Nam"};
+            try
+            {
+                return Location[LocationID];
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+        }
+    }
 }

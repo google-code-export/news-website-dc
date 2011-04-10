@@ -28,70 +28,24 @@
 <div class="portlet special-adpost">
     <h2>Rao vặt nổi bật</h2>
     <ul id="adpost-list" class="post-item-list">
-        <li>
-            <asp:Image ID="Image1" ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" Width="130px" runat="server" />
-            <div class="post-item left">
-                <a href="#" class="post-title">Nhà đất: Tiêu đề 1</a>
-                <p>1. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</p>
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy, HH:mm:ss}", DateTime.Now) %> |
-                    Khu vực: <b>Hồ Chí Minh</b> |
-                    Đăng bởi: <b>Waston Nguyen</b>
-                </span>
-            </div>
-            <div class="clear"></div>
-        </li>
-        <li>
-            <asp:Image ID="Image2" ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" Width="130px" runat="server" />
-            <div class="post-item left">
-                <a href="#" class="post-title">Máy tính: Tiêu đề 1</a>
-                <p>1. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</p>
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy, HH:mm:ss}", DateTime.Now) %> |
-                    Khu vực: <b>Hồ Chí Minh</b> |
-                    Đăng bởi: <b>Waston Nguyen</b>
-                </span>
-            </div>
-            <div class="clear"></div>
-        </li>
-        <li>
-            <asp:Image ID="Image3" ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" Width="130px" runat="server" />
-            <div class="post-item left">
-                <a href="#" class="post-title">Làm đẹp: Tiêu đề 1</a>
-                <p>1. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</p>
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy, HH:mm:ss}", DateTime.Now) %> |
-                    Khu vực: <b>Hồ Chí Minh</b> |
-                    Đăng bởi: <b>Waston Nguyen</b>
-                </span>
-            </div>
-            <div class="clear"></div>
-        </li>
-        <li>
-            <asp:Image ID="Image4" ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" Width="130px" runat="server" />
-            <div class="post-item left">
-                <a href="#" class="post-title">Thiết bị văn phòng: Tiêu đề 1</a>
-                <p>1. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</p>
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy, HH:mm:ss}", DateTime.Now) %> |
-                    Khu vực: <b>Hồ Chí Minh</b> |
-                    Đăng bởi: <b>Waston Nguyen</b>
-                </span>
-            </div>
-            <div class="clear"></div>
-        </li>
-        <li>
-            <asp:Image ID="Image5" ImageUrl="~/resources/posts/t510695.jpg" AlternateText="Tiêu đề 1" ToolTip="Tiêu đề 1" CssClass="post-avatar left" Width="130px" runat="server" />
-            <div class="post-item left">
-                <a href="#" class="post-title">Tuyển dụng: Tiêu đề 1</a>
-                <p>1. Newsvn là tờ báo điện tử. mục đích đăng tải những thông tin mới về các vấn đề xã hội, giáo dục, thể thao, kinh tế đang diễn ra xung quanh ta đến với các độc giả. Là 1 trong những tờ báo điện tử của Việt Nam. Nên bố cục màu sắc của newsvn mang đậm màu sắc dân tộc. được thiết kế với những nền tảng công nghệ mới nhất</p>
-                <span class="post-info">
-                    <%= string.Format("{0:dddd, dd/MM/yyyy, HH:mm:ss}", DateTime.Now) %> |
-                    Khu vực: <b>Hồ Chí Minh</b> |
-                    Đăng bởi: <b>Waston Nguyen</b>
-                </span>
-            </div>
-            <div class="clear"></div>
-        </li>
+    <asp:Repeater runat="server" ID="rptSpecialAds">
+        <ItemTemplate>
+            <li>
+                <img src="../Resources/Posts/t510695.jpg" alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar left" width="130px" />
+                <div class="post-item left">
+                    <a href="#" class="post-title"><%#Eval("Name") %>: <%#Eval("Title") %></a>
+                    <p>
+                        <%#Eval("Content") %>
+                    </p>
+                    <span class="post-info">
+                        <%#string.Format("{0:dddd, dd/MM/yyyy, HH:mm}",Eval("CreatedOn") )%> |
+                        Khu vực: <b><%#Eval("Location") %></b> |
+                        Đăng bởi: <b><%#Eval("CreatedBy") %></b>
+                    </span>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </ItemTemplate>
+    </asp:Repeater>
     </ul>
 </div>

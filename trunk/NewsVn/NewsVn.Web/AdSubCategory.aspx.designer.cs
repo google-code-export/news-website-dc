@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NewsVn.Web.Modules {
+namespace NewsVn.Web {
     
     
-    public partial class AdPostsPortlet {
+    public partial class AdSubCategory {
         
         /// <summary>
-        /// container control.
+        /// pletCatAdsPost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel container;
+        protected global::NewsVn.Web.Modules.CategorizedAdPostList pletCatAdsPost;
         
         /// <summary>
-        /// rptsubCategories control.
+        /// AdSearchBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptsubCategories;
+        protected global::NewsVn.Web.Modules.AdSearchBox AdSearchBox1;
         
         /// <summary>
-        /// rptListAds control.
+        /// AdBoxList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptListAds;
+        protected global::NewsVn.Web.Modules.AdBoxList AdBoxList1;
     }
 }

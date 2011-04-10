@@ -9,6 +9,8 @@ using NewsVn.Data;
 using NewsVn.Core.Caching;
 using System.Text;
 using NewsVn.Web.Utils;
+using System.Threading;
+using System.Globalization;
 
 namespace NewsVn.Web.BaseUI
 {
@@ -65,5 +67,14 @@ namespace NewsVn.Web.BaseUI
             
             base.OnInit(e);
         }
+        
+        //public override void InitializeCulture()
+        //{
+        //        System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("vi-VN");
+        //        //System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+        //        System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+
+        //    this.InitializeCulture();
+        //}
     }
 }

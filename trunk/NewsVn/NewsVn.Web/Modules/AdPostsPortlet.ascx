@@ -1,142 +1,30 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdPostsPortlet.ascx.cs" Inherits="NewsVn.Web.Modules.AdPostsPortlet" %>
 
-<script runat="server">
-    public string Title { get; set; }
-    public string CssClass { get; set; }
-    public bool ClearLayout { get; set; }
-    public object DataSource { get; set; }
-
-    protected override void OnLoad(EventArgs e)
-    {
-        if (!string.IsNullOrEmpty(CssClass))
-        {
-            container.CssClass += " " + CssClass;
-        }
-
-        if (ClearLayout)
-        {
-            var clearDiv = new HtmlGenericControl("div");
-            clearDiv.Attributes.Add("class", "clear");
-            this.Controls.Add(clearDiv);
-        }
-    }
-
-    protected override void OnDataBinding(EventArgs e)
-    {
-
-    }
-</script>
-
 <asp:Panel ID="container" CssClass="cate-adposts portlet" Width="465" runat="server">
-    <script type="text/javascript">
-    
-    </script>
      <h2>
-        <a class="cate-title" href="adcategory.aspx"><%= Title %></a>
-        &raquo; <a style="text-transform:none;" href="javascript:void(0)">Mua</a>
-        &raquo; <a style="text-transform:none;" href="javascript:void(0)">Bán</a>
+        <a class="cate-title" href='<%=SeoUrl %>'><%= Title %></a>
+        <asp:Repeater runat="server" ID="rptsubCategories">
+            <ItemTemplate>
+                &raquo; <a style="text-transform:none;" href="javascript:void(0)"><%#Eval("Name") %></a>    
+            </ItemTemplate>
+        </asp:Repeater>
     </h2>
     <table class="ui-table" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td style="width:220px;"><a href="#"><b>Tin nổi bật</b></a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Toàn quốc</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#"><b>Tin nổi bật</b></a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hồ Chí Minh</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#"><b>Tin nổi bật</b></a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
-        <tr>
-            <td style="width:220px;"><a href="#">Tin nổi bật</a></td>
-            <td><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
-            <td style="width:120px;">Hà Nội</td>
-        </tr>
+        <asp:Repeater ID="rptListAds" runat="server" 
+            onitemdatabound="rptListAds_ItemDataBound">
+            <ItemTemplate>
+                <tr>
+                    <td style="width:220px;">
+                    <asp:HyperLink runat="server" ID="hplnk" />
+                    </td>
+                    <td><%#string.Format("{0:dd/MM/yyyy}", Eval("CreatedOn")) %></td>
+                    <td style="width:120px;"><%#Eval("Location") %></td>
+                </tr>        
+            </ItemTemplate>
+            <FooterTemplate>
+                <div style="text-align:center; padding-top:6px;"><asp:Label runat="server" ID="lblEmpty" Visible="false" Text="Không tìm thấy bài viết"></asp:Label></div>
+            </FooterTemplate>
+        </asp:Repeater>
     </table>
     <p>
         <a class="right" href="../adsubcategory.aspx">&raquo; Các tin khác</a>

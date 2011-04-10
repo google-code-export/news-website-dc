@@ -82,7 +82,7 @@ namespace NewsVn.Web
                         p.ApprovedOn,
                         p.AllowComments,
                         Comments = p.PostComments.Count()
-                    }).OrderByDescending(p => p.ApprovedOn).Skip(pageindex * 3).Take(3).ToList();
+                    }).OrderByDescending(p => p.ApprovedOn).Skip(pageindex * 20).Take(20).ToList();
             }
             pletCatePostList.DataBind();
         }

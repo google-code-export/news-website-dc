@@ -16,21 +16,12 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" Runat="Server">
-    <nsn:SpecialAdPostsPortlet ID="SpecialAdPostsPortlet1" runat="server" />
+    <nsn:SpecialAdPostsPortlet ID="pletSpecialAds" runat="server" />
     <nsn:AdGuideBox ID="AdGuideBox1" runat="server" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:AdSearchBox ID="AdSearchBox1" runat="server" />
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="extraContent" runat="server">
-    <nsn:AdPostsPortlet ID="AdPostsPortlet1" Title="Nhà đất" CssClass="left" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet2" Title="Ô tô - Xe máy" CssClass="right" ClearLayout="true" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet3" Title="Làm đẹp" CssClass="left" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet4" Title="Máy tính" CssClass="right" ClearLayout="true" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet5" Title="Điện tử - Điện lạnh" CssClass="left" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet6" Title="Điện thoại" CssClass="right" ClearLayout="true" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet7" Title="Dịch vụ tại nhà" CssClass="left" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet8" Title="Tuyển dụng" CssClass="right" ClearLayout="true" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet9" Title="Thiết bị văn phòng" CssClass="left" runat="server" />
-    <nsn:AdPostsPortlet ID="AdPostsPortlet10" Title="Nhắn tin" CssClass="right" ClearLayout="true" runat="server" />
+    <div id="AdPostArea" runat="server"></div>
 </asp:Content>
