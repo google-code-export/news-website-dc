@@ -472,6 +472,19 @@ body
     margin-left: 20px;
 }
 
+.adpost-search.portlet
+{
+    padding-bottom: 6px;    
+}
+
+.guide-box.portlet
+{
+    height:30px;
+    background:none;
+    padding:5px 2px 5px 5px;
+    margin-top:5px;
+}
+
 #comment_box .comment-list
 {
     width: 510px;    
