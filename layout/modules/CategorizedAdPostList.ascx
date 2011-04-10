@@ -18,283 +18,283 @@
             <th style="text-align:left;">Ngày đăng</th>
         </tr>
         <tr>
-            <td><a href="#"><b>Tin nổi bật</b></a></td>
+            <td><a href="../adpost.aspx"><b>Tin nổi bật</b></a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#"><b>Tin nổi bật</b></a></td>
+            <td><a href="../adpost.aspx"><b>Tin nổi bật</b></a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#"><b>Tin nổi bật</b></a></td>
+            <td><a href="../adpost.aspx"><b>Tin nổi bật</b></a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#"><b>Tin nổi bật</b></a></td>
+            <td><a href="../adpost.aspx"><b>Tin nổi bật</b></a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
         <tr>
-            <td><a href="#">Tin thông thường</a></td>
+            <td><a href="../adpost.aspx">Tin thông thường</a></td>
             <td style="width:80px;"><%= string.Format("{0:dd/MM/yyyy}", DateTime.Now) %></td>
         </tr>
     </table>
