@@ -52,6 +52,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdCategory.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="Images\footer_bg.jpg" />
     <Content Include="Images\footer_grass.jpg" />
@@ -81,6 +82,9 @@
     <Content Include="Images\ui\ui-icons_2e83ff_256x240.png" />
     <Content Include="Images\ui\ui-icons_ffffff_256x240.png" />
     <Content Include="Modules\AdBoxList.ascx" />
+    <Content Include="Modules\AdGuideBox.ascx" />
+    <Content Include="Modules\AdPostsPortlet.ascx" />
+    <Content Include="Modules\AdSearchBox.ascx" />
     <Content Include="Modules\CategorizedPostList.ascx" />
     <Content Include="Modules\CommentBox.ascx" />
     <Content Include="Modules\DetailedPostItem.ascx" />
@@ -126,6 +130,7 @@
     <Content Include="Modules\QuickSearchBox.ascx" />
     <Content Include="Modules\RelatedPostList.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
+    <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
     <Content Include="Modules\SpecialTargetManagement.aspx" />
@@ -180,6 +185,13 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdCategory.aspx.cs">
+      <DependentUpon>AdCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdCategory.aspx.designer.cs">
+      <DependentUpon>AdCategory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BaseUI\BaseMaster.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -205,6 +217,27 @@
     </Compile>
     <Compile Include="Modules\AdBoxList.ascx.designer.cs">
       <DependentUpon>AdBoxList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AdGuideBox.ascx.cs">
+      <DependentUpon>AdGuideBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AdGuideBox.ascx.designer.cs">
+      <DependentUpon>AdGuideBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AdPostsPortlet.ascx.cs">
+      <DependentUpon>AdPostsPortlet.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AdPostsPortlet.ascx.designer.cs">
+      <DependentUpon>AdPostsPortlet.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AdSearchBox.ascx.cs">
+      <DependentUpon>AdSearchBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AdSearchBox.ascx.designer.cs">
+      <DependentUpon>AdSearchBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\CategorizedPostList.ascx.cs">
       <DependentUpon>CategorizedPostList.ascx</DependentUpon>
@@ -321,6 +354,13 @@
     <Compile Include="Modules\SideTabsBox.ascx.designer.cs">
       <DependentUpon>SideTabsBox.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\SpecialAdPostsPortlet.ascx.cs">
+      <DependentUpon>SpecialAdPostsPortlet.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SpecialAdPostsPortlet.ascx.designer.cs">
+      <DependentUpon>SpecialAdPostsPortlet.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\SpecialEventsPortlet.ascx.cs">
       <DependentUpon>SpecialEventsPortlet.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,6 +424,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\FormRewiter.cs" />
     <Compile Include="Utils\NewsVnService.asmx.cs">
       <DependentUpon>NewsVnService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -425,6 +466,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Utils\AutoCompleteSV.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Browsers\Form.browser" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

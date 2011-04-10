@@ -21,6 +21,7 @@
     <div id="postArea" runat="server"></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" runat="server">
+    <nsn:QuickSearchBox ID="QuickSearchBox1" runat="server" />
     <nsn:AdBoxList ID="AdBoxList1" runat="server" />
     <nsn:SideTabsBox runat="server" ID="pletSideTabBar"  />
     <nsn:HotVideoList ID="HotVideoList1" runat="server" />
