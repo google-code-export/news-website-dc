@@ -17,6 +17,7 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" Runat="Server">
     <nsn:SpecialAdPostsPortlet runat="server" />
+    <nsn:AdGuideBox runat="server" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:AdSearchBox runat="server" />
