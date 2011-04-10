@@ -10,33 +10,24 @@
 namespace NewsVn.Web.Modules {
     
     
-    public partial class AdPostsPortlet {
+    public partial class CategorizedAdPostList {
         
         /// <summary>
-        /// container control.
+        /// rptAdsList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel container;
+        protected global::System.Web.UI.WebControls.Repeater rptAdsList;
         
         /// <summary>
-        /// rptsubCategories control.
+        /// txtGoldDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptsubCategories;
-        
-        /// <summary>
-        /// rptListAds control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptListAds;
+        protected global::System.Web.UI.WebControls.TextBox txtGoldDate;
     }
 }

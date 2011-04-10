@@ -37,6 +37,6 @@
         </ItemTemplate>
     </asp:Repeater>
     	<li>
-        <asp:HyperLink ID="HyperLink43" runat="server" NavigateUrl="#">Rao nhanh</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink43" runat="server" NavigateUrl="~/AdCategory.aspx">Rao nhanh</asp:HyperLink>
     </li>
 </ul>
