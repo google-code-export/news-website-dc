@@ -58,7 +58,8 @@
             <div class="clear"></div>
         </li>
         <li class="command">
-            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:-2px;" runat="server" />
+            <asp:HyperLink Text="Đăng mới" NavigateUrl="#" CssClass="button left" runat="server" />
+            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:0;" runat="server" />
             <div class="clear"></div>
         </li>
     </ul>
