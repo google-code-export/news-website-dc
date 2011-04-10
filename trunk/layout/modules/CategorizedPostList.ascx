@@ -317,7 +317,7 @@
     </div>
     <input class="button right" type="button" value="Xem" style="margin:0.5px 0 0 5px;" />&nbsp;
     <div class="textbox-icon right">
-        <asp:TextBox ID="txtGoldDate" CssClass="datepicker" style="width:150px" runat="server" />
+        <asp:TextBox ID="txtGoldDate" CssClass="datepicker" style="width:100px" runat="server" />
     </div>
     <div class="clear"></div>
 </div>
