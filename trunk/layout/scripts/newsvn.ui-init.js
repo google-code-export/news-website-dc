@@ -9,6 +9,16 @@
             primary: "ui-icon-search"
         }
     });
+    $(".button-ok").button({
+        icons: {
+            primary: "ui-icon-check"
+        }
+    });
+    $(".button-cancel").button({
+        icons: {
+            primary: "ui-icon-cancel"
+        }
+    });
 
     //table
     $(".ui-table tr:first-child:has(th)").addClass("ui-widget-header");

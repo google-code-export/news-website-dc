@@ -25,6 +25,11 @@
     cursor: pointer;
 }
 
+textarea
+{
+    vertical-align: top;    
+}
+
 /* Overrides 'selectmenu' styles */
 .select
 {
