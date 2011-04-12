@@ -12,13 +12,7 @@ namespace NewsVn.Web.Modules
         public Data.Post Datasource { get; set; }
         public bool AllowComment { get; set; }
         public int CountedComment { get; set; }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                
-            }
-        }
+        
         protected override void OnDataBinding(EventArgs e)
         {
             lblTitle.Text = Datasource.Title;

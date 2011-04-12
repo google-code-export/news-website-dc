@@ -72,7 +72,6 @@
                         </span>
                     <% if (NoComments){ %></div><% } %>
                     <span class="description"><%# Eval("Description") %></span>
-                    
                 </li>
             </ItemTemplate>
         </asp:Repeater>        

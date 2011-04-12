@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdCategory.aspx" />
+    <Content Include="AdPost.aspx" />
     <Content Include="AdSubCategory.aspx" />
     <Content Include="Category.aspx" />
     <Content Include="Images\footer_bg.jpg" />
@@ -89,6 +90,7 @@
     <Content Include="Modules\CategorizedAdPostList.ascx" />
     <Content Include="Modules\CategorizedPostList.ascx" />
     <Content Include="Modules\CommentBox.ascx" />
+    <Content Include="Modules\DetailedAdPostItem.ascx" />
     <Content Include="Modules\DetailedPostItem.ascx" />
     <Content Include="Modules\FocusPostsPortlet.ascx" />
     <Content Include="Modules\FooterCopyright.ascx" />
@@ -130,6 +132,7 @@
     <Content Include="Modules\MenuBar.ascx" />
     <Content Include="Modules\PostsPortlet.ascx" />
     <Content Include="Modules\QuickSearchBox.ascx" />
+    <Content Include="Modules\RelatedAdPostList.ascx" />
     <Content Include="Modules\RelatedPostList.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
     <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
@@ -193,6 +196,13 @@
     </Compile>
     <Compile Include="AdCategory.aspx.designer.cs">
       <DependentUpon>AdCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdPost.aspx.cs">
+      <DependentUpon>AdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdPost.aspx.designer.cs">
+      <DependentUpon>AdPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdSubCategory.aspx.cs">
       <DependentUpon>AdSubCategory.aspx</DependentUpon>
@@ -268,6 +278,13 @@
     </Compile>
     <Compile Include="Modules\CommentBox.ascx.designer.cs">
       <DependentUpon>CommentBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\DetailedAdPostItem.ascx.cs">
+      <DependentUpon>DetailedAdPostItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\DetailedAdPostItem.ascx.designer.cs">
+      <DependentUpon>DetailedAdPostItem.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\DetailedPostItem.ascx.cs">
       <DependentUpon>DetailedPostItem.ascx</DependentUpon>
@@ -355,6 +372,13 @@
     </Compile>
     <Compile Include="Modules\QuickSearchBox.ascx.designer.cs">
       <DependentUpon>QuickSearchBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RelatedAdPostList.ascx.cs">
+      <DependentUpon>RelatedAdPostList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\RelatedAdPostList.ascx.designer.cs">
+      <DependentUpon>RelatedAdPostList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\RelatedPostList.ascx.cs">
       <DependentUpon>RelatedPostList.ascx</DependentUpon>

@@ -20,6 +20,8 @@ namespace NewsVn.Web.Modules
 
         public bool ClearLayout { get; set; }
 
+        public string indexCtrl { get; set; }
+
         public object Datasource { get; set; }
         public object subDatasource { get; set; }
 
@@ -54,7 +56,7 @@ namespace NewsVn.Web.Modules
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType==ListItemType.AlternatingItem)
             {
                 HyperLink hplnk = (HyperLink)e.Item.FindControl("hplnk");
-                hplnk.NavigateUrl = DataBinder.Eval(e.Item.DataItem, "SeoUrl").ToString();
+                hplnk.NavigateUrl = "../AdPost.aspx?cp="+ DataBinder.Eval(e.Item.DataItem, "SeoUrl").ToString();
                 hplnk.Text = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
                 if (!Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "isFree")))
                 {

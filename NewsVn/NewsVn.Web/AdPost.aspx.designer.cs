@@ -7,63 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NewsVn.Web.Modules {
+namespace NewsVn.Web {
     
     
-    public partial class AdSearchBox {
+    public partial class AdPost {
         
         /// <summary>
-        /// txtSearch control.
+        /// pletAdsDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::NewsVn.Web.Modules.DetailedAdPostItem pletAdsDetail;
         
         /// <summary>
-        /// ddlLocation control.
+        /// pletAdsRelated control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
+        protected global::NewsVn.Web.Modules.RelatedAdPostList pletAdsRelated;
         
         /// <summary>
-        /// txtAdFromDate control.
+        /// AdSearchBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdFromDate;
+        protected global::NewsVn.Web.Modules.AdSearchBox AdSearchBox1;
         
         /// <summary>
-        /// txtAdToDate control.
+        /// AdBoxList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdToDate;
-        
-        /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-        
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::NewsVn.Web.Modules.AdBoxList AdBoxList1;
     }
 }

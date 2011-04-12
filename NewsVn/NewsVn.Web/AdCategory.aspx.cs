@@ -44,6 +44,7 @@ namespace NewsVn.Web
                 ctrPortletPost.Title = cate.Name;
                 ctrPortletPost.SeoName = cate.SeoName;
                 ctrPortletPost.SeoUrl = cate.SeoUrl;
+                ctrPortletPost.indexCtrl = i.ToString();
                 if (cate.Parent != null)
                 {
                     continue;

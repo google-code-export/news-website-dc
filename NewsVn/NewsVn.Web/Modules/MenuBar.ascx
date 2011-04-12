@@ -19,7 +19,7 @@
 
 <ul id="menu_bar">
     <li>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Home">Trang chủ</asp:HyperLink>        
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="Default.aspx">Trang chủ</asp:HyperLink>        
     </li>
     <asp:Repeater runat="server" ID="rptMenu" 
         onitemdatabound="rptMenu_ItemDataBound">

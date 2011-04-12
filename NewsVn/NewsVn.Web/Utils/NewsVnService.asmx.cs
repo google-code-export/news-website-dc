@@ -204,5 +204,65 @@ namespace NewsVn.Web.Utils
             return html.ToString();
         }
         #endregion
+
+        #region Ads
+        [WebMethod]
+        public string getAdsByAdsCat(string AdsCatName)
+        {
+            string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
+            var data = _AdPosts.Where(p => p.AdCategory.ID == int.Parse(array[0]))
+                    .Select(p => new
+                    {
+                        p.ID,
+                        p.Title,
+                        p.Content,
+                        p.Avatar,
+                        p.SeoUrl,
+                        p.CreatedOn,
+                        p.Payment,
+                        isFree = p.Payment <= 0 ? true : false,
+                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                    }).OrderByDescending(p => p.Payment).Take(20).ToList();
+            var html = new System.Text.StringBuilder();
+            
+            if (data.Count() >= 1)
+            {
+                int index = 0;
+                foreach (var itemAds in data)
+                {
+                    html.AppendLine("<tbody>");
+                    if (index % 2 == 0)
+                        html.AppendLine("<tr class='even'>");
+                    else
+                        html.AppendLine("<tr>");
+                    html.AppendLine("<td style='width: 220px;'>");
+                    html.AppendLine("<a style='font-weight: bold;' href='#'>" + itemAds.Title + "</a>");
+                    html.AppendLine("</td><td>");
+                    html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.CreatedOn));
+                    html.AppendLine("</td>");
+                    html.AppendLine("<td style='width: 120px;'>" + itemAds.Location + "</td>");
+                    html.AppendLine("</tr>");
+                    html.AppendLine("</tbody>");
+                    index++;
+                }
+            }
+            else
+            {
+                html.AppendLine("<div style='text-align: center; padding-top: 6px;'><span>Không tìm thấy bài viết</span></div>");
+            }
+            return html.ToString();
+        }
+        //check and set Ads CateID , Ads CateTitle
+        private string checkCateID_By_SEONAME(string seoNAME)
+        {
+            var cate = _AdCategories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name }).ToList();
+            if (cate.Count() > 0)
+            {
+                return cate[0].ID.ToString() + "$" + cate[0].Name;
+            }
+            else
+                return "-1$";
+        }
+        #endregion
     }
 }
