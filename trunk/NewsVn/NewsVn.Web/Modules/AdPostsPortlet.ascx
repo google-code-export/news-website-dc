@@ -1,11 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdPostsPortlet.ascx.cs" Inherits="NewsVn.Web.Modules.AdPostsPortlet" %>
 
+
 <asp:Panel ID="container" CssClass="cate-adposts portlet" Width="465" runat="server">
      <h2>
-        <a class="cate-title" href='<%=SeoUrl %>'><%= Title %></a>
+        <a id="lnkCatTitle" class="cate-title" href='AdSubCategory.aspx?ct=<%=SeoUrl %>'><%= Title %><input type="hidden" id="hidSeoUrl" value='<%= SeoUrl %>' /></a>
+        
         <asp:Repeater runat="server" ID="rptsubCategories">
             <ItemTemplate>
-                &raquo; <a style="text-transform:none;" href="javascript:void(0)"><%#Eval("Name") %></a>    
+                &raquo; <a id="lnkCatTitle" style="text-transform:none;" href="javascript:void(0);"><%#Eval("Name") %><input type="hidden" id="hidSeoUrl" value='<%#Eval("SeoUrl") %>' /></a>    
+                
             </ItemTemplate>
         </asp:Repeater>
     </h2>
@@ -22,11 +25,13 @@
                 </tr>        
             </ItemTemplate>
             <FooterTemplate>
-                <div style="text-align:center; padding-top:6px;"><asp:Label runat="server" ID="lblEmpty" Visible="false" Text="Không tìm thấy bài viết"></asp:Label></div>
+                <div style="text-align:center; padding-top:6px;">
+                    <asp:Label runat="server" ID="lblEmpty" Visible="false" Text="Không tìm thấy bài viết"></asp:Label>
+                </div>
             </FooterTemplate>
         </asp:Repeater>
     </table>
     <p>
-        <a class="right" href="../adsubcategory.aspx">&raquo; Các tin khác</a>
+        <a class="right" id="lnkOthersAds" href='AdSubCategory.aspx?ct=<%=SeoUrl %>'>&raquo; Các tin khác</a>
     </p>
 </asp:Panel>
