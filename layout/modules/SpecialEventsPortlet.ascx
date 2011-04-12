@@ -29,7 +29,7 @@
 <script type="text/javascript">
     $(function () {
         $("#event-list").bxCarousel({
-            display_num: 1,
+            display_num: 4,
             move: 1,
             auto_interval: 5000,
             auto: true,

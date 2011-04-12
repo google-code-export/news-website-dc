@@ -87,7 +87,7 @@
     <li>
         <asp:HyperLink runat="server" NavigateUrl="~/category.aspx">Tình yêu - Gia đình</asp:HyperLink>
         <div class="sub-menu">
-            <asp:HyperLink runat="server" NavigateUrl="#">Danh mục con</asp:HyperLink>
+            <asp:HyperLink runat="server" NavigateUrl="~/profilelist.aspx">Tìm bạn</asp:HyperLink>
             <asp:HyperLink runat="server" NavigateUrl="#">Danh mục con</asp:HyperLink>
             <asp:HyperLink runat="server" NavigateUrl="#">Danh mục con</asp:HyperLink>
             <asp:HyperLink runat="server" NavigateUrl="#">Danh mục con</asp:HyperLink>
