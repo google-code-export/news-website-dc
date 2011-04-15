@@ -1,6 +1,6 @@
 ﻿.textbox
 {
-    padding: 7px 5px;
+    padding: 5px;
     width: 270px;
     border: 1px solid #aed0ea;
     *vertical-align: middle;  
@@ -16,7 +16,7 @@
 {
     position: absolute;
     right: 4px;
-    top: 8px;    
+    top: 6px;    
 }
 
 .textbox-icon img
@@ -38,13 +38,13 @@ textarea
     background: #fff !important;
     display: inline-block;
     vertical-align: middle;
-    padding: 3px 3px;
+    padding: 0 3px;
 }
 
 .select-item
 {
     color: #333 !important;
-    padding: 4px 7px !important;
+    padding: 3px 5px !important;
     font-weight: normal;
 }
 

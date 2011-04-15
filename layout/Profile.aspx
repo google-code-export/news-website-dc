@@ -11,4 +11,5 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:ProfileSearchBox runat="server" />
+	<nsn:RandomProfileBox runat="server" />
 </asp:Content>

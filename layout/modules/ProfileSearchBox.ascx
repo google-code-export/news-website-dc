@@ -116,7 +116,7 @@
         <li>
             <p style="margin-top:0">
                 <span>Hút thuốc:</span>
-                <span style="margin-left:88px">Uống rượu:</span>
+                <span style="margin-left:80px">Uống rượu:</span>
             </p>
             <asp:DropDownList ID="ddlSmoke" runat="server">
                 <asp:ListItem Value="" Text="Sao cũng được" />
@@ -384,7 +384,7 @@
             </asp:DropDownList>
         </li>
         <li class="command">
-            <asp:HyperLink Text="Đăng hồ sơ" NavigateUrl="~/adform.aspx" CssClass="button left" runat="server" />
+            <asp:HyperLink Text="Hồ sơ của tôi" NavigateUrl="#" CssClass="button left" runat="server" />
             <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:-2px;" runat="server" />
             <div class="clear"></div>
         </li>
