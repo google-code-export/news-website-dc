@@ -472,7 +472,8 @@ body
     margin-left: 20px;
 }
 
-.adpost-search.portlet
+.adpost-search.portlet,
+.profile-search.portlet
 {
     padding-bottom: 6px;    
 }
@@ -483,6 +484,22 @@ body
     background:none;
     padding:5px 2px 5px 5px;
     margin-top:5px;
+}
+
+.random-profiles.portlet .profile-box p
+{
+	text-align: center;
+}
+
+.random-profiles.portlet .profile-sep
+{
+	border-bottom: 1px dotted #333;
+	margin: 10px 0;
+}
+
+.data-pager
+{
+    text-align: right;    
 }
 
 #comment_box .comment-list
