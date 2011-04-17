@@ -168,7 +168,8 @@ body
     background: none;   
 }
 
-.portlet h2 span
+.portlet h2 span,
+.portlet h2 .text-normal
 {
     text-transform: none;
 }

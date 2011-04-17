@@ -40,15 +40,5 @@
 				<img src="http://farm2.anhso.net/pic/l/110466/410201011813935/Advertising-180.jpg" alt="Quảng cáo 5" />
 			</a>
 		</li>
-		<li>
-			<a href="#" title="Quảng cáo 6" target="_blank" rel="nofollow">
-				<img src="http://farm1.anhso.net/pic/l/105353/197201022596645/Advertising-119.jpg" alt="Quảng cáo 6" />
-			</a>
-		</li>
-		<li>
-			<a href="#" title="Quảng cáo 7" target="_blank" rel="nofollow">
-				<img src="http://www.dressregistry.com/images/advertising.jpg" alt="Quảng cáo 7" />
-			</a>
-		</li>
 	</ul>
 </div>

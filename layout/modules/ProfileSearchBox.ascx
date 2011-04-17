@@ -385,7 +385,8 @@
         </li>
         <li class="command">
             <asp:HyperLink Text="Hồ sơ của tôi" NavigateUrl="#" CssClass="button left" runat="server" />
-            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:-2px;" runat="server" />
+            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:-2px;" runat="server"
+                PostBackUrl="~/profilesearchresult.aspx" />
             <div class="clear"></div>
         </li>
     </ul>

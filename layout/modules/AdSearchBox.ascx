@@ -59,7 +59,8 @@
         </li>
         <li class="command">
             <asp:HyperLink Text="Đăng mới" NavigateUrl="~/adform.aspx" CssClass="button left" runat="server" />
-            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:0;" runat="server" />
+            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:0;" runat="server"
+                PostBackUrl="~/adpostsearchresult.aspx" />
             <div class="clear"></div>
         </li>
     </ul>
