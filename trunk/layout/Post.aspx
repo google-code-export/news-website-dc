@@ -8,5 +8,8 @@
     <nsn:RelatedPostList runat="server" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" Runat="Server">
+    <nsn:QuickSearchBox runat="server" />        
     <nsn:FocusPostsPortlet runat="server" />
+    <nsn:AdBoxList runat="server" />
+    <nsn:HotVideoList runat="server" />
 </asp:Content>

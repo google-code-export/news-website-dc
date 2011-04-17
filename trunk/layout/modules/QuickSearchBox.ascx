@@ -28,6 +28,6 @@
 	<h2>Tìm kiếm</h2>
 	<div class="textbox-icon">
         <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" />
-        <asp:LinkButton CssClass="ui-icon ui-icon-search" runat="server" />
+        <asp:LinkButton CssClass="ui-icon ui-icon-search" PostBackUrl="~/postsearchresult.aspx" runat="server" />
     </div>
 </div>
