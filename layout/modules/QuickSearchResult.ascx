@@ -31,7 +31,7 @@
 	}
 </script>
 
-<div id="resultPosts" class="portlet">
+<div class="portlet">
     <h2>
         <%= string.Format("{0:N0}", 1234) %>
         Kết quả cho từ khóa
