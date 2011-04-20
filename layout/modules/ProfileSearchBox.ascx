@@ -130,7 +130,7 @@
             </asp:DropDownList>
         </li>
         <li>
-            <p style="margin-top:0">Khu vực:</p>
+            <p style="margin-top:0">Tỉnh/Thành phố:</p>
             <asp:TextBox ID="txtLocation" runat="server" />
         </li>
         <li>
