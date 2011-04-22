@@ -2,7 +2,7 @@
 {
     padding: 5px;
     width: 270px;
-    border: 1px solid #aed0ea;
+    border: 1px solid #FFB4AE;
     *vertical-align: middle;  
 }
 
@@ -34,7 +34,7 @@ textarea
 .select
 {
     color: #333;
-    border: 1px solid #aed0ea !important;
+    border: 1px solid #FFB4AE !important;
     background: #fff !important;
     display: inline-block;
     vertical-align: middle;
@@ -51,13 +51,13 @@ textarea
 .ui-table
 {
     border-collapse: collapse;    
-    border: 1px solid #aed0ea;
+    border: 1px solid #FFB4AE;
     width: 100%;
 }
 
 .ui-table .even
 {
-    background: #d7ebf9;  
+    background: #feeceb;  
 }
 
 .ui-table th, .ui-table td
