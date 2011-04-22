@@ -21,7 +21,7 @@
         Thông tin của:
         <span>Ham hố lãng tử</span>
         <a href="#" class="text-normal font-normal right">
-            <asp:Image ImageUrl="~/images/icons/mail.png" runat="server" style="vertical-align:middle" />
+            <asp:Image ImageUrl="~/images/icons/mail.png" runat="server" style="vertical-align:top;margin-top:12px" />
             Nhắn tin
         </a>
         <div class="clear"></div>
