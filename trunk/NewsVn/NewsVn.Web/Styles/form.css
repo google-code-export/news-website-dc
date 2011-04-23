@@ -1,8 +1,8 @@
 ﻿.textbox
 {
-    padding: 7px 5px;
+    padding: 5px;
     width: 270px;
-    border: 1px solid #aed0ea;
+    border: 1px solid #FFB4AE;
     *vertical-align: middle;  
 }
 
@@ -16,7 +16,7 @@
 {
     position: absolute;
     right: 4px;
-    top: 8px;    
+    top: 6px;    
 }
 
 .textbox-icon img
@@ -25,34 +25,39 @@
     cursor: pointer;
 }
 
+textarea
+{
+    vertical-align: top;    
+}
+
 /* Overrides 'selectmenu' styles */
 .select
 {
     color: #333;
-    border: 1px solid #aed0ea !important;
+    border: 1px solid #FFB4AE !important;
     background: #fff !important;
     display: inline-block;
     vertical-align: middle;
-    padding: 3px 3px;
+    padding: 0 3px;
 }
 
 .select-item
 {
     color: #333 !important;
-    padding: 4px 7px !important;
+    padding: 3px 5px !important;
     font-weight: normal;
 }
 
 .ui-table
 {
     border-collapse: collapse;    
-    border: 1px solid #aed0ea;
+    border: 1px solid #FFB4AE;
     width: 100%;
 }
 
 .ui-table .even
 {
-    background: #d7ebf9;  
+    background: #feeceb;  
 }
 
 .ui-table th, .ui-table td
