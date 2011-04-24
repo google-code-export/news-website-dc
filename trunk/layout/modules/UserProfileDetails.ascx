@@ -16,11 +16,19 @@
     }
 </script>
 
+<script type="text/javascript">
+    function gotoProfileCommentBox() {
+        $("html, body").animate({
+            scrollTop: $("#pmessageform_box").offset().top
+        }, 1000);
+    }
+</script>
+
 <div class="portlet">
     <h2>
         Thông tin của:
         <span>Ham hố lãng tử</span>
-        <a href="#" class="text-normal font-normal right">
+        <a href="javascript:void(0)" onclick="gotoProfileCommentBox()" class="text-normal font-normal right">
             <asp:Image ImageUrl="~/images/icons/mail.png" runat="server" style="vertical-align:top;margin-top:12px" />
             Nhắn tin
         </a>
@@ -38,6 +46,7 @@
             <td style="width:303px">hamho_langtu</td>
             <td rowspan="15" valign="top" style="width:155px;background:#fff;padding-top:0">
                 <%--Every user has maximum 3 avatars, first avatar will be shown on profile list, if user didnt upload an avatar, use default 'No Photo' image in replace--%>
+                <%--In database, each image url will be separated by ';'--%>
                 <asp:Image ImageUrl="~/resources/Profiles/no_photo.gif" AlternateText="Nickname" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
                 <asp:Image ImageUrl="~/resources/Profiles/no_photo.gif" AlternateText="Nickname" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
                 <asp:Image ImageUrl="~/resources/Profiles/no_photo.gif" AlternateText="Nickname" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />

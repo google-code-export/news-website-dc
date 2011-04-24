@@ -508,6 +508,41 @@ body
     text-align: right;    
 }
 
+.imagehead-list li
+{
+    border-bottom: 1px dotted #333333;
+    padding: 7px 0;
+}
+
+.imagehead-list li.head
+{
+    padding: 0 0 7px;
+}
+
+.imagehead-list li.tail
+{
+    padding: 7px 0 0;
+    border: 0;
+}
+
+.imagehead-list img
+{
+    vertical-align: bottom;    
+}
+
+.imagehead-list .inline
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 220px;
+    margin-left: 6px;
+}
+
+.imagehead-list i
+{
+    font-size: 10px;    
+}
+
 #comment_box .comment-list
 {
     width: 510px;    

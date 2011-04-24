@@ -46,7 +46,19 @@
 
         $(".profile-search select").next(".ui-selectmenu").addClass("select");
         $(".profile-search select").next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
+
+        $(".dialog").dialog({
+            autoOpen: false,
+            resizable: false,
+            modal: true,
+            width: 245, height: 100
+        });
     });
+
+    function openLoginConfirm() {
+        $("#confirmBox").dialog("open");
+        return false;
+    }
 </script>
 
 <div class="side-part profile-search portlet">
@@ -384,7 +396,25 @@
             </asp:DropDownList>
         </li>
         <li class="command">
-            <asp:HyperLink Text="Hồ sơ của tôi" NavigateUrl="#" CssClass="button left" runat="server" />
+            <asp:LoginView runat="server">
+                <AnonymousTemplate>
+                    <div id="confirmBox" class="dialog" title="Bạn chưa đăng nhập">
+                        <br />
+                        <asp:HyperLink CssClass="button-login" NavigateUrl="~/account/form/login.aspx" Text="Đăng nhập" runat="server" />
+                        <asp:HyperLink CssClass="button-register" NavigateUrl="~/account/form/signup.aspx" Text="Đăng ký" runat="server"
+                            style="margin-left:4px" />
+                    </div>
+                    <asp:LinkButton Text="Hồ sơ của tôi" CssClass="button left" runat="server"
+                        OnClientClick="return openLoginConfirm()" />
+                </AnonymousTemplate>
+                <RoleGroups>
+                    <asp:RoleGroup Roles="Guest">
+                        <ContentTemplate>
+                            <asp:HyperLink Text="Hồ sơ của tôi" NavigateUrl="#" CssClass="button left" runat="server" />
+                        </ContentTemplate>                        
+                    </asp:RoleGroup>
+                </RoleGroups>
+            </asp:LoginView>
             <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:-2px;" runat="server"
                 PostBackUrl="~/profilesearchresult.aspx" />
             <div class="clear"></div>
