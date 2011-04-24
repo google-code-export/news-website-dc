@@ -12,5 +12,5 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:ProfileSearchBox runat="server" />
-    <nsn:UserConversationBox runat="server" />
+    <nsn:RecentReceivedCommentBox runat="server" />
 </asp:Content>
