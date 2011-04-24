@@ -30,7 +30,7 @@
             $("a[id=lnkCatTitle]").click(function () {
                 var objContainer = $(this).parents("[id$=container]")
                 var lnkOtherAds = $("#" + objContainer.attr("id") + " a[id$=lnkOthersAds]");
-                lnkOtherAds.attr("href", "AdSubCategory.aspx?ct="+$(this).children().val())
+                lnkOtherAds.attr("href", "AdSubCategory.aspx?ct=" + $(this).children().val())
                 getNewsAds($(this).children().val(), objContainer);
             });
         });
@@ -45,5 +45,6 @@
             }
         });
     }
+    
     </script>
 </asp:Content>

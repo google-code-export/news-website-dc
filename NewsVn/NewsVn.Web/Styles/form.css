@@ -25,6 +25,11 @@
     cursor: pointer;
 }
 
+.checkbox
+{
+    vertical-align: bottom;    
+}
+
 textarea
 {
     vertical-align: top;    
@@ -92,4 +97,9 @@ textarea
 .ui-form label.forarea
 {
     vertical-align: top;    
+}
+
+.ui-form .checkbox-label
+{
+    width: auto;    
 }

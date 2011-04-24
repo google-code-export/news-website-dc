@@ -58,7 +58,7 @@
             <div class="clear"></div>
         </li>
         <li class="command">
-            <asp:HyperLink ID="HyperLink1" Text="Đăng mới" NavigateUrl="~/adform.aspx" CssClass="button left" runat="server" />
+            <asp:HyperLink ID="HyperLink1" Text="Đăng mới" NavigateUrl="../AdFormBox.aspx" CssClass="button left" runat="server" />
             <asp:LinkButton ID="LinkButton1" Text="Tìm" CssClass="button-search right" style="margin-right:0;" runat="server" />
             <div class="clear"></div>
         </li>

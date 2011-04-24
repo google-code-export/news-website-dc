@@ -58,7 +58,7 @@ namespace NewsVn.Web
                 Control UC_PortletPost = LoadControl("~/Modules/PostsPortlet.ascx");
                 var ctrPortletPost = ((Modules.PostsPortlet)UC_PortletPost);
                 ctrPortletPost.Title = cate.Name;
-                ctrPortletPost.SeoName = cate.SeoName;
+                ctrPortletPost.SeoName = "category.aspx?ct=" + cate.SeoName;
                 if (cate.Parent != null)
                 {
                     continue;
@@ -75,22 +75,11 @@ namespace NewsVn.Web
                         p.CreatedOn,
                         p.AllowComments,
                         Comments = p.PostComments.Count
-                    }).OrderByDescending(p => p.CreatedOn).Take(1).ToList();
+                    }).OrderByDescending(p => p.CreatedOn);
 
-                ctrPortletPost.oActivePost = oActivePost;
+                ctrPortletPost.oActivePost = oActivePost.Take(1).ToList();
                 //load 4th news
-                ctrPortletPost.OtherPosts = _Posts.Where(p => p.Category.ID == cate.ID || (p.Category.Parent != null && p.Category.Parent.ID == cate.ID) && cate.Actived == true)
-                    .Select(p => new
-                    {
-                        p.ID,
-                        p.Title,
-                        p.Description,
-                        p.Avatar,
-                        p.SeoUrl,
-                        p.CreatedOn,
-                        p.AllowComments,
-                        Comments = p.PostComments.Count()
-                    }).OrderByDescending(p => p.CreatedOn).Skip(1).Take(4).ToList();
+                ctrPortletPost.OtherPosts = oActivePost.Skip(1).Take(4).ToList();
                 //set position
                 if (indexArea % 2 == 0)
                     ctrPortletPost.CssClass = "left";
@@ -113,20 +102,21 @@ namespace NewsVn.Web
             ctrPortletPost_Ad.CssClass = "right";
             ctrPortletPost_Ad.ClearLayout = true;
             //bind control
-            ctrPortletPost_Ad.oActivePost = _AdPosts.Where(adp => adp.Actived == true && adp.ExpiredOn >= DateTime.Now)
+            var IOrderQueryableData = _AdPosts.Where(adp => adp.Actived == true && adp.ExpiredOn >= DateTime.Now)
                 .Select(adp => new
                 {
                     adp.ID,
                     adp.Title,
-                    Description=adp.Content,
-                    adp.Avatar,
+                    Description = adp.Content,
+                    Avatar = adp.Avatar.Length == 0 ? "resources/profiles/no_photo.gif" : adp.Avatar,
                     adp.SeoUrl,
                     adp.CreatedOn,
                     AllowComments = false,
                     adp.Payment,
                     Comments = 0
-                }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.CreatedOn).Take(5).ToList();
-                
+                }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.CreatedOn);
+            ctrPortletPost_Ad.oActivePost = IOrderQueryableData.Take(1).ToList();
+            ctrPortletPost_Ad.OtherPosts = IOrderQueryableData.Skip(1).Take(5).ToList();
             ctrPortletPost_Ad.DataBind();
             postArea.Controls.Add(ctrPortletPost_Ad);
         }

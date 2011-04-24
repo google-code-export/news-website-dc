@@ -24,6 +24,7 @@ namespace NewsVn.Web
                 .Select(p => new
                 {
                     p.AdCategory.Name,
+                    p.Avatar,
                     p.Title,
                     p.Content,
                     p.Payment,
