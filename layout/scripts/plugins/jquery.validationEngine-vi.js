@@ -48,7 +48,7 @@
                 },
                 "equals": {
                     "regex": "none",
-                    "alertText": "* Fields do not match"
+                    "alertText": "* Giá trị không trùng khớp"
                 },
                 "phone": {
                     // credit: jquery.h5validate.js / orefalo

@@ -51,4 +51,7 @@
     //list
     $(".imagehead-list li:first-child").addClass("head");
     $(".imagehead-list li:last-child").addClass("tail");
+
+    //wizard
+    $(".ui-wizard table").attr({ "cellpadding": 0, "cellspacing": 0 });
 });
