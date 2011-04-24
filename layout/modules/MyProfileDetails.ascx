@@ -1,33 +1,15 @@
-﻿<%@ Control Language="C#" ClassName="UserProfileDetails" %>
+﻿<%@ Control Language="C#" ClassName="MyProfileDetails" %>
 
 <script runat="server">
-    //Sample property used only for building layout
-    //Replace with real UserProfile.ShowEmail
-    public bool ShowEmail { get; set; }
-    //Sample property used only for building layout
-    //Replace with real UserProfile.ShowPhone
-    public bool ShowPhone { get; set; }
-    //Use to set sample properties
-    //used only for building layout
-    protected void Page_Load(object sender, EventArgs args)
-    {
-        this.ShowEmail = true;
-        this.ShowPhone = true;
-    }
-</script>
 
-<script type="text/javascript">
-    
 </script>
 
 <div class="portlet">
     <h2>
-        Thông tin của:
+        Thông tin của bạn:
         <span>Ham hố lãng tử</span>
-        <a href="javascript:void(0)" onclick="" class="text-normal font-normal right">
-            <asp:Image ImageUrl="~/images/icons/mail.png" runat="server" style="vertical-align:top;margin-top:12px" />
-            Nhắn tin
-        </a>
+        <asp:HyperLink Text="Chỉnh sửa" NavigateUrl="~/account/guest/editprofile.aspx" runat="server"
+            CssClass="text-normal font-normal right" />
         <div class="clear"></div>
     </h2>
     <table class="ui-table" border="0" cellpadding="0" cellspacing="0">
@@ -35,6 +17,7 @@
             <th colspan="3" align="left">
                 Hiện tại: <%= string.Format("{0:dd/MM/yyyy HH:mm:ss}", DateTime.Now) %>
                 | Xem: <%= string.Format("{0:N0}", 1234) %>
+                | Bình luận: <%= string.Format("{0:N0}", 28) %>
             </th>
         </tr>
         <tr>
@@ -104,18 +87,14 @@
             <td><b>Nghề nghiệp:</b></td>
             <td>Sẽ nói sau</td>
         </tr>
-        <% if (ShowEmail) { %>
-            <tr>
-                <td><b>Email:</b></td>
-                <td colspan="2">hamho_langtu@yahoo.com</td>
-            </tr>
-        <% } %>
-        <% if (ShowPhone) { %>
-            <tr>
-                <td><b>Điện thoại:</b></td>
-                <td colspan="2">0909.909090</td>
-            </tr>
-        <% } %>
+        <tr>
+            <td><b>Email:</b></td>
+            <td colspan="2">hamho_langtu@yahoo.com</td>
+        </tr>
+        <tr>
+            <td><b>Điện thoại:</b></td>
+            <td colspan="2">0909.909090</td>
+        </tr>
         <tr>
             <td><b>Bật mí về bản thân:</b></td>
             <td colspan="2">Hơi dâm dê vô giáo dục chút nhưng cũng rất gă lăng.. tăn</td>
