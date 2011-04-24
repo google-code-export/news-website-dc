@@ -52,7 +52,10 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Form\Login.aspx" />
+    <Content Include="Account\Form\Signup.aspx" />
     <Content Include="AdCategory.aspx" />
+    <Content Include="AdFormBox.aspx" />
     <Content Include="AdPost.aspx" />
     <Content Include="AdSubCategory.aspx" />
     <Content Include="Category.aspx" />
@@ -83,6 +86,7 @@
     <Content Include="Images\ui\ui-icons_bd0d0d_256x240.png" />
     <Content Include="Images\ui\ui-icons_ffffff_256x240.png" />
     <Content Include="Modules\AdBoxList.ascx" />
+    <Content Include="Modules\AdFormBox.ascx" />
     <Content Include="Modules\AdGuideBox.ascx" />
     <Content Include="Modules\AdPostsPortlet.ascx" />
     <Content Include="Modules\AdSearchBox.ascx" />
@@ -130,22 +134,36 @@
     <Content Include="Modules\LatestPostsPortlet.ascx" />
     <Content Include="Modules\MenuBar.ascx" />
     <Content Include="Modules\PostsPortlet.ascx" />
+    <Content Include="Modules\ProfileSearchBox.ascx" />
     <Content Include="Modules\QuickSearchBox.ascx" />
     <Content Include="Modules\RelatedAdPostList.ascx" />
     <Content Include="Modules\RelatedPostList.ascx" />
+    <Content Include="Modules\ResultProfilesearchResult.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
     <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
     <Content Include="Modules\SpecialTargetManagement.aspx" />
     <Content Include="Modules\Special_Target_Management.ascx" />
+    <Content Include="Modules\UserConversationBox.ascx" />
+    <Content Include="Modules\UserProfileDetails.ascx" />
+    <Content Include="Modules\UserProfileList.ascx" />
     <Content Include="Post.aspx" />
+    <Content Include="Profile.aspx" />
+    <Content Include="Modules\ProfileCommentBox.ascx" />
+    <Content Include="ProfileList.aspx" />
+    <Content Include="ProfileSearchResult.aspx" />
+    <Content Include="Modules\RandomProfileBox.ascx" />
+    <Content Include="Resources\Posts\homevn1.jpg" />
     <Content Include="Resources\Posts\t510695.jpg" />
     <Content Include="Resources\Posts\t510696.jpg" />
     <Content Include="Resources\Posts\t510697.jpg" />
     <Content Include="Resources\Posts\t510698.jpg" />
     <Content Include="Resources\Posts\t623236.gif" />
     <Content Include="Resources\Posts\t623236.jpg" />
+    <Content Include="Resources\Profiles\5464747701_4940c5613a_b.jpg" />
+    <Content Include="Resources\Profiles\MisterVN2010.jpg" />
+    <Content Include="Resources\Profiles\no_photo.gif" />
     <Content Include="Resources\Xml\Captcha.xml" />
     <Content Include="Resources\Xml\category.xml">
       <SubType>Designer</SubType>
@@ -169,6 +187,8 @@
     <Content Include="Scripts\plugins\jquery.text-overflow.js" />
     <Content Include="Scripts\plugins\jquery.ui.datepicker-vi.js" />
     <Content Include="Scripts\plugins\jquery.ui.selectmenu.js" />
+    <Content Include="Scripts\plugins\jquery.validationEngine-vi.js" />
+    <Content Include="Scripts\plugins\jquery.validationEngine.js" />
     <Content Include="Scripts\plugins\swfobject.js" />
     <Content Include="Styles\fancybox.css" />
     <Content Include="Styles\form.css" />
@@ -178,6 +198,7 @@
     <Content Include="Styles\ui.css" />
     <Content Include="Styles\user-lte-ie7.css" />
     <Content Include="Styles\user.css" />
+    <Content Include="Styles\validation.css" />
     <Content Include="Utils\NewsVnService.asmx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -189,12 +210,33 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Form\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Form\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Form\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Form\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdCategory.aspx.cs">
       <DependentUpon>AdCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdCategory.aspx.designer.cs">
       <DependentUpon>AdCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdFormBox.aspx.cs">
+      <DependentUpon>AdFormBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdFormBox.aspx.designer.cs">
+      <DependentUpon>AdFormBox.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdPost.aspx.cs">
       <DependentUpon>AdPost.aspx</DependentUpon>
@@ -235,6 +277,13 @@
     </Compile>
     <Compile Include="Modules\AdBoxList.ascx.designer.cs">
       <DependentUpon>AdBoxList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AdFormBox.ascx.cs">
+      <DependentUpon>AdFormBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AdFormBox.ascx.designer.cs">
+      <DependentUpon>AdFormBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\AdGuideBox.ascx.cs">
       <DependentUpon>AdGuideBox.ascx</DependentUpon>
@@ -365,6 +414,13 @@
     <Compile Include="Modules\PostsPortlet.ascx.designer.cs">
       <DependentUpon>PostsPortlet.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ProfileSearchBox.ascx.cs">
+      <DependentUpon>ProfileSearchBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ProfileSearchBox.ascx.designer.cs">
+      <DependentUpon>ProfileSearchBox.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\QuickSearchBox.ascx.cs">
       <DependentUpon>QuickSearchBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -385,6 +441,13 @@
     </Compile>
     <Compile Include="Modules\RelatedPostList.ascx.designer.cs">
       <DependentUpon>RelatedPostList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ResultProfilesearchResult.ascx.cs">
+      <DependentUpon>ResultProfilesearchResult.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ResultProfilesearchResult.ascx.designer.cs">
+      <DependentUpon>ResultProfilesearchResult.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SideTabsBox.ascx.cs">
       <DependentUpon>SideTabsBox.ascx</DependentUpon>
@@ -428,6 +491,27 @@
     <Compile Include="Modules\Special_Target_Management.ascx.designer.cs">
       <DependentUpon>Special_Target_Management.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\UserConversationBox.ascx.cs">
+      <DependentUpon>UserConversationBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\UserConversationBox.ascx.designer.cs">
+      <DependentUpon>UserConversationBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\UserProfileDetails.ascx.cs">
+      <DependentUpon>UserProfileDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\UserProfileDetails.ascx.designer.cs">
+      <DependentUpon>UserProfileDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\UserProfileList.ascx.cs">
+      <DependentUpon>UserProfileList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\UserProfileList.ascx.designer.cs">
+      <DependentUpon>UserProfileList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Post.aspx.cs">
       <DependentUpon>Post.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -435,7 +519,42 @@
     <Compile Include="Post.aspx.designer.cs">
       <DependentUpon>Post.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ProfileCommentBox.ascx.cs">
+      <DependentUpon>ProfileCommentBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\ProfileCommentBox.ascx.designer.cs">
+      <DependentUpon>ProfileCommentBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileList.aspx.cs">
+      <DependentUpon>ProfileList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfileList.aspx.designer.cs">
+      <DependentUpon>ProfileList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileSearchResult.aspx.cs">
+      <DependentUpon>ProfileSearchResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfileSearchResult.aspx.designer.cs">
+      <DependentUpon>ProfileSearchResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Modules\RandomProfileBox.ascx.cs">
+      <DependentUpon>RandomProfileBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\RandomProfileBox.ascx.designer.cs">
+      <DependentUpon>RandomProfileBox.ascx</DependentUpon>
+    </Compile>
     <Compile Include="User.master.cs">
       <DependentUpon>User.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -475,6 +594,7 @@
     <Folder Include="Account\SiteAdmin\" />
     <Folder Include="Account\SysAdmin\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Resources\Ads\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewsVn.Core\NewsVn.Core.csproj">

@@ -24,14 +24,13 @@
         }
     });
 </script>
-
 <div class="portlet special-adpost">
     <h2>Rao vặt nổi bật</h2>
     <ul id="adpost-list" class="post-item-list">
     <asp:Repeater runat="server" ID="rptSpecialAds">
         <ItemTemplate>
             <li>
-                <img src="../Resources/Posts/t510695.jpg" alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar left" width="130px" />
+                <img src='<%# Page.ResolveUrl((string)DataBinder.Eval(Container.DataItem, "Avatar")) %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar left" width="130px" />
                 <div class="post-item left">
                     <a href="#" class="post-title"><%#Eval("Name") %>: <%#Eval("Title") %></a>
                     <p>

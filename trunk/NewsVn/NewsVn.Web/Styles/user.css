@@ -168,9 +168,15 @@ body
     background: none;   
 }
 
-.portlet h2 span
+.portlet h2 span,
+.portlet h2 .text-normal
 {
     text-transform: none;
+}
+
+.portlet h2 .font-normal
+{
+    font-weight: normal;
 }
 
 .portlet h2 .rss
@@ -472,7 +478,8 @@ body
     margin-left: 20px;
 }
 
-.adpost-search.portlet
+.adpost-search.portlet,
+.profile-search.portlet
 {
     padding-bottom: 6px;    
 }
@@ -483,6 +490,57 @@ body
     background:none;
     padding:5px 2px 5px 5px;
     margin-top:5px;
+}
+
+.random-profiles.portlet .profile-box p
+{
+	text-align: center;
+}
+
+.random-profiles.portlet .profile-sep
+{
+	border-bottom: 1px dotted #333;
+	margin: 10px 0;
+}
+
+.data-pager
+{
+    text-align: right;    
+}
+
+.imagehead-list li
+{
+    border-bottom: 1px dotted #333333;
+    padding: 7px 0;
+}
+
+.imagehead-list li.head
+{
+    padding: 0 0 7px;
+}
+
+.imagehead-list li.tail
+{
+    padding: 7px 0 0;
+    border: 0;
+}
+
+.imagehead-list img
+{
+    vertical-align: bottom;    
+}
+
+.imagehead-list .inline
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 220px;
+    margin-left: 6px;
+}
+
+.imagehead-list i
+{
+    font-size: 10px;    
 }
 
 #comment_box .comment-list
@@ -523,6 +581,32 @@ body
 #comment_box .ui-form
 {
     width: 348px;
+}
+
+#adform_box .ui-form li
+{
+    position: relative;    
+}
+
+#adform_box .ui-form label
+{
+    width: 100px;
+}
+
+#adform_box .ui-form .file-upload
+{
+    position: absolute;
+    height: 30px;
+    right: 0;
+    z-index: 50;
+}
+
+#adform_box .ui-form .decoy
+{
+    position: absolute;
+    left: 105px;
+    z-index: -1;
+    visibility: hidden;
 }
 
 #footer

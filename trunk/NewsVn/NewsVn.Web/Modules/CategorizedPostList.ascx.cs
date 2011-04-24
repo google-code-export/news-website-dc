@@ -24,8 +24,8 @@ namespace NewsVn.Web.Modules
                     txtGoldDate.Text = string.Format("{0:dd/MM/yyyy}", dt);
                 }
                 txtGoldDate.Attributes.Add("readOnly", "true");
+                disabled_Control_DependOnPage();
             }
-            
         }
 
         protected override void OnDataBinding(EventArgs e)
@@ -89,9 +89,14 @@ namespace NewsVn.Web.Modules
                 }
             }
         }
-
-        
-
-       
+        private void disabled_Control_DependOnPage()
+        {
+            int page = 0;
+            int.TryParse(Request.QueryString["p"], out page);
+            lnkbtnPrevious.Enabled = !(page == 0);
+            lnkbtnNext.Enabled = !(rptCatePostList.Items.Count < 20);
+            DateTime dt = DateTime.Now;
+            lnkbtnPrevious.Enabled = (page == 0 && rptCatePostList.Items.Count < 20 && DateTime.TryParse(Request.QueryString["d"], out dt));
+        }
     }
 }

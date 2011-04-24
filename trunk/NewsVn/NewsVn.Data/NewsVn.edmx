@@ -216,6 +216,7 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="Avatar" Type="varchar" MaxLength="500" />
           <Property Name="Location" Type="nvarchar" MaxLength="200" />
           <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
@@ -565,6 +566,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
           <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="Location" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Country" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
@@ -751,6 +753,7 @@
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Age" ColumnName="Age" />
             <ScalarProperty Name="Gender" ColumnName="Gender" />
+            <ScalarProperty Name="Avatar" ColumnName="Avatar" />
             <ScalarProperty Name="Location" ColumnName="Location" />
             <ScalarProperty Name="Country" ColumnName="Country" />
             <ScalarProperty Name="Email" ColumnName="Email" />
@@ -865,18 +868,18 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="NewsVn" ZoomLevel="95">
-        <EntityTypeShape EntityType="NewsVn.Data.AdBox" Width="1.5" PointX="2.75" PointY="7.75" Height="3.3263964843749996" IsExpanded="true" />
+      <Diagram Name="NewsVn" ZoomLevel="65">
+        <EntityTypeShape EntityType="NewsVn.Data.AdBox" Width="1.5" PointX="0.75" PointY="8.75" Height="3.3263964843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.AdCategory" Width="1.5" PointX="5.75" PointY="7.875" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.AdPost" Width="1.5" PointX="8" PointY="7" Height="4.6725065104166665" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.Category" Width="1.5" PointX="5.75" PointY="1.875" Height="3.1340950520833331" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.MemberProfile" Width="1.5" PointX="10.75" PointY="5.75" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.MemberProfile" Width="1.5" PointX="2.75" PointY="8.75" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.PostComment" Width="1.5" PointX="10.25" PointY="2.375" Height="2.3648893229166661" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.Post" Width="1.5" PointX="8" PointY="1.125" Height="4.8648079427083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.Setting" Width="1.5" PointX="10.75" PointY="9.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.Setting" Width="1.5" PointX="10.75" PointY="5.75" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.UserMessage" Width="1.5" PointX="3" PointY="1.75" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.UserProfileComment" Width="1.5" PointX="3" PointY="4.875" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.UserProfile" Width="1.5" PointX="0.75" PointY="1.125" Height="6.4032194010416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.UserProfile" Width="1.5" PointX="0.75" PointY="1.125" Height="6.5955208333333317" IsExpanded="true" />
         <AssociationConnector Association="NewsVn.Data.FK_AdCategories_AdCategories" ManuallyRouted="false">
           <ConnectorPoint PointX="6.2819230769230767" PointY="11.009095052083332" />
           <ConnectorPoint PointX="6.2819230769230767" PointY="11.259095052083332" />

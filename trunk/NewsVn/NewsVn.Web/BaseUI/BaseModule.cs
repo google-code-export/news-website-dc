@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Text;
+using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.BaseUI
 {
@@ -11,7 +12,7 @@ namespace NewsVn.Web.BaseUI
         public string InfoBar { get; set; }
         public string ErrorBar { get; set; }
         public string HostName { get; set; }
-
+        protected IQueryable<Data.AdCategory> _AdCategories;
         protected override void OnInit(EventArgs e)
         {
             var sb = new StringBuilder();
@@ -30,5 +31,10 @@ namespace NewsVn.Web.BaseUI
             
             base.OnInit(e);
         }
+        public BaseModule()
+        {
+            _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
+        }
+        
     }
 }

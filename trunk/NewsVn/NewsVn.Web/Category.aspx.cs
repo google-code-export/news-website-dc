@@ -56,7 +56,7 @@ namespace NewsVn.Web
             {
                  pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
                        && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
-                       ).Where(p=>  p.ApprovedOn.Value == DateTime.Parse(Request.QueryString["d"]))
+                       ).Where(p=>  p.ApprovedOn.Value.ToShortDateString() == DateTime.Parse(Request.QueryString["d"]).ToShortDateString())
                       .Select(p => new
                       {
                           p.ID,

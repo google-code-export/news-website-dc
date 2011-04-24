@@ -35,13 +35,26 @@ namespace NewsVn.Web
                     //handler 404 error (page)
                     Response.Redirect("Default.aspx");
                 }
-                load_pletAdsList();
+                DateTime searchDate = DateTime.Now;
+                int pageindex = 0;
+                int.TryParse(Request.QueryString["p"], out pageindex);
+                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"], out searchDate))
+                {
+                    load_pletAdsList(pageindex, true);
+                }
+                else
+                {
+                    load_pletAdsList(pageindex, false);
+                }
             }
         }
         //Load List Ads by Ads Category
-        private void load_pletAdsList()
+        private void load_pletAdsList(int pageindex, bool isSearchByDate)
         {
-            pletCatAdsPost.Datasource = _AdPosts.Where(p =>p.AdCategory.ID == intCateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == intCateID) && p.Actived == true)
+            if (isSearchByDate)
+            {
+                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.AdCategory.ID == intCateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == intCateID) && p.Actived == true
+                    ).Where(p => p.CreatedOn.ToShortDateString() == DateTime.Parse(Request.QueryString["d"]).ToShortDateString())
                     .Select(p => new
                     {
                         p.ID,
@@ -53,8 +66,26 @@ namespace NewsVn.Web
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
-                    }).OrderByDescending(p => p.Payment).Take(20).ToList();
-            pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
+                    }).OrderByDescending(p => p.Payment).ToList();
+                pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
+            }
+            else
+            {
+                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.AdCategory.ID == intCateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == intCateID) && p.Actived == true)
+                    .Select(p => new
+                    {
+                        p.ID,
+                        p.Title,
+                        p.Content,
+                        p.Avatar,
+                        p.SeoUrl,
+                        p.CreatedOn,
+                        p.Payment,
+                        isFree = p.Payment <= 0 ? true : false,
+                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                    }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
+                pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
+            }
             pletCatAdsPost.DataBind();
             
         }

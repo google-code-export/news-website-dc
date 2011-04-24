@@ -6,6 +6,7 @@ using System.Web.Services;
 using System.Text;
 using System.Xml.Linq;
 using NewsVn.Core.Caching;
+using System.Collections;
 
 namespace NewsVn.Web.Utils
 {
@@ -207,6 +208,98 @@ namespace NewsVn.Web.Utils
 
         #region Ads
         [WebMethod]
+        public string load_pletAdsList(string AdsCatName,int pageindex, bool isSearchByDate, DateTime searchDate, string locationID)
+        {
+            string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
+            var html = new System.Text.StringBuilder();
+            //clone 1 anynomous List<>
+            var Datasource=_AdPosts.Select(p => new
+                    {
+                        p.ID,
+                        p.Title,
+                        p.Content,
+                        p.Avatar,
+                        p.SeoUrl,
+                        p.CreatedOn,
+                        p.Payment,
+                        isFree = p.Payment <= 0 ? true : false,
+                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                    }).Take(0).ToList();
+            Datasource.Clear();
+            //end clone
+
+            //general IQueryable
+            var DataQ = _AdPosts
+                    .Where(p => p.AdCategory.ID == int.Parse(array[0]) || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == int.Parse(array[0]) 
+                        && p.Actived == true && p.ExpiredOn>=DateTime.Today));
+            //return List<> by Search Result
+            if (isSearchByDate)
+            {
+                Datasource = DataQ.Where(p => p.CreatedOn.ToShortDateString() == searchDate.ToShortDateString()).Select(p => new
+                {
+                    p.ID,
+                    p.Title,
+                    p.Content,
+                    p.Avatar,
+                    p.SeoUrl,
+                    p.CreatedOn,
+                    p.Payment,
+                    isFree = p.Payment <= 0 ? true : false,
+                    Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                }).OrderByDescending(p => p.Payment).ToList();
+                //Search by date not paging
+            }
+            else
+            {
+                //search by location (location in one page) if location is not 'Toan Quoc'
+                if (int.Parse(locationID) >= 1)
+                {
+                    DataQ = DataQ.Where(p => p.Location == locationID);
+                }
+                // search all (in one page) 
+                Datasource = DataQ.Select(p => new
+                {
+                    p.ID,
+                    p.Title,
+                    p.Content,
+                    p.Avatar,
+                    p.SeoUrl,
+                    p.CreatedOn,
+                    p.Payment,
+                    isFree = p.Payment <= 0 ? true : false,
+                    Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
+            }
+            //generate result
+            if (Datasource.Count >= 1)
+            {
+                int index = 0;
+                html.AppendLine("<tr class='ui-widget-header'><th style='text-align:left;'>Tin rao vặt</th><th style='text-align:left;'>Ngày đăng</th></tr>");
+                foreach (var itemAds in Datasource)
+                {
+//                    Type itemType = itemAds.GetType();
+                    if (index % 2 != 0)
+                        html.AppendLine("<tr class='even'>");
+                    else
+                        html.AppendLine("<tr>");
+
+                    html.AppendLine("<td>");
+                    html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", "../AdPost.aspx?cp=" + itemAds.SeoUrl.ToString());
+                    html.AppendLine( itemAds.Title + "</a>");
+                    html.AppendLine("</td><td style=\"width:80px;\">");
+                    html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.CreatedOn));
+                    html.AppendLine("</td>");
+                    html.AppendLine("</tr>");
+                    index++;
+                }
+            }
+            else
+            {
+                html.AppendLine("<tr class='ui-widget-header'><th style=\"text-align:left;\">Tin rao vặt</th><th style=\"text-align:left;\">Ngày đăng</th></tr><tr><td ><div style='text-align: center; padding-top: 6px;'><span>Không tìm thấy bài viết</span></div></td><td style=\"width:80px;\"> </td></tr>");
+            }
+            return html.ToString();
+        }
+        [WebMethod]
         public string getAdsByAdsCat(string AdsCatName)
         {
             string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
@@ -236,7 +329,8 @@ namespace NewsVn.Web.Utils
                     else
                         html.AppendLine("<tr>");
                     html.AppendLine("<td style='width: 220px;'>");
-                    html.AppendLine("<a style='font-weight: bold;' href='#'>" + itemAds.Title + "</a>");
+                    html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", "../AdPost.aspx?cp=" + itemAds.SeoUrl.ToString());
+                    html.AppendLine(itemAds.Title + "</a>");
                     html.AppendLine("</td><td>");
                     html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.CreatedOn));
                     html.AppendLine("</td>");
