@@ -3,10 +3,10 @@
 <script runat="server">
     protected void Page_Load(object sender, EventArgs args)
     {
-        this.GenerateAgeDropDownLists();
+        this.GenerateAgeDropDownList();
     }
 
-    private void GenerateAgeDropDownLists()
+    private void GenerateAgeDropDownList()
     {
         string age = string.Empty;
         for (int i = 18; i <= 80; i++)
