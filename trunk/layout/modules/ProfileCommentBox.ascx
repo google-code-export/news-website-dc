@@ -7,7 +7,7 @@
 <script type="text/javascript">
 
     function checkValidation() {
-        return $("#pmessageform_box").validationEngine('validate');
+        return $("#pcommentform_box").validationEngine('validate');
     }
 </script>
 
@@ -16,7 +16,7 @@
         Bình luận cho:
         <span>Ham hố lãng tử</span>
     </h2>
-    <ul id="pmessageform_box" class="ui-form ui-widget">
+    <ul id="pcommentform_box" class="ui-form ui-widget">
         <li style="border-bottom:1px dotted #333;">
             Vui lòng nhập <b>Tiếng Việt Unicode có dấu</b>
         </li><li></li>
