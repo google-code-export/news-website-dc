@@ -5,7 +5,7 @@
         $("#menu_bar li:last-child").addClass("tail");
         $("#menu_bar li > a").addClass("menu-item");
         $("#menu_bar .sub-menu").each(function () {
-            $(this).css({ "min-width": $(this).parent().width()+$(this).parent().next().width() });
+            $(this).css({ "min-width": $(this).parent().width() + $(this).parent().next().width() });
         });
         $("#menu_bar .sub-menu a:first-child").css({ border: 0 });
         $("#menu_bar li").hover(function () {
@@ -13,23 +13,22 @@
         }, function () {
             $(this).children(".sub-menu").css({ "display": "none" });
         });
-        //$(this).next(".portlet.right")
     });
 </script>
 
 <ul id="menu_bar">
     <li>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="Default.aspx">Trang chủ</asp:HyperLink>        
+        <a href='<%= HostName + "trang-chu.aspx" %>'>Trang chủ</a>
     </li>
     <asp:Repeater runat="server" ID="rptMenu" 
-        onitemdatabound="rptMenu_ItemDataBound">
+        OnItemDataBound="rptMenu_ItemDataBound">
         <ItemTemplate>
             <li>
-                <asp:HyperLink ID="hplnkMenu" runat="server" NavigateUrl='<%#Eval("SeoUrl") %>'><%#Eval("Name") %></asp:HyperLink>
+                <a href='<%# HostName + Eval("SeoUrl") %>'><%# Eval("Name") %></a>
                 <div class="sub-menu">
                     <asp:Repeater runat="server" ID="rptSubMenu">
                         <ItemTemplate>
-                            <a href='<%#Eval("SeoUrl") %>'><%#Eval("Name") %></a>
+                            <a href='<%# HostName + Eval("SeoUrl") %>'><%# Eval("Name") %></a>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
@@ -37,6 +36,6 @@
         </ItemTemplate>
     </asp:Repeater>
     	<li>
-        <asp:HyperLink ID="HyperLink43" runat="server" NavigateUrl="~/AdCategory.aspx">Rao nhanh</asp:HyperLink>
+        <asp:HyperLink runat="server" NavigateUrl="~/AdCategory.aspx">Rao nhanh</asp:HyperLink>
     </li>
 </ul>

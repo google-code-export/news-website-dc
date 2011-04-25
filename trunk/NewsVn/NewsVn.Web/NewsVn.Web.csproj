@@ -54,6 +54,9 @@
   <ItemGroup>
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
+    <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
+    <Content Include="Account\SiteAdmin\Post\EditPost.aspx" />
+    <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
     <Content Include="AdPost.aspx" />
@@ -223,6 +226,34 @@
     </Compile>
     <Compile Include="Account\Form\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.designer.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ViewPost.aspx.cs">
+      <DependentUpon>ViewPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ViewPost.aspx.designer.cs">
+      <DependentUpon>ViewPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\SiteAdmin.Master.cs">
+      <DependentUpon>SiteAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\SiteAdmin.Master.designer.cs">
+      <DependentUpon>SiteAdmin.Master</DependentUpon>
     </Compile>
     <Compile Include="AdCategory.aspx.cs">
       <DependentUpon>AdCategory.aspx</DependentUpon>
@@ -589,10 +620,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Account\Guest\" />
-    <Folder Include="Account\Mod\" />
-    <Folder Include="Account\SiteAdmin\" />
-    <Folder Include="Account\SysAdmin\" />
+    <Folder Include="Account\SiteAdmin\AdPost\" />
+    <Folder Include="Account\SiteAdmin\Misc\" />
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Ads\" />
   </ItemGroup>
@@ -628,6 +657,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\Form.browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Guest\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Mod\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\SiteAdmin\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\SysAdmin\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\SiteAdmin\SiteAdmin.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

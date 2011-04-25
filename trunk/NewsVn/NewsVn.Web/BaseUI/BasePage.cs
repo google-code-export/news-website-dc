@@ -53,8 +53,6 @@ namespace NewsVn.Web.BaseUI
 
             HostName = ApplicationManager.HostName;
 
-            
-
             _AdBoxes = ApplicationManager.SetCacheData<Data.AdBox >(ApplicationManager.Entities.AdBoxes , t => t.Actived);
             _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory >(ApplicationManager.Entities.AdCategories , p => p.Actived);
             _AdPosts = ApplicationManager.SetCacheData<Data.AdPost >(ApplicationManager.Entities.AdPosts , p => p.Actived);

@@ -13,7 +13,7 @@ namespace NewsVn.Web.Modules
     {
         public string Title { get; set; }
 
-        public string SeoName { get; set; }
+        public string SeoUrl { get; set; }
 
         public string CssClass { get; set; }
 

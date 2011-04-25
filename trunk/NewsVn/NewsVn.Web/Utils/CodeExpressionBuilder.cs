@@ -6,7 +6,7 @@ using System.Web.Compilation;
 using System.CodeDom;
 using System.Web.UI;
 
-namespace Newsvn.Web
+namespace NewsVn.Web
 {
     [ExpressionPrefix("Code")]
     public class CodeExpressionBuilder : ExpressionBuilder
