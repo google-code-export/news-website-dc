@@ -29,10 +29,7 @@ namespace NewsVn.Web
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["ct"] == null || !checkCateID_By_SEONAME(Request.QueryString["ct"].ToString()))
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                checkCateID_By_SEONAME(Request.QueryString["ct"].ToString());
                 load_pletHotNews();
                 load_pletLatestNews();
                 DateTime searchDate = DateTime.Now;

@@ -58,7 +58,7 @@ namespace NewsVn.Web
                 Control UC_PortletPost = LoadControl("~/Modules/PostsPortlet.ascx");
                 var ctrPortletPost = ((Modules.PostsPortlet)UC_PortletPost);
                 ctrPortletPost.Title = cate.Name;
-                ctrPortletPost.SeoName = "category.aspx?ct=" + cate.SeoName;
+                ctrPortletPost.SeoUrl = HostName + cate.SeoUrl;
                 if (cate.Parent != null)
                 {
                     continue;
@@ -98,7 +98,7 @@ namespace NewsVn.Web
             Control UC_PortletPost_Ad = LoadControl("~/Modules/PostsPortlet.ascx");
             var ctrPortletPost_Ad = ((Modules.PostsPortlet)UC_PortletPost_Ad);
             ctrPortletPost_Ad.Title = "Rao Nhanh";
-            ctrPortletPost_Ad.SeoName = "../AdCategory.aspx";
+            ctrPortletPost_Ad.SeoUrl = "../AdCategory.aspx";
             ctrPortletPost_Ad.CssClass = "right";
             ctrPortletPost_Ad.ClearLayout = true;
             //bind control

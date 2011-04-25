@@ -34,7 +34,7 @@
         });
     </script>
     <h2>
-       <a class="cate-title" href='<%=SeoName %>'><%= Title %></a>
+       <a class="cate-title" href='<%= SeoUrl %>'><%= Title %></a>
        <a class="rss" href="#"></a>
     </h2>
     <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server" />
