@@ -59,20 +59,11 @@ namespace NewsVn.Web.BaseUI
             _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p=> p.Actived);
             _PostComments = ApplicationManager.SetCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments, null);
             _Posts = ApplicationManager.SetCacheData<Data.Post>(ApplicationManager.Entities.Posts, t => t.Approved && t.Actived );
-            //_UserMessages = ApplicationManager.SetCacheData<Data.UserMessage>(ApplicationManager.Entities.UserMessages, null);
-            //_UserProfileComments = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
-            //_UserProfiles = ApplicationManager.SetCacheData<Data.UserProfile>(ApplicationManager.Entities.UserProfiles, null);
+            _UserMessages = ApplicationManager.SetCacheData<Data.UserMessage>(ApplicationManager.Entities.UserMessages, null);
+            _UserProfileComments = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
+            _UserProfiles = ApplicationManager.SetCacheData<Data.UserProfile>(ApplicationManager.Entities.UserProfiles, null);
             
             base.OnInit(e);
         }
-        
-        //public override void InitializeCulture()
-        //{
-        //        System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("vi-VN");
-        //        //System.Threading.Thread.CurrentThread.CurrentCulture = ci;
-        //        System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
-
-        //    this.InitializeCulture();
-        //}
     }
 }
