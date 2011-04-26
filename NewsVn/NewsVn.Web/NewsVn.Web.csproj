@@ -198,6 +198,7 @@
     <Content Include="Styles\jquery.autocomplete.css" />
     <Content Include="Styles\nivo.css" />
     <Content Include="Styles\reset.css" />
+    <Content Include="Styles\secured.css" />
     <Content Include="Styles\ui.css" />
     <Content Include="Styles\user-lte-ie7.css" />
     <Content Include="Styles\user.css" />
@@ -294,6 +295,15 @@
     </Compile>
     <Compile Include="BaseUI\BaseService.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseUI\SecuredMaster.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseUI\SecuredModule.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseUI\SecuredPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Category.aspx.cs">
       <DependentUpon>Category.aspx</DependentUpon>

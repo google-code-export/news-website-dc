@@ -12,7 +12,9 @@ namespace NewsVn.Web.BaseUI
         public string InfoBar { get; set; }
         public string ErrorBar { get; set; }
         public string HostName { get; set; }
+       
         protected IQueryable<Data.AdCategory> _AdCategories;
+        
         protected override void OnInit(EventArgs e)
         {
             var sb = new StringBuilder();
@@ -28,13 +30,10 @@ namespace NewsVn.Web.BaseUI
             ErrorBar = sb.ToString();
 
             HostName = NewsVn.Web.Utils.ApplicationManager.HostName;
+
+            _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
             
             base.OnInit(e);
         }
-        public BaseModule()
-        {
-            _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
-        }
-        
     }
 }

@@ -1,0 +1,31 @@
+﻿@import url('reset.css');
+@import url('ui.css');
+@import url('form.css');
+
+body
+{
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 13px;
+    line-height: 1.4em;
+}
+
+.left
+{
+    float: left;    
+}
+
+.right
+{
+    float: right;    
+}
+
+.clear
+{
+    clear: both;
+    height: 0;    
+}
+
+.ui-table th
+{
+    text-align: left;    
+}

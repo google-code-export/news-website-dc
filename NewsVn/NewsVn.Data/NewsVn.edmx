@@ -868,7 +868,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="NewsVn" ZoomLevel="65">
+      <Diagram Name="NewsVn" ZoomLevel="85">
         <EntityTypeShape EntityType="NewsVn.Data.AdBox" Width="1.5" PointX="0.75" PointY="8.75" Height="3.3263964843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.AdCategory" Width="1.5" PointX="5.75" PointY="7.875" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.AdPost" Width="1.5" PointX="8" PointY="7" Height="4.6725065104166665" IsExpanded="true" />

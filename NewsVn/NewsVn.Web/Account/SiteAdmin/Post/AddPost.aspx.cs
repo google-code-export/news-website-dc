@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Account.SiteAdmin.Post
 {
-    public partial class AddPost : System.Web.UI.Page
+    public partial class AddPost : BaseUI.SecuredPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
