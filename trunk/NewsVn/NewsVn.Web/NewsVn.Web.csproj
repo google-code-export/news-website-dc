@@ -142,6 +142,7 @@
     <Content Include="Modules\RelatedAdPostList.ascx" />
     <Content Include="Modules\RelatedPostList.ascx" />
     <Content Include="Modules\ResultProfilesearchResult.ascx" />
+    <Content Include="Modules\SideAdminMenu.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
     <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
@@ -174,6 +175,7 @@
     <Content Include="Resources\Xml\TinMoiNong_Newsvn.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\newsvn.ui-admin.js" />
     <Content Include="Scripts\newsvn.ui-init.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2-vsdoc.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2.js" />
@@ -489,6 +491,13 @@
     </Compile>
     <Compile Include="Modules\ResultProfilesearchResult.ascx.designer.cs">
       <DependentUpon>ResultProfilesearchResult.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SideAdminMenu.ascx.cs">
+      <DependentUpon>SideAdminMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SideAdminMenu.ascx.designer.cs">
+      <DependentUpon>SideAdminMenu.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SideTabsBox.ascx.cs">
       <DependentUpon>SideTabsBox.ascx</DependentUpon>
