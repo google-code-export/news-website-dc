@@ -13,20 +13,47 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             if (!IsPostBack)
             {
-                this.LoadPostList();
-                this.GenerateDataPager();
+                this.GoToPage(1, 35);
             }
         }
 
-        private void LoadPostList()
+        protected void Pager_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rptPostList.DataSource = _Posts.Skip(0).Take(50);
+            int pageIndex = int.Parse(ddlPageIndex.SelectedValue);
+            int pageSize = int.Parse(ddlPageSize.SelectedValue);
+            this.GoToPage(pageIndex, pageSize);
+        }
+
+        private void GoToPage(int pageIndex, int pageSize)
+        {
+            this.GenerateDataPager(pageSize);
+            try
+            {
+                ddlPageSize.Text = pageSize.ToString();
+                ddlPageIndex.Text = pageIndex.ToString();
+            }
+            catch (Exception)
+            {
+                ddlPageIndex.SelectedIndex = ddlPageIndex.Items.Count - 1;
+                pageIndex = int.Parse(ddlPageIndex.SelectedValue);
+            }
+            this.LoadPostList(pageIndex, pageSize);            
+        }
+
+        private void LoadPostList(int pageIndex, int pageSize)
+        {
+            rptPostList.DataSource = _Posts.OrderByDescending(p => p.UpdatedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             rptPostList.DataBind();
         }
 
-        private void GenerateDataPager()
+        private void GenerateDataPager(int pageSize)
         {
-            noPages.Text = _Posts.Count().ToString();
+            int numOfPages = (int)Math.Ceiling((decimal)_Posts.Count() / pageSize);
+            ddlPageIndex.Items.Clear();
+            for (int i = 1; i <= numOfPages; i++)
+            {
+                ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
+            }
         }
     }
 }

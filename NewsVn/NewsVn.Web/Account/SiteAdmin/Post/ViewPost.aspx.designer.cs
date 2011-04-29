@@ -13,6 +13,42 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
     public partial class ViewPost {
         
         /// <summary>
+        /// ddlFilterColumn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFilterColumn;
+        
+        /// <summary>
+        /// ddlFilterOption control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFilterOption;
+        
+        /// <summary>
+        /// ddlPageIndex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPageIndex;
+        
+        /// <summary>
+        /// ddlPageSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
+        
+        /// <summary>
         /// rptPostList control.
         /// </summary>
         /// <remarks>
@@ -20,14 +56,5 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptPostList;
-        
-        /// <summary>
-        /// noPages control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label noPages;
     }
 }
