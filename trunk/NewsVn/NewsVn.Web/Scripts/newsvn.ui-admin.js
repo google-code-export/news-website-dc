@@ -50,6 +50,11 @@ $(function () {
             primary: "ui-icon-closethick"
         }
     });
+    $(".button-back").button({
+        icons: {
+            primary: "ui-icon-arrowthick-1-w"
+        }
+    });
 
     //datepicker
     $(".datepicker").datepicker({
