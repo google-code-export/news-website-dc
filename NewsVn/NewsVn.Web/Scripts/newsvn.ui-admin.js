@@ -17,6 +17,8 @@ $(function () {
         icons: {
             primary: "ui-icon-pencil"
         }
+    }).click(function (e) {
+        if ($(".ui-table tr td:first-child :checked").size() != 1) e.preventDefault();
     });
     $(".button-delete").button({
         icons: {
@@ -77,8 +79,6 @@ $(function () {
     });
 
     $("[class*=dialog-trigger]").click(function () {
-        if ($(this).is(".button-edit"))
-            if ($(".ui-table tr td:first-child :checked").size() != 1) return;
         var classString = $(this).attr("class");
         var splittees = classString.split(/\s|\[|\]/);
         var dialogId = "";

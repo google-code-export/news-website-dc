@@ -57,6 +57,8 @@
   <ItemGroup>
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
+    <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
+    <Content Include="Account\SiteAdmin\Post\EditPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
@@ -239,6 +241,20 @@
     </Compile>
     <Compile Include="Account\Form\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.designer.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\ViewPost.aspx.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>

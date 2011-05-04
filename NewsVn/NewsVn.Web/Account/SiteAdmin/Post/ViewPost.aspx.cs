@@ -14,7 +14,6 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             if (!IsPostBack)
             {
                 this.GoToPage(1, 35);
-                this.AddButtonAttributes();
             }
         }
 
@@ -23,14 +22,6 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             int pageIndex = int.Parse(ddlPageIndex.SelectedValue);
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             this.GoToPage(pageIndex, pageSize);
-        }
-
-        private void AddButtonAttributes()
-        {
-            btnAdd.Attributes.Add("dialog-title", "Thêm mới tin tức");
-            btnAdd.Attributes.Add("dialog-action", "AddPost");
-            btnEdit.Attributes.Add("dialog-title", "Sửa tin tức");
-            btnEdit.Attributes.Add("dialog-action", "EditPost");
         }
 
         private void GoToPage(int pageIndex, int pageSize)
