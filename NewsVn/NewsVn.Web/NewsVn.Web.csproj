@@ -163,16 +163,6 @@
     <Content Include="ProfileList.aspx" />
     <Content Include="ProfileSearchResult.aspx" />
     <Content Include="Modules\RandomProfileBox.ascx" />
-    <Content Include="Resources\Posts\homevn1.jpg" />
-    <Content Include="Resources\Posts\t510695.jpg" />
-    <Content Include="Resources\Posts\t510696.jpg" />
-    <Content Include="Resources\Posts\t510697.jpg" />
-    <Content Include="Resources\Posts\t510698.jpg" />
-    <Content Include="Resources\Posts\t623236.gif" />
-    <Content Include="Resources\Posts\t623236.jpg" />
-    <Content Include="Resources\Profiles\5464747701_4940c5613a_b.jpg" />
-    <Content Include="Resources\Profiles\MisterVN2010.jpg" />
-    <Content Include="Resources\Profiles\no_photo.gif" />
     <Content Include="Resources\Xml\Editor\BasicTools.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -180,6 +170,7 @@
     <Content Include="Resources\Xml\category.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Resources\Xml\Editor\CustomTools.xml" />
     <Content Include="Resources\Xml\Editor\FullSetOfTools.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -668,7 +659,10 @@
     <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Resources\Ads\" />
+    <Folder Include="Resources\Documents\" />
+    <Folder Include="Resources\Flash\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\Media\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewsVn.Core\NewsVn.Core.csproj">
