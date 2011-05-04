@@ -14,6 +14,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             if (!IsPostBack)
             {
                 this.GoToPage(1, 35);
+                this.AddButtonAttributes();
             }
         }
 
@@ -22,6 +23,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             int pageIndex = int.Parse(ddlPageIndex.SelectedValue);
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             this.GoToPage(pageIndex, pageSize);
+        }
+
+        private void AddButtonAttributes()
+        {
+            btnAdd.Attributes.Add("dialog-title", "Thêm mới tin tức");
+            btnAdd.Attributes.Add("dialog-action", "AddPost");
+            btnEdit.Attributes.Add("dialog-title", "Sửa tin tức");
+            btnEdit.Attributes.Add("dialog-action", "EditPost");
         }
 
         private void GoToPage(int pageIndex, int pageSize)
@@ -42,7 +51,12 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         private void LoadPostList(int pageIndex, int pageSize)
         {
-            rptPostList.DataSource = _Posts.OrderByDescending(p => p.UpdatedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            rptPostList.DataSource = _Posts.Select(p => new {
+               p.Title, p.SeoUrl,
+               p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
+               p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
+               CategoryName = p.Category.Name, CategorySeoUrl = p.Category.SeoUrl
+            }).OrderByDescending(p => p.UpdatedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             rptPostList.DataBind();
         }
 

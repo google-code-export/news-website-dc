@@ -50,12 +50,13 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Mobile" />
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\..\resources\assemblies\Telerik.Web.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
-    <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
-    <Content Include="Account\SiteAdmin\Post\EditPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
@@ -142,8 +143,10 @@
     <Content Include="Modules\RelatedAdPostList.ascx" />
     <Content Include="Modules\RelatedPostList.ascx" />
     <Content Include="Modules\ResultProfilesearchResult.ascx" />
-    <Content Include="Modules\SideAdminMenu.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
+    <Content Include="Modules\SiteAdmin_Menu.ascx" />
+    <Content Include="Modules\SiteAdmin_UpdatePost.ascx" />
+    <Content Include="Modules\SiteAdmin_FilterPost.ascx" />
     <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
@@ -168,8 +171,14 @@
     <Content Include="Resources\Profiles\5464747701_4940c5613a_b.jpg" />
     <Content Include="Resources\Profiles\MisterVN2010.jpg" />
     <Content Include="Resources\Profiles\no_photo.gif" />
+    <Content Include="Resources\Xml\Editor\BasicTools.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Resources\Xml\Captcha.xml" />
     <Content Include="Resources\Xml\category.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\Xml\Editor\FullSetOfTools.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Resources\Xml\TinMoiNong_Newsvn.xml">
@@ -200,6 +209,7 @@
     <Content Include="Styles\jquery.autocomplete.css" />
     <Content Include="Styles\nivo.css" />
     <Content Include="Styles\reset.css" />
+    <Content Include="Styles\secured-lte-ie7.css" />
     <Content Include="Styles\secured.css" />
     <Content Include="Styles\ui.css" />
     <Content Include="Styles\user-lte-ie7.css" />
@@ -229,20 +239,6 @@
     </Compile>
     <Compile Include="Account\Form\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.cs">
-      <DependentUpon>AddPost.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.designer.cs">
-      <DependentUpon>AddPost.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.cs">
-      <DependentUpon>EditPost.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.designer.cs">
-      <DependentUpon>EditPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\ViewPost.aspx.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>
@@ -492,19 +488,33 @@
     <Compile Include="Modules\ResultProfilesearchResult.ascx.designer.cs">
       <DependentUpon>ResultProfilesearchResult.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\SideAdminMenu.ascx.cs">
-      <DependentUpon>SideAdminMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\SideAdminMenu.ascx.designer.cs">
-      <DependentUpon>SideAdminMenu.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Modules\SideTabsBox.ascx.cs">
       <DependentUpon>SideTabsBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\SideTabsBox.ascx.designer.cs">
       <DependentUpon>SideTabsBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_Menu.ascx.cs">
+      <DependentUpon>SiteAdmin_Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_Menu.ascx.designer.cs">
+      <DependentUpon>SiteAdmin_Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdatePost.ascx.cs">
+      <DependentUpon>SiteAdmin_UpdatePost.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdatePost.ascx.designer.cs">
+      <DependentUpon>SiteAdmin_UpdatePost.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_FilterPost.ascx.cs">
+      <DependentUpon>SiteAdmin_FilterPost.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_FilterPost.ascx.designer.cs">
+      <DependentUpon>SiteAdmin_FilterPost.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SpecialAdPostsPortlet.ascx.cs">
       <DependentUpon>SpecialAdPostsPortlet.ascx</DependentUpon>
