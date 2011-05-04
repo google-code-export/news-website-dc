@@ -30,6 +30,11 @@ a
     height: 0;
 }
 
+.invisible
+{
+    display: none;
+}
+
 #side_content
 {
     width: 180px;
@@ -66,7 +71,9 @@ a
 }
 
 .ui-table .tail
-{border-bottom: 1px solid #ffb4ae; }
+{
+    border-bottom: 1px solid #ffb4ae;
+}
 
 .ui-table-toolbar
 {
@@ -80,4 +87,14 @@ a
 .ui-table-toolbar .left
 {
     margin-right: 5px;
+}
+
+.ui-form label
+{
+    width: 100px;
+}
+
+.ui-form .commands .ui-button
+{
+    margin-right: 0;
 }

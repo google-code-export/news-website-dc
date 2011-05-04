@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NewsVn.Web.Account.SiteAdmin.Post
+namespace NewsVn.Web.Modules
 {
-    public partial class EditPost : BaseUI.SecuredPage
+    public partial class SiteAdmin_Menu : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

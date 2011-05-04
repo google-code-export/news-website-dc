@@ -31,6 +31,15 @@ namespace NewsVn.Web.Account.SiteAdmin {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmSiteAdmin;
         
         /// <summary>
+        /// datePickerIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image datePickerIcon;
+        
+        /// <summary>
         /// sideContent control.
         /// </summary>
         /// <remarks>
