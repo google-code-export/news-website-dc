@@ -9,19 +9,20 @@ namespace NewsVn.Web.Modules
 {
     public partial class CategorizedAdPostList : System.Web.UI.UserControl
     {
-        public  string CateTitle = "";
+        public string CateTitle = "";
         public object Datasource { get; set; }
+        public string HostName { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 DateTime dt = DateTime.Now;
-                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"], out dt))
+                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Replace('-','/'), out dt))
                 {
                     txtGoldDate.Text = string.Format("{0:dd/MM/yyyy}", dt);
                 }
                 hidCt.Value = Request.QueryString["ct"];
-                hidD.Value = Request.QueryString["d"];
+                hidD.Value = Request.QueryString["d"] == null ? "" : Request.QueryString["d"].ToString().Replace('-', '/');
                 hidP.Value = Request.QueryString["p"];
                 txtGoldDate.Attributes.Add("readOnly", "true");
                 disabled_Control_DependOnPage();
@@ -29,7 +30,7 @@ namespace NewsVn.Web.Modules
         }
         protected override void OnDataBinding(EventArgs e)
         {
-            txtGoldDate.Text = string.Format("{0:dd/MM/yyyy}", DateTime.Now);    
+            txtGoldDate.Text = string.Format("{0:dd/MM/yyyy}", DateTime.Now);
             rptAdsList.DataSource = Datasource;
             rptAdsList.DataBind();
         }
@@ -39,7 +40,7 @@ namespace NewsVn.Web.Modules
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 HyperLink hplnk = (HyperLink)e.Item.FindControl("hplnk");
-                hplnk.NavigateUrl ="../AdPost.aspx?cp="+ DataBinder.Eval(e.Item.DataItem, "ID").ToString();
+                hplnk.NavigateUrl = "../AdPost.aspx?cp=" + DataBinder.Eval(e.Item.DataItem, "ID").ToString();
                 hplnk.Text = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
                 if (!Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "isFree")))
                 {
@@ -65,11 +66,11 @@ namespace NewsVn.Web.Modules
             page = page <= 0 ? 0 : page;
             if (page == 0)
             {
-                Response.Redirect("AdSubCategory.aspx?ct=" + Request.QueryString["ct"]);
+                Response.Redirect("rao-nhanh/" + Request.QueryString["ct"].Trim() + ".aspx");
             }
             else
             {
-                Response.Redirect(string.Format("AdSubCategory.aspx?ct=" + Request.QueryString["ct"] + "&p={0}", page.ToString()));
+                Response.Redirect("rao-nhanh/" + Request.QueryString["ct"].Trim() + "/trang-" + page.ToString() + ".aspx");
             }
         }
 
@@ -80,27 +81,26 @@ namespace NewsVn.Web.Modules
             page += 1;
             if (page == 0)
             {
-                Response.Redirect("AdSubCategory.aspx?ct=" + Request.QueryString["ct"]);
+                Response.Redirect("rao-nhanh/" + Request.QueryString["ct"].Trim() + ".aspx");
             }
             else
             {
-                Response.Redirect(string.Format("AdSubCategory.aspx?ct=" + Request.QueryString["ct"] + "&p={0}", page.ToString()));
+                Response.Redirect("rao-nhanh/" + Request.QueryString["ct"].Trim() + "/trang-" + page.ToString() + ".aspx");
             }
         }
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            string[] arrDateTime = txtGoldDate.Text.Split('/');
-            Response.Redirect(string.Format("AdSubCategory.aspx?ct=" + Request.QueryString["ct"] + "&d={0}", arrDateTime[1] + "/" + arrDateTime[0] + "/" + arrDateTime[2]));
+            Response.Redirect(string.Format("rao-nhanh/" + Request.QueryString["ct"] + "/{0}.aspx", txtGoldDate.Text.Trim().Replace('/','-')));
         }
         private void disabled_Control_DependOnPage()
         {
             int page = 0;
             int.TryParse(Request.QueryString["p"], out page);
             lnkbtnPrevious.Enabled = !(page == 0);
-            lnkbtnNext.Enabled = !(rptAdsList.Items.Count < 20);
             DateTime dt = DateTime.Now;
-            lnkbtnPrevious.Enabled = (page == 0 && rptAdsList.Items.Count < 20 && DateTime.TryParse(Request.QueryString["d"], out dt));
+            lnkbtnNext.Enabled = !(rptAdsList.Items.Count < 20 || DateTime.TryParse(Request.QueryString["d"], out dt));
+
         }
     }
 }

@@ -15,9 +15,9 @@ namespace NewsVn.Web
     {
         protected override void OnInit(EventArgs e)
         {
-            BaseUI.BaseMaster.SiteTitle = "- Báo điện tử 24/07";
+            BaseUI.BaseMaster.SiteTitle = "- Cổng thông tin điện tử 24/07";
             BaseUI.BaseMaster.MetaKeyWords = "NewsVn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
-            BaseUI.BaseMaster.MetaKeyDes = "Tờ báo điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07 thông tin Việt nam - Thế giới về Kinh tế";
+            BaseUI.BaseMaster.MetaKeyDes = "Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07 thông tin Việt nam - Thế giới về Kinh tế";
             base.OnInit(e);
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace NewsVn.Web
                     {
                         p.ID,
                         p.Title,
-                        p.Description,
+                        Description = clsCommon.hintDesc(p.Description),
                         p.Avatar,
                         p.SeoUrl,
                         p.CreatedOn,
@@ -98,17 +98,17 @@ namespace NewsVn.Web
             Control UC_PortletPost_Ad = LoadControl("~/Modules/PostsPortlet.ascx");
             var ctrPortletPost_Ad = ((Modules.PostsPortlet)UC_PortletPost_Ad);
             ctrPortletPost_Ad.Title = "Rao Nhanh";
-            ctrPortletPost_Ad.SeoUrl = "../AdCategory.aspx";
+            ctrPortletPost_Ad.SeoUrl = HostName + "rao-nhanh.aspx";
             ctrPortletPost_Ad.CssClass = "right";
             ctrPortletPost_Ad.ClearLayout = true;
             //bind control
-            var IOrderQueryableData = _AdPosts.Where(adp => adp.Actived == true && adp.ExpiredOn >= DateTime.Now)
+            var IOrderQueryableData = _AdPosts.Where(adp => adp.Actived == true)//&& adp.ExpiredOn >= DateTime.Now //sau nay se set theo expired
                 .Select(adp => new
                 {
                     adp.ID,
                     adp.Title,
-                    Description = adp.Content,
-                    Avatar = adp.Avatar.Length == 0 ? "resources/profiles/no_photo.gif" : adp.Avatar,
+                    Description = clsCommon.hintDesc(adp.Content),
+                    Avatar = adp.Avatar.Length == 0 ?"/resources/profiles/no_photo.gif" :"/resources/"+ adp.Avatar,
                     adp.SeoUrl,
                     adp.CreatedOn,
                     AllowComments = false,
@@ -116,7 +116,7 @@ namespace NewsVn.Web
                     Comments = 0
                 }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.CreatedOn);
             ctrPortletPost_Ad.oActivePost = IOrderQueryableData.Take(1).ToList();
-            ctrPortletPost_Ad.OtherPosts = IOrderQueryableData.Skip(1).Take(5).ToList();
+            ctrPortletPost_Ad.OtherPosts = IOrderQueryableData.Skip(1).Take(4).ToList();
             ctrPortletPost_Ad.DataBind();
             postArea.Controls.Add(ctrPortletPost_Ad);
         }
@@ -155,6 +155,7 @@ namespace NewsVn.Web
                     Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
+            pletLatestNews.HostName = HostName;
             pletLatestNews.DataBind();
 
         }

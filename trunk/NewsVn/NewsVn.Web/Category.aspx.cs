@@ -13,6 +13,7 @@ namespace NewsVn.Web
     {
         private int intCateID = -1;
         private string CateTitle = "Tin Nổi Bật";
+        
         private bool checkCateID_By_SEONAME(string seoNAME)
         {
             var cate=_Categories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID,c.Name }).ToList();
@@ -29,13 +30,16 @@ namespace NewsVn.Web
         {
             if (!IsPostBack)
             {
-                checkCateID_By_SEONAME(Request.QueryString["ct"].ToString());
+                string strCateName = Request.QueryString["ct"]; //Context.Request.Url.Query;
+                bool realCate = checkCateID_By_SEONAME(strCateName);
+                BaseUI.BaseMaster.ExecuteSEO(realCate ? CateTitle : "Cổng thông tin điện tử 24/07", "", "");
                 load_pletHotNews();
                 load_pletLatestNews();
+                
                 DateTime searchDate = DateTime.Now;
                 int pageindex=0;
                 int.TryParse(Request.QueryString["p"] ,out pageindex);
-                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"], out searchDate))
+                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Replace('-','/').Replace("ngay-"," ").Trim(), out searchDate))
                 {
                     load_pletCatePostList(pageindex, true);    
                 }
@@ -53,7 +57,7 @@ namespace NewsVn.Web
             {
                  pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
                        && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
-                       ).Where(p=>  p.ApprovedOn.Value.ToShortDateString() == DateTime.Parse(Request.QueryString["d"]).ToShortDateString())
+                       ).Where(p => p.ApprovedOn.Value.ToShortDateString() == DateTime.Parse(Request.QueryString["d"].Replace('-', '/').Replace("ngay-", " ").Trim()).ToShortDateString())
                       .Select(p => new
                       {
                           p.ID,
@@ -126,6 +130,7 @@ namespace NewsVn.Web
                     Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
+            pletLatestNews.HostName = HostName;
             pletLatestNews.DataBind();
 
         }
@@ -135,7 +140,7 @@ namespace NewsVn.Web
             var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
                 && p.CheckPageView == true 
                 && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
-                .Where(p=> p.ApprovedOn.Value.AddDays(30)>=DateTime.Now)
+                //.Where(p=> p.ApprovedOn.Value.AddDays(30)>=DateTime.Now)
                 .Select(p => new
                 {
                     p.ID,
@@ -148,6 +153,7 @@ namespace NewsVn.Web
                 }).OrderByDescending(p => p.PageView).Take(5).ToList();
 
             pletFocusPost.Datasource = listData;
+            pletFocusPost.HostName = HostName;
             pletFocusPost.DataBind();
         }
     }

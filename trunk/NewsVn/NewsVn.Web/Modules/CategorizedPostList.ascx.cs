@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class CategorizedPostList : System.Web.UI.UserControl
+    public partial class CategorizedPostList : BaseUI.BaseModule
     {
        // public IQueryable<Data.Post> Datasource { get; set; }
         public object Datasource { get; set; }
@@ -24,7 +24,7 @@ namespace NewsVn.Web.Modules
                     txtGoldDate.Text = string.Format("{0:dd/MM/yyyy}", dt);
                 }
                 txtGoldDate.Attributes.Add("readOnly", "true");
-                disabled_Control_DependOnPage();
+               // disabled_Control_DependOnPage();
             }
         }
 
@@ -43,11 +43,11 @@ namespace NewsVn.Web.Modules
             page = page <= 0 ? 0 : page;
             if (page == 0)
             {
-                Response.Redirect("Category.aspx?ct=" + Request.QueryString["ct"]);
+                Response.Redirect(HostName + "ct/" + Request.QueryString["ct"] + ".aspx");
             }
             else
             {
-                Response.Redirect(string.Format("Category.aspx?ct=" + Request.QueryString["ct"] + "&p={0}", page.ToString()));
+                Response.Redirect(string.Format(HostName + "ct/" + Request.QueryString["ct"] + "/trang-{0}.aspx", page.ToString()));
             }
         }
 
@@ -58,18 +58,17 @@ namespace NewsVn.Web.Modules
             page += 1;
             if (page == 0)
             {
-                Response.Redirect("Category.aspx?ct=" + Request.QueryString["ct"]);
+                Response.Redirect(HostName + "ct/" + Request.QueryString["ct"]+".aspx");
             }
             else
             {
-                Response.Redirect(string.Format("Category.aspx?ct=" + Request.QueryString["ct"] + "&p={0}", page.ToString()));
+                Response.Redirect(string.Format(HostName + "ct/" + Request.QueryString["ct"] + "/trang-{0}.aspx", page.ToString()));
             }
         }
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            string[] arrDateTime = txtGoldDate.Text.Split('/');
-            Response.Redirect(string.Format("Category.aspx?ct=" + Request.QueryString["ct"] + "&d={0}", arrDateTime[1] + "/" + arrDateTime[0] + "/" + arrDateTime[2]));
+            Response.Redirect(string.Format(HostName+"ct/"+  Request.QueryString["ct"] + "/ngay{0}.apsx", txtGoldDate.Text.Trim().Replace('/', '_')));
         }
 
         protected void rptCatePostList_ItemDataBound(object sender, RepeaterItemEventArgs e)

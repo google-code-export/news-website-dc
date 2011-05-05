@@ -11,7 +11,7 @@
             <ItemTemplate>
                 <li>
                     <img src='<%#Eval("Avatar") %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar" />
-                    <a href='<%#Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a>
+                    <a href='<%# HostName+Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a>
                 </li>
             </ItemTemplate>
         </asp:Repeater>

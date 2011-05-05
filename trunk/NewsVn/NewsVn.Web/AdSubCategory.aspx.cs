@@ -27,18 +27,13 @@ namespace NewsVn.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
-                if (Request.QueryString["ct"] == null || !checkCateID_By_SEONAME(Request.QueryString["ct"].ToString()))
-                {
-                    //handler 404 error (page)
-                    Response.Redirect("Default.aspx");
-                }
+                checkCateID_By_SEONAME(Request.QueryString["ct"].ToString());
                 DateTime searchDate = DateTime.Now;
                 int pageindex = 0;
                 int.TryParse(Request.QueryString["p"], out pageindex);
-                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"], out searchDate))
+                if (Request.QueryString["d"]!= null && DateTime.TryParse(Request.QueryString["d"].Replace('-','/'), out searchDate))
                 {
                     load_pletAdsList(pageindex, true);
                 }
@@ -54,7 +49,7 @@ namespace NewsVn.Web
             if (isSearchByDate)
             {
                 pletCatAdsPost.Datasource = _AdPosts.Where(p => p.AdCategory.ID == intCateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == intCateID) && p.Actived == true
-                    ).Where(p => p.CreatedOn.ToShortDateString() == DateTime.Parse(Request.QueryString["d"]).ToShortDateString())
+                    ).Where(p => p.CreatedOn.ToShortDateString() == DateTime.Parse(Request.QueryString["d"].Replace('-','/')).ToShortDateString())
                     .Select(p => new
                     {
                         p.ID,
@@ -68,6 +63,7 @@ namespace NewsVn.Web
                         Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
                     }).OrderByDescending(p => p.Payment).ToList();
                 pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
+                pletCatAdsPost.HostName = this.HostName;
             }
             else
             {
@@ -85,6 +81,7 @@ namespace NewsVn.Web
                         Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
                     }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
                 pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
+                pletCatAdsPost.HostName = this.HostName;
             }
             pletCatAdsPost.DataBind();
             

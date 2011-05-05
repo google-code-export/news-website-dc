@@ -13,5 +13,10 @@ namespace NewsVn.Web.Modules
         {
 
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
