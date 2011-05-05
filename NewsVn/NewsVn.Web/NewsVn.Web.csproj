@@ -166,6 +166,7 @@
     <Content Include="Resources\Xml\Editor\BasicTools.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Resources\Templates\NewsvnInfo.txt" />
     <Content Include="Resources\Xml\Captcha.xml" />
     <Content Include="Resources\Xml\category.xml">
       <SubType>Designer</SubType>

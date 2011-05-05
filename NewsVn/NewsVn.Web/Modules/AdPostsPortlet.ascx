@@ -3,7 +3,7 @@
 
 <asp:Panel ID="container" CssClass="cate-adposts portlet" Width="465" runat="server">
      <h2>
-        <a id="lnkCatTitle" class="cate-title" href='AdSubCategory.aspx?ct=<%=SeoUrl %>'><%= Title %><input type="hidden" id="hidSeoUrl" value='<%= SeoUrl %>' /></a>
+        <a id="lnkCatTitle" class="cate-title" href='<%=SeoUrl %>'><%= Title %><input type="hidden" id="hidSeoUrl" value='<%= SeoUrl %>' /></a>
         
         <asp:Repeater runat="server" ID="rptsubCategories">
             <ItemTemplate>
@@ -32,6 +32,6 @@
         </asp:Repeater>
     </table>
     <p>
-        <a class="right" id="lnkOthersAds" href='AdSubCategory.aspx?ct=<%=SeoUrl %>'>&raquo; Các tin khác</a>
+        <a class="right" id="lnkOthersAds" href='<%=SeoUrl %>'>&raquo; Các tin khác</a>
     </p>
 </asp:Panel>

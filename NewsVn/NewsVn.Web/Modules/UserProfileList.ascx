@@ -9,19 +9,18 @@
     <ul class="post-item-list">        
 		<asp:ListView ID="lvProfiles" runat="server"
             OnDataBound="lvProfiles_DataBound"
-            OnPagePropertiesChanged="lvProfiles_PagePropertiesChanged">
+            OnPagePropertiesChanged="lvProfiles_PagePropertiesChanged" 
+            onitemdatabound="lvProfiles_ItemDataBound">
 			<LayoutTemplate>
 				<asp:Panel ID="itemPlaceHolder" runat="server" />
 			</LayoutTemplate>
 			<ItemTemplate>
 				<li>
-					<asp:Image ID="Image1" ImageUrl='<%#Eval("Avatar") %>' AlternateText='<%#Eval("Nickname") %>' CssClass="left" Width="135px" Height="135px" runat="server" />
+					<asp:Image ID="Image1" ImageUrl='<%#Eval("Avatar")%>' AlternateText='<%#Eval("Nickname") %>' CssClass="left" Width="135px" Height="135px" runat="server" />
 					<div class="right" style="width:500px;">
                         <span class="post-comment">29</span>
-                        <b>Tên:</b><%#Eval("Name") %><br />
-                        <b>Biệt danh:</b> <%#Eval("Nickname") %><br />
-                        <b>Giới tính/Tuổi:</b> <%#Eval("Gender") %>/<%#Eval("Age") %><br />
-                        <b>Chỗ ở:</b> <%#Eval("Location") %>, <%#Eval("Country") %><br/>
+                        <b>Tên:</b><%#Eval("Name") %><br /><b>Biệt danh:</b> <%#Eval("Nickname") %><br />
+                        <b>Giới tính/Tuổi:</b> <%#Eval("Gender") %>/<%#Eval("Age") %><br /><b>Chỗ ở:</b> <%#Eval("Location") %>, <%#Eval("Country") %><br/>
 						<b>Chi tiết:</b> <a href="../profile.aspx?acc=<%#Eval("Account") %>">Xem hồ sơ</a>
                         <p>
                             <b>Muốn tìm:</b>

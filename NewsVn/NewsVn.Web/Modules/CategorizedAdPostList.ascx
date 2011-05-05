@@ -25,7 +25,7 @@
 
 <div class="portlet categorized-adposts">
     <h2 id="h2Title">
-        <a class="cate-title" href="javascript:void(0)"><%=CateTitle%></a>
+        <a class="cate-title" href='<%=HostName+"rao-nhanh/"+Request.QueryString["ct"]+".aspx" %>'><%=CateTitle%></a>
         &raquo; <a style="text-transform:none;" href="javascript:void(0)" >Toàn quốc</a>
         &raquo; <a style="text-transform:none;" href="javascript:void(0)" >Hà Nội</a>
         &raquo; <a style="text-transform:none;" href="javascript:void(0)" >TP HCM</a>
@@ -60,9 +60,9 @@
 <div style="margin-top:20px;">
     <div class="left">
         <asp:LinkButton runat="server" ID="lnkbtnPrevious" CssClass="button" 
-            onclick="lnkbtnPrevious_Click" >&laquo; Tin cũ hơn</asp:LinkButton>
+            onclick="lnkbtnPrevious_Click" >&laquo; Tin mới hơn</asp:LinkButton>
         <asp:LinkButton runat="server" ID="lnkbtnNext" CssClass="button" 
-            onclick="lnkbtnNext_Click" >Tin mới hơn &raquo;</asp:LinkButton>
+            onclick="lnkbtnNext_Click" >Tin cũ hơn &raquo;</asp:LinkButton>
     </div>
     <asp:Button runat="server" ID="btnView" CssClass="button right"  
         style="margin:0.5px 0 0 5px;" Text="Xem" onclick="btnView_Click" />&nbsp;

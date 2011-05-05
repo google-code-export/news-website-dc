@@ -12,12 +12,14 @@ namespace NewsVn.Web
     {
         private int intCateID = -1;
         private int postID = -1;
+        private string strCateName;
         private bool checkCateID_By_SEONAME(string seoNAME)
         {
-            var cate = _Categories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID }).ToList();
+            var cate = _Categories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID,c.Name }).ToList();
             if (cate.Count() > 0)
             {
                 intCateID = cate[0].ID;
+                strCateName = cate[0].Name;
                 return true;
             }
             else
@@ -29,12 +31,8 @@ namespace NewsVn.Web
             //params querystring post: PostID,SeoName
             if (!IsPostBack)
             {
-                if (!int.TryParse(Request.QueryString["cp"], out postID) || Request.QueryString["ct"] == null || !checkCateID_By_SEONAME(Request.QueryString["ct"]))
-                {
-                    //response ve page thong bao 404
-                    Response.Redirect("Default.aspx");
-                }
-                load_postDetail(postID);
+                checkCateID_By_SEONAME(Request.QueryString["ct"]);
+                load_postDetail(int.Parse(Request.QueryString["cp"]));
                 load_pletFocusPost();
                 load_pletRelationPostList();
             }
@@ -45,11 +43,7 @@ namespace NewsVn.Web
         {
             var postData = _Posts.Where(p => p.Actived == true && p.Approved == true
               && p.ID == postID).FirstOrDefault();
-            if (postData==null)
-            {
-                //response ve page thong bao 404
-                Response.Redirect("Default.aspx");
-            }
+            BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ?  postData.Title.Trim() : "Cổng thông tin điện tử 24/07", "", "");
             var postComment = _PostComments.Where(pc => pc.Post.ID == postID).Select(
                 pc => new { 
                 pc.CreatedOn,
@@ -104,7 +98,7 @@ namespace NewsVn.Web
             var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
                 && p.CheckPageView == true
                 && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
-                .Where(p => p.ApprovedOn.Value.AddDays(30) >= DateTime.Now)
+                //.Where(p => p.ApprovedOn.Value.AddDays(30) >= DateTime.Now)
                 .Select(p => new
                 {
                     p.ID,
@@ -117,6 +111,7 @@ namespace NewsVn.Web
                 }).OrderByDescending(p => p.PageView).Take(5).ToList();
 
             pletFocusPost.Datasource = listData;
+            pletFocusPost.HostName = HostName;
             pletFocusPost.DataBind();
         }
         //lay post theo chu de  & <= post.approvedon && != viewstate('visitedID')
@@ -134,6 +129,7 @@ namespace NewsVn.Web
                    p.PageView
                }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
             pletRelateionPostList.Datasource = listData;
+            pletRelateionPostList.HostName = HostName;
             pletRelateionPostList.DataBind();
         }
     }

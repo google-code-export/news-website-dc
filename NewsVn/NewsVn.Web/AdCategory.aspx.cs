@@ -20,11 +20,12 @@ namespace NewsVn.Web
         //load special ads (top payment rate)
         private void load_SpecialAds()
         {
-            pletSpecialAds.Datasource = _AdPosts.Where(p => p.ExpiredOn >= DateTime.Now && p.AdCategory.Actived == true && p.Actived == true)
+            //hien tai chua co set expired : p.ExpiredOn >= DateTime.Now &&
+            pletSpecialAds.Datasource = _AdPosts.Where(p =>  p.AdCategory.Actived == true && p.Actived == true)
                 .Select(p => new
                 {
                     p.AdCategory.Name,
-                    p.Avatar,
+                    Avatar=HostName +"Resources/"+ p.Avatar,
                     p.Title,
                     p.Content,
                     p.Payment,
@@ -65,7 +66,7 @@ namespace NewsVn.Web
                         p.Title,
                         p.Content,
                         p.Avatar,
-                        p.SeoUrl,
+                        SeoUrl=HostName+ p.SeoUrl,
                         p.CreatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
@@ -78,7 +79,7 @@ namespace NewsVn.Web
                         p.ID,
                         p.Name,
                         p.SeoName,
-                        p.SeoUrl,
+                        SeoUrl = HostName + p.SeoUrl,
                     }).ToList();
                 //bind control
                 ctrPortletPost.DataBind();

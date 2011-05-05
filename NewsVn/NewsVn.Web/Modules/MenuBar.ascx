@@ -36,6 +36,6 @@
         </ItemTemplate>
     </asp:Repeater>
     	<li>
-        <asp:HyperLink runat="server" NavigateUrl="~/AdCategory.aspx">Rao nhanh</asp:HyperLink>
+        <a href='<%=HostName + "rao-nhanh.aspx" %>'>Rao nhanh</a>
     </li>
 </ul>

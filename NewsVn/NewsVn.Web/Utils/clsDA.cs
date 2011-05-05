@@ -5,6 +5,8 @@ using System.Web;
 using System.Xml;
 using System.Xml.Linq;
 using System.Web.UI;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace NewsVn.Web.Utils
 {
@@ -107,6 +109,31 @@ namespace NewsVn.Web.Utils
             {
                 return "";
             }
+        }
+        public static string ToTitleCase(string input)
+        {
+            var tifo = new CultureInfo("vi-VN", false).TextInfo;
+            return tifo.ToTitleCase(input);
+        }
+        public static string RemoveUnicodeMarks(string accented)
+        {
+            accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
+
+            string[] splitted = accented.Split("~!@#$%^&*()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            accented = string.Join("-", splitted).ToLower();
+
+            Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
+            string strFormD = accented.Normalize(System.Text.NormalizationForm.FormD);
+
+            return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+        public static string hintDesc(string desc)
+        {
+            int intWord = 150;
+            var toLong = desc.Length > intWord;
+            var s_ = toLong ? desc.Substring(0, intWord - 1) : desc;
+            s_ = toLong ? s_.Substring(0, s_.LastIndexOf(' ')) : s_;
+            return toLong ? s_ + " ..." : s_;
         }
     }
 }

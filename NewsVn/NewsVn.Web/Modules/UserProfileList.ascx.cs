@@ -40,5 +40,17 @@ namespace NewsVn.Web.Modules
             lvProfiles.DataSource = Datasource;
             lvProfiles.DataBind();
         }
+
+        protected void lvProfiles_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            
+            //if (e.Item.ItemType==ListViewItemType.DataItem )
+            //{
+            //    ListViewDataItem Item = (ListViewDataItem)(e.Item);
+            //    Image img = (Image)e.Item.FindControl("Image1");
+            //    var test= Item.GetType().GetProperties();
+                
+            //}
+        }
     }
 }

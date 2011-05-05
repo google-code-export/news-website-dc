@@ -1,19 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FooterIntro.ascx.cs" Inherits="NewsVn.Web.Modules.FooterIntro" %>
 
 <div class="section intro left">
-	<h2>Thông tin tòa soạn</h2>
-	<p>
-		Cơ quan chủ quản: Bộ Khoa học Công nghệ.<br/>
-		Giấy phép: Số 511/GP - BVHTT ngày 25/11/2002.<br/>
-		Tổng biên tập: Thang Đức Thắng
-	</p>
-	<p>
-		Tòa soạn: Tầng 4 Tòa nhà Hà Thành Plaza 102 Thái Thịnh, Quận Đống Đa, Hà Nội.<br/>
-		Đường dây nóng: 0123 888 0123<br/>
-		Điện thoại: 04 7300 8899 - máy lẻ 4500<br/>
-		Fax: 04 822 3155<br/>
-		Liên hệ quảng cáo: 09 0436 1114
-	</p>
+	<div id="NewsVnInfo" runat="server"></div>
 	<div class="intro-button short right">
 		<img src="<%= Page.ResolveUrl("~/images/icons/feed.png") %>" />
 		<a href="#">Tin RSS</a>

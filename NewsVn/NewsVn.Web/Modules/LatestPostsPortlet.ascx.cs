@@ -11,6 +11,7 @@ namespace NewsVn.Web.Modules
     public partial class LatestPostsPortlet : System.Web.UI.UserControl
     {
         //public List<Data.Post> DataSource { get; set; }
+        public string HostName { get; set; }
         public object DataSource { get; set; }
 
         public bool NoComments { get; set; }                       

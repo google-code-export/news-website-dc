@@ -20,11 +20,11 @@
         <ItemTemplate>
             <li class="head-latest-post">
             <% if (NoComments){ %><asp:Label runat="server" ID="lblNo_Comment" CssClass="post-comment"><%#Eval("Comments")%></asp:Label><% } %>
-                <asp:HyperLink runat="server" ID="hlnkTitle" NavigateUrl='<%#Eval("SeoUrl") %>'
+                <asp:HyperLink runat="server" ID="hlnkTitle" NavigateUrl='<%#HostName + Eval("SeoUrl") %>'
                 Text='<%#Eval("Title") %>' CssClass="post-title wrap"/>
                 <span class="post-info">
                 <asp:Label runat="server" ID="lblTitle" CssClass="cate" Text='<%#Eval("Cat_Name") %>' />
-                    <asp:Label ID="lblApproveOn" runat="server" Text='<%#Eval("ApprovedOn")%>' />
+                    <asp:Label ID="lblApproveOn" runat="server" Text='<%#Eval("ApprovedOn", "{0:dddd, dd/MM/yyyy HH:MM}")%>' />
                 </span>
             </li>
         </ItemTemplate>
