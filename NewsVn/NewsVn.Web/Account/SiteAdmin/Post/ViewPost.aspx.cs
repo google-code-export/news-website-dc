@@ -46,7 +46,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                p.Title, p.SeoUrl,
                p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
                p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
-               CategoryName = p.Category.Name, CategorySeoUrl = p.Category.SeoUrl
+               CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
+               CategorySeoUrl = p.Category.SeoUrl
             }).OrderByDescending(p => p.UpdatedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             rptPostList.DataBind();
         }

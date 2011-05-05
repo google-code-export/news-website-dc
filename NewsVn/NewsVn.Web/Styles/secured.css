@@ -94,6 +94,16 @@ a
     width: 100px;
 }
 
+.ui-form label.checkbox-label
+{
+    width: auto;    
+}
+
+.ui-form .checkbox
+{
+    vertical-align: middle;    
+}
+
 .ui-form .commands .ui-button
 {
     margin-right: 0;

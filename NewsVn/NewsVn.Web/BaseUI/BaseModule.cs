@@ -12,7 +12,9 @@ namespace NewsVn.Web.BaseUI
         public string InfoBar { get; set; }
         public string ErrorBar { get; set; }
         public string HostName { get; set; }
-       
+
+        protected IQueryable<Data.Post> _Posts;
+        protected IQueryable<Data.Category> _Categories;
         protected IQueryable<Data.AdCategory> _AdCategories;
         
         protected override void OnInit(EventArgs e)
@@ -31,7 +33,10 @@ namespace NewsVn.Web.BaseUI
 
             HostName = NewsVn.Web.Utils.ApplicationManager.HostName;
 
+            _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);
             _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
+
+            _Posts = ApplicationManager.Entities.Posts;
             
             base.OnInit(e);
         }

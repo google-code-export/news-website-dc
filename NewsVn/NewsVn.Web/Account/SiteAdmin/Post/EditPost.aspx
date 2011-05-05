@@ -7,5 +7,5 @@
 
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    <nsn:SiteAdmin_UpdatePost runat="server" />
+    <nsn:SiteAdmin_UpdatePost AllowEdit="true" runat="server" />
 </asp:Content>
