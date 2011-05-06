@@ -230,9 +230,10 @@ namespace NewsVn.Web.Utils
 
             //general IQueryable
             var DataQ = _AdPosts
-                    .Where(p => p.AdCategory.ID == int.Parse(array[0]) || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == int.Parse(array[0]) 
-                        && p.Actived == true && p.ExpiredOn>=DateTime.Today));
+                    .Where(p => p.AdCategory.ID == int.Parse(array[0]) || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == int.Parse(array[0])
+                        && p.Actived == true));//&& p.ExpiredOn>=DateTime.Today //expired sau nay se dung
             //return List<> by Search Result
+            //1: condition:search by date
             if (isSearchByDate)
             {
                 Datasource = DataQ.Where(p => p.CreatedOn.ToShortDateString() == searchDate.ToShortDateString()).Select(p => new
@@ -249,9 +250,10 @@ namespace NewsVn.Web.Utils
                 }).OrderByDescending(p => p.Payment).ToList();
                 //Search by date not paging
             }
+                //2: search by location
             else
             {
-                //search by location (location in one page) if location is not 'Toan Quoc'
+                //search by location (location in one page) if location is not 'Toan Quoc' (id=0)
                 if (int.Parse(locationID) >= 1)
                 {
                     DataQ = DataQ.Where(p => p.Location == locationID);

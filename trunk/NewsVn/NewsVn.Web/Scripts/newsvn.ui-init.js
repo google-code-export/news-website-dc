@@ -1,4 +1,4 @@
-﻿var serviceUrl = "Utils/NewsVnService.asmx/";
+﻿var serviceUrl = "/Utils/NewsVnService.asmx/";
 
 $.ajaxSetup({
     type: "POST",
