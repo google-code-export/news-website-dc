@@ -43,12 +43,12 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         private void LoadPostList(int pageIndex, int pageSize)
         {
             rptPostList.DataSource = _Posts.Select(p => new {
-               p.Title, p.SeoUrl,
+               p.ID, p.Title, p.SeoUrl,
                p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
                p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
                CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
                CategorySeoUrl = p.Category.SeoUrl
-            }).OrderByDescending(p => p.UpdatedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            }).OrderByDescending(p => p.CreatedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             rptPostList.DataBind();
         }
 

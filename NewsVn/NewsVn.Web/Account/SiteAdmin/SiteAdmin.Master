@@ -22,6 +22,12 @@
 <body>
     <form id="frmSiteAdmin" runat="server">
     <asp:ScriptManager runat="server" />
+    <asp:LoginView ID="LoginView1" runat="server">
+        <LoggedInTemplate>
+            <asp:LoginName ID="LoginName1" runat="server" /> |
+            <asp:LoginStatus ID="LoginStatus1" runat="server" />
+        </LoggedInTemplate>
+    </asp:LoginView>
     <asp:Image ID="datePickerIcon" ImageUrl="~/Images/icons/calendar.png" CssClass="invisible" runat="server" />
     <div id="side_content" class="left">
         <nsn:SiteAdmin_Menu runat="server" />
