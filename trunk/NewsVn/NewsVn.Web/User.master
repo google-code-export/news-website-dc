@@ -23,6 +23,12 @@
 <body>
     <form id="frmUser" runat="server">
     <asp:ScriptManager ID="smUser" runat="server" />
+    <asp:LoginView runat="server">
+        <LoggedInTemplate>
+            <asp:LoginName runat="server" /> |
+            <asp:LoginStatus runat="server" />
+        </LoggedInTemplate>
+    </asp:LoginView>
     <div id="header">
         <div class="wrapper">
             <div id="banner_bar">

@@ -47,7 +47,18 @@ namespace NewsVn.Web.Modules
 
         private void SetPostApprovalByRole()
         {
-            chkApproved.Checked = HttpContext.Current.User.IsInRole("siteadmin");
+            //chkApproved.Checked = HttpContext.Current.User.IsInRole("siteadmin");\
+            //chkApproved.Checked = true;
+            chkApproved.Visible = false;
+        }
+
+        private void ClearUpdateForm()
+        {
+            txtTitle.Text = string.Empty;
+            txtAvatar.Text = string.Empty;
+            txtDescription.Text = string.Empty;
+            editorContent.Content = string.Empty;
+            ddlCategory.SelectedIndex = 0;
         }
 
         private void LoadPostByID()
@@ -75,35 +86,61 @@ namespace NewsVn.Web.Modules
         }
 
         private void AddNewPost()
-        {            
-            Data.Post post = new Data.Post
-            {
-                Title = txtTitle.Text.Trim(),
-                Avatar = txtAvatar.Text.Trim(),
-                Actived = chkActived.Checked,
-                AllowComments = chkAllowComments.Checked,
-                CheckPageView = chkCheckPageView.Checked,
-                Approved = chkApproved.Checked,
-                Description = txtDescription.Text.Trim(),
-                Content = editorContent.Text.Trim(),
-                SeoUrl = "SEOURL",
-                CreatedOn = DateTime.Now,
-                CreatedBy = HttpContext.Current.User.Identity.Name,
-                Category = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue))
-            };
+        {
+            ApplicationManager.Entities.Connection.Open();
+            var trans = ApplicationManager.Entities.Connection.BeginTransaction();
 
-            if (chkApproved.Checked)
+            try
             {
-                post.ApprovedOn = DateTime.Now;
-                post.ApprovedBy = HttpContext.Current.User.Identity.Name;
+                Data.Category cate = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
+
+                Data.Post post = new Data.Post
+                {
+                    Title = txtTitle.Text.Trim(),
+                    Avatar = txtAvatar.Text.Trim(),
+                    Actived = chkActived.Checked,
+                    AllowComments = chkAllowComments.Checked,
+                    CheckPageView = chkCheckPageView.Checked,
+                    Approved = chkApproved.Checked,
+                    Description = txtDescription.Text.Trim(),
+                    Content = editorContent.Text.Trim(),
+                    SeoUrl = "SeoUrl",
+                    CreatedOn = DateTime.Now,
+                    CreatedBy = HttpContext.Current.User.Identity.Name,
+                    Category = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue))
+                };
+
+                if (chkApproved.Checked)
+                {
+                    post.ApprovedOn = DateTime.Now;
+                    post.ApprovedBy = HttpContext.Current.User.Identity.Name;
+                }
+
+                ApplicationManager.Entities.AddToPosts(post);
+                ApplicationManager.Entities.SaveChanges();
+
+                post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
+
+                ApplicationManager.Entities.SaveChanges();
+
+                trans.Commit();
+
+                this.ClearUpdateForm();
             }
-
-            ApplicationManager.Entities.AddToPosts(post);
-            ApplicationManager.Entities.SaveChanges();
+            catch (Exception)
+            {
+                trans.Rollback();
+            }
+            finally
+            {
+                ApplicationManager.Entities.Connection.Close();
+            }
         }
 
         private void ModifyPost(int postID)
         {
+            Data.Category cate = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
+            
             Data.Post post = _Posts.FirstOrDefault(p => p.ID == postID);
 
             if (post != null)
@@ -116,7 +153,7 @@ namespace NewsVn.Web.Modules
                 post.Approved = chkApproved.Checked;
                 post.Description = txtDescription.Text.Trim();
                 post.Content = editorContent.Text.Trim();
-                post.SeoUrl = "SEOURL";
+                post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
                 post.UpdatedOn = DateTime.Now;
                 post.UpdatedBy = HttpContext.Current.User.Identity.Name;
                 post.Category = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
@@ -128,6 +165,8 @@ namespace NewsVn.Web.Modules
                 }
 
                 ApplicationManager.Entities.SaveChanges();
+
+                this.ClearUpdateForm();
             }
         }
     }

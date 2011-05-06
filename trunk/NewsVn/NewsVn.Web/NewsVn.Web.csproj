@@ -57,6 +57,7 @@
   <ItemGroup>
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
+    <Content Include="Account\SiteAdmin\Default.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
@@ -233,6 +234,13 @@
     </Compile>
     <Compile Include="Account\Form\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.cs">
       <DependentUpon>AddPost.aspx</DependentUpon>

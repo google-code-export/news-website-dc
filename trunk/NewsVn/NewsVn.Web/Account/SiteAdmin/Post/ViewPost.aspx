@@ -68,9 +68,9 @@
             <tr>
                 <td><asp:CheckBox EnableViewState="false" runat="server" /></td>
                 <td>
-                    <asp:HyperLink NavigateUrl='<%# Eval("SeoUrl") %>' runat="server">
+                    <a href='<%= HostName + "account/siteadmin/post/editpost.aspx?pid=" %><%# Eval("ID") %>'>
                         <%# Eval("Title") %>
-                    </asp:HyperLink>
+                    </a>
                 </td>
                 <td>
                     <asp:HyperLink NavigateUrl='<%# Eval("CategorySeoUrl") %>' runat="server">

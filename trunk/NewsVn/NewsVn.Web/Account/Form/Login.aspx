@@ -6,7 +6,7 @@
     <br/><br/><br/>
     <div class="portlet" style="width:358px;margin:0 auto;">
         <h2>Thông tin đăng nhập</h2>
-        <ul class="ui-form ui-widget">
+        <%--<ul class="ui-form ui-widget">
             <li>
                 <asp:Label ID="Label1" AssociatedControlID="txtUsername" Text="Tài khoản:" Width="70" runat="server" />
                 <asp:TextBox ID="txtUsername" runat="server" />
@@ -24,7 +24,9 @@
                 <asp:LinkButton ID="LinkButton1" CssClass="button-login right" Text="Đăng nhập" runat="server" />
                 <div class="clear"></div>
             </li>
-        </ul>
+        </ul>--%>
+        <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/Account/SiteAdmin/Post/ViewPost.aspx" VisibleWhenLoggedIn="False"></asp:Login>
+        <%--<asp:CreateUserWizard runat=server />--%>
     </div>
 </asp:Content>
 
