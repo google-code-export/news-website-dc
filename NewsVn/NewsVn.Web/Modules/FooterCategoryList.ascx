@@ -4,7 +4,7 @@
 	<h2>Danh mục chủ đề</h2>
 	<ul class="item-list">
         <li class="head">
-			<a href="default.aspx">Trang chủ</a>						
+			<a href="trang-chu.aspx">Trang chủ</a>						
 		</li>
         <asp:Repeater ID="rptFooterCate" runat="server">
             <ItemTemplate>
