@@ -14,6 +14,7 @@ namespace NewsVn.Web.Modules
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            editorContent.DisableItemList = CE_Configuration;
             if (!IsPostBack)
             {
                 this.LoadCategoryDropDown();
@@ -21,7 +22,7 @@ namespace NewsVn.Web.Modules
                 this.LoadPostByID();
             }
         }
-
+        
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             int postID = -1;
@@ -57,7 +58,7 @@ namespace NewsVn.Web.Modules
             txtTitle.Text = string.Empty;
             txtAvatar.Text = string.Empty;
             txtDescription.Text = string.Empty;
-            editorContent.Content = string.Empty;
+            editorContent.Text = string.Empty;
             ddlCategory.SelectedIndex = 0;
         }
 
@@ -79,7 +80,7 @@ namespace NewsVn.Web.Modules
                     chkCheckPageView.Checked = post.CheckPageView;
                     chkApproved.Checked = post.Approved;
                     txtDescription.Text = post.Description;
-                    editorContent.Content = post.Content;
+                    editorContent.Text = post.Content;
                     ddlCategory.Items.FindByValue(post.Category.ID.ToString()).Selected = true;
                 }
             }

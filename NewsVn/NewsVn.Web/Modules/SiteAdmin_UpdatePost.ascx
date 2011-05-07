@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteAdmin_UpdatePost.ascx.cs" Inherits="NewsVn.Web.Modules.SiteAdmin_UpdatePost" %>
+<%@ Register Assembly="CuteEditor" Namespace="CuteEditor" TagPrefix="nsn" %>
 
 <div id="updatePostHelpBox" class="dialog" title="Trợ giúp">
 </div>
@@ -35,19 +36,23 @@
     </li>
     <li>
         <p><asp:Label AssociatedControlID="editorContent" Text="Nội dung:" runat="server" /></p>
-        <nsn:RadEditor runat="server" ID="editorContent" Height="600px" Width="100%" EnableResize="false"
+       <%-- <nsn:RadEditor runat="server" ID="editorContent" Height="600px" Width="100%" EnableResize="false"
             ToolsFile="~/Resources/Xml/Editor/CustomTools.xml">
             <ImageManager ViewPaths="~/Resources/Images" UploadPaths="~/Resources/Images" DeletePaths="~/Resources/Images" MaxUploadFileSize="2097152" />
             <FlashManager ViewPaths="~/Resources/Flash" UploadPaths="~/Resources/Flash" DeletePaths="~/Resources/Flash" MaxUploadFileSize="4194304" />
             <MediaManager ViewPaths="~/Resources/Media" UploadPaths="~/Resources/Media" DeletePaths="~/Resources/Media" MaxUploadFileSize="10485760" /> 
             <DocumentManager ViewPaths="~/Resources/Documents" UploadPaths="~/Resources/Documents" DeletePaths="~/Resources/Documents" MaxUploadFileSize="10485760" /> 
-        </nsn:RadEditor>
+        </nsn:RadEditor>--%>
+        <nsn:Editor ID="editorContent" runat="server" AutoConfigure="Default" 
+            Height="550px" Width="100%" ContextMenuMode="Default" ShowDecreaseButton="False" 
+            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="">
+        </nsn:Editor>
     </li>
     <li class="commands">
         <div class="right">
             <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ViewPost.aspx" Text="Quay lại" CssClass="button-back" runat="server" />
             <asp:HyperLink Text="Trợ giúp" CssClass="button-help dialog-trigger[updatePostHelpBox]" runat="server" />
-            <asp:LinkButton ID="btnUpdate" Text="Thực hiện" CssClass="button-ok" runat="server"
+            <asp:LinkButton ID="btnUpdate" Text="Lưu" CssClass="button-ok" runat="server"
                 OnClick="btnUpdate_Click" />
         </div>
         <div class="clear"></div>
