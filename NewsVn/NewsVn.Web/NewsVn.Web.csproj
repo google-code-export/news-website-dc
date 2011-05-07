@@ -32,8 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CuteEditor">
+      <HintPath>..\..\..\..\..\RESEARCH\aspnet\test CuteEditor\Bin\CuteEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="CuteEditor.ImageEditor">
+      <HintPath>..\..\..\..\..\RESEARCH\aspnet\test CuteEditor\Bin\CuteEditor.ImageEditor.dll</HintPath>
+    </Reference>
     <Reference Include="Intelligencia.UrlRewriter">
       <HintPath>..\..\resources\assemblies\Intelligencia.UrlRewriter.dll</HintPath>
+    </Reference>
+    <Reference Include="NetSpell.SpellChecker">
+      <HintPath>..\..\..\..\..\RESEARCH\aspnet\test CuteEditor\Bin\NetSpell.SpellChecker.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
