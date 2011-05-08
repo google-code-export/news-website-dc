@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteAdmin_UpdatePost.ascx.cs" Inherits="NewsVn.Web.Modules.SiteAdmin_UpdatePost" %>
-<%@ Register Assembly="CuteEditor" Namespace="CuteEditor" TagPrefix="nsn" %>
 
 <div id="updatePostHelpBox" class="dialog" title="Trợ giúp">
 </div>
