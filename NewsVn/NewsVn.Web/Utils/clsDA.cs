@@ -21,29 +21,6 @@ namespace NewsVn.Web.Utils
         public string ApprovedBy { get; set; }
         public string Avatar { get; set; }
         public string SeoUrl { get; set; }
-    //    Public Shared Sub Excute_Javascript(ByVal strFunction As String, ByVal cls As Object, Optional ByVal addScriptTags As Boolean = True)
-    //    'strFunction = strFunction.Replace("'", "\'")
-    //    ScriptManager.RegisterStartupScript(cls, cls.GetType(), "javascriptfunction", strFunction, addScriptTags)
-    //End Sub
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="strFunction"></param>
-        /// <param name="obj"></param>
-        public static void Excute_Javascript(string strFunction, object obj)
-        {
-            ScriptManager.RegisterStartupScript((Control) obj, obj.GetType(), "javascriptfunction", strFunction, false);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="strFunction"></param>
-        /// <param name="obj"></param>
-        /// <param name="bolAddScriptTags"></param>
-        public static void Excute_Javascript(string strFunction, object obj, bool bolAddScriptTags = true)
-        {
-            ScriptManager.RegisterStartupScript((Control)obj, obj.GetType(), "javascriptfunction", strFunction, bolAddScriptTags);
-        }
         /// <summary>
         /// 
         /// </summary>
@@ -162,6 +139,14 @@ namespace NewsVn.Web.Utils
                 dt.Rows.Add(row);
             }
             return dt;
+        }
+        public static void Excute_Javascript(string strFunction, object obj)
+        {
+            ScriptManager.RegisterStartupScript((Control)obj, obj.GetType(), "javascriptfunction", strFunction, false);
+        }
+        public static void Excute_Javascript(string strFunction, object obj, bool bolAddScriptTags = true)
+        {
+            ScriptManager.RegisterStartupScript((Control)obj, obj.GetType(), "javascriptfunction", strFunction, bolAddScriptTags);
         }
 
     }
