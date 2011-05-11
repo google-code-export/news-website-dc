@@ -24,9 +24,9 @@ namespace NewsVn.Web
         {
             if (!IsPostBack)
             {
+                List<int> lstArrayID = load_pletLatestNews();
                 load_pletSpecialEvents();
-                load_pletHotNews();
-                load_pletLatestNews();
+                load_pletHotNews(lstArrayID);
                 load_pletPosts();
                 load_sideTabBar();
             }
@@ -120,44 +120,47 @@ namespace NewsVn.Web
             ctrPortletPost_Ad.DataBind();
             postArea.Controls.Add(ctrPortletPost_Ad);
         }
-        void load_pletHotNews()
+        //Hot News Tin noi bat
+        void load_pletHotNews(List<int> lstArrayID)
         {
             //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len||
             pletHotNews.CateTitle = "Tin Nổi Bật";
-            pletHotNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new { 
-                    p.ID, p.Title,
-                    p.Description,
-                    p.Avatar, 
-                    p.SeoUrl,
-                    p.ApprovedOn
-           }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
-
-            //DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-
-            ds.ReadXml(Server.MapPath(@"resources/Xml/TinMoiNong_Newsvn.xml").ToString());
-            pletHotNews.DataSource = ds.Tables[0];
+            var oData = _Posts.Where(p => p.Actived == true && p.Approved == true && !lstArrayID.Contains(p.ID))
+                    .Select(p => new
+                    {
+                        p.Title,
+                        Description = clsCommon.hintDesc(p.Description),
+                        p.Avatar,
+                        SeoUrl=HostName+ p.SeoUrl,
+                        p.ApprovedOn,
+                        p.PageView
+                    }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
+            pletHotNews.DataSource = oData;
             pletHotNews.DataBind();
         }
+        //tin su kien
         void load_pletSpecialEvents()
         {
-            pletSpecialEvents.DataSource = clsPost.Load_Post_From_XML("Special", -1);
+            pletSpecialEvents.DataSource = clsPost.Load_Post_From_XML(10);
             pletSpecialEvents.DataBind();
         }
-        void load_pletLatestNews()
+        List<int> load_pletLatestNews()
         {
-            pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new {
-                    p.ID,
-                    p.Title,
-                    p.ApprovedOn,
-                    p.SeoUrl,
-                    p.AllowComments,
-                    Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
-                    Comments = p.PostComments.Count()
-                }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
+            var oData = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new
+            {
+                p.ID,
+                p.Title,
+                p.ApprovedOn,
+                p.SeoUrl,
+                p.AllowComments,
+                Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
+                Comments = p.PostComments.Count()
+            }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
+
+            pletLatestNews.DataSource = oData;
             pletLatestNews.HostName = HostName;
             pletLatestNews.DataBind();
-
+            return oData.Select(p => p.ID).ToList();
         }
     }
 }

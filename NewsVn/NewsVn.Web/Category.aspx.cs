@@ -33,8 +33,8 @@ namespace NewsVn.Web
                 string strCateName = Request.QueryString["ct"]; //Context.Request.Url.Query;
                 bool realCate = checkCateID_By_SEONAME(strCateName);
                 BaseUI.BaseMaster.ExecuteSEO(realCate ? CateTitle : "Cổng thông tin điện tử 24/07", "", "");
-                load_pletHotNews();
-                load_pletLatestNews();
+                List<int> lstArrayID = load_pletLatestNews();
+                load_pletHotNews(lstArrayID);
                 
                 DateTime searchDate = DateTime.Now;
                 int pageindex=0;
@@ -88,39 +88,27 @@ namespace NewsVn.Web
             pletCatePostList.DataBind();
         }
         //lay tin_hot theo chu de  va theo pageview cao nhat trong ngay
-        void load_pletHotNews()
+        void load_pletHotNews(List<int> lstArrayID)
         {
-            //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len
-            //var maxdate=_Posts.Where(p => p.Actived == true && p.Approved == true
-            //    && p.CheckPageView == true).Select(p => new
-            //    {
-            //        ApprovedOn=p.ApprovedOn==null?DateTime.Now:p.ApprovedOn
-            //    }).OrderByDescending(p => p.ApprovedOn).Take(1).ToList();
-            //var listData= _Posts.Where(p => p.Actived == true && p.Approved == true
-            //    && p.CheckPageView == true && p.ApprovedOn == maxdate[0].ApprovedOn).Select(p => new
-            //    {
-            //        p.ID,
-            //        p.Title,
-            //        p.Description,
-            //        p.Avatar,
-            //        p.SeoUrl,
-            //        p.ApprovedOn,
-            //        p.PageView
-            //    }).OrderByDescending(p => p.PageView).Take(5).ToList();
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-
-            ds.ReadXml(Server.MapPath(@"resources/Xml/TinMoiNong_Newsvn.xml").ToString());
+            var oData = _Posts.Where(p => p.Actived == true && !lstArrayID.Contains(p.ID) && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
+                    .Select(p => new
+                    {
+                        p.Title,
+                        Description = clsCommon.hintDesc(p.Description),
+                        p.Avatar,
+                        SeoUrl = HostName + p.SeoUrl,
+                        p.ApprovedOn,
+                        p.PageView
+                    }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
             pletHotNews.CateTitle = CateTitle;
-            pletHotNews.DataSource = ds.Tables[0];
-            //pletHotNews.DataSource = listData;
+            pletHotNews.DataSource = oData;
             pletHotNews.DataBind();
         }
         //lay tin_moi_nhat theo chu de
-        void load_pletLatestNews()
+        List<int> load_pletLatestNews()
         {
-            pletLatestNews.DataSource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                &&  p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
+            var oData = _Posts.Where(p => p.Actived == true && p.Approved == true
+                && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
                 {
                     p.ID,
                     p.Title,
@@ -130,9 +118,10 @@ namespace NewsVn.Web
                     Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
+            pletLatestNews.DataSource = oData;
             pletLatestNews.HostName = HostName;
             pletLatestNews.DataBind();
-
+            return oData.Select(p => p.ID).ToList();
         }
         //lay tieu_diem theo chu de, theo Month --> orderby Pageview, lay n record
         void load_pletFocusPost()

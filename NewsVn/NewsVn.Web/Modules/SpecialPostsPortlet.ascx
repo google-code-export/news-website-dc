@@ -24,7 +24,8 @@
         <asp:Repeater ID="rptHotNews" runat="server">
             <ItemTemplate>
                 <asp:HyperLink ID="hlnkTitle" NavigateUrl='<%# Eval("SeoUrl") %>' ToolTip='<%# Eval("Title") %>'  runat="server">
-                <asp:Image ID="imgPresentation" ImageUrl='<%# Eval("Avatar") %>' runat="server" ToolTip='<%# Eval("Title") %>' />
+                <img src='<%# Eval("Avatar") %>' style="width:340px !important; height:250px !important;" title='<%# Eval("Title") %>'/>
+                <%--<asp:Image ID="imgPresentation" ImageUrl='<%# Eval("Avatar") %>' runat="server" ToolTip='<%# Eval("Title") %>' Width="340px" Height="250px" />--%>
                 <asp:Label ID="lblDescription" Text='<%# Eval("Description") %>' runat="server" CssClass="description" ></asp:Label>    
                 </asp:HyperLink>
             </ItemTemplate>

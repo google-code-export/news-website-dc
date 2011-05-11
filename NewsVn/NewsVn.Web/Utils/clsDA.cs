@@ -7,16 +7,20 @@ using System.Xml.Linq;
 using System.Web.UI;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace NewsVn.Web.Utils
 {
     public class clsPost
     {
-        public int PostID { get; set; }
+        public string ID { get; set; }
         public string Title { get; set; }
+        public string CateName { get; set; }
+        public string Description { get; set; }
+        public string ApprovedOn { get; set; }
+        public string ApprovedBy { get; set; }
         public string Avatar { get; set; }
         public string SeoUrl { get; set; }
-        public DateTime ApprovedOn { get; set; }
     //    Public Shared Sub Excute_Javascript(ByVal strFunction As String, ByVal cls As Object, Optional ByVal addScriptTags As Boolean = True)
     //    'strFunction = strFunction.Replace("'", "\'")
     //    ScriptManager.RegisterStartupScript(cls, cls.GetType(), "javascriptfunction", strFunction, addScriptTags)
@@ -46,17 +50,19 @@ namespace NewsVn.Web.Utils
         /// <param name="CategoryType"></param>
         /// <param name="intTake"></param>
         /// <returns></returns>
-        public static List<clsPost> Load_Post_From_XML(string CategoryType,int intTake)
+        public static List<clsPost> Load_Post_From_XML(int intTake)
         {
-            XDocument xCategory = XDocument.Load(HttpContext.Current.Server.MapPath(@"~/Resources/Xml/category.xml"));
-            var Categories = xCategory.Descendants("Category").Where(c => c.Attribute("Type").Value == CategoryType).Descendants("Post");
-            return Categories.Select(p => new clsPost()
+            XElement element = XElement.Load(HttpContext.Current.Server.MapPath(@"~/Resources/Xml/category.xml"));
+            return element.Element("Posts").Elements("Post").Select(c => new clsPost
             {
-                PostID = Convert.ToInt32(p.Attribute("ID").Value),
-                Title = p.Element("Title").Value,
-                Avatar = p.Element("Avatar").Value,
-                SeoUrl = p.Element("SeoUrl").Value,
-                ApprovedOn = DateTime.Now// Convert.ToDateTime(p.Attribute("ApprovedOn").Value)
+                Title = c.Element("Title").Value,
+                Avatar = c.Element("Avatar").Value,
+                SeoUrl = c.Element("SeoUrl").Value,
+                ID = c.Attribute("ID").Value,
+                Description = c.Element("Description").Value,
+                CateName = c.Element("CateName").Value,
+                ApprovedBy = c.Element("ApprovedBy").Value,
+                ApprovedOn = c.Element("ApprovedOn").Value,
             }).Take(intTake == -1 ? 20 : intTake).ToList();
         }
     }
@@ -115,11 +121,12 @@ namespace NewsVn.Web.Utils
             var tifo = new CultureInfo("vi-VN", false).TextInfo;
             return tifo.ToTitleCase(input);
         }
+        //remove unicode vietnam
         public static string RemoveUnicodeMarks(string accented)
         {
             accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
 
-            string[] splitted = accented.Split("~!@#$%^&*()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             accented = string.Join("-", splitted).ToLower();
 
             Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
@@ -127,6 +134,7 @@ namespace NewsVn.Web.Utils
 
             return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
+        //cut string fix to words expectation
         public static string hintDesc(string desc)
         {
             int intWord = 150;
@@ -135,5 +143,26 @@ namespace NewsVn.Web.Utils
             s_ = toLong ? s_.Substring(0, s_.LastIndexOf(' ')) : s_;
             return toLong ? s_ + " ..." : s_;
         }
+        //convert Gerenic List to Datatable (su dung khi it record 'performance')
+        public static DataTable ListToDataTable<T>(IEnumerable<T> list)
+        {
+            var dt = new DataTable();
+
+            foreach (var info in typeof(T).GetProperties())
+            {
+                dt.Columns.Add(new DataColumn(info.Name, info.PropertyType));
+            }
+            foreach (var t in list)
+            {
+                var row = dt.NewRow();
+                foreach (var info in typeof(T).GetProperties())
+                {
+                    row[info.Name] = info.GetValue(t, null);
+                }
+                dt.Rows.Add(row);
+            }
+            return dt;
+        }
+
     }
 }

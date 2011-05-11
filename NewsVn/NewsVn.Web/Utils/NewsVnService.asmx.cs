@@ -152,6 +152,7 @@ namespace NewsVn.Web.Utils
                     ApplicationManager.Entities.AddToPostComments(comment);
                     ApplicationManager.Entities.SaveChanges();
                     ApplicationManager.UpdateCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments);
+                   // ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories);
                 }
                 else return string.Format("{0}", "Captcha không hợp lệ.");
             }

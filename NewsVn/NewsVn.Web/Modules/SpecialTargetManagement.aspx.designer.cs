@@ -22,12 +22,12 @@ namespace NewsVn.Web.Modules {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txtSearch control.
+        /// Special_Target_Management1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::NewsVn.Web.Modules.Special_Target_Management Special_Target_Management1;
     }
 }

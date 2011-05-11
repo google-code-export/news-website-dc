@@ -12,6 +12,7 @@
                 var activeAvatar = $(boundary + " .post-avatar");
                 var cloneAvatar = activeAvatar.clone();
 
+                activeItem.find("#aActived").attr("href", matchItem.find("#aInActived").attr("href"));
                 activeItem.find(".post-comment").text(matchItem.find(".post-comment").text());
                 activeItem.find(".post-title").text(matchItem.find(".post-title").text());
                 activeItem.find(".post-info").text(matchItem.find(".post-info").text());
@@ -22,6 +23,7 @@
                 activeAvatar.css({ "display": "none" });
                 activeAvatar.fadeIn(500);
 
+                matchItem.find("#aInActived").attr("href", cloneItem.find("#aActived").attr("href"));
                 matchItem.find(".post-comment").text(cloneItem.find(".post-comment").text());
                 matchItem.find(".post-title").text(cloneItem.find(".post-title").text());
                 matchItem.find(".post-info").text(cloneItem.find(".post-info").text());
@@ -37,13 +39,13 @@
        <a class="cate-title" href='<%= SeoUrl %>'><%= Title %></a>
        <a class="rss" href="#"></a>
     </h2>
-    <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server" />
+    <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server"/>
     <ul class="avatar-thumb-list right">
         <asp:Repeater runat="server" ID="rptSubAvatar" 
            >
             <ItemTemplate>
                 <li>
-                    <img id="imgSub" src='<%#Eval("Avatar") %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class='item-<%#Container.ItemIndex+2%>' />
+                    <img id="imgSub" src='<%#Eval("Avatar") %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class='item-<%#Container.ItemIndex+1%>' />
                 </li>
             </ItemTemplate>
         </asp:Repeater>
@@ -54,7 +56,7 @@
             onitemdatabound="rptFirstItem_ItemDataBound">
             <ItemTemplate>
                 <% if (NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
-                <a href='<%#Eval("SeoUrl") %>' class="post-title"><%#Eval("Title") %></a>        
+                <a id="aActived" href='<%#Eval("SeoUrl") %>' class="post-title wrap"><%#Eval("Title") %></a>        
                 <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy HH:MM}") %></span>
                 <p><%# Eval("Description") %></p>
             </ItemTemplate>
@@ -63,10 +65,10 @@
     <ul class="post-item-list other">
         <asp:Repeater ID="rptOtherItems" runat="server" >
             <ItemTemplate>
-                <li class='item-<%#Container.ItemIndex+2%>'>
+                <li class='item-<%#Container.ItemIndex+1%>'>
                     <% if (NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                     <% if (NoComments){ %><div class="wrap"><% } %>
-                        <a class="post-title inline" href='<%#Eval("SeoUrl") %>'><%# Eval("Title") %></a> <br />
+                        <a id="aInActived" class="post-title inline" href='<%#Eval("SeoUrl") %>'><%# Eval("Title") %></a> <br />
                         <span class="post-info">
                             <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy HH:MM}") %>
                         </span>
@@ -76,7 +78,4 @@
             </ItemTemplate>
         </asp:Repeater>        
     </ul>
-    <div style="display:none">
-        <asp:HiddenField runat="server" ID="hid_Avatar" Value="" />
-    </div>
 </asp:Panel>

@@ -1,96 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- Special: su kien noi bat, Focus: tieu diem-->
 <Categories>
-	<Category ID="" Type="Special">
-		<Posts>
-			<Post ID="1">
-				<Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>~/resources/posts/t510695.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-			</Post>
-      <Post ID="2">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>~/resources/posts/t510696.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="3">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>~/resources/posts/t510695.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>~/resources/posts/t510697.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>~/resources/posts/t510698.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-		</Posts>
-	</Category>
-  <Category ID="1" Type="Focus">
-    <Posts>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510695.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510696.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510697.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510698.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-    </Posts>
-  </Category>
-  <Category ID="2" Type="Focus">
-    <Posts>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510696.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510696.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510696.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-      <Post ID="1">
-        <Title>Liên quân tiếp tục giáng đòn xuống Libya</Title>
-        <Avatar>resources/posts/t510696.jpg</Avatar>
-        <SeoUrl></SeoUrl>
-        <ApprovedOn></ApprovedOn>
-      </Post>
-    </Posts>
-  </Category>
+  <Posts>
+    <Post ID="87">
+      <Title>Lại 'điên đầu' vì vàng 'bẩn'</Title>
+      <CateName>Văn h&amp;#243;a</CateName>
+      <ApprovedBy>admin</ApprovedBy>
+      <ApprovedOn>07/25/2011 23:05</ApprovedOn>
+      <SeoUrl>http://newsvn.vn/pt/kinh-te/mua-sam/87/lai-dien-dau-vi-vang-ban.aspx</SeoUrl>
+      <Avatar>http://baodatviet.vn/Uploaded_CDCA/maihuong/20110510/kt-vang-3-noi-bat.jpg</Avatar>
+      <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
+    </Post>
+    <Post ID="85">
+      <Title>Tìm hiểu thu nhập của siêu mẫu Việt</Title>
+      <CateName>Văn h&amp;#243;a</CateName>
+      <ApprovedBy>admin</ApprovedBy>
+      <ApprovedOn>07/25/2011 23:05</ApprovedOn>
+      <SeoUrl>http://newsvn.vn/pt/buon-chuyen/82/tim-hieu-thu-nhap-cua-sieu-mau-viet.aspx</SeoUrl>
+      <Avatar>http://www.giaoduc.edu.vn/upload/image/2009/07/14/vhnt/sieu-mau-viet-2.jpg</Avatar>
+      <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
+    </Post>
+    <Post ID="102">
+      <Title>Tuần mới của bạn (9/5 - 15/5/2011) ?</Title>
+      <CateName>Văn h&amp;#243;a</CateName>
+      <ApprovedBy>admin</ApprovedBy>
+      <ApprovedOn>07/25/2011 23:05</ApprovedOn>
+      <SeoUrl>http://newsvn.vn/pt/goc-teen/102/tuan-moi-cua-ban-9-5-15-5-2011.aspx</SeoUrl>
+        <Avatar>http://img.news.zing.vn/img/492/t492408.jpg</Avatar>
+      <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
+    </Post>
+    <Post ID="93">
+      <Title>Người gốc Việt thành Bộ trưởng kinh tế Đức</Title>
+      <CateName>Văn h&amp;#243;a</CateName>
+      <ApprovedBy>admin</ApprovedBy>
+      <ApprovedOn>07/25/2011 23:05</ApprovedOn>
+      <SeoUrl>http://newsvn.vn/pt/xa-hoi/the-gioi/93/nguoi-goc-viet-thanh-bo-truong-kinh-te-duc.aspx</SeoUrl>
+      <Avatar>http://vnexpress.net/Files/Subject/3b/a2/86/ae/roesler-fdp1.jpg</Avatar>
+      <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
+    </Post>
+    <Post ID="108">
+      <Title>5 vấn đề thường gặp ở tuổi mới lớn ?</Title>
+      <CateName>Văn h&amp;#243;a</CateName>
+      <ApprovedBy>admin</ApprovedBy>
+      <ApprovedOn>07/25/2011 23:05</ApprovedOn>
+      <SeoUrl>http://newsvn.vn/pt/goc-teen/108/5-van-de-thuong-gap-o-tuoi-moi-lon.aspx</SeoUrl>
+      <Avatar>http://www.okotokslibrary.ca/images/26885-Teens_000.jpg</Avatar>
+      <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
+    </Post>
+  </Posts>
   <Weather>
     <City>
       <Name>Bà Rịa - Vũng Tàu</Name>
