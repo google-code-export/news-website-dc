@@ -1672,6 +1672,7 @@
     <Content Include="ProfileList.aspx" />
     <Content Include="ProfileSearchResult.aspx" />
     <Content Include="Modules\RandomProfileBox.ascx" />
+    <Content Include="Resources\Images\Chrysanthemum.jpg" />
     <Content Include="Resources\Xml\Editor\BasicTools.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1719,7 +1720,9 @@
     <Content Include="Styles\user.css" />
     <Content Include="Styles\validation.css" />
     <Content Include="Utils\NewsVnService.asmx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -2178,7 +2181,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
-    <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Mediaes\" />
   </ItemGroup>
   <ItemGroup>
@@ -2192,7 +2194,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\UserControls.config" />
+    <Content Include="Config\UserControls.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\RewriteUrls.config">

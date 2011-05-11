@@ -24,7 +24,7 @@ namespace NewsVn.Web.Modules
                     txtGoldDate.Text = string.Format("{0:dd/MM/yyyy}", dt);
                 }
                 txtGoldDate.Attributes.Add("readOnly", "true");
-               // disabled_Control_DependOnPage();
+                disabled_Control_DependOnPage();
             }
         }
 

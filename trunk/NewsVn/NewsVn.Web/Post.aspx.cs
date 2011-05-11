@@ -43,7 +43,7 @@ namespace NewsVn.Web
         {
             var postData = _Posts.Where(p => p.Actived == true && p.Approved == true
               && p.ID == postID).FirstOrDefault();
-            BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ?  postData.Title.Trim() : "Cổng thông tin điện tử 24/07", "", "");
+            
             var postComment = _PostComments.Where(pc => pc.Post.ID == postID).Select(
                 pc => new { 
                 pc.CreatedOn,
@@ -55,6 +55,8 @@ namespace NewsVn.Web
             pletPostDetail.AllowComment = postData.AllowComments;
             pletPostDetail.Datasource = postData;
             pletPostDetail.DataBind();
+            //seo
+            BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", postData.Title, clsCommon.hintDesc(postData.Description));
             //commentbox
             pletCommentBox.PostID = postID;    
             //check_PageView  - khong su dung pageview thi ko can update

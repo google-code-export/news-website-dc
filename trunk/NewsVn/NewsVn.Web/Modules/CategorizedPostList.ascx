@@ -16,7 +16,7 @@
                 <div class="post-item right">
                    <% if (NoComments){ %> <span class="post-comment"><%#Eval("Comments") %></span><% } %>
                     <div class="wrap">
-                        <a href="#" class="post-title inline"><%#Eval("Title") %></a> -
+                        <a href='<%=HostName%><%#Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a> -
                         <span class="post-info"><%#string.Format("{0:dddd, dd/MM/yyyy}",Eval("ApprovedOn")) %></span>
                     </div>            
                     <p><%#Eval("Description") %></p>
