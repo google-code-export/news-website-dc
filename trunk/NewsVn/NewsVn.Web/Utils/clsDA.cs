@@ -149,5 +149,10 @@ namespace NewsVn.Web.Utils
             ScriptManager.RegisterStartupScript((Control)obj, obj.GetType(), "javascriptfunction", strFunction, bolAddScriptTags);
         }
 
+        public static string getEllipsisText(string input, int maxLenth)
+        {
+            if (input.Length > maxLenth) return input.Substring(0, maxLenth) + "...";
+            return input;
+        }
     }
 }

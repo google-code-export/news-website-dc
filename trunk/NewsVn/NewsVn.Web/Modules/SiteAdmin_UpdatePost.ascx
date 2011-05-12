@@ -35,17 +35,9 @@
     </li>
     <li>
         <p><asp:Label AssociatedControlID="editorContent" Text="Nội dung:" runat="server" /></p>
-       <%-- <nsn:RadEditor runat="server" ID="editorContent" Height="600px" Width="100%" EnableResize="false"
-            ToolsFile="~/Resources/Xml/Editor/CustomTools.xml">
-            <ImageManager ViewPaths="~/Resources/Images" UploadPaths="~/Resources/Images" DeletePaths="~/Resources/Images" MaxUploadFileSize="2097152" />
-            <FlashManager ViewPaths="~/Resources/Flash" UploadPaths="~/Resources/Flash" DeletePaths="~/Resources/Flash" MaxUploadFileSize="4194304" />
-            <MediaManager ViewPaths="~/Resources/Media" UploadPaths="~/Resources/Media" DeletePaths="~/Resources/Media" MaxUploadFileSize="10485760" /> 
-            <DocumentManager ViewPaths="~/Resources/Documents" UploadPaths="~/Resources/Documents" DeletePaths="~/Resources/Documents" MaxUploadFileSize="10485760" /> 
-        </nsn:RadEditor>--%>
         <nsn:Editor ID="editorContent" runat="server" AutoConfigure="Default" 
             Height="550px" Width="100%" ContextMenuMode="Default" ShowDecreaseButton="False" 
-            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="">
-        </nsn:Editor>
+            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="" />
     </li>
     <li class="commands">
         <div class="right">

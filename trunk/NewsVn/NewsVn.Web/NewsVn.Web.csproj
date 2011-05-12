@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Form\Login.aspx" />
+    <Content Include="Account\Form\LostPassword.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
     <Content Include="Account\SiteAdmin\Default.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
@@ -1741,6 +1742,13 @@
     <Compile Include="Account\Form\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Form\LostPassword.aspx.cs">
+      <DependentUpon>LostPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Form\LostPassword.aspx.designer.cs">
+      <DependentUpon>LostPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Form\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2190,7 +2198,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
-    <Folder Include="Resources\Mediaes\" />
+    <Folder Include="Resources\Media\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewsVn.Core\NewsVn.Core.csproj">

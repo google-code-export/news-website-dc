@@ -25,6 +25,11 @@ $(function () {
             primary: "ui-icon-trash"
         }
     });
+    $(".button-toggle").button({
+        icons: {
+            primary: "ui-icon-transferthick-e-w"
+        }
+    });
     $(".button-refresh").button({
         icons: {
             primary: "ui-icon-arrowrefresh-1-s"

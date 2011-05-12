@@ -6,9 +6,9 @@
             $.validationEngineLanguage.allRules = {
                 "required": { // Add your regex rules here, you can take telephone as an example
                     "regex": "none",
-                    "alertText": "* Đây là trường bắt buộc",
+                    "alertText": "* Vui lòng nhập thông tin",
                     "alertTextCheckboxMultiple": "* Vui lòng chọn 1 checkbox",
-                    "alertTextCheckboxe": "* Đây là checkbox bắt buộc"
+                    "alertTextCheckboxe": "* Vui lòng chọn checkbox"
                 },
                 "minSize": {
                     "regex": "none",
