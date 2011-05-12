@@ -82,6 +82,8 @@ a
     position: fixed;
     padding-bottom: 5px;
     top: 0;
+    /*width:100% !important;
+    max-width:1044px !important;*/
 }
 
 .ui-table-toolbar .left

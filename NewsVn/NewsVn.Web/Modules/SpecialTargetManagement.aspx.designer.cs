@@ -11,23 +11,5 @@ namespace NewsVn.Web.Modules {
     
     
     public partial class SpecialTargetManagement {
-        
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// Special_Target_Management1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::NewsVn.Web.Modules.Special_Target_Management Special_Target_Management1;
     }
 }

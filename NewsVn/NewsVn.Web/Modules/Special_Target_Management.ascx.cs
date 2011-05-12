@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Xml.Linq;
+using System.Xml.XPath;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -25,16 +26,17 @@ namespace NewsVn.Web.Modules
                 this.GoToPage(1, 35);
                 Load_GridShow(10);
             }
-            
         }
         protected void Load_GridShow(int intTake)
         {
             DataTable dt = new DataTable();
             dt = Utils.clsCommon.ListToDataTable(Utils.clsPost.Load_Post_From_XML(intTake));
+            string[] arrkey = { "ID" };
+            grvShow.DataKeyNames = arrkey;
             grvShow.DataSource = dt;
             grvShow.DataBind();
             ViewState["dtTemp"] = dt;
-            grvShow.Columns[2].Visible = false;
+            grvShow.Columns[1].Visible = false;
         }
         protected void Pager_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -77,7 +79,7 @@ namespace NewsVn.Web.Modules
             GridView1.DataBind();
             GridView1.Columns[9].Visible = false;
             GridView1.Columns[8].Visible = false;
-            GridView1.Columns[7].Visible = false;
+            GridView1.Columns[7].Visible = true;
             GridView1.Columns[6].Visible = false;
         }
 
@@ -103,6 +105,7 @@ namespace NewsVn.Web.Modules
                 //rptPostList.Items.OfType<RepeaterItem>().ToList().ForEach(ri => ((CheckBox)ri.FindControl("CheckBox1")).Checked = true);
                 //var rowList = GridView1.Rows.OfType<GridViewRow>();
                 string msgExist = "";
+                bool nocheck=true;
                 foreach (GridViewRow row in GridView1.Rows)
                 {
                     if (countItemToInsert == 0)
@@ -113,19 +116,20 @@ namespace NewsVn.Web.Modules
                     
                     if (ischecked)
                     {
+                        nocheck = false;
                         bool existThisItem = false;
                         foreach (DataRow dtRow in dt.Rows)
                         {
                             if (dtRow["ID"].ToString() == row.Cells[8].Text)
                             {
                                 existThisItem = true;
-                                break;
+                                
                             }
                         }
 
                         if (existThisItem)
                         {
-                            msgExist += row.Cells[2].Text + "\n";
+                            msgExist += "- "+row.Cells[2].Text + "\\n";
 
                             continue;
                         }
@@ -141,6 +145,11 @@ namespace NewsVn.Web.Modules
                         dt.Rows.Add(r);
                         countItemToInsert = countItemToInsert - 1;
                     }
+                }
+                if (nocheck)
+                {
+                    Utils.clsCommon.Excute_Javascript("alert('Chưa chọn tin cần đưa vào danh sách Tin Sự Kiện Nổi Bật!')", this.Page, true);
+                    return;
                 }
                 XElement loaded = XElement.Load(Server.MapPath(@"~/Resources/Xml/category.xml"));
                 loaded.Element("Posts").RemoveAll();
@@ -159,12 +168,16 @@ namespace NewsVn.Web.Modules
                                 )
                         );
                 }
-                loaded.Save(Server.MapPath(@"~/Resources/Xml/category.xml"));
-                Load_GridShow(10);
+                
                 if (msgExist.Length >= 1)
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "js", "alert('Đã tồn tại những tin tức này trong danh mục tin Hot\n" + msgExist + "')", true);
-                }   
+                    Utils.clsCommon.Excute_Javascript("alert('Đã tồn tại những tin tức này:\\n" + msgExist + "\\ntrong danh mục sự kiện nổi bật')", this.Page, true);
+                }
+                else 
+                {
+                    loaded.Save(Server.MapPath(@"~/Resources/Xml/category.xml"));
+                    Load_GridShow(10);
+                }
             }
         }
 
@@ -173,10 +186,29 @@ namespace NewsVn.Web.Modules
             if (e.Row.RowIndex>=0)
             {
                 LinkButton lnkbtnDel = e.Row.FindControl("lnkbtnDel") as LinkButton;
-                LinkButton lnkbtnF = e.Row.FindControl("lnkbtnF") as LinkButton;
-                LinkButton lnkbtnU = e.Row.FindControl("lnkbtnU") as LinkButton;
-                LinkButton lnkbtnD = e.Row.FindControl("lnkbtnD") as LinkButton;
-                LinkButton lnkbtnL = e.Row.FindControl("lnkbtnL") as LinkButton;
+                lnkbtnDel.Attributes.Add("onClick", "return confirmDelete(" + System.Web.UI.DataBinder.Eval(e.Row.DataItem, "ID").ToString() + ");");
+            }
+        }
+
+        protected void lnkbtnDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //c1: linq
+                XElement loaded = XElement.Load(Server.MapPath(@"~/Resources/Xml/category.xml"));
+                loaded.Elements("Posts").Elements("Post")
+                    .Where(p => p.Attribute("ID").Value == hidID.Value)
+                    .ToList()
+                    .ForEach(i => i.Remove());
+                loaded.Save(Server.MapPath(@"~/Resources/Xml/category.xml"));
+                Load_GridShow(10);
+                //c2: extension xpath
+                //XElement loaded = XElement.Load(Server.MapPath(@"~/Resources/Xml/category.xml"));
+                //loaded.XPathSelectElement("Posts/Post[@ID = '" + hidID.Value + "']").Remove();
+            }
+            catch (Exception ex)
+            {
+                Utils.clsCommon.Excute_Javascript("alert('Xóa thất bại - xem lỗi: \\n" + ex.Message.ToString() + "')", this.Page, true);
             }
         }
     }
