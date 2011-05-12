@@ -66,6 +66,7 @@
     <Content Include="Account\SiteAdmin\Default.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditPost.aspx" />
+    <Content Include="Account\SiteAdmin\Post\ManageSpecialEventNews.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
@@ -1588,6 +1589,7 @@
     <Content Include="Images\icons\youtube.png" />
     <Content Include="Images\nivo\indicator.gif" />
     <Content Include="Images\nivo\loading.gif" />
+    <Content Include="Images\ui\delete.gif" />
     <Content Include="Images\ui\ui-bg_flat_15_bd0d0d_40x100.png" />
     <Content Include="Images\ui\ui-bg_glass_100_feeceb_1x400.png" />
     <Content Include="Images\ui\ui-bg_glass_50_ffb4ae_1x400.png" />
@@ -1766,6 +1768,13 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.designer.cs">
       <DependentUpon>EditPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ManageSpecialEventNews.aspx.cs">
+      <DependentUpon>ManageSpecialEventNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ManageSpecialEventNews.aspx.designer.cs">
+      <DependentUpon>ManageSpecialEventNews.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\ViewPost.aspx.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>
@@ -2225,7 +2234,9 @@
     <Content Include="Account\Mod\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\SiteAdmin\Web.config" />
+    <Content Include="Account\SiteAdmin\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\SysAdmin\Web.config" />
