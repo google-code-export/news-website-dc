@@ -15,6 +15,7 @@ namespace NewsVn.Web.Modules
         protected void Page_Load(object sender, EventArgs e)
         {
             editorContent.DisableItemList = CE_Configuration;
+
             if (!IsPostBack)
             {
                 this.LoadCategoryDropDown();
@@ -48,8 +49,8 @@ namespace NewsVn.Web.Modules
 
         private void SetPostApprovalByRole()
         {
-            //chkApproved.Checked = HttpContext.Current.User.IsInRole("siteadmin");\
-            //chkApproved.Checked = true;
+            chkApproved.Checked = HttpContext.Current.User.IsInRole("siteadmin");
+            chkApproved.Checked = true;
             chkApproved.Visible = false;
         }
 
@@ -151,19 +152,12 @@ namespace NewsVn.Web.Modules
                 post.Actived = chkActived.Checked;
                 post.AllowComments = chkAllowComments.Checked;
                 post.CheckPageView = chkCheckPageView.Checked;
-                post.Approved = chkApproved.Checked;
                 post.Description = txtDescription.Text.Trim();
                 post.Content = editorContent.Text.Trim();
                 post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
                 post.UpdatedOn = DateTime.Now;
                 post.UpdatedBy = HttpContext.Current.User.Identity.Name;
                 post.Category = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
-
-                if (chkApproved.Checked)
-                {
-                    post.ApprovedOn = DateTime.Now;
-                    post.ApprovedBy = HttpContext.Current.User.Identity.Name;
-                }
 
                 ApplicationManager.Entities.SaveChanges();
 
