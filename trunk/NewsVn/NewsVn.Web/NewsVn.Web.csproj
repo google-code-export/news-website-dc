@@ -65,9 +65,12 @@
     <Content Include="Account\Form\LostPassword.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
     <Content Include="Account\SiteAdmin\Default.aspx" />
+    <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
+    <Content Include="Account\SiteAdmin\Post\EditCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ManageSpecialEventNews.aspx" />
+    <Content Include="Account\SiteAdmin\Post\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
@@ -1763,12 +1766,26 @@
     <Compile Include="Account\SiteAdmin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AddCategory.aspx.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AddCategory.aspx.designer.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.cs">
       <DependentUpon>AddPost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.designer.cs">
       <DependentUpon>AddPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\EditCategory.aspx.cs">
+      <DependentUpon>EditCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\EditCategory.aspx.designer.cs">
+      <DependentUpon>EditCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\EditPost.aspx.cs">
       <DependentUpon>EditPost.aspx</DependentUpon>
@@ -1783,6 +1800,13 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\ManageSpecialEventNews.aspx.designer.cs">
       <DependentUpon>ManageSpecialEventNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ViewCategory.aspx.cs">
+      <DependentUpon>ViewCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ViewCategory.aspx.designer.cs">
+      <DependentUpon>ViewCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\ViewPost.aspx.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>

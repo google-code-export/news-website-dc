@@ -12,6 +12,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Title = SiteTitle + "Quản lý tin tức";
+            
             if (!IsPostBack)
             {
                 this.GoToPage(1, 35);
@@ -20,9 +22,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         protected void Pager_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int pageIndex = int.Parse(ddlPageIndex.SelectedValue);
-            int pageSize = int.Parse(ddlPageSize.SelectedValue);
-            this.GoToPage(pageIndex, pageSize);
+            this.GoToCurrentPage();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -34,14 +34,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     ApplicationManager.Entities.DeleteObject(post);
                 }
 
-                ApplicationManager.Entities.SaveChanges();
-
-                this.Pager_SelectedIndexChanged(sender, e);
+                this.SaveChangesAndReload();                
             }
             catch (Exception)
             {
-                clsCommon.Excute_Javascript("alert('Không thể xóa tin được chọn!')", this);
+                ltrError.Text = string.Format(ErrorBar, "Không thể xóa tin được chọn!");
             }
+
+            this.GoToCurrentPage();
         }
 
         protected void btnToggleActive_Click(object sender, EventArgs e)
@@ -53,14 +53,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     post.Actived = !post.Actived;
                 }
 
-                ApplicationManager.Entities.SaveChanges();
-
-                this.Pager_SelectedIndexChanged(sender, e);
+                this.SaveChangesAndReload();                
             }
             catch (Exception)
             {
-                clsCommon.Excute_Javascript("alert('Không thể ẩn tin được chọn!')", this);
+                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn tin được chọn!");
             }
+
+            this.GoToCurrentPage();
         }
 
         protected void btnApprove_Click(object sender, EventArgs e)
@@ -74,19 +74,19 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     post.ApprovedBy = HttpContext.Current.User.Identity.Name;
                 }
 
-                ApplicationManager.Entities.SaveChanges();
-
-                this.Pager_SelectedIndexChanged(sender, e);
+                this.SaveChangesAndReload();
             }
             catch (Exception)
             {
-                clsCommon.Excute_Javascript("alert('Không thể duyệt tin được chọn!')", this);
+                ltrError.Text = string.Format(ErrorBar, "Không thể duyệt tin được chọn!");
             }
+
+            this.GoToCurrentPage();
         }
 
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
-            this.Pager_SelectedIndexChanged(sender, e);
+            this.GoToCurrentPage();
         }
 
         protected void btnFilter_Click(object sender, EventArgs e)
@@ -94,8 +94,23 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             string filterColumn = ddlFilterColumn.SelectedValue;
             string filterText = txtFilterText.Text;
 
-            rptPostList.DataSource = _Posts.Where(p => p.GetType().GetProperty(filterColumn).GetValue(p, null).ToString().Contains(filterText));
-            rptPostList.DataBind();
+            try
+            {
+                rptPostList.DataSource = _Posts.Where(p => p.GetType().GetProperty(filterColumn).GetValue(p, null).ToString().Contains(filterText));
+                rptPostList.DataBind();
+            }
+            catch (Exception ex)
+            {
+                this.GoToCurrentPage();
+                ltrError.Text = string.Format(ErrorBar, ex.Message);
+            }
+        }
+
+        private void GoToCurrentPage()
+        {
+            int pageIndex = int.Parse(ddlPageIndex.SelectedValue);
+            int pageSize = int.Parse(ddlPageSize.SelectedValue);
+            GoToPage(pageIndex, pageSize);
         }
 
         private void GoToPage(int pageIndex, int pageSize)
@@ -156,6 +171,12 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
 
             return _Posts.Where(p => selectedPostIDs.Contains(p.ID));
+        }
+
+        private void SaveChangesAndReload()
+        {
+            ApplicationManager.Entities.SaveChanges();
+            _Posts = ApplicationManager.Entities.Posts.ToList().AsQueryable();
         }
     }
 }
