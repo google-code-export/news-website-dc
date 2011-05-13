@@ -151,8 +151,12 @@ function refineTableStyles() {
 }
 
 function confirmDelete() {
-    if ($(".ui-table tr td:first-child :checked").size() > 0) {
+    if (checkSelectedRows()) {
         return confirm("Xóa những dòng được chọn?");
     }
     return false;
+}
+
+function checkSelectedRows() {
+    return $(".ui-table tr td:first-child :checked").size() > 0;
 }

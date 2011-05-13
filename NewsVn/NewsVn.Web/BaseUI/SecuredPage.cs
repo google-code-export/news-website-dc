@@ -10,6 +10,10 @@ namespace NewsVn.Web.BaseUI
     {
         protected override void OnInit(EventArgs e)
         {
+            base.OnInit(e);
+
+            SiteTitle = "NewsVN - Cổng thông tin điện tử 24/07 ::: ";
+            
             _Posts = ApplicationManager.Entities.Posts.ToList().AsQueryable();
         }
     }
