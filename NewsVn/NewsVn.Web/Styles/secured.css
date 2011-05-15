@@ -47,6 +47,25 @@ a
     padding: 10px;
 }
 
+.portlet
+{
+    background: url('../images/trans_bg.jpg') repeat-x;
+    border: 1px solid #ffb4ae;
+    padding: 0 14px 14px;
+}
+
+.portlet h2
+{
+    font-size: 13px;
+    color: #bd0d0d;
+    text-transform: uppercase;
+    height: 40px; width: 100%;
+    line-height: 40px;
+    background: url('../images/content_sep.jpg') repeat-x 0 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
 .ui-table th
 {
     text-align: left;
@@ -81,9 +100,7 @@ a
     padding: 10px 0 0;
     position: fixed;
     padding-bottom: 5px;
-    top: 0;
-    /*width:100% !important;
-    max-width:1044px !important;*/
+    top: 0; /*width:100% !important;     max-width:1044px !important;*/
 }
 
 .ui-table-toolbar .left
@@ -98,12 +115,19 @@ a
 
 .ui-form label.checkbox-label
 {
-    width: auto;    
+    width: auto;
 }
 
 .ui-form .checkbox
 {
-    vertical-align: middle;    
+    vertical-align: middle;
+}
+
+.ui-form .decoy
+{
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
 }
 
 .ui-form .commands .ui-button

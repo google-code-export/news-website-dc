@@ -5,6 +5,9 @@
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
+    <div id="categoryHelpBox" class="dialog" title="Trợ giúp">
+
+    </div>
     <div class="ui-table-toolbar">
         <ul class="ui-form ui-widget">
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
@@ -15,7 +18,7 @@
             OnClientClick="return confirmDelete()" OnClick="btnDelete_Click" />
         <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
             OnClientClick="return checkSelectedRows()" OnClick="btnToggleActive_Click" />
-        <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[postHelpBox]" runat="server" />
+        <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[categoryHelpBox]" runat="server" />
         <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh right" runat="server"
             OnClick="btnRefresh_Click" />
         <div class="clear"></div>

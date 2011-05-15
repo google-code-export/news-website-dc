@@ -1662,6 +1662,7 @@
     <Content Include="Modules\ResultProfilesearchResult.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
     <Content Include="Modules\SiteAdmin_Menu.ascx" />
+    <Content Include="Modules\SiteAdmin_UpdateCategory.ascx" />
     <Content Include="Modules\SiteAdmin_UpdatePost.ascx" />
     <Content Include="Modules\SiteAdmin_FilterPost.ascx" />
     <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
@@ -2072,6 +2073,13 @@
     </Compile>
     <Compile Include="Modules\SiteAdmin_Menu.ascx.designer.cs">
       <DependentUpon>SiteAdmin_Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdateCategory.ascx.cs">
+      <DependentUpon>SiteAdmin_UpdateCategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdateCategory.ascx.designer.cs">
+      <DependentUpon>SiteAdmin_UpdateCategory.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SiteAdmin_UpdatePost.ascx.cs">
       <DependentUpon>SiteAdmin_UpdatePost.ascx</DependentUpon>

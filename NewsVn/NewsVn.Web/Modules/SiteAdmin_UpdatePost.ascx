@@ -2,26 +2,13 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#<%= txtCategory.ClientID %>").hide();
         $("#<%= ddlCategory.ClientID %>").change(function () {
             $(this).prev(".decoy").val($(this).val());
         });
-    });
-    $(function () {
-        $("#<%= txtDescription.ClientID %>").maxlength({ maxCharacters:295,status: false, showAlert: true }); ;
+        $("#<%= txtDescription.ClientID %>").maxlength({ maxCharacters: 300, status: false, showAlert: true });
     });
     function checkValidation() {
         return $("#update_post_form").validationEngine('validate');
-    }
-    function PreventMaxLength(Object, MaxLen) {
-        if (Object.value.length >= MaxLen) { return false; }
-    }
-    function PreventMaxLengthPaste(Object, MaxLen) {
-        event.returnValue = false;
-        if ((Object.value.length + window.clipboardData.getData("Text").length) >= MaxLen) {
-            return false;
-        }
-        event.returnValue = true;
     }
 </script>
 
@@ -38,7 +25,7 @@
     </li>
     <li>
         <asp:Label AssociatedControlID="ddlCategory" Text="Danh mục:" runat="server" />
-        <asp:TextBox ID="txtCategory" CssClass="validate[required] decoy" runat="server" />
+        <asp:TextBox ID="txtCategory" CssClass="validate[required] decoy" Width="450" runat="server" />
         <asp:DropDownList ID="ddlCategory" CssClass="dropdown" Width="456" runat="server">
             <asp:ListItem Value="" Text="[Chọn danh mục]" />
         </asp:DropDownList>        
