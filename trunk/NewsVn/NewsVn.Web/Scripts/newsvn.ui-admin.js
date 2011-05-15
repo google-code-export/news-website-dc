@@ -128,7 +128,8 @@ function refineTableStyles() {
     $(".ui-table tr:even:not(:has(th))").addClass("even");
     $(".ui-table td").each(function () {
         if ($.trim($(this).html()) == "") {
-            $(this).text("-").css({ "text-align": "center" });
+            //$(this).text("-").css({ "text-align": "center" });
+            $(this).text("-");
         }
     });
     $(".ui-table tr:not(:has(th))").hover(function () {

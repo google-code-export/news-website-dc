@@ -13,7 +13,8 @@ namespace NewsVn.Web.BaseUI
             base.OnInit(e);
 
             SiteTitle = "NewsVN - Cổng thông tin điện tử 24/07 ::: ";
-            
+
+            _Categories = ApplicationManager.Entities.Categories.ToList().AsQueryable();
             _Posts = ApplicationManager.Entities.Posts.ToList().AsQueryable();
         }
     }
