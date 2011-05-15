@@ -359,7 +359,9 @@ $.Autocompleter = function(input, options) {
 			});
 			
 			$.ajax({
-				// try to leverage ajaxQueue plugin to abort previous requests
+                global: false,
+                type: "GET",
+                // try to leverage ajaxQueue plugin to abort previous requests
 				mode: "abort",
 				// limit abortion to this input
 				port: "autocomplete" + input.name,
@@ -381,7 +383,7 @@ $.Autocompleter = function(input, options) {
 			failure(term);
 		}
 	};
-	
+	//duynp 
 	function parse(data) {
 		var parsed = [];
 		var rows = data.split("\n");
@@ -409,7 +411,7 @@ $.Autocompleter.defaults = {
 	inputClass: "ac_input",
 	resultsClass: "ac_results",
 	loadingClass: "ac_loading",
-	minChars: 1,
+	minChars: 2,//duynp minlength
 	delay: 400,
 	matchCase: false,
 	matchSubset: true,

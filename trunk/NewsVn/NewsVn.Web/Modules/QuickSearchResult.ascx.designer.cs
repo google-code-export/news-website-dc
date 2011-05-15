@@ -10,24 +10,33 @@
 namespace NewsVn.Web.Modules {
     
     
-    public partial class QuickSearchBox {
+    public partial class QuickSearchResult {
         
         /// <summary>
-        /// txtSearch control.
+        /// lvResultPosts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.ListView lvResultPosts;
         
         /// <summary>
-        /// lnkbtnSearch control.
+        /// pagerResultPostsContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkbtnSearch;
+        protected global::System.Web.UI.WebControls.Panel pagerResultPostsContainer;
+        
+        /// <summary>
+        /// pagerResultPosts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager pagerResultPosts;
     }
 }

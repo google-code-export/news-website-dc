@@ -1657,6 +1657,7 @@
     <Content Include="Modules\PostsPortlet.ascx" />
     <Content Include="Modules\ProfileSearchBox.ascx" />
     <Content Include="Modules\QuickSearchBox.ascx" />
+    <Content Include="Modules\QuickSearchResult.ascx" />
     <Content Include="Modules\RelatedAdPostList.ascx" />
     <Content Include="Modules\RelatedPostList.ascx" />
     <Content Include="Modules\ResultProfilesearchResult.ascx" />
@@ -1674,6 +1675,7 @@
     <Content Include="Modules\UserProfileDetails.ascx" />
     <Content Include="Modules\UserProfileList.ascx" />
     <Content Include="Post.aspx" />
+    <Content Include="PostSearchResult.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Modules\ProfileCommentBox.ascx" />
     <Content Include="ProfileList.aspx" />
@@ -2039,6 +2041,13 @@
     <Compile Include="Modules\QuickSearchBox.ascx.designer.cs">
       <DependentUpon>QuickSearchBox.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\QuickSearchResult.ascx.cs">
+      <DependentUpon>QuickSearchResult.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\QuickSearchResult.ascx.designer.cs">
+      <DependentUpon>QuickSearchResult.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\RelatedAdPostList.ascx.cs">
       <DependentUpon>RelatedAdPostList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2157,6 +2166,13 @@
     </Compile>
     <Compile Include="Post.aspx.designer.cs">
       <DependentUpon>Post.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PostSearchResult.aspx.cs">
+      <DependentUpon>PostSearchResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostSearchResult.aspx.designer.cs">
+      <DependentUpon>PostSearchResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

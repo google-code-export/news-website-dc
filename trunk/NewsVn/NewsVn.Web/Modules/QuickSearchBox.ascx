@@ -27,7 +27,7 @@
     }
 
     $(document).ready(function () {
-        $("#<%= txtSearch.ClientID %>").autocomplete("Utils/AutoCompleteSV.ashx");
+        $("#<%= txtSearch.ClientID %>").autocomplete("<%=HostName %>Utils/AutoCompleteSV.ashx");
     });      
 </script>
 
@@ -35,6 +35,7 @@
 	<h2>Tìm kiếm</h2>
 	<div class="textbox-icon">
         <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" Width="250px" />
-        &nbsp;<asp:LinkButton ID="LinkButton1" CssClass="ui-icon ui-icon-search" runat="server" />
+        &nbsp;<asp:LinkButton ID="lnkbtnSearch" CssClass="ui-icon ui-icon-search" 
+            runat="server" onclick="lnkbtnSearch_Click" />
     </div>
 </div>
