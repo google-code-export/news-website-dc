@@ -60,7 +60,12 @@ namespace NewsVn.Web.Modules
             txtAvatar.Text = string.Empty;
             txtDescription.Text = string.Empty;
             editorContent.Text = string.Empty;
+            chkActived.Checked = true;
+            chkAllowComments.Checked = true;
+            chkCheckPageView.Checked = true;
             ddlCategory.SelectedIndex = 0;
+
+            this.SetPostApprovalByRole();
         }
 
         private void LoadPostByID()
@@ -82,6 +87,7 @@ namespace NewsVn.Web.Modules
                     chkApproved.Checked = post.Approved;
                     txtDescription.Text = post.Description;
                     editorContent.Text = post.Content;
+                    txtCategory.Text = post.Category.ID.ToString();
                     ddlCategory.Items.FindByValue(post.Category.ID.ToString()).Selected = true;
                 }
             }
@@ -109,7 +115,7 @@ namespace NewsVn.Web.Modules
                     SeoUrl = "SeoUrl",
                     CreatedOn = DateTime.Now,
                     CreatedBy = HttpContext.Current.User.Identity.Name,
-                    Category = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue))
+                    Category = cate
                 };
 
                 if (chkApproved.Checked)
@@ -123,7 +129,7 @@ namespace NewsVn.Web.Modules
 
                 post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
 
-                ApplicationManager.Entities.SaveChanges();
+                this.SaveChangesAndReload();
 
                 trans.Commit();
 
@@ -141,12 +147,12 @@ namespace NewsVn.Web.Modules
 
         private void ModifyPost(int postID)
         {
-            Data.Category cate = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
-            
             Data.Post post = _Posts.FirstOrDefault(p => p.ID == postID);
 
             if (post != null)
             {
+                Data.Category cate = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
+
                 post.Title = txtTitle.Text.Trim();
                 post.Avatar = txtAvatar.Text.Trim();
                 post.Actived = chkActived.Checked;
@@ -159,10 +165,15 @@ namespace NewsVn.Web.Modules
                 post.UpdatedBy = HttpContext.Current.User.Identity.Name;
                 post.Category = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
 
-                ApplicationManager.Entities.SaveChanges();
-
+                this.SaveChangesAndReload();
                 this.ClearUpdateForm();
             }
+        }
+
+        private void SaveChangesAndReload()
+        {
+            ApplicationManager.Entities.SaveChanges();
+            _Posts = ApplicationManager.Entities.Posts.ToList().AsQueryable();
         }
     }
 }

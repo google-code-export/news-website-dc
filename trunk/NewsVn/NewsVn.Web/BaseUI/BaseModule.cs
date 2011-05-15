@@ -12,7 +12,7 @@ namespace NewsVn.Web.BaseUI
         public string InfoBar { get; set; }
         public string ErrorBar { get; set; }
         public string HostName { get; set; }
-        public string CE_Configuration { get; set; }
+        protected string CE_Configuration { get; set; }
         protected IQueryable<Data.Post> _Posts;
         protected IQueryable<Data.Category> _Categories;
         protected IQueryable<Data.AdCategory> _AdCategories;
@@ -36,7 +36,7 @@ namespace NewsVn.Web.BaseUI
             _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);
             _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
 
-            _Posts = ApplicationManager.Entities.Posts;
+            _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived).ToList().AsQueryable();
             
             //configure CuteEditor
             CE_Configuration = "InsertChars,InsertTemplate, InsertEmotion,InsertYouTube,Images,Codes,Links,InsertForm , InsertTextBox, InsertInputText,InsertInputPassword,InsertInputhidden,InsertListBox,InsertDropDown,InsertRadioBox,InsertCheckBox,InsertInputImage,InsertInputSubmit,InsertInputReset,InsertInputButton,AbsolutePosition,BringForward,BringBackward,ToggleBorder,DocumentPropertyPage,CssClass,CssStyle,FormatBlock,CleanCode,GroupBox,InsertLayer";
