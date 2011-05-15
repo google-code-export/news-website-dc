@@ -108,7 +108,7 @@ namespace NewsVn.Web
                     adp.ID,
                     adp.Title,
                     Description = clsCommon.hintDesc(adp.Content),
-                    Avatar = adp.Avatar.Length == 0 ?"/resources/profiles/no_photo.gif" :"/resources/"+ adp.Avatar,
+                    Avatar = adp.Avatar.Length == 0 ?"/resources/Images/No_Image/no-ads.gif" :"/resources/Images/"+ adp.Avatar,
                     adp.SeoUrl,
                     adp.CreatedOn,
                     AllowComments = false,

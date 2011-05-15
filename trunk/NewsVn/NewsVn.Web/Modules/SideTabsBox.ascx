@@ -55,13 +55,29 @@
         <span class="credit">Nguồn: VnExpress.net | ĐV: VNĐ</span>
     </div>
     <div id="currency">
-        <asp:GridView runat="server" ID="grvCurrency" ShowHeader="false" EmptyDataText="Không Tìm Thấy Dữ Liệu" CssClass="ui-table" CellPadding="0" CellSpacing="0" BorderWidth="0" AutoGenerateColumns="false">
-            <Columns>
-                <asp:BoundField  DataField="CurrencyCode" HeaderText="Loại"/>
-                <asp:BoundField  DataField="Buy" HeaderText="Mua vào" DataFormatString="{0:#,###}"/>
-                <asp:BoundField  DataField="Sell" HeaderText="Bán ra" DataFormatString="{0:#,###}"/>
-            </Columns>
-        </asp:GridView>
+        <asp:Repeater ID="rptCurrency" runat="server">
+            <HeaderTemplate>
+                <table class="ui-table" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <th>Loại</th>
+                        <th>Mua vào</th>
+                        <th>Bán ra</th>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td><b><%#Eval("CurrencyCode") %></b></td><td><%#Eval("Buy")%></td><td><%#Eval("Sell")%></td>
+                </tr>
+            </ItemTemplate>
+            <AlternatingItemTemplate>
+                <tr>
+                   <td><b><%#Eval("CurrencyCode") %></b></td><td><%#Eval("Buy")%></td><td><%#Eval("Sell")%></td>
+                </tr>
+            </AlternatingItemTemplate>
+            <FooterTemplate>
+                 </table>
+            </FooterTemplate>
+        </asp:Repeater>
      <span class="credit">Nguồn: vietcombank.com.vn | ĐV: VNĐ</span>
     </div>
     <div id="weather">

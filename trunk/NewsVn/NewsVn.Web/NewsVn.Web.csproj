@@ -1679,6 +1679,8 @@
     <Content Include="ProfileSearchResult.aspx" />
     <Content Include="Modules\RandomProfileBox.ascx" />
     <Content Include="Resources\Images\Chrysanthemum.jpg" />
+    <Content Include="Resources\Images\No_Image\no-ads.gif" />
+    <Content Include="Resources\Images\No_Image\no_avatar.jpg" />
     <Content Include="Resources\Xml\Editor\BasicTools.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1706,6 +1708,7 @@
     <Content Include="Scripts\plugins\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="Scripts\plugins\jquery.idTabs.min.js" />
     <Content Include="Scripts\plugins\jquery.lazyload.mini.js" />
+    <Content Include="Scripts\plugins\jquery.maxlength.js" />
     <Content Include="Scripts\plugins\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Scripts\plugins\jquery.nivo.slider.pack.js" />
     <Content Include="Scripts\plugins\jquery.text-overflow.js" />

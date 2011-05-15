@@ -15,8 +15,8 @@ namespace NewsVn.Web.Modules
         protected override void OnDataBinding(EventArgs e)
         {
 
-            grvCurrency.DataSource = Datasource;
-            grvCurrency.DataBind();
+            rptCurrency.DataSource = Datasource;
+            rptCurrency.DataBind();
 
             regionSelector.DataSource = Datasource_Weather;
             regionSelector.DataTextField = "Name";

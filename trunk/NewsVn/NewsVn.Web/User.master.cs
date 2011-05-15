@@ -55,7 +55,7 @@ namespace NewsVn.Web
                {
                    c.Name,
                    c.SeoName, 
-                   c.SeoUrl,
+                   SeoUrl=HostName+ c.SeoUrl,
                    c.ID,
                    Figures = c.Posts.Count() + this.CountChildCateFigures(c)
                }).ToList();

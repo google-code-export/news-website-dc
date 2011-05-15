@@ -46,8 +46,8 @@ namespace NewsVn.Web.Utils
     public class clsCurrency
     {
         public string CurrencyCode { get; set; }
-        public decimal Buy { get; set; }
-        public decimal Sell { get; set; }
+        public string Buy { get; set; }
+        public string Sell { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -58,12 +58,14 @@ namespace NewsVn.Web.Utils
         {
             try
             {
+                NumberFormatInfo nfi = new CultureInfo("vi-VN", true).NumberFormat;
+                nfi.NumberGroupSeparator=",";
                 XElement xCurrency = XElement.Load(url);
-                var data = xCurrency.Elements("Exrate").Select(p => new clsCurrency()
+                var data = xCurrency.Elements("Exrate").Where(c => c.Attribute("Buy").Value != "0" && c.Attribute("Sell").Value != "0").Select(p => new clsCurrency()
                 {
                     CurrencyCode = p.Attribute("CurrencyCode").Value,
-                    Buy = Convert.ToDecimal(p.Attribute("Buy").Value),
-                    Sell = Convert.ToDecimal(p.Attribute("Sell").Value),
+                    Buy = decimal.Parse(p.Attribute("Buy").Value.Split('.')[0]).ToString("N0",nfi),
+                    Sell = decimal.Parse(p.Attribute("Sell").Value.Split('.')[0]).ToString("N0", nfi)
                 }).ToList();
 
                 return data;

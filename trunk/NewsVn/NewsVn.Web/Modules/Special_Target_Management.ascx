@@ -91,9 +91,6 @@
          <asp:Button ID="btnAddHot" Text="Chọn làm tin Hot" runat="server" CssClass="button-add left" onclick="btnAddHot_Click"/>
         <div class="clear"></div>
     </div>    
-   
-    
-       
         
     <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false"  CssClass="ui-table ui-table-remove-padding">
     <Columns>
@@ -105,18 +102,13 @@
             <asp:CheckBox runat="server" ID="chkItem" CssClass="chkItem" />
         </ItemTemplate>
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="ID"  ItemStyle-HorizontalAlign="Center">
-            <ItemTemplate>
-                <span><%#Eval("ID") %></span>
-            </ItemTemplate>
-        </asp:TemplateField>
+        <asp:BoundField HeaderText="ID" DataField="ID" />
         <asp:BoundField HeaderText="Tiêu đề" DataField="Title" ControlStyle-Font-Names="Arial" />
         <asp:BoundField HeaderText="Danh mục" DataField="CategoryName" />
         <asp:BoundField HeaderText="Người duyệt" DataField="ApprovedBy" />
         <asp:BoundField HeaderText="Ngày duyệt" DataField="ApprovedOn" DataFormatString="{0:dd/mm/yyyy HH:MM}" />
         <asp:BoundField HeaderText="Avatar" DataField="Avatar" />
         <asp:BoundField HeaderText="SeoUrl" DataField="SeoUrl"/>
-        <asp:BoundField HeaderText="ID" DataField="ID" />
         <asp:BoundField HeaderText="Description" DataField="Description" />
     </Columns>
 </asp:GridView>

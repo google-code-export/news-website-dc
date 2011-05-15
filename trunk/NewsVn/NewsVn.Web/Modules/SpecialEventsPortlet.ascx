@@ -21,9 +21,9 @@
         <asp:Repeater ID="rptSpecialEvents" runat="server">
             <ItemTemplate>
                 <li>
-                    <asp:HyperLink NavigateUrl="#" ToolTip='<%# Eval("Title") %>' runat="server">
+                    <asp:HyperLink NavigateUrl='<%# HostName + Eval("SeoUrl") %>' ToolTip='<%# Eval("Title") %>' runat="server">
                         <asp:Image ImageUrl='<%#Eval("Avatar") %>' runat="server" />
-                        <center><asp:HyperLink CssClass="post-title inline" NavigateUrl='<%# Eval("SeoUrl") %>' Text='<%# Eval("Title") %>' runat="server"/></center>
+                        <center><asp:HyperLink CssClass="post-title inline" NavigateUrl='<%#HostName+ Eval("SeoUrl") %>' Text='<%# Eval("Title") %>' runat="server"/></center>
                     </asp:HyperLink>    
                 </li>
             </ItemTemplate>
