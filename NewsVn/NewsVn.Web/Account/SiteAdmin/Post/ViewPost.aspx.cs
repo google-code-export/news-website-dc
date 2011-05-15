@@ -53,7 +53,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     post.Actived = !post.Actived;
                 }
 
-                this.SaveChangesAndReload();                
+                this.SaveChangesAndReload();
             }
             catch (Exception)
             {

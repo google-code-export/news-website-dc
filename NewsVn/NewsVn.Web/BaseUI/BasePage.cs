@@ -63,7 +63,7 @@ namespace NewsVn.Web.BaseUI
             _UserProfileComments = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
             _UserProfiles = ApplicationManager.SetCacheData<Data.UserProfile>(ApplicationManager.Entities.UserProfiles, null);
 
-            _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived).ToList().AsQueryable();
+            _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived).ToList().AsQueryable();
             _AdPosts = ApplicationManager.Entities.AdPosts.Where(a => a.Actived).ToList().AsQueryable();
             
             base.OnInit(e);
