@@ -95,9 +95,6 @@ namespace NewsVn.Web.Modules
 
         private void AddNewPost()
         {
-            ApplicationManager.Entities.Connection.Open();
-            var trans = ApplicationManager.Entities.Connection.BeginTransaction();
-
             try
             {
                 Data.Category cate = _Categories.FirstOrDefault(p => p.ID == int.Parse(ddlCategory.SelectedValue));
@@ -131,17 +128,11 @@ namespace NewsVn.Web.Modules
 
                 this.SaveChangesAndReload();
 
-                trans.Commit();
-
                 this.ClearUpdateForm();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                trans.Rollback();
-            }
-            finally
-            {
-                ApplicationManager.Entities.Connection.Close();
+                ltrError.Text = string.Format(ErrorBar, ex.Message);
             }
         }
 

@@ -7,6 +7,9 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
-<asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    <nsn:SiteAdmin_UpdatePost AllowEdit="true" runat="server" />
+<asp:Content ContentPlaceHolderID="mainContent" runat="server">    
+    <div class="portlet">
+        <h2>Chỉnh sửa tin</h2>
+        <nsn:SiteAdmin_UpdatePost AllowEdit="true" runat="server" />
+    </div>
 </asp:Content>
