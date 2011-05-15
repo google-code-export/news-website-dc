@@ -15,6 +15,7 @@
 <div id="updatePostHelpBox" class="dialog" title="Trợ giúp">
 </div>
 <ul id="update_post_form" class="ui-form ui-widget">
+    <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
     <li>
         <asp:Label AssociatedControlID="txtTitle" Text="Tiêu đề:" runat="server" />
         <asp:TextBox ID="txtTitle" Width="450" CssClass="validate[required]" runat="server" />
