@@ -8,7 +8,7 @@ using System.Web.UI.HtmlControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class SpecialEventsPortlet : System.Web.UI.UserControl
+    public partial class SpecialEventsPortlet : BaseUI.BaseModule
     {
         public string CssClass { get; set; }
         public bool ClearLayout { get; set; }

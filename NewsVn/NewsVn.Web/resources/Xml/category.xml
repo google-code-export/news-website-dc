@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Categories>
+<Categories xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Posts>
     <Post ID="87">
       <Title>Lại 'điên đầu' vì vàng 'bẩn'</Title>
       <CateName>Văn h&amp;#243;a</CateName>
       <ApprovedBy>admin</ApprovedBy>
       <ApprovedOn>07/25/2011 23:05</ApprovedOn>
-      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/kinh-te/mua-sam/87/lai-dien-dau-vi-vang-ban.aspx</SeoUrl>
+      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/kinh-te/mua-sam/87/lai-dien-dau-vi-vang-ban.aspx</SeoUrl>
       <Avatar>http://baodatviet.vn/Uploaded_CDCA/maihuong/20110510/kt-vang-3-noi-bat.jpg</Avatar>
       <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
     </Post>
@@ -15,7 +15,7 @@
       <CateName>Văn h&amp;#243;a</CateName>
       <ApprovedBy>admin</ApprovedBy>
       <ApprovedOn>07/25/2011 23:05</ApprovedOn>
-      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/buon-chuyen/82/tim-hieu-thu-nhap-cua-sieu-mau-viet.aspx</SeoUrl>
+      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/buon-chuyen/82/tim-hieu-thu-nhap-cua-sieu-mau-viet.aspx</SeoUrl>
       <Avatar>http://www.giaoduc.edu.vn/upload/image/2009/07/14/vhnt/sieu-mau-viet-2.jpg</Avatar>
       <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
     </Post>
@@ -24,7 +24,7 @@
       <CateName>Văn h&amp;#243;a</CateName>
       <ApprovedBy>admin</ApprovedBy>
       <ApprovedOn>07/25/2011 23:05</ApprovedOn>
-      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/goc-teen/102/tuan-moi-cua-ban-9-5-15-5-2011.aspx</SeoUrl>
+      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/goc-teen/102/tuan-moi-cua-ban-9-5-15-5-2011.aspx</SeoUrl>
       <Avatar>http://img.news.zing.vn/img/492/t492408.jpg</Avatar>
       <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
     </Post>
@@ -33,27 +33,27 @@
       <CateName>Văn h&amp;#243;a</CateName>
       <ApprovedBy>admin</ApprovedBy>
       <ApprovedOn>07/25/2011 23:05</ApprovedOn>
-      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/xa-hoi/the-gioi/93/nguoi-goc-viet-thanh-bo-truong-kinh-te-duc.aspx</SeoUrl>
+      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/xa-hoi/the-gioi/93/nguoi-goc-viet-thanh-bo-truong-kinh-te-duc.aspx</SeoUrl>
       <Avatar>http://vnexpress.net/Files/Subject/3b/a2/86/ae/roesler-fdp1.jpg</Avatar>
       <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
     </Post>
-    <Post ID="108">
-      <Title>5 vấn đề thường gặp ở tuổi mới lớn ?</Title>
-      <CateName>Văn h&amp;#243;a</CateName>
-      <ApprovedBy>admin</ApprovedBy>
-      <ApprovedOn>07/25/2011 23:05</ApprovedOn>
-      <SeoUrl>http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://localhost:2316/http://newsvn.vn/pt/goc-teen/108/5-van-de-thuong-gap-o-tuoi-moi-lon.aspx</SeoUrl>
-      <Avatar>http://www.okotokslibrary.ca/images/26885-Teens_000.jpg</Avatar>
-      <Description>Từ trước đến nay, thi&amp;#234;n hạ vẫn tin rằng c&amp;#225;c người mẫu thu nhập tr&amp;#234;n trời. Chỉ đến khi Vĩnh Thụy, một si&amp;#234;u mẫu của Việt Nam, bị khởi tố v&amp;#236; bu&amp;#244;n lậu, nhiều người mới t&amp;#236;m hiểu thực nguồn gốc những đồng tiền m&amp;#224; giới ch&amp;#226;n d&amp;#224;i c&amp;#243; v&amp;#224; được một phen... t&amp;#225; hỏa.</Description>
+    <Post ID="86">
+      <Title>test maxlenght</Title>
+      <CateName>Kinh tế</CateName>
+      <ApprovedBy>admin2</ApprovedBy>
+      <ApprovedOn>15/49/2011 01:05</ApprovedOn>
+      <SeoUrl>pt/kinh-te/86/test-maxlenght.aspx</SeoUrl>
+      <Avatar>http://doanhnhansaigon.vn/files/articles/2010/1040959/advertising-creative-large.jpg</Avatar>
+      <Description>The JavaScript function does not prevent typing more characters than are allowed. But when the user clicks somewhere else, the excess characters are immediately trimmed from the textarea.The JavaScript function does not prevent typing more characters than are allowed. But when the user clicks s</Description>
     </Post>
-    <Post ID="5">
-      <Title>Bộ sưu tập Ferrari ở Trung Quốc</Title>
-      <CateName>Kinh tế/Chứng kho&amp;#225;n</CateName>
-      <ApprovedBy>siteadmin</ApprovedBy>
-      <ApprovedOn>28/00/2011 00:03</ApprovedOn>
-      <SeoUrl>http://localhost:2316/http://localhost:2316/pt/kinh-te/chung-khoan/5.aspx</SeoUrl>
-      <Avatar>http://vnexpress.net/Files/Subject/3B/A2/78/D9/2.jpg</Avatar>
-      <Description>Hơn 300 'ch&amp;#250; ngựa' nổi tiếng gi&amp;#250;p Trung Quốc nằm trong nh&amp;#243;m 5 thị trường h&amp;#224;ng đầu của Ferrari, d&amp;#249; h&amp;#227;ng n&amp;#224;y mới chỉ đặt ch&amp;#226;n v&amp;#224;o đ&amp;#226;y 6 năm.</Description>
+    <Post ID="84">
+      <Title>Al-Qaeda đe dọa tấn công trả thù Mỹ</Title>
+      <CateName>Thế giới</CateName>
+      <ApprovedBy>admin</ApprovedBy>
+      <ApprovedOn>11/49/2011 01:05</ApprovedOn>
+      <SeoUrl>pt/xa-hoi/the-gioi/84/al-qaeda-de-doa-tan-cong-tra-thu-my.aspx</SeoUrl>
+      <Avatar>http://vnexpress.net/Files/Subject/3b/a2/69/9e/1328.jpg</Avatar>
+      <Description>Mạng lưới khủng bố quốc tế Al-Qaeda thề sẽ tiếp tục cuộc chiến chống Mỹ và trả thù cho cái chết của Osama bin Laden.</Description>
     </Post>
   </Posts>
   <Weather>

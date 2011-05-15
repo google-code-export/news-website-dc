@@ -201,7 +201,7 @@ namespace NewsVn.Web.Utils
             {
                 humidity = h.Attribute("humidity").Value;
             }
-            html.AppendFormat("<table class=\"ui-table align-left\" style=\"margin:10px 0;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td ><b>{3}</b></td><td ><img src=\"http://l.yimg.com/a/i/us/we/52/{4}.gif\"/></td></tr><tr><td>Nhiệt độ</td><td>{0}<sup>o</sup>C</td></tr><tr><td>Độ ẩm</td><td>{1}%</td></tr><tr><td>Gió đông tốc độ</td><td>{2} m/s</td></tr></table>", temp, humidity, 7, codeName, code);
+            html.AppendFormat("<table class=\"ui-table align-left\" style=\"margin:10px 0;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr class='ui-widget-header'><td ><b>{3}</b></td><td ><img src=\"http://l.yimg.com/a/i/us/we/52/{4}.gif\"/></td></tr><tr><td>Nhiệt độ</td><td>{0}<sup>o</sup>C</td></tr><tr class='even'><td >Độ ẩm</td><td>{1}%</td></tr><tr><td>Gió đông tốc độ</td><td>{2} m/s</td></tr></table>", temp, humidity, 7, codeName, code);
 
             return html.ToString();
         }

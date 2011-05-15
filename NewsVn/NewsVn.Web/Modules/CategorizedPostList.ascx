@@ -12,12 +12,12 @@
             onitemdatabound="rptCatePostList_ItemDataBound">
         <ItemTemplate>
             <li>
-                <img src='<%#Eval("Avatar") %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar left" width="130px" />
+                <img src='<%#Eval("Avatar") %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar left" />
                 <div class="post-item right">
                    <% if (NoComments){ %> <span class="post-comment"><%#Eval("Comments") %></span><% } %>
                     <div class="wrap">
-                        <a href='<%=HostName%><%#Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a> -
-                        <span class="post-info"><%#string.Format("{0:dddd, dd/MM/yyyy}",Eval("ApprovedOn")) %></span>
+                        <a href='<%=HostName%><%#Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a><br />
+                        <span class="post-info"><%#string.Format("{0:dddd, dd/MM/yyyy HH:MM}",Eval("ApprovedOn")) %></span>
                     </div>            
                     <p><%#Eval("Description") %></p>
                 </div>
@@ -33,11 +33,9 @@
 <div style="margin-top:20px;">
     <div class="left">
         <asp:LinkButton runat="server" ID="lnkbtnPrevious" CssClass="button" 
-            onclick="lnkbtnPrevious_Click">&laquo; Bài cũ hơn</asp:LinkButton>
+            onclick="lnkbtnPrevious_Click">&laquo; Bài mới hơn</asp:LinkButton>
         <asp:LinkButton runat="server" ID="lnkbtnNext" CssClass="button" 
-            onclick="lnkbtnNext_Click">Bài mới hơn &raquo;</asp:LinkButton>
-        <%--<a href="#" class="button">&laquo; Bài cũ hơn</a>
-        <a href="#" class="button">Bài mới hơn &raquo;</a>--%>
+            onclick="lnkbtnNext_Click">Bài cũ hơn &raquo;</asp:LinkButton>
     </div>
     <asp:Button runat="server" ID="btnView" CssClass="button right"  
         style="margin:0.5px 0 0 5px;" Text="Xem" onclick="btnView_Click" />&nbsp;

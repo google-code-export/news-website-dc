@@ -63,7 +63,7 @@ namespace NewsVn.Web.Modules
 
         private void LoadPostList(int pageIndex, int pageSize)
         {
-            GridView1.DataSource = _Posts.Select(p => new
+            GridView1.DataSource = _Posts.Where(p=>p.Actived == true && p.Approved == true).Select(p => new
             {
                 p.ID,
                 p.Avatar,
@@ -77,7 +77,6 @@ namespace NewsVn.Web.Modules
                 CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
             }).OrderByDescending(p => p.ApprovedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             GridView1.DataBind();
-            GridView1.Columns[9].Visible = false;
             GridView1.Columns[8].Visible = false;
             GridView1.Columns[7].Visible = true;
             GridView1.Columns[6].Visible = false;
@@ -96,88 +95,97 @@ namespace NewsVn.Web.Modules
         protected void btnAddHot_Click(object sender, EventArgs e)
         {
             //so item the hien tren su kien noi bat, sau nay setting trong DB
-            
-            if (ViewState["dtTemp"]!=null)
+            try
             {
-                int totalItemShow = 10;
-                DataTable dt = ViewState["dtTemp"] as DataTable;
-                int countItemToInsert = totalItemShow - dt.Rows.Count;
-                //rptPostList.Items.OfType<RepeaterItem>().ToList().ForEach(ri => ((CheckBox)ri.FindControl("CheckBox1")).Checked = true);
-                //var rowList = GridView1.Rows.OfType<GridViewRow>();
-                string msgExist = "";
-                bool nocheck=true;
-                foreach (GridViewRow row in GridView1.Rows)
+           
+                if (ViewState["dtTemp"]!=null)
                 {
-                    if (countItemToInsert == 0)
+                    int totalItemShow = 10;
+                    DataTable dt = ViewState["dtTemp"] as DataTable;
+                    int countItemToInsert = totalItemShow - dt.Rows.Count;
+                    //rptPostList.Items.OfType<RepeaterItem>().ToList().ForEach(ri => ((CheckBox)ri.FindControl("CheckBox1")).Checked = true);
+                    //var rowList = GridView1.Rows.OfType<GridViewRow>();
+                    string msgExist = "";
+                    bool nocheck=true;
+                    foreach (GridViewRow row in GridView1.Rows)
                     {
-                        break;
-                    }
-                    bool ischecked = ((CheckBox)row.FindControl("chkItem")).Checked;
+                        if (countItemToInsert == 0)
+                        {
+                            break;
+                        }
+                        bool ischecked = ((CheckBox)row.FindControl("chkItem")).Checked;
                     
-                    if (ischecked)
-                    {
-                        nocheck = false;
-                        bool existThisItem = false;
-                        foreach (DataRow dtRow in dt.Rows)
+                        if (ischecked)
                         {
-                            if (dtRow["ID"].ToString() == row.Cells[8].Text)
+                            nocheck = false;
+                            bool existThisItem = false;
+                            foreach (DataRow dtRow in dt.Rows)
                             {
-                                existThisItem = true;
-                                
+                                if (dtRow["ID"].ToString() == row.Cells[1].Text)
+                                {
+                                    existThisItem = true;
+                                }
                             }
-                        }
 
-                        if (existThisItem)
-                        {
-                            msgExist += "- "+row.Cells[2].Text + "\\n";
+                            if (existThisItem)
+                            {
+                                msgExist += "+ [ID:" + row.Cells[1].Text + "] -" + row.Cells[2].Text + "\\n";
 
-                            continue;
+                                continue;
+                            }
+                            int pID = int.Parse(row.Cells[1].Text);
+                            var post = _Posts.Where(p => p.ID == pID).FirstOrDefault();
+                            DataRow r = dt.NewRow();
+                            r["ID"] = row.Cells[1].Text;
+                            r["Title"] = post.Title;
+                            r["CateName"] = post.Category.Name;
+                            r["ApprovedBy"] = post.ApprovedBy;
+                            r["ApprovedOn"] = string.Format("{0:dd/mm/yyyy HH:MM}", post.ApprovedOn);
+                            r["SeoUrl"] = post.SeoUrl;
+                            r["Avatar"] =  post.Avatar;
+                            r["Description"] = post.Description;
+                            dt.Rows.Add(r);
+                            countItemToInsert = countItemToInsert - 1;
                         }
-                        DataRow r = dt.NewRow();
-                        r["ID"] = row.Cells[8].Text;
-                        r["Title"] = row.Cells[2].Text;
-                        r["CateName"] = row.Cells[3].Text;
-                        r["ApprovedBy"] = row.Cells[4].Text;
-                        r["ApprovedOn"] = row.Cells[5].Text;
-                        r["SeoUrl"] = row.Cells[7].Text;
-                        r["Avatar"] = row.Cells[6].Text;
-                        r["Description"] = row.Cells[9].Text;
-                        dt.Rows.Add(r);
-                        countItemToInsert = countItemToInsert - 1;
+                    }
+                    if (nocheck)
+                    {
+                        Utils.clsCommon.Excute_Javascript("alert('Chưa chọn tin cần đưa vào danh sách Tin Sự Kiện Nổi Bật!')", this.Page, true);
+                        return;
+                    }
+                    XElement loaded = XElement.Load(Server.MapPath(@"~/Resources/Xml/category.xml"));
+                    loaded.Element("Posts").RemoveAll();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        loaded.Element("Posts").Add(
+                                new XElement("Post",
+                                    new XAttribute("ID", row["ID"].ToString()),
+                                    new XElement("Title", row["Title"].ToString()),
+                                    new XElement("CateName", row["CateName"].ToString()),
+                                    new XElement("ApprovedBy", row["ApprovedBy"].ToString()),
+                                    new XElement("ApprovedOn", row["ApprovedOn"].ToString()),
+                                    new XElement("SeoUrl", row["SeoUrl"].ToString()),
+                                    new XElement("Avatar", row["Avatar"].ToString()),
+                                    new XElement("Description", row["Description"].ToString())
+                                    )
+                            );
+                    }
+                
+                    if (msgExist.Length >= 1)
+                    {
+                        Utils.clsCommon.Excute_Javascript("alert('Đã tồn tại những tin tức này:\\n" + msgExist + "\\ntrong danh mục sự kiện nổi bật')", this.Page, true);
+                    }
+                    else 
+                    {
+                        loaded.Save(Server.MapPath(@"~/Resources/Xml/category.xml"));
+                        Load_GridShow(10);
                     }
                 }
-                if (nocheck)
-                {
-                    Utils.clsCommon.Excute_Javascript("alert('Chưa chọn tin cần đưa vào danh sách Tin Sự Kiện Nổi Bật!')", this.Page, true);
-                    return;
-                }
-                XElement loaded = XElement.Load(Server.MapPath(@"~/Resources/Xml/category.xml"));
-                loaded.Element("Posts").RemoveAll();
-                foreach (DataRow row in dt.Rows)
-                {
-                    loaded.Element("Posts").Add(
-                            new XElement("Post",
-                                new XAttribute("ID", row["ID"].ToString()),
-                                new XElement("Title", row["Title"].ToString()),
-                                new XElement("CateName", row["CateName"].ToString()),
-                                new XElement("ApprovedBy", row["ApprovedBy"].ToString()),
-                                new XElement("ApprovedOn", row["ApprovedOn"].ToString()),
-                                new XElement("SeoUrl", HostName + row["SeoUrl"].ToString()),
-                                new XElement("Avatar", row["Avatar"].ToString()),
-                                new XElement("Description", row["Description"].ToString())
-                                )
-                        );
-                }
-                
-                if (msgExist.Length >= 1)
-                {
-                    Utils.clsCommon.Excute_Javascript("alert('Đã tồn tại những tin tức này:\\n" + msgExist + "\\ntrong danh mục sự kiện nổi bật')", this.Page, true);
-                }
-                else 
-                {
-                    loaded.Save(Server.MapPath(@"~/Resources/Xml/category.xml"));
-                    Load_GridShow(10);
-                }
+            }
+            catch (Exception ex)
+            {
+
+                Utils.clsCommon.Excute_Javascript("alert('Thêm Sự kiện nổi bật thất bại - xem lỗi: \\n" + ex.Message.ToString() + "')", this.Page, true);
             }
         }
 

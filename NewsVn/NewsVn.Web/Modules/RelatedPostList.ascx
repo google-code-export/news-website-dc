@@ -12,7 +12,7 @@
         <ItemTemplate>
             <li>
                 <a href='<%#HostName+Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a>
-                - <span class="post-info"><%# string.Format("{0:dddd, dd/MM/yyyy}",Eval("ApprovedOn")) %></span>
+                - <span class="post-info"><%# string.Format("{0:dddd, dd/MM/yyyy HH:MM}",Eval("ApprovedOn")) %></span>
             </li>
         </ItemTemplate>
      </asp:Repeater>

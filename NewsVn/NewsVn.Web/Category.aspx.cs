@@ -41,23 +41,24 @@ namespace NewsVn.Web
                 int.TryParse(Request.QueryString["p"] ,out pageindex);
                 if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Replace('-','/').Replace("ngay-"," ").Trim(), out searchDate))
                 {
-                    load_pletCatePostList(pageindex, true);    
+                    load_pletCatePostList(lstArrayID, pageindex, true);    
                 }
                 else
                 {
-                    load_pletCatePostList(pageindex, false);
+                    load_pletCatePostList(lstArrayID, pageindex, false);
                 }
                 load_pletFocusPost();
             }
         }
         //lay tin tuc theo chu de
-        private void load_pletCatePostList(int pageindex, bool isSearchByDate)
+        private void load_pletCatePostList(List<int>lstArrayID, int pageindex, bool isSearchByDate)
         {
             if (isSearchByDate)
             {
                  pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
                        && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
-                       ).Where(p => p.ApprovedOn.Value.ToShortDateString() == DateTime.Parse(Request.QueryString["d"].Replace('-', '/').Replace("ngay-", " ").Trim()).ToShortDateString())
+                       ).Where(p=>!lstArrayID.Contains( p.ID ))
+                       .Where(p => p.ApprovedOn.Value.ToShortDateString() == DateTime.Parse(Request.QueryString["d"].Replace('-', '/').Replace("ngay-", " ").Trim()).ToShortDateString())
                       .Select(p => new
                       {
                           p.ID,
@@ -73,7 +74,9 @@ namespace NewsVn.Web
             else
             {
                 pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                     && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
+                     && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
+                     ).Where(p => !lstArrayID.Contains(p.ID))
+                     .Select(p => new
                     {
                         p.ID,
                         p.Title,

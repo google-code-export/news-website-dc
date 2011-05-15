@@ -13,13 +13,13 @@ namespace NewsVn.Web.Modules {
     public partial class SideTabsBox {
         
         /// <summary>
-        /// grvCurrency control.
+        /// rptCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvCurrency;
+        protected global::System.Web.UI.WebControls.Repeater rptCurrency;
         
         /// <summary>
         /// regionSelector control.

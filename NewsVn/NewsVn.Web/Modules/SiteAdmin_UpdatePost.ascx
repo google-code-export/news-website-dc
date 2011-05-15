@@ -7,8 +7,21 @@
             $(this).prev(".decoy").val($(this).val());
         });
     });
+    $(function () {
+        $("#<%= txtDescription.ClientID %>").maxlength({ maxCharacters:295,status: false, showAlert: true }); ;
+    });
     function checkValidation() {
         return $("#update_post_form").validationEngine('validate');
+    }
+    function PreventMaxLength(Object, MaxLen) {
+        if (Object.value.length >= MaxLen) { return false; }
+    }
+    function PreventMaxLengthPaste(Object, MaxLen) {
+        event.returnValue = false;
+        if ((Object.value.length + window.clipboardData.getData("Text").length) >= MaxLen) {
+            return false;
+        }
+        event.returnValue = true;
     }
 </script>
 
@@ -44,7 +57,8 @@
     </li>
     <li>
         <asp:Label AssociatedControlID="txtDescription" Text="Mô tả:" runat="server" />
-        <asp:TextBox ID="txtDescription" TextMode="MultiLine" Columns="5" Rows="8" Width="650" CssClass="validate[required]" runat="server" />
+        <asp:TextBox ID="txtDescription" TextMode="MultiLine" Columns="5" Rows="8" Width="650" CssClass="validate[required]" runat="server"
+        />
     </li>
     <li>
         <p><asp:Label AssociatedControlID="editorContent" Text="Nội dung:" runat="server" /></p>

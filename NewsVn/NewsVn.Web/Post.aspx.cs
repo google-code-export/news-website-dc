@@ -34,7 +34,6 @@ namespace NewsVn.Web
                 checkCateID_By_SEONAME(Request.QueryString["ct"]);
                 load_postDetail(int.Parse(Request.QueryString["cp"]));
                 load_pletFocusPost();
-                load_pletRelationPostList();
             }
         }
        
@@ -57,6 +56,8 @@ namespace NewsVn.Web
             pletPostDetail.DataBind();
             //seo
             BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", postData.Title, clsCommon.hintDesc(postData.Description));
+           //related post
+            load_pletRelationPostList(postData);
             //commentbox
             pletCommentBox.PostID = postID;    
             //check_PageView  - khong su dung pageview thi ko can update
@@ -64,6 +65,7 @@ namespace NewsVn.Web
             {
                 Allow_Update_PageView();
             }
+            
         }
         private void Allow_Update_PageView()
         {
@@ -117,10 +119,12 @@ namespace NewsVn.Web
             pletFocusPost.DataBind();
         }
         //lay post theo chu de  & <= post.approvedon && != viewstate('visitedID')
-        void load_pletRelationPostList()
+        void load_pletRelationPostList(Data.Post postData)
         {
             var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
-               && p.Category.ID == intCateID).Select(p => new
+               && p.Category.ID == intCateID)
+               .Where(p => p.ApprovedOn <= postData.ApprovedOn && p.ID!=postData.ID)
+               .Select(p => new
                {
                    p.ID,
                    p.Title,
