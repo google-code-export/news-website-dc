@@ -25,18 +25,25 @@ namespace NewsVn.Web.Utils
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "select distinct Title from Posts where approved=1 and  datediff(day,approvedon,getdate())<=10 and Title like  @SearchText + '%' ";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
-                    cmd.Connection = conn;
                     StringBuilder sb = new StringBuilder();
-                    if (conn.State!=ConnectionState.Open )
-                        conn.Open();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    try
                     {
-                        while (sdr.Read())
+                        cmd.CommandText = "select distinct Title from Posts where approved=1 and  datediff(day,approvedon,getdate())<=30 and Title like @SearchText + '%' ";
+                        cmd.Parameters.AddWithValue("@SearchText", prefixText);
+                        cmd.Connection = conn;
+                        if (conn.State != ConnectionState.Open)
+                            conn.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
                         {
-                            sb.Append(sdr["Title"]).Append(Environment.NewLine);
+                            while (sdr.Read())
+                            {
+                                sb.Append(sdr["Title"]).Append(Environment.NewLine);
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        context.Response.Write("");
                     }
                     conn.Close();
                     context.Response.Write(sb.ToString());

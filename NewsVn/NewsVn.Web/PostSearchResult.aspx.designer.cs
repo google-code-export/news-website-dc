@@ -7,27 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NewsVn.Web.Modules {
+namespace NewsVn.Web {
     
     
-    public partial class QuickSearchBox {
+    public partial class PostSearchResult {
         
         /// <summary>
-        /// txtSearch control.
+        /// pletSearchResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::NewsVn.Web.Modules.QuickSearchResult pletSearchResult;
         
         /// <summary>
-        /// lnkbtnSearch control.
+        /// QuickSearchBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkbtnSearch;
+        protected global::NewsVn.Web.Modules.QuickSearchBox QuickSearchBox1;
+        
+        /// <summary>
+        /// AdBoxList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.AdBoxList AdBoxList1;
     }
 }
