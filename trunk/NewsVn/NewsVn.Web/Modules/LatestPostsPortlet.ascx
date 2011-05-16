@@ -24,7 +24,7 @@
                 Text='<%#Eval("Title") %>' CssClass="post-title wrap"/>
                 <span class="post-info">
                 <asp:Label runat="server" ID="lblTitle" CssClass="cate" Text='<%#Eval("Cat_Name") %>' />
-                    <asp:Label ID="lblApproveOn" runat="server" Text='<%#Eval("ApprovedOn", "{0:dddd, dd/MM/yyyy HH:MM}")%>' />
+                    <asp:Label ID="lblApproveOn" runat="server" Text='<%#Eval("ApprovedOn", "{0:dddd, dd/MM/yyyy HH:mm}")%>' />
                 </span>
             </li>
         </ItemTemplate>

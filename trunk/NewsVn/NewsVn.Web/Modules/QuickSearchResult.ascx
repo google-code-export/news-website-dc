@@ -19,8 +19,8 @@
                     <div class="post-item right">
                         <span class="post-comment"><%#Eval("Comments") %></span>
                         <div class="wrap">
-                            <a href='<%#Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a> -
-                            <span class="post-info"><%# string.Format("{0:dddd, dd/MM/yyyy HH:MM}", Eval("ApprovedOn")) %></span>
+                            <a href='<%#Eval("SeoUrl") %>' class="post-title inline"><%#Eval("Title") %></a><br />
+                            <span class="post-info"><%# string.Format("{0:dddd, dd/MM/yyyy HH:mm}", Eval("ApprovedOn")) %></span>
                         </div>            
                         <p><%#Eval("Description") %></p>
                     </div>
