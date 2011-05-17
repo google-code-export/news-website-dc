@@ -106,6 +106,7 @@ namespace NewsVn.Web.Modules
                     Actived = chkActived.Checked,
                     AllowComments = chkAllowComments.Checked,
                     CheckPageView = chkCheckPageView.Checked,
+                    PageView = 0,
                     Approved = chkApproved.Checked,
                     Description = txtDescription.Text.Trim(),
                     Content = editorContent.Text.Trim(),

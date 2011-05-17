@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using System.Data.Entity;
+using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Modules
 {
@@ -39,6 +40,10 @@ namespace NewsVn.Web.Modules
                 clearDiv.Attributes.Add("class", "clear");
                 this.Controls.Add(clearDiv);
             }
+        }
+        public string fnHintDescription(object inputDesc)
+        {
+            return clsCommon.hintDesc(inputDesc.ToString());
         }
 
         protected override void OnDataBinding(EventArgs e)

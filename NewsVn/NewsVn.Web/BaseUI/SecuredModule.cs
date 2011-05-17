@@ -13,7 +13,7 @@ namespace NewsVn.Web.BaseUI
             base.OnInit(e);
 
             _Categories = ApplicationManager.Entities.Categories.ToList().AsQueryable();
-            _Posts = ApplicationManager.Entities.Posts.ToList().AsQueryable();
+            _Posts = ApplicationManager.Entities.Posts.AsQueryable();
         }
     }
 }

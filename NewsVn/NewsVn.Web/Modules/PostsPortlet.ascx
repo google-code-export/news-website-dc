@@ -58,7 +58,7 @@
                 <% if (NoComments){ %><span class="post-comment"><%# Eval("Comments") %></span><% } %>
                 <a id="aActived" href='<%#Eval("SeoUrl") %>' class="post-title wrap"><%#Eval("Title") %></a>        
                 <span class="post-info"><%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy HH:mm}") %></span>
-                <p><%# Eval("Description") %></p>
+                <p><%#fnHintDescription(Eval("Description")) %></p>
             </ItemTemplate>
         </asp:Repeater>
     </div>
@@ -73,7 +73,7 @@
                             <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy HH:mm}") %>
                         </span>
                     <% if (NoComments){ %></div><% } %>
-                    <span class="description"><%# Eval("Description") %></span>
+                    <span class="description"><%#fnHintDescription(Eval("Description")) %></span>
                 </li>
             </ItemTemplate>
         </asp:Repeater>        

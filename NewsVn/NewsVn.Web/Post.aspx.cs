@@ -11,7 +11,6 @@ namespace NewsVn.Web
     public partial class Post : BaseUI.BasePage
     {
         private int intCateID = -1;
-        private int postID = -1;
         private string strCateName;
         private bool checkCateID_By_SEONAME(string seoNAME)
         {
@@ -42,7 +41,7 @@ namespace NewsVn.Web
         {
             var postData = _Posts.Where(p => p.Actived == true && p.Approved == true
               && p.ID == postID).FirstOrDefault();
-            
+
             var postComment = _PostComments.Where(pc => pc.Post.ID == postID).Select(
                 pc => new { 
                 pc.CreatedOn,
@@ -63,16 +62,17 @@ namespace NewsVn.Web
             //check_PageView  - khong su dung pageview thi ko can update
             if (postData.CheckPageView)
             {
-                Allow_Update_PageView();
+                Allow_Update_PageView(int.Parse(Request.QueryString["cp"]));
             }
             
         }
-        private void Allow_Update_PageView()
+        private void Allow_Update_PageView(int postID)
         {
+            //chua xem thi cho add pageview
             if (Session[HttpContext.Current.Session.SessionID] == null)
             {
                 Session[HttpContext.Current.Session.SessionID] = postID.ToString() + ",";
-                update_PageView();
+                update_PageView(postID);
             }
             else
             {
@@ -82,18 +82,18 @@ namespace NewsVn.Web
                 if (isExist.Length == 0)
                 {
                     Session[HttpContext.Current.Session.SessionID] = Session[HttpContext.Current.Session.SessionID].ToString() + postID.ToString() + ",";
-                    update_PageView();
+                    update_PageView(postID);
                 }
             }
         }
-        private void update_PageView()
+        private void update_PageView( int postID)
         {
             var post = ApplicationManager.Entities.Posts.Where(p => p.ID == postID).FirstOrDefault();
             if (post != null)
             {
                 post.PageView += 1;
                 ApplicationManager.Entities.SaveChanges();
-                ApplicationManager.UpdateCacheData<Data.Post>(ApplicationManager.Entities.Posts.Where( t => t.Approved && t.Actived));//set lai cache
+                //ApplicationManager.UpdateCacheData<Data.Post>(ApplicationManager.Entities.Posts.Where( t => t.Approved && t.Actived));//set lai cache
             }
         }
         //lay tieu_diem theo chu de, pageview cao nhat trong thang

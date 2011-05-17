@@ -14,7 +14,6 @@ namespace NewsVn.Web.Utils
     /// </summary>
     public class AutoCompleteSV : IHttpHandler
     {
-
         public void ProcessRequest(HttpContext context)
         {
             string strConn = WebConfigurationManager.ConnectionStrings["NewsVn_Conn"].ConnectionString;
@@ -44,8 +43,14 @@ namespace NewsVn.Web.Utils
                     catch (Exception ex)
                     {
                         context.Response.Write("");
+                        conn.Close();
                     }
-                    conn.Close();
+                    finally
+                    {
+                        if (conn.State == ConnectionState.Open)
+                            conn.Close();
+                        conn.Dispose();
+                    }
                     context.Response.Write(sb.ToString());
                 }
             }

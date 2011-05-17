@@ -33,7 +33,7 @@ namespace NewsVn.Web
                 string strCateName = Request.QueryString["ct"]; //Context.Request.Url.Query;
                 bool realCate = checkCateID_By_SEONAME(strCateName);
                 BaseUI.BaseMaster.ExecuteSEO(realCate ? CateTitle : "Cổng thông tin điện tử 24/07", "", "");
-                List<int> lstArrayID = load_pletLatestNews();
+                List<string> lstArrayID = load_pletLatestNews();
                 load_pletHotNews(lstArrayID);
                 
                 DateTime searchDate = DateTime.Now;
@@ -51,13 +51,14 @@ namespace NewsVn.Web
             }
         }
         //lay tin tuc theo chu de
-        private void load_pletCatePostList(List<int>lstArrayID, int pageindex, bool isSearchByDate)
+        private void load_pletCatePostList(List<string>lstArrayID, int pageindex, bool isSearchByDate)
         {
+            string csvIds = string.Join(",", lstArrayID.ToArray());
             if (isSearchByDate)
             {
-                 pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
-                       && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
-                       ).Where(p=>!lstArrayID.Contains( p.ID ))
+                 pletCatePostList.Datasource = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}")
+                     .Where(p => p.Actived == true && p.Approved == true
+                       && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
                        .Where(p => p.ApprovedOn.Value.ToShortDateString() == DateTime.Parse(Request.QueryString["d"].Replace('-', '/').Replace("ngay-", " ").Trim()).ToShortDateString())
                       .Select(p => new
                       {
@@ -73,9 +74,10 @@ namespace NewsVn.Web
             }
             else
             {
-                pletCatePostList.Datasource = _Posts.Where(p => p.Actived == true && p.Approved == true
+                pletCatePostList.Datasource = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}")
+                     .Where(p => p.Actived == true && p.Approved == true
                      && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
-                     ).Where(p => !lstArrayID.Contains(p.ID))
+                     )
                      .Select(p => new
                     {
                         p.ID,
@@ -91,24 +93,36 @@ namespace NewsVn.Web
             pletCatePostList.DataBind();
         }
         //lay tin_hot theo chu de  va theo pageview cao nhat trong ngay
-        void load_pletHotNews(List<int> lstArrayID)
+        void load_pletHotNews(List<string> lstArrayID)
         {
-            var oData = _Posts.Where(p => p.Actived == true && !lstArrayID.Contains(p.ID) && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
-                    .Select(p => new
-                    {
-                        p.Title,
-                        Description = clsCommon.hintDesc(p.Description),
-                        p.Avatar,
-                        SeoUrl = HostName + p.SeoUrl,
-                        p.ApprovedOn,
-                        p.PageView
-                    }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
+            string csvIds = string.Join(",", lstArrayID.ToArray());
+            IQueryable<Data.Post> iPost = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}");// in sql in (1,2,3,4...)
+            var oData = iPost.Select(p => new
+            {
+                p.Title,
+                p.Description,//= clsCommon.hintDesc(p.Description),
+                p.Avatar,
+                SeoUrl = HostName + p.SeoUrl,
+                p.ApprovedOn,
+                p.PageView
+            }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
+
+            //var oData = _Posts.Where(p => p.Actived == true && !lstArrayID.Contains(p.ID) && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
+            //        .Select(p => new
+            //        {
+            //            p.Title,
+            //            Description = clsCommon.hintDesc(p.Description),
+            //            p.Avatar,
+            //            SeoUrl = HostName + p.SeoUrl,
+            //            p.ApprovedOn,
+            //            p.PageView
+            //        }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
             pletHotNews.CateTitle = CateTitle;
             pletHotNews.DataSource = oData;
             pletHotNews.DataBind();
         }
         //lay tin_moi_nhat theo chu de
-        List<int> load_pletLatestNews()
+        List<string> load_pletLatestNews()
         {
             var oData = _Posts.Where(p => p.Actived == true && p.Approved == true
                 && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)).Select(p => new
@@ -124,7 +138,7 @@ namespace NewsVn.Web
             pletLatestNews.DataSource = oData;
             pletLatestNews.HostName = HostName;
             pletLatestNews.DataBind();
-            return oData.Select(p => p.ID).ToList();
+            return oData.Select(p => p.ID.ToString()).ToList();
         }
         //lay tieu_diem theo chu de, theo Month --> orderby Pageview, lay n record
         void load_pletFocusPost()
