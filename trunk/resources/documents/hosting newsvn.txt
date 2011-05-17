@@ -1,9 +1,14 @@
 vui long bao ve tai khoan cho khach hang!
 
 Acc: hosting
-https://112.213.89.107:8443  or https://homevn.vn:8443 
+https://112.213.89.86:8443  or https://homevn.vn:8443 
 username: homevn.vn
 pass: newsvn123
+
+DB: 112.213.89.86
+username: newsvn_user
+pass: 123456
+
 Acc: ftp
 FTP : 112.213.89.107
 Username : homevn
