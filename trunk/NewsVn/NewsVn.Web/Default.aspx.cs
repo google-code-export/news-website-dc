@@ -8,6 +8,7 @@ using System.Data;
 using NewsVn.Web.Utils;
 using System.Xml;
 using System.Xml.Linq;
+using System.Data.Objects;
 
 namespace NewsVn.Web
 {
@@ -17,14 +18,14 @@ namespace NewsVn.Web
         {
             BaseUI.BaseMaster.SiteTitle = "- Cổng thông tin điện tử 24/07";
             BaseUI.BaseMaster.MetaKeyWords = "NewsVn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
-            BaseUI.BaseMaster.MetaKeyDes = "Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07 thông tin Việt nam - Thế giới về Kinh tế";
+            BaseUI.BaseMaster.MetaKeyDes = "Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07, thông tin Việt nam - Thế giới";
             base.OnInit(e);
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                List<int> lstArrayID = load_pletLatestNews();
+                List<string> lstArrayID = load_pletLatestNews();
                 load_pletSpecialEvents();
                 load_pletHotNews(lstArrayID);
                 load_pletPosts();
@@ -69,7 +70,7 @@ namespace NewsVn.Web
                     {
                         p.ID,
                         p.Title,
-                        Description = clsCommon.hintDesc(p.Description),
+                        p.Description,// = clsCommon.hintDesc(p.Description),
                         p.Avatar,
                         p.SeoUrl,
                         p.CreatedOn,
@@ -107,7 +108,7 @@ namespace NewsVn.Web
                 {
                     adp.ID,
                     adp.Title,
-                    Description = clsCommon.hintDesc(adp.Content),
+                    Description =adp.Content,// clsCommon.hintDesc(adp.Content),
                     Avatar = adp.Avatar.Length == 0 ?"/resources/Images/No_Image/no-ads.gif" :"/resources/Images/"+ adp.Avatar,
                     adp.SeoUrl,
                     adp.CreatedOn,
@@ -121,20 +122,33 @@ namespace NewsVn.Web
             postArea.Controls.Add(ctrPortletPost_Ad);
         }
         //Hot News Tin noi bat
-        void load_pletHotNews(List<int> lstArrayID)
+        void load_pletHotNews(List<string> lstArrayID)
         {
             //Phan nay se load tu xml len// neu xml ko co/ tu dong lay duoi db len||
             pletHotNews.CateTitle = "Tin Nổi Bật";
-            var oData = _Posts.Where(p => p.Actived == true && p.Approved == true && !lstArrayID.Contains(p.ID))
-                    .Select(p => new
+            string csvIds = string.Join(",", lstArrayID.ToArray());
+            IQueryable<Data.Post> iPost = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}")
+                .Where(p => p.Actived == true && p.Approved == true);// in sql in (1,2,3,4...)
+            var oData = iPost.Select(p => new
                     {
                         p.Title,
-                        Description = clsCommon.hintDesc(p.Description),
+                        p.Description,//= clsCommon.hintDesc(p.Description),
                         p.Avatar,
-                        SeoUrl=HostName+ p.SeoUrl,
+                        SeoUrl = HostName + p.SeoUrl,
                         p.ApprovedOn,
                         p.PageView
                     }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
+            //old version error contains in EF3.5
+            //var oData = _Posts.Where(p => p.Actived == true && p.Approved == true && !lstArrayID.Contains( p.ID))
+            //        .Select(p => new
+            //        {
+            //            p.Title,
+            //            Description = clsCommon.hintDesc(p.Description),
+            //            p.Avatar,
+            //            SeoUrl = HostName + p.SeoUrl,
+            //            p.ApprovedOn,
+            //            p.PageView
+            //        }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
             pletHotNews.DataSource = oData;
             pletHotNews.DataBind();
         }
@@ -144,7 +158,7 @@ namespace NewsVn.Web
             pletSpecialEvents.DataSource = clsPost.Load_Post_From_XML(10);
             pletSpecialEvents.DataBind();
         }
-        List<int> load_pletLatestNews()
+        List<string> load_pletLatestNews()
         {
             var oData = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new
             {
@@ -160,7 +174,7 @@ namespace NewsVn.Web
             pletLatestNews.DataSource = oData;
             pletLatestNews.HostName = HostName;
             pletLatestNews.DataBind();
-            return oData.Select(p => p.ID).ToList();
+            return oData.Select(p => p.ID.ToString()).ToList();
         }
     }
 }
