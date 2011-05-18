@@ -25,14 +25,17 @@
     <asp:ScriptManager runat="server" />
     <asp:Image ID="datePickerIcon" ImageUrl="~/Images/icons/calendar.png" CssClass="invisible" runat="server" />
     <div id="side_content" class="left">
-        <asp:LoginView runat="server">
-        <LoggedInTemplate>
-            Tài khoản: <asp:LoginName Font-Bold="true" runat="server" /> |
-            <asp:LoginStatus LogoutPageUrl="~/trang-chu.aspx" LogoutText="Thoát" runat="server" />
-        </LoggedInTemplate>
-        </asp:LoginView>
-        <asp:ContentPlaceHolder ID="sideContent" runat="server" />
-        <nsn:SiteAdmin_Menu runat="server" />        
+        <asp:Image ImageUrl="~/Images/logo.jpg" Width="200" runat="server" />
+        <div class="wrapper">            
+            <asp:LoginView runat="server">
+            <LoggedInTemplate>
+                Tài khoản: <asp:LoginName Font-Bold="true" runat="server" /> |
+                <asp:LoginStatus LogoutPageUrl="~/trang-chu.aspx" LogoutText="Thoát" runat="server" />
+            </LoggedInTemplate>
+            </asp:LoginView>        
+            <asp:ContentPlaceHolder ID="sideContent" runat="server" />
+            <nsn:SiteAdmin_Menu runat="server" /> 
+        </div>       
     </div>
     <div id="main_content" class="right">
         <asp:ContentPlaceHolder ID="mainContent" runat="server" />

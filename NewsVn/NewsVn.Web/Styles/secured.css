@@ -39,7 +39,12 @@ a
 {
     width: 200px;
     position: fixed;
-    padding: 10px;
+    background: #FFD6D4;
+}
+
+#side_content .wrapper
+{
+    padding: 10px;    
 }
 
 #main_content
