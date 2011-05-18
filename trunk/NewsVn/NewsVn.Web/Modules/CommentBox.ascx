@@ -28,15 +28,14 @@
         });
     });
 
-    function showCommentDialog() {
-        
-        var dataObj = { postID: <%= PostID %> }
-        
+    function showCommentDialog() {        
+        var dataObj = { postID: <%= PostID %> }        
         $.ajax({
             url: serviceUrl + "GetCommentDialogTitle",
             data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
             success: function (result) {
-                $("#comment_box").attr("title", result.d);
+                $("#comment_box").attr("title", result.d);                
+            }, complete: function() {
                 $("#comment_box").dialog({
                     autoOpen: false,
                     resizable: false,
@@ -51,15 +50,13 @@
         });
     }
 
-    function showCommentList(pageIndex, oldestOnTop) {
-        
+    function showCommentList(pageIndex, oldestOnTop) {        
         var dataObj = {
             postID: <%= PostID %>,
             pageIndex: pageIndex,
             pageSize: <%= ListPageSize %>,
             oldestOnTop: oldestOnTop
-        };
-        
+        };        
         $.ajax({
             url: serviceUrl + "LoadCommentList",
             data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
@@ -71,14 +68,12 @@
         });
     }
 
-    function showCommentPager(pageIndex) {
-        
+    function showCommentPager(pageIndex) {        
         var dataObj = {
             postID: <%= PostID %>,
             pageIndex: pageIndex,
             pageSize: <%= ListPageSize %>
         };
-        
         $.ajax({
             url: serviceUrl + "GeneratePagerContent",
             data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
@@ -94,7 +89,6 @@
     }
 
     function showSimpleCaptcha() {
-        
         var key = $("#comment_box_captchaKey").val();
         if(key == undefined) key = "";
 
@@ -110,7 +104,6 @@
     }
 
     function sendComment(createdBy, title, email, content, postID, captchaKey, captchaAnswer) {
-        
         var dataObj = {
             comment: {
                 CreatedBy: createdBy,
@@ -121,8 +114,7 @@
             postID: postID,
             captchaKey: captchaKey,
             captchaAnswer: captchaAnswer
-        }        
-        
+        }
         $.ajax({
             url: serviceUrl + "InsertComment",
             data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
