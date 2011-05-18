@@ -72,6 +72,7 @@
     <Content Include="Account\SiteAdmin\Post\ManageSpecialEventNews.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
+    <Content Include="Account\SiteAdmin\Post\ViewPostComment.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
     <Content Include="AdPost.aspx" />
@@ -1820,6 +1821,13 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\ViewPost.aspx.designer.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ViewPostComment.aspx.cs">
+      <DependentUpon>ViewPostComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\ViewPostComment.aspx.designer.cs">
+      <DependentUpon>ViewPostComment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\SiteAdmin.Master.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>

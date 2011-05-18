@@ -132,7 +132,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         private void LoadPostList(int pageIndex, int pageSize)
         {
             rptPostList.DataSource = _Posts.Select(p => new {
-               p.ID, ShortTitle = clsCommon.getEllipsisText(p.Title, 30), p.Title, p.SeoUrl,
+               p.ID, p.Title, p.SeoUrl,
                p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
                p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
                CategoryID = p.Category.ID,

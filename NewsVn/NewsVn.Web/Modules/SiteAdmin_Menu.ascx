@@ -8,13 +8,13 @@
                 <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/AddPost.aspx" Text="Thêm tin mới" runat="server" />
             </li>
              <li>
-                <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ManageSpecialEventNews.aspx" Text="Quản lý Sự kiện nổi bật" runat="server" />
+                <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ManageSpecialEventNews.aspx" Text="Quản lý sự kiện nổi bật" runat="server" />
             </li>
             <li>
                 <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ViewCategory.aspx" Text="Quản lý chủ đề" runat="server" />
             </li>            
             <li>
-                <asp:HyperLink NavigateUrl="#" Text="Quản lý bình luận" runat="server" />
+                <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ViewPostComment.aspx" Text="Quản lý bình luận" runat="server" />
             </li>
         </ul>
     </li>
