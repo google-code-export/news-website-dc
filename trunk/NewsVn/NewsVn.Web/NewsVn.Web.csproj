@@ -1584,6 +1584,7 @@
     <Content Include="Images\footer_grass.jpg" />
     <Content Include="Images\icons\calendar.png" />
     <Content Include="Images\icons\facebook.png" />
+    <Content Include="Images\icons\favico.ico" />
     <Content Include="Images\icons\feed.png" />
     <Content Include="Images\icons\home.png" />
     <Content Include="Images\icons\mail.png" />
@@ -1592,6 +1593,7 @@
     <Content Include="Images\icons\twitter.png" />
     <Content Include="Images\icons\user.png" />
     <Content Include="Images\icons\youtube.png" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Images\nivo\indicator.gif" />
     <Content Include="Images\nivo\loading.gif" />
     <Content Include="Images\ui\delete.gif" />

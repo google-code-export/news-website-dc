@@ -66,7 +66,10 @@ namespace NewsVn.Web.Modules
                     ddlParentCategory.Items.FindByValue(category.Parent.ID.ToString()).Selected = true;
                 }
                 else
-                    ltrError.Text = string.Format(ErrorBar, "Không thể nạp thông tin danh mục.");
+                {
+                    ltrError.Text = string.Format(ErrorBar, "Danh mục không tồn tại hoặc không cho phép chỉnh sửa.");
+                    btnUpdate.Visible = false;
+                }
             }
         }
 

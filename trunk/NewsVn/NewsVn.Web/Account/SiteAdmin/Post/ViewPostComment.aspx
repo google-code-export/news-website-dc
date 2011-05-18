@@ -36,7 +36,7 @@
                     <td>
                         <a href='<%= HostName + "account/siteadmin/post/editpost.aspx?pid=" %><%# Eval("PostID") %>'
                             title='<%# Eval("PostTitle") %>'>
-                            <%# Eval("PostTitle")%>
+                            <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("PostTitle").ToString(), 30) %>
                         </a>
                     </td>
                     <td>
