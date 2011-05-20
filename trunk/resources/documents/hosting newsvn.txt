@@ -10,7 +10,7 @@ username: newsvn_user
 pass: 123456
 
 Acc: ftp
-FTP : 112.213.89.107
+FTP : 112.213.89.86
 Username : homevn
 Password: 771d9cceeb7e
 
