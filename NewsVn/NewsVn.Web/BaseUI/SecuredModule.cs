@@ -12,7 +12,7 @@ namespace NewsVn.Web.BaseUI
         {
             base.OnInit(e);
 
-            _Categories = ApplicationManager.Entities.Categories.ToList().AsQueryable();
+            _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);
             _Posts = ApplicationManager.Entities.Posts.AsQueryable();
         }
     }

@@ -46,7 +46,7 @@
         <div class="wrapper">
             <div id="banner_bar">
                 <a href='<%= HostName %>' title="NewsVN: Công thông tin điện tử 24/07">
-                    <asp:Image ImageUrl="~/Images/logo.jpg" Height="150" runat="server" />
+                    <asp:Image ImageUrl="/Images/logo.jpg" Height="150" runat="server" />
                 </a>
             </div>
             <nsn:MenuBar runat="server" ID="CtrMenu" />
