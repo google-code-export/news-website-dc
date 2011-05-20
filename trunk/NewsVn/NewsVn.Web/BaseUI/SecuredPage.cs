@@ -14,7 +14,7 @@ namespace NewsVn.Web.BaseUI
 
             SiteTitle = "NewsVN - Cổng thông tin điện tử 24/07 ::: ";
 
-            _Categories = ApplicationManager.Entities.Categories.ToList().AsQueryable();
+            _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);
             _Posts = ApplicationManager.Entities.Posts.AsQueryable();
         }
     }

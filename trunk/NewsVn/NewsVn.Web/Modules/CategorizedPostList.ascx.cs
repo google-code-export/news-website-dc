@@ -68,7 +68,7 @@ namespace NewsVn.Web.Modules
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format(HostName+"ct/"+  Request.QueryString["ct"] + "/ngay{0}.apsx", txtGoldDate.Text.Trim().Replace('/', '_')));
+            Response.Redirect(string.Format(HostName+"ct/{1}/{0}.aspx",txtGoldDate.Text.Trim().Replace('/', '_'),  Request.QueryString["ct"] ));
         }
 
         protected void rptCatePostList_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -92,10 +92,15 @@ namespace NewsVn.Web.Modules
         {
             int page = 0;
             int.TryParse(Request.QueryString["p"], out page);
-            lnkbtnPrevious.Enabled = !(page == 0);
+            //lnkbtnPrevious.Enabled = !(page == 0);
             lnkbtnNext.Enabled = !(rptCatePostList.Items.Count < 20);
             DateTime dt = DateTime.Now;
-            lnkbtnPrevious.Enabled = (page == 0 && rptCatePostList.Items.Count < 20 && DateTime.TryParse(Request.QueryString["d"], out dt));
+            lnkbtnPrevious.Enabled = !(page==0);
+            if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Trim().Replace('_', '/'), out dt))
+            {
+                lnkbtnPrevious.Enabled = true;
+            }
+            //!(page != 0 && rptCatePostList.Items.Count < 20)
         }
     }
 }
