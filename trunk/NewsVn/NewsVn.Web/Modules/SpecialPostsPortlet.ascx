@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SpecialPostsPortlet.ascx.cs" Inherits="NewsVn.Web.Modules.SpecialPostsPortlet" %>
 
 <link href="<%= Page.ResolveUrl("~/styles/nivo.css") %>" rel="stylesheet" type="text/css" />
-<script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.nivo.slider.pack.js") %>" type="text/javascript"></script>
+<script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.nivo.slider.js") %>" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         $("#nivo-description").text($("#nivo .description:first").text());

@@ -20,7 +20,7 @@
         $(".special-adpost h2 .prev").after("<span> | </span>");
 
         if ($(".special-adpost").height() < $(".adpost-search").height()) {
-            $(".special-adpost").height($(".adpost-search").height() - 41);
+            $(".special-adpost").css({ height: $(".adpost-search").height() - 49 });
         }
     });
 </script>
@@ -37,7 +37,7 @@
                         <%#Eval("Content") %>
                     </p>
                     <span class="post-info">
-                        <%#string.Format("{0:dddd, dd/MM/yyyy, HH:mm}",Eval("CreatedOn") )%> |
+                        <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy, HH:mm})" ) %> |
                         Khu vực: <b><%#Eval("Location") %></b> |
                         Đăng bởi: <b><%#Eval("CreatedBy") %></b>
                     </span>

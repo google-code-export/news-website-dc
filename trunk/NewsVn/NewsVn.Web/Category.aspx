@@ -4,12 +4,12 @@
     <script type="text/javascript">
         $(function () {
             $(".portlet.left").each(function () {
-                var rightPortlet = $(this).next(".portlet.right");
+                var rightPortlet = $(this).siblings(".portlet.right").eq(0);
                 if ($(this).height() < rightPortlet.height()) {
-                    $(this).height(rightPortlet.height());
+                    $(this).css({ height: rightPortlet.height() });
                 }
-                else if ($(this).height() > rightPortlet.height()) {
-                    rightPortlet.height($(this).height());
+                else {
+                    rightPortlet.css({ height: $(this).height() });
                 }
             });
         });
