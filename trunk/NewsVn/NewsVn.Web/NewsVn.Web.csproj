@@ -1716,7 +1716,6 @@
     <Content Include="Scripts\plugins\jquery.lazyload.mini.js" />
     <Content Include="Scripts\plugins\jquery.maxlength.js" />
     <Content Include="Scripts\plugins\jquery.mousewheel-3.0.4.pack.js" />
-    <Content Include="Scripts\plugins\jquery.nivo.slider.js" />
     <Content Include="Scripts\plugins\jquery.nivo.slider.pack.js" />
     <Content Include="Scripts\plugins\jquery.text-overflow.js" />
     <Content Include="Scripts\plugins\jquery.ui.datepicker-vi.js" />
