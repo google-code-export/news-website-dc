@@ -5,6 +5,7 @@ using System.Web;
 using NewsVn.Data;
 using NewsVn.Web;
 using NewsVn.Web.Utils;
+using System.Text;
 namespace NewsVn.Web.BaseUI
 {
     public class BaseMaster : System.Web.UI.MasterPage
