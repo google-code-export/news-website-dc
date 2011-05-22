@@ -28,18 +28,22 @@ namespace NewsVn.Web
         private void load_SpecialAds()
         {
             //hien tai chua co set expired : p.ExpiredOn >= DateTime.Now &&
-            pletSpecialAds.Datasource = _AdPosts.Where(p =>  p.AdCategory.Actived == true && p.Actived == true)
+            var datasource = _AdPosts.Where(p => p.AdCategory.Actived == true && p.Actived == true)
                 .Select(p => new
                 {
                     p.AdCategory.Name,
                     Avatar=HostName +"/Resources/"+ p.Avatar,
                     p.Title,
-                    p.Content,
+                    p.Content,//=Utils.clsCommon.hintDesc(p.Content,200),
                     p.Payment,
-                    Location = Utils.clsCommon.getLocationName(int.Parse(p.Location)),
+                    p.Location,// = Utils.clsCommon.getLocationName(int.Parse( p.Location)),
+                    p.SeoUrl,
                     p.CreatedBy,
                     p.CreatedOn
                 }).OrderByDescending(p=>p.Payment).Take(5).ToList();
+            
+            
+            pletSpecialAds.Datasource = datasource;
             pletSpecialAds.DataBind();
         }
         private void load_pletAdPosts()
@@ -66,7 +70,8 @@ namespace NewsVn.Web
                     ctrPortletPost.CssClass = "right";
                     ctrPortletPost.ClearLayout = true;
                 }
-                ctrPortletPost.Datasource = _AdPosts.Where(p => p.AdCategory.ID == cate.ID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == cate.ID) && cate.Actived == true)
+                ctrPortletPost.Datasource = _AdPosts
+                    .Where(p => p.AdCategory.ID == cate.ID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == cate.ID) && cate.Actived == true)
                     .Select(p => new
                     {
                         p.ID,
@@ -77,7 +82,7 @@ namespace NewsVn.Web
                         p.CreatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
-                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                        p.Location //= Utils.clsCommon.getLocationName(int.Parse(p.Location)),
                     }).OrderByDescending(p => p.Payment).Take(20).ToList();
                 //bind subCategory
                 ctrPortletPost.subDatasource = _AdCategories.Where(p =>(p.Parent != null && p.Parent.ID == cate.ID) && cate.Actived == true)

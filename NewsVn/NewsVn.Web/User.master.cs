@@ -68,10 +68,9 @@ namespace NewsVn.Web
             int count = 0;
 
             var childCates = _Categories.Where(c=> c.Parent != null && c.Parent.ID == cate.ID);
-            
             foreach (var item in childCates)
             {
-                count += item.Posts.Count();
+                count += _Posts.Where(p => p.Category.ID == item.ID).Select(p => p.Title).Count();
             }
             
             return count;

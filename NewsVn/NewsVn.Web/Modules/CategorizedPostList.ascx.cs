@@ -92,7 +92,6 @@ namespace NewsVn.Web.Modules
         {
             int page = 0;
             int.TryParse(Request.QueryString["p"], out page);
-            //lnkbtnPrevious.Enabled = !(page == 0);
             lnkbtnNext.Enabled = !(rptCatePostList.Items.Count < 20);
             DateTime dt = DateTime.Now;
             lnkbtnPrevious.Enabled = !(page==0);
@@ -100,7 +99,6 @@ namespace NewsVn.Web.Modules
             {
                 lnkbtnPrevious.Enabled = true;
             }
-            //!(page != 0 && rptCatePostList.Items.Count < 20)
         }
     }
 }

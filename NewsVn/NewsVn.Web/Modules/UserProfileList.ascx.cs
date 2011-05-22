@@ -8,10 +8,10 @@ using System.Collections;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class UserProfileList : System.Web.UI.UserControl
+    public partial class UserProfileList : BaseUI.BaseModule
     {
         public object Datasource { get; set; }
-
+        public string MyProperty { get; set; }
         protected void Page_Load(object sender, EventArgs args)
         {
             if (!IsPostBack)

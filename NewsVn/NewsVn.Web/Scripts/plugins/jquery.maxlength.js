@@ -18,7 +18,7 @@
 		    statusText: "character left", // The status text
 		    notificationClass: "notification", // Will be added to the emement when maxlength is reached
 		    showAlert: false, // True to show a regular alert message
-		    alertText: "You have typed too many characters.", // Text in the alert message
+		    alertText: "Bạn đã nhập quá [" + options.maxCharacters + "] ký tự cho phép vào ô nhập này!", // Text in the alert message
 		    slider: false // Use counter slider
 		}, options);
 

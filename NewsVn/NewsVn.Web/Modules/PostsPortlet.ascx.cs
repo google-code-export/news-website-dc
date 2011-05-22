@@ -43,7 +43,7 @@ namespace NewsVn.Web.Modules
         }
         public string fnHintDescription(object inputDesc)
         {
-            return clsCommon.hintDesc(inputDesc.ToString());
+            return clsCommon.hintDesc(inputDesc.ToString(),200);
         }
 
         protected override void OnDataBinding(EventArgs e)

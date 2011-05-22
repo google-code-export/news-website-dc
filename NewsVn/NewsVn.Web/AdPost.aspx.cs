@@ -22,27 +22,30 @@ namespace NewsVn.Web
         //load Ads details by ID
         private void load_pletAdsDetail(int AdsID)
         {
-            var data = _AdPosts.Where(p => p.ID ==AdsID && p.Actived == true && p.ExpiredOn >= DateTime.Now)
-                    .Select(p => new
-                    {
-                        p.ID,
-                        p.Title,
-                        p.Content,
-                        p.Avatar,
-                        p.SeoUrl,
-                        p.CreatedOn,
-                        p.CreatedBy,
-                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
-                    }).FirstOrDefault();
+            var datafilter = _AdPosts.Where(p => p.ID == AdsID && p.Actived == true);// && p.ExpiredOn >= DateTime.Now
+                    
 
-            if (data != null)
+            if (datafilter != null)
             {
+                var data = datafilter.Select(p => new
+                {
+                    p.ID,
+                    p.Title,
+                    p.Content,
+                    p.Avatar,
+                    p.SeoUrl,
+                    p.CreatedOn,
+                    p.CreatedBy,
+                    p.Location //= Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                }).FirstOrDefault();
                 pletAdsDetail.AdsTitle = data.Title;
                 pletAdsDetail.AdsContent = data.Content;
                 pletAdsDetail.CreatedBy = data.CreatedBy;
                 pletAdsDetail.CreatedOn = data.CreatedOn;
+                pletAdsDetail.Location = data.Location == null ? 0 : int.Parse(data.Location);
                 //Load Ads relation by Created Date and Difference with current ID
-                load_pletAdsRelated(data.CreatedOn, AdsID);
+                BaseUI.BaseMaster.ExecuteSEO(data.Title.Trim().Length > 0 ? data.Title.Trim() : "Cổng thông tin điện tử 24/07", Utils.clsCommon.RemoveUnicodeMarks(data.Title).Replace('-', ' ') + " " + data.Title, Utils.clsCommon.hintDesc(data.Content, 300));
+                load_pletAdsRelated(datafilter.FirstOrDefault());
             }
             else
             {
@@ -53,20 +56,16 @@ namespace NewsVn.Web
             }
         }
 
-        private void load_pletAdsRelated(DateTime CreatedOn, int AdsID)
+        private void load_pletAdsRelated(Data.AdPost inputAdPost)
         {
-            var data = _AdPosts.Where(p => p.CreatedOn<=CreatedOn && p.ID !=AdsID && p.Actived == true && p.ExpiredOn >= DateTime.Now)
+            var data = _AdPosts.Where(p => p.ID != inputAdPost.ID && p.Actived == true)// && p.ExpiredOn >= DateTime.Now
+                .Where(p => p.CreatedOn <= inputAdPost.CreatedOn)
                     .Select(p => new
                     {
-                        p.ID,
                         p.Title,
-                        p.Content,
-                        p.Avatar,
                         p.SeoUrl,
                         p.CreatedOn,
                         p.Payment,
-                        p.CreatedBy,
-                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
                     }).OrderByDescending(p=>p.Payment).ThenByDescending(p=>p.CreatedOn).Take(15).ToList();
             pletAdsRelated.Datasource = data;
             pletAdsRelated.DataBind();

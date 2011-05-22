@@ -21,7 +21,7 @@
                         <span class="post-comment">29</span>
                         <b>Tên:</b><%#Eval("Name") %><br /><b>Biệt danh:</b> <%#Eval("Nickname") %><br />
                         <b>Giới tính/Tuổi:</b> <%#Eval("Gender") %>/<%#Eval("Age") %><br /><b>Chỗ ở:</b> <%#Eval("Location") %>, <%#Eval("Country") %><br/>
-						<b>Chi tiết:</b> <a href="../profile.aspx?acc=<%#Eval("Account") %>">Xem hồ sơ</a>
+						<b>Chi tiết:</b> <a href='<%= HostName+ "tinh-yeu-gia-dinh/tim-ban/ho-so/"%><%#Eval("Account") %><%=".aspx" %>'>Xem hồ sơ</a>
                         <p>
                             <b>Muốn tìm:</b>
                             <%#Eval("Expectation") %>

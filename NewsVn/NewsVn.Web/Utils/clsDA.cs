@@ -114,11 +114,10 @@ namespace NewsVn.Web.Utils
             return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
         //cut string fix to words expectation
-        public static string hintDesc(string desc)
+        public static string hintDesc(string desc,int intWords)
         {
-            int intWord = 150;
-            var toLong = desc.Length > intWord;
-            var s_ = toLong ? desc.Substring(0, intWord - 1) : desc;
+            var toLong = desc.Length > intWords;
+            var s_ = toLong ? desc.Substring(0, intWords - 1) : desc;
             s_ = toLong ? s_.Substring(0, s_.LastIndexOf(' ')) : s_;
             return toLong ? s_ + " ..." : s_;
         }
