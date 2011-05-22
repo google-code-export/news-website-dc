@@ -1596,7 +1596,6 @@
     <Content Include="Images\icons\user.png" />
     <Content Include="Images\icons\youtube.png" />
     <Content Include="Images\logo.jpg" />
-    <Content Include="Images\slider\indicator.gif" />
     <Content Include="Images\slider\loading.gif" />
     <Content Include="Images\slider\nav_active.png" />
     <Content Include="Images\slider\nav_tracker.png" />
@@ -1687,6 +1686,7 @@
     <Content Include="ProfileSearchResult.aspx" />
     <Content Include="Modules\RandomProfileBox.ascx" />
     <Content Include="Resources\Images\Chrysanthemum.jpg" />
+    <Content Include="Images\login_banner.jpg" />
     <Content Include="Resources\Images\No_Image\no-ads.gif" />
     <Content Include="Resources\Images\No_Image\no_avatar.jpg" />
     <Content Include="Resources\Xml\Editor\BasicTools.xml">
@@ -2271,10 +2271,6 @@
     <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Images\slider\.svn\props\" />
-    <Folder Include="Images\slider\.svn\tmp\prop-base\" />
-    <Folder Include="Images\slider\.svn\tmp\props\" />
-    <Folder Include="Images\slider\.svn\tmp\text-base\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
     <Folder Include="Resources\Media\" />
@@ -2360,17 +2356,6 @@
     <Content Include="CuteSoft_Client\CuteEditor\ImageEditor\imageeditorTest.zip" />
     <Content Include="CuteSoft_Client\CuteEditor\Load.ashx" />
     <Content Include="CuteSoft_Client\CuteEditor\Uploader.ashx" />
-    <None Include="Images\slider\.svn\entries" />
-    <None Include="Images\slider\.svn\prop-base\indicator.gif.svn-base" />
-    <None Include="Images\slider\.svn\prop-base\loading.gif.svn-base" />
-    <None Include="Images\slider\.svn\prop-base\nav_active.png.svn-base" />
-    <None Include="Images\slider\.svn\prop-base\nav_tracker.png.svn-base" />
-    <None Include="Images\slider\.svn\prop-base\shadow.png.svn-base" />
-    <None Include="Images\slider\.svn\text-base\indicator.gif.svn-base" />
-    <None Include="Images\slider\.svn\text-base\loading.gif.svn-base" />
-    <None Include="Images\slider\.svn\text-base\nav_active.png.svn-base" />
-    <None Include="Images\slider\.svn\text-base\nav_tracker.png.svn-base" />
-    <None Include="Images\slider\.svn\text-base\shadow.png.svn-base" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

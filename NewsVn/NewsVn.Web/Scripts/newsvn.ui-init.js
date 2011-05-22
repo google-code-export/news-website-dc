@@ -22,7 +22,7 @@ $(function () {
     });
     $(".button-register").button({
         icons: {
-            primary: "ui-icon-pencil"
+            primary: "ui-icon-person"
         }
     });
     $(".button-search").button({

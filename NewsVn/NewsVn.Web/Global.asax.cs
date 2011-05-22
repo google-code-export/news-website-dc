@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using NewsVn.Web.Utils;
+using System.Text.RegularExpressions;
 
 namespace NewsVn.Web
 {
@@ -29,6 +30,18 @@ namespace NewsVn.Web
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Application_EndRequest(object sender, EventArgs e)
+        {
+            string redirectUrl = this.Response.RedirectLocation;
+            if (!this.Request.RawUrl.Contains("ReturnUrl=") && !string.IsNullOrEmpty(redirectUrl))
+            {
+                this.Response.RedirectLocation = Regex.Replace(redirectUrl, "ReturnUrl=(?'url'[^&]*)", delegate(Match m)
+                {
+                    return string.Format("returnurl={0}", HttpUtility.UrlEncode(this.Request.RawUrl));
+                }, RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture);
+            }
         }
 
         protected void Application_Error(object sender, EventArgs e)

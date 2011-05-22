@@ -2,11 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        #content
-        {
-            min-height: 0;
-            padding-top: 10px;
-        }
+        #content { min-height: 0; padding-top: 10px; }
     </style>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="body" runat="server">    
