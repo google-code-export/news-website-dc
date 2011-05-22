@@ -1594,8 +1594,11 @@
     <Content Include="Images\icons\user.png" />
     <Content Include="Images\icons\youtube.png" />
     <Content Include="Images\logo.jpg" />
-    <Content Include="Images\nivo\indicator.gif" />
-    <Content Include="Images\nivo\loading.gif" />
+    <Content Include="Images\slider\indicator.gif" />
+    <Content Include="Images\slider\loading.gif" />
+    <Content Include="Images\slider\nav_active.png" />
+    <Content Include="Images\slider\nav_tracker.png" />
+    <Content Include="Images\slider\shadow.png" />
     <Content Include="Images\ui\delete.gif" />
     <Content Include="Images\ui\ui-bg_flat_15_bd0d0d_40x100.png" />
     <Content Include="Images\ui\ui-bg_glass_100_feeceb_1x400.png" />
@@ -1650,9 +1653,6 @@
     <Content Include="Images\header_bg.jpg" />
     <Content Include="Images\menubar_bg.jpg" />
     <Content Include="Images\menu_sep.jpg" />
-    <Content Include="Images\nivo\nav_active.png" />
-    <Content Include="Images\nivo\nav_tracker.png" />
-    <Content Include="Images\nivo\shadow.png" />
     <Content Include="Images\trans_bg.jpg" />
     <Content Include="Modules\FooterCategoryList.ascx" />
     <Content Include="Modules\LatestPostsPortlet.ascx" />
@@ -1716,7 +1716,6 @@
     <Content Include="Scripts\plugins\jquery.lazyload.mini.js" />
     <Content Include="Scripts\plugins\jquery.maxlength.js" />
     <Content Include="Scripts\plugins\jquery.mousewheel-3.0.4.pack.js" />
-    <Content Include="Scripts\plugins\jquery.nivo.slider.pack.js" />
     <Content Include="Scripts\plugins\jquery.text-overflow.js" />
     <Content Include="Scripts\plugins\jquery.ui.datepicker-vi.js" />
     <Content Include="Scripts\plugins\jquery.ui.selectmenu.js" />
@@ -1726,7 +1725,6 @@
     <Content Include="Styles\fancybox.css" />
     <Content Include="Styles\form.css" />
     <Content Include="Styles\jquery.autocomplete.css" />
-    <Content Include="Styles\nivo.css" />
     <Content Include="Styles\reset.css" />
     <Content Include="Styles\secured-lte-ie7.css" />
     <Content Include="Styles\secured.css" />
@@ -2257,6 +2255,10 @@
     <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Images\slider\.svn\props\" />
+    <Folder Include="Images\slider\.svn\tmp\prop-base\" />
+    <Folder Include="Images\slider\.svn\tmp\props\" />
+    <Folder Include="Images\slider\.svn\tmp\text-base\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
     <Folder Include="Resources\Media\" />
@@ -2342,6 +2344,17 @@
     <Content Include="CuteSoft_Client\CuteEditor\ImageEditor\imageeditorTest.zip" />
     <Content Include="CuteSoft_Client\CuteEditor\Load.ashx" />
     <Content Include="CuteSoft_Client\CuteEditor\Uploader.ashx" />
+    <None Include="Images\slider\.svn\entries" />
+    <None Include="Images\slider\.svn\prop-base\indicator.gif.svn-base" />
+    <None Include="Images\slider\.svn\prop-base\loading.gif.svn-base" />
+    <None Include="Images\slider\.svn\prop-base\nav_active.png.svn-base" />
+    <None Include="Images\slider\.svn\prop-base\nav_tracker.png.svn-base" />
+    <None Include="Images\slider\.svn\prop-base\shadow.png.svn-base" />
+    <None Include="Images\slider\.svn\text-base\indicator.gif.svn-base" />
+    <None Include="Images\slider\.svn\text-base\loading.gif.svn-base" />
+    <None Include="Images\slider\.svn\text-base\nav_active.png.svn-base" />
+    <None Include="Images\slider\.svn\text-base\nav_tracker.png.svn-base" />
+    <None Include="Images\slider\.svn\text-base\shadow.png.svn-base" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
