@@ -1580,6 +1580,8 @@
     <Content Include="CuteSoft_Client\CuteEditor\Themes\OfficeXp\Images\unformat.gif" />
     <Content Include="CuteSoft_Client\CuteEditor\Themes\OfficeXp\Images\unlink.gif" />
     <Content Include="CuteSoft_Client\CuteEditor\Themes\OfficeXp\style.css" />
+    <Content Include="Exceptions\404.aspx" />
+    <Content Include="Exceptions\Common.aspx" />
     <Content Include="Images\footer_bg.jpg" />
     <Content Include="Images\footer_grass.jpg" />
     <Content Include="Images\icons\calendar.png" />
@@ -1891,6 +1893,20 @@
     </Compile>
     <Compile Include="Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exceptions\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\Common.aspx.cs">
+      <DependentUpon>Common.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exceptions\Common.aspx.designer.cs">
+      <DependentUpon>Common.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\AdBoxList.ascx.cs">
       <DependentUpon>AdBoxList.ascx</DependentUpon>
