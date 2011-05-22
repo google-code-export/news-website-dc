@@ -37,8 +37,8 @@ namespace NewsVn.Web.BaseUI
             _UserProfiles = ApplicationManager.Entities.UserProfiles.AsQueryable();
             _PostComments = ApplicationManager.Entities.PostComments.AsQueryable();
             _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived);
-            // _AdPosts = ApplicationManager.Entities.AdPosts.Where(a => a.Actived);
-            _AdPosts = ApplicationManager.SetCacheData<Data.AdPost>(ApplicationManager.Entities.AdPosts, null);
+            _AdPosts = ApplicationManager.Entities.AdPosts.Where(a => a.Actived);
+            //_AdPosts = ApplicationManager.SetCacheData<Data.AdPost>(ApplicationManager.Entities.AdPosts, null);
         }
     }
 }

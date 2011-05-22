@@ -40,7 +40,7 @@ namespace NewsVn.Web.Modules
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 HyperLink hplnk = (HyperLink)e.Item.FindControl("hplnk");
-                hplnk.NavigateUrl = "../AdPost.aspx?cp=" + DataBinder.Eval(e.Item.DataItem, "ID").ToString();
+                hplnk.NavigateUrl =HostName+ DataBinder.Eval(e.Item.DataItem, "SeoUrl").ToString();
                 hplnk.Text = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
                 if (!Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "isFree")))
                 {
@@ -91,16 +91,19 @@ namespace NewsVn.Web.Modules
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format("rao-nhanh/" + Request.QueryString["ct"] + "/{0}.aspx", txtGoldDate.Text.Trim().Replace('/','-')));
+            Response.Redirect(string.Format("rao-nhanh/" + Request.QueryString["ct"] + "/{0}.aspx", txtGoldDate.Text.Trim().Replace('/','_')));
         }
         private void disabled_Control_DependOnPage()
         {
             int page = 0;
             int.TryParse(Request.QueryString["p"], out page);
-            lnkbtnPrevious.Enabled = !(page == 0);
+            lnkbtnNext.Enabled = !(rptAdsList.Items.Count < 20);
             DateTime dt = DateTime.Now;
-            lnkbtnNext.Enabled = !(rptAdsList.Items.Count < 20 || DateTime.TryParse(Request.QueryString["d"], out dt));
-
+            lnkbtnPrevious.Enabled = !(page == 0);
+            if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Trim().Replace('_', '/'), out dt))
+            {
+                lnkbtnPrevious.Enabled = true;
+            }
         }
     }
 }

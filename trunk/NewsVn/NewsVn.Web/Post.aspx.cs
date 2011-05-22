@@ -54,7 +54,7 @@ namespace NewsVn.Web
             pletPostDetail.Datasource = postData;
             pletPostDetail.DataBind();
             //seo
-            BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", postData.Title, clsCommon.hintDesc(postData.Description));
+            BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-',' ') + " " + postData.Title, clsCommon.hintDesc(postData.Description, 300));
            //related post
             load_pletRelationPostList(postData);
             //commentbox

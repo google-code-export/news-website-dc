@@ -27,7 +27,7 @@ namespace NewsVn.Web.Modules
             int count = arr.Count();
             while (count <= 2)
             {
-                arr.Add("~/Resources/Profiles/no_photo.gif");
+                arr.Add("/Resources/Profiles/no_photo.gif");
                 count++;
             }
             Image2.ImageUrl = arr[0];

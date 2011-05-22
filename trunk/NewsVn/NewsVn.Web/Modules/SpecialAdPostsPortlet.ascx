@@ -32,13 +32,13 @@
             <li>
                 <img src='<%# Page.ResolveUrl((string)DataBinder.Eval(Container.DataItem, "Avatar")) %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar left" width="130px" />
                 <div class="post-item left">
-                    <a href="#" class="post-title"><%#Eval("Name") %>: <%#Eval("Title") %></a>
+                    <a href='<%#Eval("SeoUrl") %>' class="post-title"><%#Eval("Name") %>: <%#Eval("Title") %></a>
                     <p>
-                        <%#Eval("Content") %>
+                        <%#NewsVn.Web.Utils.clsCommon.hintDesc(Eval("Content").ToString(),300)%>
                     </p>
                     <span class="post-info">
                         <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy, HH:mm})" ) %> |
-                        Khu vực: <b><%#Eval("Location") %></b> |
+                        Khu vực: <b><%#NewsVn.Web.Utils.clsCommon.getLocationName(int.Parse(Eval("Location").ToString()))%></b> |
                         Đăng bởi: <b><%#Eval("CreatedBy") %></b>
                     </span>
                 </div>

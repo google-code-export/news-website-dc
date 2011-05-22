@@ -176,7 +176,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         private void SaveChangesAndReload()
         {
             ApplicationManager.Entities.SaveChanges();
-            _Posts = ApplicationManager.Entities.Posts.ToList().AsQueryable();
+            _Posts = ApplicationManager.Entities.Posts.AsQueryable();
         }
     }
 }

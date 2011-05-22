@@ -5,7 +5,9 @@
         $("#<%= ddlCategory.ClientID %>").change(function () {
             $(this).prev(".decoy").val($(this).val());
         });
-        $("#<%= txtDescription.ClientID %>").maxlength({ maxCharacters: 300, status: false, showAlert: true });
+        $("#<%= txtDescription.ClientID %>").maxlength({ maxCharacters: 980, status: false, showAlert: true });
+        $("#<%= txtTitle.ClientID %>").maxlength({ maxCharacters: 280, status: false, showAlert: true });
+        $("#<%= txtAvatar.ClientID %>").maxlength({ maxCharacters: 480, status: false, showAlert: true });
     });
     function checkValidation() {
         return $("#update_post_form").validationEngine('validate');
@@ -18,11 +20,11 @@
     <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
     <li>
         <asp:Label AssociatedControlID="txtTitle" Text="Tiêu đề:" runat="server" />
-        <asp:TextBox ID="txtTitle" Width="450" CssClass="validate[required]" runat="server" />
+        <asp:TextBox ID="txtTitle" Width="450" CssClass="validate[required]" runat="server" MaxLength="250" />
     </li>
     <li>
         <asp:Label AssociatedControlID="txtAvatar" Text="Hình đại diện:" runat="server" />
-        <asp:TextBox ID="txtAvatar" Width="450" CssClass="validate[required]" runat="server" />
+        <asp:TextBox ID="txtAvatar" Width="450" CssClass="validate[required]" runat="server" MaxLength="450" />
     </li>
     <li>
         <asp:Label AssociatedControlID="ddlCategory" Text="Danh mục:" runat="server" />

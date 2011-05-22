@@ -33,7 +33,7 @@ namespace NewsVn.Web
                 DateTime searchDate = DateTime.Now;
                 int pageindex = 0;
                 int.TryParse(Request.QueryString["p"], out pageindex);
-                if (Request.QueryString["d"]!= null && DateTime.TryParse(Request.QueryString["d"].Replace('-','/'), out searchDate))
+                if (Request.QueryString["d"]!= null && DateTime.TryParse(Request.QueryString["d"].Replace('_','/'), out searchDate))
                 {
                     load_pletAdsList(pageindex, true);
                 }
@@ -48,8 +48,9 @@ namespace NewsVn.Web
         {
             if (isSearchByDate)
             {
+                var date=DateTime.Parse(Request.QueryString["d"].Replace('_','/'));
                 pletCatAdsPost.Datasource = _AdPosts.Where(p => p.AdCategory.ID == intCateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == intCateID) && p.Actived == true
-                    ).Where(p => p.CreatedOn.ToShortDateString() == DateTime.Parse(Request.QueryString["d"].Replace('-','/')).ToShortDateString())
+                    ).Where(p => p.CreatedOn.Day == date.Day && p.CreatedOn.Month == date.Month && p.CreatedOn.Year == date.Year)
                     .Select(p => new
                     {
                         p.ID,
@@ -60,7 +61,7 @@ namespace NewsVn.Web
                         p.CreatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
-                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                        p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
                     }).OrderByDescending(p => p.Payment).ToList();
                 pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
                 pletCatAdsPost.HostName = this.HostName;
@@ -78,7 +79,7 @@ namespace NewsVn.Web
                         p.CreatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
-                        Location = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                        p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
                     }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
                 pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
                 pletCatAdsPost.HostName = this.HostName;
