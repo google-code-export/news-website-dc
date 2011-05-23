@@ -14,6 +14,7 @@ namespace NewsVn.Web
             if (!IsPostBack)
             {
                 load_UserProfileDetailsByAccount(Request.QueryString["acc"]);
+                
             }
         }
         private void load_UserProfileDetailsByAccount(string Account)
@@ -23,7 +24,9 @@ namespace NewsVn.Web
                 .FirstOrDefault();
             pletUserProfileDetails.Datasource = data;
             pletUserProfileDetails.DataBind();
+            BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(data.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(data.Expectation).Replace('-', ' '), Account + " - " + data.Description + " - " + data.Expectation);
             data = null;
+
         }
         
     }

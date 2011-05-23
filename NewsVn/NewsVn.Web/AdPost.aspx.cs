@@ -44,7 +44,7 @@ namespace NewsVn.Web
                 pletAdsDetail.CreatedOn = data.CreatedOn;
                 pletAdsDetail.Location = data.Location == null ? 0 : int.Parse(data.Location);
                 //Load Ads relation by Created Date and Difference with current ID
-                BaseUI.BaseMaster.ExecuteSEO(data.Title.Trim().Length > 0 ? data.Title.Trim() : "Cổng thông tin điện tử 24/07", Utils.clsCommon.RemoveUnicodeMarks(data.Title).Replace('-', ' ') + " " + data.Title, Utils.clsCommon.hintDesc(data.Content, 300));
+                BaseUI.BaseMaster.ExecuteSEO(data.Title.Trim().Length > 0 ?"RAO NHANH - "+ data.Title.Trim() : "RAO NHANH - Mua bán nhà đất, điện thoại, máy tính, ô tô xe máy, dịch vụ", Utils.clsCommon.RemoveUnicodeMarks(data.Title).Replace('-', ' ') + "," + data.Title + "," + Utils.clsCommon.RemoveUnicodeMarks(data.Content).Replace('-', ' '),"Newsvn, "+data.CreatedBy+ " - " + Utils.clsCommon.hintDesc(data.Content, 300));
                 load_pletAdsRelated(datafilter.FirstOrDefault());
             }
             else
@@ -53,6 +53,9 @@ namespace NewsVn.Web
                 pletAdsDetail.AdsContent = "Không tìm thấy bài viết";
                 pletAdsDetail.CreatedBy = "N/A";
                 pletAdsDetail.CreatedOn = DateTime.Now;
+                BaseUI.BaseMaster.SiteTitle = "- RAO NHANH - Mua bán nhà đất, điện thoại, máy tính, ô tô xe máy, dịch vụ";
+                BaseUI.BaseMaster.MetaKeyWords = "newsvn, rao vặt,mua,bán,thuê,cho thuê,thiết bị,văn phòng,điện tử,điện lạnh,ô tô,xe máy,sửa chữa,lắp đặt,thiết kế,nội thất,xây dựng,máy móc,tìm đối tác,cơ hội kinh doanh,hàng hoá,mua sắm,siêu thị,tiêu dùng,sản xuất,rao mua,rao bán,rao vat,mua ban,thue,cho thue,thiet bi,van phong,dien tu,dien lanh,o to,xe may,sua chua,lap dat,thiet ke,noi that,xay dung,may moc,tim doi tac,co hoi kinh doanh,hang hoa,mua sam,sieu thi,tieu dung,san xuat,rao mua,rao ban, sale off, khuyen mai, gia re";
+                BaseUI.BaseMaster.MetaKeyDes = "Newsvn, Cổng thông tin điện tử - Thông tin rao vặt, Đăng ký rao vặt miễn phí, mua bán nhiều lĩnh vực khác nhau như BĐS nhà đất, điện tử điện lạnh, máy tính, điện thoại, dịch vụ";
             }
         }
 

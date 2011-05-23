@@ -19,7 +19,7 @@ namespace NewsVn.Web.Modules
             if (!IsPostBack)
             {
                 DateTime dt = DateTime.Now;
-                if (Request.QueryString["d"]!=null && DateTime.TryParse(Request.QueryString["d"],out dt))
+                if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Replace('_', '/').Trim(), out dt))
                 {
                     txtGoldDate.Text = string.Format("{0:dd/MM/yyyy}", dt);
                 }
@@ -39,15 +39,16 @@ namespace NewsVn.Web.Modules
         {
             int page = 0;
             int.TryParse(Request.QueryString["p"], out page);
+            string strCategory = Request.QueryString["ct"];
             page -= 1;
             page = page <= 0 ? 0 : page;
             if (page == 0)
             {
-                Response.Redirect(HostName + "ct/" + Request.QueryString["ct"] + ".aspx");
+                Response.Redirect(HostName + "ct/" + strCategory + ".aspx");
             }
             else
             {
-                Response.Redirect(string.Format(HostName + "ct/" + Request.QueryString["ct"] + "/trang-{0}.aspx", page.ToString()));
+                Response.Redirect(string.Format(HostName + "ct/" + strCategory + "/trang-{0}.aspx", page.ToString()));
             }
         }
 
@@ -55,20 +56,21 @@ namespace NewsVn.Web.Modules
         {
             int page = 0;
             int.TryParse(Request.QueryString["p"], out page);
+            string strCategory = Request.QueryString["ct"];
             page += 1;
             if (page == 0)
             {
-                Response.Redirect(HostName + "ct/" + Request.QueryString["ct"]+".aspx");
+                Response.Redirect(HostName + "ct/" + strCategory + ".aspx");
             }
             else
             {
-                Response.Redirect(string.Format(HostName + "ct/" + Request.QueryString["ct"] + "/trang-{0}.aspx", page.ToString()));
+                Response.Redirect(string.Format(HostName + "ct/" + strCategory + "/trang-{0}.aspx", page.ToString()));
             }
         }
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format(HostName+"ct/{1}/{0}.aspx",txtGoldDate.Text.Trim().Replace('/', '_'),  Request.QueryString["ct"] ));
+            Response.Redirect(string.Format(HostName+"ct/{1}/ngay-{0}.aspx",txtGoldDate.Text.Trim().Replace('/', '_'),  Request.QueryString["ct"] ));
         }
 
         protected void rptCatePostList_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -95,7 +97,7 @@ namespace NewsVn.Web.Modules
             lnkbtnNext.Enabled = !(rptCatePostList.Items.Count < 20);
             DateTime dt = DateTime.Now;
             lnkbtnPrevious.Enabled = !(page==0);
-            if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Trim().Replace('_', '/'), out dt))
+            if (Request.QueryString["d"] != null && DateTime.TryParse(Request.QueryString["d"].Replace("ngay-", "").Replace('_', '/').Trim(), out dt))
             {
                 lnkbtnPrevious.Enabled = true;
             }

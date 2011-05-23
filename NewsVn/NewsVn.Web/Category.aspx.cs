@@ -56,7 +56,7 @@ namespace NewsVn.Web
             string csvIds = string.Join(",", lstArrayID.ToArray());
             if (isSearchByDate)
             {
-                DateTime searchdate=DateTime.Parse(Request.QueryString["d"].Replace('_', '/').Trim());
+                DateTime searchdate = DateTime.Parse(Request.QueryString["d"].Replace('_', '/').Trim());
                 //loc theo ngay, lay luon tin moi nhat (neu co)
                 pletCatePostList.Datasource = _Posts.Where(p => p.ApprovedOn.Value.Day == searchdate.Day && p.ApprovedOn.Value.Month == searchdate.Month && p.ApprovedOn.Value.Year == searchdate.Year)
                      .Where(p=> p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
@@ -75,9 +75,7 @@ namespace NewsVn.Web
             else
             {
                 pletCatePostList.Datasource = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}")
-                     .Where(p => p.Actived == true && p.Approved == true
-                     && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID)
-                     )
+                     .Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
                      .Select(p => new
                     {
                         p.ID,
@@ -96,7 +94,8 @@ namespace NewsVn.Web
         void load_pletHotNews(List<string> lstArrayID)
         {
             string csvIds = string.Join(",", lstArrayID.ToArray());
-            IQueryable<Data.Post> iPost = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}");// in sql in (1,2,3,4...)
+            IQueryable<Data.Post> iPost = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}")// in sql in (1,2,3,4...)
+                 .Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID));
             var oData = iPost.Select(p => new
             {
                 p.Title,

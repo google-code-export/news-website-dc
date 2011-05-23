@@ -20,11 +20,11 @@
     <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
     <li>
         <asp:Label AssociatedControlID="txtTitle" Text="Tiêu đề:" runat="server" />
-        <asp:TextBox ID="txtTitle" Width="450" CssClass="validate[required]" runat="server" MaxLength="250" />
+        <asp:TextBox ID="txtTitle" Width="450" CssClass="validate[required]" runat="server" MaxLength="280" />
     </li>
     <li>
         <asp:Label AssociatedControlID="txtAvatar" Text="Hình đại diện:" runat="server" />
-        <asp:TextBox ID="txtAvatar" Width="450" CssClass="validate[required]" runat="server" MaxLength="450" />
+        <asp:TextBox ID="txtAvatar" Width="450" CssClass="validate[required]" runat="server" MaxLength="480" />
     </li>
     <li>
         <asp:Label AssociatedControlID="ddlCategory" Text="Danh mục:" runat="server" />

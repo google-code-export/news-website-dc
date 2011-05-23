@@ -17,8 +17,8 @@ namespace NewsVn.Web
         protected override void OnInit(EventArgs e)
         {
             BaseUI.BaseMaster.SiteTitle = "- Cổng thông tin điện tử 24/07";
-            BaseUI.BaseMaster.MetaKeyWords = "NewsVn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
-            BaseUI.BaseMaster.MetaKeyDes = "Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07, thông tin Việt nam - Thế giới";
+            BaseUI.BaseMaster.MetaKeyWords = "newsvn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
+            BaseUI.BaseMaster.MetaKeyDes = "Newsvn, Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07, thông tin Việt nam - Thế giới...";
             base.OnInit(e);
         }
         protected void Page_Load(object sender, EventArgs e)

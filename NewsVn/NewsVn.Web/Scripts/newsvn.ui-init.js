@@ -53,7 +53,7 @@ $(function () {
     //datepicker
     $(".datepicker").datepicker({
         showOn: "button",
-        buttonImage: "../images/icons/calendar.png",
+        buttonImage: "/images/icons/calendar.png",
         buttonImageOnly: true
     }, $.datepicker.regional["vi"]);
 
