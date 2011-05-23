@@ -17,6 +17,7 @@ namespace NewsVn.Web
             {
                 load_PletUserProfileList();
                 load_RandomUserProfile();
+                BaseUI.BaseMaster.ExecuteSEO("Tìm bạn bốn phương", "newsvn, newsvn.vn, ket noi ban be, tim ban, ket ban, tim ban 4 phuong,tim ban chat dang online,ket ban online,tim ban trai,ket ban bon phuong", "Tìm bạn bốn phương, kết bạn giao lưu, tìm bạn gái, tìm bạn trai, chia sẻ thông tin, profile");
             }
         }
         private void load_PletUserProfileList()
@@ -28,7 +29,7 @@ namespace NewsVn.Web
                 u.Account,u.Age,u.Country,u.CreatedOn,
                 Gender =u.Gender==true?"Nam":"Nữ",
                u.Location,u.Name,u.Nickname,u.Expectation,
-                Avatar = u.Avatar.Length < 1 ? "~/resources/profiles/no_photo.gif" : u.Avatar
+                Avatar = u.Avatar.Length < 1 ? "/resources/profiles/no_photo.gif" : u.Avatar
                 })
                 .ToList();
             pletUserProfileList.Datasource = data;
@@ -69,7 +70,7 @@ namespace NewsVn.Web
                     u.Name,
                     u.Nickname,
                     u.Expectation,
-                    Avatar = u.Avatar.Length < 1 ? "~/resources/profiles/no_photo.gif" : u.Avatar
+                    Avatar = u.Avatar.Length < 1 ? "/resources/profiles/no_photo.gif" : u.Avatar
                 }).FirstOrDefault();
                 cloneDataStructure.Add(data);
                 data = null;

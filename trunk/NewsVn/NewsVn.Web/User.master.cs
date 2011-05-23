@@ -56,8 +56,8 @@ namespace NewsVn.Web
                    c.Name,
                    c.SeoName, 
                    SeoUrl=HostName+ c.SeoUrl,
-                   c.ID,
-                   Figures = c.Posts.Count() + this.CountChildCateFigures(c)
+                   c.ID
+                   //Figures = 0//this.CountChildCateFigures(c)//khong the thuc hien count toan bo item trong he thong dc/ bad performance
                }).ToList();
             CtrFooterCateList.Datasource = CateList;
             CtrFooterCateList.DataBind();
@@ -66,8 +66,8 @@ namespace NewsVn.Web
         private int CountChildCateFigures(Data.Category cate)
         {
             int count = 0;
-
-            var childCates = _Categories.Where(c=> c.Parent != null && c.Parent.ID == cate.ID);
+            count = _Posts.Where(p => p.Category.ID == cate.ID).Select(p => p.Title).Count();
+            var childCates = _Categories.Where(c => c.Parent != null && c.Parent.ID == cate.ID);
             foreach (var item in childCates)
             {
                 count += _Posts.Where(p => p.Category.ID == item.ID).Select(p => p.Title).Count();

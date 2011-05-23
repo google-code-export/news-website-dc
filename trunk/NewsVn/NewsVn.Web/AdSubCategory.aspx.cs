@@ -30,6 +30,9 @@ namespace NewsVn.Web
             if (!IsPostBack)
             {
                 checkCateID_By_SEONAME(Request.QueryString["ct"].ToString());
+                BaseUI.BaseMaster.SiteTitle = "- RAO NHANH - " + (intCateID == -1 ? "Mua bán nhà đất, điện thoại, máy tính, ô tô xe máy, dịch vụ" : CateTitle);
+                BaseUI.BaseMaster.MetaKeyWords = "newsvn, newsvn.vn, rao vặt,mua,bán,thuê,cho thuê,thiết bị,văn phòng,điện tử,điện lạnh,ô tô,xe máy,sửa chữa,lắp đặt,thiết kế,nội thất,xây dựng,máy móc,tìm đối tác,cơ hội kinh doanh,hàng hoá,mua sắm,siêu thị,tiêu dùng,sản xuất,rao mua,rao bán,rao vat,mua ban,thue,cho thue,thiet bi,van phong,dien tu,dien lanh,o to,xe may,sua chua,lap dat,thiet ke,noi that,xay dung,may moc,tim doi tac,co hoi kinh doanh,hang hoa,mua sam,sieu thi,tieu dung,san xuat,rao mua,rao ban, sale off, khuyen mai, gia re";
+                BaseUI.BaseMaster.MetaKeyDes = "Newsvn, Thông tin rao vặt, " + CateTitle;
                 DateTime searchDate = DateTime.Now;
                 int pageindex = 0;
                 int.TryParse(Request.QueryString["p"], out pageindex);
