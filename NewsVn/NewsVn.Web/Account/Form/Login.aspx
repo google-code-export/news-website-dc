@@ -47,8 +47,7 @@
                                         NavigateUrl="~/Account/Form/LostPassword.aspx" />
                                 </li>                            
                                 <li class="commands">
-                                    <asp:Button ID="LoginButton" style="display:none;" UseSubmitBehavior="false" CommandName="Login" runat="server"
-                                         />
+                                    <asp:Button ID="LoginButton" style="display:none;" UseSubmitBehavior="false" CommandName="Login" runat="server" />
                                     <asp:LinkButton ID="LoginLinkButton" runat="server" CommandName="Login" CssClass="button-login right" Text="Đăng nhập"
                                         OnClientClick="return checkValidation()" />
                                     <div class="clear"></div>
@@ -63,7 +62,7 @@
                         Bạn chưa có tài khoản? Hay nhanh tay đăng ký để được tham gia tìm bạn 4 phương trên trang web của chúng tôi.
                         Với lượt truy cập lớn và hồ sơ mới cập nhật mỗi ngày. Còn chờ gì nữa, hay đăng ký ngay thôi!
                     </p>
-                    <asp:HyperLink NavigateUrl="#" CssClass="button-register right" style="font-size:1.19em" Text="Đăng ký" runat="server" />
+                    <asp:HyperLink NavigateUrl="~/Account/Form/Signup.aspx" CssClass="button-register right" style="font-size:1.19em" Text="Đăng ký" runat="server" />
                     <div class="clear"></div>
                 </AnonymousTemplate>
                 <LoggedInTemplate>
