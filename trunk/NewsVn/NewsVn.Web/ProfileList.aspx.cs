@@ -29,7 +29,7 @@ namespace NewsVn.Web
                 u.Account,u.Age,u.Country,u.CreatedOn,
                 Gender =u.Gender==true?"Nam":"Nữ",
                u.Location,u.Name,u.Nickname,u.Expectation,
-                Avatar = u.Avatar.Length < 1 ? "/resources/profiles/no_photo.gif" : u.Avatar
+                Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
                 })
                 .ToList();
             pletUserProfileList.Datasource = data;
@@ -70,7 +70,7 @@ namespace NewsVn.Web
                     u.Name,
                     u.Nickname,
                     u.Expectation,
-                    Avatar = u.Avatar.Length < 1 ? "/resources/profiles/no_photo.gif" : u.Avatar
+                    Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
                 }).FirstOrDefault();
                 cloneDataStructure.Add(data);
                 data = null;
