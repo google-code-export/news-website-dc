@@ -34,7 +34,7 @@
             <td style="width:303px"><%=Datasource.Nickname %></td>
             <td rowspan="15" valign="top" style="width:155px;background:#fff;padding-top:0">
                 
-                <asp:Image ID="Image2"  AlternateText='<%=Datasource.Nickname %>' Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
+                <asp:Image ID="Image2"  AlternateText="<%=Datasource.Nickname %>" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
                 <asp:Image ID="Image3"  AlternateText="<%=Datasource.Nickname %>" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
                 <asp:Image ID="Image4"  AlternateText="<%=Datasource.Nickname %>" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
             </td>

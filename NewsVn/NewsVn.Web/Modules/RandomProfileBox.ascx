@@ -13,7 +13,7 @@
             <div class='profile-box <%#Eval("layoutPosition") %>'>
 		        <asp:Image ID="Image1" ImageUrl='<%#Eval("Avatar") %>' AlternateText='<%#Eval("Nickname") %>' Width="135px" Height="135px" runat="server" />
 		        <p>
-			        <a href="../profile.aspx">Xem hồ sơ</a><br/>
+			        <a href='<%= HostName+ "tinh-yeu-gia-dinh/tim-ban/ho-so/"%><%#Eval("Account") %><%=".aspx" %>'>Xem hồ sơ</a><br/>
 			        <%#Eval("Name") %><br/>
 			        <%#Eval("Gender") %>/<%#Eval("Age") %>
 		        </p>

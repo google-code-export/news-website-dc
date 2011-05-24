@@ -113,6 +113,14 @@ namespace NewsVn.Web.Utils
 
             return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
+        public static string RemoveDangerousMarks(string accented)
+        {
+            accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
+
+            string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            accented = string.Join(" ", splitted).ToLower();
+            return accented;
+        }
         //cut string fix to words expectation
         public static string hintDesc(string desc,int intWords)
         {

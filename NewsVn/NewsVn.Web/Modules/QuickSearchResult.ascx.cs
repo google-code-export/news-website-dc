@@ -27,7 +27,7 @@ namespace NewsVn.Web.Modules
             
             bool moreThanOnePage =  pagerResultPosts.PageSize < pagerResultPosts.TotalRowCount;
 
-            //pagerResultPosts.Visible = moreThanOnePage;
+            //pagerResultPostsContainer.Visible = moreThanOnePage;
 
             // this check is important to avoid touching the Hyperlinks if the Pager doesn't configured to use Query string Field
             if (!string.IsNullOrEmpty(pagerResultPosts.QueryStringField) && moreThanOnePage)

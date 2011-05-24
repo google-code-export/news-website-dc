@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class RandomProfileBox : System.Web.UI.UserControl
+    public partial class RandomProfileBox : BaseUI.BaseModule
     {
         public string Position { get; set; }
         public object Datasource { get; set; }

@@ -43,7 +43,6 @@ namespace NewsVn.Web.Utils
                 //DocumentPath = HostName + "/Resources/Documents/";
 
                 Entities = new NewsVnEntities(WebConfigurationManager.ConnectionStrings["NewsVnEntities"].ConnectionString);
-
                 _alreadyInit = true;
             }
         }

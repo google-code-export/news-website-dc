@@ -58,7 +58,7 @@
             <div class="clear"></div>
         </li>
         <li class="command">
-            <asp:HyperLink ID="HyperLink1" Text="Đăng mới" NavigateUrl="../AdFormBox.aspx" CssClass="button left" runat="server" />
+            <a href='<%=HostName +"rao-nhanh-dang-ky.aspx" %>' class="button left">Đăng mới</a>
             <asp:LinkButton ID="LinkButton1" Text="Tìm" CssClass="button-search right" 
                 style="margin-right:0;" runat="server" onclick="LinkButton1_Click" />
             <div class="clear"></div>

@@ -26,10 +26,10 @@
             </span>
         </div>
         <div class="right">
-            <a href="#" title="Chia sẽ trên Facebook">
+            <a href='http://www.facebook.com/sharer.php?u=<%=SeoUrl %>&t=<%=Server.UrlEncode( Datasource.Title) %>'title="Chia sẽ trên Facebook" target="_blank">
                 <asp:Image ID="Image1" ImageUrl="/images/icons/facebook.png" runat="server" />
             </a>
-            <a href="#" title="Chia sẽ trên Twitter">
+             <a href='http://twitter.com/home?status=<%=Server.UrlEncode( Datasource.Title) %> <%=SeoUrl %>' title="Chia sẽ trên Twitter" target="_blank">
                 <asp:Image ID="Image2" ImageUrl="/images/icons/twitter.png" runat="server" />
             </a>
         </div>
@@ -53,10 +53,10 @@
             <% if (AllowComment) { %><a style="margin-left:10px;" class="button comment-button" href="javascript:void(0)">Bình luận</a><% } %>
         </div>
         <div class="right">
-            <a href="http://www.facebook.com/sharer.php?u=" title="Chia sẽ trên Facebook">
+            <a href='http://www.facebook.com/sharer.php?u=<%=SeoUrl %>&t=<%=Server.UrlEncode( Datasource.Title) %>' title="Chia sẽ trên Facebook" target="_blank">
                 <asp:Image ID="Image3" ImageUrl="/images/icons/facebook.png" runat="server" />
             </a>
-            <a href="" title="Chia sẽ trên Twitter">
+            <a href='http://twitter.com/home?status=<%=Server.UrlEncode( Datasource.Title) %> <%=SeoUrl %>' title="Chia sẽ trên Twitter" target="_blank">
                 <asp:Image ID="Image4" ImageUrl="/images/icons/twitter.png" runat="server" />
             </a>
         </div>
