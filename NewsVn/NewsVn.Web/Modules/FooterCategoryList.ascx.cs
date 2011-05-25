@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class FooterCategoryList : System.Web.UI.UserControl
+    public partial class FooterCategoryList :BaseUI.BaseModule
     {
         public object Datasource { get; set; }
 
