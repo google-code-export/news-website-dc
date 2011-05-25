@@ -80,7 +80,8 @@ textarea
 
 .ui-form li
 {
-    padding: 5px 0;    
+    padding: 5px 0;
+    position: relative;    
 }
 
 .ui-form li.head
@@ -102,4 +103,12 @@ textarea
 .ui-form .checkbox-label
 {
     width: auto;    
+}
+
+.ui-form .decoy
+{
+    position: absolute;
+    left: 105px;
+    z-index: -1;
+    visibility: hidden;
 }

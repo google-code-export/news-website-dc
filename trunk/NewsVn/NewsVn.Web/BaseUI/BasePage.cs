@@ -43,13 +43,13 @@ namespace NewsVn.Web.BaseUI
             var sb = new StringBuilder();
             sb.Append("<li><div class=\"ui-widget\"><div class=\"ui-state-highlight ui-corner-all\" style=\"padding: 0 .7em;\">");
             sb.Append("<p><span class=\"ui-icon ui-icon-info\" style=\"float: left; margin: .15em .3em 0 0;\"></span>");
-            sb.Append("<b>Thông báo:</b> {0}</p></div></div></li>");
+            sb.Append("<b>&raquo;</b> {0}</p></div></div></li>");
             InfoBar = sb.ToString();
 
             sb = new StringBuilder();
             sb.Append("<li><div class=\"ui-widget\"><div class=\"ui-state-error ui-corner-all\" style=\"padding: 0 .7em;\">");
             sb.Append("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin: .15em .3em 0 0;\"></span>");
-            sb.Append("<b>Cảnh báo:</b> {0}</p></div></div></li>");
+            sb.Append("<b>&raquo;</b> {0}</p></div></div></li>");
             ErrorBar = sb.ToString();
 
             HostName = ApplicationManager.HostName;

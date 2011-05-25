@@ -3,6 +3,7 @@
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         #content { min-height: 0; padding-top: 10px; }
+        .ui-winzard-side-bar { width: 190px; vertical-align: top; padding-top: 5px; }
     </style>
     <link href="<%= Page.ResolveUrl("~/styles/validation.css") %>" rel="stylesheet" type="text/css" />
     <script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.validationEngine.js") %>" type="text/javascript"></script>
@@ -10,15 +11,22 @@
     <script type="text/javascript">
         $(function () {
             $("#content").css({ "min-height": "120px" });
+            $(".ui-winzard-side-bar a:not(:hidden)").each(function (i) {
+                $(this).text(function (idx, txt) {
+                    return (i + 1) + ". " + txt;
+                });
+                $(this).attr("href", "javascript:void(0)");
+            });
+            enableButtons($("#<%= chkAgree.ClientID %>"));
+            $("#<%= chkAgree.ClientID %>").change(function () {
+                enableButtons($(this));
+            });
 
             var selector = $("#<%= ddlSecurityQuestion.ClientID %>, #<%= ddlCountry.ClientID %>");
             selector.selectmenu({ width: "356px" });
             $(selector).each(function () {
                 $("#" + $(this).attr("id") + "-menu").width(362);
             });
-            /* Decoy textboxes are used only to fix validation for styled dropdownlist
-            To insert data, please use ddlABC.SelectedValue as usual
-            */
             selector.change(function () {
                 $(this).prev(".decoy").val($(this).val());
             });
@@ -29,7 +37,6 @@
                 $("#<%= ddlSecurityQuestion.ClientID %>-menu").css({ "zIndex": 100 });
                 $("#<%= ddlCountry.ClientID %>-menu").css({ "zIndex": 100 });
             });
-
             selector = "#<%= ddlAge.ClientID %>, #<%= ddlGender.ClientID %>";
             $(selector).selectmenu({ width: "100px" });
             $(selector).each(function () {
@@ -42,6 +49,11 @@
             $("#<%= txtConfirmPassword.ClientID %>").addClass("validate[required,equals[<%= txtPassword.ClientID %>]]");
         });
 
+        function enableButtons(agree) {
+            if (agree.attr("checked")) $(".button").show();
+            else $(".button").hide();
+        }
+
         function checkCreateAccountValidation() {
             return $("#accountform_box").validationEngine('validate');
         }
@@ -53,11 +65,16 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="body" runat="server">
     <div class="portlet" style="margin:0">
-        <h2><asp:Literal ID="ltrTitle" runat="server" /></h2>
-        <asp:Wizard ID="wzUserSignUp" CssClass="ui-wizard" DisplaySideBar="true" runat="server" OnActiveStepChanged="wzUserSignUp_OnActiveStepChanged">
+        <h2><asp:Literal ID="ltrTitle" runat="server" /></h2>        
+        <asp:Wizard ID="wzUserSignUp" CssClass="ui-wizard left" DisplaySideBar="true" runat="server"           
+            OnActiveStepChanged="wzUserSignUp_OnActiveStepChanged" >
+            <SideBarStyle CssClass="ui-winzard-side-bar" />
             <WizardSteps>
                 <asp:WizardStep StepType="Start" AllowReturn="false" Title="Đăng ký tài khoản mới" runat="server">                    
                     <ul id="accountform_box" class="ui-form ui-widget" style="width:480px">
+                        <li style="border-bottom:1px dotted #333;">
+                            Các thông tin bắt buộc để khởi tạo tài khoản
+                        </li><li></li>
                         <li>
                             <asp:Label AssociatedControlID="txtUsername" Text="Tài khoản:" Width="110" runat="server" />
                             <asp:TextBox ID="txtUsername" Width="352" CssClass="validate[required]" MaxLength="50" runat="server" />
@@ -72,7 +89,7 @@
                         </li>
                         <li>
                             <asp:Label AssociatedControlID="ddlSecurityQuestion" Text="Câu hỏi bảo mật:" Width="110" runat="server" />
-                            <asp:TextBox ID="txtSecurityQuestion" Width="352" CssClass="validate[required] decoy" runat="server" />
+                            <asp:TextBox ID="txtSecurityQuestion" Width="352" CssClass="validate[required] decoy" style="left:115px" runat="server" />
                             <asp:DropDownList ID="ddlSecurityQuestion" runat="server">
                                 <asp:ListItem Value="" Text="[Chọn câu hỏi bảo mật]" />
 	                            <asp:ListItem Value="1" Text="Lúc nhỏ bạn thích xem hoạt hình nào nhất?" />
@@ -98,30 +115,30 @@
                             Vui lòng nhập <b>Tiếng Việt Unicode có dấu</b>
                         </li><li></li>
                         <li>
-                            <asp:Label AssociatedControlID="txtNickname" Text="* Biệt danh:" Width="100" runat="server" />
+                            <asp:Label AssociatedControlID="txtNickname" Text="* Biệt danh:" Width="110" runat="server" />
                             <asp:TextBox ID="txtNickname" Width="352" CssClass="validate[required]" MaxLength="50" runat="server" />
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="txtName" Text="* Tên họ:" Width="100" runat="server" />
+                            <asp:Label AssociatedControlID="txtName" Text="* Tên họ:" Width="110" runat="server" />
                             <asp:TextBox ID="txtName" Width="352" CssClass="validate[required]" MaxLength="150" runat="server" />
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="" Text="Tuổi:" Width="100" runat="server" />
+                            <asp:Label AssociatedControlID="" Text="Tuổi:" Width="110" runat="server" />
                             <asp:DropDownList ID="ddlAge" runat="server" />
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="" Text="Giới tính:" Width="100" runat="server" />
+                            <asp:Label AssociatedControlID="" Text="Giới tính:" Width="110" runat="server" />
                             <asp:DropDownList ID="ddlGender" runat="server">
                                 <asp:ListItem Value="True" Text="Nam" />
                                 <asp:ListItem Value="False" Text="Nữ" />
                             </asp:DropDownList>
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="txtLocation" Text="Tỉnh/Thành phố:" Width="100" runat="server" />
+                            <asp:Label AssociatedControlID="txtLocation" Text="Tỉnh/Thành phố:" Width="110" runat="server" />
                             <asp:TextBox ID="txtLocation" Width="352" MaxLength="200" runat="server" />
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="ddlCountry" Text="Quốc gia:" Width="100" runat="server" />
+                            <asp:Label AssociatedControlID="ddlCountry" Text="Quốc gia:" Width="110" runat="server" />
                             <asp:DropDownList ID="ddlCountry" runat="server">
                                 <asp:ListItem Value="" Text="[Chọn quốc gia]" />
                                 <asp:ListItem Value="af" Text="Afghanistan" />
@@ -371,20 +388,19 @@
                             </asp:DropDownList>
                         </li>                        
                         <li>
-                            <asp:Label AssociatedControlID="txtEmail" Text="* Email:" Width="100" runat="server" />
-                            <asp:TextBox ID="txtEmail" Width="352" CssClass="validate[required,custom[email]]" MaxLength="100" runat="server" />
+                            <asp:Label AssociatedControlID="txtEmail" Text="* Email:" Width="110" runat="server" />
+                            <asp:TextBox ID="txtEmail" Width="352" CssClass="validate[required,custom[email]]" MaxLength="110" runat="server" />
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="txtPhone" Text="Điện thoại:" Width="100" runat="server" />
+                            <asp:Label AssociatedControlID="txtPhone" Text="Điện thoại:" Width="110" runat="server" />
                             <asp:TextBox ID="txtPhone" Width="352" CssClass="validate[custom[phone2]]" MaxLength="12" runat="server" />
                         </li>                        
                     </ul>
                 </asp:WizardStep>
                 <asp:WizardStep StepType="Complete" Title="Hoàn tất đăng ký" runat="server">
-                    <p>
-                        Bạn đã đăng ký thành công. Xem hồ sơ của bạn
-                        <asp:HyperLink NavigateUrl="~/account/guest/myprofile.aspx" Text="tại đây" runat="server" />.
-                    </p>
+                    <ul class="ui-form ui-widget">                    
+                        <%= string.Format(InfoBar, "Bạn đã đăng ký thành công. Xem hồ sơ của bạn <a href='" + HostName + "account/guest/myprofile.aspx'><b>tại đây</b></a>.") %>
+                    </ul>
                 </asp:WizardStep>
             </WizardSteps>
             <StartNavigationTemplate>
@@ -396,6 +412,14 @@
                     OnClick="Finish_Click" OnClientClick="return checkCreateProfileValidation()" />
             </FinishNavigationTemplate>
         </asp:Wizard>
+        <div class="right">
+            <textarea rows="15" readonly="readonly">
+                Để tham gia vào “” (Hiểu ở đây là “chúng tôi” , “của chúng tôi” , “” , “http://diendantubinh.46.forumer.com”), bạn phải cam kết đồng ý với các điều khoản bên dưới của website. Nếu bạn không đồng ý với các điều khoản này thì đơn giản là hãy đóng trang này lại và bạn có thể không tham gia vào “”. Điều này chúng tôi không bắt buộc bạn. Chúng tôi có thể thay đổi lại những điều khoản này vào bất cứ lúc nào và chúng tôi sẽ cố gắng thông báo đến bạn sau này, dù rằng chúng tôi khuyên bạn nên thường xuyên xem lại những điều khoản này nếu bạn tham gia vào “” lâu dài bởi vì nếu có những thay đổi trong điều khoản thành viên sau này nghĩa là bạn cũng cam kết với những phần đã được chỉnh sửa và bổ sung đó.
+                Bạn cam kết không gửi bất cứ bài viết nào có nội dung lừa đảo, thô tục, thiếu văn hoá ; vu khống, khiêu khích, đe doạ người khác ; liên quan đến các vấn đề tình dục hay bất cứ nội dung nào vi phạm luật pháp của quốc gia mà bạn đang sống, luật pháp của quốc gia nơi đặt máy chủ cho website “” hay luật pháp quốc tế. Nếu vẫn cố tình vi phạm, ngay lập tức bạn sẽ bị cấm tham gia vào website giống như một số nhà cung cấp dịch vụ Internet của bạn, nếu bạn vẫn cho rằng những điều này chỉ riêng chúng tôi đòi hỏi. Địa chỉ IP của tất cả các bài viết đều được ghi nhận lại để bảo vệ các điều khoản cam kết này trong trường hợp bạn không tuân thủ. Bạn đồng ý rằng website “” có quyền gỡ bỏ, sửa, di chuyển hoặc khóa bất kì bài viết nào trong website vào bất cứ lúc nào tùy theo nhu cầu công việc. Đăng ký làm thành viên của chúng tôi, bạn cũng phải cam kết bất kì thông tin cá nhân nào mà bạn cung cấp đều được lưu trữ trong cơ sở dữ liệu của hệ thống. Trong khi những thông tin này sẽ không được cung cấp cho bất kì người thứ ba nào khác mà không được sự đồng ý của bạn, website “” cũng như tổ chức phpBB sẽ không chịu trách nhiệm về việc những thông tin cá nhân này của bạn bị lộ ra bên ngoài từ những kẻ phá hoại có ý đồ xấu tấn công vào cơ sở dữ liệu của hệ thống.
+            </textarea>
+            <p><asp:CheckBox ID="chkAgree" Text=" Tôi đồng ý với các điều khoản trên" runat="server" /></p>
+        </div>
+        <div class="clear"></div>
     </div>
 </asp:Content>
 

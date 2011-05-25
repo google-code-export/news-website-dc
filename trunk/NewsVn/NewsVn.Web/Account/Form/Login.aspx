@@ -66,17 +66,8 @@
                     <div class="clear"></div>
                 </AnonymousTemplate>
                 <LoggedInTemplate>
-                    <ul class="form ui-widget">
-                        <li>                            
-                            <div style="padding:0 .7em;" class="ui-state-highlight ui-corner-all"> 
-		                        <p>
-		                            <span style="float:left; margin:.15em .3em 0;" class="ui-icon ui-icon-info"></span>
-		                            Bạn đã đăng nhập. Click vào
-                                    <b><asp:HyperLink NavigateUrl="#" Text="đây" style="color:#082A73" runat="server" /></b>
-                                    để vào trang tài khoản.
-		                        </p>
-	                        </div>
-                        </li>
+                    <ul class="ui-form ui-widget">
+                        <%= string.Format(InfoBar, "Bạn đã đăng nhập. Click <a href='#'><b>vào đây</b></a> để vào tài khoản.")%>
                     </ul>
                 </LoggedInTemplate>
             </asp:LoginView>
