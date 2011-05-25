@@ -49,11 +49,11 @@
             &nbsp;Số dòng/Trang:
             <asp:DropDownList ID="ddlPageSize" CssClass="dropdown" runat="server"
                 AutoPostBack="true" OnSelectedIndexChanged="Pager_SelectedIndexChanged">
-                <asp:ListItem Value="15" Text="15" />
                 <asp:ListItem Value="25" Text="25" />
-                <asp:ListItem Value="35" Text="35" />
-                <asp:ListItem Value="45" Text="45" />
-                <asp:ListItem Value="55" Text="55" />
+                <asp:ListItem Value="50" Text="50" />
+                <asp:ListItem Value="100" Text="100" />
+                <asp:ListItem Value="200" Text="200" />
+                <asp:ListItem Value="500" Text="500" />
             </asp:DropDownList>
         </div>
         <div class="clear"></div>
@@ -64,6 +64,7 @@
                 <tr>
                     <th><asp:CheckBox EnableViewState="false" runat="server" /></th>
                     <th>Tiêu đề</th>
+                    <th>Pageview</th>
                     <th>Danh mục</th>
                     <th>Tạo vào</th>
                     <th>Người tạo</th>
@@ -78,7 +79,7 @@
         <ItemTemplate>
             <tr>
                 <td>
-                    <asp:CheckBox ID="chkID" EnableViewState="false" runat="server" />
+                    <asp:CheckBox ID="chkID" EnableViewState="false" runat="server"  />
                     <asp:HiddenField ID="hidID" Value='<%# Eval("ID") %>' runat="server" /> 
                 </td>
                 <td>
@@ -87,6 +88,7 @@
                         <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 30) %>
                     </a>
                 </td>
+                <td style="text-align:left"><%#Eval("PageView", "{0:n0}") %></td>
                 <td>
                     <a href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("CategoryID") %>'>
                         <%# Eval("CategoryName") %>

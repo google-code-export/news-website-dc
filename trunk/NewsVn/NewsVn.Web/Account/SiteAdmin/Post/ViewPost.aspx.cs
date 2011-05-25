@@ -16,7 +16,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             
             if (!IsPostBack)
             {
-                this.GoToPage(1, 35);
+                this.GoToPage(1, int.Parse(ddlPageSize.SelectedValue));
             }
         }
 
@@ -135,7 +135,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                p.ID, p.Title, p.SeoUrl,
                p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
                p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
-               CategoryID = p.Category.ID,
+               CategoryID = p.Category.ID,p.PageView,
                CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name
             }).OrderByDescending(p => p.CreatedOn).ThenByDescending(p => p.ApprovedOn)
                 .Skip((pageIndex - 1) * pageSize).Take(pageSize);

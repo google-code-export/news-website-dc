@@ -46,7 +46,27 @@ namespace NewsVn.Web
 
         protected void Application_Error(object sender, EventArgs e)
         {
+            //Exception err=Server.GetLastError();
+            //if (err.Message != null)
+            //{
+            //    if (err.Message == "The client disconnected.")
+            //    {
 
+            //        Response.Redirect("");
+            //    }
+            //    else if (err.Message == "File does not exist.")
+            //    {
+            //        Response.Redirect("");
+            //    }
+            //    else if (err.Message.Contains("dangerous Request.Form value"))
+            //    {
+            //        Response.Redirect("");
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("");
+            //    }
+            //}
         }
 
         protected void Session_End(object sender, EventArgs e)
