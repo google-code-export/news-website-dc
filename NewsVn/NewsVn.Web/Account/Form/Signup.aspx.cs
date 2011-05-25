@@ -11,6 +11,8 @@ namespace NewsVn.Web.Account.Form
     {
         protected void Page_Load(object sender, EventArgs args)
         {
+            this.Title = SiteTitle + "Đăng ký";
+            
             this.GenerateAgeDropDownList();
 
             if (!IsPostBack)

@@ -645,11 +645,6 @@ body
     width: 348px;
 }
 
-#adform_box .ui-form li
-{
-    position: relative;
-}
-
 #adform_box .ui-form label
 {
     width: 100px;
@@ -661,14 +656,6 @@ body
     height: 30px;
     right: 0;
     z-index: 50;
-}
-
-#adform_box .ui-form .decoy
-{
-    position: absolute;
-    left: 105px;
-    z-index: -1;
-    visibility: hidden;
 }
 
 #footer
