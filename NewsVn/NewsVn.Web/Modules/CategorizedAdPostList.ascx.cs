@@ -91,7 +91,7 @@ namespace NewsVn.Web.Modules
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format("rao-nhanh/" + Request.QueryString["ct"] + "/{0}.aspx", txtGoldDate.Text.Trim().Replace('/','_')));
+            Response.Redirect(string.Format("rao-nhanh/" + Request.QueryString["ct"] + "/ngay-{0}.aspx", txtGoldDate.Text.Trim().Replace('/','_')));
         }
         private void disabled_Control_DependOnPage()
         {

@@ -26,7 +26,7 @@ namespace NewsVn.Web.BaseUI
         public BaseService()
         {
             skyStatus = ApplicationManager.skyStatus;
-
+            HostName = NewsVn.Web.Utils.ApplicationManager.HostName;
             _AdBoxes = ApplicationManager.SetCacheData<Data.AdBox>(ApplicationManager.Entities.AdBoxes, t => t.Actived);
             _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
             _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);

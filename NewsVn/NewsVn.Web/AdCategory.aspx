@@ -25,12 +25,12 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="extraContent" runat="server">
     <div id="AdPostArea" runat="server"></div>
     <script type="text/javascript">
-
+    //set up other ads
         $(function () {
             $("a[id=lnkCatTitle]").click(function () {
                 var objContainer = $(this).parents("[id$=container]")
                 var lnkOtherAds = $("#" + objContainer.attr("id") + " a[id$=lnkOthersAds]");
-                lnkOtherAds.attr("href", "AdSubCategory.aspx?ct=" + $(this).children().val())
+                lnkOtherAds.attr("href", $("#<%=hidHostName.ClientID %>").val() + "rao-nhanh/" + $(this).children().val() + ".aspx");
                 getNewsAds($(this).children().val(), objContainer);
             });
         });
@@ -47,4 +47,5 @@
     }
     
     </script>
+    <asp:HiddenField runat="server" ID="hidHostName" Value="" />
 </asp:Content>
