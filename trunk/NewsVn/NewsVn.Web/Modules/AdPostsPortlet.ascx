@@ -3,11 +3,11 @@
 
 <asp:Panel ID="container" CssClass="cate-adposts portlet" Width="465" runat="server">
      <h2>
-        <a id="lnkCatTitle" class="cate-title" href='<%=SeoUrl %>'><%= Title %><input type="hidden" id="hidSeoUrl" value='<%= SeoUrl %>' /></a>
+        <a id="lnkCatTitle" class="cate-title" href='javascript:void(0);'><%= Title %><input type="hidden" id="hidSeoUrl" value='<%= SeoName%>' /></a>
         
         <asp:Repeater runat="server" ID="rptsubCategories">
             <ItemTemplate>
-                &raquo; <a id="lnkCatTitle" style="text-transform:none;" href="javascript:void(0);"><%#Eval("Name") %><input type="hidden" id="hidSeoUrl" value='<%#Eval("SeoUrl") %>' /></a>    
+                &raquo; <a id="lnkCatTitle" style="text-transform:none;" href="javascript:void(0);"><%#Eval("Name") %><input type="hidden" id="hidSeoUrl" value='<%#Eval("SeoName") %>' /></a>    
                 
             </ItemTemplate>
         </asp:Repeater>

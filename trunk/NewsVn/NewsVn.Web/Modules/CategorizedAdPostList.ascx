@@ -39,18 +39,20 @@
                 <tr>
                     <th style="text-align:left;">Tin rao vặt</th>
                     <th style="text-align:left;">Ngày đăng</th>
+                    <th style="text-align:left;">Phạm vi</th>
                 </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
                     <td><asp:HyperLink runat="server" ID="hplnk" /></td>
-                    <td style="width:80px;"><%#string.Format("{0:dd/MM/yyyy}",Eval("CreatedOn")) %></td>
+                    <td ><%#string.Format("{0:dd/MM/yyyy}",Eval("CreatedOn")) %></td>
+                    <td style="width:100px;"><%#NewsVn.Web.Utils.clsCommon.getLocationName(int.Parse(Eval("Location").ToString()))%></td>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>
                 <tr>
                     <td><div style="text-align:center; padding-top:6px;"><asp:Label runat="server" ID="lblEmpty" Visible="false" Text="Không tìm thấy bài viết"></asp:Label></div></td>
-                    <td style="width:80px;">
+                    <td style="width:100px;">
                     </td>
                 </tr>
             </FooterTemplate>

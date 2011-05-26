@@ -14,11 +14,11 @@ namespace NewsVn.Web
         //check and set Ads CateID , Ads CateTitle
         private bool checkCateID_By_SEONAME(string seoNAME)
         {
-            var cate = _AdCategories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name }).ToList();
+            var cate = _AdCategories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name,c.Parent}).ToList();
             if (cate.Count() > 0)
             {
                 intCateID = cate[0].ID;
-                this.CateTitle = cate[0].Name;
+                this.CateTitle =(cate[0].Parent==null?"":cate[0].Parent.Name+" - ")+ cate[0].Name;
                 return true;
             }
             else
