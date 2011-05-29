@@ -58,6 +58,15 @@ namespace NewsVn.Web.Account.Form {
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
         
         /// <summary>
+        /// txtEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        
+        /// <summary>
         /// txtSecurityQuestion control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace NewsVn.Web.Account.Form {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSecurityAnswer;
+        
+        /// <summary>
+        /// ltrCreateAccountError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrCreateAccountError;
         
         /// <summary>
         /// txtNickname control.
@@ -139,15 +157,6 @@ namespace NewsVn.Web.Account.Form {
         protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
         
         /// <summary>
-        /// txtEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
-        /// <summary>
         /// txtPhone control.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,33 @@ namespace NewsVn.Web.Account.Form {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        
+        /// <summary>
+        /// chkShowEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkShowEmail;
+        
+        /// <summary>
+        /// chkShowPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkShowPhone;
+        
+        /// <summary>
+        /// ltrInitInfoError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrInitInfoError;
         
         /// <summary>
         /// chkAgree control.

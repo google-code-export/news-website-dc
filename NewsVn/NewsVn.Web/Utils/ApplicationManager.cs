@@ -4,6 +4,8 @@ using System.Web.Configuration;
 using System.Data.Objects.DataClasses;
 using NewsVn.Data;
 using NewsVn.Core.Caching;
+using System.IO;
+using System.Globalization;
 
 namespace NewsVn.Web.Utils
 {

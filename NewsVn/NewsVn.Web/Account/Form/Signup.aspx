@@ -67,7 +67,7 @@
     <div class="portlet" style="margin:0">
         <h2><asp:Literal ID="ltrTitle" runat="server" /></h2>        
         <asp:Wizard ID="wzUserSignUp" CssClass="ui-wizard left" DisplaySideBar="true" runat="server"           
-            OnActiveStepChanged="wzUserSignUp_OnActiveStepChanged" >
+            OnActiveStepChanged="wzUserSignUp_OnActiveStepChanged">
             <SideBarStyle CssClass="ui-winzard-side-bar" />
             <WizardSteps>
                 <asp:WizardStep StepType="Start" AllowReturn="false" Title="Đăng ký tài khoản mới" runat="server">                    
@@ -88,6 +88,10 @@
                             <asp:TextBox ID="txtConfirmPassword" TextMode="Password" Width="352" runat="server" />
                         </li>
                         <li>
+                            <asp:Label AssociatedControlID="txtEmail" Text="Email:" Width="110" runat="server" />
+                            <asp:TextBox ID="txtEmail" Width="352" CssClass="validate[required,custom[email]]" MaxLength="110" runat="server" />
+                        </li>
+                        <li>
                             <asp:Label AssociatedControlID="ddlSecurityQuestion" Text="Câu hỏi bảo mật:" Width="110" runat="server" />
                             <asp:TextBox ID="txtSecurityQuestion" Width="352" CssClass="validate[required] decoy" style="left:115px" runat="server" />
                             <asp:DropDownList ID="ddlSecurityQuestion" runat="server">
@@ -106,6 +110,7 @@
                             <asp:Label AssociatedControlID="txtSecurityAnswer" Text="Trả lời:" Width="110" runat="server" />
                             <asp:TextBox ID="txtSecurityAnswer" Width="352" CssClass="validate[required]" runat="server" />
                         </li>
+                        <asp:Literal ID="ltrCreateAccountError" EnableViewState="false" runat="server" />
                     </ul>
                 </asp:WizardStep>
                 <asp:WizardStep StepType="Finish" Title="Khởi tạo hồ sơ" runat="server">
@@ -388,13 +393,16 @@
                             </asp:DropDownList>
                         </li>                        
                         <li>
-                            <asp:Label AssociatedControlID="txtEmail" Text="* Email:" Width="110" runat="server" />
-                            <asp:TextBox ID="txtEmail" Width="352" CssClass="validate[required,custom[email]]" MaxLength="110" runat="server" />
-                        </li>
-                        <li>
                             <asp:Label AssociatedControlID="txtPhone" Text="Điện thoại:" Width="110" runat="server" />
                             <asp:TextBox ID="txtPhone" Width="352" CssClass="validate[custom[phone2]]" MaxLength="12" runat="server" />
-                        </li>                        
+                        </li>
+                        <li>
+                            <label style="width:110px"></label>
+                            <asp:CheckBox ID="chkShowEmail" Text="Hiển thị email" TextAlign="Right" runat="server" />
+                            &nbsp;|&nbsp;
+                            <asp:CheckBox ID="chkShowPhone" Text="Hiển thị số điện thoại" TextAlign="Right" runat="server" />
+                        </li>
+                        <asp:Literal ID="ltrInitInfoError" EnableViewState="false" runat="server" />
                     </ul>
                 </asp:WizardStep>
                 <asp:WizardStep StepType="Complete" Title="Hoàn tất đăng ký" runat="server">
