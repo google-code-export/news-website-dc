@@ -83,7 +83,7 @@ namespace NewsVn.Web.Modules
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return false;
                 }

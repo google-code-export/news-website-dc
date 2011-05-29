@@ -64,6 +64,7 @@
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\LostPassword.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
+    <Content Include="Account\Guest\MyProfile.aspx" />
     <Content Include="Account\SiteAdmin\Default.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
@@ -1768,6 +1769,20 @@
     <Compile Include="Account\Form\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Guest\Guest.Master.cs">
+      <DependentUpon>Guest.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Guest\Guest.Master.designer.cs">
+      <DependentUpon>Guest.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Guest\MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Guest\MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\SiteAdmin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2330,6 +2345,7 @@
     <Content Include="Account\SiteAdmin\SiteAdmin.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Guest\Guest.Master" />
     <None Include="CuteSoft_Client\CuteEditor\Blank.cep" />
     <Content Include="CuteSoft_Client\CuteEditor\Configuration\AutoConfigure\Compact.config" />
     <Content Include="CuteSoft_Client\CuteEditor\Configuration\AutoConfigure\Default.config" />

@@ -1,9 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MenuBar.ascx.cs" Inherits="NewsVn.Web.Modules.MenuBar" %>
 <script type="text/javascript">
     $(function () {
-        $("#menu_bar li:first-child").addClass("head");
-        $("#menu_bar li:last-child").addClass("tail");
-        $("#menu_bar li > a").addClass("menu-item");
+        //$("#menu_bar li:first-child").addClass("head");
+        //$("#menu_bar li:last-child").addClass("tail");
+        //$("#menu_bar li > a").addClass("menu-item");
         $("#menu_bar .sub-menu").each(function () {
             $(this).css({ "min-width": $(this).parent().width() + $(this).parent().next().width() });
         });
@@ -17,14 +17,14 @@
 </script>
 
 <ul id="menu_bar">
-    <li>
-        <a href='<%= HostName + "trang-chu.aspx" %>'>Trang chủ</a>
+    <li class="head">
+        <a class="menu-item" href='<%= HostName + "trang-chu.aspx" %>'>Trang chủ</a>
     </li>
     <asp:Repeater runat="server" ID="rptMenu" 
         OnItemDataBound="rptMenu_ItemDataBound">
         <ItemTemplate>
             <li>
-                <a href='<%# HostName + Eval("SeoUrl") %>'><%# Eval("Name") %></a>
+                <a class="menu-item" href='<%# HostName + Eval("SeoUrl") %>'><%# Eval("Name") %></a>
                 <div class="sub-menu">
                     <asp:Repeater runat="server" ID="rptSubMenu">
                         <ItemTemplate>
@@ -35,7 +35,7 @@
             </li>
         </ItemTemplate>
     </asp:Repeater>
-    	<li>
-        <a href='<%=HostName + "rao-nhanh.aspx" %>'>Rao nhanh</a>
+    <li class="tail">
+        <a class="menu-item" href='<%=HostName + "rao-nhanh.aspx" %>'>Rao nhanh</a>
     </li>
 </ul>
