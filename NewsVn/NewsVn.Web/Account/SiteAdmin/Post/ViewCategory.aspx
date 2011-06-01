@@ -48,7 +48,7 @@
                 </td>
                 <td><%# Eval("ParentName") %></td>
                 <td>
-                    <%# Eval("CreatedOn", "{0:dd/MM/yy HH:mm:ss}") %>
+                    <%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>
                 </td>
                 <td>
                     <%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>

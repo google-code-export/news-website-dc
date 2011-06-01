@@ -1736,6 +1736,8 @@
     <Content Include="Styles\user.css" />
     <Content Include="Styles\validation.css" />
     <Content Include="Utils\NewsVnService.asmx" />
+    <Content Include="Video.aspx" />
+    <Content Include="VideoCategory.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2280,6 +2282,20 @@
     <Compile Include="Utils\NewsVnService.asmx.cs">
       <DependentUpon>NewsVnService.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Video.aspx.cs">
+      <DependentUpon>Video.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Video.aspx.designer.cs">
+      <DependentUpon>Video.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCategory.aspx.cs">
+      <DependentUpon>VideoCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VideoCategory.aspx.designer.cs">
+      <DependentUpon>VideoCategory.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

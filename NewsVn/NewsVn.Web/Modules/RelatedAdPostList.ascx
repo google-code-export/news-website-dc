@@ -13,7 +13,7 @@
             <ItemTemplate>
                 <li>
                     <a href='' class="post-title inline"><%#Eval("Title") %></a>
-                    <span class="post-info right"><%# string.Format("{0:dd/MM/yyyy}", Eval("CreatedOn")) %></span>
+                    <span class="post-info right"><%# string.Format("{0:dd/MM/yyyy}", Eval("UpdatedOn")) %></span>
                     <div class="clear"></div>
                 </li>
             </ItemTemplate>

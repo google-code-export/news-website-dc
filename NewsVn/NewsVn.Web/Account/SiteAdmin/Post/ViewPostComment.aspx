@@ -43,10 +43,10 @@
                         <%# Eval("Email") %>
                     </td>
                     <td>
-                        <%# Eval("CreatedBy") %>
+                        <%# Eval("UpdatedBy") %>
                     </td>
                     <td>
-                        <%# Eval("CreatedOn", "{0:dd/MM/yy hh:mm}") %>
+                        <%# Eval("UpdatedOn", "{0:dd/MM/yy hh:mm}") %>
                     </td>
                 </tr>
             </ItemTemplate>

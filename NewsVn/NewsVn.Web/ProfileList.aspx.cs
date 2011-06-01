@@ -26,7 +26,7 @@ namespace NewsVn.Web
             //xu ly paging trong khoang vd: <<< 95 96 97 98 99 100 >>>
             var data = ApplicationManager.Entities.UserProfiles.OrderByDescending(u=>u.Account)
                 .Select(u => new { 
-                u.Account,u.Age,u.Country,u.CreatedOn,
+                u.Account,u.Age,u.Country,u.UpdatedOn,
                 Gender =u.Gender==true?"Nam":"Nữ",
                u.Location,u.Name,u.Nickname,u.Expectation,
                 Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
@@ -47,7 +47,7 @@ namespace NewsVn.Web
                      u.Account,
                      u.Age,
                      u.Country,
-                     u.CreatedOn,
+                     u.UpdatedOn,
                      Gender = u.Gender == true ? "Nam" : "Nữ",
                      u.Location,
                      u.Name,
@@ -64,7 +64,7 @@ namespace NewsVn.Web
                     u.Account,
                     u.Age,
                     u.Country,
-                    u.CreatedOn,
+                    u.UpdatedOn,
                     Gender = u.Gender == true ? "Nam" : "Nữ",
                     u.Location,
                     u.Name,

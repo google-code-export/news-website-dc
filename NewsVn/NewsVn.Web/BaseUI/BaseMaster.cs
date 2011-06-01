@@ -22,12 +22,12 @@ namespace NewsVn.Web.BaseUI
         {
             HostName = ApplicationManager.HostName;
 
-            _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);
+            _Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
             _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived);
             base.OnInit(e);
         }
-       public static void ExecuteSEO(string title, string metaKeyWords, string metaDes)
-       {
+        public static void ExecuteSEO(string title, string metaKeyWords, string metaDes)
+        {
             SiteTitle = "- " + title;
             MetaKeyWords = metaKeyWords.Length <= 0 ? "NewsVn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh" : metaKeyWords;
             MetaKeyDes = metaDes.Length <= 0 ? "Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07 thông tin Việt nam - Thế giới về Kinh tế" : metaDes;

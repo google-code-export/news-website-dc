@@ -29,18 +29,18 @@ namespace NewsVn.Web
         private void load_SpecialAds()
         {
             //hien tai chua co set expired : p.ExpiredOn >= DateTime.Now &&
-            var datasource = _AdPosts.Where(p => p.AdCategory.Actived == true && p.Actived == true)
+            var datasource = _AdPosts.Where(p => p.Category.Actived == true && p.Actived == true)
                 .Select(p => new
                 {
-                    p.AdCategory.Name,
+                    p.Category.Name,
                     Avatar=HostName +"/Resources/"+ p.Avatar,
                     p.Title,
                     p.Content,//=Utils.clsCommon.hintDesc(p.Content,200),
                     p.Payment,
                     p.Location,// = Utils.clsCommon.getLocationName(int.Parse( p.Location)),
                     p.SeoUrl,
-                    p.CreatedBy,
-                    p.CreatedOn
+                    p.UpdatedBy,
+                    p.UpdatedOn
                 }).OrderByDescending(p=>p.Payment).Take(5).ToList();
             
             
@@ -72,7 +72,7 @@ namespace NewsVn.Web
                     ctrPortletPost.ClearLayout = true;
                 }
                 ctrPortletPost.Datasource = _AdPosts
-                    .Where(p => p.AdCategory.ID == cate.ID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == cate.ID) && cate.Actived == true)
+                    .Where(p => p.Category.ID == cate.ID || (p.Category.Parent != null && p.Category.Parent.ID == cate.ID) && cate.Actived == true)
                     .Select(p => new
                     {
                         p.ID,
@@ -80,7 +80,7 @@ namespace NewsVn.Web
                         p.Content,
                         p.Avatar,
                         SeoUrl=HostName+ p.SeoUrl,
-                        p.CreatedOn,
+                        p.UpdatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location //= Utils.clsCommon.getLocationName(int.Parse(p.Location)),

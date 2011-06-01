@@ -420,13 +420,13 @@
                     OnClick="Finish_Click" OnClientClick="return checkCreateProfileValidation()" />
             </FinishNavigationTemplate>
         </asp:Wizard>
-        <div class="right">
+        <asp:Panel ID="pnAgreement" CssClass="right" runat="server">
             <textarea rows="15" readonly="readonly">
                 Để tham gia vào “” (Hiểu ở đây là “chúng tôi” , “của chúng tôi” , “” , “http://diendantubinh.46.forumer.com”), bạn phải cam kết đồng ý với các điều khoản bên dưới của website. Nếu bạn không đồng ý với các điều khoản này thì đơn giản là hãy đóng trang này lại và bạn có thể không tham gia vào “”. Điều này chúng tôi không bắt buộc bạn. Chúng tôi có thể thay đổi lại những điều khoản này vào bất cứ lúc nào và chúng tôi sẽ cố gắng thông báo đến bạn sau này, dù rằng chúng tôi khuyên bạn nên thường xuyên xem lại những điều khoản này nếu bạn tham gia vào “” lâu dài bởi vì nếu có những thay đổi trong điều khoản thành viên sau này nghĩa là bạn cũng cam kết với những phần đã được chỉnh sửa và bổ sung đó.
                 Bạn cam kết không gửi bất cứ bài viết nào có nội dung lừa đảo, thô tục, thiếu văn hoá ; vu khống, khiêu khích, đe doạ người khác ; liên quan đến các vấn đề tình dục hay bất cứ nội dung nào vi phạm luật pháp của quốc gia mà bạn đang sống, luật pháp của quốc gia nơi đặt máy chủ cho website “” hay luật pháp quốc tế. Nếu vẫn cố tình vi phạm, ngay lập tức bạn sẽ bị cấm tham gia vào website giống như một số nhà cung cấp dịch vụ Internet của bạn, nếu bạn vẫn cho rằng những điều này chỉ riêng chúng tôi đòi hỏi. Địa chỉ IP của tất cả các bài viết đều được ghi nhận lại để bảo vệ các điều khoản cam kết này trong trường hợp bạn không tuân thủ. Bạn đồng ý rằng website “” có quyền gỡ bỏ, sửa, di chuyển hoặc khóa bất kì bài viết nào trong website vào bất cứ lúc nào tùy theo nhu cầu công việc. Đăng ký làm thành viên của chúng tôi, bạn cũng phải cam kết bất kì thông tin cá nhân nào mà bạn cung cấp đều được lưu trữ trong cơ sở dữ liệu của hệ thống. Trong khi những thông tin này sẽ không được cung cấp cho bất kì người thứ ba nào khác mà không được sự đồng ý của bạn, website “” cũng như tổ chức phpBB sẽ không chịu trách nhiệm về việc những thông tin cá nhân này của bạn bị lộ ra bên ngoài từ những kẻ phá hoại có ý đồ xấu tấn công vào cơ sở dữ liệu của hệ thống.
             </textarea>
             <p><asp:CheckBox ID="chkAgree" Text=" Tôi đồng ý với các điều khoản trên" runat="server" /></p>
-        </div>
+        </asp:Panel>
         <div class="clear"></div>
     </div>
 </asp:Content>

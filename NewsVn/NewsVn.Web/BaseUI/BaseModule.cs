@@ -8,15 +8,16 @@ using NewsVn.Web.Utils;
 namespace NewsVn.Web.BaseUI
 {
     public class BaseModule : System.Web.UI.UserControl
-    {        
+    {
         public string InfoBar { get; set; }
         public string ErrorBar { get; set; }
         public string HostName { get; set; }
         protected string CE_Configuration { get; set; }
         protected IQueryable<Data.Post> _Posts;
         protected IQueryable<Data.Category> _Categories;
-        protected IQueryable<Data.AdCategory> _AdCategories;
-        
+        protected IQueryable<Data.Category> _AdCategories;
+        protected IQueryable<Data.Category> _VideoCategories;
+
         protected override void OnInit(EventArgs e)
         {
             var sb = new StringBuilder();
@@ -33,11 +34,12 @@ namespace NewsVn.Web.BaseUI
 
             HostName = NewsVn.Web.Utils.ApplicationManager.HostName;
 
-            _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);
-            _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
+            _Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
+            _AdCategories = ApplicationManager.Entities.Categories.Where(c => "ad".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
+            _VideoCategories = ApplicationManager.Entities.Categories.Where(c => "video".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
 
             _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived).AsQueryable();
-            
+
             //configure CuteEditor
             CE_Configuration = "InsertChars,InsertTemplate, InsertEmotion,InsertYouTube,Images,Codes,Links,InsertForm , InsertTextBox, InsertInputText,InsertInputPassword,InsertInputhidden,InsertListBox,InsertDropDown,InsertRadioBox,InsertCheckBox,InsertInputImage,InsertInputSubmit,InsertInputReset,InsertInputButton,AbsolutePosition,BringForward,BringBackward,ToggleBorder,DocumentPropertyPage,CssClass,CssStyle,FormatBlock,CleanCode,GroupBox,InsertLayer";
             base.OnInit(e);

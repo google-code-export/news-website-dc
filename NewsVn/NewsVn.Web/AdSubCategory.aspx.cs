@@ -52,8 +52,8 @@ namespace NewsVn.Web
             if (isSearchByDate)
             {
                 var date=DateTime.Parse(Request.QueryString["d"].Replace('_','/'));
-                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.AdCategory.ID == intCateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == intCateID) && p.Actived == true
-                    ).Where(p => p.CreatedOn.Day == date.Day && p.CreatedOn.Month == date.Month && p.CreatedOn.Year == date.Year)
+                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID) && p.Actived == true
+                    ).Where(p => p.UpdatedOn.Day == date.Day && p.UpdatedOn.Month == date.Month && p.UpdatedOn.Year == date.Year)
                     .Select(p => new
                     {
                         p.ID,
@@ -61,7 +61,7 @@ namespace NewsVn.Web
                         p.Content,
                         p.Avatar,
                         p.SeoUrl,
-                        p.CreatedOn,
+                        p.UpdatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
@@ -71,7 +71,7 @@ namespace NewsVn.Web
             }
             else
             {
-                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.AdCategory.ID == intCateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == intCateID) && p.Actived == true)
+                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID) && p.Actived == true)
                     .Select(p => new
                     {
                         p.ID,
@@ -79,7 +79,7 @@ namespace NewsVn.Web
                         p.Content,
                         p.Avatar,
                         p.SeoUrl,
-                        p.CreatedOn,
+                        p.UpdatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))

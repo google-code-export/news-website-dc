@@ -38,6 +38,11 @@ namespace NewsVn.Web.Account.Form
         protected void wzUserSignUp_OnActiveStepChanged(object sender, EventArgs args)
         {
             ltrTitle.Text = wzUserSignUp.ActiveStep.Title;
+
+            if (wzUserSignUp.ActiveStepIndex == 2)
+            {
+                pnAgreement.Visible = false;
+            }
         }
 
         protected void Start_Click(object sender, EventArgs args)
@@ -121,7 +126,7 @@ namespace NewsVn.Web.Account.Form
                 }
                 newProfile.ShowEmail = chkShowEmail.Checked;
                 newProfile.ShowPhone = chkShowPhone.Checked;
-                newProfile.CreatedOn = DateTime.Now;
+                newProfile.UpdatedOn = DateTime.Now;
 
                 ApplicationManager.Entities.AddToUserProfiles(newProfile);
                 ApplicationManager.Entities.SaveChanges();

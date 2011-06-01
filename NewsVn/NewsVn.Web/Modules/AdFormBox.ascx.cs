@@ -15,7 +15,7 @@ namespace NewsVn.Web.Modules
         {
             if (!IsPostBack)
             {
-                ddlCategory.DataSource = ApplicationManager.Entities.AdCategories.Where(c => c.Actived == true)
+                ddlCategory.DataSource = ApplicationManager.Entities.Categories.Where(c => "ad".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived == true)
                     .Select(c => new
                     {
                         c.ID,
@@ -36,14 +36,14 @@ namespace NewsVn.Web.Modules
                 adsPost.Content = txtContent.Text.Trim();
                 adsPost.Avatar = "Ads/" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + "/" + fileAvatar.FileName;
                 adsPost.SeoUrl = "";
-                adsPost.AdCategory = _AdCategories.FirstOrDefault(c => c.ID == int.Parse(ddlCategory.SelectedValue));
+                adsPost.Category = _AdCategories.FirstOrDefault(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                 adsPost.Location = ddlLocation.SelectedValue;
                 adsPost.Contact = txtContact.Text.Trim();
                 adsPost.ContactEmail = txtContactEmail.Text.Trim();
                 adsPost.ContactAddress = txtContactAddress.Text.Trim();
                 adsPost.ContactPhone = txtContactPhone.Text.Trim();
-                adsPost.CreatedOn = DateTime.Now;
-                adsPost.CreatedBy = txtContact.Text.Trim();
+                adsPost.UpdatedOn = DateTime.Now;
+                adsPost.UpdatedBy = txtContact.Text.Trim();
                 adsPost.ExpiredOn = DateTime.Now.AddDays(3);//setting day expired from created day
                 adsPost.Actived = true;
                 uploadImg();

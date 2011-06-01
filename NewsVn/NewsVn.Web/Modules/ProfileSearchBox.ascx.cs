@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class ProfileSearchBox : System.Web.UI.UserControl
+    public partial class ProfileSearchBox : BaseUI.BaseModule
     {
         protected void Page_Load(object sender, EventArgs e)
         {
