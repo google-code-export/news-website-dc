@@ -44,9 +44,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             rptCommentList.DataSource = _PostComments.Select(c => new
             {
                 c.ID, c.Title, c.Content,
-                c.Email, c.CreatedBy, c.CreatedOn,
+                c.Email, c.UpdatedBy, c.UpdatedOn,
                 PostID = c.Post.ID, PostTitle = c.Post.Title
-            }).OrderByDescending(c => c.CreatedOn).ThenBy(c => c.PostID)
+            }).OrderByDescending(c => c.UpdatedOn).ThenBy(c => c.PostID)
             .Skip((pageIndex - 1) * pageSize).Take(pageSize);
             rptCommentList.DataBind();
         }

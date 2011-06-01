@@ -14,22 +14,11 @@
             <asp:TextBox ID="txtCategoryName" runat="server" />
         </li>
         <li>
-            <asp:Label AssociatedControlID="txtCreatedBy" Text="Người tạo:" runat="server" />
-            <asp:TextBox ID="txtCreatedBy" runat="server" />
-        </li>
-        <li>
-            <asp:Label AssociatedControlID="txtCreatedOn" Text="Ngày tạo" runat="server" />
-            <div class="textbox-icon right">
-                <asp:TextBox ID="txtCreatedOn" CssClass="datepicker" runat="server" />
-            </div>
-            <div class="clear"></div>
-        </li>
-        <li>
-            <asp:Label AssociatedControlID="txtUpdatedBy" Text="Người sửa:" runat="server" />
+            <asp:Label AssociatedControlID="txtUpdatedBy" Text="Người cập nhật:" runat="server" />
             <asp:TextBox ID="txtUpdatedBy" runat="server" />
         </li>
         <li>
-            <asp:Label AssociatedControlID="txtUpdatedOn" Text="Ngày sửa:" runat="server" />            
+            <asp:Label AssociatedControlID="txtUpdatedOn" Text="Ngày cập nhật:" runat="server" />            
             <div class="textbox-icon right">
                 <asp:TextBox ID="txtUpdatedOn" CssClass="datepicker" runat="server" />
             </div>

@@ -354,6 +354,7 @@ body
     height: 32px;
     cursor: pointer;
     display: block;
+    overflow: hidden;
 }
 
 .cate-posts.portlet .active-post-item

@@ -111,8 +111,8 @@ namespace NewsVn.Web.Modules
                     Description = txtDescription.Text.Trim(),
                     Content = editorContent.Text.Trim(),
                     SeoUrl = "SeoUrl",
-                    CreatedOn = DateTime.Now,
-                    CreatedBy = HttpContext.Current.User.Identity.Name,
+                    UpdatedOn = DateTime.Now,
+                    UpdatedBy = HttpContext.Current.User.Identity.Name,
                     Category = cate
                 };
 

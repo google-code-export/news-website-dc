@@ -44,11 +44,11 @@ namespace NewsVn.Web
 
             var postComment = _PostComments.Where(pc => pc.Post.ID == postID).Select(
                 pc => new { 
-                pc.CreatedOn,
+                pc.UpdatedOn,
                 pc.Content,
                 pc.Title,
-                pc.CreatedBy,
-                }).OrderByDescending(pc => pc.CreatedOn).ToList();
+                pc.UpdatedBy,
+                }).OrderByDescending(pc => pc.UpdatedOn).ToList();
             pletPostDetail.CountedComment = postComment.Count();
             pletPostDetail.AllowComment = postData.AllowComments;
             pletPostDetail.Datasource = postData;

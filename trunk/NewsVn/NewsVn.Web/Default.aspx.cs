@@ -73,10 +73,10 @@ namespace NewsVn.Web
                         p.Description,// = clsCommon.hintDesc(p.Description),
                         p.Avatar,
                         p.SeoUrl,
-                        p.CreatedOn,
+                        p.UpdatedOn,
                         p.AllowComments,
                         Comments = p.PostComments.Count
-                    }).OrderByDescending(p => p.CreatedOn);
+                    }).OrderByDescending(p => p.UpdatedOn);
 
                 ctrPortletPost.oActivePost = oActivePost.Take(1).ToList();
                 //load 4th news
@@ -111,11 +111,11 @@ namespace NewsVn.Web
                     Description =adp.Content,// clsCommon.hintDesc(adp.Content),
                     Avatar = adp.Avatar.Length == 0 ?"/resources/Images/No_Image/no-ads.gif" :"/resources/Images/"+ adp.Avatar,
                     adp.SeoUrl,
-                    adp.CreatedOn,
+                    adp.UpdatedOn,
                     AllowComments = false,
                     adp.Payment,
                     Comments = 0
-                }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.CreatedOn);
+                }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.UpdatedOn);
             ctrPortletPost_Ad.oActivePost = IOrderQueryableData.Take(1).ToList();
             ctrPortletPost_Ad.OtherPosts = IOrderQueryableData.Skip(1).Take(4).ToList();
             ctrPortletPost_Ad.DataBind();

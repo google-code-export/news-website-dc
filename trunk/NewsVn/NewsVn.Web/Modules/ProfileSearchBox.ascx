@@ -400,9 +400,8 @@
                 <AnonymousTemplate>
                     <div id="confirmBox" class="dialog" title="Bạn chưa đăng nhập">
                         <br />
-                        <asp:HyperLink ID="HyperLink1" CssClass="button-login" NavigateUrl="~/account/form/login.aspx" Text="Đăng nhập" runat="server" />
-                        <asp:HyperLink ID="HyperLink2" CssClass="button-register" NavigateUrl="~/account/form/signup.aspx" Text="Đăng ký" runat="server"
-                            style="margin-left:4px" />
+                        <a class="button-login" href='<%= HostName + "account/form/login.aspx" %>'>Đăng nhập</a>
+                        <a class="button-register" href='<%= HostName + "account/form/signup.aspx" %>' style="margin-left:4px">Đăng ký</a>
                     </div>
                     <asp:LinkButton ID="LinkButton1" Text="Hồ sơ của tôi" CssClass="button left" runat="server"
                         OnClientClick="return openLoginConfirm()" />

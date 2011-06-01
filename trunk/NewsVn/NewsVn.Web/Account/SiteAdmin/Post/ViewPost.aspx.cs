@@ -133,11 +133,11 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             rptPostList.DataSource = _Posts.Select(p => new {
                p.ID, p.Title, p.SeoUrl,
-               p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
+               p.UpdatedOn, p.UpdatedBy,
                p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
                CategoryID = p.Category.ID,p.PageView,
                CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name
-            }).OrderByDescending(p => p.CreatedOn).ThenByDescending(p => p.ApprovedOn)
+            }).OrderByDescending(p => p.UpdatedOn).ThenByDescending(p => p.ApprovedOn)
                 .Skip((pageIndex - 1) * pageSize).Take(pageSize);
             rptPostList.DataBind();
         }
@@ -154,7 +154,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         private IQueryable<Data.Post> getSelectedPosts()
         {
-            var selectedPostIDs = new List<int>();
+            var selectedPosts = new List<Data.Post>();
+            int postID = -1;
 
             foreach (RepeaterItem item in rptPostList.Items)
             {
@@ -165,12 +166,13 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     if (chkID.Checked)
                     {
                         HiddenField hidID = item.FindControl("hidID") as HiddenField;
-                        selectedPostIDs.Add(int.Parse(hidID.Value));
+                        postID = int.Parse(hidID.Value);
+                        selectedPosts.Add(_Posts.FirstOrDefault(p => p.ID == postID));
                     }
                 }
             }
 
-            return _Posts.Where(p => selectedPostIDs.Contains(p.ID));
+            return selectedPosts.AsQueryable();
         }
 
         private void SaveChangesAndReload()

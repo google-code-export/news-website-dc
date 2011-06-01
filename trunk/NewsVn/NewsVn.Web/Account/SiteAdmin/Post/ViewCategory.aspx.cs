@@ -33,7 +33,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
             catch (Exception)
             {
-                ltrError.Text = string.Format(ErrorBar, "Không thể xóa tin được chọn!");
+                ltrError.Text = string.Format(ErrorBar, "Không thể xóa danh mục được chọn!");
             }
 
             this.LoadCategoryList();
@@ -50,9 +50,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
                 this.SaveChangesAndReload();
             }
-            catch (Exception)
+            catch (Exception ec)
             {
-                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn tin được chọn!");
+                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn danh mục được chọn!");
             }
 
             this.LoadCategoryList();
@@ -67,9 +67,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             rptCategoryList.DataSource = _Categories.Where(c => c.Parent != null).Select(c => new
             {
-                c.ID, c.Name, c.CreatedOn, c.UpdatedOn, c.Actived,
+                c.ID, c.Name, c.UpdatedOn, c.Actived,
                 ParentName = c.Parent.Name
-            }).OrderByDescending(c => c.CreatedOn).ThenByDescending(c => c.UpdatedOn);
+            }).OrderByDescending(c => c.UpdatedOn).ThenByDescending(c => c.UpdatedOn);
             rptCategoryList.DataBind();
         }
 

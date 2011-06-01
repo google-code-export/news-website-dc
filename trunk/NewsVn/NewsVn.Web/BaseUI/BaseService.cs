@@ -12,24 +12,26 @@ namespace NewsVn.Web.BaseUI
         public static string[] skyStatus { get; set; }
         protected string _CacheName;
 
-        protected IQueryable<Data.AdBox> _AdBoxes;
-        protected IQueryable<Data.AdCategory> _AdCategories;
+        protected IQueryable<Data.AdBox> _AdBoxes;        
         protected IQueryable<Data.AdPost> _AdPosts;
         protected IQueryable<Data.Category> _Categories;
+        protected IQueryable<Data.Category> _AdCategories;
+        protected IQueryable<Data.Category> _VideoCategories;
         protected IQueryable<Data.PostComment> _PostComments;
         protected IQueryable<Data.Post> _Posts;
         protected IQueryable<Data.UserMessage> _UserMessages;
         protected IQueryable<Data.UserProfileComment> _UserProfileComments;
         protected IQueryable<Data.UserProfile> _UserProfiles;
 
-        
+
         public BaseService()
         {
             skyStatus = ApplicationManager.skyStatus;
             HostName = NewsVn.Web.Utils.ApplicationManager.HostName;
-            _AdBoxes = ApplicationManager.SetCacheData<Data.AdBox>(ApplicationManager.Entities.AdBoxes, t => t.Actived);
-            _AdCategories = ApplicationManager.SetCacheData<Data.AdCategory>(ApplicationManager.Entities.AdCategories, p => p.Actived);
-            _Categories = ApplicationManager.SetCacheData<Data.Category>(ApplicationManager.Entities.Categories, p => p.Actived);
+            _AdBoxes = ApplicationManager.SetCacheData<Data.AdBox>(ApplicationManager.Entities.AdBoxes, t => t.Actived);            
+            _Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
+            _AdCategories = ApplicationManager.Entities.Categories.Where(c => "ad".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
+            _VideoCategories = ApplicationManager.Entities.Categories.Where(c => "video".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
             _UserMessages = ApplicationManager.SetCacheData<Data.UserMessage>(ApplicationManager.Entities.UserMessages, null);
             _UserProfileComments = ApplicationManager.SetCacheData<Data.UserProfileComment>(ApplicationManager.Entities.UserProfileComments, null);
 

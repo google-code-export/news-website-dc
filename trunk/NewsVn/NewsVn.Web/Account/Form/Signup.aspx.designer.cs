@@ -193,6 +193,15 @@ namespace NewsVn.Web.Account.Form {
         protected global::System.Web.UI.WebControls.Literal ltrInitInfoError;
         
         /// <summary>
+        /// pnAgreement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnAgreement;
+        
+        /// <summary>
         /// chkAgree control.
         /// </summary>
         /// <remarks>

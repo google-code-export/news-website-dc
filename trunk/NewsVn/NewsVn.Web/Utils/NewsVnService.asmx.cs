@@ -63,15 +63,15 @@ namespace NewsVn.Web.Utils
             var postComments = _PostComments.Where(c => c.Post.ID == postID);
 
             if (oldestOnTop)
-                postComments = postComments.OrderBy(c => c.CreatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
+                postComments = postComments.OrderBy(c => c.UpdatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
             else
-                postComments = postComments.OrderByDescending(c => c.CreatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
+                postComments = postComments.OrderByDescending(c => c.UpdatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
 
             var html = new StringBuilder();
 
             foreach (var comment in postComments)
             {
-                html.AppendFormat("<li><b>{0}</b><p>{1}</p><i>({2})</i></li>", comment.Title, comment.Content, comment.CreatedBy);
+                html.AppendFormat("<li><b>{0}</b><p>{1}</p><i>({2})</i></li>", comment.Title, comment.Content, comment.UpdatedBy);
             }
 
             return html.ToString();
@@ -147,7 +147,7 @@ namespace NewsVn.Web.Utils
             {
                 if (this.CheckCaptchaResponse(captchaKey, captchaAnswer))
                 {
-                    comment.CreatedOn = DateTime.Now;
+                    comment.UpdatedOn = DateTime.Now;
                     comment.Post = _Posts.FirstOrDefault(p => p.ID == postID);
                     ApplicationManager.Entities.AddToPostComments(comment);
                     ApplicationManager.Entities.SaveChanges();
@@ -222,7 +222,7 @@ namespace NewsVn.Web.Utils
                         p.Content,
                         p.Avatar,
                         p.SeoUrl,
-                        p.CreatedOn,
+                        p.UpdatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location 
@@ -232,15 +232,15 @@ namespace NewsVn.Web.Utils
 
             //general IQueryable
             var DataQ = _AdPosts
-                    .Where(p => p.AdCategory.ID == cateID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == cateID
+                    .Where(p => p.Category.ID == cateID || (p.Category.Parent != null && p.Category.Parent.ID == cateID
                         && p.Actived == true));//&& p.ExpiredOn>=DateTime.Today //expired sau nay se dung
             //return List<> by Search Result
             //1: condition:search by date
             if (isSearchByDate)
             {
                 DateTime inputSearchDateTime = Convert.ToDateTime(searchDate.Replace('_', '/'));
-                Datasource = DataQ.Where(p => p.CreatedOn.Day == inputSearchDateTime.Day && p.CreatedOn.Month == inputSearchDateTime.Month &&
-                    p.CreatedOn.Year == inputSearchDateTime.Year
+                Datasource = DataQ.Where(p => p.UpdatedOn.Day == inputSearchDateTime.Day && p.UpdatedOn.Month == inputSearchDateTime.Month &&
+                    p.UpdatedOn.Year == inputSearchDateTime.Year
                     && p.Location == locationID).Select(p => new
                 {
                     p.ID,
@@ -248,7 +248,7 @@ namespace NewsVn.Web.Utils
                     p.Content,
                     p.Avatar,
                     p.SeoUrl,
-                    p.CreatedOn,
+                    p.UpdatedOn,
                     p.Payment,
                     isFree = p.Payment <= 0 ? true : false,
                     p.Location 
@@ -271,7 +271,7 @@ namespace NewsVn.Web.Utils
                     p.Content,
                     p.Avatar,
                     p.SeoUrl,
-                    p.CreatedOn,
+                    p.UpdatedOn,
                     p.Payment,
                     isFree = p.Payment <= 0 ? true : false,
                     p.Location 
@@ -294,7 +294,7 @@ namespace NewsVn.Web.Utils
                     html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'",HostName+ itemAds.SeoUrl.ToString() + ".aspx" );
                     html.AppendLine( itemAds.Title + "</a>");
                     html.AppendLine("</td><td >");
-                    html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.CreatedOn));
+                    html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.UpdatedOn));
                     html.AppendLine("</td>");
                     html.AppendLine("</td><td style=\"width:100px;\">");
                     html.AppendLine(Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)));
@@ -316,16 +316,16 @@ namespace NewsVn.Web.Utils
             {
                 string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
                 int catID = int.Parse(array[0]);
-                var data = _AdPosts.Where(p => p.AdCategory.ID == catID || (p.AdCategory.Parent != null && p.AdCategory.Parent.ID == catID))
+                var data = _AdPosts.Where(p => p.Category.ID == catID || (p.Category.Parent != null && p.Category.Parent.ID == catID))
                         .Select(p => new
                         {
-                           Name= p.AdCategory.Name,
+                           Name= p.Category.Name,
                             p.ID,
                             p.Title,
                             p.Content,
                             p.Avatar,
                             p.SeoUrl,
-                            p.CreatedOn,
+                            p.UpdatedOn,
                             p.Payment,
                             isFree = p.Payment <= 0 ? true : false,
                             p.Location
@@ -346,7 +346,7 @@ namespace NewsVn.Web.Utils
                         html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", HostName +  itemAds.SeoUrl.ToString() + ".aspx");
                         html.AppendLine(itemAds.Title + "</a>");
                         html.AppendLine("</td><td>");
-                        html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.CreatedOn));
+                        html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.UpdatedOn));
                         html.AppendLine("</td>");
                         html.AppendLine("<td style='width: 120px;'>" + Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)) + "</td>");
                         html.AppendLine("</tr>");

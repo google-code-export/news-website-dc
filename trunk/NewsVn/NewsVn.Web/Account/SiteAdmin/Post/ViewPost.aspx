@@ -34,7 +34,7 @@
         <asp:DropDownList ID="ddlFilterColumn" CssClass="dropdown left" runat="server">
             <asp:ListItem Value="Title" Text="Tiêu đề" />
             <asp:ListItem Value="" Text="Danh mục" />
-            <asp:ListItem Value="CreatedBy" Text="Người tạo" />
+            <asp:ListItem Value="UpdatedBy" Text="Người tạo" />
             <asp:ListItem Value="UpdatedBy" Text="Người sửa" />
             <asp:ListItem Value="ApprovedBy" Text="Người duyệt" />
         </asp:DropDownList>
@@ -64,12 +64,10 @@
                 <tr>
                     <th><asp:CheckBox EnableViewState="false" runat="server" /></th>
                     <th>Tiêu đề</th>
-                    <th>Pageview</th>
+                    <th>Lượt xem</th>
                     <th>Danh mục</th>
-                    <th>Tạo vào</th>
-                    <th>Người tạo</th>
-                    <th>Sửa vào</th>
-                    <th>Người sửa</th>
+                    <th>Cập nhật</th>
+                    <th>Bởi</th>
                     <th>Đã duyệt</th>
                     <th>Duyệt vào</th>
                     <th>Duyệt bởi</th>
@@ -85,19 +83,15 @@
                 <td>
                     <a href='<%= HostName + "account/siteadmin/post/editpost.aspx?pid=" %><%# Eval("ID") %>'
                         title='<%# Eval("Title") %>'>
-                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 30) %>
+                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 50) %>
                     </a>
                 </td>
-                <td style="text-align:left"><%#Eval("PageView", "{0:n0}") %></td>
+                <td><%#Eval("PageView", "{0:N0}") %></td>
                 <td>
                     <a href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("CategoryID") %>'>
                         <%# Eval("CategoryName") %>
                     </a>
                 </td>
-                <td title='<%# Eval("CreatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
-                    <%# Eval("CreatedOn", "{0:dd/MM/yy}") %>
-                </td>
-                <td><%# Eval("CreatedBy") %></td>
                 <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("UpdatedOn", "{0:dd/MM/yy}")%>
                 </td>

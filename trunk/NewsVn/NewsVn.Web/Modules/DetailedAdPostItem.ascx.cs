@@ -11,8 +11,8 @@ namespace NewsVn.Web.Modules
     {
         public string AdsTitle { get; set; }
         public string AdsContent { get; set; }
-        public string CreatedBy { get; set; }
+        public string UpdatedBy { get; set; }
         public int Location { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public DateTime UpdatedOn { get; set; }
     }
 }

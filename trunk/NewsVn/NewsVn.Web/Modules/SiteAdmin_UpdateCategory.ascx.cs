@@ -81,12 +81,13 @@ namespace NewsVn.Web.Modules
             {
                 Data.Category category = new Data.Category
                 {
+                    Type = "post",
                     Name = txtName.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
                     Actived = chkActived.Checked,
                     SeoName = string.Format("{0}/{1}", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
                     SeoUrl = string.Format("ct/{0}/{1}.aspx", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
-                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
                     Parent = parentCategory
                 };
 
@@ -108,7 +109,8 @@ namespace NewsVn.Web.Modules
                 if (category != null)
                 {
                     Data.Category parentCategory = _Categories.FirstOrDefault(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
-                    
+
+                    category.Type = "post";
                     category.Name = txtName.Text.Trim();
                     category.Description = txtDescription.Text.Trim();
                     category.Actived = category.Actived;
@@ -130,8 +132,9 @@ namespace NewsVn.Web.Modules
         private void SaveChangesAndReload()
         {
             ApplicationManager.Entities.SaveChanges();
-            _Categories = ApplicationManager.Entities.Categories;
-            ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories.Where(c => c.Actived));
+            _Categories = ApplicationManager.Entities.Categories.ToList().AsQueryable();
+            //_Categories = ApplicationManager.Entities.Categories
+            //ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories.Where(c => c.Actived));
         }
     }
 }

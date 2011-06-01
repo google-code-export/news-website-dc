@@ -103,10 +103,10 @@
         });
     }
 
-    function sendComment(createdBy, title, email, content, postID, captchaKey, captchaAnswer) {
+    function sendComment(UpdatedBy, title, email, content, postID, captchaKey, captchaAnswer) {
         var dataObj = {
             comment: {
-                CreatedBy: createdBy,
+                UpdatedBy: UpdatedBy,
                 Title: title,
                 Email: email,
                 Content: content
