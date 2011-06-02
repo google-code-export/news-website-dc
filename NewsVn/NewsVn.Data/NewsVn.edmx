@@ -4,44 +4,44 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NewsVnModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
-        <EntityContainer Name="NewsVnModelStoreContainer">
-          <EntitySet Name="AdBoxes" EntityType="NewsVnModel.Store.AdBoxes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AdPosts" EntityType="NewsVnModel.Store.AdPosts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Categories" EntityType="NewsVnModel.Store.Categories" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MemberProfiles" EntityType="NewsVnModel.Store.MemberProfiles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PostComments" EntityType="NewsVnModel.Store.PostComments" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Posts" EntityType="NewsVnModel.Store.Posts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Settings" EntityType="NewsVnModel.Store.Settings" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserMessages" EntityType="NewsVnModel.Store.UserMessages" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserProfileComments" EntityType="NewsVnModel.Store.UserProfileComments" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserProfiles" EntityType="NewsVnModel.Store.UserProfiles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Videos" EntityType="NewsVnModel.Store.Videos" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_AdPosts_Categories" Association="NewsVnModel.Store.FK_AdPosts_Categories">
+      <Schema Namespace="NewsVn.Data.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="NewsVnDataStoreContainer">
+          <EntitySet Name="AdBoxes" EntityType="NewsVn.Data.Store.AdBoxes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AdPosts" EntityType="NewsVn.Data.Store.AdPosts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="NewsVn.Data.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MemberProfiles" EntityType="NewsVn.Data.Store.MemberProfiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PostComments" EntityType="NewsVn.Data.Store.PostComments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Posts" EntityType="NewsVn.Data.Store.Posts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Settings" EntityType="NewsVn.Data.Store.Settings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserMessages" EntityType="NewsVn.Data.Store.UserMessages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfileComments" EntityType="NewsVn.Data.Store.UserProfileComments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfiles" EntityType="NewsVn.Data.Store.UserProfiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Videos" EntityType="NewsVn.Data.Store.Videos" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AdPosts_Categories" Association="NewsVn.Data.Store.FK_AdPosts_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="AdPosts" EntitySet="AdPosts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Categories_Categories" Association="NewsVnModel.Store.FK_Categories_Categories">
+          <AssociationSet Name="FK_Categories_Categories" Association="NewsVn.Data.Store.FK_Categories_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Categories1" EntitySet="Categories" />
           </AssociationSet>
-          <AssociationSet Name="FK_PostComments_Posts" Association="NewsVnModel.Store.FK_PostComments_Posts">
+          <AssociationSet Name="FK_PostComments_Posts" Association="NewsVn.Data.Store.FK_PostComments_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="PostComments" EntitySet="PostComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Posts_Categories" Association="NewsVnModel.Store.FK_Posts_Categories">
+          <AssociationSet Name="FK_Posts_Categories" Association="NewsVn.Data.Store.FK_Posts_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Posts" EntitySet="Posts" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserMessages_UserProfiles" Association="NewsVnModel.Store.FK_UserMessages_UserProfiles">
+          <AssociationSet Name="FK_UserMessages_UserProfiles" Association="NewsVn.Data.Store.FK_UserMessages_UserProfiles">
             <End Role="UserProfiles" EntitySet="UserProfiles" />
             <End Role="UserMessages" EntitySet="UserMessages" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserProfileComments_UserProfiles" Association="NewsVnModel.Store.FK_UserProfileComments_UserProfiles">
+          <AssociationSet Name="FK_UserProfileComments_UserProfiles" Association="NewsVn.Data.Store.FK_UserProfileComments_UserProfiles">
             <End Role="UserProfiles" EntitySet="UserProfiles" />
             <End Role="UserProfileComments" EntitySet="UserProfileComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Videos_Categories" Association="NewsVnModel.Store.FK_Videos_Categories">
+          <AssociationSet Name="FK_Videos_Categories" Association="NewsVn.Data.Store.FK_Videos_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Videos" EntitySet="Videos" />
           </AssociationSet>
@@ -51,14 +51,16 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
-          <Property Name="UrlParam" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="Snippet" Type="varchar" Nullable="false" MaxLength="300" />
-          <Property Name="LinkTo" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="SourceUrl" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="SourceEmbed" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="LinkTo" Type="varchar" Nullable="false" MaxLength="300" />
           <Property Name="Payment" Type="money" Nullable="false" />
           <Property Name="DisplayOrder" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="Actived" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="AdPosts">
@@ -77,8 +79,10 @@
           <Property Name="ContactEmail" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="ContactAddress" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="ContactPhone" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="ExpiredOn" Type="datetime" Nullable="false" />
           <Property Name="Actived" Type="bit" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
@@ -136,8 +140,10 @@
           <Property Name="Tag" Type="nvarchar" MaxLength="500" />
           <Property Name="PageView" Type="int" />
           <Property Name="CheckPageView" Type="bit" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="AllowComments" Type="bit" Nullable="false" />
           <Property Name="Approved" Type="bit" Nullable="false" />
           <Property Name="ApprovedOn" Type="datetime" />
@@ -220,8 +226,10 @@
           <Property Name="SeoUrl" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="Tag" Type="nvarchar" MaxLength="500" />
           <Property Name="PageView" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="AllowComments" Type="bit" Nullable="false" />
           <Property Name="Approved" Type="bit" Nullable="false" />
           <Property Name="ApprovedOn" Type="datetime" />
@@ -230,8 +238,8 @@
           <Property Name="CategoryID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_AdPosts_Categories">
-          <End Role="Categories" Type="NewsVnModel.Store.Categories" Multiplicity="1" />
-          <End Role="AdPosts" Type="NewsVnModel.Store.AdPosts" Multiplicity="*" />
+          <End Role="Categories" Type="NewsVn.Data.Store.Categories" Multiplicity="1" />
+          <End Role="AdPosts" Type="NewsVn.Data.Store.AdPosts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
               <PropertyRef Name="ID" />
@@ -242,8 +250,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Categories_Categories">
-          <End Role="Categories" Type="NewsVnModel.Store.Categories" Multiplicity="0..1" />
-          <End Role="Categories1" Type="NewsVnModel.Store.Categories" Multiplicity="*" />
+          <End Role="Categories" Type="NewsVn.Data.Store.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="NewsVn.Data.Store.Categories" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
               <PropertyRef Name="ID" />
@@ -254,8 +262,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PostComments_Posts">
-          <End Role="Posts" Type="NewsVnModel.Store.Posts" Multiplicity="1" />
-          <End Role="PostComments" Type="NewsVnModel.Store.PostComments" Multiplicity="*" />
+          <End Role="Posts" Type="NewsVn.Data.Store.Posts" Multiplicity="1" />
+          <End Role="PostComments" Type="NewsVn.Data.Store.PostComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Posts">
               <PropertyRef Name="ID" />
@@ -266,8 +274,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Posts_Categories">
-          <End Role="Categories" Type="NewsVnModel.Store.Categories" Multiplicity="1" />
-          <End Role="Posts" Type="NewsVnModel.Store.Posts" Multiplicity="*" />
+          <End Role="Categories" Type="NewsVn.Data.Store.Categories" Multiplicity="1" />
+          <End Role="Posts" Type="NewsVn.Data.Store.Posts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
               <PropertyRef Name="ID" />
@@ -278,8 +286,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserMessages_UserProfiles">
-          <End Role="UserProfiles" Type="NewsVnModel.Store.UserProfiles" Multiplicity="1" />
-          <End Role="UserMessages" Type="NewsVnModel.Store.UserMessages" Multiplicity="*" />
+          <End Role="UserProfiles" Type="NewsVn.Data.Store.UserProfiles" Multiplicity="1" />
+          <End Role="UserMessages" Type="NewsVn.Data.Store.UserMessages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfiles">
               <PropertyRef Name="Account" />
@@ -290,8 +298,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserProfileComments_UserProfiles">
-          <End Role="UserProfiles" Type="NewsVnModel.Store.UserProfiles" Multiplicity="1" />
-          <End Role="UserProfileComments" Type="NewsVnModel.Store.UserProfileComments" Multiplicity="*" />
+          <End Role="UserProfiles" Type="NewsVn.Data.Store.UserProfiles" Multiplicity="1" />
+          <End Role="UserProfileComments" Type="NewsVn.Data.Store.UserProfileComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfiles">
               <PropertyRef Name="Account" />
@@ -302,8 +310,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Videos_Categories">
-          <End Role="Categories" Type="NewsVnModel.Store.Categories" Multiplicity="1" />
-          <End Role="Videos" Type="NewsVnModel.Store.Videos" Multiplicity="*" />
+          <End Role="Categories" Type="NewsVn.Data.Store.Categories" Multiplicity="1" />
+          <End Role="Videos" Type="NewsVn.Data.Store.Videos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
               <PropertyRef Name="ID" />
@@ -364,14 +372,16 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
-          <Property Name="UrlParam" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="Snippet" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
-          <Property Name="LinkTo" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="SourceUrl" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="SourceEmbed" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="LinkTo" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
           <Property Name="Payment" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Actived" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="AdPost">
@@ -390,8 +400,10 @@
           <Property Name="ContactEmail" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="ContactAddress" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="ContactPhone" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="ExpiredOn" Type="DateTime" Nullable="false" />
           <Property Name="Actived" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="NewsVn.Data.FK_AdPosts_Categories" FromRole="AdPosts" ToRole="Categories" />
@@ -453,8 +465,10 @@
           <Property Name="Tag" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="PageView" Type="Int32" />
           <Property Name="CheckPageView" Type="Boolean" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="AllowComments" Type="Boolean" Nullable="false" />
           <Property Name="Approved" Type="Boolean" Nullable="false" />
           <Property Name="ApprovedOn" Type="DateTime" />
@@ -540,8 +554,10 @@
           <Property Name="SeoUrl" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="Tag" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="PageView" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" />
-          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="AllowComments" Type="Boolean" Nullable="false" />
           <Property Name="Approved" Type="Boolean" Nullable="false" />
           <Property Name="ApprovedOn" Type="DateTime" />
@@ -582,15 +598,17 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
-        <EntityContainerMapping StorageEntityContainer="NewsVnModelStoreContainer" CdmEntityContainer="NewsVnEntities">
+        <EntityContainerMapping StorageEntityContainer="NewsVnDataStoreContainer" CdmEntityContainer="NewsVnEntities">
           <EntitySetMapping Name="AdBoxes"><EntityTypeMapping TypeName="NewsVn.Data.AdBox"><MappingFragment StoreEntitySet="AdBoxes">
             <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-            <ScalarProperty Name="UrlParam" ColumnName="UrlParam" />
-            <ScalarProperty Name="Snippet" ColumnName="Snippet" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="SourceUrl" ColumnName="SourceUrl" />
+            <ScalarProperty Name="SourceEmbed" ColumnName="SourceEmbed" />
             <ScalarProperty Name="LinkTo" ColumnName="LinkTo" />
             <ScalarProperty Name="Payment" ColumnName="Payment" />
             <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+            <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
             <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
             <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
             <ScalarProperty Name="Actived" ColumnName="Actived" />
@@ -608,6 +626,8 @@
             <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
             <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
             <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+            <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
             <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
             <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
             <ScalarProperty Name="ExpiredOn" ColumnName="ExpiredOn" />
@@ -652,6 +672,8 @@
             <ScalarProperty Name="Tag" ColumnName="Tag" />
             <ScalarProperty Name="PageView" ColumnName="PageView" />
             <ScalarProperty Name="CheckPageView" ColumnName="CheckPageView" />
+            <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
             <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
             <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
             <ScalarProperty Name="AllowComments" ColumnName="AllowComments" />
@@ -718,6 +740,8 @@
             <ScalarProperty Name="SeoUrl" ColumnName="SeoUrl" />
             <ScalarProperty Name="Tag" ColumnName="Tag" />
             <ScalarProperty Name="PageView" ColumnName="PageView" />
+            <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+            <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
             <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
             <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
             <ScalarProperty Name="AllowComments" ColumnName="AllowComments" />
@@ -804,48 +828,48 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="NewsVn">
-        <EntityTypeShape EntityType="NewsVn.Data.AdBox" Width="1.5" PointX="7.75" PointY="8.75" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.AdPost" Width="1.5" PointX="3" PointY="1.5" Height="4.2879036458333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.Category" Width="1.5" PointX="0.75" PointY="7.125" Height="3.5186979166666648" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.AdBox" Width="1.5" PointX="7.75" PointY="7.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.AdPost" Width="1.5" PointX="3" PointY="1.625" Height="4.6725065104166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.Category" Width="1.5" PointX="0.75" PointY="7.75" Height="3.5186979166666665" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsVn.Data.MemberProfile" Width="1.5" PointX="9.75" PointY="7.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.PostComment" Width="1.5" PointX="5.25" PointY="7.625" Height="2.3648893229166648" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.Post" Width="1.5" PointX="3" PointY="6.625" Height="4.480205078125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.Setting" Width="1.5" PointX="11.75" PointY="7.75" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.UserMessage" Width="1.5" PointX="10" PointY="1.5" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.UserProfileComment" Width="1.5" PointX="10" PointY="4.625" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.UserProfile" Width="1.5" PointX="7.75" PointY="1.125" Height="6.0186165364583317" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsVn.Data.Video" Width="1.5" PointX="3" PointY="11.875" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.PostComment" Width="1.5" PointX="5.25" PointY="8.25" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.Post" Width="1.5" PointX="3" PointY="7" Height="4.8648079427083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.Setting" Width="1.5" PointX="10.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.UserMessage" Width="1.5" PointX="8" PointY="1.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.UserProfileComment" Width="1.5" PointX="8" PointY="4.625" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.UserProfile" Width="1.5" PointX="5.75" PointY="1.125" Height="6.0186165364583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsVn.Data.Video" Width="1.5" PointX="3" PointY="12.625" Height="4.6725065104166745" IsExpanded="true" />
         <AssociationConnector Association="NewsVn.Data.FK_AdPosts_Categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="7.125" />
-          <ConnectorPoint PointX="1.5" PointY="3.6439518229166659" />
-          <ConnectorPoint PointX="3" PointY="3.6439518229166659" />
+          <ConnectorPoint PointX="1.5" PointY="7.75" />
+          <ConnectorPoint PointX="1.5" PointY="3.9612532552083333" />
+          <ConnectorPoint PointX="3" PointY="3.9612532552083333" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_Categories_Categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.2819230769230767" PointY="10.643697916666664" />
-          <ConnectorPoint PointX="1.2819230769230767" PointY="10.893697916666664" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="10.893697916666664" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="10.643697916666664" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="11.268697916666667" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="11.518697916666667" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="11.518697916666667" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="11.268697916666667" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_Posts_Categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="8.8843489583333319" />
-          <ConnectorPoint PointX="3" PointY="8.8843489583333319" />
+          <ConnectorPoint PointX="2.25" PointY="9.5093489583333337" />
+          <ConnectorPoint PointX="3" PointY="9.5093489583333337" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_Videos_Categories" ManuallyRouted="false">
-          <ConnectorPoint PointX="0.98470903846153834" PointY="10.643697916666664" />
-          <ConnectorPoint PointX="0.98470903846153834" PointY="14.018951822916666" />
-          <ConnectorPoint PointX="3" PointY="14.018951822916666" />
+          <ConnectorPoint PointX="0.98470903846153834" PointY="11.268697916666667" />
+          <ConnectorPoint PointX="0.98470903846153834" PointY="14.961253255208337" />
+          <ConnectorPoint PointX="3" PointY="14.961253255208337" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_PostComments_Posts" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="8.8074446614583319" />
-          <ConnectorPoint PointX="5.25" PointY="8.8074446614583319" />
+          <ConnectorPoint PointX="4.5" PointY="9.4324446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="9.4324446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_UserMessages_UserProfiles" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.25" PointY="2.6824446614583337" />
-          <ConnectorPoint PointX="10" PointY="2.6824446614583337" />
+          <ConnectorPoint PointX="7.25" PointY="2.6824446614583337" />
+          <ConnectorPoint PointX="8" PointY="2.6824446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="NewsVn.Data.FK_UserProfileComments_UserProfiles" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.25" PointY="5.7112939453125" />
-          <ConnectorPoint PointX="10" PointY="5.7112939453125" />
+          <ConnectorPoint PointX="7.25" PointY="5.7112939453125" />
+          <ConnectorPoint PointX="8" PointY="5.7112939453125" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

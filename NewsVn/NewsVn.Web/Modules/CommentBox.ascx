@@ -137,25 +137,26 @@
         linkSelector.next(".ui-selectmenu").addClass("select");
         linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
         $(selectorID + "-menu").width(90);
+        $("#<%= txtComment.ClientID %>").maxlength({ maxCharacters: 200, status: false, showAlert: true });
     });
 </script>
 
-<div id="comment_box">        
+<div id="comment_box" style="display:none">        
     <ul class="ui-form ui-widget left">
         <li>
             <b>Bình luận của bạn:</b>
         </li>
         <li>
             <asp:Label AssociatedControlID="txtName" Text="Họ tên:" runat="server" />
-            <asp:TextBox ID="txtName" runat="server" />
+            <asp:TextBox ID="txtName" MaxLength="50" runat="server" />
         </li>
         <li>
             <asp:Label AssociatedControlID="txtEmail" Text="Email" runat="server" />
-            <asp:TextBox ID="txtEmail" runat="server" />
+            <asp:TextBox ID="txtEmail" MaxLength="100" runat="server" />
         </li>
         <li>
             <asp:Label AssociatedControlID="txtTitle" Text="Tiêu đề:" runat="server" />
-            <asp:TextBox ID="txtTitle" runat="server" />
+            <asp:TextBox ID="txtTitle" MaxLength="50" runat="server" />
         </li>
         <li>
             <asp:Label AssociatedControlID="txtComment" Text="Nội dung:" CssClass="forarea" runat="server" />
@@ -169,7 +170,7 @@
         </li>
         <li>
             <asp:Label AssociatedControlID="txtCaptchaAnswer" Text="Trả lời:" runat="server" />
-            <asp:TextBox ID="txtCaptchaAnswer" runat="server" />
+            <asp:TextBox ID="txtCaptchaAnswer" Text="50" runat="server" />
         </li>
         <li class="command">
             <asp:Button ID="btnSend" Text="Gởi bình luận" CssClass="button right" runat="server" />

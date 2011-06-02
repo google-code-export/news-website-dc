@@ -133,7 +133,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             rptPostList.DataSource = _Posts.Select(p => new {
                p.ID, p.Title, p.SeoUrl,
-               p.UpdatedOn, p.UpdatedBy,
+               p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
                p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
                CategoryID = p.Category.ID,p.PageView,
                CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name

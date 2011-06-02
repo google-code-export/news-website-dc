@@ -53,7 +53,7 @@ namespace NewsVn.Web
             {
                 var date=DateTime.Parse(Request.QueryString["d"].Replace('_','/'));
                 pletCatAdsPost.Datasource = _AdPosts.Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID) && p.Actived == true
-                    ).Where(p => p.UpdatedOn.Day == date.Day && p.UpdatedOn.Month == date.Month && p.UpdatedOn.Year == date.Year)
+                    ).Where(p => p.CreatedOn.Day == date.Day && p.CreatedOn.Month == date.Month && p.CreatedOn.Year == date.Year)
                     .Select(p => new
                     {
                         p.ID,
