@@ -66,8 +66,10 @@
                     <th>Tiêu đề</th>
                     <th>Lượt xem</th>
                     <th>Danh mục</th>
-                    <th>Cập nhật</th>
-                    <th>Bởi</th>
+                    <th>Tạo vào</th>
+                    <th>Tạo bởi</th>
+                    <th>Sửa vào</th>
+                    <th>Sửa bởi</th>
                     <th>Đã duyệt</th>
                     <th>Duyệt vào</th>
                     <th>Duyệt bởi</th>
@@ -83,7 +85,7 @@
                 <td>
                     <a href='<%= HostName + "account/siteadmin/post/editpost.aspx?pid=" %><%# Eval("ID") %>'
                         title='<%# Eval("Title") %>'>
-                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 50) %>
+                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 30) %>
                     </a>
                 </td>
                 <td><%#Eval("PageView", "{0:N0}") %></td>
@@ -92,6 +94,10 @@
                         <%# Eval("CategoryName") %>
                     </a>
                 </td>
+                <td title='<%# Eval("CreatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
+                    <%# Eval("CreatedOn", "{0:dd/MM/yy}")%>
+                </td>
+                <td><%# Eval("CreatedBy")%></td>
                 <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("UpdatedOn", "{0:dd/MM/yy}")%>
                 </td>

@@ -239,8 +239,8 @@ namespace NewsVn.Web.Utils
             if (isSearchByDate)
             {
                 DateTime inputSearchDateTime = Convert.ToDateTime(searchDate.Replace('_', '/'));
-                Datasource = DataQ.Where(p => p.UpdatedOn.Day == inputSearchDateTime.Day && p.UpdatedOn.Month == inputSearchDateTime.Month &&
-                    p.UpdatedOn.Year == inputSearchDateTime.Year
+                Datasource = DataQ.Where(p => p.CreatedOn.Day == inputSearchDateTime.Day && p.CreatedOn.Month == inputSearchDateTime.Month &&
+                    p.CreatedOn.Year == inputSearchDateTime.Year
                     && p.Location == locationID).Select(p => new
                 {
                     p.ID,

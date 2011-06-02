@@ -18,7 +18,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("NewsVn.Data", "FK_UserProfileComments_UserProfiles", "UserProfiles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NewsVn.Data.UserProfile), "UserProfileComments", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NewsVn.Data.UserProfileComment))]
 
 // Original file name:
-// Generation date: 6/1/2011 1:03:35 AM
+// Generation date: 6/2/2011 1:08:38 AM
 namespace NewsVn.Data
 {
     
@@ -343,28 +343,28 @@ namespace NewsVn.Data
         /// Create a new AdBox object.
         /// </summary>
         /// <param name="id">Initial value of ID.</param>
-        /// <param name="name">Initial value of Name.</param>
-        /// <param name="urlParam">Initial value of UrlParam.</param>
-        /// <param name="snippet">Initial value of Snippet.</param>
+        /// <param name="title">Initial value of Title.</param>
+        /// <param name="sourceUrl">Initial value of SourceUrl.</param>
+        /// <param name="sourceEmbed">Initial value of SourceEmbed.</param>
         /// <param name="linkTo">Initial value of LinkTo.</param>
         /// <param name="payment">Initial value of Payment.</param>
         /// <param name="displayOrder">Initial value of DisplayOrder.</param>
-        /// <param name="updatedOn">Initial value of UpdatedOn.</param>
-        /// <param name="updatedBy">Initial value of UpdatedBy.</param>
+        /// <param name="createdOn">Initial value of CreatedOn.</param>
+        /// <param name="createdBy">Initial value of CreatedBy.</param>
         /// <param name="actived">Initial value of Actived.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static AdBox CreateAdBox(int id, string name, string urlParam, string snippet, string linkTo, decimal payment, int displayOrder, global::System.DateTime updatedOn, string updatedBy, bool actived)
+        public static AdBox CreateAdBox(int id, string title, string sourceUrl, string sourceEmbed, string linkTo, decimal payment, int displayOrder, global::System.DateTime createdOn, string createdBy, bool actived)
         {
             AdBox adBox = new AdBox();
             adBox.ID = id;
-            adBox.Name = name;
-            adBox.UrlParam = urlParam;
-            adBox.Snippet = snippet;
+            adBox.Title = title;
+            adBox.SourceUrl = sourceUrl;
+            adBox.SourceEmbed = sourceEmbed;
             adBox.LinkTo = linkTo;
             adBox.Payment = payment;
             adBox.DisplayOrder = displayOrder;
-            adBox.UpdatedOn = updatedOn;
-            adBox.UpdatedBy = updatedBy;
+            adBox.CreatedOn = createdOn;
+            adBox.CreatedBy = createdBy;
             adBox.Actived = actived;
             return adBox;
         }
@@ -396,86 +396,86 @@ namespace NewsVn.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnIDChanged();
         /// <summary>
-        /// There are no comments for property Name in the schema.
+        /// There are no comments for property Title in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string Name
+        public string Title
         {
             get
             {
-                return this._Name;
+                return this._Title;
             }
             set
             {
-                this.OnNameChanging(value);
-                this.ReportPropertyChanging("Name");
-                this._Name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Name");
-                this.OnNameChanged();
+                this.OnTitleChanging(value);
+                this.ReportPropertyChanging("Title");
+                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Title");
+                this.OnTitleChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _Name;
+        private string _Title;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnNameChanging(string value);
+        partial void OnTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnNameChanged();
+        partial void OnTitleChanged();
         /// <summary>
-        /// There are no comments for property UrlParam in the schema.
+        /// There are no comments for property SourceUrl in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string UrlParam
+        public string SourceUrl
         {
             get
             {
-                return this._UrlParam;
+                return this._SourceUrl;
             }
             set
             {
-                this.OnUrlParamChanging(value);
-                this.ReportPropertyChanging("UrlParam");
-                this._UrlParam = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("UrlParam");
-                this.OnUrlParamChanged();
+                this.OnSourceUrlChanging(value);
+                this.ReportPropertyChanging("SourceUrl");
+                this._SourceUrl = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("SourceUrl");
+                this.OnSourceUrlChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _UrlParam;
+        private string _SourceUrl;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnUrlParamChanging(string value);
+        partial void OnSourceUrlChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnUrlParamChanged();
+        partial void OnSourceUrlChanged();
         /// <summary>
-        /// There are no comments for property Snippet in the schema.
+        /// There are no comments for property SourceEmbed in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string Snippet
+        public string SourceEmbed
         {
             get
             {
-                return this._Snippet;
+                return this._SourceEmbed;
             }
             set
             {
-                this.OnSnippetChanging(value);
-                this.ReportPropertyChanging("Snippet");
-                this._Snippet = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Snippet");
-                this.OnSnippetChanged();
+                this.OnSourceEmbedChanging(value);
+                this.ReportPropertyChanging("SourceEmbed");
+                this._SourceEmbed = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("SourceEmbed");
+                this.OnSourceEmbedChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _Snippet;
+        private string _SourceEmbed;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnSnippetChanging(string value);
+        partial void OnSourceEmbedChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnSnippetChanged();
+        partial void OnSourceEmbedChanged();
         /// <summary>
         /// There are no comments for property LinkTo in the schema.
         /// </summary>
@@ -558,12 +558,66 @@ namespace NewsVn.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnDisplayOrderChanged();
         /// <summary>
-        /// There are no comments for property UpdatedOn in the schema.
+        /// There are no comments for property CreatedOn in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime UpdatedOn
+        public global::System.DateTime CreatedOn
+        {
+            get
+            {
+                return this._CreatedOn;
+            }
+            set
+            {
+                this.OnCreatedOnChanging(value);
+                this.ReportPropertyChanging("CreatedOn");
+                this._CreatedOn = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("CreatedOn");
+                this.OnCreatedOnChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.DateTime _CreatedOn;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanging(global::System.DateTime value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanged();
+        /// <summary>
+        /// There are no comments for property CreatedBy in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string CreatedBy
+        {
+            get
+            {
+                return this._CreatedBy;
+            }
+            set
+            {
+                this.OnCreatedByChanging(value);
+                this.ReportPropertyChanging("CreatedBy");
+                this._CreatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("CreatedBy");
+                this.OnCreatedByChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _CreatedBy;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanged();
+        /// <summary>
+        /// There are no comments for property UpdatedOn in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<global::System.DateTime> UpdatedOn
         {
             get
             {
@@ -579,15 +633,15 @@ namespace NewsVn.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _UpdatedOn;
+        private global::System.Nullable<global::System.DateTime> _UpdatedOn;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnUpdatedOnChanging(global::System.DateTime value);
+        partial void OnUpdatedOnChanging(global::System.Nullable<global::System.DateTime> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnUpdatedOnChanged();
         /// <summary>
         /// There are no comments for property UpdatedBy in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string UpdatedBy
@@ -600,7 +654,7 @@ namespace NewsVn.Data
             {
                 this.OnUpdatedByChanging(value);
                 this.ReportPropertyChanging("UpdatedBy");
-                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("UpdatedBy");
                 this.OnUpdatedByChanged();
             }
@@ -664,12 +718,12 @@ namespace NewsVn.Data
         /// <param name="contactEmail">Initial value of ContactEmail.</param>
         /// <param name="contactAddress">Initial value of ContactAddress.</param>
         /// <param name="contactPhone">Initial value of ContactPhone.</param>
-        /// <param name="updatedOn">Initial value of UpdatedOn.</param>
-        /// <param name="updatedBy">Initial value of UpdatedBy.</param>
+        /// <param name="createdOn">Initial value of CreatedOn.</param>
+        /// <param name="createdBy">Initial value of CreatedBy.</param>
         /// <param name="expiredOn">Initial value of ExpiredOn.</param>
         /// <param name="actived">Initial value of Actived.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static AdPost CreateAdPost(int id, string title, string avatar, string content, string location, string seoUrl, decimal payment, string contact, string contactEmail, string contactAddress, string contactPhone, global::System.DateTime updatedOn, string updatedBy, global::System.DateTime expiredOn, bool actived)
+        public static AdPost CreateAdPost(int id, string title, string avatar, string content, string location, string seoUrl, decimal payment, string contact, string contactEmail, string contactAddress, string contactPhone, global::System.DateTime createdOn, string createdBy, global::System.DateTime expiredOn, bool actived)
         {
             AdPost adPost = new AdPost();
             adPost.ID = id;
@@ -683,8 +737,8 @@ namespace NewsVn.Data
             adPost.ContactEmail = contactEmail;
             adPost.ContactAddress = contactAddress;
             adPost.ContactPhone = contactPhone;
-            adPost.UpdatedOn = updatedOn;
-            adPost.UpdatedBy = updatedBy;
+            adPost.CreatedOn = createdOn;
+            adPost.CreatedBy = createdBy;
             adPost.ExpiredOn = expiredOn;
             adPost.Actived = actived;
             return adPost;
@@ -1014,12 +1068,66 @@ namespace NewsVn.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnContactPhoneChanged();
         /// <summary>
-        /// There are no comments for property UpdatedOn in the schema.
+        /// There are no comments for property CreatedOn in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime UpdatedOn
+        public global::System.DateTime CreatedOn
+        {
+            get
+            {
+                return this._CreatedOn;
+            }
+            set
+            {
+                this.OnCreatedOnChanging(value);
+                this.ReportPropertyChanging("CreatedOn");
+                this._CreatedOn = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("CreatedOn");
+                this.OnCreatedOnChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.DateTime _CreatedOn;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanging(global::System.DateTime value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanged();
+        /// <summary>
+        /// There are no comments for property CreatedBy in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string CreatedBy
+        {
+            get
+            {
+                return this._CreatedBy;
+            }
+            set
+            {
+                this.OnCreatedByChanging(value);
+                this.ReportPropertyChanging("CreatedBy");
+                this._CreatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("CreatedBy");
+                this.OnCreatedByChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _CreatedBy;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanged();
+        /// <summary>
+        /// There are no comments for property UpdatedOn in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<global::System.DateTime> UpdatedOn
         {
             get
             {
@@ -1035,15 +1143,15 @@ namespace NewsVn.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _UpdatedOn;
+        private global::System.Nullable<global::System.DateTime> _UpdatedOn;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnUpdatedOnChanging(global::System.DateTime value);
+        partial void OnUpdatedOnChanging(global::System.Nullable<global::System.DateTime> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnUpdatedOnChanged();
         /// <summary>
         /// There are no comments for property UpdatedBy in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string UpdatedBy
@@ -1056,7 +1164,7 @@ namespace NewsVn.Data
             {
                 this.OnUpdatedByChanging(value);
                 this.ReportPropertyChanging("UpdatedBy");
-                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("UpdatedBy");
                 this.OnUpdatedByChanged();
             }
@@ -2078,13 +2186,13 @@ namespace NewsVn.Data
         /// <param name="content">Initial value of Content.</param>
         /// <param name="seoUrl">Initial value of SeoUrl.</param>
         /// <param name="checkPageView">Initial value of CheckPageView.</param>
-        /// <param name="updatedOn">Initial value of UpdatedOn.</param>
-        /// <param name="updatedBy">Initial value of UpdatedBy.</param>
+        /// <param name="createdOn">Initial value of CreatedOn.</param>
+        /// <param name="createdBy">Initial value of CreatedBy.</param>
         /// <param name="allowComments">Initial value of AllowComments.</param>
         /// <param name="approved">Initial value of Approved.</param>
         /// <param name="actived">Initial value of Actived.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Post CreatePost(int id, string title, string avatar, string description, string content, string seoUrl, bool checkPageView, global::System.DateTime updatedOn, string updatedBy, bool allowComments, bool approved, bool actived)
+        public static Post CreatePost(int id, string title, string avatar, string description, string content, string seoUrl, bool checkPageView, global::System.DateTime createdOn, string createdBy, bool allowComments, bool approved, bool actived)
         {
             Post post = new Post();
             post.ID = id;
@@ -2094,8 +2202,8 @@ namespace NewsVn.Data
             post.Content = content;
             post.SeoUrl = seoUrl;
             post.CheckPageView = checkPageView;
-            post.UpdatedOn = updatedOn;
-            post.UpdatedBy = updatedBy;
+            post.CreatedOn = createdOn;
+            post.CreatedBy = createdBy;
             post.AllowComments = allowComments;
             post.Approved = approved;
             post.Actived = actived;
@@ -2345,12 +2453,66 @@ namespace NewsVn.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCheckPageViewChanged();
         /// <summary>
-        /// There are no comments for property UpdatedOn in the schema.
+        /// There are no comments for property CreatedOn in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime UpdatedOn
+        public global::System.DateTime CreatedOn
+        {
+            get
+            {
+                return this._CreatedOn;
+            }
+            set
+            {
+                this.OnCreatedOnChanging(value);
+                this.ReportPropertyChanging("CreatedOn");
+                this._CreatedOn = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("CreatedOn");
+                this.OnCreatedOnChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.DateTime _CreatedOn;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanging(global::System.DateTime value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanged();
+        /// <summary>
+        /// There are no comments for property CreatedBy in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string CreatedBy
+        {
+            get
+            {
+                return this._CreatedBy;
+            }
+            set
+            {
+                this.OnCreatedByChanging(value);
+                this.ReportPropertyChanging("CreatedBy");
+                this._CreatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("CreatedBy");
+                this.OnCreatedByChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _CreatedBy;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanged();
+        /// <summary>
+        /// There are no comments for property UpdatedOn in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<global::System.DateTime> UpdatedOn
         {
             get
             {
@@ -2366,15 +2528,15 @@ namespace NewsVn.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _UpdatedOn;
+        private global::System.Nullable<global::System.DateTime> _UpdatedOn;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnUpdatedOnChanging(global::System.DateTime value);
+        partial void OnUpdatedOnChanging(global::System.Nullable<global::System.DateTime> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnUpdatedOnChanged();
         /// <summary>
         /// There are no comments for property UpdatedBy in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string UpdatedBy
@@ -2387,7 +2549,7 @@ namespace NewsVn.Data
             {
                 this.OnUpdatedByChanging(value);
                 this.ReportPropertyChanging("UpdatedBy");
-                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("UpdatedBy");
                 this.OnUpdatedByChanged();
             }
@@ -3951,13 +4113,13 @@ namespace NewsVn.Data
         /// <param name="sourceEmbed">Initial value of SourceEmbed.</param>
         /// <param name="seoUrl">Initial value of SeoUrl.</param>
         /// <param name="pageView">Initial value of PageView.</param>
-        /// <param name="updatedOn">Initial value of UpdatedOn.</param>
-        /// <param name="updatedBy">Initial value of UpdatedBy.</param>
+        /// <param name="createdOn">Initial value of CreatedOn.</param>
+        /// <param name="createdBy">Initial value of CreatedBy.</param>
         /// <param name="allowComments">Initial value of AllowComments.</param>
         /// <param name="approved">Initial value of Approved.</param>
         /// <param name="actived">Initial value of Actived.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Video CreateVideo(int id, string title, string avatar, string description, string sourceUrl, string sourceEmbed, string seoUrl, int pageView, global::System.DateTime updatedOn, string updatedBy, bool allowComments, bool approved, bool actived)
+        public static Video CreateVideo(int id, string title, string avatar, string description, string sourceUrl, string sourceEmbed, string seoUrl, int pageView, global::System.DateTime createdOn, string createdBy, bool allowComments, bool approved, bool actived)
         {
             Video video = new Video();
             video.ID = id;
@@ -3968,8 +4130,8 @@ namespace NewsVn.Data
             video.SourceEmbed = sourceEmbed;
             video.SeoUrl = seoUrl;
             video.PageView = pageView;
-            video.UpdatedOn = updatedOn;
-            video.UpdatedBy = updatedBy;
+            video.CreatedOn = createdOn;
+            video.CreatedBy = createdBy;
             video.AllowComments = allowComments;
             video.Approved = approved;
             video.Actived = actived;
@@ -4219,12 +4381,66 @@ namespace NewsVn.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPageViewChanged();
         /// <summary>
-        /// There are no comments for property UpdatedOn in the schema.
+        /// There are no comments for property CreatedOn in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime UpdatedOn
+        public global::System.DateTime CreatedOn
+        {
+            get
+            {
+                return this._CreatedOn;
+            }
+            set
+            {
+                this.OnCreatedOnChanging(value);
+                this.ReportPropertyChanging("CreatedOn");
+                this._CreatedOn = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("CreatedOn");
+                this.OnCreatedOnChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.DateTime _CreatedOn;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanging(global::System.DateTime value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedOnChanged();
+        /// <summary>
+        /// There are no comments for property CreatedBy in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string CreatedBy
+        {
+            get
+            {
+                return this._CreatedBy;
+            }
+            set
+            {
+                this.OnCreatedByChanging(value);
+                this.ReportPropertyChanging("CreatedBy");
+                this._CreatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("CreatedBy");
+                this.OnCreatedByChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _CreatedBy;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCreatedByChanged();
+        /// <summary>
+        /// There are no comments for property UpdatedOn in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<global::System.DateTime> UpdatedOn
         {
             get
             {
@@ -4240,15 +4456,15 @@ namespace NewsVn.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _UpdatedOn;
+        private global::System.Nullable<global::System.DateTime> _UpdatedOn;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnUpdatedOnChanging(global::System.DateTime value);
+        partial void OnUpdatedOnChanging(global::System.Nullable<global::System.DateTime> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnUpdatedOnChanged();
         /// <summary>
         /// There are no comments for property UpdatedBy in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string UpdatedBy
@@ -4261,7 +4477,7 @@ namespace NewsVn.Data
             {
                 this.OnUpdatedByChanging(value);
                 this.ReportPropertyChanging("UpdatedBy");
-                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._UpdatedBy = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("UpdatedBy");
                 this.OnUpdatedByChanged();
             }

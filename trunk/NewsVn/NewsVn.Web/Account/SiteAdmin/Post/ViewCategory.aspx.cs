@@ -50,7 +50,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
                 this.SaveChangesAndReload();
             }
-            catch (Exception ec)
+            catch (Exception)
             {
                 ltrError.Text = string.Format(ErrorBar, "Không thể ẩn danh mục được chọn!");
             }
