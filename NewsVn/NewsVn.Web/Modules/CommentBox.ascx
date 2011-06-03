@@ -18,8 +18,8 @@
         $("#<%= btnSend.ClientID %>").click(function () {
             sendComment(
                 $("#<%= txtName.ClientID %>").val(),
-                $("#<%= txtEmail.ClientID %>").val(),
                 $("#<%= txtTitle.ClientID %>").val(),
+                 $("#<%= txtEmail.ClientID %>").val(),
                 $("#<%= txtComment.ClientID %>").val(),
                 <%= PostID %>,
                 $("#comment_box_captchaKey").val(),
@@ -130,14 +130,17 @@
 </script>
 
 <script type="text/javascript">
-    $(function () {        
+    $(function () {
         var selectorID = "#<%= ddlOrder.ClientID %>";
         var linkSelector = $(selectorID);
         linkSelector.selectmenu({ width: "84px" });
         linkSelector.next(".ui-selectmenu").addClass("select");
         linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
         $(selectorID + "-menu").width(90);
-        $("#<%= txtComment.ClientID %>").maxlength({ maxCharacters: 200, status: false, showAlert: true });
+        $("#<%= txtComment.ClientID %>").maxlength({ maxCharacters: 198, status: false, showAlert: true });
+        $("#<%= txtName.ClientID %>").maxlength({ maxCharacters: 48, status: false, showAlert: true });
+        $("#<%= txtEmail.ClientID %>").maxlength({ maxCharacters: 98, status: false, showAlert: true });
+        $("#<%= txtTitle.ClientID %>").maxlength({ maxCharacters: 48, status: false, showAlert: true });
     });
 </script>
 

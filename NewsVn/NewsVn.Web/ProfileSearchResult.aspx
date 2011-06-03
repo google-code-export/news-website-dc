@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="extraHead" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" Runat="Server">
-    <nsn:ProfileSearchResult runat="server" />
+    <nsn:ProfileSearchResults runat="server" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:ProfileSearchBox runat="server" />

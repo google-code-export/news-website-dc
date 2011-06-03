@@ -99,8 +99,7 @@ namespace NewsVn.Web
         //lay tieu_diem theo chu de, pageview cao nhat trong thang
         void load_pletFocusPost()
         {
-            var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
-                && p.CheckPageView == true
+            var listData = _Posts.Where(p =>p.CheckPageView == true
                 && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
                 //.Where(p => p.ApprovedOn.Value.AddDays(30) >= DateTime.Now)
                 .Select(p => new
@@ -121,8 +120,7 @@ namespace NewsVn.Web
         //lay post theo chu de  & <= post.approvedon && != viewstate('visitedID')
         void load_pletRelationPostList(Data.Post postData)
         {
-            var listData = _Posts.Where(p => p.Actived == true && p.Approved == true
-               && p.Category.ID == intCateID)
+            var listData = _Posts.Where(p =>p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
                .Where(p => p.ApprovedOn <= postData.ApprovedOn && p.ID!=postData.ID)
                .Select(p => new
                {
