@@ -24,7 +24,7 @@ namespace NewsVn.Web
         {
             //did not use cache! large record
             //xu ly paging trong khoang vd: <<< 95 96 97 98 99 100 >>>
-            var data = ApplicationManager.Entities.UserProfiles.OrderByDescending(u=>u.Account)
+            var data = ApplicationManager.Entities.UserProfiles.Where(u=>u.Description!=null).OrderByDescending(u=>u.Account)
                 .Select(u => new { 
                 u.Account,u.Age,u.Country,u.UpdatedOn,
                 Gender =u.Gender==true?"Nam":"Nữ",
@@ -40,7 +40,7 @@ namespace NewsVn.Web
         {
             Random x = new Random();
             var _UserProfiles_var = ApplicationManager.Entities.UserProfiles;
-            var cloneDataStructure = _UserProfiles_var.OrderByDescending(u => u.Account).Take(0)
+            var cloneDataStructure = _UserProfiles_var.Where(u => u.Description != null).OrderByDescending(u => u.Account).Take(0)
                  .Select(u => new
                  {
                      layoutPosition="",

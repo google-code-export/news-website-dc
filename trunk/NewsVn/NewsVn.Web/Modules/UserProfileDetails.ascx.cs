@@ -23,16 +23,27 @@ namespace NewsVn.Web.Modules
         {
             //<%--Every user has maximum 3 avatars, first avatar will be shown on profile list, if user didnt upload an avatar, use default 'No Photo' image in replace--%>
             //<%--In database, each image url will be separated by ';'--%>
-            arr = Datasource.Avatar.Split(';').ToList();
-            int count = arr.Count();
-            while (count <= 2)
+            try
             {
-                arr.Add("/resources/Images/No_Image/no_avatar.jpg");
-                count++;
+                arr = Datasource.Avatar.Split(';').ToList();
+                int count = arr.Count();
+                while (count <= 2)
+                {
+                    arr.Add("/resources/Images/No_Image/no_avatar.jpg");
+                    count++;
+                }
+                Image2.ImageUrl = arr[0];
+                Image3.ImageUrl = arr[1];
+                Image4.ImageUrl = arr[2];
             }
-            Image2.ImageUrl = arr[0];
-            Image3.ImageUrl = arr[1];
-            Image4.ImageUrl = arr[2];
+            catch (Exception)
+            {
+
+                Image2.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
+                Image3.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
+                Image4.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
+            }
+           
             this.ShowEmail = Datasource.ShowEmail;
             this.ShowPhone = Datasource.ShowPhone;
         }

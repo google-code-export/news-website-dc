@@ -75,9 +75,9 @@
                 <span style="margin-left:20px"> Đến:</span>
             </p>
             <asp:DropDownList ID="ddlGender" runat="server">
-                <asp:ListItem Value="True" Text="Nam" />
-                <asp:ListItem Value="False" Text="Nữ" />
-                <asp:ListItem Value="" Text="Nam & Nữ" />
+                <asp:ListItem Value="1" Text="Nam" />
+                <asp:ListItem Value="2" Text="Nữ" />
+                <asp:ListItem Value="0" Text="Nam & Nữ" />
             </asp:DropDownList>
             <asp:DropDownList ID="ddlFromAge" runat="server" />
             <asp:DropDownList ID="ddlToAge" runat="server" />
@@ -85,44 +85,44 @@
         <li>
             <p style="margin-top:0">Hình đại diện:</p>
             <asp:DropDownList ID="ddlAvatarAvailable" runat="server">
-                <asp:ListItem Value="True" Text="Có hình" />
-                <asp:ListItem Value="False" Text="Không hình" />
-                <asp:ListItem Value="" Text="Có hình & Không hình" />
+                <asp:ListItem Value="2" Text="Có hình" />
+                <asp:ListItem Value="1" Text="Không hình" />
+                <asp:ListItem Value="0" Text="Có hình & Không hình" />
             </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">Tình trạng hôn nhân:</p>
             <asp:DropDownList ID="ddlMaritalStatus" runat="server">
-                <asp:ListItem Text="Sao cũng được" />
-                <asp:ListItem Text="Độc thân" />
-                <asp:ListItem Text="Có người yêu" />
-                <asp:ListItem Text="Kết hôn" />
-                <asp:ListItem Text="Ly thân" />
-                <asp:ListItem Text="Ly dị" />
+                <asp:ListItem Value="0" Text="Sao cũng được" />
+                <asp:ListItem Value="1" Text="Độc thân" />
+                <asp:ListItem Value="2" Text="Có người yêu" />
+                <asp:ListItem Value="3" Text="Kết hôn" />
+                <asp:ListItem Value="4" Text="Ly thân" />
+                <asp:ListItem Value="5" Text="Ly dị" />
             </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">Học vấn:</p>
             <asp:DropDownList ID="ddlEducation" runat="server">
-                <asp:ListItem Text="Sao cũng được" />
-                <asp:ListItem Text="Trung học" />
-                <asp:ListItem Text="Đang học đại học" />
-                <asp:ListItem Text="Cử nhân" />
-                <asp:ListItem Text="Thạc sĩ" />
-                <asp:ListItem Text="Tiến sĩ" />
+                <asp:ListItem Value="0" Text="Sao cũng được" />
+                <asp:ListItem Value="1" Text="Trung học" />
+                <asp:ListItem Value="2" Text="Đang học đại học" />
+                <asp:ListItem Value="3" Text="Cử nhân" />
+                <asp:ListItem Value="4" Text="Thạc sĩ" />
+                <asp:ListItem Value="5" Text="Tiến sĩ" />
             </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">Tôn giáo:</p>
             <asp:DropDownList ID="ddlReligion" runat="server">            
-                <asp:ListItem Text="Không có đạo" />
-                <asp:ListItem Text="Đạo Phật" />
-                <asp:ListItem Text="Đạo Thiên Chúa" />
-                <asp:ListItem Text="Đạo Ấn" />
-                <asp:ListItem Text="Đạo Hồi" />
-                <asp:ListItem Text="Đạo Do Thái" />
-                <asp:ListItem Text="Đạo Tin Lành" />
-                <asp:ListItem Text="Đạo Cơ Đốc" />
+                <asp:ListItem Value="0" Text="Không có đạo" />
+                <asp:ListItem Value="1" Text="Đạo Phật" />
+                <asp:ListItem Value="2" Text="Đạo Thiên Chúa" />
+                <asp:ListItem Value="3" Text="Đạo Ấn" />
+                <asp:ListItem Value="4" Text="Đạo Hồi" />
+                <asp:ListItem Value="5" Text="Đạo Do Thái" />
+                <asp:ListItem Value="6" Text="Đạo Tin Lành" />
+                <asp:ListItem Value="7" Text="Đạo Cơ Đốc" />
             </asp:DropDownList>
         </li>
         <li>
@@ -131,14 +131,14 @@
                 <span style="margin-left:80px">Uống rượu:</span>
             </p>
             <asp:DropDownList ID="ddlSmoke" runat="server">
-                <asp:ListItem Value="" Text="Sao cũng được" />
-                <asp:ListItem Value="True" Text="Có" />
-                <asp:ListItem Value="False" Text="Không" />
+                <asp:ListItem Value="0" Text="Sao cũng được" />
+                <asp:ListItem Value="2" Text="Có" />
+                <asp:ListItem Value="1" Text="Không" />
             </asp:DropDownList>
             <asp:DropDownList ID="ddlDrink" runat="server">
-                <asp:ListItem Value="" Text="Sao cũng được" />
-                <asp:ListItem Value="True" Text="Có" />
-                <asp:ListItem Value="False" Text="Không" />
+                <asp:ListItem Value="0" Text="Sao cũng được" />
+                <asp:ListItem Value="2" Text="Có" />
+                <asp:ListItem Value="1" Text="Không" />
             </asp:DropDownList>
         </li>
         <li>
@@ -148,7 +148,7 @@
         <li>
             <p style="margin-top:0">Quốc gia:</p>
             <asp:DropDownList ID="ddlCountry" runat="server">
-                <asp:ListItem Value="" Text="Tất cả" />
+                <asp:ListItem Value="all" Text="Tất cả" />
                 <asp:ListItem Value="af" Text="Afghanistan" />
                 <asp:ListItem Value="eg" Text="Ai Cập" />
                 <asp:ListItem Value="al" Text="Albania" />
@@ -400,8 +400,8 @@
                 <AnonymousTemplate>
                     <div id="confirmBox" class="dialog" title="Bạn chưa đăng nhập">
                         <br />
-                        <a class="button-login" href='<%= HostName + "account/form/login.aspx" %>'>Đăng nhập</a>
-                        <a class="button-register" href='<%= HostName + "account/form/signup.aspx" %>' style="margin-left:4px">Đăng ký</a>
+                        <a href='<%= HostName+ "tinh-yeu-gia-dinh/tim-ban/dang-nhap.aspx" %>' class="button-login">Đăng nhập</a>
+                        <a href='<%= HostName+ "tinh-yeu-gia-dinh/tai-khoan/dang-ky.aspx" %>' class="button-register" style="margin-left:4px">Đăng ký</a>
                     </div>
                     <asp:LinkButton ID="LinkButton1" Text="Hồ sơ của tôi" CssClass="button left" runat="server"
                         OnClientClick="return openLoginConfirm()" />
@@ -414,8 +414,9 @@
                     </asp:RoleGroup>
                 </RoleGroups>
             </asp:LoginView>
-            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" style="margin-right:-2px;" runat="server"
-                PostBackUrl="~/profilesearchresult.aspx" />
+            <asp:LinkButton ID="btnSearch" Text="Tìm" CssClass="button-search right" 
+                style="margin-right:-2px;" runat="server"
+                onclick="btnSearch_Click" />
             <div class="clear"></div>
         </li>
     </ul>

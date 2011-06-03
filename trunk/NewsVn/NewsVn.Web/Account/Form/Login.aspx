@@ -43,8 +43,9 @@
                                 <li>
                                     <label style="width:67px"></label>
                                     <asp:CheckBox ID="RememberMe" runat="server" Text="Nhớ thông tin" /> |
+                                    
                                     <asp:HyperLink ID="PasswordRecoveryLink" runat="server" Text="Quên mật khẩu?"
-                                        NavigateUrl="~/Account/Form/LostPassword.aspx" />
+                                        NavigateUrl="~/tinh-yeu-gia-dinh/tai-khoan/quen-mat-khau.aspx" />
                                 </li>                            
                                 <li class="commands">
                                     <asp:Button ID="LoginButton" style="display:none;" UseSubmitBehavior="false" CommandName="Login" runat="server" />
@@ -62,7 +63,7 @@
                         Bạn chưa có tài khoản? Hay nhanh tay đăng ký để được tham gia tìm bạn 4 phương trên trang web của chúng tôi.
                         Với lượt truy cập lớn và hồ sơ mới cập nhật mỗi ngày. Còn chờ gì nữa, hay đăng ký ngay thôi!
                     </p>
-                    <asp:HyperLink NavigateUrl="~/Account/Form/Signup.aspx" CssClass="button-register right" style="font-size:1.19em" Text="Đăng ký" runat="server" />
+                    <a href='<%= HostName+ "tinh-yeu-gia-dinh/tai-khoan/dang-ky.aspx" %>' class="button-register right" style="font-size:1.19em">Đăng ký</a>
                     <div class="clear"></div>
                 </AnonymousTemplate>
                 <LoggedInTemplate>
