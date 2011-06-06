@@ -151,7 +151,6 @@ namespace NewsVn.Web.Utils
                     comment.Post = _Posts.FirstOrDefault(p => p.ID == postID);
                     ApplicationManager.Entities.AddToPostComments(comment);
                     ApplicationManager.Entities.SaveChanges();
-                    ApplicationManager.UpdateCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments);
                    // ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories);
                 }
                 else return string.Format(ErrorBar, "Captcha không hợp lệ.");
