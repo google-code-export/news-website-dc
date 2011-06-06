@@ -137,7 +137,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
                CategoryID = p.Category.ID,p.PageView,
                CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name
-            }).OrderByDescending(p => p.UpdatedOn).ThenByDescending(p => p.ApprovedOn)
+            }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn)
                 .Skip((pageIndex - 1) * pageSize).Take(pageSize);
             rptPostList.DataBind();
         }
