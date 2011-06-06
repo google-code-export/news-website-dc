@@ -1621,6 +1621,7 @@
     <Content Include="Modules\AdSearchBox.ascx" />
     <Content Include="Modules\CategorizedAdPostList.ascx" />
     <Content Include="Modules\CategorizedPostList.ascx" />
+    <Content Include="Modules\CategorizedVideoList.ascx" />
     <Content Include="Modules\CommentBox.ascx" />
     <Content Include="Modules\DetailedAdPostItem.ascx" />
     <Content Include="Modules\DetailedPostItem.ascx" />
@@ -1659,6 +1660,7 @@
     <Content Include="Modules\FooterCategoryList.ascx" />
     <Content Include="Modules\LatestPostsPortlet.ascx" />
     <Content Include="Modules\MenuBar.ascx" />
+    <Content Include="Modules\NewVideoPortlet.ascx" />
     <Content Include="Modules\PostsPortlet.ascx" />
     <Content Include="Modules\ProfileSearchBox.ascx" />
     <Content Include="Modules\QuickSearchBox.ascx" />
@@ -1974,6 +1976,13 @@
     <Compile Include="Modules\CategorizedPostList.ascx.designer.cs">
       <DependentUpon>CategorizedPostList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\CategorizedVideoList.ascx.cs">
+      <DependentUpon>CategorizedVideoList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\CategorizedVideoList.ascx.designer.cs">
+      <DependentUpon>CategorizedVideoList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\CommentBox.ascx.cs">
       <DependentUpon>CommentBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2060,6 +2069,13 @@
     </Compile>
     <Compile Include="Modules\MenuBar.ascx.designer.cs">
       <DependentUpon>MenuBar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\NewVideoPortlet.ascx.cs">
+      <DependentUpon>NewVideoPortlet.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\NewVideoPortlet.ascx.designer.cs">
+      <DependentUpon>NewVideoPortlet.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\PostsPortlet.ascx.cs">
       <DependentUpon>PostsPortlet.ascx</DependentUpon>

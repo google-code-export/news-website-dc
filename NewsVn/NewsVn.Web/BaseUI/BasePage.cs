@@ -33,6 +33,7 @@ namespace NewsVn.Web.BaseUI
         protected IQueryable<Data.Category> _VideoCategories;
         protected IQueryable<Data.PostComment> _PostComments;
         protected IQueryable<Data.Post> _Posts;
+        protected IQueryable<Data.Video> _Videos;
         protected IQueryable<Data.UserMessage> _UserMessages;
         protected IQueryable<Data.UserProfileComment> _UserProfileComments;
         protected IQueryable<Data.UserProfile> _UserProfiles;
@@ -66,6 +67,7 @@ namespace NewsVn.Web.BaseUI
             _UserProfiles = ApplicationManager.Entities.UserProfiles.AsQueryable();
             _PostComments = ApplicationManager.Entities.PostComments.AsQueryable();
             _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived);
+            _Videos = ApplicationManager.Entities.Videos.Where(v => v.Approved && v.Actived && v.Category.Actived);
             _AdPosts = ApplicationManager.Entities.AdPosts.Where(a => a.Actived);
             //_AdPosts = ApplicationManager.SetCacheData<Data.AdPost>(ApplicationManager.Entities.AdPosts, null);
             base.OnInit(e);

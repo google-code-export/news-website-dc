@@ -1,7 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CommentBox.ascx.cs" Inherits="NewsVn.Web.Modules.CommentBox" %>
 
+<%--<link href="<%= Page.ResolveUrl("~/styles/validation.css") %>" rel="stylesheet" type="text/css" />
+<script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.validationEngine.js") %>" type="text/javascript"></script>
+<script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.validationEngine-vi.js") %>" type="text/javascript"></script>--%>
+
 <script type="text/javascript">
-    
     $(function () {
         showCommentDialog();
         showCommentList(1, false);
@@ -19,7 +22,7 @@
             sendComment(
                 $("#<%= txtName.ClientID %>").val(),
                 $("#<%= txtTitle.ClientID %>").val(),
-                 $("#<%= txtEmail.ClientID %>").val(),
+                    $("#<%= txtEmail.ClientID %>").val(),
                 $("#<%= txtComment.ClientID %>").val(),
                 <%= PostID %>,
                 $("#comment_box_captchaKey").val(),
@@ -103,10 +106,10 @@
         });
     }
 
-    function sendComment(UpdatedBy, title, email, content, postID, captchaKey, captchaAnswer) {
+    function sendComment(updatedBy, title, email, content, postID, captchaKey, captchaAnswer) {
         var dataObj = {
             comment: {
-                UpdatedBy: UpdatedBy,
+                UpdatedBy: updatedBy,
                 Title: title,
                 Email: email,
                 Content: content
@@ -118,8 +121,12 @@
         $.ajax({
             url: serviceUrl + "InsertComment",
             data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
-            success: function (result) {
-                $("#comment_box > ul").append("<li>" + result.d + "</li>")
+            success: function (result) {                
+                if (result.d == "OK") {
+                    $("#comment_box").dialog("close");
+                } else {
+                    $("#comment_box > ul").append("<li>" + result.d + "</li>");
+                }
             },
             complete: function() {
                 showSimpleCaptcha();
@@ -141,48 +148,49 @@
         $("#<%= txtName.ClientID %>").maxlength({ maxCharacters: 48, status: false, showAlert: true });
         $("#<%= txtEmail.ClientID %>").maxlength({ maxCharacters: 98, status: false, showAlert: true });
         $("#<%= txtTitle.ClientID %>").maxlength({ maxCharacters: 48, status: false, showAlert: true });
-    });
+    });    
 </script>
-
-<div id="comment_box" style="display:none">        
+<div id="comment_box" style="display: none">
     <ul class="ui-form ui-widget left">
-        <li>
-            <b>Bình luận của bạn:</b>
-        </li>
+        <li><b>Bình luận của bạn:</b> </li>
         <li>
             <asp:Label AssociatedControlID="txtName" Text="Họ tên:" runat="server" />
-            <asp:TextBox ID="txtName" MaxLength="50" runat="server" />
+            <asp:TextBox ID="txtName" CssClass="validate[required]" MaxLength="50" runat="server" />
         </li>
         <li>
             <asp:Label AssociatedControlID="txtEmail" Text="Email" runat="server" />
-            <asp:TextBox ID="txtEmail" MaxLength="100" runat="server" />
+            <asp:TextBox ID="txtEmail" CssClass="validate[required,custom[email]]" MaxLength="100"
+                runat="server" />
         </li>
         <li>
             <asp:Label AssociatedControlID="txtTitle" Text="Tiêu đề:" runat="server" />
-            <asp:TextBox ID="txtTitle" MaxLength="50" runat="server" />
+            <asp:TextBox ID="txtTitle" CssClass="validate[required]" MaxLength="50" runat="server" />
         </li>
         <li>
             <asp:Label AssociatedControlID="txtComment" Text="Nội dung:" CssClass="forarea" runat="server" />
-            <asp:TextBox ID="txtComment" TextMode="MultiLine" Rows="8" runat="server" />
+            <asp:TextBox ID="txtComment" CssClass="validate[required]" TextMode="MultiLine" Rows="8" runat="server" />
         </li>
         <li>
-            <label for="comment_box_captcha" class="left">Captcha:</label>
-            <div id="comment_box_captcha" class="left"></div>
+            <label for="comment_box_captcha" class="left">
+                Captcha:</label>
+            <div id="comment_box_captcha" class="left">
+            </div>
             <asp:Button ID="btnReCaptcha" Text="Khác" CssClass="button right" runat="server" />
             <div class="clear"></div>
         </li>
         <li>
             <asp:Label AssociatedControlID="txtCaptchaAnswer" Text="Trả lời:" runat="server" />
-            <asp:TextBox ID="txtCaptchaAnswer" Text="50" runat="server" />
+            <asp:TextBox ID="txtCaptchaAnswer" CssClass="validate[required]" MaxLength="20" runat="server" />
         </li>
         <li class="command">
-            <asp:Button ID="btnSend" Text="Gởi bình luận" CssClass="button right" runat="server" />
+            <asp:HyperLink ID="btnSend" Text="Gởi bình luận" CssClass="button right" runat="server" />
             <div class="clear"></div>
         </li>
     </ul>
     <div class="comment-list right">
         <div class="list-command">
-            <div id="comment_box_pager" class="data-pager left"></div>
+            <div id="comment_box_pager" class="data-pager left">
+            </div>
             <div class="right">
                 Sắp xếp theo:
                 <asp:DropDownList ID="ddlOrder" runat="server">
@@ -192,7 +200,8 @@
             </div>
             <div class="clear"></div>
         </div>
-        <ul id="comment_box_list"></ul>
+        <ul id="comment_box_list">
+        </ul>
     </div>
     <div class="clear"></div>
 </div>

@@ -6,8 +6,6 @@
             $(this).prev(".decoy").val($(this).val());
         });
         $("#<%= txtDescription.ClientID %>").maxlength({ maxCharacters: 980, status: false, showAlert: true });
-        $("#<%= txtTitle.ClientID %>").maxlength({ maxCharacters: 280, status: false, showAlert: true });
-        $("#<%= txtAvatar.ClientID %>").maxlength({ maxCharacters: 480, status: false, showAlert: true });
     });
     function checkValidation() {
         return $("#update_post_form").validationEngine('validate');
