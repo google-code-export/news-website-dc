@@ -154,14 +154,13 @@ namespace NewsVn.Web.Utils
                     ApplicationManager.UpdateCacheData<Data.PostComment>(ApplicationManager.Entities.PostComments);
                    // ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories);
                 }
-                else return string.Format("{0}", "Captcha không hợp lệ.");
+                else return string.Format(ErrorBar, "Captcha không hợp lệ.");
             }
             catch (Exception)
             {
-                return string.Format("{0}", "Không thể thêm bình luận của bạn.");
+                return string.Format(ErrorBar, "Không thể thêm bình luận của bạn.");
             }
-
-            return string.Format("{0}", "Bình luận của bạn đã được gởi và chờ kiểm duyệt.");
+            return string.Format("{0}", "OK");
         }
 
         #endregion
