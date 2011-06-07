@@ -38,6 +38,9 @@
     <Reference Include="CuteEditor.ImageEditor">
       <HintPath>..\..\resources\assemblies\CuteEditor\CuteEditor.ImageEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\..\resources\assemblies\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="Intelligencia.UrlRewriter">
       <HintPath>..\..\resources\assemblies\Intelligencia.UrlRewriter.dll</HintPath>
     </Reference>
@@ -1748,6 +1751,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Default.aspx" />
   </ItemGroup>
