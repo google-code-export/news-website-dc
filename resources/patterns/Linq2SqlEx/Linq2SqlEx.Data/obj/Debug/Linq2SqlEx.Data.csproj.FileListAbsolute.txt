@@ -1,0 +1,5 @@
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Data\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Data\bin\Debug\Linq2SqlEx.Data.dll
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Data\bin\Debug\Linq2SqlEx.Data.pdb
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Data\obj\Debug\Linq2SqlEx.Data.dll
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Data\obj\Debug\Linq2SqlEx.Data.pdb

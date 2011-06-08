@@ -1,0 +1,7 @@
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Run\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Run\bin\Debug\Linq2SqlEx.Run.exe
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Run\bin\Debug\Linq2SqlEx.Run.pdb
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Run\bin\Debug\Linq2SqlEx.Data.dll
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Run\bin\Debug\Linq2SqlEx.Data.pdb
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Run\obj\x86\Debug\Linq2SqlEx.Run.exe
+C:\Users\Waston\Documents\Visual Studio 2010\Projects\Linq2SqlEx\Linq2SqlEx.Run\obj\x86\Debug\Linq2SqlEx.Run.pdb
