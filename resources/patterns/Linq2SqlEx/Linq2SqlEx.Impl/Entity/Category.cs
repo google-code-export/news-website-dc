@@ -10,9 +10,9 @@ using Linq2SqlEx.Data.Model;
 namespace Linq2SqlEx.Impl.Entity
 {
     [Table(Name = "Categories")]
-    public class Category : Base, ISerializable
+    public class Category : Base<int>, ISerializable
     {
-        [Column(IsPrimaryKey = true)]
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
 
         [Column]

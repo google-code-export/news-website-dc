@@ -8,9 +8,9 @@ namespace Linq2SqlEx.Impl.Context
 {
     public class NewsVnContext : DbContext, IDisposable
     {
-        public Repository<Entity.Category> CategoryRespo { get; private set; }
+        public Repository<Entity.Category, int> CategoryRespo { get; private set; }
 
-        public Repository<Entity.Post> PostRespo { get; private set; }
+        public Repository<Entity.Post, int> PostRespo { get; private set; }
         
         public NewsVnContext(string connectionString)
         {
@@ -19,8 +19,8 @@ namespace Linq2SqlEx.Impl.Context
             
             this.CreateDataContext();
 
-            this.CategoryRespo = new Repository<Entity.Category>(_ctx);
-            this.PostRespo = new Repository<Entity.Post>(_ctx);
+            this.CategoryRespo = new Repository<Entity.Category, int>(_ctx);
+            this.PostRespo = new Repository<Entity.Post, int>(_ctx);
         }
 
         public void Dispose()

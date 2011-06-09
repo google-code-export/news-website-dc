@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Linq2SqlEx.Data.Model
 {
-    public abstract class Base
+    public abstract class Base<TID>
     {
-        public virtual int ID { get; set; }
+        public virtual TID ID { get; set; }
         
         public override bool Equals(object obj)
         {

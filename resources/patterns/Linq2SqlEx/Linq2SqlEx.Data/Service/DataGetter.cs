@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Linq2SqlEx.Data.Service
 {
-    public class DataGetter<E> : ICallable<E>, IPageable<E>, ISortable<E>, IDisposable where E : Model.Base
+    public class DataGetter<E, TID> : ICallable<E, TID>, IPageable<E, TID>, ISortable<E, TID>, IDisposable where E : Model.Base<TID>
     {
         DataContext _ctx;
 
@@ -15,7 +15,7 @@ namespace Linq2SqlEx.Data.Service
         {
             _ctx = context;
         }
-        
+
         public E getFirst()
         {
             return this.getFirst(e => true);
@@ -44,6 +44,11 @@ namespace Linq2SqlEx.Data.Service
         public E getAtIndex(int index, Func<E, bool> predicate)
         {
             return this.getTable().Where(predicate).ElementAtOrDefault(index);
+        }
+
+        public E getOne(TID id)
+        {
+            return this.getOne(e => e.ID.Equals(id));
         }
 
         public E getOne(Func<E, bool> predicate)

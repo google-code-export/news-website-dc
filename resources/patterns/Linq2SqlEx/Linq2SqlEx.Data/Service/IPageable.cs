@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Linq2SqlEx.Data.Service
 {
-    public interface IPageable<E> where E : Model.Base
+    public interface IPageable<E, TID> where E : Model.Base<TID>
     {
         List<E> getSubList(int fromIndex, int toIndex);
 
