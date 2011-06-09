@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Linq2SqlEx.Data.Service
 {
-    public interface ICallable<E> where E : Model.Base
+    public interface ICallable<E, TID> where E : Model.Base<TID>
     {
         E getFirst();
 
@@ -21,6 +21,8 @@ namespace Linq2SqlEx.Data.Service
 
         E getAtIndex(int index, Func<E, bool> predicate);
 
+        E getOne(TID id);
+        
         E getOne(Func<E, bool> predicate);
 
         Table<E> getTable();

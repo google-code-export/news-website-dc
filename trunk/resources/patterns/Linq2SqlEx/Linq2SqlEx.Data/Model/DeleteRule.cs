@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Linq2SqlEx.Data.Service
+namespace Linq2SqlEx.Data.Model
 {
-    public interface ISortable<E, TID> where E : Model.Base<TID>
+    public enum DeleteRule
     {
-
+        NoAction, Cascade, SetNull, SetDefault
     }
 }

@@ -25,6 +25,11 @@ namespace Linq2SqlEx.Run
                 {
                     Console.WriteLine(cate.ToString());
                 }
+
+                foreach (var post in db.CategoryRespo.Getter.getFirst().Posts)
+                {
+                    Console.WriteLine(post.ToString());
+                }
             }
         }
     }
