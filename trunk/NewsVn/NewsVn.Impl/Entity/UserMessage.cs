@@ -32,7 +32,7 @@ namespace NewsVn.Impl.Entity
 
         private EntityRef<UserProfile> _userProfile;
 
-        [Association(Storage = "_userProfile", ThisKey = "To", OtherKey = "Account", IsForeignKey = true)]
+        [Association(Storage = "_userProfile", ThisKey = "To", OtherKey = "ID", IsForeignKey = true)]
         public UserProfile UserProfile
         {
             get { return this._userProfile.Entity; }

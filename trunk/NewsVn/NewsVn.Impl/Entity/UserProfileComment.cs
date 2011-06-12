@@ -26,7 +26,7 @@ namespace NewsVn.Impl.Entity
 
         private EntityRef<UserProfile> _userProfile;
 
-        [Association(Storage = "_userProfile", ThisKey = "ForAccount", OtherKey = "Account", IsForeignKey = true)]
+        [Association(Storage = "_userProfile", ThisKey = "ForAccount", OtherKey = "ID", IsForeignKey = true)]
         public UserProfile UserProfile
         {
             get { return this._userProfile.Entity; }
