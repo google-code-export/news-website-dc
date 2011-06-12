@@ -5,7 +5,7 @@ using System.Text;
 using System.Data.Linq.Mapping;
 using System.Data.Linq;
 using System.Runtime.Serialization;
-using Linq2SqlEx.Data.Model;
+using Vietstream.Data.Model;
 
 namespace Linq2SqlEx.Impl.Entity
 {
