@@ -15,8 +15,9 @@ namespace NewsVn.Impl.Entity
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
         //FK
-        [Association(OtherKey = "Account")]
-        public EntitySet<UserProfile> UserProfiles { get; set; }
+        //FK
+        [Column]
+        public int ForAccount { get; set; }
         [Column]
         public  string Title
         {

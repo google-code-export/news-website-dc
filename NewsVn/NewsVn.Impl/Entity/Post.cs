@@ -13,6 +13,8 @@ namespace NewsVn.Impl.Entity
     {
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
+        [Column]
+        public int CategoryID { get; set; }
 
         [Column]
         public string Title { get; set; }
@@ -65,8 +67,7 @@ namespace NewsVn.Impl.Entity
         [Column]
         public bool Actived { get; set; }
 
-        [Column]
-        public int CategoryID { get; set; }
+       
 
         public override string ToString()
         {

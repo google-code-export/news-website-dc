@@ -22,8 +22,8 @@ namespace NewsVn.Impl.Entity
             set;
         }
         //FK
-        [Association(OtherKey = "Account")]
-        public EntitySet<UserProfile> UserProfiles { get; set; }
+        [Column]
+        public int To { get; set; }
 
         [Column]
         public string Title
