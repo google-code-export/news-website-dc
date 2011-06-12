@@ -62,14 +62,14 @@ namespace NewsVn.Web
         private void load_pletAdsRelated(Data.AdPost inputAdPost)
         {
             var data = _AdPosts.Where(p => p.ID != inputAdPost.ID && p.Actived == true)// && p.ExpiredOn >= DateTime.Now
-                .Where(p => p.UpdatedOn <= inputAdPost.UpdatedOn)
+                .Where(p => p.CreatedOn <= inputAdPost.CreatedOn)
                     .Select(p => new
                     {
                         p.Title,
                         p.SeoUrl,
-                        p.UpdatedOn,
+                        p.CreatedOn,
                         p.Payment,
-                    }).OrderByDescending(p=>p.Payment).ThenByDescending(p=>p.UpdatedOn).Take(15).ToList();
+                    }).OrderByDescending(p => p.Payment).ThenByDescending(p => p.CreatedOn).Take(15).ToList();
             pletAdsRelated.Datasource = data;
             pletAdsRelated.DataBind();
         }

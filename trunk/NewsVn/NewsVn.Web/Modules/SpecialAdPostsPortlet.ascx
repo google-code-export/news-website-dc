@@ -37,9 +37,9 @@
                         <%#NewsVn.Web.Utils.clsCommon.hintDesc(Eval("Content").ToString(),300)%>
                     </p>
                     <span class="post-info">
-                        <%# Eval("UpdatedOn", "{0:dddd, dd/MM/yyyy, HH:mm})" ) %> |
+                        <%# Eval("CreatedOn", "{0:dddd, dd/MM/yyyy, HH:mm})" ) %> |
                         Khu vực: <b><%#NewsVn.Web.Utils.clsCommon.getLocationName(int.Parse(Eval("Location").ToString()))%></b> |
-                        Đăng bởi: <b><%#Eval("UpdatedBy") %></b>
+                        Đăng bởi: <b><%#Eval("CreatedBy")%></b>
                     </span>
                 </div>
                 <div class="clear"></div>

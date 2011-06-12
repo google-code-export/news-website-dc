@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>NewsVN <%# SiteTitle %></title>
-    <meta name="robots" content="INDEX,FOLLOW"/>
+    <meta name="robots" content="NOINDEX,NOFOLLOW"/>
     <meta name="author" content="VSS Vietstream Software Solution - hotline: 01224 742 472" />
     <meta http-equiv="refresh" content="3600"/>
     <link href="<%# Page.ResolveUrl("~/images/icons/favico.ico") %>" rel="shortcut icon" type="image/x-icon" />

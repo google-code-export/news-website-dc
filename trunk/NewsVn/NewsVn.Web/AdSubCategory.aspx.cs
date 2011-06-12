@@ -61,7 +61,7 @@ namespace NewsVn.Web
                         p.Content,
                         p.Avatar,
                         p.SeoUrl,
-                        p.UpdatedOn,
+                        p.CreatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
@@ -79,7 +79,7 @@ namespace NewsVn.Web
                         p.Content,
                         p.Avatar,
                         p.SeoUrl,
-                        p.UpdatedOn,
+                        p.CreatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
