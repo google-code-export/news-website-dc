@@ -14,6 +14,12 @@ namespace Linq2SqlEx.Data.Domain
 
         public string ConnectionString { get; set; }
 
+        public bool DeferredLoadingEnabled
+        {
+            get { return _ctx.DeferredLoadingEnabled; }
+            set { _ctx.DeferredLoadingEnabled = value; }
+        }
+
         protected void CreateDataContext()
         {
             _ctx = new DataContext(this.ConnectionString);

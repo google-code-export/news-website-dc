@@ -6,22 +6,18 @@ using System.Data.Linq;
 
 namespace Linq2SqlEx.Data.Domain
 {
-    public class Repository<E, TID> : IDisposable where E : Model.Base<TID>
+    public class Repository<E, TID> : ReadOnlyRespository<E, TID>, IDisposable where E : Model.Base<TID>
     {
-        public Service.DataGetter<E, TID> Getter { get; set; }
+        public Service.DataGetter<E, TID> Getter { get; set; }        
 
-        public Service.DataSetter<E, TID> Setter { get; set; }
-
-        public Repository(DataContext context)
+        public Repository(DataContext context) : base(context)
         {
-            this.Getter = new Service.DataGetter<E, TID>(context);
-            this.Setter = new Service.DataSetter<E, TID>(context);
+            this.Getter = new Service.DataGetter<E, TID>(context);            
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             this.Getter.Dispose();
-            this.Setter.Dispose();
         }
     }
 }

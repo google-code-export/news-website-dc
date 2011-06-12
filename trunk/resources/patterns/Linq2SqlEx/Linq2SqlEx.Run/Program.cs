@@ -14,22 +14,24 @@ namespace Linq2SqlEx.Run
 
             using (var db = new NewsVnContext(_connectionString))
             {
+                Console.WriteLine("--------------------------------------------------");
+                
                 Console.WriteLine(db.CategoryRespo.Getter.getFirst().ToString());
                 Console.WriteLine(db.CategoryRespo.Getter.getLast().ToString());
 
                 Console.WriteLine("--------------------------------------------------");
 
-                var categories = db.CategoryRespo.Getter.getQueryable();
+                var categories = db.CategoryRespo.Getter.getQueryable();//.Where(c => c.Name.Contains("kinh"));
 
                 foreach (var cate in categories)
                 {
                     Console.WriteLine(cate.ToString());
                 }
 
-                foreach (var post in db.CategoryRespo.Getter.getFirst().Posts)
+                /*foreach (var post in db.CategoryRespo.Getter.getFirst().Posts)
                 {
                     Console.WriteLine(post.ToString());
-                }
+                }*/
             }
         }
     }

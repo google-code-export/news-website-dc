@@ -8,34 +8,36 @@ namespace Linq2SqlEx.Data.Service
 {
     interface IUpdatable<E, TID> where E : Base<TID>
     {
-        int addOne(E enity);
+        void addOne(E entity);
 
-        int addOne(E entity, out TID newId);
+        void addOne(E entity, bool wait);
 
-        int addMany(IEnumerable<E> entities);
+        void addOne(E entity, out TID newId);
 
-        int editOne(E entity);
+        void addMany(IEnumerable<E> entities);
 
-        int editMany(IEnumerable<E> entities);
+        void editOne(E entity);
 
-        int mergeOne(E entity);
+        void editOne(E entity, bool wait);
 
-        int mergeMany(IEnumerable<E> entities);
+        void editMany(IEnumerable<E> entities);
 
-        int deleteOne(E entity);
+        void mergeOne(E entity);
 
-        int deleteOne(TID id);
+        void mergeOne(E entity, bool wait);
 
-        int deleteOne(E entity, DeleteRule rule);
+        void mergeMany(IEnumerable<E> entities);
 
-        int deleteOne(TID id, DeleteRule rule);
+        void deleteOne(E entity);
 
-        int deleteMany(IEnumerable<E> entities);
+        void deleteOne(E entity, bool wait);
 
-        int deleteMany(IEnumerable<int> ids);
+        void deleteOne(TID id);
 
-        int deleteMany(IEnumerable<E> entities, DeleteRule rule);
+        void deleteOne(TID id, bool wait);
 
-        int deleteMany(IEnumerable<int> ids, DeleteRule rule);
+        void deleteMany(IEnumerable<E> entities);
+
+        void deleteMany(IEnumerable<TID> ids);
     }
 }
