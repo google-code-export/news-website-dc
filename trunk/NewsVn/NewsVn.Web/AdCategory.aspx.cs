@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web
 {
@@ -28,78 +29,89 @@ namespace NewsVn.Web
         //load special ads (top payment rate)
         private void load_SpecialAds()
         {
-            //hien tai chua co set expired : p.ExpiredOn >= DateTime.Now &&
-            var datasource = _AdPosts.Where(p => p.Category.Actived == true && p.Actived == true)
-                .Select(p => new
-                {
-                    p.Category.Name,
-                    Avatar=HostName +"/Resources/"+ p.Avatar,
-                    p.Title,
-                    p.Content,//=Utils.clsCommon.hintDesc(p.Content,200),
-                    p.Payment,
-                    p.Location,// = Utils.clsCommon.getLocationName(int.Parse( p.Location)),
-                    p.SeoUrl,
-                    p.CreatedBy,
-                    p.CreatedOn
-                }).OrderByDescending(p=>p.Payment).Take(5).ToList();
+            using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                //hien tai chua co set expired : p.ExpiredOn >= DateTime.Now &&
+                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(p => p.Actived == true);
+                var datasource = _AdPosts
+                    .Select(p => new
+                    {
+                        p.Category.Name,
+                        Avatar = HostName + "/Resources/" + p.Avatar,
+                        p.Title,
+                        p.Content,//=Utils.clsCommon.hintDesc(p.Content,200),
+                        p.Payment,
+                        p.Location,// = Utils.clsCommon.getLocationName(int.Parse( p.Location)),
+                        p.SeoUrl,
+                        p.CreatedBy,
+                        p.CreatedOn
+                    }).OrderByDescending(p => p.Payment).Take(5).ToList();
+                pletSpecialAds.Datasource = datasource;
+                pletSpecialAds.DataBind();
+            }
             
-            
-            pletSpecialAds.Datasource = datasource;
-            pletSpecialAds.DataBind();
         }
         private void load_pletAdPosts()
         {
-            int indexArea = 0;
-            for (int i = 0; i < _AdCategories.Count(); i++)
+            using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var cate = _AdCategories.ElementAt(i);
-                Control UC_PortletAdPost = LoadControl("~/Modules/AdPostsPortlet.ascx");
-                var ctrPortletPost = ((Modules.AdPostsPortlet)UC_PortletAdPost);
-                ctrPortletPost.Title = cate.Name;
-                ctrPortletPost.SeoName = cate.SeoName;
-                ctrPortletPost.SeoUrl = cate.SeoUrl;
-                ctrPortletPost.indexCtrl = i.ToString();
-                if (cate.Parent != null)
+                int indexArea = 0;
+                var _AdCategories = ctx.CategoryRespo.Getter.getQueryable(c => c.Type == "adpost" && c.Actived==true);
+                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(a => a.Actived == true);
+
+                for (int i = 0; i < _AdCategories.Count(); i++)
                 {
-                    continue;
-                }
-                //set position
-                if (indexArea % 2 == 0)
-                    ctrPortletPost.CssClass = "left";
-                else
-                {
-                    ctrPortletPost.CssClass = "right";
-                    ctrPortletPost.ClearLayout = true;
-                }
-                ctrPortletPost.Datasource = _AdPosts
-                    .Where(p => p.Category.ID == cate.ID || (p.Category.Parent != null && p.Category.Parent.ID == cate.ID) && cate.Actived == true)
-                    .Select(p => new
+                    var cate = _AdCategories.ElementAt(i);
+                    Control UC_PortletAdPost = LoadControl("~/Modules/AdPostsPortlet.ascx");
+                    var ctrPortletPost = ((Modules.AdPostsPortlet)UC_PortletAdPost);
+                    ctrPortletPost.Title = cate.Name;
+                    ctrPortletPost.SeoName = cate.SeoName;
+                    ctrPortletPost.SeoUrl = cate.SeoUrl;
+                    ctrPortletPost.indexCtrl = i.ToString();
+                    if (cate.Parent != null)
                     {
-                        p.ID,
-                        p.Title,
-                        p.Content,
-                        p.Avatar,
-                        SeoUrl=HostName+ p.SeoUrl,
-                        p.CreatedOn,
-                        p.Payment,
-                        isFree = p.Payment <= 0 ? true : false,
-                        p.Location //= Utils.clsCommon.getLocationName(int.Parse(p.Location)),
-                    }).OrderByDescending(p => p.Payment).Take(20).ToList();
-                //bind subCategory
-                ctrPortletPost.subDatasource = _AdCategories.Where(p =>(p.Parent != null && p.Parent.ID == cate.ID) && cate.Actived == true)
-                    .Select(p => new
+                        continue;
+                    }
+                    //set position
+                    if (indexArea % 2 == 0)
+                        ctrPortletPost.CssClass = "left";
+                    else
                     {
-                        p.ID,
-                        p.Name,
-                        p.SeoName,
-                        SeoUrlSearch=p.SeoUrl,
-                        SeoUrl = HostName + p.SeoUrl,
-                    }).ToList();
-                //bind control
-                ctrPortletPost.DataBind();
-                AdPostArea.Controls.Add(ctrPortletPost);
-                indexArea += 1;
+                        ctrPortletPost.CssClass = "right";
+                        ctrPortletPost.ClearLayout = true;
+                    }
+                   
+                    ctrPortletPost.Datasource = _AdPosts
+                        .Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID))
+                        .Select(p => new
+                        {
+                            p.ID,
+                            p.Title,
+                            p.Content,
+                            p.Avatar,
+                            SeoUrl = HostName + p.SeoUrl,
+                            p.CreatedOn,
+                            p.Payment,
+                            isFree = p.Payment <= 0 ? true : false,
+                            p.Location //= Utils.clsCommon.getLocationName(int.Parse(p.Location)),
+                        }).OrderByDescending(p => p.Payment).Take(20).ToList();
+                    //bind subCategory
+                    ctrPortletPost.subDatasource = _AdCategories.Where(p => (p.Parent != null && p.ParentID == cate.ID) && cate.Actived == true)
+                        .Select(p => new
+                        {
+                            p.ID,
+                            p.Name,
+                            p.SeoName,
+                            SeoUrlSearch = p.SeoUrl,
+                            SeoUrl = HostName + p.SeoUrl,
+                        }).ToList();
+                    //bind control
+                    ctrPortletPost.DataBind();
+                    AdPostArea.Controls.Add(ctrPortletPost);
+                    indexArea += 1;
+                }
             }
+            
         }
     }
 }
