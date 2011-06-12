@@ -14,9 +14,8 @@ namespace NewsVn.Impl.Entity
     {
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
-        //FK
-        [Association(OtherKey = "CategoryID")]
-        public EntitySet<Category> Categories { get; set; }
+        [Column]
+        public int CategoryID { get; set; }
         [Column]
         public   string Title
         {
