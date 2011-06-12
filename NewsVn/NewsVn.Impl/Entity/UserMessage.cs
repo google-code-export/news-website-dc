@@ -12,6 +12,11 @@ namespace NewsVn.Impl.Entity
     [Table(Name = "UserMessages")]
     public class UserMessage : Base<int>, ISerializable
     {
+        public UserMessage()
+        {
+            this._userProfile = default(EntityRef<UserProfile>);
+        }
+        
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
 
@@ -24,6 +29,21 @@ namespace NewsVn.Impl.Entity
         //FK
         [Column]
         public int To { get; set; }
+
+        private EntityRef<UserProfile> _userProfile;
+
+        [Association(Storage = "_userProfile", ThisKey = "To", OtherKey = "Account", IsForeignKey = true)]
+        public UserProfile UserProfile
+        {
+            get { return this._userProfile.Entity; }
+            set
+            {
+                if (this._userProfile.HasLoadedOrAssignedValue == false)
+                {
+                    this._userProfile.Entity = value;
+                }
+            }
+        }
 
         [Column]
         public string Title

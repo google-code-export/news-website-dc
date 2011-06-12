@@ -12,12 +12,33 @@ namespace NewsVn.Impl.Entity
     [Table(Name = "Videos")]
     public class Video : Base<int>, ISerializable
     {
+        public Video()
+        {
+            this._category = default(EntityRef<Category>);
+        }
+        
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
-        //FK
+       
         //FK
         [Column]
         public int CategoryID { get; set; }
+
+        private EntityRef<Category> _category;
+
+        [Association(Storage = "_category", ThisKey = "CategoryID", OtherKey = "ID", IsForeignKey = true)]
+        public Category Category
+        {
+            get { return this._category.Entity; }
+            set
+            {
+                if (this._category.HasLoadedOrAssignedValue == false)
+                {
+                    this._category.Entity = value;
+                }
+            }
+        }
+
         [Column]
         public string Title
         {

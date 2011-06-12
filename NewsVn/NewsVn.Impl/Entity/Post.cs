@@ -5,16 +5,41 @@ using System.Text;
 using System.Data.Linq.Mapping;
 using System.Runtime.Serialization;
 using Vietstream.Data.Model;
+using System.Data.Linq;
 
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "Posts")]
     public class Post : Base<int>, ISerializable
     {
+        public Post()
+        {
+            this._category = default(EntityRef<Category>);
+        }
+        
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
+
         [Column]
         public int CategoryID { get; set; }
+
+        private EntityRef<Category> _category;
+
+        [Association(Storage = "_category", ThisKey = "CategoryID", OtherKey = "ID", IsForeignKey = true)]
+        public Category Category
+        {
+            get { return this._category.Entity; }
+            set
+            {
+                if (this._category.HasLoadedOrAssignedValue == false)
+                {
+                    this._category.Entity = value;
+                }
+            }
+        }
+
+        [Association(OtherKey = "PostID")]
+        public EntitySet<PostComment> PostComments { get; set; }
 
         [Column]
         public string Title { get; set; }

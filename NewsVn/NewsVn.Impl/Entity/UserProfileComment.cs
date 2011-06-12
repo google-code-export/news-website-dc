@@ -12,12 +12,33 @@ namespace NewsVn.Impl.Entity
     [Table(Name = "UserProfileComments")]
     public class UserProfileComment : Base<int>, ISerializable
     {
+        public UserProfileComment()
+        {
+            this._userProfile = default(EntityRef<UserProfile>);
+        }
+
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
         //FK
         //FK
         [Column]
         public int ForAccount { get; set; }
+
+        private EntityRef<UserProfile> _userProfile;
+
+        [Association(Storage = "_userProfile", ThisKey = "ForAccount", OtherKey = "Account", IsForeignKey = true)]
+        public UserProfile UserProfile
+        {
+            get { return this._userProfile.Entity; }
+            set
+            {
+                if (this._userProfile.HasLoadedOrAssignedValue == false)
+                {
+                    this._userProfile.Entity = value;
+                }
+            }
+        }
+
         [Column]
         public  string Title
         {

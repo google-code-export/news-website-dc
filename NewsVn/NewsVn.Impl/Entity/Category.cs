@@ -14,24 +14,24 @@ namespace NewsVn.Impl.Entity
     {
         public Category()
         {
-            this._Parent = default(EntityRef<Category>);
+            this._parent = default(EntityRef<Category>);
         }
         
         //key define
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
 
-        private EntityRef<Category> _Parent;
+        private EntityRef<Category> _parent;
 
-        [Association(Storage = "_Parent", ThisKey = "ParentID", OtherKey = "ID", IsForeignKey = true)]
+        [Association(Storage = "_parent", ThisKey = "ParentID", OtherKey = "ID", IsForeignKey = true)]
         public Category Parent
         {
-            get { return this._Parent.Entity; }
+            get { return this._parent.Entity; }
             set
             {
-                if (this._Parent.HasLoadedOrAssignedValue == false)
+                if (this._parent.HasLoadedOrAssignedValue == false)
                 {
-                    this._Parent.Entity = value;
+                    this._parent.Entity = value;
                 }
             }
         }

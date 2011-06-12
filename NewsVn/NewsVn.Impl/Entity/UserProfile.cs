@@ -5,147 +5,155 @@ using System.Text;
 using System.Data.Linq.Mapping;
 using System.Runtime.Serialization;
 using Vietstream.Data.Model;
+using System.Data.Linq;
 
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "UserProfiles")]
     public class UserProfile : Base<string>, ISerializable
     {
-        [Column(Name= "Account", IsPrimaryKey = true)]
+        [Column(Name = "Account", IsPrimaryKey = true)]
         public override string ID { get; set; }
-         [Column]
+
+        [Association(OtherKey = "To")]
+        public EntitySet<UserMessage> UserMessages { get; set; }
+
+        [Association(OtherKey = "ForAccount")]
+        public EntitySet<UserProfileComment> UserProfileComments { get; set; }
+        
+        [Column]
         public string Nickname
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Name
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public int Age
         {
             get;
             set;
         }
-         [Column]
-        public  bool Gender
+        [Column]
+        public bool Gender
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Avatar
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Location
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Country
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Email
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Phone
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public bool ShowEmail
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public bool ShowPhone
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public int? Height
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public int? Weight
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string BodyShape
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public bool? Drink
         {
             get;
             set;
         }
-         [Column]
-        public  bool? Smoke
+        [Column]
+        public bool? Smoke
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string MaritalStatus
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Religion
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Education
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Career
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Description
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public string Expectation
         {
             get;
             set;
         }
-         [Column]
+        [Column]
         public DateTime UpdatedOn
         {
             get;
@@ -154,7 +162,7 @@ namespace NewsVn.Impl.Entity
 
         public override string ToString()
         {
-            return "[userprofiles] ID: " + ID  + ", Name: " + Nickname;
+            return "[userprofiles] ID: " + ID + ", Name: " + Nickname;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

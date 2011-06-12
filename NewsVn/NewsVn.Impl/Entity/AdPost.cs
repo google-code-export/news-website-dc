@@ -12,114 +12,136 @@ namespace NewsVn.Impl.Entity
     [Table(Name = "AdPosts")]
     public class AdPost : Base<int>, ISerializable
     {
+        public AdPost()
+        {
+            this._category = default(EntityRef<Category>);
+        }
+        
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
+
         //FK
         [Column]
         public int CategoryID { get; set; }
+
+        private EntityRef<Category> _category;
+
+        [Association(Storage = "_category", ThisKey = "CategoryID", OtherKey = "ID", IsForeignKey = true)]
+        public Category Category
+        {
+            get { return this._category.Entity; }
+            set
+            {
+                if (this._category.HasLoadedOrAssignedValue == false)
+                {
+                    this._category.Entity = value;
+                }
+            }
+        }
+
         [Column]
-        public   string Title
+        public string Title
         {
             get;
             set;
         }
-         [Column]
-        public   string Avatar
+        [Column]
+        public string Avatar
         {
             get;
             set;
         }
-         [Column]
-        public   string Content
+        [Column]
+        public string Content
         {
             get;
             set;
         }
-         [Column]
-        public   string Location
+        [Column]
+        public string Location
         {
             get;
             set;
         }
-         [Column]
-        public   string SeoUrl
+        [Column]
+        public string SeoUrl
         {
             get;
             set;
         }
-         [Column]
-        public   string Tag
+        [Column]
+        public string Tag
         {
             get;
             set;
         }
-         [Column]
-        public   decimal Payment
+        [Column]
+        public decimal Payment
         {
             get;
             set;
         }
-         [Column]
-        public   string Contact
+        [Column]
+        public string Contact
         {
             get;
             set;
         }
-         [Column]
-        public   string ContactEmail
+        [Column]
+        public string ContactEmail
         {
             get;
             set;
         }
-         [Column]
-        public   string ContactAddress
+        [Column]
+        public string ContactAddress
         {
             get;
             set;
         }
-         [Column]
-        public   string ContactPhone
+        [Column]
+        public string ContactPhone
         {
             get;
             set;
         }
-         [Column]
-        public   System.DateTime CreatedOn
+        [Column]
+        public System.DateTime CreatedOn
         {
             get;
             set;
         }
-         [Column]
-        public   string CreatedBy
+        [Column]
+        public string CreatedBy
         {
             get;
             set;
         }
-         [Column]
-        public   DateTime? UpdatedOn
+        [Column]
+        public DateTime? UpdatedOn
         {
             get;
             set;
         }
-         [Column]
-        public   string UpdatedBy
+        [Column]
+        public string UpdatedBy
         {
             get;
             set;
         }
-         [Column]
-        public   System.DateTime ExpiredOn
+        [Column]
+        public System.DateTime ExpiredOn
         {
             get;
             set;
         }
-         [Column]
-        public   bool Actived
+        [Column]
+        public bool Actived
         {
             get;
             set;
         }
-       
+
 
         public override string ToString()
         {

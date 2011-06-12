@@ -14,75 +14,74 @@ namespace NewsVn.Impl.Entity
     {
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
+
         [Column]
-        public int CategoryID { get; set; }
+        public string Title
+        {
+            get;
+            set;
+        }
         [Column]
-        public   string Title
+        public string SourceUrl
         {
             get;
             set;
         }
-         [Column]
-        public   string SourceUrl
+        [Column]
+        public string SourceEmbed
         {
             get;
             set;
         }
-         [Column]
-        public   string SourceEmbed
+        [Column]
+        public string LinkTo
         {
             get;
             set;
         }
-         [Column]
-        public   string LinkTo
+        [Column]
+        public decimal Payment
         {
             get;
             set;
         }
-         [Column]
-        public   decimal Payment
+        [Column]
+        public int DisplayOrder
         {
             get;
             set;
         }
-         [Column]
-        public   int DisplayOrder
+        [Column]
+        public System.DateTime CreatedOn
         {
             get;
             set;
         }
-         [Column]
-        public   System.DateTime CreatedOn
+        [Column]
+        public string CreatedBy
         {
             get;
             set;
         }
-         [Column]
-        public   string CreatedBy
+        [Column]
+        public DateTime? UpdatedOn
         {
             get;
             set;
         }
-         [Column]
-        public  DateTime? UpdatedOn
+        [Column]
+        public string UpdatedBy
         {
             get;
             set;
         }
-         [Column]
-        public   string UpdatedBy
+        [Column]
+        public bool Actived
         {
             get;
             set;
         }
-         [Column]
-        public   bool Actived
-        {
-            get;
-            set;
-        }
-       
+
 
         public override string ToString()
         {
