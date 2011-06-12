@@ -18,7 +18,52 @@ namespace NewsVn.Impl.Entity
         public string Title { get; set; }
 
         [Column]
+        public string Avatar { get; set; }
+
+        [Column]
+        public string Description { get; set; }
+
+        [Column]
         public string Content { get; set; }
+
+        [Column]
+        public string SeoUrl { get; set; }
+
+        [Column]
+        public string Tag { get; set; }
+
+        [Column]
+        public int? PageView { get; set; }
+
+        [Column]
+        public bool CheckPageView { get; set; }
+
+        [Column]
+        public DateTime CreatedOn { get; set; }
+
+        [Column]
+        public string CreatedBy { get; set; }
+
+        [Column]
+        public DateTime? UpdatedOn { get; set; }
+
+        [Column]
+        public string UpdatedBy { get; set; }
+
+        [Column]
+        public bool AllowComments { get; set; }
+
+        [Column]
+        public bool Approved { get; set; }
+
+        [Column]
+        public DateTime? ApprovedOn { get; set; }
+
+        [Column]
+        public string ApprovedBy { get; set; }
+
+        [Column]
+        public bool Actived { get; set; }
 
         [Column]
         public int CategoryID { get; set; }

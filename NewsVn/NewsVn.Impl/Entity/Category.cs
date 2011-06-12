@@ -12,11 +12,9 @@ namespace NewsVn.Impl.Entity
     [Table(Name = "Categories")]
     public class Category : Base<int>, ISerializable
     {
+        //key define
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
-
-        [Column]
-        public string Name { get; set; }
 
         [Association(ThisKey = "ParentID", OtherKey = "ID", IsForeignKey = true)]
         public Category Parent { get; set; }
@@ -29,6 +27,28 @@ namespace NewsVn.Impl.Entity
 
         [Column]
         public int? ParentID { get; set; }
+        //end key define
+        
+        [Column]
+        public string Type { get; set; }
+
+        [Column]
+        public string Name { get; set; }
+
+        [Column]
+        public string Description { get; set; }
+
+        [Column]
+        public string SeoName { get; set; }
+
+        [Column]
+        public string SeoUrl { get; set; }
+
+        [Column]
+        public DateTime UpdatedOn { get; set; }
+
+        [Column]
+        public bool Actived { get; set; }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
