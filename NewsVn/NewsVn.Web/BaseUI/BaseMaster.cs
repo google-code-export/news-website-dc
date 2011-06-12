@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using NewsVn.Data;
 using NewsVn.Web;
 using NewsVn.Web.Utils;
 using System.Text;

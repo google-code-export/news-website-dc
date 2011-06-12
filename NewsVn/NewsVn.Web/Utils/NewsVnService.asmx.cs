@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Services;
 using System.Text;
 using System.Xml.Linq;
-using NewsVn.Core.Caching;
 using System.Collections;
 
 namespace NewsVn.Web.Utils

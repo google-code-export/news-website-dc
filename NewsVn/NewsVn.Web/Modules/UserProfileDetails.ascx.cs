@@ -9,7 +9,7 @@ namespace NewsVn.Web.Modules
 {
     public partial class UserProfileDetails : System.Web.UI.UserControl
     {
-        public Data.UserProfile Datasource { get; set; }
+        public Impl.Entity.UserProfile Datasource { get; set; }
         //Sample property used only for building layout
         //Replace with real UserProfile.ShowEmail
         public bool ShowEmail { get; set; }
