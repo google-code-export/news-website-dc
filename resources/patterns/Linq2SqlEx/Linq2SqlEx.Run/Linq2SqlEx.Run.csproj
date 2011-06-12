@@ -40,16 +40,15 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Vietstream.Data">
+      <HintPath>..\..\..\assemblies\Vietstream.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Linq2SqlEx.Data\Linq2SqlEx.Data.csproj">
-      <Project>{05DCF5F2-B1AA-4467-BBCA-7B7E5E8A5D21}</Project>
-      <Name>Linq2SqlEx.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Linq2SqlEx.Impl\Linq2SqlEx.Impl.csproj">
       <Project>{EE4C1CD0-8A70-495E-BEBE-264EF3F12D0D}</Project>
       <Name>Linq2SqlEx.Impl</Name>
