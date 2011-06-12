@@ -51,7 +51,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -61,7 +60,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Form\Login.aspx" />
@@ -2327,16 +2325,6 @@
     <Folder Include="Resources\Media\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NewsVn.Core\NewsVn.Core.csproj">
-      <Project>{DF858061-5E24-4D12-B071-D1F7AEA28337}</Project>
-      <Name>NewsVn.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NewsVn.Data\NewsVn.Data.csproj">
-      <Project>{5D11F580-502D-4C60-9103-4EFF0D80BE20}</Project>
-      <Name>NewsVn.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Config\UserControls.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2410,6 +2398,12 @@
     <Content Include="CuteSoft_Client\CuteEditor\ImageEditor\imageeditorTest.zip" />
     <Content Include="CuteSoft_Client\CuteEditor\Load.ashx" />
     <Content Include="CuteSoft_Client\CuteEditor\Uploader.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NewsVn.Impl\NewsVn.Impl.csproj">
+      <Project>{68AADD44-690C-49B6-868A-CF19981975EC}</Project>
+      <Name>NewsVn.Impl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
