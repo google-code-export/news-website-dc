@@ -5,9 +5,9 @@
     <div class="info-bar head">
         <div class="left">
             <span class="post-info">
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", UpdatedOn) %> |
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", CreatedOn)%> |
                  Khu vực: <b><%=NewsVn.Web.Utils.clsCommon.getLocationName(Location)%></b> 
-                | Liên hệ:<b> <%=UpdatedBy %></b>
+                | Liên hệ:<b> <%=CreateBy%></b>
             </span>
         </div>
         <div class="right">
@@ -28,9 +28,9 @@
     <div class="info-bar tail">
         <div class="left">
             <span class="post-info">
-                <%= string.Format("{0:dddd, dd/MM/yyyy}", UpdatedOn) %> |
+                <%= string.Format("{0:dddd, dd/MM/yyyy}", CreatedOn)%> |
                  Khu vực: <b><%=NewsVn.Web.Utils.clsCommon.getLocationName(Location)%></b> 
-                | Liên hệ:<b> <%=UpdatedBy %></b>
+                | Liên hệ:<b> <%=CreateBy%></b>
             </span>
         </div>
         <div class="right">

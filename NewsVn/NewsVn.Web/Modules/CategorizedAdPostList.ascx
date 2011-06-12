@@ -45,7 +45,7 @@
             <ItemTemplate>
                 <tr>
                     <td><asp:HyperLink runat="server" ID="hplnk" /></td>
-                    <td ><%#string.Format("{0:dd/MM/yyyy}",Eval("UpdatedOn")) %></td>
+                    <td ><%#string.Format("{0:dd/MM/yyyy}", Eval("CreatedOn"))%></td>
                     <td style="width:100px;"><%#NewsVn.Web.Utils.clsCommon.getLocationName(int.Parse(Eval("Location").ToString()))%></td>
                 </tr>
             </ItemTemplate>

@@ -39,8 +39,8 @@ namespace NewsVn.Web
                     p.Payment,
                     p.Location,// = Utils.clsCommon.getLocationName(int.Parse( p.Location)),
                     p.SeoUrl,
-                    p.UpdatedBy,
-                    p.UpdatedOn
+                    p.CreatedBy,
+                    p.CreatedOn
                 }).OrderByDescending(p=>p.Payment).Take(5).ToList();
             
             
@@ -80,7 +80,7 @@ namespace NewsVn.Web
                         p.Content,
                         p.Avatar,
                         SeoUrl=HostName+ p.SeoUrl,
-                        p.UpdatedOn,
+                        p.CreatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location //= Utils.clsCommon.getLocationName(int.Parse(p.Location)),

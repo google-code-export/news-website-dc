@@ -13,10 +13,12 @@ namespace NewsVn.Web.Modules
         public bool AllowComment { get; set; }
         public int CountedComment { get; set; }
         public string SeoUrl { get; set; }
+        public string strTitle { get; set; }
         
         protected override void OnDataBinding(EventArgs e)
         {
             lblTitle.Text = Datasource.Title;
+            strTitle = Server.UrlEncode(Datasource.Title);
             lblApprovedOn.Text = string.Format("{0:dddd, dd/MM/yyyy HH:mm}", Datasource.ApprovedOn) + " GMT+7";
             lblNumberComments.Text = CountedComment.ToString();
             lblDescription.Text = Datasource.Description;

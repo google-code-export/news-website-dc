@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class RelatedAdPostList : System.Web.UI.UserControl
+    public partial class RelatedAdPostList :BaseUI.BaseModule
     {
         public object Datasource { get; set; }
         protected void Page_Load(object sender, EventArgs e)

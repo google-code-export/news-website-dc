@@ -12,8 +12,8 @@
             onitemdatabound="rptAdsRelated_ItemDataBound">
             <ItemTemplate>
                 <li>
-                    <a href='' class="post-title inline"><%#Eval("Title") %></a>
-                    <span class="post-info right"><%# string.Format("{0:dd/MM/yyyy}", Eval("UpdatedOn")) %></span>
+                    <a href='<%# HostName+ Eval("seoUrl") %>' class="post-title inline"><%#Eval("Title") %></a>
+                    <span class="post-info right"><%# string.Format("{0:dd/MM/yyyy}", Eval("CreatedOn"))%></span>
                     <div class="clear"></div>
                 </li>
             </ItemTemplate>

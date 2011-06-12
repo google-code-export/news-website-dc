@@ -30,41 +30,56 @@ namespace NewsVn.Web
             //params querystring post: PostID,SeoName
             if (!IsPostBack)
             {
-                checkCateID_By_SEONAME(Request.QueryString["ct"]);
-                load_postDetail(int.Parse(Request.QueryString["cp"]));
-                load_pletFocusPost();
+                try
+                {
+                    int codePost = int.Parse(Request.QueryString["cp"]);
+                    checkCateID_By_SEONAME(Request.QueryString["ct"]);
+                    load_postDetail(codePost);
+                    load_pletFocusPost();
+                }
+                catch (Exception ex)
+                {
+                    clsCommon.WriteTextLog("Post.aspx - fnc: load_pletRelationPostList (codePost:" + Request.QueryString["cp"] + ", category:" + Request.QueryString["ct"] + " )", ex.Message.ToString());     
+                }
             }
         }
        
 
         private void load_postDetail(int postID)
         {
-            var postData = _Posts.Where(p => p.Actived == true && p.Approved == true
+            try
+            {
+                var postData = _Posts.Where(p => p.Actived == true && p.Approved == true
               && p.ID == postID).FirstOrDefault();
 
-            var postComment = _PostComments.Where(pc => pc.Post.ID == postID).Select(
-                pc => new { 
-                pc.UpdatedOn,
-                pc.Content,
-                pc.Title,
-                pc.UpdatedBy,
-                }).OrderByDescending(pc => pc.UpdatedOn).ToList();
-            pletPostDetail.CountedComment = postComment.Count();
-            pletPostDetail.AllowComment = postData.AllowComments;
-            pletPostDetail.Datasource = postData;
-            pletPostDetail.DataBind();
-            //seo
-            BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-',' ') + " " + postData.Title, clsCommon.hintDesc(postData.Description, 300));
-           //related post
-            load_pletRelationPostList(postData);
-            //commentbox
-            pletCommentBox.PostID = postID;    
-            //check_PageView  - khong su dung pageview thi ko can update
-            if (postData.CheckPageView)
-            {
-                Allow_Update_PageView(int.Parse(Request.QueryString["cp"]));
+                var postComment = _PostComments.Where(pc => pc.Post.ID == postID).Select(
+                    pc => new
+                    {
+                        pc.UpdatedOn,
+                        pc.Content,
+                        pc.Title,
+                        pc.UpdatedBy,
+                    }).OrderByDescending(pc => pc.UpdatedOn).ToList();
+                pletPostDetail.CountedComment = postComment.Count();
+                pletPostDetail.AllowComment = postData.AllowComments;
+                pletPostDetail.Datasource = postData;
+                pletPostDetail.DataBind();
+                //seo
+                BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-', ' ') + " " + postData.Title, clsCommon.hintDesc(postData.Description, 300));
+                //related post
+                load_pletRelationPostList(postData);
+                //commentbox
+                pletCommentBox.PostID = postID;
+                //check_PageView  - khong su dung pageview thi ko can update
+                if (postData.CheckPageView)
+                {
+                    Allow_Update_PageView(int.Parse(Request.QueryString["cp"]));
+                }
             }
-            
+            catch (Exception ex)
+            {
+                clsCommon.WriteTextLog("Post.aspx - fnc: load_postDetail", ex.Message.ToString());    
+            }
         }
         private void Allow_Update_PageView(int postID)
         {
@@ -120,8 +135,11 @@ namespace NewsVn.Web
         //lay post theo chu de  & <= post.approvedon && != viewstate('visitedID')
         void load_pletRelationPostList(Data.Post postData)
         {
-            var listData = _Posts.Where(p =>p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
-               .Where(p => p.ApprovedOn <= postData.ApprovedOn && p.ID!=postData.ID)
+            string strid = postData.ID.ToString() + " | approvedon=" + postData.ApprovedOn.Value.ToString() + " | url:" + Request.RawUrl;
+            try
+            {
+                var listData = _Posts.Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
+               .Where(p => p.ApprovedOn <= postData.ApprovedOn && p.ID != postData.ID)
                .Select(p => new
                {
                    p.ID,
@@ -132,9 +150,14 @@ namespace NewsVn.Web
                    p.ApprovedOn,
                    p.PageView
                }).OrderByDescending(p => p.ApprovedOn).Take(5).ToList();
-            pletRelateionPostList.Datasource = listData;
-            pletRelateionPostList.HostName = HostName;
-            pletRelateionPostList.DataBind();
+                pletRelateionPostList.Datasource = listData;
+                pletRelateionPostList.HostName = HostName;
+                pletRelateionPostList.DataBind();
+            }
+            catch (Exception ex)
+            {
+                clsCommon.WriteTextLog("Post.aspx - fnc: load_pletRelationPostList | postID:" + strid, ex.Message.ToString());        
+            }
         }
     }
 }
