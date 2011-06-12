@@ -48,6 +48,14 @@
     <Compile Include="Caching\HttpContextCache.cs" />
     <Compile Include="Context\NewsVnContext.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\AdPost.cs" />
+    <Compile Include="Entity\AdBox.cs" />
+    <Compile Include="Entity\PostComment.cs" />
+    <Compile Include="Entity\UserProfileComment.cs" />
+    <Compile Include="Entity\Video.cs" />
+    <Compile Include="Entity\UserProfile.cs" />
+    <Compile Include="Entity\UserMessage.cs" />
+    <Compile Include="Entity\Setting.cs" />
     <Compile Include="Entity\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
