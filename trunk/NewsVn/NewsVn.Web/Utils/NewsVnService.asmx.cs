@@ -6,6 +6,8 @@ using System.Web.Services;
 using System.Text;
 using System.Xml.Linq;
 using System.Collections;
+using NewsVn.Impl.Context;
+using NewsVn.Impl.Caching;
 
 namespace NewsVn.Web.Utils
 {
@@ -22,15 +24,21 @@ namespace NewsVn.Web.Utils
 
         private int CountPostComments(int postID)
         {
-            return _PostComments.Where(c => c.Post.ID == postID).Count();
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            {
+                return ctx.PostCommentRespo.Getter.getQueryable(c => c.PostID == postID).Count();
+            }
         }
 
         [WebMethod]
         public string GetCommentDialogTitle(int postID)
         {
-            return string.Format("Bình luận: {0} ({1})",
-                _Posts.FirstOrDefault(p => p.ID == postID).Title,
-                this.CountPostComments(postID));
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            {
+                return string.Format("Bình luận: {0} ({1})",
+                    ctx.PostRespo.Getter.getOne(postID).Title,
+                    this.CountPostComments(postID));
+            }
         }
 
         [WebMethod]
@@ -39,7 +47,7 @@ namespace NewsVn.Web.Utils
             int numOfComments = this.CountPostComments(postID);
 
             if (numOfComments <= pageSize) return "";
-            
+
             var html = new StringBuilder();
             html.Append("<span>Trang:</span>");
 
@@ -59,21 +67,24 @@ namespace NewsVn.Web.Utils
         [WebMethod]
         public string LoadCommentList(int postID, int pageSize, int pageIndex, bool oldestOnTop)
         {
-            var postComments = _PostComments.Where(c => c.Post.ID == postID);
-
-            if (oldestOnTop)
-                postComments = postComments.OrderBy(c => c.UpdatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
-            else
-                postComments = postComments.OrderByDescending(c => c.UpdatedOn).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
-
-            var html = new StringBuilder();
-
-            foreach (var comment in postComments)
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                html.AppendFormat("<li><b>{0}</b><p>{1}</p><i>({2})</i></li>", comment.Title, comment.Content, comment.UpdatedBy);
-            }
+                var postComments = ctx.PostCommentRespo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now).AsEnumerable();
 
-            return html.ToString();
+                if (oldestOnTop)
+                    postComments = ctx.PostCommentRespo.Getter.getPagedList(postComments.OrderBy(c => c.UpdatedOn), pageIndex, pageSize);
+                else
+                    postComments = ctx.PostCommentRespo.Getter.getPagedList(postComments.OrderByDescending(c => c.UpdatedOn), pageIndex, pageSize);
+
+                var html = new StringBuilder();
+
+                foreach (var comment in postComments)
+                {
+                    html.AppendFormat("<li><b>{0}</b><p>{1}</p><i>({2})</i></li>", comment.Title, comment.Content, comment.UpdatedBy);
+                }
+
+                return html.ToString();
+            }
         }
 
         private Dictionary<string, string> GetCaptchaMap()
@@ -84,7 +95,7 @@ namespace NewsVn.Web.Utils
             {
                 captchaMap = HttpContextCache.Get<Dictionary<string, string>>("captcha-list");
             }
-            else 
+            else
             {
                 try
                 {
@@ -117,7 +128,7 @@ namespace NewsVn.Web.Utils
             Random random = new Random();
 
             var captcha = captchaMap.ElementAt(random.Next(0, 9));
-            
+
             while (captcha.Key == omitKey)
             {
                 captcha = captchaMap.ElementAt(random.Next(0, 9));
@@ -135,24 +146,25 @@ namespace NewsVn.Web.Utils
             string captchaAnswer = captchaMap[key].Split('|')[1];
 
             if (answer.Equals(captchaAnswer, StringComparison.CurrentCultureIgnoreCase)) return true;
-            
+
             return false;
         }
 
         [WebMethod]
-        public string InsertComment(Data.PostComment comment, int postID, string captchaKey, string captchaAnswer)
+        public string InsertComment(Impl.Entity.PostComment comment, int postID, string captchaKey, string captchaAnswer)
         {
             try
             {
-                if (this.CheckCaptchaResponse(captchaKey, captchaAnswer))
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    comment.UpdatedOn = DateTime.Now;
-                    comment.Post = _Posts.FirstOrDefault(p => p.ID == postID);
-                    ApplicationManager.Entities.AddToPostComments(comment);
-                    ApplicationManager.Entities.SaveChanges();
-                   // ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories);
+                    if (this.CheckCaptchaResponse(captchaKey, captchaAnswer))
+                    {
+                        comment.UpdatedOn = DateTime.Now.AddHours(1);
+                        comment.Post = ctx.PostRespo.Getter.getOne(postID);
+                        ctx.PostCommentRespo.Setter.addOne(comment);
+                    }
+                    else return string.Format(ErrorBar, "Captcha không hợp lệ.");
                 }
-                else return string.Format(ErrorBar, "Captcha không hợp lệ.");
             }
             catch (Exception)
             {
@@ -205,118 +217,43 @@ namespace NewsVn.Web.Utils
         #endregion
 
         #region Ads
-        [WebMethod]
-        public string load_pletAdsList(string AdsCatName,int pageindex, bool isSearchByDate, string searchDate, string locationID)
-        {
-            string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
-            int cateID=int.Parse(array[0]);
-            var html = new System.Text.StringBuilder();
-            //clone 1 anynomous List<>
-            var Datasource=_AdPosts.Select(p => new
-                    {
-                        p.ID,
-                        p.Title,
-                        p.Content,
-                        p.Avatar,
-                        p.SeoUrl,
-                        p.UpdatedOn,
-                        p.Payment,
-                        isFree = p.Payment <= 0 ? true : false,
-                        p.Location 
-                    }).Take(0).ToList();
-            Datasource.Clear();
-            //end clone
 
-            //general IQueryable
-            var DataQ = _AdPosts
-                    .Where(p => p.Category.ID == cateID || (p.Category.Parent != null && p.Category.Parent.ID == cateID
-                        && p.Actived == true));//&& p.ExpiredOn>=DateTime.Today //expired sau nay se dung
-            //return List<> by Search Result
-            //1: condition:search by date
-            if (isSearchByDate)
-            {
-                DateTime inputSearchDateTime = Convert.ToDateTime(searchDate.Replace('_', '/'));
-                Datasource = DataQ.Where(p => p.CreatedOn.Day == inputSearchDateTime.Day && p.CreatedOn.Month == inputSearchDateTime.Month &&
-                    p.CreatedOn.Year == inputSearchDateTime.Year
-                    && p.Location == locationID).Select(p => new
-                {
-                    p.ID,
-                    p.Title,
-                    p.Content,
-                    p.Avatar,
-                    p.SeoUrl,
-                    p.UpdatedOn,
-                    p.Payment,
-                    isFree = p.Payment <= 0 ? true : false,
-                    p.Location 
-                }).OrderByDescending(p => p.Payment).ToList();
-                //Search by date not paging
-            }
-                //2: search by location
-            else
-            {
-                //search by location (location in one page) if location is not 'Toan Quoc' (id=0)
-                if (int.Parse(locationID) >= 1)
-                {
-                    DataQ = DataQ.Where(p => p.Location == locationID);
-                }
-                // search all (in one page) 
-                Datasource = DataQ.Select(p => new
-                {
-                    p.ID,
-                    p.Title,
-                    p.Content,
-                    p.Avatar,
-                    p.SeoUrl,
-                    p.UpdatedOn,
-                    p.Payment,
-                    isFree = p.Payment <= 0 ? true : false,
-                    p.Location 
-                }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
-            }
-            //generate result
-            if (Datasource.Count >= 1)
-            {
-                int index = 0;
-                html.AppendLine("<tr class='ui-widget-header'><th style='text-align:left;'>Tin rao vặt</th><th style='text-align:left;'>Ngày đăng</th><th style='text-align:left;'>Phạm vi</th></tr>");
-                foreach (var itemAds in Datasource)
-                {
-//                    Type itemType = itemAds.GetType();
-                    if (index % 2 != 0)
-                        html.AppendLine("<tr class='even'>");
-                    else
-                        html.AppendLine("<tr>");
-
-                    html.AppendLine("<td>");
-                    html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'",HostName+ itemAds.SeoUrl.ToString() + ".aspx" );
-                    html.AppendLine( itemAds.Title + "</a>");
-                    html.AppendLine("</td><td >");
-                    html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.UpdatedOn));
-                    html.AppendLine("</td>");
-                    html.AppendLine("</td><td style=\"width:100px;\">");
-                    html.AppendLine(Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)));
-                    html.AppendLine("</td>");
-                    html.AppendLine("</tr>");
-                    index++;
-                }
-            }
-            else
-            {
-                html.AppendLine("<tr class='ui-widget-header'><th style=\"text-align:left;\">Tin rao vặt</th><th style=\"text-align:left;\">Ngày đăng</th><th style='text-align:left; widht:100px;'>Phạm vi</th></tr><tr><td colspan='3' ><div style='text-align: center; padding-top: 6px;'><span>Không tìm thấy bài viết</span></div></td></tr>");
-            }
-            return html.ToString();
-        }
         [WebMethod]
-        public string getAdsByAdsCat(string AdsCatName)
+        public string load_pletAdsList(string AdsCatName, int pageindex, bool isSearchByDate, string searchDate, string locationID)
         {
-            try
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
                 string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
-                int catID = int.Parse(array[0]);
-                var data = _AdPosts.Where(p => p.Category.ID == catID || (p.Category.Parent != null && p.Category.Parent.ID == catID))
-                        .Select(p => new
+                int cateID = int.Parse(array[0]);
+                var html = new System.Text.StringBuilder();
+                //clone 1 anynomous List<>
+                var Datasource = ctx.AdPostRespo.Getter.getQueryable().Select(p => new
+                {
+                    p.ID,
+                    p.Title,
+                    p.Content,
+                    p.Avatar,
+                    p.SeoUrl,
+                    p.UpdatedOn,
+                    p.Payment,
+                    isFree = p.Payment <= 0 ? true : false,
+                    p.Location
+                }).Take(0).ToList();
+                Datasource.Clear();
+                //end clone
+
+                //general IQueryable
+                var DataQ = ctx.AdPostRespo.Getter.getQueryable(p => p.Category.ID == cateID || (p.Category.Parent != null && p.Category.Parent.ID == cateID
+                            && p.Actived == true));//&& p.ExpiredOn>=DateTime.Today //expired sau nay se dung
+                //return List<> by Search Result
+                //1: condition:search by date
+                if (isSearchByDate)
+                {
+                    DateTime inputSearchDateTime = Convert.ToDateTime(searchDate.Replace('_', '/'));
+                    Datasource = DataQ.Where(p => p.CreatedOn.Day == inputSearchDateTime.Day && p.CreatedOn.Month == inputSearchDateTime.Month &&
+                        p.CreatedOn.Year == inputSearchDateTime.Year
+                        && p.Location == locationID).Select(p => new
                         {
-                           Name= p.Category.Name,
                             p.ID,
                             p.Title,
                             p.Content,
@@ -326,53 +263,137 @@ namespace NewsVn.Web.Utils
                             p.Payment,
                             isFree = p.Payment <= 0 ? true : false,
                             p.Location
-                        }).OrderByDescending(p => p.Payment).Take(20).ToList();
-                var html = new System.Text.StringBuilder();
-
-                if (data.Count() >= 1)
+                        }).OrderByDescending(p => p.Payment).ToList();
+                    //Search by date not paging
+                }
+                //2: search by location
+                else
+                {
+                    //search by location (location in one page) if location is not 'Toan Quoc' (id=0)
+                    if (int.Parse(locationID) >= 1)
+                    {
+                        DataQ = DataQ.Where(p => p.Location == locationID);
+                    }
+                    // search all (in one page) 
+                    Datasource = DataQ.Select(p => new
+                    {
+                        p.ID,
+                        p.Title,
+                        p.Content,
+                        p.Avatar,
+                        p.SeoUrl,
+                        p.UpdatedOn,
+                        p.Payment,
+                        isFree = p.Payment <= 0 ? true : false,
+                        p.Location
+                    }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
+                }
+                //generate result
+                if (Datasource.Count >= 1)
                 {
                     int index = 0;
-                    foreach (var itemAds in data)
+                    html.AppendLine("<tr class='ui-widget-header'><th style='text-align:left;'>Tin rao vặt</th><th style='text-align:left;'>Ngày đăng</th><th style='text-align:left;'>Phạm vi</th></tr>");
+                    foreach (var itemAds in Datasource)
                     {
-                        html.AppendLine("<tbody>");
-                        if (index % 2 == 0)
+                        //                    Type itemType = itemAds.GetType();
+                        if (index % 2 != 0)
                             html.AppendLine("<tr class='even'>");
                         else
                             html.AppendLine("<tr>");
-                        html.AppendLine("<td style='width: 220px;'>");
-                        html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", HostName +  itemAds.SeoUrl.ToString() + ".aspx");
+
+                        html.AppendLine("<td>");
+                        html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", HostName + itemAds.SeoUrl.ToString() + ".aspx");
                         html.AppendLine(itemAds.Title + "</a>");
-                        html.AppendLine("</td><td>");
+                        html.AppendLine("</td><td >");
                         html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.UpdatedOn));
                         html.AppendLine("</td>");
-                        html.AppendLine("<td style='width: 120px;'>" + Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)) + "</td>");
+                        html.AppendLine("</td><td style=\"width:100px;\">");
+                        html.AppendLine(Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)));
+                        html.AppendLine("</td>");
                         html.AppendLine("</tr>");
-                        html.AppendLine("</tbody>");
                         index++;
                     }
                 }
                 else
                 {
-                    html.AppendLine("<div style='text-align: center; padding-top: 6px;'><span>Không tìm thấy bài viết</span></div>");
+                    html.AppendLine("<tr class='ui-widget-header'><th style=\"text-align:left;\">Tin rao vặt</th><th style=\"text-align:left;\">Ngày đăng</th><th style='text-align:left; widht:100px;'>Phạm vi</th></tr><tr><td colspan='3' ><div style='text-align: center; padding-top: 6px;'><span>Không tìm thấy bài viết</span></div></td></tr>");
                 }
                 return html.ToString();
             }
+        }
+
+        [WebMethod]
+        public string getAdsByAdsCat(string AdsCatName)
+        {
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
+                    int catID = int.Parse(array[0]);
+                    var data = ctx.AdPostRespo.Getter.getQueryable(p => p.CategoryID == catID || (p.Category.Parent != null && p.Category.Parent.ID == catID))
+                            .Select(p => new
+                            {
+                                Name = p.Category.Name,
+                                p.ID,
+                                p.Title,
+                                p.Content,
+                                p.Avatar,
+                                p.SeoUrl,
+                                p.UpdatedOn,
+                                p.Payment,
+                                isFree = p.Payment <= 0 ? true : false,
+                                p.Location
+                            }).OrderByDescending(p => p.Payment).Take(20).ToList();
+                    var html = new System.Text.StringBuilder();
+
+                    if (data.Count() >= 1)
+                    {
+                        int index = 0;
+                        foreach (var itemAds in data)
+                        {
+                            html.AppendLine("<tbody>");
+                            if (index % 2 == 0)
+                                html.AppendLine("<tr class='even'>");
+                            else
+                                html.AppendLine("<tr>");
+                            html.AppendLine("<td style='width: 220px;'>");
+                            html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", HostName + itemAds.SeoUrl.ToString() + ".aspx");
+                            html.AppendLine(itemAds.Title + "</a>");
+                            html.AppendLine("</td><td>");
+                            html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.UpdatedOn));
+                            html.AppendLine("</td>");
+                            html.AppendLine("<td style='width: 120px;'>" + Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)) + "</td>");
+                            html.AppendLine("</tr>");
+                            html.AppendLine("</tbody>");
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        html.AppendLine("<div style='text-align: center; padding-top: 6px;'><span>Không tìm thấy bài viết</span></div>");
+                    }
+                    return html.ToString();
+                }                
+            }
             catch (Exception)
             {
-
                 return "";
             }
         }
         //check and set Ads CateID , Ads CateTitle
         private string checkCateID_By_SEONAME(string seoNAME)
         {
-            var cate = _AdCategories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name }).ToList();
-            if (cate.Count() > 0)
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                return cate[0].ID.ToString() + "$" + cate[0].Name;
+                var cate = ctx.CategoryRespo.Getter.getQueryable(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name }).ToList();
+
+                if (cate.Count() > 0)
+                {
+                    return cate[0].ID.ToString() + "$" + cate[0].Name;
+                }
+                else return "-1$";
             }
-            else
-                return "-1$";
         }
         #endregion
     }

@@ -22,17 +22,7 @@ namespace NewsVn.Test
 
                 Console.WriteLine("--------------------------------------------------");
 
-                var categories = db.CategoryRespo.Getter.getQueryable();//.Where(c => c.Name.Contains("kinh"));
-
-                foreach (var cate in categories)
-                {
-                    Console.WriteLine(cate.ToString());
-                }
-
-                /*foreach (var post in db.CategoryRespo.Getter.getFirst().Posts)
-                {
-                    Console.WriteLine(post.ToString());
-                }*/
+                Console.WriteLine(db.CategoryRespo.Getter.getAtIndex(1).ToString());
             }
         }
     }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Account.Form
@@ -12,11 +13,11 @@ namespace NewsVn.Web.Account.Form
     public partial class Signup : BaseUI.BasePage
     {
         MembershipUser newUser;
-        
+
         protected void Page_Load(object sender, EventArgs args)
         {
             this.Title = SiteTitle + "Đăng ký";
-            
+
             this.GenerateAgeDropDownList();
 
             if (!IsPostBack)
@@ -49,9 +50,9 @@ namespace NewsVn.Web.Account.Form
         {
             var mcs = new MembershipCreateStatus();
             bool success = false;
-            
+
             newUser = Membership.CreateUser(txtUsername.Text.Trim(), txtConfirmPassword.Text, txtEmail.Text.Trim(), ddlSecurityQuestion.SelectedItem.Text, txtSecurityAnswer.Text.Trim(), true, out mcs);
-            
+
             switch (mcs)
             {
                 case MembershipCreateStatus.Success:
@@ -77,7 +78,7 @@ namespace NewsVn.Web.Account.Form
                     break;
                 case MembershipCreateStatus.InvalidQuestion:
                     ltrCreateAccountError.Text = string.Format(ErrorBar, "Câu hỏi không hợp lệ.");
-                    break;                
+                    break;
                 case MembershipCreateStatus.UserRejected:
                     ltrCreateAccountError.Text = string.Format(ErrorBar, "Tài khoản bị khước từ.");
                     break;
@@ -105,34 +106,35 @@ namespace NewsVn.Web.Account.Form
         {
             try
             {
-                var newProfile = new Data.UserProfile();
-                newProfile.Account = txtUsername.Text.Trim();
-                newProfile.Nickname = txtNickname.Text.Trim();
-                newProfile.Name = txtName.Text.Trim();
-                newProfile.Age = int.Parse(ddlAge.SelectedValue);
-                newProfile.Gender = Boolean.Parse(ddlGender.SelectedValue);
-                if (!txtLocation.Text.Trim().Equals(string.Empty))
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    newProfile.Location = txtLocation.Text.Trim();
-                }
-                if (!ddlCountry.SelectedValue.Equals(string.Empty))
-                {
-                    newProfile.Country = ddlCountry.SelectedItem.Text;
-                }
-                newProfile.Email = txtEmail.Text.Trim();
-                if (!txtPhone.Text.Trim().Equals(string.Empty))
-                {
-                    newProfile.Phone = txtPhone.Text.Trim();
-                }
-                newProfile.ShowEmail = chkShowEmail.Checked;
-                newProfile.ShowPhone = chkShowPhone.Checked;
-                newProfile.UpdatedOn = DateTime.Now;
+                    var newProfile = new Impl.Entity.UserProfile();
+                    newProfile.ID = txtUsername.Text.Trim();
+                    newProfile.Nickname = txtNickname.Text.Trim();
+                    newProfile.Name = txtName.Text.Trim();
+                    newProfile.Age = int.Parse(ddlAge.SelectedValue);
+                    newProfile.Gender = Boolean.Parse(ddlGender.SelectedValue);
+                    if (!txtLocation.Text.Trim().Equals(string.Empty))
+                    {
+                        newProfile.Location = txtLocation.Text.Trim();
+                    }
+                    if (!ddlCountry.SelectedValue.Equals(string.Empty))
+                    {
+                        newProfile.Country = ddlCountry.SelectedItem.Text;
+                    }
+                    newProfile.Email = txtEmail.Text.Trim();
+                    if (!txtPhone.Text.Trim().Equals(string.Empty))
+                    {
+                        newProfile.Phone = txtPhone.Text.Trim();
+                    }
+                    newProfile.ShowEmail = chkShowEmail.Checked;
+                    newProfile.ShowPhone = chkShowPhone.Checked;
+                    newProfile.UpdatedOn = DateTime.Now;
 
-                ApplicationManager.Entities.AddToUserProfiles(newProfile);
-                ApplicationManager.Entities.SaveChanges();
-                _UserProfiles = ApplicationManager.Entities.UserProfiles.AsQueryable();
+                    ctx.UserProfileRespo.Setter.addOne(newProfile);
 
-                wzUserSignUp.ActiveStepIndex = 2;
+                    wzUserSignUp.ActiveStepIndex = 2;
+                }
             }
             catch (Exception)
             {

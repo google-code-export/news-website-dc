@@ -40,7 +40,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Vietstream.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\resources\assemblies\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -51,6 +50,7 @@
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\AdPost.cs" />
     <Compile Include="Entity\AdBox.cs" />
+    <Compile Include="Entity\MemberProfile.cs" />
     <Compile Include="Entity\PostComment.cs" />
     <Compile Include="Entity\UserProfileComment.cs" />
     <Compile Include="Entity\Video.cs" />
