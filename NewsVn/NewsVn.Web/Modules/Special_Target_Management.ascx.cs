@@ -6,10 +6,13 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Collections;
 using System.Collections.Generic;
+using NewsVn.Impl.Context;
+using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Modules
 {
-    public class clsPost {
+    public class clsPost
+    {
         public int PostID { get; set; }
         public string Title { get; set; }
         public string Avatar { get; set; }
@@ -63,32 +66,39 @@ namespace NewsVn.Web.Modules
 
         private void LoadPostList(int pageIndex, int pageSize)
         {
-            GridView1.DataSource = _Posts.Where(p=>p.Actived == true && p.Approved == true).Select(p => new
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                p.ID,
-                p.Avatar,
-                p.Title,
-                p.Description,
-                p.SeoUrl,
-                p.Approved,
-                p.ApprovedOn,
-                p.ApprovedBy,
-                p.Actived,
-                CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
-            }).OrderByDescending(p => p.ApprovedOn).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-            GridView1.DataBind();
-            GridView1.Columns[8].Visible = false;
-            GridView1.Columns[7].Visible = true;
-            GridView1.Columns[6].Visible = false;
+                GridView1.DataSource = ctx.PostRespo.Getter.getPagedList(pageIndex, pageSize, p => p.Actived == true && p.Approved == true)
+                    .Select(p => new
+                    {
+                        p.ID,
+                        p.Avatar,
+                        p.Title,
+                        p.Description,
+                        p.SeoUrl,
+                        p.Approved,
+                        p.ApprovedOn,
+                        p.ApprovedBy,
+                        p.Actived,
+                        CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
+                    }).OrderByDescending(p => p.ApprovedOn);
+                GridView1.DataBind();
+                GridView1.Columns[8].Visible = false;
+                GridView1.Columns[7].Visible = true;
+                GridView1.Columns[6].Visible = false;
+            }
         }
 
         private void GenerateDataPager(int pageSize)
         {
-            int numOfPages = (int)Math.Ceiling((decimal)_Posts.Count() / pageSize);
-            ddlPageIndex.Items.Clear();
-            for (int i = 1; i <= numOfPages; i++)
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRespo.Getter.getTable().Count() / pageSize);
+                ddlPageIndex.Items.Clear();
+                for (int i = 1; i <= numOfPages; i++)
+                {
+                    ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                }
             }
         }
 
@@ -97,8 +107,8 @@ namespace NewsVn.Web.Modules
             //so item the hien tren su kien noi bat, sau nay setting trong DB
             try
             {
-           
-                if (ViewState["dtTemp"]!=null)
+
+                if (ViewState["dtTemp"] != null)
                 {
                     int totalItemShow = 10;
                     DataTable dt = ViewState["dtTemp"] as DataTable;
@@ -106,7 +116,7 @@ namespace NewsVn.Web.Modules
                     //rptPostList.Items.OfType<RepeaterItem>().ToList().ForEach(ri => ((CheckBox)ri.FindControl("CheckBox1")).Checked = true);
                     //var rowList = GridView1.Rows.OfType<GridViewRow>();
                     string msgExist = "";
-                    bool nocheck=true;
+                    bool nocheck = true;
                     foreach (GridViewRow row in GridView1.Rows)
                     {
                         if (countItemToInsert == 0)
@@ -114,7 +124,7 @@ namespace NewsVn.Web.Modules
                             break;
                         }
                         bool ischecked = ((CheckBox)row.FindControl("chkItem")).Checked;
-                    
+
                         if (ischecked)
                         {
                             nocheck = false;
@@ -134,18 +144,22 @@ namespace NewsVn.Web.Modules
                                 continue;
                             }
                             int pID = int.Parse(row.Cells[1].Text);
-                            var post = _Posts.Where(p => p.ID == pID).FirstOrDefault();
-                            DataRow r = dt.NewRow();
-                            r["ID"] = row.Cells[1].Text;
-                            r["Title"] = post.Title;
-                            r["CateName"] = post.Category.Name;
-                            r["ApprovedBy"] = post.ApprovedBy;
-                            r["ApprovedOn"] = string.Format("{0:dd/mm/yyyy HH:MM}", post.ApprovedOn);
-                            r["SeoUrl"] = post.SeoUrl;
-                            r["Avatar"] =  post.Avatar;
-                            r["Description"] = post.Description;
-                            dt.Rows.Add(r);
-                            countItemToInsert = countItemToInsert - 1;
+
+                            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                            {
+                                var post = ctx.PostRespo.Getter.getOne(pID);
+                                DataRow r = dt.NewRow();
+                                r["ID"] = row.Cells[1].Text;
+                                r["Title"] = post.Title;
+                                r["CateName"] = post.Category.Name;
+                                r["ApprovedBy"] = post.ApprovedBy;
+                                r["ApprovedOn"] = string.Format("{0:dd/mm/yyyy HH:MM}", post.ApprovedOn);
+                                r["SeoUrl"] = post.SeoUrl;
+                                r["Avatar"] = post.Avatar;
+                                r["Description"] = post.Description;
+                                dt.Rows.Add(r);
+                                countItemToInsert = countItemToInsert - 1;
+                            }
                         }
                     }
                     if (nocheck)
@@ -170,12 +184,12 @@ namespace NewsVn.Web.Modules
                                     )
                             );
                     }
-                
+
                     if (msgExist.Length >= 1)
                     {
                         Utils.clsCommon.Excute_Javascript("alert('Đã tồn tại những tin tức này:\\n" + msgExist + "\\ntrong danh mục sự kiện nổi bật')", this.Page, true);
                     }
-                    else 
+                    else
                     {
                         loaded.Save(Server.MapPath(@"~/Resources/Xml/category.xml"));
                         Load_GridShow(10);
@@ -191,7 +205,7 @@ namespace NewsVn.Web.Modules
 
         protected void grvShow_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowIndex>=0)
+            if (e.Row.RowIndex >= 0)
             {
                 LinkButton lnkbtnDel = e.Row.FindControl("lnkbtnDel") as LinkButton;
                 lnkbtnDel.Attributes.Add("onClick", "return confirmDelete(" + System.Web.UI.DataBinder.Eval(e.Row.DataItem, "ID").ToString() + ");");

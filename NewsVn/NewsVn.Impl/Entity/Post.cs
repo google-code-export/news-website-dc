@@ -31,6 +31,8 @@ namespace NewsVn.Impl.Entity
             get { return this._category.Entity; }
             set
             {
+                CategoryID = value.ID;
+
                 if (this._category.HasLoadedOrAssignedValue == false)
                 {
                     this._category.Entity = value;

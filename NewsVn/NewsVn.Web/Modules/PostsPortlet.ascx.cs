@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using System.Data.Entity;
 using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Modules
@@ -22,7 +21,8 @@ namespace NewsVn.Web.Modules
 
         public bool NoComments { get; set; }                       
 
-        public Data.Post ActivePost { get; set; }
+        public Impl.Entity.Post ActivePost { get; set; }
+
         public object oActivePost { get; set; }
 
         public object OtherPosts { get; set; }

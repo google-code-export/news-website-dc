@@ -28,7 +28,7 @@ namespace NewsVn.Impl.Entity
         }
         //FK
         [Column]
-        public int To { get; set; }
+        public string To { get; set; }
 
         private EntityRef<UserProfile> _userProfile;
 
@@ -38,6 +38,8 @@ namespace NewsVn.Impl.Entity
             get { return this._userProfile.Entity; }
             set
             {
+                To = value.ID;
+
                 if (this._userProfile.HasLoadedOrAssignedValue == false)
                 {
                     this._userProfile.Entity = value;
