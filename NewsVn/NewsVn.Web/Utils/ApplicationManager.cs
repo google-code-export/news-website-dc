@@ -14,7 +14,7 @@ namespace NewsVn.Web.Utils
         public static string HostName { get; set; }
         public static string[] skyStatus { get;set;}
 
-        //public static NewsVnEntities Entities { get; private set; }
+        public static string ConnectionString { get; private set; }
 
         public static void Init()
         {
@@ -26,7 +26,7 @@ namespace NewsVn.Web.Utils
                 
                 HostName = WebConfigurationManager.AppSettings["HostName"];
 
-                //Entities = new NewsVnEntities(WebConfigurationManager.ConnectionStrings["NewsVnEntities"].ConnectionString);
+                ConnectionString = WebConfigurationManager.ConnectionStrings["NewsVnEntities"].ConnectionString;
                 
                 _alreadyInit = true;
             }
