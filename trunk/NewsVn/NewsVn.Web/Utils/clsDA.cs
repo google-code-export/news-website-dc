@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.IO;
 
 namespace NewsVn.Web.Utils
 {
@@ -163,5 +164,44 @@ namespace NewsVn.Web.Utils
             if (input.Length > maxLenth) return input.Substring(0, maxLenth) + "...";
             return input;
         }
+        #region Log4net config
+        public static string GetIPAddress()
+        {
+            HttpContext context = HttpContext.Current;
+            string sIPAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (sIPAddress == null)
+            {
+                return context.Request.ServerVariables["REMOTE_ADDR"];
+            }
+            else
+            {
+                string[] ipArray = sIPAddress.Split(new Char[] { ',' });
+                return ipArray[0];
+            }
+        }
+        public static string AddTabSpace(int Num)
+        {
+            if (Num <= 0)
+            {
+                return Convert.ToChar(9).ToString();
+            }
+            string strTab = "";
+            for (int i = 1; i <= Num; i++)
+            {
+                strTab += Convert.ToChar(9).ToString();
+            }
+            return strTab;
+        }
+        #endregion
+       
+        public static void WriteTextLog(string tip,string err)
+        {
+            StreamWriter logFile = File.AppendText(HttpContext.Current.Server.MapPath(("Resources/Templates/logfile.txt")));
+            logFile.WriteLine("---- Time: " + DateTime.Now.ToString() + " ----");
+            logFile.WriteLine(tip + AddTabSpace(1) + err);
+            logFile.Close();
+        }
+        
+        
     }
 }
