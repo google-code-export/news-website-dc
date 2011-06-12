@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Account.SiteAdmin.Post
@@ -24,12 +25,10 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             try
             {
-                foreach (var post in this.getSelectedCategories())
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ApplicationManager.Entities.DeleteObject(post);
+                    ctx.CategoryRespo.Setter.deleteMany(this.getSelectedCategories());
                 }
-
-                this.SaveChangesAndReload();
             }
             catch (Exception)
             {
@@ -42,13 +41,16 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         protected void btnToggleActive_Click(object sender, EventArgs e)
         {
             try
-            {
-                foreach (var cate in this.getSelectedCategories())
+            {                
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    cate.Actived = !cate.Actived;
+                    foreach (var cate in this.getSelectedCategories())
+                    {
+                        cate.Actived = !cate.Actived;
+                        ctx.CategoryRespo.Setter.editOne(cate, true);
+                    }
+                    ctx.SubmitChanges();
                 }
-
-                this.SaveChangesAndReload();
             }
             catch (Exception)
             {
@@ -65,40 +67,42 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         private void LoadCategoryList()
         {
-            rptCategoryList.DataSource = _Categories.Where(c => c.Parent != null).Select(c => new
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                c.ID, c.Name, c.UpdatedOn, c.Actived,
-                ParentName = c.Parent.Name
-            }).OrderByDescending(c => c.UpdatedOn).ThenByDescending(c => c.UpdatedOn);
-            rptCategoryList.DataBind();
+                rptCategoryList.DataSource = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null).Select(c => new
+                {
+                    c.ID,
+                    c.Name,
+                    c.UpdatedOn,
+                    c.Actived,
+                    ParentName = c.Parent.Name
+                }).OrderByDescending(c => c.UpdatedOn).ThenByDescending(c => c.UpdatedOn);
+                rptCategoryList.DataBind();
+            }
         }
 
-        private IQueryable<Data.Category> getSelectedCategories()
+        private IQueryable<Impl.Entity.Category> getSelectedCategories()
         {
-            var selectedCategoryIDs = new List<int>();
-
-            foreach (RepeaterItem item in rptCategoryList.Items)
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
-                {
-                    CheckBox chkID = item.FindControl("chkID") as CheckBox;
+                var selectedCategoryIDs = new List<int>();
 
-                    if (chkID.Checked)
+                foreach (RepeaterItem item in rptCategoryList.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                     {
-                        HiddenField hidID = item.FindControl("hidID") as HiddenField;
-                        selectedCategoryIDs.Add(int.Parse(hidID.Value));
+                        CheckBox chkID = item.FindControl("chkID") as CheckBox;
+
+                        if (chkID.Checked)
+                        {
+                            HiddenField hidID = item.FindControl("hidID") as HiddenField;
+                            selectedCategoryIDs.Add(int.Parse(hidID.Value));
+                        }
                     }
                 }
-            }
 
-            return _Categories.Where(c => selectedCategoryIDs.Contains(c.ID));
-        }
-
-        private void SaveChangesAndReload()
-        {
-            ApplicationManager.Entities.SaveChanges();
-            _Categories = ApplicationManager.Entities.Categories.ToList().AsQueryable();
-            ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories.Where(c => c.Actived));
+                return ctx.CategoryRespo.Getter.getQueryable(c => selectedCategoryIDs.Contains(c.ID));
+            }            
         }
     }
 }

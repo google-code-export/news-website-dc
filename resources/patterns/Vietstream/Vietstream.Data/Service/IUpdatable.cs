@@ -38,6 +38,6 @@ namespace Vietstream.Data.Service
 
         void deleteMany(IEnumerable<E> entities);
 
-        void deleteMany(IEnumerable<TID> ids);
+        void deleteManyByIds(IEnumerable<TID> ids);
     }
 }

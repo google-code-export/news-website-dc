@@ -77,7 +77,7 @@ namespace Vietstream.Data.Service
 
         public void mergeOne(E entity, bool wait)
         {
-            if (entity.ID == null)
+            if (!_entityTable.Contains(entity))
             {
                 this.addOne(entity, wait);
             }
@@ -128,7 +128,7 @@ namespace Vietstream.Data.Service
             _ctx.SubmitChanges();
         }
 
-        public void deleteMany(IEnumerable<TID> ids)
+        public void deleteManyByIds(IEnumerable<TID> ids)
         {
             var entities = _entityTable.Where(e => ids.Contains(e.ID)).AsEnumerable();
             this.deleteMany(entities);

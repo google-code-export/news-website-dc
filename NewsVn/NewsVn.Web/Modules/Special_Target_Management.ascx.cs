@@ -68,8 +68,8 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                GridView1.DataSource = ctx.PostRespo.Getter.getPagedList(pageIndex, pageSize, p => p.Actived == true && p.Approved == true)
-                    .Select(p => new
+                var posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).OrderByDescending(p => p.ApprovedOn).AsEnumerable();
+                GridView1.DataSource = ctx.PostRespo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
                     {
                         p.ID,
                         p.Avatar,
@@ -81,7 +81,7 @@ namespace NewsVn.Web.Modules
                         p.ApprovedBy,
                         p.Actived,
                         CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
-                    }).OrderByDescending(p => p.ApprovedOn);
+                    });
                 GridView1.DataBind();
                 GridView1.Columns[8].Visible = false;
                 GridView1.Columns[7].Visible = true;

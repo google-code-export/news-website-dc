@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Account.SiteAdmin.Post
@@ -13,7 +14,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = SiteTitle + "Quản lý tin tức";
-            
+
             if (!IsPostBack)
             {
                 this.GoToPage(1, int.Parse(ddlPageSize.SelectedValue));
@@ -29,12 +30,10 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             try
             {
-                foreach (var post in this.getSelectedPosts())
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ApplicationManager.Entities.DeleteObject(post);
+                    ctx.PostRespo.Setter.deleteMany(this.getSelectedPosts());
                 }
-
-                this.SaveChangesAndReload();                
             }
             catch (Exception)
             {
@@ -48,12 +47,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             try
             {
-                foreach (var post in this.getSelectedPosts())
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    post.Actived = !post.Actived;
+                    foreach (var post in this.getSelectedPosts())
+                    {
+                        post.Actived = !post.Actived;
+                        ctx.PostRespo.Setter.editOne(post, true);
+                    }
+                    ctx.SubmitChanges();
                 }
-
-                this.SaveChangesAndReload();
             }
             catch (Exception)
             {
@@ -67,14 +69,17 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             try
             {
-                foreach (var post in this.getSelectedPosts().Where(p => !p.Approved))
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    post.Approved = true;
-                    post.ApprovedOn = DateTime.Now;
-                    post.ApprovedBy = HttpContext.Current.User.Identity.Name;
+                    foreach (var post in this.getSelectedPosts().Where(p => !p.Approved))
+                    {
+                        post.Approved = true;
+                        post.ApprovedOn = DateTime.Now;
+                        post.ApprovedBy = HttpContext.Current.User.Identity.Name;
+                        ctx.PostRespo.Setter.editOne(post, true);
+                    }
+                    ctx.SubmitChanges();
                 }
-
-                this.SaveChangesAndReload();
             }
             catch (Exception)
             {
@@ -96,8 +101,11 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
             try
             {
-                rptPostList.DataSource = _Posts.Where(p => p.GetType().GetProperty(filterColumn).GetValue(p, null).ToString().Contains(filterText));
-                rptPostList.DataBind();
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    rptPostList.DataSource = ctx.PostRespo.Getter.getQueryable(p => p.GetType().GetProperty(filterColumn).GetValue(p, null).ToString().Contains(filterText));
+                    rptPostList.DataBind();
+                }
             }
             catch (Exception ex)
             {
@@ -126,59 +134,70 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 ddlPageIndex.SelectedIndex = ddlPageIndex.Items.Count - 1;
                 pageIndex = int.Parse(ddlPageIndex.SelectedValue);
             }
-            this.LoadPostList(pageIndex, pageSize);            
+            this.LoadPostList(pageIndex, pageSize);
         }
 
         private void LoadPostList(int pageIndex, int pageSize)
         {
-            rptPostList.DataSource = _Posts.Select(p => new {
-               p.ID, p.Title, p.SeoUrl,
-               p.CreatedOn, p.CreatedBy, p.UpdatedOn, p.UpdatedBy,
-               p.Approved, p.ApprovedOn, p.ApprovedBy, p.Actived,
-               CategoryID = p.Category.ID,p.PageView,
-               CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name
-            }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn)
-                .Skip((pageIndex - 1) * pageSize).Take(pageSize);
-            rptPostList.DataBind();
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            {
+                var posts = ctx.PostRespo.Getter.getQueryable().OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsEnumerable();
+                rptPostList.DataSource = ctx.PostRespo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
+                    {
+                        p.ID,
+                        p.Title,
+                        p.SeoUrl,
+                        p.CreatedOn,
+                        p.CreatedBy,
+                        p.UpdatedOn,
+                        p.UpdatedBy,
+                        p.Approved,
+                        p.ApprovedOn,
+                        p.ApprovedBy,
+                        p.Actived,
+                        CategoryID = p.Category.ID,
+                        p.PageView,
+                        CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name
+                    });
+                rptPostList.DataBind();
+            }
         }
 
         private void GenerateDataPager(int pageSize)
         {
-            int numOfPages = (int)Math.Ceiling((decimal)_Posts.Count() / pageSize);
-            ddlPageIndex.Items.Clear();
-            for (int i = 1; i <= numOfPages; i++)
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
-            }
-        }
-
-        private IQueryable<Data.Post> getSelectedPosts()
-        {
-            var selectedPosts = new List<Data.Post>();
-            int postID = -1;
-
-            foreach (RepeaterItem item in rptPostList.Items)
-            {
-                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRespo.Getter.getQueryable().Count() / pageSize);
+                ddlPageIndex.Items.Clear();
+                for (int i = 1; i <= numOfPages; i++)
                 {
-                    CheckBox chkID = item.FindControl("chkID") as CheckBox;
-
-                    if (chkID.Checked)
-                    {
-                        HiddenField hidID = item.FindControl("hidID") as HiddenField;
-                        postID = int.Parse(hidID.Value);
-                        selectedPosts.Add(_Posts.FirstOrDefault(p => p.ID == postID));
-                    }
+                    ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
                 }
             }
-
-            return selectedPosts.AsQueryable();
         }
 
-        private void SaveChangesAndReload()
+        private IQueryable<Impl.Entity.Post> getSelectedPosts()
         {
-            ApplicationManager.Entities.SaveChanges();
-            _Posts = ApplicationManager.Entities.Posts.AsQueryable();
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            {
+                var selectedPostIDs = new List<int>();
+
+                foreach (RepeaterItem item in rptPostList.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        CheckBox chkID = item.FindControl("chkID") as CheckBox;
+
+                        if (chkID.Checked)
+                        {
+                            HiddenField hidID = item.FindControl("hidID") as HiddenField;
+                            selectedPostIDs.Add(int.Parse(hidID.Value));
+                        }
+                    }
+                }
+
+                return ctx.PostRespo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
+            }
         }
     }
 }
