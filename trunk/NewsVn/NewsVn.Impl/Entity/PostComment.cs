@@ -12,11 +12,33 @@ namespace NewsVn.Impl.Entity
     [Table(Name = "PostComments")]
     public class PostComment : Base<int>, ISerializable
     {
+        public PostComment()
+        {
+            this._post = default(EntityRef<Post>);
+        }
+        
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public override int ID { get; set; }
+        
         //FK
         [Column]
         public int PostID { get; set; }
+
+        private EntityRef<Post> _post;
+
+        [Association(Storage = "_post", ThisKey = "PostID", OtherKey = "ID", IsForeignKey = true)]
+        public Post Post
+        {
+            get { return this._post.Entity; }
+            set
+            {
+                if (this._post.HasLoadedOrAssignedValue == false)
+                {
+                    this._post.Entity = value;
+                }
+            }
+        }
+        
         [Column]
         public  string Title
         {
