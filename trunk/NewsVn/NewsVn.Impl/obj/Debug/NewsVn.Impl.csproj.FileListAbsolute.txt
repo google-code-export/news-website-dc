@@ -1,6 +1,0 @@
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Impl\bin\Debug\NewsVn.Impl.dll
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Impl\bin\Debug\NewsVn.Impl.pdb
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Impl\bin\Debug\Vietstream.Data.dll
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Impl\obj\Debug\ResolveAssemblyReference.cache
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Impl\obj\Debug\NewsVn.Impl.dll
-E:\Projects\Dot NET\NewsWebsiteDC\NewsVn\NewsVn.Impl\obj\Debug\NewsVn.Impl.pdb
