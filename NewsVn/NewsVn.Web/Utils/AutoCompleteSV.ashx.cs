@@ -16,7 +16,7 @@ namespace NewsVn.Web.Utils
     {
         public void ProcessRequest(HttpContext context)
         {
-            string strConn = WebConfigurationManager.ConnectionStrings["NewsVn_Conn"].ConnectionString;
+            string strConn = WebConfigurationManager.ConnectionStrings["NewsVnMain"].ConnectionString;
             string prefixText = context.Request.QueryString["q"];
             //sau nay cho vao cai webconfig | xai cay tren thi sua lai roi comment cai duoi lai cho tao 
             //using (SqlConnection conn = new SqlConnection("Data source=.\\SQLEXPRESS; Initial Catalog=NEWSVN; Persist Security Info=True;User ID=sa;Password=sa"))
