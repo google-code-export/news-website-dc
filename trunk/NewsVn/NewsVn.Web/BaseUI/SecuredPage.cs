@@ -14,10 +14,10 @@ namespace NewsVn.Web.BaseUI
 
             SiteTitle = "NewsVN - Cổng thông tin điện tử 24/07 ::: ";
 
-            _Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase)).ToList().AsQueryable();
-            _AdCategories = ApplicationManager.Entities.Categories.Where(c => "adpost".Equals(c.Type, StringComparison.OrdinalIgnoreCase)).ToList().AsQueryable();
-            _VideoCategories = ApplicationManager.Entities.Categories.Where(c => "video".Equals(c.Type, StringComparison.OrdinalIgnoreCase)).ToList().AsQueryable();
-            _Posts = ApplicationManager.Entities.Posts.AsQueryable();
+            //_Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase)).ToList().AsQueryable();
+            //_AdCategories = ApplicationManager.Entities.Categories.Where(c => "adpost".Equals(c.Type, StringComparison.OrdinalIgnoreCase)).ToList().AsQueryable();
+            //_VideoCategories = ApplicationManager.Entities.Categories.Where(c => "video".Equals(c.Type, StringComparison.OrdinalIgnoreCase)).ToList().AsQueryable();
+            //_Posts = ApplicationManager.Entities.Posts.AsQueryable();
         }
     }
 }

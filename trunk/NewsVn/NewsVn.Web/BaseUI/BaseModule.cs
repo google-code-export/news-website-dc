@@ -13,10 +13,10 @@ namespace NewsVn.Web.BaseUI
         public string ErrorBar { get; set; }
         public string HostName { get; set; }
         protected string CE_Configuration { get; set; }
-        protected IQueryable<Data.Post> _Posts;
-        protected IQueryable<Data.Category> _Categories;
-        protected IQueryable<Data.Category> _AdCategories;
-        protected IQueryable<Data.Category> _VideoCategories;
+        //protected IQueryable<Data.Post> _Posts;
+        //protected IQueryable<Data.Category> _Categories;
+        //protected IQueryable<Data.Category> _AdCategories;
+        //protected IQueryable<Data.Category> _VideoCategories;
 
         protected override void OnInit(EventArgs e)
         {
@@ -34,11 +34,11 @@ namespace NewsVn.Web.BaseUI
 
             HostName = NewsVn.Web.Utils.ApplicationManager.HostName;
 
-            _Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
-            _AdCategories = ApplicationManager.Entities.Categories.Where(c => "adpost".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
-            _VideoCategories = ApplicationManager.Entities.Categories.Where(c => "video".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
+            //_Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
+            //_AdCategories = ApplicationManager.Entities.Categories.Where(c => "adpost".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
+            //_VideoCategories = ApplicationManager.Entities.Categories.Where(c => "video".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
 
-            _Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived).AsQueryable();
+            //_Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived).AsQueryable();
 
             //configure CuteEditor
             CE_Configuration = "InsertChars,InsertTemplate, InsertEmotion,InsertYouTube,Images,Codes,Links,InsertForm , InsertTextBox, InsertInputText,InsertInputPassword,InsertInputhidden,InsertListBox,InsertDropDown,InsertRadioBox,InsertCheckBox,InsertInputImage,InsertInputSubmit,InsertInputReset,InsertInputButton,AbsolutePosition,BringForward,BringBackward,ToggleBorder,DocumentPropertyPage,CssClass,CssStyle,FormatBlock,CleanCode,GroupBox,InsertLayer";
