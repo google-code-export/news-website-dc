@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web
 {
@@ -14,15 +15,19 @@ namespace NewsVn.Web
         //check and set Ads CateID , Ads CateTitle
         private bool checkCateID_By_SEONAME(string seoNAME)
         {
-            var cate = _AdCategories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name,c.Parent}).ToList();
-            if (cate.Count() > 0)
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                intCateID = cate[0].ID;
-                this.CateTitle =(cate[0].Parent==null?"":cate[0].Parent.Name+" - ")+ cate[0].Name;
-                return true;
+                var _AdCategories = ctx.CategoryRespo.Getter.getQueryable(c => c.Type == "adpost" && c.Actived==true);
+                var cate = _AdCategories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name,c.Parent}).ToList();
+                if (cate.Count() > 0)
+                {
+                    intCateID = cate[0].ID;
+                    this.CateTitle =(cate[0].Parent==null?"":cate[0].Parent.Name+" - ")+ cate[0].Name;
+                    return true;
+                }
+                else
+                    return false;
             }
-            else
-                return false;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -49,46 +54,49 @@ namespace NewsVn.Web
         //Load List Ads by Ads Category
         private void load_pletAdsList(int pageindex, bool isSearchByDate)
         {
-            if (isSearchByDate)
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var date=DateTime.Parse(Request.QueryString["d"].Replace('_','/'));
-                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID) && p.Actived == true
-                    ).Where(p => p.CreatedOn.Day == date.Day && p.CreatedOn.Month == date.Month && p.CreatedOn.Year == date.Year)
-                    .Select(p => new
-                    {
-                        p.ID,
-                        p.Title,
-                        p.Content,
-                        p.Avatar,
-                        p.SeoUrl,
-                        p.CreatedOn,
-                        p.Payment,
-                        isFree = p.Payment <= 0 ? true : false,
-                        p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
-                    }).OrderByDescending(p => p.Payment).ToList();
-                pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
-                pletCatAdsPost.HostName = this.HostName;
+                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(a => a.Actived == true);
+                if (isSearchByDate)
+                {
+                    var date = DateTime.Parse(Request.QueryString["d"].Replace('_', '/'));
+                    pletCatAdsPost.Datasource = _AdPosts.Where(p => p.CategoryID == intCateID || (p.Category.Parent != null && p.Category.ParentID == intCateID) )
+                        .Where(p => p.CreatedOn.Day == date.Day && p.CreatedOn.Month == date.Month && p.CreatedOn.Year == date.Year)
+                        .Select(p => new
+                        {
+                            p.ID,
+                            p.Title,
+                            p.Content,
+                            p.Avatar,
+                            p.SeoUrl,
+                            p.CreatedOn,
+                            p.Payment,
+                            isFree = p.Payment <= 0 ? true : false,
+                            p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                        }).OrderByDescending(p => p.Payment).ToList();
+                    pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
+                    pletCatAdsPost.HostName = this.HostName;
+                }
+                else
+                {
+                    pletCatAdsPost.Datasource = _AdPosts.Where(p => p.CategoryID == intCateID || (p.Category.Parent != null && p.Category.ParentID == intCateID))
+                        .Select(p => new
+                        {
+                            p.ID,
+                            p.Title,
+                            p.Content,
+                            p.Avatar,
+                            p.SeoUrl,
+                            p.CreatedOn,
+                            p.Payment,
+                            isFree = p.Payment <= 0 ? true : false,
+                            p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
+                        }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
+                    pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
+                    pletCatAdsPost.HostName = this.HostName;
+                }
+                pletCatAdsPost.DataBind();
             }
-            else
-            {
-                pletCatAdsPost.Datasource = _AdPosts.Where(p => p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID) && p.Actived == true)
-                    .Select(p => new
-                    {
-                        p.ID,
-                        p.Title,
-                        p.Content,
-                        p.Avatar,
-                        p.SeoUrl,
-                        p.CreatedOn,
-                        p.Payment,
-                        isFree = p.Payment <= 0 ? true : false,
-                        p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
-                    }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
-                pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
-                pletCatAdsPost.HostName = this.HostName;
-            }
-            pletCatAdsPost.DataBind();
-            
         }
     }
 }

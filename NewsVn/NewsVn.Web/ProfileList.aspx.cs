@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
 
 namespace NewsVn.Web
@@ -22,46 +22,13 @@ namespace NewsVn.Web
         }
         private void load_PletUserProfileList()
         {
-            //did not use cache! large record
             //xu ly paging trong khoang vd: <<< 95 96 97 98 99 100 >>>
-            var data = ApplicationManager.Entities.UserProfiles.Where(u=>u.Description!=null).OrderByDescending(u=>u.Account)
-                .Select(u => new { 
-                u.Account,u.Age,u.Country,u.UpdatedOn,
-                Gender =u.Gender==true?"Nam":"Nữ",
-               u.Location,u.Name,u.Nickname,u.Expectation,
-                Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
-                })
-                .ToList();
-            pletUserProfileList.Datasource = data;
-            pletUserProfileList.DataBind();
-            data = null;
-        }
-        private void load_RandomUserProfile()
-        {
-            Random x = new Random();
-            var _UserProfiles_var = ApplicationManager.Entities.UserProfiles;
-            var cloneDataStructure = _UserProfiles_var.Where(u => u.Description != null).OrderByDescending(u => u.Account).Take(0)
-                 .Select(u => new
-                 {
-                     layoutPosition="",
-                     u.Account,
-                     u.Age,
-                     u.Country,
-                     u.UpdatedOn,
-                     Gender = u.Gender == true ? "Nam" : "Nữ",
-                     u.Location,
-                     u.Name,
-                     u.Nickname,
-                     u.Expectation,u.Avatar
-                 }).ToList();
-            for (int i = 0; i < 8; i++)
+            using (var ctx =new  NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var data = _UserProfiles_var.OrderByDescending(u => u.Account)
-                .Skip(x.Next(0, _UserProfiles_var.Count()-1)).Take(1)
+                var data = ctx.UserProfileRespo.Getter.getQueryable(u => u.Description != null).OrderByDescending(u => u.ID)
                 .Select(u => new
                 {
-                    layoutPosition = i % 2 == 0 ? "left" : "right",
-                    u.Account,
+                    Account=u.ID,
                     u.Age,
                     u.Country,
                     u.UpdatedOn,
@@ -71,14 +38,61 @@ namespace NewsVn.Web
                     u.Nickname,
                     u.Expectation,
                     Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
-                }).FirstOrDefault();
-                cloneDataStructure.Add(data);
+                })
+                .ToList();
+                pletUserProfileList.Datasource = data;
+                pletUserProfileList.DataBind();
                 data = null;
             }
+        }
+        private void load_RandomUserProfile()
+        {
+            using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                Random x = new Random();
+                var _UserProfiles_var = ctx.UserProfileRespo.Getter.getQueryable();
+                var cloneDataStructure = _UserProfiles_var.Where(u => u.Description != null).OrderByDescending(u => u.ID).Take(0)
+                     .Select(u => new
+                     {
+                         layoutPosition = "",
+                         Account=u.ID,
+                         u.Age,
+                         u.Country,
+                         u.UpdatedOn,
+                         Gender = u.Gender == true ? "Nam" : "Nữ",
+                         u.Location,
+                         u.Name,
+                         u.Nickname,
+                         u.Expectation,
+                         u.Avatar
+                     }).ToList();
+                for (int i = 0; i < 8; i++)
+                {
+                    var data = _UserProfiles_var.OrderByDescending(u => u.ID)
+                    .Skip(x.Next(0, _UserProfiles_var.Count() - 1)).Take(1)
+                    .Select(u => new
+                    {
+                        layoutPosition = i % 2 == 0 ? "left" : "right",
+                        Account = u.ID,
+                        u.Age,
+                        u.Country,
+                        u.UpdatedOn,
+                        Gender = u.Gender == true ? "Nam" : "Nữ",
+                        u.Location,
+                        u.Name,
+                        u.Nickname,
+                        u.Expectation,
+                        Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
+                    }).FirstOrDefault();
+                    cloneDataStructure.Add(data);
+                    data = null;
+                }
 
-            pletRandomProfile.Datasource = cloneDataStructure;
-            pletRandomProfile.DataBind();
-            cloneDataStructure = null;
+                pletRandomProfile.Datasource = cloneDataStructure;
+                pletRandomProfile.DataBind();
+                cloneDataStructure = null;
+            }
+            
         }
     }
 }

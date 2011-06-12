@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web
 {
@@ -42,38 +43,45 @@ namespace NewsVn.Web
 
         private void Load_Menu()
         {
-            var CateList = _Categories.Where(c => c.Parent == null)
-               .Union(_Categories.Where(c => c.Parent != null));
-            CtrMenu.Datasource = CateList;
-            CtrMenu.DataBind();
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString) )
+            {
+                var Catechildren=ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null);
+                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null).Union(Catechildren);
+                CtrMenu.Datasource = CateList;
+                CtrMenu.DataBind();
+            }
         }
-       
+
         protected void Load_FooterCate()
         {
-            var CateList = _Categories.Where(c => c.Parent == null )
-               .Select(c => new
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var Catechildren = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null);
+                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null)
+                    .Select(c => new
                {
                    c.Name,
-                   c.SeoName, 
-                   SeoUrl=HostName+ c.SeoUrl,
+                   c.SeoName,
+                   SeoUrl = HostName + c.SeoUrl,
                    c.ID
                    //Figures = 0//this.CountChildCateFigures(c)//khong the thuc hien count toan bo item trong he thong dc/ bad performance
                }).ToList();
-            CtrFooterCateList.Datasource = CateList;
-            CtrFooterCateList.DataBind();
+                CtrFooterCateList.Datasource = CateList;
+                CtrFooterCateList.DataBind();
+            }
         }
 
-        private int CountChildCateFigures(Data.Category cate)
-        {
-            int count = 0;
-            count = _Posts.Where(p => p.Category.ID == cate.ID).Select(p => p.Title).Count();
-            var childCates = _Categories.Where(c => c.Parent != null && c.Parent.ID == cate.ID);
-            foreach (var item in childCates)
-            {
-                count += _Posts.Where(p => p.Category.ID == item.ID).Select(p => p.Title).Count();
-            }
+        //private int CountChildCateFigures(Data.Category cate)
+        //{
+        //    int count = 0;
+        //    count = _Posts.Where(p => p.Category.ID == cate.ID).Select(p => p.Title).Count();
+        //    var childCates = _Categories.Where(c => c.Parent != null && c.Parent.ID == cate.ID);
+        //    foreach (var item in childCates)
+        //    {
+        //        count += _Posts.Where(p => p.Category.ID == item.ID).Select(p => p.Title).Count();
+        //    }
             
-            return count;
-        }
+        //    return count;
+        //}
     }
 }

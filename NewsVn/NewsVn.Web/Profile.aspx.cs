@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NewsVn.Web.Utils;
+using NewsVn.Impl.Context;
 namespace NewsVn.Web
 {
     public partial class Profile : BaseUI.BasePage
@@ -19,13 +20,15 @@ namespace NewsVn.Web
         }
         private void load_UserProfileDetailsByAccount(string Account)
         {
-            var _UserProfiles=ApplicationManager.Entities.UserProfiles;
-            var data = _UserProfiles.Where(u => u.Account == Account)
-                .FirstOrDefault();
-            pletUserProfileDetails.Datasource = data;
-            pletUserProfileDetails.DataBind();
-            BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(data.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(data.Expectation).Replace('-', ' '), Account + " - " + data.Description + " - " + data.Expectation);
-            data = null;
+            using (var ctx=new NewsVnContext(ApplicationManager.ConnectionString))
+            {
+                var _UserProfiles = ctx.UserProfileRespo.Getter.getOne(Account);
+                pletUserProfileDetails.Datasource = _UserProfiles;
+                pletUserProfileDetails.DataBind();
+                BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(data.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(data.Expectation).Replace('-', ' '), Account + " - " + data.Description + " - " + data.Expectation);
+                _UserProfiles = null;
+            }
+            
 
         }
         

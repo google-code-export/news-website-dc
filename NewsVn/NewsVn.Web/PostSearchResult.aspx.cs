@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web
 {
@@ -25,25 +26,28 @@ namespace NewsVn.Web
         }
         private void return_SearchResults(string keySearch)
         {
-            keySearch = Server.UrlDecode(keySearch);
+            using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                keySearch = Server.UrlDecode(keySearch);
+                var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
+                string first = keySearch.Substring(0, keySearch.IndexOf(' ') >= 1 ? keySearch.IndexOf(' ') : 1).Trim();
+                //string rest = Server.UrlDecode(keySearch); //keySearch.Substring(keySearch.IndexOf(' '), keySearch.Length - keySearch.IndexOf(' ')).Trim();
+                var data = _Posts.Where(p => p.Title.ToLower().StartsWith(first.ToLower()))
+                    .Select(p => new
+                    {
+                        p.Title,
+                        p.SeoUrl,
+                        p.Description,
+                        p.ApprovedOn,
+                        p.Avatar,
+                        Comments = p.PostComments.Count
+                    }).OrderByDescending(p => p.Title).ThenByDescending(p => p.ApprovedOn).ToList();
 
-            string first = keySearch.Substring(0, keySearch.IndexOf(' ') >= 1 ? keySearch.IndexOf(' ') : 1).Trim();
-            //string rest = Server.UrlDecode(keySearch); //keySearch.Substring(keySearch.IndexOf(' '), keySearch.Length - keySearch.IndexOf(' ')).Trim();
-            var data = _Posts.Where(p => p.Title.ToLower().StartsWith(first.ToLower()))
-                .Select(p => new
-                {
-                    p.Title,
-                    p.SeoUrl,
-                    p.Description,
-                    p.ApprovedOn,
-                    p.Avatar,
-                    Comments = p.PostComments.Count
-                }).OrderByDescending(p=>p.Title).ThenByDescending(p=>p.ApprovedOn).ToList();
-
-            pletSearchResult.Datasource = data;
-            pletSearchResult.ItemFounded = data.Count();
-            pletSearchResult.keySearch = keySearch;
-            pletSearchResult.DataBind();
+                pletSearchResult.Datasource = data;
+                pletSearchResult.ItemFounded = data.Count();
+                pletSearchResult.keySearch = keySearch;
+                pletSearchResult.DataBind();
+            }
         }
     }
 }

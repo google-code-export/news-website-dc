@@ -8,7 +8,7 @@ using System.Data;
 using NewsVn.Web.Utils;
 using System.Xml;
 using System.Xml.Linq;
-using System.Data.Objects;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web
 {
@@ -26,7 +26,7 @@ namespace NewsVn.Web
         {
             if (!IsPostBack)
             {
-                List<string> lstArrayID = load_pletLatestNews();
+                List<int> lstArrayID = load_pletLatestNews();
                 load_pletSpecialEvents();
                 load_pletHotNews(lstArrayID);
                 load_pletPosts();
@@ -47,15 +47,17 @@ namespace NewsVn.Web
                 WOEID = c.Element("WOEID").Value
             }).ToList();
             pletSideTabBar.Datasource_Weather = City;
-
             pletSideTabBar.DataBind();
         }
 
         private void load_pletPosts()
         {
-            try
+
+            int indexArea = 0;
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                int indexArea = 0;
+                var _Categories = ctx.CategoryRespo.Getter.getQueryable(c => c.Actived == true);
+                var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true);
                 for (int i = 0; i < _Categories.Count(); i++)
                 {
                     var cate = _Categories.ElementAt(i);
@@ -68,7 +70,7 @@ namespace NewsVn.Web
                         continue;
                     }
                     //load 1st news
-                    var oActivePost = _Posts.Where(p => p.Category.ID == cate.ID || (p.Category.Parent != null && p.Category.Parent.ID == cate.ID) && cate.Actived == true)
+                    var oActivePost = _Posts.Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID) && cate.Actived == true)
                         .Select(p => new
                         {
                             p.ID,
@@ -98,7 +100,11 @@ namespace NewsVn.Web
                     postArea.Controls.Add(ctrPortletPost);
                     indexArea += 1;
                 }
-                //Bind Control Quang Cao
+            }
+            //Bind Control Quang Cao
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(adp => adp.Actived == true);
                 Control UC_PortletPost_Ad = LoadControl("~/Modules/PostsPortlet.ascx");
                 var ctrPortletPost_Ad = ((Modules.PostsPortlet)UC_PortletPost_Ad);
                 ctrPortletPost_Ad.Title = "Rao Nhanh";
@@ -106,7 +112,7 @@ namespace NewsVn.Web
                 ctrPortletPost_Ad.CssClass = "right";
                 ctrPortletPost_Ad.ClearLayout = true;
                 //bind control
-                var IOrderQueryableData = _AdPosts.Where(adp => adp.Actived == true)//&& adp.ExpiredOn >= DateTime.Now //sau nay se set theo expired
+                var IOrderQueryableData = _AdPosts//&& adp.ExpiredOn >= DateTime.Now //sau nay se set theo expired
                     .Select(adp => new
                     {
                         adp.ID,
@@ -124,21 +130,14 @@ namespace NewsVn.Web
                 ctrPortletPost_Ad.DataBind();
                 postArea.Controls.Add(ctrPortletPost_Ad);
             }
-            catch (Exception ex)
-            {
-               clsCommon.WriteTextLog("Default.aspx - fnc: load_pletPosts", ex.Message.ToString());
-            }
         }
         //Hot News Tin noi bat
-        void load_pletHotNews(List<string> lstArrayID)
+        void load_pletHotNews(List<int> lstArrayID)
         {
-            string csvIds="";
-            try
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 pletHotNews.CateTitle = "Tin Nổi Bật";
-                csvIds = string.Join(",", lstArrayID.ToArray());
-                IQueryable<Data.Post> iPost = Utils.ApplicationManager.Entities.Posts.Where("it.Id not in {" + csvIds + "}")
-                    .Where(p => p.Actived == true && p.Approved == true);// in sql in (1,2,3,4...)
+                var iPost = ctx.PostRespo.Getter.getQueryable(p => lstArrayID.Contains(p.ID));
                 var oData = iPost.Select(p => new
                 {
                     p.Title,
@@ -148,14 +147,8 @@ namespace NewsVn.Web
                     p.ApprovedOn,
                     p.PageView
                 }).OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.PageView).Take(5).ToList();
-
                 pletHotNews.DataSource = oData;
                 pletHotNews.DataBind();
-            }
-            catch (Exception ex)
-            {
-                clsCommon.WriteTextLog("Default.aspx - fnc: load_pletHotNews csvIds:" + csvIds, ex.Message.ToString());
-                //log.Error("Error error " + clsCommon.AddTabSpace(1) + "+ clsCommon.AddTabSpace(1) + "IP:" + clsCommon.GetIPAddress(), ex);
             }
         }
         //tin su kien
@@ -164,29 +157,25 @@ namespace NewsVn.Web
             pletSpecialEvents.DataSource = clsPost.Load_Post_From_XML(10);
             pletSpecialEvents.DataBind();
         }
-        List<string> load_pletLatestNews()
+        List<int> load_pletLatestNews()
         {
-            try
+            using (var ctx= new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var oData = _Posts.Where(p => p.Actived == true && p.Approved == true).Select(p => new
+                var oData =ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).Select(p => new
                 {
                     p.ID,
                     p.Title,
                     p.ApprovedOn,
                     p.SeoUrl,
                     p.AllowComments,
-                    Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name + ", " + p.Category.Name : p.Category.Name,
+                    Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name+ ", " + p.Category.Name : p.Category.Name,
                     Comments = p.PostComments.Count()
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
 
                 pletLatestNews.DataSource = oData;
                 pletLatestNews.HostName = HostName;
                 pletLatestNews.DataBind();
-                return oData.Select(p => p.ID.ToString()).ToList();
-            }
-            catch (Exception ex)
-            {
-                clsCommon.WriteTextLog("Default.aspx - fnc: load_pletLatestNews", ex.Message.ToString());
+                return oData.Select(p => p.ID).ToList();
             }
             return null;
         }
