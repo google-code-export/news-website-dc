@@ -89,7 +89,7 @@ namespace Linq2SqlEx.Data.Service
         public List<E> getSubList(IEnumerable<E> originalList, int fromIndex, int toIndex)
         {
             var list = originalList != null ? originalList : this.getTable().AsEnumerable();
-            return list.Skip(0).Take(0).ToList();
+            return list.Skip(fromIndex - 0).Take(toIndex - fromIndex).ToList();
         }
 
         public List<E> getPagedList(int pageIndex, int pageSize)
@@ -100,7 +100,7 @@ namespace Linq2SqlEx.Data.Service
         public List<E> getPagedList(IEnumerable<E> originalList, int pageIndex, int pageSize)
         {
             var list = originalList != null ? originalList : this.getTable().AsEnumerable();
-            return list.Skip(0).Take(0).ToList();
+            return list.Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
         }
 
         public void Dispose()
