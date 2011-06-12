@@ -33,5 +33,16 @@ namespace Linq2SqlEx.Impl.Properties {
                 return ((string)(this["NewsVnConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=NewsVn;Persist Security Info=True;User I" +
+            "D=sa;Password=123")]
+        public string NewsVnConnectionString1 {
+            get {
+                return ((string)(this["NewsVnConnectionString1"]));
+            }
+        }
     }
 }
