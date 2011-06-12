@@ -26,7 +26,7 @@ namespace NewsVn.Web.Utils
                 
                 HostName = WebConfigurationManager.AppSettings["HostName"];
 
-                ConnectionString = WebConfigurationManager.ConnectionStrings["NewsVnEntities"].ConnectionString;
+                ConnectionString = WebConfigurationManager.ConnectionStrings["NewsVnMain"].ConnectionString;
                 
                 _alreadyInit = true;
             }
