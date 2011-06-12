@@ -32,6 +32,8 @@ namespace NewsVn.Impl.Entity
             get { return this._post.Entity; }
             set
             {
+                PostID = value.ID;
+                
                 if (this._post.HasLoadedOrAssignedValue == false)
                 {
                     this._post.Entity = value;

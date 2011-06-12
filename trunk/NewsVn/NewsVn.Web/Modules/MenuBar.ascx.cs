@@ -9,7 +9,7 @@ namespace NewsVn.Web.Modules
 {
     public partial class MenuBar : BaseUI.BaseModule
     {
-        public IQueryable<Data.Category> Datasource { get; set; }
+        public IQueryable<Impl.Entity.Category> Datasource { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 

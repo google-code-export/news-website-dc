@@ -29,6 +29,8 @@ namespace NewsVn.Impl.Entity
             get { return this._parent.Entity; }
             set
             {
+                ParentID = value.ID;
+                
                 if (this._parent.HasLoadedOrAssignedValue == false)
                 {
                     this._parent.Entity = value;

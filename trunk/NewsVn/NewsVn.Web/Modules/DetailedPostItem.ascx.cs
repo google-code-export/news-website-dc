@@ -9,7 +9,7 @@ namespace NewsVn.Web.Modules
 {
     public partial class DetailedPostItem : BaseUI.BaseModule
     {
-        public Data.Post Datasource { get; set; }
+        public Impl.Entity.Post Datasource { get; set; }
         public bool AllowComment { get; set; }
         public int CountedComment { get; set; }
         public string SeoUrl { get; set; }

@@ -5,13 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NewsVn.Web.Utils;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web.Modules
 {
     public partial class SiteAdmin_UpdateCategory : BaseUI.SecuredModule
     {
         public bool AllowEdit { get; set; }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,10 +35,12 @@ namespace NewsVn.Web.Modules
 
         private void LoadParentCategoryDropDown()
         {
-            var parentCates = _Categories.Where(c => c.Parent == null).OrderBy(p => p.Name);
-            
-            foreach (var cate in parentCates)
-                ddlParentCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            {
+                var parentCates = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null).OrderBy(p => p.Name);
+                foreach (var cate in parentCates)
+                    ddlParentCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
+            }
         }
 
         private void ClearUpdateForm()
@@ -52,47 +55,53 @@ namespace NewsVn.Web.Modules
         {
             if (AllowEdit)
             {
-                int categoryID = -1;
-                int.TryParse(Request.QueryString["cid"], out categoryID);
-
-                Data.Category category = _Categories.FirstOrDefault(c => c.ID == categoryID && c.Parent != null);
-
-                if (category != null)
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    txtName.Text = category.Name;
-                    txtDescription.Text = category.Description;
-                    chkActived.Checked = category.Actived;
-                    txtParentCategory.Text = category.Parent.ID.ToString();
-                    ddlParentCategory.Items.FindByValue(category.Parent.ID.ToString()).Selected = true;
-                }
-                else
-                {
-                    ltrError.Text = string.Format(ErrorBar, "Danh mục không tồn tại hoặc không cho phép chỉnh sửa.");
-                    btnUpdate.Visible = false;
+                    int categoryID = -1;
+                    int.TryParse(Request.QueryString["cid"], out categoryID);
+
+                    var category = ctx.CategoryRespo.Getter.getOne(c => c.ID == categoryID && c.Parent != null);
+
+                    if (category != null)
+                    {
+                        txtName.Text = category.Name;
+                        txtDescription.Text = category.Description;
+                        chkActived.Checked = category.Actived;
+                        txtParentCategory.Text = category.Parent.ID.ToString();
+                        ddlParentCategory.Items.FindByValue(category.Parent.ID.ToString()).Selected = true;
+                    }
+                    else
+                    {
+                        ltrError.Text = string.Format(ErrorBar, "Danh mục không tồn tại hoặc không cho phép chỉnh sửa.");
+                        btnUpdate.Visible = false;
+                    }
                 }
             }
         }
 
         private void AddNewCategory()
         {
-            Data.Category parentCategory = _Categories.FirstOrDefault(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
-            
             try
             {
-                Data.Category category = new Data.Category
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    Type = "post",
-                    Name = txtName.Text.Trim(),
-                    Description = txtDescription.Text.Trim(),
-                    Actived = chkActived.Checked,
-                    SeoName = string.Format("{0}/{1}", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
-                    SeoUrl = string.Format("ct/{0}/{1}.aspx", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
-                    UpdatedOn = DateTime.Now,
-                    Parent = parentCategory
-                };
+                    var parentCategory = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlParentCategory.SelectedValue));
 
-                this.SaveChangesAndReload();
-                this.ClearUpdateForm();
+                    var category = new Impl.Entity.Category
+                                {
+                                    Type = "post",
+                                    Name = txtName.Text.Trim(),
+                                    Description = txtDescription.Text.Trim(),
+                                    Actived = chkActived.Checked,
+                                    SeoName = string.Format("{0}/{1}", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
+                                    SeoUrl = string.Format("ct/{0}/{1}.aspx", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
+                                    UpdatedOn = DateTime.Now,
+                                    Parent = parentCategory
+                                };
+
+                    ctx.CategoryRespo.Setter.addOne(category);
+                    this.ClearUpdateForm();
+                }
             }
             catch (Exception ex)
             {
@@ -104,37 +113,32 @@ namespace NewsVn.Web.Modules
         {
             try
             {
-                Data.Category category = _Categories.FirstOrDefault(c => c.ID == categoryID && c.Parent != null);
-
-                if (category != null)
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    Data.Category parentCategory = _Categories.FirstOrDefault(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
+                    var category = ctx.CategoryRespo.Getter.getOne(c => c.ID == categoryID && c.Parent != null);
 
-                    category.Type = "post";
-                    category.Name = txtName.Text.Trim();
-                    category.Description = txtDescription.Text.Trim();
-                    category.Actived = category.Actived;
-                    category.SeoName = string.Format("{0}/{1}", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim()));
-                    category.SeoUrl = string.Format("ct/{0}.aspx", category.SeoName);
-                    category.UpdatedOn = DateTime.Now;
-                    category.Parent = parentCategory;
+                    if (category != null)
+                    {
+                        var parentCategory = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlParentCategory.SelectedValue));
 
-                    this.SaveChangesAndReload();
-                    this.ClearUpdateForm();
+                        category.Type = "post";
+                        category.Name = txtName.Text.Trim();
+                        category.Description = txtDescription.Text.Trim();
+                        category.Actived = category.Actived;
+                        category.SeoName = string.Format("{0}/{1}", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim()));
+                        category.SeoUrl = string.Format("ct/{0}.aspx", category.SeoName);
+                        category.UpdatedOn = DateTime.Now;
+                        category.Parent = parentCategory;
+
+                        ctx.CategoryRespo.Setter.editOne(category);
+                        this.ClearUpdateForm();
+                    }
                 }
             }
             catch (Exception ex)
             {
                 ltrError.Text = string.Format(ErrorBar, ex.Message);
             }
-        }
-
-        private void SaveChangesAndReload()
-        {
-            ApplicationManager.Entities.SaveChanges();
-            _Categories = ApplicationManager.Entities.Categories.ToList().AsQueryable();
-            //_Categories = ApplicationManager.Entities.Categories
-            //ApplicationManager.UpdateCacheData<Data.Category>(ApplicationManager.Entities.Categories.Where(c => c.Actived));
         }
     }
 }

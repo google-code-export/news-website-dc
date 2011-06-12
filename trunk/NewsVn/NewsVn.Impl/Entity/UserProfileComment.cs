@@ -22,7 +22,7 @@ namespace NewsVn.Impl.Entity
         //FK
         //FK
         [Column]
-        public int ForAccount { get; set; }
+        public string ForAccount { get; set; }
 
         private EntityRef<UserProfile> _userProfile;
 
@@ -32,6 +32,8 @@ namespace NewsVn.Impl.Entity
             get { return this._userProfile.Entity; }
             set
             {
+                ForAccount = value.ID;
+
                 if (this._userProfile.HasLoadedOrAssignedValue == false)
                 {
                     this._userProfile.Entity = value;

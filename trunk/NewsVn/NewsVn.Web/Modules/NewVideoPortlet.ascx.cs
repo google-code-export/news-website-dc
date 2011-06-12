@@ -9,7 +9,7 @@ namespace NewsVn.Web.Modules
 {
     public partial class NewVideoPortlet : BaseUI.BaseModule
     {
-        public List<Data.Video> DataSource { get; set; }
+        public List<Impl.Entity.Video> DataSource { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {

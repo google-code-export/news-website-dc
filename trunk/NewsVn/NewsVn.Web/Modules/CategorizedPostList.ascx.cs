@@ -11,7 +11,7 @@ namespace NewsVn.Web.Modules
     {
        // public IQueryable<Data.Post> Datasource { get; set; }
         public object Datasource { get; set; }
-        public IQueryable<Data.Post> IDatasource { get; set; }
+        public IQueryable<Impl.Entity.Post> IDatasource { get; set; }
         public bool NoComments { get; set; }      
 
         protected void Page_Load(object sender, EventArgs e)
