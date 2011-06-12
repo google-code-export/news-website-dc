@@ -13,7 +13,7 @@ namespace Vietstream.Data.Domain
         public Repository(DataContext context) : base(context)
         {
             this.Getter = new Service.DataGetter<E, TID>(context);            
-        }
+        }        
 
         public override void Dispose()
         {

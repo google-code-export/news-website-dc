@@ -86,6 +86,12 @@ namespace Vietstream.Data.Service
             return this.getSubList(null, fromIndex, toIndex);
         }
 
+        public List<E> getSubList(int fromIndex, int toIndex, Expression<Func<E, bool>> expression)
+        {
+            var list = this.getQueryable(expression).AsEnumerable();
+            return this.getSubList(list, fromIndex, toIndex);
+        }
+
         public List<E> getSubList(IEnumerable<E> originalList, int fromIndex, int toIndex)
         {
             var list = originalList != null ? originalList : this.getTable().AsEnumerable();
@@ -95,6 +101,12 @@ namespace Vietstream.Data.Service
         public List<E> getPagedList(int pageIndex, int pageSize)
         {
             return this.getPagedList(null, pageIndex, pageSize);
+        }
+        
+        public List<E> getPagedList(int pageIndex, int pageSize, Expression<Func<E, bool>> expression)
+        {
+            var list = this.getQueryable(expression).AsEnumerable();
+            return this.getPagedList(list, pageIndex, pageSize);
         }
 
         public List<E> getPagedList(IEnumerable<E> originalList, int pageIndex, int pageSize)
@@ -106,6 +118,6 @@ namespace Vietstream.Data.Service
         public void Dispose()
         {
             _ctx.Dispose();
-        }
+        }        
     }
 }

@@ -24,5 +24,15 @@ namespace Vietstream.Data.Domain
         {
             _ctx = new DataContext(this.ConnectionString);
         }
+
+        public void SubmitChanges()
+        {
+            _ctx.SubmitChanges();
+        }
+
+        public void SubmitChanges(ConflictMode failureMode)
+        {
+            _ctx.SubmitChanges(failureMode);
+        }
     }
 }
