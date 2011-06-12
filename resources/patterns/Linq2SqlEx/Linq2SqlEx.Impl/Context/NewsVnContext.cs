@@ -19,8 +19,9 @@ namespace Linq2SqlEx.Impl.Context
             
             this.CreateDataContext();
 
-            this.CategoryRespo = new Repository<Entity.Category, int>(_ctx);
-            this.PostRespo = new Repository<Entity.Post, int>(_ctx);
+            CategoryRespo = new Repository<Entity.Category, int>(_ctx);
+
+            PostRespo = new Repository<Entity.Post, int>(_ctx);
         }
 
         public void Dispose()

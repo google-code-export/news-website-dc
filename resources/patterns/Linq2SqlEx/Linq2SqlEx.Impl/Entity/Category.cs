@@ -44,6 +44,12 @@ namespace Linq2SqlEx.Impl.Entity
         [Association(OtherKey = "CategoryID")]
         public EntitySet<Post> Posts { get; set; }
 
+        [Association(OtherKey = "CategoryID")]
+        public EntitySet<AdPost> AdPosts { get; set; }
+
+        [Association(OtherKey = "CategoryID")]
+        public EntitySet<Video> Videos { get; set; }
+
         [Column]
         public int? ParentID { get; set; }
 
@@ -54,7 +60,7 @@ namespace Linq2SqlEx.Impl.Entity
 
         public override string ToString()
         {
-            return "[Category] ID: " + ID + ", Name: " + Name + ", Parent: " + (Parent == null) + ", Children: " + Children.Count() +  ", PostFound: " + Posts.Count();
+            return "[Category] ID: " + ID + ", Name: " + Name + ", Parent: " + (Parent == null) + ", Children: " + Children.Count() +  "\nPostFound: " + Posts.Count() + ", AdPostFound: " + AdPosts.Count();
         }
     }
 }
