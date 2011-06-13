@@ -10,7 +10,7 @@ using System.Data.Linq;
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "UserProfileComments")]
-    public class UserProfileComment : Base<int>, ISerializable
+    public class UserProfileComment : Base, ISerializable
     {
         public UserProfileComment()
         {
@@ -18,7 +18,7 @@ namespace NewsVn.Impl.Entity
         }
 
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
-        public override int ID { get; set; }
+        public int ID { get; set; }
         //FK
         //FK
         [Column]
@@ -26,13 +26,13 @@ namespace NewsVn.Impl.Entity
 
         private EntityRef<UserProfile> _userProfile;
 
-        [Association(Storage = "_userProfile", ThisKey = "ForAccount", OtherKey = "ID", IsForeignKey = true)]
+        [Association(Storage = "_userProfile", ThisKey = "ForAccount", OtherKey = "Account", IsForeignKey = true)]
         public UserProfile UserProfile
         {
             get { return this._userProfile.Entity; }
             set
             {
-                ForAccount = value.ID;
+                ForAccount = value.Account;
 
                 if (this._userProfile.HasLoadedOrAssignedValue == false)
                 {

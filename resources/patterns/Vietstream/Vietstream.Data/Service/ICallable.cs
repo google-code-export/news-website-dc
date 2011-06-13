@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Vietstream.Data.Service
 {
-    public interface ICallable<E, TID> where E : Model.Base<TID>
+    public interface ICallable<E> where E : Model.Base
     {
         E getFirst();
 
@@ -21,7 +21,7 @@ namespace Vietstream.Data.Service
 
         E getAtIndex(int index, Func<E, bool> predicate);
 
-        E getOne(TID id);
+        //E getOne(TID id);
         
         E getOne(Func<E, bool> predicate);
 

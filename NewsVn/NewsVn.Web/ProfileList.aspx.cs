@@ -25,10 +25,10 @@ namespace NewsVn.Web
             //xu ly paging trong khoang vd: <<< 95 96 97 98 99 100 >>>
             using (var ctx =new  NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var data = ctx.UserProfileRespo.Getter.getQueryable(u => u.Description != null).OrderByDescending(u => u.ID)
+                var data = ctx.UserProfileRespo.Getter.getQueryable(u => u.Description != null).OrderByDescending(u => u.Account)
                 .Select(u => new
                 {
-                    Account=u.ID,
+                    Account=u.Account,
                     u.Age,
                     u.Country,
                     u.UpdatedOn,
@@ -51,11 +51,11 @@ namespace NewsVn.Web
             {
                 Random x = new Random();
                 var _UserProfiles_var = ctx.UserProfileRespo.Getter.getQueryable();
-                var cloneDataStructure = _UserProfiles_var.Where(u => u.Description != null).OrderByDescending(u => u.ID).Take(0)
+                var cloneDataStructure = _UserProfiles_var.Where(u => u.Description != null).OrderByDescending(u => u.Account).Take(0)
                      .Select(u => new
                      {
                          layoutPosition = "",
-                         Account=u.ID,
+                         Account=u.Account,
                          u.Age,
                          u.Country,
                          u.UpdatedOn,
@@ -68,12 +68,12 @@ namespace NewsVn.Web
                      }).ToList();
                 for (int i = 0; i < 8; i++)
                 {
-                    var data = _UserProfiles_var.OrderByDescending(u => u.ID)
+                    var data = _UserProfiles_var.OrderByDescending(u => u.Account)
                     .Skip(x.Next(0, _UserProfiles_var.Count() - 1)).Take(1)
                     .Select(u => new
                     {
                         layoutPosition = i % 2 == 0 ? "left" : "right",
-                        Account = u.ID,
+                        Account = u.Account,
                         u.Age,
                         u.Country,
                         u.UpdatedOn,

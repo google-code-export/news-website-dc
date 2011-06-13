@@ -10,7 +10,7 @@ using Vietstream.Data.Model;
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "Categories")]
-    public class Category : Base<int>, ISerializable
+    public class Category : Base, ISerializable
     {
         public Category()
         {
@@ -19,7 +19,7 @@ namespace NewsVn.Impl.Entity
         
         //key define
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
-        public override int ID { get; set; }
+        public int ID { get; set; }
 
         private EntityRef<Category> _parent;
 

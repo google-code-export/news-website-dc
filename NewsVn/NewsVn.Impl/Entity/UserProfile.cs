@@ -10,10 +10,10 @@ using System.Data.Linq;
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "UserProfiles")]
-    public class UserProfile : Base<string>, ISerializable
+    public class UserProfile : Base, ISerializable
     {
-        [Column(Name = "Account", IsPrimaryKey = true)]
-        public override string ID { get; set; }
+        [Column(IsPrimaryKey = true)]
+        public string Account { get; set; }
 
         [Association(OtherKey = "To")]
         public EntitySet<UserMessage> UserMessages { get; set; }
@@ -162,7 +162,7 @@ namespace NewsVn.Impl.Entity
 
         public override string ToString()
         {
-            return "[userprofiles] ID: " + ID + ", Name: " + Nickname;
+            return "[userprofiles] ID: " + Account + ", Name: " + Nickname;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

@@ -85,7 +85,7 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    var parentCategory = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlParentCategory.SelectedValue));
+                    var parentCategory = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
 
                     var category = new Impl.Entity.Category
                                 {
@@ -119,7 +119,7 @@ namespace NewsVn.Web.Modules
 
                     if (category != null)
                     {
-                        var parentCategory = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlParentCategory.SelectedValue));
+                        var parentCategory = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
 
                         category.Type = "post";
                         category.Name = txtName.Text.Trim();

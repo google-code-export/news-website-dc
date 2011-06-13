@@ -81,7 +81,7 @@ namespace NewsVn.Web.Modules
                     int postID = -1;
                     int.TryParse(Request.QueryString["pid"], out postID);
 
-                    var post = ctx.PostRespo.Getter.getOne(postID);
+                    var post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
 
                     if (post != null)
                     {
@@ -106,7 +106,7 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    var cate = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlCategory.SelectedValue));
+                    var cate = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
 
                     var post = new Impl.Entity.Post
                     {
@@ -132,7 +132,7 @@ namespace NewsVn.Web.Modules
                     }
 
                     int postID = -1;
-                    ctx.PostRespo.Setter.addOne(post, out postID);
+                    //ctx.PostRespo.Setter.addOne(post, out postID);
 
                     post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, postID, clsCommon.RemoveUnicodeMarks(post.Title));
                     ctx.SubmitChanges();
@@ -150,11 +150,11 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var post = ctx.PostRespo.Getter.getOne(postID);
+                var post = ctx.PostRespo.Getter.getOne(p=> p.ID == postID);
 
                 if (post != null)
                 {
-                    var cate = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlCategory.SelectedValue));
+                    var cate = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
 
                     post.Title = txtTitle.Text.Trim();
                     post.Avatar = txtAvatar.Text.Trim();

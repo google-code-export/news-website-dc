@@ -10,7 +10,7 @@ using System.Data.Linq;
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "Videos")]
-    public class Video : Base<int>, ISerializable
+    public class Video : Base, ISerializable
     {
         public Video()
         {
@@ -18,7 +18,7 @@ namespace NewsVn.Impl.Entity
         }
         
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
-        public override int ID { get; set; }
+        public int ID { get; set; }
        
         //FK
         [Column]

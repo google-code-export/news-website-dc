@@ -9,10 +9,10 @@ using Vietstream.Data.Model;
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "Settings")]
-    public class Setting : Base<int>, ISerializable
+    public class Setting : Base, ISerializable
     {
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
-        public override int ID { get; set; }
+        public int ID { get; set; }
 
         [Column]
         public string Type

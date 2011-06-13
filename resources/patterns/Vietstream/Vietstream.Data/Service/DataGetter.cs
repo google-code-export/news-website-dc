@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Vietstream.Data.Service
 {
-    public class DataGetter<E, TID> : ICallable<E, TID>, IPageable<E, TID>, ISortable<E, TID>, IDisposable where E : Model.Base<TID>
+    public class DataGetter<E> : ICallable<E>, IPageable<E>, ISortable<E>, IDisposable where E : Model.Base
     {
         DataContext _ctx;
 
@@ -46,10 +46,10 @@ namespace Vietstream.Data.Service
             return this.getTable().Where(predicate).ElementAtOrDefault(index);
         }
 
-        public E getOne(TID id)
+        /*public E getOne(TID id)
         {
             return this.getOne(e => e.ID.Equals(id));
-        }
+        }*/
 
         public E getOne(Func<E, bool> predicate)
         {

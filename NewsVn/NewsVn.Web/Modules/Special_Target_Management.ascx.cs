@@ -147,7 +147,7 @@ namespace NewsVn.Web.Modules
 
                             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                             {
-                                var post = ctx.PostRespo.Getter.getOne(pID);
+                                var post = ctx.PostRespo.Getter.getOne(p => p.ID == pID);
                                 DataRow r = dt.NewRow();
                                 r["ID"] = row.Cells[1].Text;
                                 r["Title"] = post.Title;

@@ -6,13 +6,13 @@ using System.Data.Linq;
 
 namespace Vietstream.Data.Domain
 {
-    public class Repository<E, TID> : ReadOnlyRespository<E, TID>, IDisposable where E : Model.Base<TID>
+    public class Repository<E> : ReadOnlyRespository<E>, IDisposable where E : Model.Base
     {
-        public Service.DataGetter<E, TID> Getter { get; set; }        
+        public Service.DataGetter<E> Getter { get; set; }        
 
         public Repository(DataContext context) : base(context)
         {
-            this.Getter = new Service.DataGetter<E, TID>(context);            
+            this.Getter = new Service.DataGetter<E>(context);            
         }        
 
         public override void Dispose()
