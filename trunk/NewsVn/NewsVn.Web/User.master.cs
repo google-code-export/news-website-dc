@@ -45,8 +45,8 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString) )
             {
-                var Catechildren=ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null && c.Type=="post");
-                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type == "post").Union(Catechildren);
+                var Catechildren = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null && c.Type.Trim().ToLower() == "post");
+                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post").Union(Catechildren);
                 CtrMenu.Datasource = CateList;
                 CtrMenu.DataBind();
             }
@@ -56,32 +56,36 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var Catechildren = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null);
-                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null)
+                //var Catechildren = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null && c.Type.Trim().ToLower() == "post");
+                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post")
                     .Select(c => new
                {
                    c.Name,
                    c.SeoName,
                    SeoUrl = HostName + c.SeoUrl,
-                   c.ID
-                   //Figures = 0//this.CountChildCateFigures(c)//khong the thuc hien count toan bo item trong he thong dc/ bad performance
+                   c.ID,
+                   //khong the thuc hien count toan bo item trong he thong dc/ bad performance
+                   //Waston: Test thử với pattern mới
+                   PostCount = this.CountChildCateFigures(c)
                }).ToList();
                 CtrFooterCateList.Datasource = CateList;
                 CtrFooterCateList.DataBind();
             }
         }
 
-        //private int CountChildCateFigures(Data.Category cate)
-        //{
-        //    int count = 0;
-        //    count = _Posts.Where(p => p.Category.ID == cate.ID).Select(p => p.Title).Count();
-        //    var childCates = _Categories.Where(c => c.Parent != null && c.Parent.ID == cate.ID);
-        //    foreach (var item in childCates)
-        //    {
-        //        count += _Posts.Where(p => p.Category.ID == item.ID).Select(p => p.Title).Count();
-        //    }
-            
-        //    return count;
-        //}
+        private int CountChildCateFigures(Impl.Entity.Category cate)
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                int count = cate.Posts.Count;
+
+                foreach (var child in cate.Children)
+                {
+                    count += child.Posts.Count;
+                }
+
+                return count;
+            }
+        }
     }
 }

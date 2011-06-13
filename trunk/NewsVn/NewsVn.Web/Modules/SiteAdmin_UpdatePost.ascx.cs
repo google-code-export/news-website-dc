@@ -40,14 +40,16 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var parentCates = ctx.CategoryRespo.Getter.getQueryable(p => p.Parent == null).OrderBy(p => p.Name);
-                var otherCates = ctx.CategoryRespo.Getter.getQueryable(p => !parentCates.Contains(p)).OrderBy(p => p.Parent.Name);
+                var cates = ctx.CategoryRespo.Getter.getQueryable(c => c.Type.Trim().ToLower() == "post")
+                    .OrderByDescending(c => c.Parent == null).ThenBy(c => c.Parent.Name);
 
-                foreach (var cate in parentCates)
-                    ddlCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
-
-                foreach (var cate in otherCates)
-                    ddlCategory.Items.Add(new ListItem(cate.Parent.Name + " / " + cate.Name, cate.ID.ToString()));
+                foreach (var cate in cates)
+                {
+                    if (cate.Parent == null)
+                        ddlCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
+                    else
+                        ddlCategory.Items.Add(new ListItem(cate.Parent.Name + " / " + cate.Name, cate.ID.ToString()));
+                }
             }
         }
 
@@ -150,7 +152,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var post = ctx.PostRespo.Getter.getOne(p=> p.ID == postID);
+                var post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
 
                 if (post != null)
                 {

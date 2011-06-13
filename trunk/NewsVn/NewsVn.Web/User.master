@@ -42,7 +42,7 @@
     <asp:LoginView runat="server">
         <LoggedInTemplate>
             <asp:LoginName runat="server" /> |
-            <asp:LoginStatus runat="server" />
+            <asp:LoginStatus LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName + "trang-chu.aspx" %>' LogoutText="Thoát" runat="server" />
         </LoggedInTemplate>
     </asp:LoginView>
     <div id="header">

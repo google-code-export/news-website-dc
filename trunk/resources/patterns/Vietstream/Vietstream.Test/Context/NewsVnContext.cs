@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Vietstream.Data.Domain;
 
-namespace NewsVn.Impl.Context
+namespace Vietstream.Test.Context
 {
     public class NewsVnContext : DbContext, IDisposable
     {

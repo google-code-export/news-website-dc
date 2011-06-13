@@ -46,11 +46,6 @@ namespace Vietstream.Data.Service
             return this.getTable().Where(predicate).ElementAtOrDefault(index);
         }
 
-        /*public E getOne(TID id)
-        {
-            return this.getOne(e => e.ID.Equals(id));
-        }*/
-
         public E getOne(Func<E, bool> predicate)
         {
             return this.getTable().Where(predicate).SingleOrDefault();

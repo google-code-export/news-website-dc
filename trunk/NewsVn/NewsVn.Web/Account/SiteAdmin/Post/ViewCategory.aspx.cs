@@ -41,7 +41,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         protected void btnToggleActive_Click(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
                     foreach (var cate in this.getSelectedCategories())
@@ -69,14 +69,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                rptCategoryList.DataSource = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null).Select(c => new
-                {
-                    c.ID,
-                    c.Name,
-                    c.UpdatedOn,
-                    c.Actived,
-                    ParentName = c.Parent.Name
-                }).OrderByDescending(c => c.UpdatedOn).ThenByDescending(c => c.UpdatedOn);
+                rptCategoryList.DataSource = ctx.CategoryRespo.Getter
+                    .getQueryable(c => c.Parent != null && c.Type.Trim().ToLower() == "post").Select(c => new
+                    {
+                        c.ID,
+                        c.Name,
+                        c.UpdatedOn,
+                        c.Actived,
+                        ParentName = c.Parent.Name
+                    }).OrderByDescending(c => c.UpdatedOn).ThenByDescending(c => c.UpdatedOn);
                 rptCategoryList.DataBind();
             }
         }
@@ -102,7 +103,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 }
 
                 return ctx.CategoryRespo.Getter.getQueryable(c => selectedCategoryIDs.Contains(c.ID));
-            }            
+            }
         }
     }
 }

@@ -173,6 +173,22 @@ namespace NewsVn.Web.Utils
             return string.Format("{0}", "OK");
         }
 
+        [WebMethod]
+        public string ViewCommentContent(int commentID)
+        {
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    return "<p>" + ctx.PostCommentRespo.Getter.getOne(p => p.ID == commentID).Content + "</p>";
+                }
+            }
+            catch (Exception)
+            {
+                return string.Format("<ul>" + ErrorBar + "</ul>", "Không thể thêm bình luận của bạn.");
+            }
+        }
+
         #endregion
 
         #region Weather

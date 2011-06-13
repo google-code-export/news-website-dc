@@ -46,16 +46,16 @@
         
         <div class="right">
             Trang:
-            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" runat="server"
+            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" runat="server" Width="50"
                 AutoPostBack="true" OnSelectedIndexChanged="Pager_SelectedIndexChanged" />
             &nbsp;Số dòng/Trang:
             <asp:DropDownList ID="ddlPageSize" CssClass="dropdown" runat="server"
                 AutoPostBack="true" OnSelectedIndexChanged="Pager_SelectedIndexChanged">
-                <asp:ListItem Value="15" Text="15" />
-                <asp:ListItem Value="25" Text="25" />
-                <asp:ListItem Value="35" Text="35" />
-                <asp:ListItem Value="45" Text="45" />
-                <asp:ListItem Value="55" Text="55" />
+                <asp:ListItem Value="50" Text="50" />
+                <asp:ListItem Value="100" Text="100" />
+                <asp:ListItem Value="200" Text="200" />
+                <asp:ListItem Value="500" Text="500" />
+                <asp:ListItem Value="1000" Text="1000" />
             </asp:DropDownList>
         </div>
         <div class="clear"></div>
