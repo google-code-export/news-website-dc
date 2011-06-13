@@ -1680,7 +1680,6 @@
     <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
-    <Content Include="Modules\SpecialTargetManagement.aspx" />
     <Content Include="Modules\Special_Target_Management.ascx" />
     <Content Include="Modules\UserConversationBox.ascx" />
     <Content Include="Modules\UserProfileDetails.ascx" />
@@ -2186,13 +2185,6 @@
     </Compile>
     <Compile Include="Modules\SpecialPostsPortlet.ascx.designer.cs">
       <DependentUpon>SpecialPostsPortlet.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\SpecialTargetManagement.aspx.cs">
-      <DependentUpon>SpecialTargetManagement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\SpecialTargetManagement.aspx.designer.cs">
-      <DependentUpon>SpecialTargetManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Special_Target_Management.ascx.cs">
       <DependentUpon>Special_Target_Management.ascx</DependentUpon>

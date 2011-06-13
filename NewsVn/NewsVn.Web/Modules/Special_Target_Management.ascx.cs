@@ -26,7 +26,7 @@ namespace NewsVn.Web.Modules
             if (!IsPostBack)
             {
                 ViewState["dt_HotTemp"] = null;
-                this.GoToPage(1, 35);
+                this.GoToPage(1, 50);
                 Load_GridShow(10);
             }
         }

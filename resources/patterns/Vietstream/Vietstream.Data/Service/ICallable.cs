@@ -20,8 +20,6 @@ namespace Vietstream.Data.Service
         E getAtIndex(int index);
 
         E getAtIndex(int index, Func<E, bool> predicate);
-
-        //E getOne(TID id);
         
         E getOne(Func<E, bool> predicate);
 

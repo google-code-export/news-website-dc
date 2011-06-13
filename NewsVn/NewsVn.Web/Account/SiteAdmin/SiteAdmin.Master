@@ -35,7 +35,7 @@
             <asp:LoginView runat="server">
             <LoggedInTemplate>
                 Tài khoản: <asp:LoginName Font-Bold="true" runat="server" /> |
-                <asp:LoginStatus LogoutPageUrl="~/trang-chu.aspx" LogoutText="Thoát" runat="server" />
+                <asp:LoginStatus LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName + "trang-chu.aspx" %>' LogoutText="Thoát" runat="server" />
             </LoggedInTemplate>
             </asp:LoginView>        
             <asp:ContentPlaceHolder ID="sideContent" runat="server" />

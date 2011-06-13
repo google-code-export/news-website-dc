@@ -55,7 +55,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                         c.UpdatedBy,
                         c.UpdatedOn,
                         PostID = c.Post.ID,
-                        PostTitle = c.Post.Title
+                        PostTitle = c.Post.Title,
+                        PostUrl = c.Post.SeoUrl
                     });
                 rptCommentList.DataBind();
             }

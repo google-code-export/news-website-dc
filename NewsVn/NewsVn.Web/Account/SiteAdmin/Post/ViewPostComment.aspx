@@ -1,10 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Account/SiteAdmin/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="ViewPostComment.aspx.cs" Inherits="NewsVn.Web.Account.SiteAdmin.Post.ViewPostComment" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        $(function () {
+            $("#commentContentBox").dialog({
+                autoOpen: false,
+                resizable: false,
+                modal: true,
+                width: 500
+            });
+        });
+        
+        function viewCommentContent(id) {
+            var dataObj = { commentID: id }
+            $.ajax({
+                url: serviceUrl + "ViewCommentContent",
+                data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
+                success: function (result) {
+                    $("#commentContentBox").html(result.d);
+                },
+                complete: function () {
+                    $("#commentContentBox").dialog("open");
+                }
+            });
+        }
+    </script>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
+    <div id="commentContentBox" class="dialog" title="Nội dung bình luận" style="display:none">
+        <p></p>
+    </div>
     <div class="ui-table-toolbar">
         <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
             OnClientClick="return confirmDelete()" OnClick="btnDelete_Click" />
@@ -17,7 +44,7 @@
             <table id="post-table" class="ui-table" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <th><asp:CheckBox EnableViewState="false" runat="server" /></th>
-                    <th>Tiêu đề</th
+                    <th>Tiêu đề</th>
                     <th>Bài viết</th>
                     <th>Email</th>
                     <th>Người gởi</th>
@@ -30,12 +57,13 @@
                         <asp:CheckBox ID="chkID" EnableViewState="false" runat="server" />
                         <asp:HiddenField ID="hidID" Value='<%# Eval("ID") %>' runat="server" /> 
                     </td>
-                    <td>
-                        <%# Eval("Title") %>                        
+                    <td>        
+                        <a href='javascript:viewCommentContent(<%# Eval("ID") %>)' title='<%# Eval("Title") %>'>
+                            <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 30) %>
+                        </a>               
                     </td>
                     <td>
-                        <a href='<%= HostName + "account/siteadmin/post/editpost.aspx?pid=" %><%# Eval("PostID") %>'
-                            title='<%# Eval("PostTitle") %>'>
+                        <a href='<%# HostName + Eval("PostUrl") %>' title='<%# Eval("PostTitle") %>' target="_blank">
                             <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("PostTitle").ToString(), 30) %>
                         </a>
                     </td>

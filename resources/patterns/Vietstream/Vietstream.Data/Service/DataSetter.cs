@@ -33,12 +33,6 @@ namespace Vietstream.Data.Service
             }
         }
 
-        /*public void addOne(E entity, out TID newId)
-        {
-            this.addOne(entity, false);
-            newId = entity.ID;
-        }*/
-
         public void addMany(IEnumerable<E> entities)
         {
             _entityTable.InsertAllOnSubmit(entities);
@@ -52,13 +46,13 @@ namespace Vietstream.Data.Service
 
         public void editOne(E entity, bool wait)
         {
-            /*var original = _entityTable.SingleOrDefault(e => e.ID.Equals(entity.ID));
+            var original = _entityTable.SingleOrDefault(e => e.Equals(entity));
             _entityTable.Attach(entity, original);
 
             if (!wait)
             {
                 _ctx.SubmitChanges();
-            }*/
+            }
         }
 
         public void editMany(IEnumerable<E> entities)
@@ -111,28 +105,11 @@ namespace Vietstream.Data.Service
             }
         }
 
-        /*public void deleteOne(TID id)
-        {
-            this.deleteOne(id, false);
-        }
-
-        public void deleteOne(TID id, bool wait)
-        {
-            var entity = _entityTable.SingleOrDefault(e => e.ID.Equals(id));
-            this.deleteOne(entity, wait);
-        }*/
-
         public void deleteMany(IEnumerable<E> entities)
         {
             _entityTable.DeleteAllOnSubmit(entities);
             _ctx.SubmitChanges();
         }
-
-        /*public void deleteManyByIds(IEnumerable<TID> ids)
-        {
-            var entities = _entityTable.Where(e => ids.Contains(e.ID)).AsEnumerable();
-            this.deleteMany(entities);
-        }*/
 
         public void Dispose()
         {

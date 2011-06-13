@@ -44,7 +44,7 @@
         <asp:HyperLink Text="Lọc nâng cao" CssClass="button-filter left dialog-trigger[advancedFilterBox]" runat="server" />
         <div class="right">
             Trang:
-            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" runat="server"
+            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" runat="server" Width="50"
                 AutoPostBack="true" OnSelectedIndexChanged="Pager_SelectedIndexChanged" />
             &nbsp;Số dòng/Trang:
             <asp:DropDownList ID="ddlPageSize" CssClass="dropdown" runat="server"

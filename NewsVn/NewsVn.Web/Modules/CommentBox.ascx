@@ -144,10 +144,7 @@
         linkSelector.next(".ui-selectmenu").addClass("select");
         linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
         $(selectorID + "-menu").width(90);
-        $("#<%= txtComment.ClientID %>").maxlength({ maxCharacters: 198, status: false, showAlert: true });
-        $("#<%= txtName.ClientID %>").maxlength({ maxCharacters: 48, status: false, showAlert: true });
-        $("#<%= txtEmail.ClientID %>").maxlength({ maxCharacters: 98, status: false, showAlert: true });
-        $("#<%= txtTitle.ClientID %>").maxlength({ maxCharacters: 48, status: false, showAlert: true });
+        $("#<%= txtComment.ClientID %>").maxlength({ maxCharacters: 1000, status: false, showAlert: true });
     });    
 </script>
 <div id="comment_box" style="display: none">

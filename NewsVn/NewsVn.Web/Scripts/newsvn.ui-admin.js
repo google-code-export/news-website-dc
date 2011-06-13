@@ -1,5 +1,14 @@
 ﻿/// <reference path="plugins/jquery-1.4.2-vsdoc.js" />
 
+var serviceUrl = "/Utils/NewsVnService.asmx/";
+
+$.ajaxSetup({
+    type: "POST",
+    contentType: "application/json; charset=utf-8",
+    //dataType: "json",//duynp fix bug autocomplete
+    data: "{}"
+});
+
 $(function () {
     //input
     $(":text,:password,textarea").addClass("textbox");
