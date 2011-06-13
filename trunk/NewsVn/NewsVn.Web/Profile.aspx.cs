@@ -25,7 +25,7 @@ namespace NewsVn.Web
                 var _UserProfiles = ctx.UserProfileRespo.Getter.getOne(Account);
                 pletUserProfileDetails.Datasource = _UserProfiles;
                 pletUserProfileDetails.DataBind();
-                BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(data.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(data.Expectation).Replace('-', ' '), Account + " - " + data.Description + " - " + data.Expectation);
+                BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
                 _UserProfiles = null;
             }
             

@@ -56,7 +56,7 @@ namespace NewsVn.Web
             int indexArea = 0;
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Categories = ctx.CategoryRespo.Getter.getQueryable(c => c.Actived == true);
+                var _Categories = ctx.CategoryRespo.Getter.getQueryable(c => c.Actived == true && c.Type=="post").AsEnumerable();
                 var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true);
                 for (int i = 0; i < _Categories.Count(); i++)
                 {
