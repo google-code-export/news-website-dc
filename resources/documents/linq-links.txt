@@ -1,0 +1,5 @@
+http://www.codeproject.com/KB/linq/linq_base_class.aspx
+http://codepaste.net/cg2imz
+http://blog.reamped.net/post/2008/02/22/Custom-Entity-Classes-Using-LINQ-to-SQL-Part-2-Data.aspx
+http://www.codesmithtools.com/video/plinqo-part-2-feature-overview.html
+http://weblogs.asp.net/zeeshanhirani/archive/2008/06/25/inheritance-in-linq-to-sql.aspx
