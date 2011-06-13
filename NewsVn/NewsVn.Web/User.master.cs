@@ -45,8 +45,8 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString) )
             {
-                var Catechildren=ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null);
-                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null).Union(Catechildren);
+                var Catechildren=ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null && c.Type=="post");
+                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type == "post").Union(Catechildren);
                 CtrMenu.Datasource = CateList;
                 CtrMenu.DataBind();
             }

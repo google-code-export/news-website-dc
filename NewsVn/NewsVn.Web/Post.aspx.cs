@@ -104,12 +104,16 @@ namespace NewsVn.Web
         }
         private void update_PageView( int postID)
         {
-            //var post = ApplicationManager.Entities.Posts.Where(p => p.ID == postID).FirstOrDefault();
-            //if (post != null)
-            //{
-            //    post.PageView += 1;
-            //    ApplicationManager.Entities.SaveChanges();
-            //}
+            using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var post = ctx.PostRespo.Getter.getOne(postID);
+
+                if (post != null)
+                {
+                    post.PageView += 1;
+                    ctx.PostRespo.Setter.editOne(post);
+                }
+            }
         }
         //lay tieu_diem theo chu de, pageview cao nhat trong thang
         void load_pletFocusPost()
