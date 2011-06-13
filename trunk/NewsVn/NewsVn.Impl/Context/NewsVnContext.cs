@@ -8,16 +8,16 @@ namespace NewsVn.Impl.Context
 {
     public class NewsVnContext : DbContext, IDisposable
     {
-        public Repository<Entity.AdBox, int> AdBoxRespo { get; private set; }
-        public Repository<Entity.AdPost, int> AdPostRespo { get; private set; }
-        public Repository<Entity.Category, int> CategoryRespo { get; private set; }
-        public Repository<Entity.Post, int> PostRespo { get; private set; }
-        public Repository<Entity.PostComment, int> PostCommentRespo { get; private set; }
-        public Repository<Entity.Setting, int> SettingRespo { get; private set; }
-        public Repository<Entity.UserMessage, int> UserMessageRespo { get; private set; }
-        public Repository<Entity.UserProfile, string> UserProfileRespo { get; private set; }
-        public Repository<Entity.UserProfileComment, int> UserProfileCommentRespo { get; private set; }
-        public Repository<Entity.Video, int> VideoRespo { get; private set; }
+        public Repository<Entity.AdBox> AdBoxRespo { get; private set; }
+        public Repository<Entity.AdPost> AdPostRespo { get; private set; }
+        public Repository<Entity.Category> CategoryRespo { get; private set; }
+        public Repository<Entity.Post> PostRespo { get; private set; }
+        public Repository<Entity.PostComment> PostCommentRespo { get; private set; }
+        public Repository<Entity.Setting> SettingRespo { get; private set; }
+        public Repository<Entity.UserMessage> UserMessageRespo { get; private set; }
+        public Repository<Entity.UserProfile> UserProfileRespo { get; private set; }
+        public Repository<Entity.UserProfileComment> UserProfileCommentRespo { get; private set; }
+        public Repository<Entity.Video> VideoRespo { get; private set; }
 
 
         public NewsVnContext(string connectionString)
@@ -27,16 +27,16 @@ namespace NewsVn.Impl.Context
             
             this.CreateDataContext();
 
-            this.AdBoxRespo = new Repository<Entity.AdBox, int>(_ctx);
-            this.AdPostRespo = new Repository<Entity.AdPost, int>(_ctx);          
-            this.CategoryRespo = new Repository<Entity.Category, int>(_ctx);
-            this.PostRespo = new Repository<Entity.Post, int>(_ctx);
-            this.PostCommentRespo = new Repository<Entity.PostComment, int>(_ctx);
-            this.SettingRespo = new Repository<Entity.Setting, int>(_ctx);
-            this.UserMessageRespo = new Repository<Entity.UserMessage, int>(_ctx);
-            this.UserProfileRespo = new Repository<Entity.UserProfile, string>(_ctx);
-            this.UserProfileCommentRespo = new Repository<Entity.UserProfileComment, int>(_ctx);
-            this.VideoRespo = new Repository<Entity.Video, int>(_ctx);
+            this.AdBoxRespo = new Repository<Entity.AdBox>(_ctx);
+            this.AdPostRespo = new Repository<Entity.AdPost>(_ctx);          
+            this.CategoryRespo = new Repository<Entity.Category>(_ctx);
+            this.PostRespo = new Repository<Entity.Post>(_ctx);
+            this.PostCommentRespo = new Repository<Entity.PostComment>(_ctx);
+            this.SettingRespo = new Repository<Entity.Setting>(_ctx);
+            this.UserMessageRespo = new Repository<Entity.UserMessage>(_ctx);
+            this.UserProfileRespo = new Repository<Entity.UserProfile>(_ctx);
+            this.UserProfileCommentRespo = new Repository<Entity.UserProfileComment>(_ctx);
+            this.VideoRespo = new Repository<Entity.Video>(_ctx);
         }
 
         public void Dispose()

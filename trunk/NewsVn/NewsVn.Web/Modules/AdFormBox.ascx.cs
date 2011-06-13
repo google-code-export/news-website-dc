@@ -42,7 +42,7 @@ namespace NewsVn.Web.Modules
                     adsPost.Content = txtContent.Text.Trim();
                     adsPost.Avatar = "Ads/" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + "/" + fileAvatar.FileName;
                     adsPost.SeoUrl = "";
-                    adsPost.Category = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlCategory.SelectedValue));
+                    adsPost.Category = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                     adsPost.Location = ddlLocation.SelectedValue;
                     adsPost.Contact = txtContact.Text.Trim();
                     adsPost.ContactEmail = txtContactEmail.Text.Trim();
@@ -56,7 +56,7 @@ namespace NewsVn.Web.Modules
 
                     ctx.AdPostRespo.Setter.addOne(adsPost);
 
-                    var data = ctx.CategoryRespo.Getter.getOne(int.Parse(ddlCategory.SelectedValue));
+                    var data = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                     Response.Redirect("AdSubCategory.aspx?ct=" + data.SeoUrl);
                 }
             }

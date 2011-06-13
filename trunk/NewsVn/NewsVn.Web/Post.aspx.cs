@@ -53,7 +53,7 @@ namespace NewsVn.Web
 
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var postData = ctx.PostRespo.Getter.getOne(postID);
+                var postData = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
                 var postComment = ctx.PostCommentRespo.Getter.getQueryable(pc => pc.Post.ID == postID).Select(
                     pc => new
                     {
@@ -106,7 +106,7 @@ namespace NewsVn.Web
         {
             using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var post = ctx.PostRespo.Getter.getOne(postID);
+                var post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
 
                 if (post != null)
                 {

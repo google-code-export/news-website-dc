@@ -22,7 +22,7 @@ namespace NewsVn.Web
         {
             using (var ctx=new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var _UserProfiles = ctx.UserProfileRespo.Getter.getOne(Account);
+                var _UserProfiles = ctx.UserProfileRespo.Getter.getOne(u => u.Account.Equals(Account, StringComparison.OrdinalIgnoreCase));
                 pletUserProfileDetails.Datasource = _UserProfiles;
                 pletUserProfileDetails.DataBind();
                 BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);

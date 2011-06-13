@@ -10,10 +10,10 @@ using System.Data.Linq;
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "AdBoxes")]
-    public class AdBox : Base<int>, ISerializable
+    public class AdBox : Base, ISerializable
     {
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
-        public override int ID { get; set; }
+        public int ID { get; set; }
 
         [Column]
         public string Title

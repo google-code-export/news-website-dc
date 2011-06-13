@@ -109,7 +109,7 @@ namespace NewsVn.Web.Account.Form
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
                     var newProfile = new Impl.Entity.UserProfile();
-                    newProfile.ID = txtUsername.Text.Trim();
+                    newProfile.Account = txtUsername.Text.Trim();
                     newProfile.Nickname = txtNickname.Text.Trim();
                     newProfile.Name = txtName.Text.Trim();
                     newProfile.Age = int.Parse(ddlAge.SelectedValue);

@@ -36,7 +36,7 @@ namespace NewsVn.Web.Utils
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
                 return string.Format("Bình luận: {0} ({1})",
-                    ctx.PostRespo.Getter.getOne(postID).Title,
+                    ctx.PostRespo.Getter.getOne(p => p.ID == postID).Title,
                     this.CountPostComments(postID));
             }
         }
@@ -160,7 +160,7 @@ namespace NewsVn.Web.Utils
                     if (this.CheckCaptchaResponse(captchaKey, captchaAnswer))
                     {
                         comment.UpdatedOn = DateTime.Now.AddHours(1);
-                        comment.Post = ctx.PostRespo.Getter.getOne(postID);
+                        comment.Post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
                         ctx.PostCommentRespo.Setter.addOne(comment);
                     }
                     else return string.Format(ErrorBar, "Captcha không hợp lệ.");

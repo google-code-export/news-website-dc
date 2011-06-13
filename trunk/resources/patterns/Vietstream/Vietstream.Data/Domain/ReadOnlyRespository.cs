@@ -6,16 +6,16 @@ using System.Data.Linq;
 
 namespace Vietstream.Data.Domain
 {
-    public class ReadOnlyRespository<E, TID> : IDisposable where E : Model.Base<TID>
+    public class ReadOnlyRespository<E> : IDisposable where E : Model.Base
     {
         public Type EntityType { get; private set; }
         
-        public Service.DataSetter<E, TID> Setter { get; set; }
+        public Service.DataSetter<E> Setter { get; set; }
 
         public ReadOnlyRespository(DataContext context)
         {
             this.EntityType = typeof(E);
-            this.Setter = new Service.DataSetter<E, TID>(context);
+            this.Setter = new Service.DataSetter<E>(context);
         }
 
         public virtual void Dispose()

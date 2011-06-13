@@ -5,10 +5,8 @@ using System.Text;
 
 namespace Vietstream.Data.Model
 {
-    public abstract class Base<TID>
+    public abstract class Base
     {
-        public virtual TID ID { get; set; }
-        
         public override bool Equals(object obj)
         {
             return base.Equals(obj);

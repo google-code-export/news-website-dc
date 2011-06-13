@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Vietstream.Data.Service
 {
-    public interface IPageable<E, TID> where E : Model.Base<TID>
+    public interface IPageable<E> where E : Model.Base
     {
         IEnumerable<E> getSubList(int fromIndex, int toIndex);
 

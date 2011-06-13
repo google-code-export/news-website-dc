@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Vietstream.Data.Service
 {
-    public interface ISortable<E, TID> where E : Model.Base<TID>
+    public interface ISortable<E> where E : Model.Base
     {
 
     }

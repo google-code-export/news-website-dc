@@ -6,13 +6,11 @@ using Vietstream.Data.Model;
 
 namespace Vietstream.Data.Service
 {
-    interface IUpdatable<E, TID> where E : Base<TID>
+    interface IUpdatable<E> where E : Base
     {
         void addOne(E entity);
 
         void addOne(E entity, bool wait);
-
-        void addOne(E entity, out TID newId);
 
         void addMany(IEnumerable<E> entities);
 
@@ -32,12 +30,6 @@ namespace Vietstream.Data.Service
 
         void deleteOne(E entity, bool wait);
 
-        void deleteOne(TID id);
-
-        void deleteOne(TID id, bool wait);
-
         void deleteMany(IEnumerable<E> entities);
-
-        void deleteManyByIds(IEnumerable<TID> ids);
     }
 }

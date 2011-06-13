@@ -10,7 +10,7 @@ using System.Data.Linq;
 namespace NewsVn.Impl.Entity
 {
     [Table(Name = "Posts")]
-    public class Post : Base<int>, ISerializable
+    public class Post : Base, ISerializable
     {
         public Post()
         {
@@ -18,7 +18,7 @@ namespace NewsVn.Impl.Entity
         }
         
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
-        public override int ID { get; set; }
+        public int ID { get; set; }
 
         [Column]
         public int CategoryID { get; set; }
