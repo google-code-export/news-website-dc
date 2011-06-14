@@ -14,13 +14,13 @@ namespace NewsVn.Impl.Entity
     {
         public AdPost()
         {
-            this._category = default(EntityRef<Category>);
+            if (this._category.Entity == null)
+                this._category = new EntityRef<Category>();
         }
         
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public int ID { get; set; }
 
-        //FK
         [Column]
         public int CategoryID { get; set; }
 
@@ -42,108 +42,55 @@ namespace NewsVn.Impl.Entity
         }
 
         [Column]
-        public string Title
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string Avatar
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string Content
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string Location
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string SeoUrl
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string Tag
-        {
-            get;
-            set;
-        }
-        [Column]
-        public decimal Payment
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string Contact
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string ContactEmail
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string ContactAddress
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string ContactPhone
-        {
-            get;
-            set;
-        }
-        [Column]
-        public System.DateTime CreatedOn
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string CreatedBy
-        {
-            get;
-            set;
-        }
-        [Column]
-        public DateTime? UpdatedOn
-        {
-            get;
-            set;
-        }
-        [Column]
-        public string UpdatedBy
-        {
-            get;
-            set;
-        }
-        [Column]
-        public System.DateTime ExpiredOn
-        {
-            get;
-            set;
-        }
-        [Column]
-        public bool Actived
-        {
-            get;
-            set;
-        }
+        public string Title { get; set; }
 
+        [Column]
+        public string Avatar { get; set; }
+
+        [Column]
+        public string Content { get; set; }
+
+        [Column]
+        public string Location { get; set; }
+
+        [Column]
+        public string SeoUrl { get; set; }
+
+        [Column]
+        public string Tag { get; set; }
+
+        [Column]
+        public decimal Payment { get; set; }
+
+        [Column]
+        public string Contact { get; set; }
+
+        [Column]
+        public string ContactEmail { get; set; }
+
+        [Column]
+        public string ContactAddress { get; set; }
+
+        [Column]
+        public string ContactPhone { get; set; }
+
+        [Column]
+        public DateTime CreatedOn { get; set; }
+
+        [Column]
+        public string CreatedBy { get; set; }
+
+        [Column]
+        public DateTime? UpdatedOn { get; set; }
+
+        [Column]
+        public string UpdatedBy { get; set; }
+
+        [Column]
+        public DateTime ExpiredOn { get; set; }
+
+        [Column]
+        public bool Actived { get; set; }
 
         public override string ToString()
         {

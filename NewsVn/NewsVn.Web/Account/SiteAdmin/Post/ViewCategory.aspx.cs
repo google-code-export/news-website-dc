@@ -27,7 +27,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ctx.CategoryRespo.Setter.deleteMany(this.getSelectedCategories());
+                    ctx.CategoryRespo.Setter.deleteMany(this.getSelectedCategories(ctx));
                 }
             }
             catch (Exception)
@@ -44,10 +44,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    foreach (var cate in this.getSelectedCategories())
+                    foreach (var cate in this.getSelectedCategories(ctx))
                     {
                         cate.Actived = !cate.Actived;
-                        ctx.CategoryRespo.Setter.editOne(cate, true);
                     }
                     ctx.SubmitChanges();
                 }
@@ -82,28 +81,25 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
         }
 
-        private IQueryable<Impl.Entity.Category> getSelectedCategories()
+        private IQueryable<Impl.Entity.Category> getSelectedCategories(NewsVnContext ctx)
         {
-            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            var selectedCategoryIDs = new List<int>();
+
+            foreach (RepeaterItem item in rptCategoryList.Items)
             {
-                var selectedCategoryIDs = new List<int>();
-
-                foreach (RepeaterItem item in rptCategoryList.Items)
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
-                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
-                    {
-                        CheckBox chkID = item.FindControl("chkID") as CheckBox;
+                    CheckBox chkID = item.FindControl("chkID") as CheckBox;
 
-                        if (chkID.Checked)
-                        {
-                            HiddenField hidID = item.FindControl("hidID") as HiddenField;
-                            selectedCategoryIDs.Add(int.Parse(hidID.Value));
-                        }
+                    if (chkID.Checked)
+                    {
+                        HiddenField hidID = item.FindControl("hidID") as HiddenField;
+                        selectedCategoryIDs.Add(int.Parse(hidID.Value));
                     }
                 }
-
-                return ctx.CategoryRespo.Getter.getQueryable(c => selectedCategoryIDs.Contains(c.ID));
             }
+
+            return ctx.CategoryRespo.Getter.getQueryable(c => selectedCategoryIDs.Contains(c.ID));
         }
     }
 }

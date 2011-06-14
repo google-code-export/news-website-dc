@@ -32,12 +32,8 @@
     <div id="side_content" class="left">
         <asp:Image ImageUrl="~/Images/logo.jpg" Width="200" runat="server" />
         <div class="wrapper">            
-            <asp:LoginView runat="server">
-            <LoggedInTemplate>
-                Tài khoản: <asp:LoginName Font-Bold="true" runat="server" /> |
-                <asp:LoginStatus LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName + "trang-chu.aspx" %>' LogoutText="Thoát" runat="server" />
-            </LoggedInTemplate>
-            </asp:LoginView>        
+            Tài khoản: <asp:LoginName Font-Bold="true" runat="server" /> |
+            <asp:LoginStatus LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName + "trang-chu.aspx" %>' LogoutText="Thoát" runat="server" />        
             <asp:ContentPlaceHolder ID="sideContent" runat="server" />
             <nsn:SiteAdmin_Menu runat="server" /> 
         </div>       

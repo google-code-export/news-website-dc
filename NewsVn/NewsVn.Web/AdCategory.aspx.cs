@@ -61,7 +61,7 @@ namespace NewsVn.Web
 
                 for (int i = 0; i < _AdCategories.Count(); i++)
                 {
-                    var cate = _AdCategories.ElementAt(i);
+                    var cate = _AdCategories.AsEnumerable().ElementAt(i);
                     Control UC_PortletAdPost = LoadControl("~/Modules/AdPostsPortlet.ascx");
                     var ctrPortletPost = ((Modules.AdPostsPortlet)UC_PortletAdPost);
                     ctrPortletPost.Title = cate.Name;

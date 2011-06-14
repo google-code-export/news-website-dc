@@ -14,12 +14,6 @@ namespace Vietstream.Data.Service
 
         void addMany(IEnumerable<E> entities);
 
-        void editOne(E entity);
-
-        void editOne(E entity, bool wait);
-
-        void editMany(IEnumerable<E> entities);
-
         void mergeOne(E entity);
 
         void mergeOne(E entity, bool wait);

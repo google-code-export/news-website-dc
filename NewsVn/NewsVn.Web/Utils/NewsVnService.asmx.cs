@@ -26,7 +26,7 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                return ctx.PostCommentRespo.Getter.getQueryable(c => c.PostID == postID).Count();
+                return ctx.PostCommentRespo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now).Count();
             }
         }
 

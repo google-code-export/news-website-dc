@@ -13,9 +13,9 @@ namespace Vietstream.Test
             
             using (var ctx = new Context.NewsVnContext(_connectionString))
             {
-                //Console.WriteLine(ctx.CategoryRespo.Getter.getAtIndex(5));
-                //Console.WriteLine(ctx.PostRespo.Getter.getAtIndex(5));
-                //Console.WriteLine(ctx.CategoryRespo.Getter.getLast());
+                Console.WriteLine(ctx.CategoryRespo.Getter.getAtIndex(5));
+                Console.WriteLine(ctx.PostRespo.Getter.getAtIndex(5));
+                Console.WriteLine(ctx.CategoryRespo.Getter.getLast());
 
                 var category = new Entity.Category
                 {

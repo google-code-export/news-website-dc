@@ -37,32 +37,7 @@ namespace Vietstream.Data.Service
         {
             _entityTable.InsertAllOnSubmit(entities);
             _ctx.SubmitChanges();
-        }
-
-        public void editOne(E entity)
-        {
-            this.editOne(entity, false);
-        }
-
-        public void editOne(E entity, bool wait)
-        {
-            var original = _entityTable.SingleOrDefault(e => e.Equals(entity));
-            _entityTable.Attach(entity, original);
-
-            if (!wait)
-            {
-                _ctx.SubmitChanges();
-            }
-        }
-
-        public void editMany(IEnumerable<E> entities)
-        {
-            foreach (var entity in entities)
-            {
-                this.editOne(entity, true);
-            }
-            _ctx.SubmitChanges();
-        }
+        }        
 
         public void mergeOne(E entity)
         {
@@ -77,7 +52,10 @@ namespace Vietstream.Data.Service
             }
             else
             {
-                this.editOne(entity, wait);
+                if (!wait)
+                {
+                    _ctx.SubmitChanges();
+                }
             }
         }
 

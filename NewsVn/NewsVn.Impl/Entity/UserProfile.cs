@@ -12,6 +12,14 @@ namespace NewsVn.Impl.Entity
     [Table(Name = "UserProfiles")]
     public class UserProfile : Base, ISerializable
     {
+        public UserProfile()
+        {
+            if (this.UserMessages == null)
+                this.UserMessages = new EntitySet<UserMessage>();
+            if (this.UserProfileComments == null)
+                this.UserProfileComments = new EntitySet<UserProfileComment>();
+        }
+        
         [Column(IsPrimaryKey = true)]
         public string Account { get; set; }
 
@@ -22,143 +30,73 @@ namespace NewsVn.Impl.Entity
         public EntitySet<UserProfileComment> UserProfileComments { get; set; }
         
         [Column]
-        public string Nickname
-        {
-            get;
-            set;
-        }
+        public string Nickname { get; set; }
+
         [Column]
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
+
         [Column]
-        public int Age
-        {
-            get;
-            set;
-        }
+        public int Age { get; set; }
+
         [Column]
-        public bool Gender
-        {
-            get;
-            set;
-        }
+        public bool Gender { get; set; }
+
         [Column]
-        public string Avatar
-        {
-            get;
-            set;
-        }
+        public string Avatar { get; set; }
+
         [Column]
-        public string Location
-        {
-            get;
-            set;
-        }
+        public string Location { get; set; }
+
         [Column]
-        public string Country
-        {
-            get;
-            set;
-        }
+        public string Country { get; set; }
+
         [Column]
-        public string Email
-        {
-            get;
-            set;
-        }
+        public string Email { get; set; }
+
         [Column]
-        public string Phone
-        {
-            get;
-            set;
-        }
+        public string Phone { get; set; }
+
         [Column]
-        public bool ShowEmail
-        {
-            get;
-            set;
-        }
+        public bool ShowEmail { get; set; }
+
         [Column]
-        public bool ShowPhone
-        {
-            get;
-            set;
-        }
+        public bool ShowPhone { get; set; }
+
         [Column]
-        public int? Height
-        {
-            get;
-            set;
-        }
+        public int? Height { get; set; }
+
         [Column]
-        public int? Weight
-        {
-            get;
-            set;
-        }
+        public int? Weight { get; set; }
+
         [Column]
-        public string BodyShape
-        {
-            get;
-            set;
-        }
+        public string BodyShape { get; set; }
+
         [Column]
-        public bool? Drink
-        {
-            get;
-            set;
-        }
+        public bool? Drink { get; set; }
+
         [Column]
-        public bool? Smoke
-        {
-            get;
-            set;
-        }
+        public bool? Smoke { get; set; }
+
         [Column]
-        public string MaritalStatus
-        {
-            get;
-            set;
-        }
+        public string MaritalStatus { get; set; }
+
         [Column]
-        public string Religion
-        {
-            get;
-            set;
-        }
+        public string Religion { get; set; }
+
         [Column]
-        public string Education
-        {
-            get;
-            set;
-        }
+        public string Education { get; set; }
+
         [Column]
-        public string Career
-        {
-            get;
-            set;
-        }
+        public string Career { get; set; }
+
         [Column]
-        public string Description
-        {
-            get;
-            set;
-        }
+        public string Description { get; set; }
+
         [Column]
-        public string Expectation
-        {
-            get;
-            set;
-        }
+        public string Expectation { get; set; }
+
         [Column]
-        public DateTime UpdatedOn
-        {
-            get;
-            set;
-        }
+        public DateTime UpdatedOn { get; set; }
 
         public override string ToString()
         {

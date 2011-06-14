@@ -37,7 +37,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var parentCates = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null).OrderBy(p => p.Name);
+                var parentCates = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post").OrderBy(p => p.Name);
                 foreach (var cate in parentCates)
                     ddlParentCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
             }
@@ -88,16 +88,16 @@ namespace NewsVn.Web.Modules
                     var parentCategory = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
 
                     var category = new Impl.Entity.Category
-                                {
-                                    Type = "post",
-                                    Name = txtName.Text.Trim(),
-                                    Description = txtDescription.Text.Trim(),
-                                    Actived = chkActived.Checked,
-                                    SeoName = string.Format("{0}/{1}", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
-                                    SeoUrl = string.Format("ct/{0}/{1}.aspx", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
-                                    UpdatedOn = DateTime.Now,
-                                    Parent = parentCategory
-                                };
+                    {
+                        Type = "post",
+                        Name = txtName.Text.Trim(),
+                        Description = txtDescription.Text.Trim(),
+                        Actived = chkActived.Checked,
+                        SeoName = string.Format("{0}/{1}", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
+                        SeoUrl = string.Format("ct/{0}/{1}.aspx", parentCategory.SeoName, clsCommon.RemoveUnicodeMarks(txtName.Text.Trim())),
+                        UpdatedOn = DateTime.Now,
+                        Parent = parentCategory
+                    };
 
                     ctx.CategoryRespo.Setter.addOne(category);
                     this.ClearUpdateForm();
@@ -130,7 +130,7 @@ namespace NewsVn.Web.Modules
                         category.UpdatedOn = DateTime.Now;
                         category.Parent = parentCategory;
 
-                        ctx.CategoryRespo.Setter.editOne(category);
+                        ctx.SubmitChanges();
                         this.ClearUpdateForm();
                     }
                 }

@@ -14,7 +14,10 @@ namespace NewsVn.Impl.Entity
     {
         public Post()
         {
-            this._category = default(EntityRef<Category>);
+            if (this._category.Entity == null)
+                this._category = new EntityRef<Category>();
+            if (this.PostComments == null)
+                this.PostComments = new EntitySet<PostComment>();
         }
         
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
@@ -92,9 +95,7 @@ namespace NewsVn.Impl.Entity
         public string ApprovedBy { get; set; }
 
         [Column]
-        public bool Actived { get; set; }
-
-       
+        public bool Actived { get; set; }       
 
         public override string ToString()
         {
