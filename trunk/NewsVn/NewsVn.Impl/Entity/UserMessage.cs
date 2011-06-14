@@ -14,19 +14,16 @@ namespace NewsVn.Impl.Entity
     {
         public UserMessage()
         {
-            this._userProfile = default(EntityRef<UserProfile>);
+            if (this._userProfile.Entity == null)
+                this._userProfile = new EntityRef<UserProfile>();
         }
         
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public int ID { get; set; }
 
         [Column]
-        public string From
-        {
-            get;
-            set;
-        }
-        //FK
+        public string From { get; set; }
+
         [Column]
         public string To { get; set; }
 
@@ -48,29 +45,16 @@ namespace NewsVn.Impl.Entity
         }
 
         [Column]
-        public string Title
-        {
-            get;
-            set;
-        }
+        public string Title { get; set; }
+
         [Column]
-        public string Content
-        {
-            get;
-            set;
-        }
+        public string Content { get; set; }
+
         [Column]
-        public System.DateTime UpdatedOn
-        {
-            get;
-            set;
-        }
+        public System.DateTime UpdatedOn { get; set; }
+
         [Column]
-        public bool Read
-        {
-            get;
-            set;
-        }
+        public bool Read { get; set; }
 
         public override string ToString()
         {

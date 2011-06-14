@@ -14,7 +14,11 @@ namespace Vietstream.Test.Entity
     {
         public Category()
         {
-            this._parent = default(EntityRef<Category>);
+            if (this._parent.Entity == null) this._parent = new EntityRef<Category>();
+            if (this.Children == null) this.Children = new EntitySet<Category>();
+            if (this.Posts == null) this.Posts = new EntitySet<Post>();
+            if (this.AdPosts == null) this.AdPosts = new EntitySet<AdPost>();
+            if (this.Videos == null) this.Videos = new EntitySet<Video>();
         }
         
         //key define

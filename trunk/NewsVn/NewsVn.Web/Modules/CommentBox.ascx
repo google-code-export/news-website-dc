@@ -125,7 +125,8 @@
                 if (result.d == "OK") {
                     $("#comment_box").dialog("close");
                 } else {
-                    $("#comment_box > ul").append("<li>" + result.d + "</li>");
+                    $("#comment_box > ul .command").next("li").remove();
+                    $("#comment_box > ul .command").after(result.d);
                 }
             },
             complete: function() {

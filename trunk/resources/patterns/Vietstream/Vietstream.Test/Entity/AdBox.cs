@@ -82,7 +82,6 @@ namespace Vietstream.Test.Entity
             set;
         }
 
-
         public override string ToString()
         {
             return "[Adbox]";

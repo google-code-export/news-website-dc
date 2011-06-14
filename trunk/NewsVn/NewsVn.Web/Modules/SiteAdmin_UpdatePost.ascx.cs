@@ -133,10 +133,9 @@ namespace NewsVn.Web.Modules
                         post.ApprovedBy = HttpContext.Current.User.Identity.Name;
                     }
 
-                    int postID = -1;
-                    //ctx.PostRespo.Setter.addOne(post, out postID);
+                    ctx.PostRespo.Setter.addOne(post);
 
-                    post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, postID, clsCommon.RemoveUnicodeMarks(post.Title));
+                    post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
                     ctx.SubmitChanges();
 
                     this.ClearUpdateForm();
@@ -170,7 +169,7 @@ namespace NewsVn.Web.Modules
                     post.UpdatedBy = HttpContext.Current.User.Identity.Name;
                     post.Category = cate;
 
-                    ctx.PostRespo.Setter.addOne(post);
+                    ctx.SubmitChanges();
                     this.ClearUpdateForm();
                 }
             }

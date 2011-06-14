@@ -11,9 +11,6 @@ namespace NewsVn.Web.BaseUI
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-
-            //_Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
-            //_Posts = ApplicationManager.Entities.Posts.AsQueryable();
         }
     }
 }

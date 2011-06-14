@@ -14,13 +14,13 @@ namespace NewsVn.Impl.Entity
     {
         public Video()
         {
-            this._category = default(EntityRef<Category>);
+            if (this._category.Entity == null)
+                this._category = new EntityRef<Category>();
         }
-        
+
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public int ID { get; set; }
-       
-        //FK
+
         [Column]
         public int CategoryID { get; set; }
 
@@ -40,109 +40,56 @@ namespace NewsVn.Impl.Entity
         }
 
         [Column]
-        public string Title
-        {
-            get;
-            set;
-        }
+        public string Title { get; set; }
+
         [Column]
-        public  string Avatar
-        {
-            get;
-            set;
-        }
+        public string Avatar { get; set; }
+
         [Column]
-        public string Description
-        {
-            get;
-            set;
-        }
+        public string Description { get; set; }
+
         [Column]
-        public string SourceUrl
-        {
-            get;
-            set;
-        }
+        public string SourceUrl { get; set; }
+
         [Column]
-        public string SourceEmbed
-        {
-            get;
-            set;
-        }
+        public string SourceEmbed { get; set; }
+
         [Column]
-        public string SeoUrl
-        {
-            get;
-            set;
-        }
+        public string SeoUrl { get; set; }
+
         [Column]
-        public string Tag
-        {
-            get;
-            set;
-        }
+        public string Tag { get; set; }
+
         [Column]
-        public int PageView
-        {
-            get;
-            set;
-        }
+        public int PageView { get; set; }
+
         [Column]
-        public System.DateTime CreatedOn
-        {
-            get;
-            set;
-        }
+        public DateTime CreatedOn { get; set; }
+
         [Column]
-        public string CreatedBy
-        {
-            get;
-            set;
-        }
+        public string CreatedBy { get; set; }
+
         [Column]
-        public DateTime? UpdatedOn
-        {
-            get;
-            set;
-        }
+        public DateTime? UpdatedOn { get; set; }
+
         [Column]
-        public string UpdatedBy
-        {
-            get;
-            set;
-        }
+        public string UpdatedBy { get; set; }
+
         [Column]
-        public bool AllowComments
-        {
-            get;
-            set;
-        }
+        public bool AllowComments { get; set; }
+
         [Column]
-        public bool Approved
-        {
-            get;
-            set;
-        }
+        public bool Approved { get; set; }
+
         [Column]
-        public DateTime? ApprovedOn
-        {
-            get;
-            set;
-        }
+        public DateTime? ApprovedOn { get; set; }
+
         [Column]
-        public  string ApprovedBy
-        {
-            get;
-            set;
-        }
+        public string ApprovedBy { get; set; }
+
         [Column]
-        public bool Actived
-        {
-            get;
-            set;
-        }
-       
-       
+        public bool Actived { get; set; }
+
         public override string ToString()
         {
             return "[video]";

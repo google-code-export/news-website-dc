@@ -177,7 +177,7 @@ namespace NewsVn.Web
                 pletLatestNews.DataBind();
                 return oData.Select(p => p.ID).ToList();
             }
-            return null;
+            //return null;
         }
     }
 }

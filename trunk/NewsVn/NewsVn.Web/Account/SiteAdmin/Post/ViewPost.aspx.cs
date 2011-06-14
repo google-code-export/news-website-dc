@@ -32,7 +32,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ctx.PostRespo.Setter.deleteMany(this.getSelectedPosts());
+                    ctx.PostRespo.Setter.deleteMany(this.getSelectedPosts(ctx));
                 }
             }
             catch (Exception)
@@ -49,10 +49,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    foreach (var post in this.getSelectedPosts())
+                    foreach (var post in this.getSelectedPosts(ctx))
                     {
                         post.Actived = !post.Actived;
-                        ctx.PostRespo.Setter.editOne(post, true);
                     }
                     ctx.SubmitChanges();
                 }
@@ -71,12 +70,11 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    foreach (var post in this.getSelectedPosts().Where(p => !p.Approved))
+                    foreach (var post in this.getSelectedPosts(ctx).Where(p => !p.Approved))
                     {
                         post.Approved = true;
                         post.ApprovedOn = DateTime.Now;
                         post.ApprovedBy = HttpContext.Current.User.Identity.Name;
-                        ctx.PostRespo.Setter.editOne(post, true);
                     }
                     ctx.SubmitChanges();
                 }
@@ -176,28 +174,25 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
         }
 
-        private IQueryable<Impl.Entity.Post> getSelectedPosts()
+        private IQueryable<Impl.Entity.Post> getSelectedPosts(NewsVnContext ctx)
         {
-            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            var selectedPostIDs = new List<int>();
+
+            foreach (RepeaterItem item in rptPostList.Items)
             {
-                var selectedPostIDs = new List<int>();
-
-                foreach (RepeaterItem item in rptPostList.Items)
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
-                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
-                    {
-                        CheckBox chkID = item.FindControl("chkID") as CheckBox;
+                    CheckBox chkID = item.FindControl("chkID") as CheckBox;
 
-                        if (chkID.Checked)
-                        {
-                            HiddenField hidID = item.FindControl("hidID") as HiddenField;
-                            selectedPostIDs.Add(int.Parse(hidID.Value));
-                        }
+                    if (chkID.Checked)
+                    {
+                        HiddenField hidID = item.FindControl("hidID") as HiddenField;
+                        selectedPostIDs.Add(int.Parse(hidID.Value));
                     }
                 }
-
-                return ctx.PostRespo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
             }
+
+            return ctx.PostRespo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
         }
     }
 }

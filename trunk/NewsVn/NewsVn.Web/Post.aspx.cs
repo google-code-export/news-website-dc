@@ -42,7 +42,7 @@ namespace NewsVn.Web
                 }
                 catch (Exception ex)
                 {
-                    clsCommon.WriteTextLog("Post.aspx - fnc: load_pletRelationPostList (codePost:" + Request.QueryString["cp"] + ", category:" + Request.QueryString["ct"] + " )", ex.Message.ToString());     
+                    clsCommon.WriteTextLog("Post.aspx - fnc: load_pletRelationPostList (codePost:" + Request.QueryString["cp"] + ", category:" + Request.QueryString["ct"] + " )", ex.Message.ToString());
                 }
             }
         }
@@ -54,8 +54,9 @@ namespace NewsVn.Web
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 var postData = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
-                var postComment = ctx.PostCommentRespo.Getter.getQueryable(pc => pc.Post.ID == postID).Select(
-                    pc => new
+                var postComment = ctx.PostCommentRespo.Getter
+                    .getQueryable(pc => pc.Post.ID == postID && pc.UpdatedOn <= DateTime.Now)
+                    .Select(pc => new
                     {
                         pc.UpdatedOn,
                         pc.Content,
@@ -93,7 +94,7 @@ namespace NewsVn.Web
             else
             {
                 var array = Session[HttpContext.Current.Session.SessionID].ToString().Split(',');
-                var isExist = Array.FindAll(array, item => item.Equals(postID.ToString())); 
+                var isExist = Array.FindAll(array, item => item.Equals(postID.ToString()));
                 //session chua xem:length=0,
                 if (isExist.Length == 0)
                 {
@@ -102,16 +103,16 @@ namespace NewsVn.Web
                 }
             }
         }
-        private void update_PageView( int postID)
+        private void update_PageView(int postID)
         {
-            using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 var post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
 
                 if (post != null)
                 {
                     post.PageView += 1;
-                    ctx.PostRespo.Setter.editOne(post);
+                    ctx.SubmitChanges();
                 }
             }
         }

@@ -14,15 +14,10 @@ namespace NewsVn.Web.BaseUI
         public static string MetaKeyWords { get; set; }
         public static string MetaKeyDes { get; set; }
 
-        //protected IQueryable<Data.Category> _Categories;
-        //protected IQueryable<Data.Post> _Posts;
-
         protected override void OnInit(EventArgs e)
         {
             HostName = ApplicationManager.HostName;
 
-            //_Categories = ApplicationManager.Entities.Categories.Where(c => "post".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived).ToList().AsQueryable();
-            //_Posts = ApplicationManager.Entities.Posts.Where(p => p.Approved && p.Actived && p.Category.Actived);
             base.OnInit(e);
         }
         public static void ExecuteSEO(string title, string metaKeyWords, string metaDes)

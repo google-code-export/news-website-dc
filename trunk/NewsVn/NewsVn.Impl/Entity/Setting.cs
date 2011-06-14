@@ -15,29 +15,16 @@ namespace NewsVn.Impl.Entity
         public int ID { get; set; }
 
         [Column]
-        public string Type
-        {
-            get;
-            set;
-        }
+        public string Type { get; set; }
+
         [Column]
-        public string Description
-        {
-            get;
-            set;
-        }
+        public string Description { get; set; }
+
         [Column]
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
+
         [Column]
-        public string Value
-        {
-            get;
-            set;
-        }
+        public string Value { get; set; }
 
         public override string ToString()
         {

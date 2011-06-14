@@ -14,13 +14,13 @@ namespace NewsVn.Impl.Entity
     {
         public PostComment()
         {
-            this._post = default(EntityRef<Post>);
+            if (this._post.Entity == null)
+                this._post = new EntityRef<Post>();
         }
-        
+
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
         public int ID { get; set; }
-        
-        //FK
+
         [Column]
         public int PostID { get; set; }
 
@@ -33,45 +33,28 @@ namespace NewsVn.Impl.Entity
             set
             {
                 PostID = value.ID;
-                
+
                 if (this._post.HasLoadedOrAssignedValue == false)
                 {
                     this._post.Entity = value;
                 }
             }
         }
-        
+
         [Column]
-        public  string Title
-        {
-            get;
-            set;
-        }
-         [Column]
-        public  string Content
-        {
-            get;
-            set;
-        }
-         [Column]
-        public  System.DateTime UpdatedOn
-        {
-            get;
-            set;
-        }
-         [Column]
-        public  string UpdatedBy
-        {
-            get;
-            set;
-        }
-         [Column]
-        public  string Email
-        {
-            get;
-            set;
-        }
-       
+        public string Title { get; set; }
+
+        [Column]
+        public string Content { get; set; }
+
+        [Column]
+        public DateTime UpdatedOn { get; set; }
+
+        [Column]
+        public string UpdatedBy { get; set; }
+
+        [Column]
+        public string Email { get; set; }
 
         public override string ToString()
         {
