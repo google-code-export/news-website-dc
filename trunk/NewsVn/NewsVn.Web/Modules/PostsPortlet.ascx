@@ -4,12 +4,15 @@
     <script type="text/javascript">
         $(function () {
             var boundary = "#<%= container.ClientID %>";
+            var activeItem = $(boundary + " .active-post-item");
+            var activeAvatar = $(boundary + " .post-avatar");
+            activeAvatar.wrap($("<a>", { "href": activeItem.find("#aActived").attr("href") }));
             $(boundary + " .avatar-thumb-list img").click(function () {
                 var matchItem = $(boundary + " .post-item-list.other li." + $(this).attr("class"));
-                var activeItem = $(boundary + " .active-post-item");
+                //var activeItem = $(boundary + " .active-post-item");
                 var cloneItem = activeItem.clone();
 
-                var activeAvatar = $(boundary + " .post-avatar");
+                //var activeAvatar = $(boundary + " .post-avatar");
                 var cloneAvatar = activeAvatar.clone();
 
                 activeItem.find("#aActived").attr("href", matchItem.find("#aInActived").attr("href"));
@@ -22,6 +25,8 @@
                 activeAvatar.attr("title", $(this).attr("title"));
                 activeAvatar.css({ "display": "none" });
                 activeAvatar.fadeIn(500);
+
+                activeAvatar.wrap($("<a>", { "href": activeItem.find("#aActived").attr("href") }));
 
                 matchItem.find("#aInActived").attr("href", cloneItem.find("#aActived").attr("href"));
                 matchItem.find(".post-comment").text(cloneItem.find(".post-comment").text());
@@ -41,8 +46,7 @@
     </h2>
     <asp:Image ID="imgMain"  CssClass="post-avatar left" runat="server"/>
     <ul class="avatar-thumb-list right">
-        <asp:Repeater runat="server" ID="rptSubAvatar" 
-           >
+        <asp:Repeater runat="server" ID="rptSubAvatar">
             <ItemTemplate>
                 <li>
                     <img id="imgSub" src='<%#Eval("Avatar") %>' alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class='item-<%#Container.ItemIndex+1%>' />
