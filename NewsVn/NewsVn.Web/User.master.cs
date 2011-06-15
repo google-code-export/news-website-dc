@@ -69,7 +69,7 @@ namespace NewsVn.Web
                    c.ID,
                    //khong the thuc hien count toan bo item trong he thong dc/ bad performance
                    //Waston: Test thử với pattern mới
-                   PostCount = this.CountChildCateFigures(c)
+                  // PostCount = this.CountChildCateFigures(c)
                }).ToList();
                 CtrFooterCateList.Datasource = CateList;
                 CtrFooterCateList.DataBind();
