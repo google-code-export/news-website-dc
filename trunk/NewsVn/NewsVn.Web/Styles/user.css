@@ -245,6 +245,9 @@ body
 .special-posts.portlet #slider
 {
     position: relative;
+    width: 340px;
+    height: 250px;
+    background: #fff url('../images/slider/loading.gif') no-repeat 50% 50%;
 }
 
 .special-posts.portlet #slider-caption
