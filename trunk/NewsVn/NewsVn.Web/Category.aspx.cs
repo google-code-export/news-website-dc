@@ -81,7 +81,7 @@ namespace NewsVn.Web
                 }
                 else
                 {
-                    pletCatePostList.Datasource = _Posts.Where(p=>lstArrayID.Contains(p.ID))
+                    pletCatePostList.Datasource = _Posts.Where(p=>!lstArrayID.Contains(p.ID))
                          .Where(p => p.CategoryID == intCateID || (p.Category.Parent != null && p.Category.ParentID == intCateID))
                          .Select(p => new
                          {

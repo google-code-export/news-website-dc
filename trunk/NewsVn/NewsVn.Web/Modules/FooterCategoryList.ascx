@@ -9,7 +9,7 @@
         <asp:Repeater ID="rptFooterCate" runat="server">
             <ItemTemplate>
                 <li>
-			        <a href='<%#Eval("SeoUrl") %>'><%# Eval("Name") %> (<%# Eval("PostCount") %>)</a>					
+			        <a href='<%#Eval("SeoUrl") %>'><%# Eval("Name") %></a>					
 		        </li>
             </ItemTemplate>
         </asp:Repeater>

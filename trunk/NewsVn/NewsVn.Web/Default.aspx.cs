@@ -137,7 +137,7 @@ namespace NewsVn.Web
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 pletHotNews.CateTitle = "Tin Nổi Bật";
-                var iPost = ctx.PostRespo.Getter.getQueryable(p => lstArrayID.Contains(p.ID));
+                var iPost = ctx.PostRespo.Getter.getQueryable(p => !lstArrayID.Contains(p.ID));
                 var oData = iPost.Select(p => new
                 {
                     p.Title,
