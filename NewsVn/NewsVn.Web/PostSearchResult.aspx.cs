@@ -29,7 +29,7 @@ namespace NewsVn.Web
             using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 keySearch = Server.UrlDecode(keySearch);
-                var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
+                var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
                 string first = keySearch.Substring(0, keySearch.IndexOf(' ') >= 1 ? keySearch.IndexOf(' ') : 1).Trim();
                 //string rest = Server.UrlDecode(keySearch); //keySearch.Substring(keySearch.IndexOf(' '), keySearch.Length - keySearch.IndexOf(' ')).Trim();
                 var data = _Posts.Where(p => p.Title.ToLower().StartsWith(first.ToLower()))

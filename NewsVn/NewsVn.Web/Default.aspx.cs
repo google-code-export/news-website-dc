@@ -56,8 +56,8 @@ namespace NewsVn.Web
             int indexArea = 0;
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Categories = ctx.CategoryRespo.Getter.getQueryable(c => c.Actived == true && c.Type=="post").AsEnumerable();
-                var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true);
+                var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true && c.Type=="post").AsEnumerable();
+                var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true);
                 for (int i = 0; i < _Categories.Count(); i++)
                 {
                     var cate = _Categories.ElementAt(i);
@@ -104,7 +104,7 @@ namespace NewsVn.Web
             //Bind Control Quang Cao
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(adp => adp.Actived == true);
+                var _AdPosts = ctx.AdPostRepo.Getter.getQueryable(adp => adp.Actived == true);
                 Control UC_PortletPost_Ad = LoadControl("~/Modules/PostsPortlet.ascx");
                 var ctrPortletPost_Ad = ((Modules.PostsPortlet)UC_PortletPost_Ad);
                 ctrPortletPost_Ad.Title = "Rao Nhanh";
@@ -137,7 +137,7 @@ namespace NewsVn.Web
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 pletHotNews.CateTitle = "Tin Nổi Bật";
-                var iPost = ctx.PostRespo.Getter.getQueryable(p => !lstArrayID.Contains(p.ID));
+                var iPost = ctx.PostRepo.Getter.getQueryable(p => !lstArrayID.Contains(p.ID));
                 var oData = iPost.Select(p => new
                 {
                     p.Title,
@@ -161,7 +161,7 @@ namespace NewsVn.Web
         {
             using (var ctx= new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var oData =ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).Select(p => new
+                var oData =ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).Select(p => new
                 {
                     p.ID,
                     p.Title,

@@ -37,7 +37,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var parentCates = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post").OrderBy(p => p.Name);
+                var parentCates = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post").OrderBy(p => p.Name);
                 foreach (var cate in parentCates)
                     ddlParentCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
             }
@@ -60,7 +60,7 @@ namespace NewsVn.Web.Modules
                     int categoryID = -1;
                     int.TryParse(Request.QueryString["cid"], out categoryID);
 
-                    var category = ctx.CategoryRespo.Getter.getOne(c => c.ID == categoryID && c.Parent != null);
+                    var category = ctx.CategoryRepo.Getter.getOne(c => c.ID == categoryID && c.Parent != null);
 
                     if (category != null)
                     {
@@ -85,7 +85,7 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    var parentCategory = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
+                    var parentCategory = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
 
                     var category = new Impl.Entity.Category
                     {
@@ -99,7 +99,7 @@ namespace NewsVn.Web.Modules
                         Parent = parentCategory
                     };
 
-                    ctx.CategoryRespo.Setter.addOne(category);
+                    ctx.CategoryRepo.Setter.addOne(category);
                     this.ClearUpdateForm();
                 }
             }
@@ -115,11 +115,11 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    var category = ctx.CategoryRespo.Getter.getOne(c => c.ID == categoryID && c.Parent != null);
+                    var category = ctx.CategoryRepo.Getter.getOne(c => c.ID == categoryID && c.Parent != null);
 
                     if (category != null)
                     {
-                        var parentCategory = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
+                        var parentCategory = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
 
                         category.Type = "post";
                         category.Name = txtName.Text.Trim();

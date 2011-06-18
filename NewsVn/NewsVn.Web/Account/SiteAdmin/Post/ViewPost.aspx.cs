@@ -32,7 +32,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ctx.PostRespo.Setter.deleteMany(this.getSelectedPosts(ctx));
+                    ctx.PostRepo.Setter.deleteMany(this.getSelectedPosts(ctx));
                 }
             }
             catch (Exception)
@@ -101,7 +101,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    rptPostList.DataSource = ctx.PostRespo.Getter.getQueryable(p => p.GetType().GetProperty(filterColumn).GetValue(p, null).ToString().Contains(filterText));
+                    rptPostList.DataSource = ctx.PostRepo.Getter.getQueryable(p => p.GetType().GetProperty(filterColumn).GetValue(p, null).ToString().Contains(filterText));
                     rptPostList.DataBind();
                 }
             }
@@ -139,8 +139,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var posts = ctx.PostRespo.Getter.getQueryable().OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsEnumerable();
-                rptPostList.DataSource = ctx.PostRespo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
+                var posts = ctx.PostRepo.Getter.getQueryable().OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsEnumerable();
+                rptPostList.DataSource = ctx.PostRepo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
                     {
                         p.ID,
                         p.Title,
@@ -165,7 +165,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRespo.Getter.getQueryable().Count() / pageSize);
+                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRepo.Getter.getQueryable().Count() / pageSize);
                 ddlPageIndex.Items.Clear();
                 for (int i = 1; i <= numOfPages; i++)
                 {
@@ -192,7 +192,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 }
             }
 
-            return ctx.PostRespo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
+            return ctx.PostRepo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
         }
     }
 }

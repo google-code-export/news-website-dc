@@ -32,7 +32,7 @@ namespace NewsVn.Web
             using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 //hien tai chua co set expired : p.ExpiredOn >= DateTime.Now &&
-                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(p => p.Actived == true);
+                var _AdPosts = ctx.AdPostRepo.Getter.getQueryable(p => p.Actived == true);
                 var datasource = _AdPosts
                     .Select(p => new
                     {
@@ -56,8 +56,8 @@ namespace NewsVn.Web
             using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 int indexArea = 0;
-                var _AdCategories = ctx.CategoryRespo.Getter.getQueryable(c => c.Type == "adpost" && c.Actived==true);
-                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(a => a.Actived == true);
+                var _AdCategories = ctx.CategoryRepo.Getter.getQueryable(c => c.Type == "adpost" && c.Actived==true);
+                var _AdPosts = ctx.AdPostRepo.Getter.getQueryable(a => a.Actived == true);
 
                 for (int i = 0; i < _AdCategories.Count(); i++)
                 {

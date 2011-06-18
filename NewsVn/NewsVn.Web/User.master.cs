@@ -46,8 +46,8 @@ namespace NewsVn.Web
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString) )
             {
 
-                var Catechildren=ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null && c.Type=="post" && c.Actived==true);
-                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type == "post" && c.Actived == true).Union(Catechildren);
+                var Catechildren=ctx.CategoryRepo.Getter.getQueryable(c => c.Parent != null && c.Type=="post" && c.Actived==true);
+                var CateList = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent == null && c.Type == "post" && c.Actived == true).Union(Catechildren);
 
                 CtrMenu.Datasource = CateList;
                 CtrMenu.DataBind();
@@ -59,8 +59,8 @@ namespace NewsVn.Web
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
 
-                var Catechildren = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent != null && c.Type == "post" && c.Actived == true);
-                var CateList = ctx.CategoryRespo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post")
+                var Catechildren = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent != null && c.Type == "post" && c.Actived == true);
+                var CateList = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post")
                     .Select(c => new
                {
                    c.Name,

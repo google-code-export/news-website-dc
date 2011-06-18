@@ -25,7 +25,7 @@ namespace NewsVn.Web
             //xu ly paging trong khoang vd: <<< 95 96 97 98 99 100 >>>
             using (var ctx =new  NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var data = ctx.UserProfileRespo.Getter.getQueryable(u => u.Description != null).OrderByDescending(u => u.Account)
+                var data = ctx.UserProfileRepo.Getter.getQueryable(u => u.Description != null).OrderByDescending(u => u.Account)
                 .Select(u => new
                 {
                     Account=u.Account,
@@ -50,7 +50,7 @@ namespace NewsVn.Web
             using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 Random x = new Random();
-                var _UserProfiles_var = ctx.UserProfileRespo.Getter.getQueryable();
+                var _UserProfiles_var = ctx.UserProfileRepo.Getter.getQueryable();
                 var cloneDataStructure = _UserProfiles_var.Where(u => u.Description != null).OrderByDescending(u => u.Account).Take(0)
                      .Select(u => new
                      {

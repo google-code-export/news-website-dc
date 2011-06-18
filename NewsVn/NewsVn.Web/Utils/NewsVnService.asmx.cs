@@ -26,7 +26,7 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                return ctx.PostCommentRespo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now).Count();
+                return ctx.PostCommentRepo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now).Count();
             }
         }
 
@@ -36,7 +36,7 @@ namespace NewsVn.Web.Utils
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
                 return string.Format("Bình luận: {0} ({1})",
-                    ctx.PostRespo.Getter.getOne(p => p.ID == postID).Title,
+                    ctx.PostRepo.Getter.getOne(p => p.ID == postID).Title,
                     this.CountPostComments(postID));
             }
         }
@@ -69,12 +69,12 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var postComments = ctx.PostCommentRespo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now).AsEnumerable();
+                var postComments = ctx.PostCommentRepo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now).AsEnumerable();
 
                 if (oldestOnTop)
-                    postComments = ctx.PostCommentRespo.Getter.getPagedList(postComments.OrderBy(c => c.UpdatedOn), pageIndex, pageSize);
+                    postComments = ctx.PostCommentRepo.Getter.getPagedList(postComments.OrderBy(c => c.UpdatedOn), pageIndex, pageSize);
                 else
-                    postComments = ctx.PostCommentRespo.Getter.getPagedList(postComments.OrderByDescending(c => c.UpdatedOn), pageIndex, pageSize);
+                    postComments = ctx.PostCommentRepo.Getter.getPagedList(postComments.OrderByDescending(c => c.UpdatedOn), pageIndex, pageSize);
 
                 var html = new StringBuilder();
 
@@ -160,8 +160,8 @@ namespace NewsVn.Web.Utils
                     if (this.CheckCaptchaResponse(captchaKey, captchaAnswer))
                     {
                         comment.UpdatedOn = DateTime.Now.AddHours(1);
-                        comment.Post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
-                        ctx.PostCommentRespo.Setter.addOne(comment);
+                        comment.Post = ctx.PostRepo.Getter.getOne(p => p.ID == postID);
+                        ctx.PostCommentRepo.Setter.addOne(comment);
                     }
                     else return string.Format(ErrorBar, "Captcha không hợp lệ.");
                 }
@@ -180,7 +180,7 @@ namespace NewsVn.Web.Utils
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    return "<p>" + ctx.PostCommentRespo.Getter.getOne(p => p.ID == commentID).Content + "</p>";
+                    return "<p>" + ctx.PostCommentRepo.Getter.getOne(p => p.ID == commentID).Content + "</p>";
                 }
             }
             catch (Exception)
@@ -243,7 +243,7 @@ namespace NewsVn.Web.Utils
                 int cateID = int.Parse(array[0]);
                 var html = new System.Text.StringBuilder();
                 //clone 1 anynomous List<>
-                var Datasource = ctx.AdPostRespo.Getter.getQueryable().Select(p => new
+                var Datasource = ctx.AdPostRepo.Getter.getQueryable().Select(p => new
                 {
                     p.ID,
                     p.Title,
@@ -259,7 +259,7 @@ namespace NewsVn.Web.Utils
                 //end clone
 
                 //general IQueryable
-                var DataQ = ctx.AdPostRespo.Getter.getQueryable(p => p.Category.ID == cateID || (p.Category.Parent != null && p.Category.Parent.ID == cateID
+                var DataQ = ctx.AdPostRepo.Getter.getQueryable(p => p.Category.ID == cateID || (p.Category.Parent != null && p.Category.Parent.ID == cateID
                             && p.Actived == true));//&& p.ExpiredOn>=DateTime.Today //expired sau nay se dung
                 //return List<> by Search Result
                 //1: condition:search by date
@@ -347,7 +347,7 @@ namespace NewsVn.Web.Utils
                 {
                     string[] array = checkCateID_By_SEONAME(AdsCatName).Split('$');
                     int catID = int.Parse(array[0]);
-                    var data = ctx.AdPostRespo.Getter.getQueryable(p => p.CategoryID == catID || (p.Category.Parent != null && p.Category.Parent.ID == catID))
+                    var data = ctx.AdPostRepo.Getter.getQueryable(p => p.CategoryID == catID || (p.Category.Parent != null && p.Category.Parent.ID == catID))
                             .Select(p => new
                             {
                                 Name = p.Category.Name,
@@ -402,7 +402,7 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var cate = ctx.CategoryRespo.Getter.getQueryable(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name }).ToList();
+                var cate = ctx.CategoryRepo.Getter.getQueryable(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name }).ToList();
 
                 if (cate.Count() > 0)
                 {

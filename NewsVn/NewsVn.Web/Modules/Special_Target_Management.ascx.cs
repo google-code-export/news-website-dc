@@ -68,8 +68,8 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).OrderByDescending(p => p.ApprovedOn).AsEnumerable();
-                GridView1.DataSource = ctx.PostRespo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
+                var posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).OrderByDescending(p => p.ApprovedOn).AsEnumerable();
+                GridView1.DataSource = ctx.PostRepo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
                     {
                         p.ID,
                         p.Avatar,
@@ -93,7 +93,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRespo.Getter.getTable().Count() / pageSize);
+                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRepo.Getter.getTable().Count() / pageSize);
                 ddlPageIndex.Items.Clear();
                 for (int i = 1; i <= numOfPages; i++)
                 {
@@ -147,7 +147,7 @@ namespace NewsVn.Web.Modules
 
                             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                             {
-                                var post = ctx.PostRespo.Getter.getOne(p => p.ID == pID);
+                                var post = ctx.PostRepo.Getter.getOne(p => p.ID == pID);
                                 DataRow r = dt.NewRow();
                                 r["ID"] = row.Cells[1].Text;
                                 r["Title"] = post.Title;

@@ -25,7 +25,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var datafilter = ctx.AdPostRespo.Getter.getQueryable(p => p.ID == AdsID && p.Actived == true);// && p.ExpiredOn >= DateTime.Now
+                var datafilter = ctx.AdPostRepo.Getter.getQueryable(p => p.ID == AdsID && p.Actived == true);// && p.ExpiredOn >= DateTime.Now
 
                 if (datafilter != null)
                 {
@@ -67,7 +67,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var data = ctx.AdPostRespo.Getter.getQueryable(p => p.ID != inputAdPost.ID && p.Actived == true)// && p.ExpiredOn >= DateTime.Now
+                var data = ctx.AdPostRepo.Getter.getQueryable(p => p.ID != inputAdPost.ID && p.Actived == true)// && p.ExpiredOn >= DateTime.Now
                 .Where(p => p.CreatedOn <= inputAdPost.CreatedOn)
                     .Select(p => new
                     {
