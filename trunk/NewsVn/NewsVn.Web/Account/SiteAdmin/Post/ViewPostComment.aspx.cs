@@ -45,8 +45,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var comments = ctx.PostCommentRespo.Getter.getEnumerable().OrderByDescending(c => c.UpdatedOn).ThenBy(c => c.PostID);
-                rptCommentList.DataSource = ctx.PostCommentRespo.Getter.getPagedList(comments, pageIndex, pageSize).Select(c => new
+                var comments = ctx.PostCommentRepo.Getter.getEnumerable().OrderByDescending(c => c.UpdatedOn).ThenBy(c => c.PostID);
+                rptCommentList.DataSource = ctx.PostCommentRepo.Getter.getPagedList(comments, pageIndex, pageSize).Select(c => new
                     {
                         c.ID,
                         c.Title,

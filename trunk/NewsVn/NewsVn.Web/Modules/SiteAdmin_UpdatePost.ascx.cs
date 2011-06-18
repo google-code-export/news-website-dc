@@ -40,7 +40,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var cates = ctx.CategoryRespo.Getter.getQueryable(c => c.Type.Trim().ToLower() == "post")
+                var cates = ctx.CategoryRepo.Getter.getQueryable(c => c.Type.Trim().ToLower() == "post")
                     .OrderByDescending(c => c.Parent == null).ThenBy(c => c.Parent.Name);
 
                 foreach (var cate in cates)
@@ -83,7 +83,7 @@ namespace NewsVn.Web.Modules
                     int postID = -1;
                     int.TryParse(Request.QueryString["pid"], out postID);
 
-                    var post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
+                    var post = ctx.PostRepo.Getter.getOne(p => p.ID == postID);
 
                     if (post != null)
                     {
@@ -108,7 +108,7 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    var cate = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
+                    var cate = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
 
                     var post = new Impl.Entity.Post
                     {
@@ -133,7 +133,7 @@ namespace NewsVn.Web.Modules
                         post.ApprovedBy = HttpContext.Current.User.Identity.Name;
                     }
 
-                    ctx.PostRespo.Setter.addOne(post);
+                    ctx.PostRepo.Setter.addOne(post);
 
                     post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
                     ctx.SubmitChanges();
@@ -151,11 +151,11 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var post = ctx.PostRespo.Getter.getOne(p => p.ID == postID);
+                var post = ctx.PostRepo.Getter.getOne(p => p.ID == postID);
 
                 if (post != null)
                 {
-                    var cate = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
+                    var cate = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
 
                     post.Title = txtTitle.Text.Trim();
                     post.Avatar = txtAvatar.Text.Trim();

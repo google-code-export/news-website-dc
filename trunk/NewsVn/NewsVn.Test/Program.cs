@@ -17,12 +17,12 @@ namespace NewsVn.Test
             {
                 Console.WriteLine("--------------------------------------------------");
 
-                Console.WriteLine(db.CategoryRespo.Getter.getFirst().ToString());
-                Console.WriteLine(db.CategoryRespo.Getter.getLast().ToString());
+                Console.WriteLine(db.CategoryRepo.Getter.getFirst().ToString());
+                Console.WriteLine(db.CategoryRepo.Getter.getLast().ToString());
 
                 Console.WriteLine("--------------------------------------------------");
 
-                Console.WriteLine(db.CategoryRespo.Getter.getAtIndex(1).ToString());
+                Console.WriteLine(db.CategoryRepo.Getter.getAtIndex(1).ToString());
             }
         }
     }

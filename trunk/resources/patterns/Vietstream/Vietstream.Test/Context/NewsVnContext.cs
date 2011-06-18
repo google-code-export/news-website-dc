@@ -8,134 +8,134 @@ namespace Vietstream.Test.Context
 {
     public class NewsVnContext : DbContext, IDisposable
     {
-        private Repository<Entity.AdBox> _adBoxRespo;
-        private Repository<Entity.AdPost> _adPostRespo;
-        private Repository<Entity.Category> _categoryRespo;
-        private Repository<Entity.Post> _postRespo;
-        private Repository<Entity.PostComment> _postCommentRespo;
-        private Repository<Entity.Setting> _settingRespo;
-        private Repository<Entity.UserMessage> _userMessageRespo;
-        private Repository<Entity.UserProfile> _userProfileRespo;
-        private Repository<Entity.UserProfileComment> _userProfileCommentRespo;
-        private Repository<Entity.Video> _videoRespo;
+        private Repository<Entity.AdBox> _adBoxRepo;
+        private Repository<Entity.AdPost> _adPostRepo;
+        private Repository<Entity.Category> _categoryRepo;
+        private Repository<Entity.Post> _postRepo;
+        private Repository<Entity.PostComment> _postCommentRepo;
+        private Repository<Entity.Setting> _settingRepo;
+        private Repository<Entity.UserMessage> _userMessageRepo;
+        private Repository<Entity.UserProfile> _userProfileRepo;
+        private Repository<Entity.UserProfileComment> _userProfileCommentRepo;
+        private Repository<Entity.Video> _videoRepo;
 
-        public Repository<Entity.AdBox> AdBoxRespo
+        public Repository<Entity.AdBox> AdBoxRepo
         {
             get
             {
-                if (_adBoxRespo == null)
+                if (_adBoxRepo == null)
                 {
-                    _adBoxRespo = new Repository<Entity.AdBox>(_ctx);
+                    _adBoxRepo = new Repository<Entity.AdBox>(_ctx);
                 }
-                return _adBoxRespo;
+                return _adBoxRepo;
             }
         }
 
-        public Repository<Entity.AdPost> AdPostRespo
+        public Repository<Entity.AdPost> AdPostRepo
         {
             get
             {
-                if (_adPostRespo == null)
+                if (_adPostRepo == null)
                 {
-                    _adPostRespo = new Repository<Entity.AdPost>(_ctx);
+                    _adPostRepo = new Repository<Entity.AdPost>(_ctx);
                 }
-                return _adPostRespo;
+                return _adPostRepo;
             }
         }
 
-        public Repository<Entity.Category> CategoryRespo
+        public Repository<Entity.Category> CategoryRepo
         {
             get
             {
-                if (_categoryRespo == null)
+                if (_categoryRepo == null)
                 {
-                    _categoryRespo = new Repository<Entity.Category>(_ctx);
+                    _categoryRepo = new Repository<Entity.Category>(_ctx);
                 }
-                return _categoryRespo;
+                return _categoryRepo;
             }
         }
 
-        public Repository<Entity.Post> PostRespo
+        public Repository<Entity.Post> PostRepo
         {
             get
             {
-                if (_postRespo == null)
+                if (_postRepo == null)
                 {
-                    _postRespo = new Repository<Entity.Post>(_ctx);
+                    _postRepo = new Repository<Entity.Post>(_ctx);
                 }
-                return _postRespo;
+                return _postRepo;
             }
         }
 
-        public Repository<Entity.PostComment> PostCommentRespo
+        public Repository<Entity.PostComment> PostCommentRepo
         {
             get
             {
-                if (_postCommentRespo == null)
+                if (_postCommentRepo == null)
                 {
-                    _postCommentRespo = new Repository<Entity.PostComment>(_ctx);
+                    _postCommentRepo = new Repository<Entity.PostComment>(_ctx);
                 }
-                return _postCommentRespo;
+                return _postCommentRepo;
             }
         }
 
-        public Repository<Entity.Setting> SettingRespo
+        public Repository<Entity.Setting> SettingRepo
         {
             get
             {
-                if (_settingRespo == null)
+                if (_settingRepo == null)
                 {
-                    _settingRespo = new Repository<Entity.Setting>(_ctx);
+                    _settingRepo = new Repository<Entity.Setting>(_ctx);
                 }
-                return _settingRespo;
+                return _settingRepo;
             }
         }
 
-        public Repository<Entity.UserMessage> UserMessageRespo
+        public Repository<Entity.UserMessage> UserMessageRepo
         {
             get
             {
-                if (_userMessageRespo == null)
+                if (_userMessageRepo == null)
                 {
-                    _userMessageRespo = new Repository<Entity.UserMessage>(_ctx);
+                    _userMessageRepo = new Repository<Entity.UserMessage>(_ctx);
                 }
-                return _userMessageRespo;
+                return _userMessageRepo;
             }
         }
 
-        public Repository<Entity.UserProfile> UserProfileRespo
+        public Repository<Entity.UserProfile> UserProfileRepo
         {
             get
             {
-                if (_userProfileRespo == null)
+                if (_userProfileRepo == null)
                 {
-                    _userProfileRespo = new Repository<Entity.UserProfile>(_ctx);
+                    _userProfileRepo = new Repository<Entity.UserProfile>(_ctx);
                 }
-                return _userProfileRespo;
+                return _userProfileRepo;
             }
         }
 
-        public Repository<Entity.UserProfileComment> UserProfileCommentRespo
+        public Repository<Entity.UserProfileComment> UserProfileCommentRepo
         {
             get
             {
-                if (_userProfileCommentRespo == null)
+                if (_userProfileCommentRepo == null)
                 {
-                    _userProfileCommentRespo = new Repository<Entity.UserProfileComment>(_ctx);
+                    _userProfileCommentRepo = new Repository<Entity.UserProfileComment>(_ctx);
                 }
-                return _userProfileCommentRespo;
+                return _userProfileCommentRepo;
             }
         }
 
-        public Repository<Entity.Video> VideoRespo
+        public Repository<Entity.Video> VideoRepo
         {
             get
             {
-                if (_videoRespo == null)
+                if (_videoRepo == null)
                 {
-                    _videoRespo = new Repository<Entity.Video>(_ctx);
+                    _videoRepo = new Repository<Entity.Video>(_ctx);
                 }
-                return _videoRespo;
+                return _videoRepo;
             }
         }
 
@@ -150,16 +150,16 @@ namespace Vietstream.Test.Context
 
         public void Dispose()
         {
-            if (_adBoxRespo != null) this.AdBoxRespo.Dispose();
-            if (_adPostRespo != null) this.AdPostRespo.Dispose();
-            if (_categoryRespo != null) this.CategoryRespo.Dispose();
-            if (_postRespo != null) this.PostRespo.Dispose();
-            if (_postCommentRespo != null) this.PostCommentRespo.Dispose();
-            if (_settingRespo != null) this.SettingRespo.Dispose();
-            if (_userMessageRespo != null) this.UserMessageRespo.Dispose();
-            if (_userProfileRespo != null) this.UserProfileRespo.Dispose();
-            if (_userProfileCommentRespo != null) this.UserProfileCommentRespo.Dispose();
-            if (_videoRespo != null) this.VideoRespo.Dispose();
+            if (_adBoxRepo != null) this.AdBoxRepo.Dispose();
+            if (_adPostRepo != null) this.AdPostRepo.Dispose();
+            if (_categoryRepo != null) this.CategoryRepo.Dispose();
+            if (_postRepo != null) this.PostRepo.Dispose();
+            if (_postCommentRepo != null) this.PostCommentRepo.Dispose();
+            if (_settingRepo != null) this.SettingRepo.Dispose();
+            if (_userMessageRepo != null) this.UserMessageRepo.Dispose();
+            if (_userProfileRepo != null) this.UserProfileRepo.Dispose();
+            if (_userProfileCommentRepo != null) this.UserProfileCommentRepo.Dispose();
+            if (_videoRepo != null) this.VideoRepo.Dispose();
         }
     }
 }

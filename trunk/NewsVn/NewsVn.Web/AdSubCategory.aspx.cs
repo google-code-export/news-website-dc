@@ -17,7 +17,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _AdCategories = ctx.CategoryRespo.Getter.getQueryable(c => c.Type == "adpost" && c.Actived==true);
+                var _AdCategories = ctx.CategoryRepo.Getter.getQueryable(c => c.Type == "adpost" && c.Actived==true);
                 var cate = _AdCategories.Where(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name,c.Parent}).ToList();
                 if (cate.Count() > 0)
                 {
@@ -56,7 +56,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _AdPosts = ctx.AdPostRespo.Getter.getQueryable(a => a.Actived == true);
+                var _AdPosts = ctx.AdPostRepo.Getter.getQueryable(a => a.Actived == true);
                 if (isSearchByDate)
                 {
                     var date = DateTime.Parse(Request.QueryString["d"].Replace('_', '/'));

@@ -18,7 +18,7 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ddlCategory.DataSource = ctx.CategoryRespo.Getter.getQueryable(c => "ad".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived == true)
+                    ddlCategory.DataSource = ctx.CategoryRepo.Getter.getQueryable(c => "ad".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived == true)
                         .Select(c => new
                     {
                         c.ID,
@@ -42,7 +42,7 @@ namespace NewsVn.Web.Modules
                     adsPost.Content = txtContent.Text.Trim();
                     adsPost.Avatar = "Ads/" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + "/" + fileAvatar.FileName;
                     adsPost.SeoUrl = "";
-                    adsPost.Category = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
+                    adsPost.Category = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                     adsPost.Location = ddlLocation.SelectedValue;
                     adsPost.Contact = txtContact.Text.Trim();
                     adsPost.ContactEmail = txtContactEmail.Text.Trim();
@@ -54,9 +54,9 @@ namespace NewsVn.Web.Modules
                     adsPost.Actived = true;
                     uploadImg();
 
-                    ctx.AdPostRespo.Setter.addOne(adsPost);
+                    ctx.AdPostRepo.Setter.addOne(adsPost);
 
-                    var data = ctx.CategoryRespo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
+                    var data = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                     Response.Redirect("AdSubCategory.aspx?ct=" + data.SeoUrl);
                 }
             }

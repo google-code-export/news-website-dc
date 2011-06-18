@@ -19,7 +19,7 @@ namespace NewsVn.Web
         {
             using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Categories = ctx.CategoryRespo.Getter.getQueryable(c => c.Actived == true);
+                var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true);
                 var cate = _Categories.Where(c => c.SeoName == seoNAME).Select(c => new { c.ID, c.Name }).ToList();
                 if (cate.Count() > 0)
                 {
@@ -60,7 +60,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
+                var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
                 if (isSearchByDate)
                 {
                     DateTime searchdate = DateTime.Parse(Request.QueryString["d"].Replace('_', '/').Trim());
@@ -104,7 +104,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Post = ctx.PostRespo.Getter.getQueryable(p => p.Actived==true && p.Approved==true);
+                var _Post = ctx.PostRepo.Getter.getQueryable(p => p.Actived==true && p.Approved==true);
                 var iPost = _Post.Where(p =>!lstArrayID.Contains(p.ID) && p.CategoryID == intCateID || (p.Category.Parent != null && p.Category.ParentID == intCateID));
                 var oData = iPost.Select(p => new
                 {
@@ -126,7 +126,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
+                var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
                 var oData = _Posts.Where(p=> p.CategoryID == intCateID || (p.Category.Parent != null && p.Category.ParentID == intCateID)).Select(p => new
                {
                    p.ID,
@@ -149,7 +149,7 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Posts = ctx.PostRespo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
+                var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
                 var listData = _Posts.Where(p =>p.CheckPageView == true && p.Category.ID == intCateID 
                     || (p.Category.Parent != null && p.Category.ParentID == intCateID))
                     //.Where(p=> p.ApprovedOn.Value.AddDays(30)>=DateTime.Now)

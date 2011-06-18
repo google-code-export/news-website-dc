@@ -131,7 +131,7 @@ namespace NewsVn.Web.Account.Form
                     newProfile.ShowPhone = chkShowPhone.Checked;
                     newProfile.UpdatedOn = DateTime.Now;
 
-                    ctx.UserProfileRespo.Setter.addOne(newProfile);
+                    ctx.UserProfileRepo.Setter.addOne(newProfile);
 
                     wzUserSignUp.ActiveStepIndex = 2;
                 }

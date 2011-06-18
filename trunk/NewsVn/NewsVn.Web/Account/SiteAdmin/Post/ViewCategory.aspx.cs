@@ -27,7 +27,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ctx.CategoryRespo.Setter.deleteMany(this.getSelectedCategories(ctx));
+                    ctx.CategoryRepo.Setter.deleteMany(this.getSelectedCategories(ctx));
                 }
             }
             catch (Exception)
@@ -68,7 +68,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                rptCategoryList.DataSource = ctx.CategoryRespo.Getter
+                rptCategoryList.DataSource = ctx.CategoryRepo.Getter
                     .getQueryable(c => c.Parent != null && c.Type.Trim().ToLower() == "post").Select(c => new
                     {
                         c.ID,
@@ -99,7 +99,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 }
             }
 
-            return ctx.CategoryRespo.Getter.getQueryable(c => selectedCategoryIDs.Contains(c.ID));
+            return ctx.CategoryRepo.Getter.getQueryable(c => selectedCategoryIDs.Contains(c.ID));
         }
     }
 }

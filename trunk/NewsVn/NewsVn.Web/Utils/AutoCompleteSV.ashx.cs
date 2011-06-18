@@ -26,7 +26,7 @@ namespace NewsVn.Web.Utils
             {
                 using (var ctx = new NewsVnContext(strConn))
                 {
-                    var data = ctx.PostRespo.Getter.getQueryable(p => p.Title.ToLower().StartsWith(prefixText.ToLower()) && p.Actived == true) // DateTime.Now.Subtract(p.ApprovedOn.Value).Days<=30 &&
+                    var data = ctx.PostRepo.Getter.getQueryable(p => p.Title.ToLower().StartsWith(prefixText.ToLower()) && p.Actived == true) // DateTime.Now.Subtract(p.ApprovedOn.Value).Days<=30 &&
                         .Select(p => new { p.Title });
 
                     foreach (var item in data)
