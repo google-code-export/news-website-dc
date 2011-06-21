@@ -49,14 +49,21 @@ namespace NewsVn.Web
             pletSideTabBar.Datasource_Weather = City;
             pletSideTabBar.DataBind();
         }
-
+        private int CountPostComments(Impl.Entity.Post post)
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                int count = post.PostComments.Where(p => p.UpdatedOn <= DateTime.Now).Count();
+                return count;
+            }
+        }
         private void load_pletPosts()
         {
 
             int indexArea = 0;
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true && c.Type=="post").AsEnumerable();
+                var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true && c.Type == "post").AsEnumerable();
                 var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true);
                 for (int i = 0; i < _Categories.Count(); i++)
                 {
@@ -80,7 +87,7 @@ namespace NewsVn.Web
                             p.SeoUrl,
                             p.ApprovedOn,
                             p.AllowComments,
-                            Comments = p.PostComments.Count
+                            Comments = CountPostComments(p)
                         }).OrderByDescending(p => p.ApprovedOn);
 
                     ctrPortletPost.oActivePost = oActivePost.Take(1).ToList();
@@ -101,6 +108,7 @@ namespace NewsVn.Web
                     indexArea += 1;
                 }
             }
+            
             //Bind Control Quang Cao
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
@@ -169,7 +177,7 @@ namespace NewsVn.Web
                     p.SeoUrl,
                     p.AllowComments,
                     Cat_Name = p.Category.Parent != null ? p.Category.Parent.Name+ ", " + p.Category.Name : p.Category.Name,
-                    Comments = p.PostComments.Count()
+                    Comments = CountPostComments(p)
                 }).OrderByDescending(p => p.ApprovedOn).Take(7).ToList();
 
                 pletLatestNews.DataSource = oData;

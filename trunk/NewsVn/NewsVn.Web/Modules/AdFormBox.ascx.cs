@@ -18,7 +18,7 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ddlCategory.DataSource = ctx.CategoryRepo.Getter.getQueryable(c => "ad".Equals(c.Type, StringComparison.OrdinalIgnoreCase) && c.Actived == true)
+                    ddlCategory.DataSource = ctx.CategoryRepo.Getter.getQueryable(c => c.Type=="adpost" && c.Actived == true)
                         .Select(c => new
                     {
                         c.ID,
@@ -48,6 +48,8 @@ namespace NewsVn.Web.Modules
                     adsPost.ContactEmail = txtContactEmail.Text.Trim();
                     adsPost.ContactAddress = txtContactAddress.Text.Trim();
                     adsPost.ContactPhone = txtContactPhone.Text.Trim();
+                    adsPost.CreatedOn = DateTime.Now;
+                    adsPost.CreatedBy = txtContact.Text.Trim();
                     adsPost.UpdatedOn = DateTime.Now;
                     adsPost.UpdatedBy = txtContact.Text.Trim();
                     adsPost.ExpiredOn = DateTime.Now.AddDays(3);//setting day expired from created day
@@ -55,9 +57,14 @@ namespace NewsVn.Web.Modules
                     uploadImg();
 
                     ctx.AdPostRepo.Setter.addOne(adsPost);
+                    
+                    adsPost.SeoUrl = string.Format("rao-nhanh-chi-tiet/{0}/{1}", adsPost.ID, clsCommon.RemoveUnicodeMarks(adsPost.Title));
+                    
+                    ctx.SubmitChanges();
+
 
                     var data = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
-                    Response.Redirect("AdSubCategory.aspx?ct=" + data.SeoUrl);
+                    Response.Redirect(HostName + data.SeoUrl);
                 }
             }
             catch (Exception)
