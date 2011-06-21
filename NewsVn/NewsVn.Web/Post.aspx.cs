@@ -42,11 +42,10 @@ namespace NewsVn.Web
                 }
                 catch (Exception ex)
                 {
-                    clsCommon.WriteTextLog("Post.aspx - fnc: load_pletRelationPostList (codePost:" + Request.QueryString["cp"] + ", category:" + Request.QueryString["ct"] + " )", ex.Message.ToString());
+                   
                 }
             }
         }
-
 
         private void load_postDetail(int postID)
         {
