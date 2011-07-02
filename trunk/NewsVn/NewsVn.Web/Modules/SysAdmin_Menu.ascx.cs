@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class SiteAdmin_Menu : BaseUI.SecuredModule
+    public partial class SysAdmin_Menu : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

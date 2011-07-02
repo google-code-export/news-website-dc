@@ -20,11 +20,11 @@
         <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add left" runat="server"
             NavigateUrl="~/Account/SiteAdmin/Post/AddPost.aspx" />
         <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
-            OnClientClick="return confirmDelete()" OnClick="btnDelete_Click" />
+            OnClientClick="return confirmAction('Xóa tin được chọn?')" OnClick="btnDelete_Click" />
         <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
-            OnClientClick="return checkSelectedRows()" OnClick="btnToggleActive_Click" />
+            OnClientClick="return confirmAction('Ẩn/Hiện tin được chọn?')" OnClick="btnToggleActive_Click" />
         <asp:LinkButton ID="btnApprove" Text="Duyệt" CssClass="button-ok left" runat="server"
-            OnClientClick="return checkSelectedRows()" OnClick="btnApprove_Click" />
+            OnClientClick="return confirmAction('Duyệt tin được chọn?')" OnClick="btnApprove_Click" />
         <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[postHelpBox]" runat="server" />
         <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh right" runat="server"
             OnClick="btnRefresh_Click" />
@@ -88,7 +88,7 @@
                         <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 30) %>
                     </a>
                 </td>
-                <td><%#Eval("PageView", "{0:N0}") %></td>
+                <td align="center"><%#Eval("PageView", "{0:N0}") %></td>
                 <td>
                     <a href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("CategoryID") %>'>
                         <%# Eval("CategoryName") %>

@@ -11,6 +11,7 @@ namespace NewsVn.Impl.Context
         private Repository<Entity.AdBox> _adBoxRepo;
         private Repository<Entity.AdPost> _adPostRepo;
         private Repository<Entity.Category> _categoryRepo;
+        private Repository<Entity.MemberProfile> _memberProfileRepo;
         private Repository<Entity.Post> _postRepo;
         private Repository<Entity.PostComment> _postCommentRepo;
         private Repository<Entity.Setting> _settingRepo;
@@ -52,6 +53,18 @@ namespace NewsVn.Impl.Context
                     _categoryRepo = new Repository<Entity.Category>(_ctx);
                 }
                 return _categoryRepo;
+            }
+        }
+
+        public Repository<Entity.MemberProfile> MemberProfileRepo
+        {
+            get
+            {
+                if (_memberProfileRepo == null)
+                {
+                    _memberProfileRepo = new Repository<Entity.MemberProfile>(_ctx);
+                }
+                return _memberProfileRepo;
             }
         }
 

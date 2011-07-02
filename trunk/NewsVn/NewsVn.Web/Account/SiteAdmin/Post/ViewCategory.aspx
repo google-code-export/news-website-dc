@@ -15,9 +15,9 @@
         <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add left" runat="server"
             NavigateUrl="~/Account/SiteAdmin/Post/AddCategory.aspx" />
         <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
-            OnClientClick="return confirmDelete()" OnClick="btnDelete_Click" />
+            OnClientClick="return confirmAction('Xóa danh mục được chọn?')" OnClick="btnDelete_Click" />
         <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
-            OnClientClick="return checkSelectedRows()" OnClick="btnToggleActive_Click" />
+            OnClientClick="return confirmAction('Ẩn/Hiện danh mục được chọn?')" OnClick="btnToggleActive_Click" />
         <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[categoryHelpBox]" runat="server" />
         <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh right" runat="server"
             OnClick="btnRefresh_Click" />
