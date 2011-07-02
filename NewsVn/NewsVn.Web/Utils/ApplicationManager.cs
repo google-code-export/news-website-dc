@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Configuration;
+using System.Collections.Generic;
 using NewsVn.Impl.Caching;
 using System.IO;
 using System.Globalization;
@@ -11,8 +12,8 @@ namespace NewsVn.Web.Utils
     {
         private static bool _alreadyInit;
 
-        public static string HostName { get; set; }
-        public static string[] skyStatus { get;set;}
+        public static string HostName { get; private set; }
+        public static string[] skyStatus { get; private set;}
 
         public static string ConnectionString { get; private set; }
 
@@ -26,7 +27,7 @@ namespace NewsVn.Web.Utils
                 
                 HostName = WebConfigurationManager.AppSettings["HostName"];
 
-                ConnectionString = WebConfigurationManager.ConnectionStrings["NewsVnMain"].ConnectionString;
+                ConnectionString = WebConfigurationManager.ConnectionStrings["NewsVnMain"].ConnectionString;                
                 
                 _alreadyInit = true;
             }

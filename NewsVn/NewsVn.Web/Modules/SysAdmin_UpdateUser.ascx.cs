@@ -1,0 +1,164 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Security;
+using NewsVn.Web.Utils;
+using NewsVn.Impl.Context;
+
+namespace NewsVn.Web.Modules
+{
+    public partial class SysAdmin_UpdateUser : BaseUI.SecuredModule
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                this.LoadRoleDropDown();
+            }
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var newUser = this.AddNewUser();
+
+            if (newUser != null)
+            {
+                this.UpdateMemberProfile(newUser);
+            }
+        }
+
+        private MembershipUser AddNewUser()
+        {
+            var mcs = new MembershipCreateStatus();
+            bool success = false;
+
+            var newUser = Membership.CreateUser(txtUsername.Text.Trim(), Membership.GeneratePassword(20, 5),
+                txtEmail.Text.Trim(), new Guid().ToString(), new Guid().ToString(), true, out mcs);
+
+            switch (mcs)
+            {
+                case MembershipCreateStatus.Success:
+                    success = true;
+                    break;
+                case MembershipCreateStatus.DuplicateEmail:
+                    ltrError.Text = string.Format(ErrorBar, "Email đã được sử dụng.");
+                    break;
+                case MembershipCreateStatus.InvalidUserName:
+                    ltrError.Text = string.Format(ErrorBar, "Tên tài khoản không hợp lệ.");
+                    break;
+                case MembershipCreateStatus.DuplicateUserName:
+                    ltrError.Text = string.Format(ErrorBar, "Tên tài khoản đã được sử dụng.");
+                    break;
+                case MembershipCreateStatus.InvalidEmail:
+                    ltrError.Text = string.Format(ErrorBar, "Email không hợp lệ.");
+                    break;
+                case MembershipCreateStatus.InvalidPassword:
+                    ltrError.Text = string.Format(ErrorBar, "Mật khẩu không hợp lệ.");
+                    break;
+                case MembershipCreateStatus.UserRejected:
+                    ltrError.Text = string.Format(ErrorBar, "Tài khoản bị khước từ.");
+                    break;
+                default:
+                    ltrError.Text = string.Format(ErrorBar, "Lỗi không xác định. Vui lòng thử lại.");
+                    break;
+            }
+
+            if (success)
+            {
+                try
+                {
+                    Roles.AddUserToRole(newUser.UserName, ddlRole.SelectedValue);
+                    return newUser;
+                }
+                catch (Exception)
+                {
+                    Membership.DeleteUser(newUser.UserName, true);
+                    ltrError.Text = string.Format(ErrorBar, "Không thể thêm mới tài khoản này!");
+                    return null;
+                }
+            }
+            return null;
+        }
+
+        private void UpdateMemberProfile(MembershipUser user)
+        {
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    var memberProfile = new Impl.Entity.MemberProfile
+                    {
+                        Account = user.UserName,
+                        Name = txtName.Text.Trim(),
+                        IdNumber = txtIdNumber.Text.Trim(),
+                        Email = user.Email,
+                        Gender = bool.Parse(rblGender.SelectedValue),
+                        UpdatedOn = DateTime.Now,
+                        UpdatedBy = HttpContext.Current.User.Identity.Name
+                    };
+
+                    if (!string.IsNullOrEmpty(txtPhone.Text.Trim()))
+                    {
+                        memberProfile.Phone = txtPhone.Text.Trim();
+                    }
+                    if (!string.IsNullOrEmpty(txtDOB.Text.Trim()))
+                    {
+                        memberProfile.DOB = DateTime.Parse(txtDOB.Text.Trim());
+                    }
+                    if (!string.IsNullOrEmpty(txtEducation.Text.Trim()))
+                    {
+                        memberProfile.Education = txtEducation.Text.Trim();
+                    }
+                    if (!string.IsNullOrEmpty(ddlLocation.SelectedValue))
+                    {
+                        memberProfile.Location = ddlLocation.SelectedValue;
+                    }
+
+                    ctx.MemberProfileRepo.Setter.addOne(memberProfile);
+                    this.ClearUpdateForm();
+                    ltrInfo.Text = string.Format(InfoBar, "Hoàn tất thêm mới tài khoản!");
+                }
+            }
+            catch (Exception)
+            {
+                Membership.DeleteUser(user.UserName, true);
+                ltrError.Text = string.Format(ErrorBar, "Không thể cập nhật thông tin tài khoản!");
+            }
+        }
+
+        private void LoadRoleDropDown()
+        {
+            string[] excludedRoleNames = new string[] { "guest", "sysadmin" };
+            
+            foreach (var roleName in Roles.GetAllRoles())
+            {
+                if (!excludedRoleNames.Contains(roleName))
+                {
+                    ddlRole.Items.Add(new ListItem(this.getConfiguredRoleName(roleName), roleName));
+                }
+            }
+        }
+
+        private void ClearUpdateForm()
+        {
+            txtUsername.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            ddlRole.SelectedIndex = 0;
+            txtName.Text = string.Empty;
+            txtIdNumber.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtDOB.Text = string.Empty;
+            rblGender.SelectedIndex = 0;
+            ddlLocation.SelectedIndex = 0;
+            txtEducation.Text = string.Empty;
+        }
+
+        private string getConfiguredRoleName(string roleName)
+        {
+            return ApplicationSettings.GetSettingValue("App.Security.Role", roleName);
+        }
+    }
+}

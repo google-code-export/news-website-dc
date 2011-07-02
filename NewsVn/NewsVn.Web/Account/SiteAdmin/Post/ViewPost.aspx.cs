@@ -58,7 +58,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
             catch (Exception)
             {
-                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn tin được chọn!");
+                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn/hiện tin được chọn!");
             }
 
             this.GoToCurrentPage();

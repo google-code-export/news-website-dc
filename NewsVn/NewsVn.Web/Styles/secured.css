@@ -139,3 +139,26 @@ a
 {
     margin-right: 0;
 }
+
+.side_nav 
+{
+    margin: 10px 0 0;
+}
+
+.side_nav li.side_main_menu
+{
+    padding: 0.3em 0.5em;
+    border: 1px solid #FFB4AE;
+    margin: 0.2em 0;
+}
+
+.side_nav li a
+{
+    color: #BD0D0D !important;
+    font-weight: bold;
+}
+
+.side_nav li a.selected
+{
+    text-decoration: underline;    
+}

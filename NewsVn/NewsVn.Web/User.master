@@ -56,7 +56,7 @@
                                 <a style="color:#fff" href="#"><asp:LoginName runat="server" /></a> |                                
                             </LoggedInTemplate>
                             <AnonymousTemplate>
-                                <a style="color:#fff" href='<%= HostName + "tinh-yeu-gia-dinh/tai-khoan/dang-ky.aspx" %>'>Đăng ký</a> | 
+                                <a style="color:#fff" href='<%= HostName + "tai-khoan/dang-ky.aspx" %>'>Đăng ký</a> | 
                             </AnonymousTemplate>                          
                         </asp:LoginView>
                         <asp:LoginStatus

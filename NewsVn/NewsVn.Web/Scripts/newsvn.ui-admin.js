@@ -69,6 +69,11 @@ $(function () {
             primary: "ui-icon-arrowthick-1-w"
         }
     });
+    $(".button-reset").button({
+        icons: {
+            primary: "ui-icon-key"
+        }
+    });
 
     //datepicker
     $(".datepicker").datepicker({
@@ -120,6 +125,7 @@ $(function () {
 
     fixLayoutContent();
     refineTableStyles();
+    refineSideMenu();
 
     $(window).resize(function () {
         fixLayoutContent();
@@ -161,13 +167,19 @@ function refineTableStyles() {
     });
 }
 
-function confirmDelete() {
-    if (checkSelectedRows()) {
-        return confirm("Xóa những dòng được chọn?");
-    }
-    return false;
+function refineSideMenu() {
+    $(".side_main_menu").click(function () {
+        $(this).find("ul").slideToggle(500);
+    });
+    $(".side_main_menu").each(function () {
+        if ($(this).children("a").hasClass("selected") || $(this).find("li a").hasClass("selected")) {
+            $(this).find("ul").show();
+        }
+    });
 }
 
-function checkSelectedRows() {
-    return $(".ui-table tr td:first-child :checked").size() > 0;
+function confirmAction(msg) {
+    var selectedRows = $(".ui-table tr td:first-child :checked").size();
+    if (selectedRows > 0) { return confirm(msg); }
+    return false;
 }

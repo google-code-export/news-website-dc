@@ -63,7 +63,7 @@
                         Bạn chưa có tài khoản? Hay nhanh tay đăng ký để được tham gia tìm bạn 4 phương trên trang web của chúng tôi.
                         Với lượt truy cập lớn và hồ sơ mới cập nhật mỗi ngày. Còn chờ gì nữa, hay đăng ký ngay thôi!
                     </p>
-                    <a href='<%= HostName+ "tinh-yeu-gia-dinh/tai-khoan/dang-ky.aspx" %>' class="button-register right" style="font-size:1.19em">Đăng ký</a>
+                    <a href='<%= HostName+ "tai-khoan/dang-ky.aspx" %>' class="button-register right" style="font-size:1.19em">Đăng ký</a>
                     <div class="clear"></div>
                 </AnonymousTemplate>
                 <LoggedInTemplate>

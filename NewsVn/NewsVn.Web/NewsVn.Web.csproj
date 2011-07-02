@@ -68,9 +68,12 @@
   <ItemGroup>
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\LostPassword.aspx" />
+    <Content Include="Account\Form\Redirector.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
+    <Content Include="Account\Guest\index.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
-    <Content Include="Account\SiteAdmin\Default.aspx" />
+    <Content Include="Account\Mod\index.htm" />
+    <Content Include="Account\SiteAdmin\index.htm" />
     <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditCategory.aspx" />
@@ -79,6 +82,14 @@
     <Content Include="Account\SiteAdmin\Post\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPostComment.aspx" />
+    <Content Include="Account\SiteAdmin\Video\ViewCategory.aspx" />
+    <Content Include="Account\SiteAdmin\Video\ViewVideo.aspx" />
+    <Content Include="Account\SysAdmin\index.htm" />
+    <Content Include="Account\SysAdmin\Setting\EditSetting.aspx" />
+    <Content Include="Account\SysAdmin\Setting\ViewSetting.aspx" />
+    <Content Include="Account\SysAdmin\User\AddUser.aspx" />
+    <Content Include="Account\SysAdmin\User\ViewUser.aspx" />
+    <Content Include="Account\SysAdmin\User\ViewUserDetail.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
     <Content Include="AdPost.aspx" />
@@ -1682,6 +1693,8 @@
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
     <Content Include="Modules\Special_Target_Management.ascx" />
+    <Content Include="Modules\SysAdmin_Menu.ascx" />
+    <Content Include="Modules\SysAdmin_UpdateUser.ascx" />
     <Content Include="Modules\UserConversationBox.ascx" />
     <Content Include="Modules\UserProfileDetails.ascx" />
     <Content Include="Modules\UserProfileList.ascx" />
@@ -1771,6 +1784,13 @@
     <Compile Include="Account\Form\LostPassword.aspx.designer.cs">
       <DependentUpon>LostPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Form\Redirector.aspx.cs">
+      <DependentUpon>Redirector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Form\Redirector.aspx.designer.cs">
+      <DependentUpon>Redirector.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Form\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1792,12 +1812,12 @@
     <Compile Include="Account\Guest\MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\SiteAdmin\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Account\Mod\Mod.Master.cs">
+      <DependentUpon>Mod.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\SiteAdmin\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Account\Mod\Mod.Master.designer.cs">
+      <DependentUpon>Mod.Master</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddCategory.aspx.cs">
       <DependentUpon>AddCategory.aspx</DependentUpon>
@@ -1861,6 +1881,62 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\SiteAdmin.Master.designer.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\ViewCategory.aspx.cs">
+      <DependentUpon>ViewCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\ViewCategory.aspx.designer.cs">
+      <DependentUpon>ViewCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\ViewVideo.aspx.cs">
+      <DependentUpon>ViewVideo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\ViewVideo.aspx.designer.cs">
+      <DependentUpon>ViewVideo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SysAdmin\Setting\EditSetting.aspx.cs">
+      <DependentUpon>EditSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SysAdmin\Setting\EditSetting.aspx.designer.cs">
+      <DependentUpon>EditSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SysAdmin\Setting\ViewSetting.aspx.cs">
+      <DependentUpon>ViewSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SysAdmin\Setting\ViewSetting.aspx.designer.cs">
+      <DependentUpon>ViewSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SysAdmin\SysAdmin.Master.cs">
+      <DependentUpon>SysAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SysAdmin\SysAdmin.Master.designer.cs">
+      <DependentUpon>SysAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SysAdmin\User\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SysAdmin\User\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SysAdmin\User\ViewUser.aspx.cs">
+      <DependentUpon>ViewUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SysAdmin\User\ViewUser.aspx.designer.cs">
+      <DependentUpon>ViewUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SysAdmin\User\ViewUserDetail.aspx.cs">
+      <DependentUpon>ViewUserDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SysAdmin\User\ViewUserDetail.aspx.designer.cs">
+      <DependentUpon>ViewUserDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdCategory.aspx.cs">
       <DependentUpon>AdCategory.aspx</DependentUpon>
@@ -2194,6 +2270,20 @@
     <Compile Include="Modules\Special_Target_Management.ascx.designer.cs">
       <DependentUpon>Special_Target_Management.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\SysAdmin_Menu.ascx.cs">
+      <DependentUpon>SysAdmin_Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SysAdmin_Menu.ascx.designer.cs">
+      <DependentUpon>SysAdmin_Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SysAdmin_UpdateUser.ascx.cs">
+      <DependentUpon>SysAdmin_UpdateUser.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SysAdmin_UpdateUser.ascx.designer.cs">
+      <DependentUpon>SysAdmin_UpdateUser.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\UserConversationBox.ascx.cs">
       <DependentUpon>UserConversationBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2279,7 +2369,9 @@
     <Compile Include="UserExtra.master.designer.cs">
       <DependentUpon>UserExtra.master</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ApplicationMailing.cs" />
     <Compile Include="Utils\ApplicationManager.cs" />
+    <Compile Include="Utils\ApplicationSettings.cs" />
     <Compile Include="Utils\AutoCompleteSV.ashx.cs">
       <DependentUpon>AutoCompleteSV.ashx</DependentUpon>
     </Compile>
@@ -2313,8 +2405,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Account\Mod\AdPost\" />
+    <Folder Include="Account\Mod\Post\" />
+    <Folder Include="Account\Mod\Profile\" />
+    <Folder Include="Account\Mod\Video\" />
     <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
+    <Folder Include="Account\SiteAdmin\Profile\" />
+    <Folder Include="Account\SysAdmin\Profile\" />
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
@@ -2366,6 +2464,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Guest\Guest.Master" />
+    <Content Include="Account\SysAdmin\SysAdmin.Master" />
+    <Content Include="Account\Mod\Mod.Master" />
     <None Include="CuteSoft_Client\CuteEditor\Blank.cep" />
     <Content Include="CuteSoft_Client\CuteEditor\Configuration\AutoConfigure\Compact.config" />
     <Content Include="CuteSoft_Client\CuteEditor\Configuration\AutoConfigure\Default.config" />
@@ -2394,6 +2494,7 @@
     <Content Include="CuteSoft_Client\CuteEditor\ImageEditor\imageeditorTest.zip" />
     <Content Include="CuteSoft_Client\CuteEditor\Load.ashx" />
     <Content Include="CuteSoft_Client\CuteEditor\Uploader.ashx" />
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewsVn.Impl\NewsVn.Impl.csproj">
