@@ -22,20 +22,22 @@ namespace NewsVn.Web.Modules
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            var newUser = this.AddNewUser();
+            string generatedPassword = string.Empty;
+            var newUser = this.AddNewUser(out generatedPassword);
 
             if (newUser != null)
             {
-                this.UpdateMemberProfile(newUser);
+                this.UpdateMemberProfile(newUser, generatedPassword);
             }
         }
 
-        private MembershipUser AddNewUser()
+        private MembershipUser AddNewUser(out string generatedPassword)
         {
             var mcs = new MembershipCreateStatus();
             bool success = false;
+            generatedPassword = Membership.GeneratePassword(20, 5);
 
-            var newUser = Membership.CreateUser(txtUsername.Text.Trim(), Membership.GeneratePassword(20, 5),
+            var newUser = Membership.CreateUser(txtUsername.Text.Trim(), generatedPassword,
                 txtEmail.Text.Trim(), new Guid().ToString(), new Guid().ToString(), true, out mcs);
 
             switch (mcs)
@@ -83,7 +85,7 @@ namespace NewsVn.Web.Modules
             return null;
         }
 
-        private void UpdateMemberProfile(MembershipUser user)
+        private void UpdateMemberProfile(MembershipUser user, string generatedPassword)
         {
             try
             {
@@ -119,6 +121,10 @@ namespace NewsVn.Web.Modules
 
                     ctx.MemberProfileRepo.Setter.addOne(memberProfile);
                     this.ClearUpdateForm();
+                    var args = new Dictionary<string, string>();
+                    args["newsvn.account.name"] = user.UserName;
+                    args["newsvn.account.password"] = generatedPassword;
+                    ApplicationMailing.Send(new string[] { user.Email }, ApplicationMailing.SendPurpose.CreateAccount, args);
                     ltrInfo.Text = string.Format(InfoBar, "Hoàn tất thêm mới tài khoản!");
                 }
             }

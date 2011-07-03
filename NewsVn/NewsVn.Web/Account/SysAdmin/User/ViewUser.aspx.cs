@@ -28,14 +28,18 @@ namespace NewsVn.Web.Account.SysAdmin.User
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
+                    var args = new Dictionary<string, string>();
                     foreach (var user in this.getSelectedUsers())
                     {
+                        string email = user.Email;
+                        args["newsvn.account.name"] = user.UserName;
                         if (Membership.DeleteUser(user.UserName))
                         {
                             var deletedProfile = ctx.MemberProfileRepo.Getter.getOne(u=>u.Account.Equals(user.UserName));
                             ctx.MemberProfileRepo.Setter.deleteOne(deletedProfile);
+                            ApplicationMailing.Send(new string[] { email }, ApplicationMailing.SendPurpose.DeleteAccount, args);
                         }
-                    }
+                    }                    
                     ltrInfo.Text = string.Format(InfoBar, "Xóa tài khoản thành công!");
                 }
             }
@@ -51,10 +55,14 @@ namespace NewsVn.Web.Account.SysAdmin.User
         {
             try
             {
+                var args = new Dictionary<string, string>();
                 foreach (var user in this.getSelectedUsers())
                 {
                     user.IsApproved = !user.IsApproved;
                     Membership.UpdateUser(user);
+                    args["newsvn.account.name"] = user.UserName;
+                    args["newsvn.account.status"] = user.IsApproved ? "Kích hoạt" : "Vô hiệu";
+                    ApplicationMailing.Send(new string[] { user.Email }, ApplicationMailing.SendPurpose.ChangeApproval, args);
                 }
                 ltrInfo.Text = string.Format(InfoBar, "Kích hoạt/Vô hiệu tài khoản thành công!");
             }
@@ -70,11 +78,14 @@ namespace NewsVn.Web.Account.SysAdmin.User
         {
             try
             {
+                var args = new Dictionary<string, string>();
                 foreach (var user in this.getSelectedUsers())
                 {
-                    user.ResetPassword();
+                    args["newsvn.account.name"] = user.UserName;
+                    args["newsvn.account.password"] = user.ResetPassword();
+                    ApplicationMailing.Send(new string[] { user.Email }, ApplicationMailing.SendPurpose.ResetPassword, args);
                 }
-                ltrInfo.Text = string.Format(InfoBar, "Đặt lại mật khẩu cho tài khoản thành công!");
+                ltrInfo.Text = string.Format(InfoBar, "Đặt lại mật khẩu cho tài khoản thành công! Mật khẩu mới đã được gởi đến email của tài khoản.");
             }
             catch (Exception)
             {
