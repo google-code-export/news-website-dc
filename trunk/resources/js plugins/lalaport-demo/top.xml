@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="shift_jis"?>
+<root>
+	<items>
+		<item>
+			<main_path>/image/bargainB_0623UP.jpg</main_path>
+			<thumbnail_path>/image/bargain_topbanner.jpg</thumbnail_path>
+			<url>/zoofla/110623/</url>
+			<target><![CDATA[blank]]></target>
+			<time>3</time>
+			<title>?????????</title>
+			<start><![CDATA[2011-06-24 00:00]]></start>
+			<end><![CDATA[2011-07-10 23:50]]></end>
+			<visible>true</visible>
+		</item>
+		<item>
+			<main_path>/image/tohoku_banner.jpg</main_path>
+			<thumbnail_path>/image/tohoku_topbanner.jpg</thumbnail_path>
+			<url>http://www.lalaport.jp/msptohokutour/</url>
+			<target><![CDATA[blank]]></target>
+			<time>3</time>
+			<title></title>
+			<start><![CDATA[]]></start>
+			<end><![CDATA[]]></end>
+			<visible>true</visible>
+		</item>
+		<item>
+			<main_path>/image/L1_110701_main.jpg</main_path>
+			<thumbnail_path>/image/L1_110701_tn.jpg</thumbnail_path>
+			<url>/110701/</url>
+			<target><![CDATA[blank]]></target>
+			<time>3</time>
+			<title>L?1????????</title>
+			<start><![CDATA[2011-06-24 00:00]]></start>
+			<end><![CDATA[2011-07-10 23:50]]></end>
+			<visible>true</visible>
+		</item>
+		<item>
+			<main_path>/image/parking_flash.jpg</main_path>
+			<thumbnail_path>/image/parking_banner.jpg</thumbnail_path>
+			<url>/110623_parking/</url>
+			<target><![CDATA[blank]]></target>
+			<time>3</time>
+			<title>?????????????!??????????1??????4?????!</title>
+			<start><![CDATA[2011-06-24 00:00]]></start>
+			<end><![CDATA[2011-07-22 23:50]]></end>
+			<visible>true</visible>
+		</item>
+		<item>
+			<main_path>/image/tohoku_banner.jpg</main_path>
+			<thumbnail_path>/image/tohoku_topbanner.jpg</thumbnail_path>
+			<url>http://www.lalaport.jp/msptohokutour/</url>
+			<target><![CDATA[blank]]></target>
+			<time>3</time>
+			<title></title>
+			<start><![CDATA[]]></start>
+			<end><![CDATA[]]></end>
+			<visible>true</visible>
+		</item>
+		<item>
+			<main_path>/image/watashiwohareni_banner.jpg</main_path>
+			<thumbnail_path>/image/watashiwohareni_topbanner.jpg</thumbnail_path>
+			<url></url>
+			<target><![CDATA[]]></target>
+			<time>3</time>
+			<title></title>
+			<start><![CDATA[]]></start>
+			<end><![CDATA[]]></end>
+			<visible>true</visible>
+		</item>
+	</items>
+</root>
