@@ -33,7 +33,7 @@
 				// Define working elements
 				// Define elements as functions so that they can return new instances
 				var mainBannerElem = function() {
-					return $("<img class='" + opts.mainBannerClass +"' />")
+					return $("<img class='" + opts.mainBannerClass +"' border='0' />");
 				};
 				var thumbnailContainerElem = function() {
 					return $("<div id='" + opts.thumbnailContainerId +"'>");
@@ -94,13 +94,14 @@
 						elem.append(_navigationNextElem);
 						// Apply animation events and effects to the banner
 						$.fn.topBanner.animateBanner(elem, opts);
-					}, error: function() { alert('error!'); }
+					}, error: function(ex) { alert("Error getting xml document!"); }
 				});
 			});
 		}
 	});
 	$.fn.topBanner.settings = {
-		fadeInTimeout: 200
+		fadeInSpeed: 200,
+		slideSpeed: 500
 	};
 	// Get banner object
 	$.fn.topBanner.bannerItem = function(item) {
@@ -145,9 +146,9 @@
 			$(this).css({ "opacity": 1 });
 		});		
 		// Position the thumbnails
-		thumbnails.each(function(i) {
-			$(this).css({ "left": (($(this).width() +opts.thumbnailMargin) * i) + "px" });
-		});
+		//thumbnails.each(function(i) {
+			//$(this).css({ "left": (($(this).width() + opts.thumbnailMargin) * i) + "px" });
+		//});
 		// Add events to each thumbnail
 		thumbnails.click(function() {
 			// Hide all main banners
@@ -157,7 +158,7 @@
 			$(this).addClass("active");
 			// Fade in and add 'active' class to the main banner that match with this thumbnail
 			$("img." + opts.mainBannerClass + "[match=" + $(this).attr("match") + "]:eq(0)", elem)
-				.fadeIn(stts.fadeInTimeout, function() {
+				.fadeIn(stts.fadeInSpeed, function() {
 					mainBanners.removeClass("active");
 					$(this).addClass("active");
 				});					
@@ -169,7 +170,43 @@
 			index = index > thumbnails.size() - 1 ? 0 : index;
 			// Go to the index
 			thumbnails.eq(index).click();
-		}
+		};		
+		// Flag to check if user choose to view previous thumb
+		var goPrevious = false;
+		// Define slide with infinite loop
+		var slideCyclic = function(start, numOfView) {
+			var viewArr = new Array();
+			var thumbWidth = thumbnails.eq(0).width() + opts.thumbnailMargin;
+			// Get 1 more additional thumb for sliding purpose
+			if (start != 0) {
+				start--;
+			} else {
+				start = thumbnails.size() - 1;
+			}
+			// Loop over to get viewed thumbs
+			for (var i = 0; i < numOfView + 1; i++) {
+				if (start > thumbnails.size() - 1) {
+					start = 0;
+				}
+				viewArr.push(thumbnails.eq(start));
+				start++;
+			}
+			// Hide all other thumbs
+			thumbnails.hide();
+			for (var i = 0; i < viewArr.length; i++) {
+				// Show only viewed thumbs
+				viewArr[i].show();
+				// User chose to go previous
+				if (goPrevious) {
+					viewArr[i].css({ "left": thumbWidth * (i - 1) });
+				} else {					
+					viewArr[i].css({ "left": thumbWidth * i });
+					viewArr[i].stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
+				}
+			}
+			//Reset flag
+			goPrevious = false;
+		};
 		// Define slide with absolute number function
 		var slideAbs = function(abs) {
 			thumbnails.each(function(i) {
@@ -181,7 +218,7 @@
 		};		
 		// Get navigation links work!
 		$("#" + opts.navigationPrevId, elem).click(function() {
-			slideAbs(-1);
+			goPrevious = true; slideAbs(-1);
 		});
 		$("#" + opts.navigationNextId, elem).click(function() {
 			slideAbs(1);
@@ -190,38 +227,17 @@
 		var timeout;
 		thumbnails.each(function(i) {
 			$(this).click(function() {
-				$.fn.topBanner.cyclicThumbnails(thumbnails, i, 4, opts.thumbnailMargin);				
+				// Slide to next thumb
+				slideCyclic(i, 4);
 				if (timeout != null) {
 					timeout = clearTimeout(timeout);
 				}
 				timeout = setTimeout(function() {
 					slideTo(i + 1);
-				}, $(this).attr("itv"));
+				}, $(this).attr("itv"));				
 			});
 		});
 		// Start the banner effect with the indexed thumbnail
 		slideTo(opts.startIndex);
 	};
-	$.fn.topBanner.cyclicThumbnails = function(thumbnails, start, numOfView, margin) {
-		/*var activeLeft = $(this).position().left;
-			thumbnails.each(function() {
-				$(this).animate({ "left": "-=" + activeLeft + "px" }, 500);
-			});*/
-		
-		var viewArr = new Array();
-		var thumbWidth = thumbnails.eq(0).width() + margin;
-		for (var i = 0; i < numOfView + 1; i++) {
-			if (start > thumbnails.size() - 1) {
-				start = 0;
-			}
-			viewArr.push(thumbnails.eq(start));
-			start++;
-		}
-		thumbnails.hide();
-		for (var i = 0; i < viewArr.length; i++) {
-			viewArr[i].show();
-			//viewArr[i].css({ "left": thumbWidth * (i + 1) });
-			viewArr[i].animate({ "left": thumbWidth * i }, 500);
-		}
-	}
 })(jQuery);
