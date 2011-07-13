@@ -1,0 +1,5 @@
+frame: 704
+big: 688x186
+thumb: 160x44
+nav: 20x44
+sep: 5
