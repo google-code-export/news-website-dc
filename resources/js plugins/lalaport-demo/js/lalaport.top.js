@@ -207,7 +207,7 @@
 					start = thumbnails.size() + start;
 				}
 				// Loop over to get viewed thumbs
-				for (var i = 0; i < numOfView + 1; i++) {
+				for (var i = 0; i < numOfView + 2; i++) {
 					if (start > thumbnails.size() - 1) {
 						start = 0;
 					}
@@ -221,7 +221,8 @@
 					viewArr[i].show();
 					// User chose to go previous
 					if (goPrevious) {
-						viewArr[i].css({ "left": thumbWidth * (i - 1) });
+						viewArr[i].css({ "left": thumbWidth * (i - 2) });
+						viewArr[i].stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
 					} else {					
 						viewArr[i].css({ "left": thumbWidth * i });
 						viewArr[i].stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
