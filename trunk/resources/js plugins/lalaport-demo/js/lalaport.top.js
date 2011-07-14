@@ -209,17 +209,27 @@
 			}
 			if (thumbnails.size() > numOfView) {				
 				// Get 1 or more additional thumbs for sliding purpose			
-				start -= 1;
+				start -= currPos;				
 				if (start < 0) {
 					start = thumbnails.size() + start;
 				}
+				// Get starting point to check if the loop has gone 1 round
+				var begin = start;
 				// Loop over to get viewed thumbs
 				var viewArr = new Array();
-				for (var i = 0; i < numOfView + 2; i++) {					
+				for (var i = 0; i < numOfView + currPos + 1; i++) {					
 					if (start > thumbnails.size() - 1) {
 						start = 0;
 					}
-					viewArr.push(thumbnails.eq(start));
+					if (i > 0 && start == begin) {
+						var cloneThumb = thumbnails.eq(start).clone();
+						cloneThumb.addClass("clone");
+						cloneThumb.css({ "border": "1px solid #0000ff" });
+						$("#" + opts.thumbnailContainerId).append(cloneThumb);
+						viewArr.push(cloneThumb);
+					} else {
+						viewArr.push(thumbnails.eq(start));
+					}					
 					start++;
 				}
 				// Hide all other thumbs
@@ -231,7 +241,9 @@
 					// User chose to go previous
 					if (goPrevious) {
 						currThumb.css({ "left": thumbWidth * (i - 2) });
-						currThumb.stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
+						currThumb.stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed, function() {
+							$("." + opts.thumbnailClass + ".clone").remove();
+						});
 						// Fade in the main banner
 						fadeInMainBanner();
 					} else {					
@@ -239,12 +251,15 @@
 						if (currPos > 0) {
 							// Create the effect by moving the thumbnails to the left then to the right
 							currThumb.css({ "left": thumbWidth * i });
-							currThumb.stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
+							debugger;
+							currThumb.stop().animate({ "left": thumbWidth * (i - currPos) }, stts.slideSpeed, function() {
+								$("." + opts.thumbnailClass + ".clone").remove();
+							});
 							// Fade in the main banner
 							fadeInMainBanner();
 						} else {
 							// Fix the thumbnails to the right
-							currThumb.css({ "left": thumbWidth * (i - 1) });
+							currThumb.css({ "left": thumbWidth * (i - currPos) });
 							// Show the main banner
 							showMainBanner();
 						}
