@@ -16,6 +16,7 @@
 				mainBannerClass: "main-banner",
 				thumbnailContainerId: "thumbBanners",
 				thumbnailClass: "thumb-banner",
+				thumnailWidth: 158,
 				thumbnailMargin: 6,
 				pointerId: "pointer",
 				navigationPrevId: "navPrev",
@@ -55,6 +56,8 @@
 						+ "' href='javascript:void(0)' title='"
 						+ opts.nextText + "'>" + opts.nextText + "</a>");
 				};
+				// Add 'wait' for slider element
+				elem.addClass("wait");
 				// Get resource details from xml file
 				$.ajax({
 					type: "GET",
@@ -69,44 +72,45 @@
 						// Browser all items within xml file
 						$("item", xml).each(function(i) {
 							var bannerItem = $.fn.topBanner.bannerItem(this);
-							if (bannerItem.visible) {
-								// Create main figure elements
-								var _mainBannerElem = mainBannerElem();								
-								_mainBannerElem.attr("src", bannerItem.mainPath);
-								_mainBannerElem.attr("alt", bannerItem.title);
-								_mainBannerElem.attr("match", "item" + i);
-								// Wrap main figure elements into appropriate links if the url is NOT blank
-								if (bannerItem.url != "") {
-									var _mainBannerLinkElem = $("<a href='" + bannerItem.url + "' title='"
-										+ bannerItem.title + "' target='" + bannerItem.target + "' />");								
-									elem.append(_mainBannerLinkElem);
-									_mainBannerLinkElem.append(_mainBannerElem);
-								} else {
-									elem.append(_mainBannerElem);
-								}
-								// Create and append thumbnail elements
-								var _thumbnailElem = thumbnailElem();
-								_thumbnailElem.attr("src", bannerItem.thumbnailPath);
-								_thumbnailElem.attr("alt", bannerItem.title);
-								_thumbnailElem.attr("match", "item" + i);
-								_thumbnailElem.attr("itv", bannerItem.time * 1000);
-								_thumbnailContainerElem.append(_thumbnailElem);
+							// Create main figure elements
+							var _mainBannerElem = mainBannerElem();								
+							_mainBannerElem.attr("src", bannerItem.mainPath);
+							_mainBannerElem.attr("alt", bannerItem.title);
+							_mainBannerElem.attr("match", "item" + i);
+							// Wrap main figure elements into appropriate links if the url is NOT blank
+							if (bannerItem.url != "") {
+								var _mainBannerLinkElem = $("<a href='" + bannerItem.url + "' title='"
+									+ bannerItem.title + "' target='" + bannerItem.target + "' />");								
+								elem.append(_mainBannerLinkElem);
+								_mainBannerLinkElem.append(_mainBannerElem);
+							} else {
+								elem.append(_mainBannerElem);
 							}
+							// Create and append thumbnail elements
+							var _thumbnailElem = thumbnailElem();
+							_thumbnailElem.attr("src", bannerItem.thumbnailPath);
+							_thumbnailElem.attr("alt", bannerItem.title);
+							_thumbnailElem.attr("match", "item" + i);
+							_thumbnailElem.attr("itv", bannerItem.time * 1000);
+							_thumbnailContainerElem.append(_thumbnailElem);
 						});
 						// Append sub elements
 						elem.append(_thumbnailContainerElem);
 						elem.append(_pointerElem);
 						elem.append(_navigationPrevElem);
 						elem.append(_navigationNextElem);
+						// Remove 'wait' for out of element
+						elem.removeClass("wait");
 						// Apply animation events and effects to the banner
-						$.fn.topBanner.animateBanner(elem, opts);
+						$.fn.topBanner.animateBanner(elem, opts);					
 					}, error: function(ex) {
-						elem.append("<p style='color:#ff0000;text-align:center'><b>Error getting xml document!</b></p>");
+						// TODO: Handle error here whenever needed
 					}
 				});
 			});
 		}
 	});
+	// Configuration for banner effect
 	$.fn.topBanner.settings = {
 		fadeInSpeed: 200,
 		slideSpeed: 500,
@@ -120,11 +124,8 @@
 			url: $.trim($("url", item).text()),
 			target: $.trim($("target", item).text()),
 			time: $.trim($("time", item).text()),
-			title: $.trim($("title", item).text()),
-			start: $.trim($("start", item).text()),
-			end: $.trim($("end", item).text()),
-			visible: $.trim($("visible", item).text())
-		};
+			title: $.trim($("title", item).text())
+		};		
 		// Remove leading slash '/'
 		if (obj.mainPath.substring(0,1) == "/") {
 			obj.mainPath = obj.mainPath.substring(1, obj.mainPath.length);
@@ -153,36 +154,6 @@
 			$(this).css({ "opacity": stts.hoverOpacity });
 		}, function() {
 			$(this).css({ "opacity": 1 });
-		});				
-		// Position the thumbnails
-		//thumbnails.each(function(i) {
-			//$(this).css({ "left": (($(this).width() + opts.thumbnailMargin) * i) + "px" });
-		//});
-		// Add events to each thumbnail
-		thumbnails.click(function() {
-			// Hide all main banners
-			mainBanners.hide();
-			// Remove all 'active' class on all thumbnails and add again to itself
-			thumbnails.removeClass("active");
-			$(this).addClass("active");
-			// Fade in and add 'active' class to the main banner that match with this thumbnail
-			// stts.fadeInSpeed + stts.slideSpeed: plus to slide speed so that the main banner can
-			// show out at the same time the sliding effect finish
-			$("img." + opts.mainBannerClass + "[match=" + $(this).attr("match") + "]:eq(0)", elem)
-				.fadeIn(stts.fadeInSpeed + stts.slideSpeed, function() {
-					mainBanners.removeClass("active");
-					$(this).addClass("active");
-				});
-			// Add hover effect to thumbnail items
-			thumbnails.hover(function() {
-				$(this).css({ "opacity": stts.hoverOpacity });
-				if ($(this).hasClass("active")) {
-					$("#" + opts.pointerId).css({ "opacity": stts.hoverOpacity });
-				}
-			}, function() {
-				$(this).css({ "opacity": 1 });
-				$("#" + opts.pointerId).css({ "opacity": 1 });
-			});				
 		});
 		// Define slide to index function
 		var slideTo = function(index) {
@@ -196,18 +167,55 @@
 		var goPrevious = false;
 		// Define slide with infinite loop
 		var slideCyclic = function(start, numOfView) {
-			if (thumbnails.size() > numOfView) {
-				var viewArr = new Array();
-				var thumbWidth = thumbnails.eq(0).width() + opts.thumbnailMargin;				
-				// Get current pos of click event
-				//var currPos = Math.floor(thumbnails.eq(start).position().left / thumbWidth);
+			// Get thumbnail width
+			var thumbWidth = opts.thumnailWidth + opts.thumbnailMargin;
+			// Get current pos of click event
+			var currPos = Math.floor(thumbnails.eq(start).position().left / thumbWidth);
+			// Define show banner function
+			var showMainBanner = function() {
+				// Get active thumbnail
+				var thumb = $("." + opts.thumbnailClass + ".active:eq(0)");
+				// Hide all main banners
+				mainBanners.hide();
+				// Show the one that matched
+				var match = $("img." + opts.mainBannerClass + "[match=" + thumb.attr("match") + "]:eq(0)", elem);
+				match.show();
+				// Remove all 'active' class
+				mainBanners.removeClass("active");
+				// Add 'active' to the matched
+				match.addClass("active");
+			};
+			// Define fade in banner function
+			var fadeInMainBanner = function() {
+				// Get active thumbnail
+				var thumb = $("." + opts.thumbnailClass + ".active:eq(0)");
+				// Get pointer
+				var pointer = $("#" + opts.pointerId);
+				pointer.hide();
+				// Hide all main banners
+				mainBanners.hide();
+				// Show the one that matched
+				var match = $("img." + opts.mainBannerClass + "[match=" + thumb.attr("match") + "]:eq(0)", elem);
+				match.show();
+				// Set its opacity to 10% to create the effect
+				match.css({ "opacity": 0.1 });
+				// Fade in and add 'active' class to the main banner that match with this thumbnail
+				// show out at the same time the sliding effect finish
+				match.stop().animate({ "opacity": 1 }, stts.fadeInSpeed, function() {
+					mainBanners.removeClass("active");
+					$(this).addClass("active");
+					pointer.fadeIn(stts.fadeInSpeed);
+				});
+			}
+			if (thumbnails.size() > numOfView) {				
 				// Get 1 or more additional thumbs for sliding purpose			
 				start -= 1;
 				if (start < 0) {
 					start = thumbnails.size() + start;
 				}
 				// Loop over to get viewed thumbs
-				for (var i = 0; i < numOfView + 2; i++) {
+				var viewArr = new Array();
+				for (var i = 0; i < numOfView + 2; i++) {					
 					if (start > thumbnails.size() - 1) {
 						start = 0;
 					}
@@ -217,30 +225,46 @@
 				// Hide all other thumbs
 				thumbnails.hide();
 				for (var i = 0; i < viewArr.length; i++) {
+					var currThumb = viewArr[i];
 					// Show only viewed thumbs
-					viewArr[i].show();
+					currThumb.show();
 					// User chose to go previous
 					if (goPrevious) {
-						viewArr[i].css({ "left": thumbWidth * (i - 2) });
-						viewArr[i].stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
+						currThumb.css({ "left": thumbWidth * (i - 2) });
+						currThumb.stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
+						// Fade in the main banner
+						fadeInMainBanner();
 					} else {					
-						viewArr[i].css({ "left": thumbWidth * i });
-						viewArr[i].stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
+						// Check if user click on active thumbnail
+						if (currPos > 0) {
+							// Create the effect by moving the thumbnails to the left then to the right
+							currThumb.css({ "left": thumbWidth * i });
+							currThumb.stop().animate({ "left": thumbWidth * (i - 1) }, stts.slideSpeed);
+							// Fade in the main banner
+							fadeInMainBanner();
+						} else {
+							// Fix the thumbnails to the right
+							currThumb.css({ "left": thumbWidth * (i - 1) });
+							// Show the main banner
+							showMainBanner();
+						}
 					}
-				}
+				}				
 				// Set pointer position
 				$("#" + opts.pointerId).css({ "left": thumbWidth / 2 + 15 });
 			} else {
 				// Position the thumbnails
 				thumbnails.each(function(i) {
-					$(this).css({ "left": (($(this).width() + opts.thumbnailMargin) * i) + "px" });
+					$(this).css({ "left": thumbWidth * i + "px" });
 					if ($(this).hasClass("active")) {
 						// Set pointer position
-						$("#" + opts.pointerId).css({ "left": $(this).position().left + $(this).width() / 2 + 15 });
+						$("#" + opts.pointerId).css({ "left": $(this).position().left + opts.thumnailWidth / 2 + 15 });
 					}
-				});				
+				});	
+				// Fade in the main banner
+				fadeInMainBanner();
 			}
-			//Reset flag
+			// Reset flag
 			goPrevious = false;
 		};		
 		// Define slide with absolute number function
@@ -262,9 +286,23 @@
 		// Start the Slide Show!!!
 		var timeout;
 		thumbnails.each(function(i) {
-			$(this).click(function() {
+			$(this).click(function() {				
+				// Remove all 'active' class on all thumbnails and add again to itself
+				thumbnails.removeClass("active");
+				$(this).addClass("active");				
+				// Add hover effect to thumbnail items
+				thumbnails.hover(function() {
+					$(this).css({ "opacity": stts.hoverOpacity });
+					if ($(this).hasClass("active")) {
+						$("#" + opts.pointerId).css({ "opacity": stts.hoverOpacity });
+					}
+				}, function() {
+					$(this).css({ "opacity": 1 });
+					$("#" + opts.pointerId).css({ "opacity": 1 });
+				});
 				// Slide to next thumb
 				slideCyclic(i, 4);
+				// Automate the effect
 				if (timeout != null) {
 					timeout = clearTimeout(timeout);
 				}
