@@ -2,20 +2,15 @@
 
 <ul class="side_nav">
     <li class="side_main_menu">
-        <asp:HyperLink CssClass="view-user" NavigateUrl="#" Text="Quản lý tài khoản" runat="server" />
+        <asp:HyperLink CssClass="view-user" NavigateUrl="~/account/sysadmin/user/viewuser.aspx" Text="Quản lý tài khoản" runat="server" />
         <ul style="margin-left:10px;display:none">
             <li>
-                <asp:HyperLink CssClass="add-user" NavigateUrl="#" Text="Thêm tài khoản mới" runat="server" />
+                <asp:HyperLink CssClass="add-user" NavigateUrl="~/account/sysadmin/user/adduser.aspx" Text="Thêm tài khoản mới" runat="server" />
             </li>
         </ul>
     </li>
     <li class="side_main_menu">
-        <asp:HyperLink CssClass="view-setting" NavigateUrl="#" Text="Quản lý cấu hình" runat="server" />
-        <ul style="margin-left:10px;display:none">
-            <li>
-                <asp:HyperLink CssClass="edit-setting" NavigateUrl="#" Text="Thay đổi cấu hình" runat="server" />
-            </li>
-        </ul>
+        <asp:HyperLink CssClass="view-setting" NavigateUrl="~/account/sysadmin/setting/viewsetting.aspx" Text="Quản lý cấu hình" runat="server" />
     </li>
     <li></li>
     <li></li>

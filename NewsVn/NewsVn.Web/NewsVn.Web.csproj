@@ -85,11 +85,9 @@
     <Content Include="Account\SiteAdmin\Video\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Video\ViewVideo.aspx" />
     <Content Include="Account\SysAdmin\index.htm" />
-    <Content Include="Account\SysAdmin\Setting\EditSetting.aspx" />
     <Content Include="Account\SysAdmin\Setting\ViewSetting.aspx" />
     <Content Include="Account\SysAdmin\User\AddUser.aspx" />
     <Content Include="Account\SysAdmin\User\ViewUser.aspx" />
-    <Content Include="Account\SysAdmin\User\ViewUserDetail.aspx" />
     <Content Include="AdCategory.aspx" />
     <Content Include="AdFormBox.aspx" />
     <Content Include="AdPost.aspx" />
@@ -1630,6 +1628,7 @@
     <Content Include="Images\ui\ui-icons_104687_256x240.png" />
     <Content Include="Images\ui\ui-icons_bd0d0d_256x240.png" />
     <Content Include="Images\ui\ui-icons_ffffff_256x240.png" />
+    <Content Include="Modules\Account_LoginBar.ascx" />
     <Content Include="Modules\AdBoxList.ascx" />
     <Content Include="Modules\AdFormBox.ascx" />
     <Content Include="Modules\AdGuideBox.ascx" />
@@ -1896,13 +1895,6 @@
     <Compile Include="Account\SiteAdmin\Video\ViewVideo.aspx.designer.cs">
       <DependentUpon>ViewVideo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\SysAdmin\Setting\EditSetting.aspx.cs">
-      <DependentUpon>EditSetting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\SysAdmin\Setting\EditSetting.aspx.designer.cs">
-      <DependentUpon>EditSetting.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\SysAdmin\Setting\ViewSetting.aspx.cs">
       <DependentUpon>ViewSetting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1930,13 +1922,6 @@
     </Compile>
     <Compile Include="Account\SysAdmin\User\ViewUser.aspx.designer.cs">
       <DependentUpon>ViewUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\SysAdmin\User\ViewUserDetail.aspx.cs">
-      <DependentUpon>ViewUserDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\SysAdmin\User\ViewUserDetail.aspx.designer.cs">
-      <DependentUpon>ViewUserDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdCategory.aspx.cs">
       <DependentUpon>AdCategory.aspx</DependentUpon>
@@ -2007,6 +1992,13 @@
     </Compile>
     <Compile Include="Exceptions\Common.aspx.designer.cs">
       <DependentUpon>Common.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Account_LoginBar.ascx.cs">
+      <DependentUpon>Account_LoginBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Account_LoginBar.ascx.designer.cs">
+      <DependentUpon>Account_LoginBar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\AdBoxList.ascx.cs">
       <DependentUpon>AdBoxList.ascx</DependentUpon>
@@ -2411,8 +2403,6 @@
     <Folder Include="Account\Mod\Video\" />
     <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
-    <Folder Include="Account\SiteAdmin\Profile\" />
-    <Folder Include="Account\SysAdmin\Profile\" />
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
