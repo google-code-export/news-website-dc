@@ -1,6 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Account/SysAdmin/SysAdmin.Master" AutoEventWireup="true" CodeBehind="ViewUser.aspx.cs" Inherits="NewsVn.Web.Account.SysAdmin.User.ViewUser" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        $(function () {
+            $("#userDetailsBox").dialog({
+                autoOpen: false,
+                resizable: false,
+                modal: true,
+                width: 450
+            });
+        });
+
+        function viewUserDetails(username) {
+            var dataObj = { userName: username };
+            $.ajax({
+                url: serviceUrl + "ViewUserDetails",
+                data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
+                success: function (result) {
+                    $("#userDetailsBox ul").html(result.d);
+                },
+                complete: function () {
+                    $("#userDetailsBox").dialog("open");
+                }
+            });
+        }
+    </script>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
@@ -12,6 +36,9 @@
         <p><b>Xóa tin</b>: Chọn các dòng muốn xóa trong danh sách tin, sau đó bấm nút 'Xóa'</p>
         <p><b>Ẩn/Hiện tin</b>: Chọn các dòng trong danh sách tin, bấm nút 'Ẩn/Hiện'</p>
         <p><b>Duyệt tin</b>: Chọn các dòng trong danh sách tin, bấm 'Duyệt'</p>--%>
+    </div>
+    <div id="userDetailsBox" class="dialog" title="Chi tiết tài khoản" style="display:none">
+        <ul class="ui-form ui-widget"></ul>
     </div>
     <div class="ui-table-toolbar">
         <ul class="ui-form ui-widget">
@@ -85,7 +112,11 @@
                     <asp:CheckBox ID="chkAccount" EnableViewState="false" runat="server" />
                     <asp:HiddenField ID="hidAccount" Value='<%# Eval("Account") %>' runat="server" />
                 </td>
-	            <td><%# Eval("Account") %></td>
+	            <td>
+                    <a href='<%# Eval("Account", "javascript:viewUserDetails(\"{0}\")") %>'>
+                        <b><%# Eval("Account") %></b>
+                    </a>
+                </td>
                 <td><%# Eval("Name") %></td>
                 <td><%# Eval("IdNumber") %></td>
                 <td><%# Eval("Email") %></td>

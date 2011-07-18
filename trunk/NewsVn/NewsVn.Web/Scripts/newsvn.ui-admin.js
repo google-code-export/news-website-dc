@@ -69,7 +69,7 @@ $(function () {
             primary: "ui-icon-arrowthick-1-w"
         }
     });
-    $(".button-reset").button({
+    $(".button-key, .button-reset").button({
         icons: {
             primary: "ui-icon-key"
         }

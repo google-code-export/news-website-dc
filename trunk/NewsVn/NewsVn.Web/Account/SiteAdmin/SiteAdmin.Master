@@ -26,11 +26,7 @@
     <div id="side_content" class="left">
         <asp:Image ImageUrl="~/Images/logo.jpg" Width="200" runat="server" />
         <div class="wrapper">            
-            Xin chào,
-            <a href="#" title="Xem thông tin tài khoản">
-                <asp:LoginName Font-Bold="true" runat="server" />
-            </a>
-            | <asp:LoginStatus LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName + "trang-chu.aspx" %>' LogoutText="Thoát" runat="server" />
+            <nsn:Account_LoginBar runat="server" />
             <asp:ContentPlaceHolder ID="sideContent" runat="server" />
             <nsn:SiteAdmin_Menu runat="server" /> 
         </div>       
