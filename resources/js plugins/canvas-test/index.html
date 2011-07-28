@@ -25,7 +25,8 @@
 			
 			function drawCanvas() {
 				drawBarChart();
-				drawPieChart();
+				drawPieChart(300, 200, 185, true);
+				drawPieChart(700, 200, 125, false);
 			}
 			
 			function drawBarChart() {
@@ -79,11 +80,11 @@
 				}
 			}
 			
-			function drawPieChart() {
+			function drawPieChart(x, y, radius, clear) {
 				// Get canvas context
 				var ctx = $("#pieChartCanvas").get(0).getContext("2d");
 				// Clear current canvas
-				clearCanvas(ctx);
+				if (clear) clearCanvas(ctx);
 				
 				var dataArr = [randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16)];
 				var colorArr = ["#E55638", "#EFA840", "#13AB60", "#E45595", "#D6D74B", "#514D97", "#00B6DB"];
@@ -97,14 +98,14 @@
 				var lastAngle = getRadianFromPercent(-20);
 				
 				ctx.beginPath();
-				ctx.arc(300, 200, 185, 0, getRadianFromPercent(100), true);
+				ctx.arc(x, y, radius, 0, getRadianFromPercent(100), true);
 				ctx.strokeStyle = "#9B7D6F";
 				ctx.stroke();
 				
 				for (var i = 0; i < dataArr.length; i++) {
 					ctx.beginPath();
-					ctx.arc(300, 200, 180, lastAngle, lastAngle + getRadianFromPercent(dataArr[i]), false);
-					ctx.lineTo(300, 200);
+					ctx.arc(x, y, radius - 5, lastAngle, lastAngle + getRadianFromPercent(dataArr[i]), false);
+					ctx.lineTo(x, y);
 					ctx.fillStyle = colorArr[i];
 					ctx.fill();
 					
