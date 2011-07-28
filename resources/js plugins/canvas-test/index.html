@@ -1,8 +1,17 @@
 <html>
 	<head>
+		<title>Canvas Drawing Demo</title>
 		<style type="text/css">
-			#drawTest {
+			body {
+				background: #222;
+			}
+			#wrapper {
+				width: 1000px;
+				margin: 0 auto;
+			}
+			canvas {
 				background: #FFF9BC;
+				margin: 5px 0;
 			}
 		</style>
 		<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
@@ -15,29 +24,16 @@
 			});
 			
 			function drawCanvas() {
-				var ctx = $("#drawTest").get(0).getContext("2d");
-				
+				drawBarChart();
+				drawPieChart();
+			}
+			
+			function drawBarChart() {
+				// Get canvas context
+				var ctx = $("#barChartCanvas").get(0).getContext("2d");
+				// Clear current canvas
 				clearCanvas(ctx);
-				
-				/*ctx.beginPath();
-				ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle
-				//ctx.moveTo(110,75);
-				ctx.arc(75,75,35,0,Math.PI,false);   // Mouth (clockwise)
-				//ctx.moveTo(65,65);
-				ctx.arc(60,65,5,0,Math.PI*2,true);  // Left eye
-				//ctx.moveTo(95,65);
-				ctx.arc(90,65,5,0,Math.PI*2,true);  // Right eye
-				ctx.stroke();*/
-				
-				// Filled triangle
-				/*ctx.beginPath();
-				ctx.moveTo(25,25);
-				ctx.lineTo(105,25);
-				ctx.lineTo(25,105);
-				ctx.stroke();*/
-				
-				// Draw bar chart
-				
+				// Draw bar chart				
 				ctx.beginPath();
 				ctx.moveTo(30, 20);
 				ctx.lineTo(30, 271);
@@ -69,7 +65,7 @@
 					yPos = 270 - randomValue;
 					xPos += 30;
 					if (randomValue > 150) {
-						ctx.fillStyle = "#E55638";
+						ctx.fillStyle = "#EFA840";
 					} else {
 						ctx.fillStyle = "#13AB60";
 					}
@@ -83,6 +79,41 @@
 				}
 			}
 			
+			function drawPieChart() {
+				// Get canvas context
+				var ctx = $("#pieChartCanvas").get(0).getContext("2d");
+				// Clear current canvas
+				clearCanvas(ctx);
+				
+				var dataArr = [randomFromTo(10, 15), randomFromTo(10, 20), randomFromTo(10, 25), randomFromTo(10, 30)];
+				var colorArr = ["#E55638", "#EFA840", "#13AB60", "#E45595", "#8F8E8C"];
+				
+				var lastPiece = 100 - (dataArr[0] + dataArr[1] + dataArr[2] + dataArr[3]);
+				dataArr.push(lastPiece);
+								
+				var lastAngle = 0;
+				
+				ctx.beginPath();
+				ctx.arc(300, 200, 185, 0, getRadianFromPercent(100), true);
+				ctx.strokeStyle = "#9B7D6F";
+				ctx.stroke();
+				
+				for (var i = 0; i < dataArr.length; i++) {
+					ctx.beginPath();
+					ctx.arc(300, 200, 180, lastAngle, lastAngle + getRadianFromPercent(dataArr[i]), false);
+					ctx.lineTo(300, 200);
+					ctx.fillStyle = colorArr[i];
+					ctx.fill();
+					
+					lastAngle += getRadianFromPercent(dataArr[i]);
+				}
+			}
+			
+			function getRadianFromPercent(percent) {
+				var radianRoot = Math.PI / 180;
+				return (360 * percent / 100) * radianRoot;
+			}
+			
 			function randomFromTo(from, to){
 			   return Math.floor(Math.random() * (to - from + 1) + from);
 			}
@@ -90,17 +121,24 @@
 			function clearCanvas(ctx) {
 				var _ctx = ctx;
 				if (_ctx == undefined || _ctx == null) {
-					_ctx = $("#drawTest").get(0).getContext("2d");
+					_ctx = $("#barChartCanvas").get(0).getContext("2d");
 				}
-				_ctx.clearRect(0,0,1000,300);
+				_ctx.clearRect(0,0,1000,400);
 			}
 		</script>
 	</head>
 	<body>
-		<canvas id="drawTest" width="1000" height="300">
-			Your browser does not support canvas.
-		</canvas>
-		<input type="button" onclick="drawCanvas()" value="Draw" />
-		<input type="button" onclick="clearCanvas()" value="Clear" />
+		<div id="wrapper">
+			<p>
+				<input type="button" onclick="drawCanvas()" value="Draw" />
+				<input type="button" onclick="clearCanvas()" value="Clear" />
+			</p>
+			<canvas id="barChartCanvas" width="1000" height="300">
+				Your browser does not support canvas.
+			</canvas>
+			<canvas id="pieChartCanvas" width="1000" height="400">
+				Your browser does not support canvas.
+			</canvas>
+		</div>
 	</body>
 </html>
