@@ -85,13 +85,16 @@
 				// Clear current canvas
 				clearCanvas(ctx);
 				
-				var dataArr = [randomFromTo(10, 15), randomFromTo(10, 20), randomFromTo(10, 25), randomFromTo(10, 30)];
-				var colorArr = ["#E55638", "#EFA840", "#13AB60", "#E45595", "#8F8E8C"];
+				var dataArr = [randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16), randomFromTo(5, 16)];
+				var colorArr = ["#E55638", "#EFA840", "#13AB60", "#E45595", "#D6D74B", "#514D97", "#00B6DB"];
 				
-				var lastPiece = 100 - (dataArr[0] + dataArr[1] + dataArr[2] + dataArr[3]);
+				var lastPiece = 100;
+				for (var i = 0; i < dataArr.length; i++) {
+					lastPiece -= dataArr[i];
+				}
 				dataArr.push(lastPiece);
-								
-				var lastAngle = 0;
+				
+				var lastAngle = getRadianFromPercent(-20);
 				
 				ctx.beginPath();
 				ctx.arc(300, 200, 185, 0, getRadianFromPercent(100), true);
