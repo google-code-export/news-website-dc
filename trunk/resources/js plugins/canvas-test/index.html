@@ -25,8 +25,9 @@
 			
 			function drawCanvas() {
 				drawBarChart();
-				drawPieChart(300, 200, 185, true);
-				drawPieChart(700, 200, 125, false);
+				drawPieChart(180, 170, 155, true);
+				drawPieChart(500, 170, 155, false);
+				drawPieChart(820, 170, 155, false);
 			}
 			
 			function drawBarChart() {
@@ -95,7 +96,7 @@
 				}
 				dataArr.push(lastPiece);
 				
-				var lastAngle = getRadianFromPercent(-20);
+				var lastAngle = getRadianFromPercent(randomFromTo(-20, -10));
 				
 				ctx.beginPath();
 				ctx.arc(x, y, radius, 0, getRadianFromPercent(100), true);
@@ -108,9 +109,14 @@
 					ctx.lineTo(x, y);
 					ctx.fillStyle = colorArr[i];
 					ctx.fill();
-					
+					ctx.strokeStyle = "#FFF9BC";
+					ctx.stroke();
 					lastAngle += getRadianFromPercent(dataArr[i]);
 				}
+			}
+			
+			function drawCurveLine(x, y, cp1x, cpt1y) {
+			
 			}
 			
 			function getRadianFromPercent(percent) {
@@ -140,7 +146,10 @@
 			<canvas id="barChartCanvas" width="1000" height="300">
 				Your browser does not support canvas.
 			</canvas>
-			<canvas id="pieChartCanvas" width="1000" height="400">
+			<canvas id="pieChartCanvas" width="1000" height="340">
+				Your browser does not support canvas.
+			</canvas>
+			<canvas id="curveLineCanvas" width="1000" height="300">
 				Your browser does not support canvas.
 			</canvas>
 		</div>
