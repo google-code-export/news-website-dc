@@ -36,17 +36,26 @@
     function changeAccountPassword() {
         var dataObj = {
             oldPassword: $("#<%= txtOldPass.ClientID %>").val(),
-            newPassword: $("#<%= txtNewPass.ClientID %>").val(),
-            confirmPassword: $("#<%= txtConfirmPass.ClientID %>").val()
+            newPassword: $("#<%= txtConfirmPass.ClientID %>").val()
         };
+        $("#changePassBox").prev(".ui-dialog-titlebar").find(".ui-dialog-titlebar-close").hide();
+        $("#<%= btnOkCP.ClientID %>, #<%= btnCancelCP.ClientID %>").hide();
+        var waitHtml = '<%= string.Format(InfoBar, "Đang thực hiện...") %>';
+        $("#changePassBox .head").before(waitHtml);
         $.ajax({
             url: serviceUrl + "ChangeUserPassword",
             data: Sys.Serialization.JavaScriptSerializer.serialize(dataObj),
             success: function (result) {
-
+                alert("Thay đổi mật khẩu thành công!");
+                $("#changePassBox").dialog("close");
             }, error: function () {
-                var errorHtml = '<%= string.Format(ErrorBar, "Không thể đổi mật khẩu. Vui lòng thử lại.") %>';
-                $("#changePassBox .commands").before(errorHtml);
+                alert("Không thể đổi mật khẩu. Vui lòng thử lại.");
+            }, complete: function () {
+                $("#changePassBox ul li:first-child").remove();
+                $("#changePassBox").prev(".ui-dialog-titlebar").find(".ui-dialog-titlebar-close").show();
+                $("#<%= btnOkCP.ClientID %>, #<%= btnCancelCP.ClientID %>").show();
+                $("#<%= txtOldPass.ClientID %>, #<%= txtNewPass.ClientID %>, #<%= txtConfirmPass.ClientID %>").val("");
+                $("#<%= txtOldPass.ClientID %>").focus();
             }
         });
     }
@@ -75,7 +84,7 @@
 
 <div id="changePassBox" class="dialog" title="Thay đổi mật khẩu" style="display:none">
     <ul class="ui-form ui-widget">
-        <li>
+        <li class="head">
             <asp:Label AssociatedControlID="txtOldPass" Text="Mật khẩu cũ:" Width="120" runat="server" />
             <asp:TextBox ID="txtOldPass" TextMode="Password" Width="320" CssClass="validate[required]" MaxLength="50" runat="server" />
         </li>
