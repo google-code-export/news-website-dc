@@ -391,7 +391,7 @@ namespace NewsVn.Web.Utils
                         html.AppendLine("<div style='text-align: center; padding-top: 6px;'><span>Không tìm thấy bài viết</span></div>");
                     }
                     return html.ToString();
-                }                
+                }
             }
             catch (Exception)
             {
@@ -423,35 +423,59 @@ namespace NewsVn.Web.Utils
             {
                 var user = Membership.GetUser(userName);
 
-            if (user != null)
-            {
-                var sb = new StringBuilder();
-                sb.AppendFormat("<li><label>Tài khoản:</label><b>{0}</b></li>", user.UserName);
-                sb.AppendFormat("<li><label>Quyền truy cập:</label><b>{0}</b></li>", this.getConfiguredRoleNames(user.UserName));
-                sb.AppendFormat("<li><label>Tạo lúc:</label><b>{0:dd/MM/yyyy HH:mm:ss}</b></li>", user.CreationDate);
-                sb.AppendFormat("<li><label>Email:</label><b>{0}</b></li>", user.Email);
-                sb.AppendFormat("<li><label>Trạng thái:</label><b>{0}</b></li>", user.IsOnline ? "Online" : "Offline");
-                sb.AppendFormat("<li><label>Hoạt động cuối:</label><b>{0:dd/MM/yyyy HH:mm:ss}</b></li>", user.LastActivityDate);
-                sb.AppendFormat("<li><label>Kích hoạt:</label><b>{0}</b></li>", user.IsApproved ? "Được kích hoạt" : "Bị vô hiệu");
-
-                var profile = ctx.MemberProfileRepo.Getter.getOne(p => p.Account.Equals(user.UserName));
-
-                if (profile!= null)
+                if (user != null)
                 {
-                    sb.Append("<li style='border-top:1px dotted #333;margin-top:10px'></li>");
-                    sb.AppendFormat("<li><label>Họ tên:</label><b>{0}</b></li>", profile.Name);
-                    sb.AppendFormat("<li><label>Số CMND:</label><b>{0}</b></li>", profile.IdNumber);
-                    sb.AppendFormat("<li><label>Điện thoại:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Phone) ? profile.Phone : "<i>Chưa xác định</i>");
-                    sb.AppendFormat("<li><label>Ngày sinh:</label><b>{0:dd/MM/yyyy}</b></li>", profile.DOB.HasValue ? profile.DOB.Value.ToShortDateString() : "<i>Chưa xác định</i>");
-                    sb.AppendFormat("<li><label>Giới tính:</label><b>{0}</b></li>", profile.Gender.Value ? "Nam" : "Nữ");
-                    sb.AppendFormat("<li><label>Khu vực:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Location) ? profile.Location : "<i>Chưa xác định</i>");
-                    sb.AppendFormat("<li><label>Trình độ:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Education) ? profile.Education : "<i>Chưa xác định</i>");
+                    var sb = new StringBuilder();
+                    sb.AppendFormat("<li><label>Tài khoản:</label><b>{0}</b></li>", user.UserName);
+                    sb.AppendFormat("<li><label>Quyền truy cập:</label><b>{0}</b></li>", this.getConfiguredRoleNames(user.UserName));
+                    sb.AppendFormat("<li><label>Tạo lúc:</label><b>{0:dd/MM/yyyy HH:mm:ss}</b></li>", user.CreationDate);
+                    sb.AppendFormat("<li><label>Email:</label><b>{0}</b></li>", user.Email);
+                    sb.AppendFormat("<li><label>Trạng thái:</label><b>{0}</b></li>", user.IsOnline ? "Online" : "Offline");
+                    sb.AppendFormat("<li><label>Hoạt động cuối:</label><b>{0:dd/MM/yyyy HH:mm:ss}</b></li>", user.LastActivityDate);
+                    sb.AppendFormat("<li><label>Kích hoạt:</label><b>{0}</b></li>", user.IsApproved ? "Được kích hoạt" : "Bị vô hiệu");
+
+                    var profile = ctx.MemberProfileRepo.Getter.getOne(p => p.Account.Equals(user.UserName));
+
+                    if (profile != null)
+                    {
+                        sb.Append("<li style='border-top:1px dotted #333;margin-top:10px'></li>");
+                        sb.AppendFormat("<li><label>Họ tên:</label><b>{0}</b></li>", profile.Name);
+                        sb.AppendFormat("<li><label>Số CMND:</label><b>{0}</b></li>", profile.IdNumber);
+                        sb.AppendFormat("<li><label>Điện thoại:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Phone) ? profile.Phone : "<i>Chưa xác định</i>");
+                        sb.AppendFormat("<li><label>Ngày sinh:</label><b>{0:dd/MM/yyyy}</b></li>", profile.DOB.HasValue ? profile.DOB.Value.ToShortDateString() : "<i>Chưa xác định</i>");
+                        sb.AppendFormat("<li><label>Giới tính:</label><b>{0}</b></li>", profile.Gender.Value ? "Nam" : "Nữ");
+                        sb.AppendFormat("<li><label>Khu vực:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Location) ? profile.Location : "<i>Chưa xác định</i>");
+                        sb.AppendFormat("<li><label>Trình độ:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Education) ? profile.Education : "<i>Chưa xác định</i>");
+                    }
+
+                    return sb.ToString();
                 }
 
-                return sb.ToString();
+                return string.Format(ErrorBar, "Không tìm thấy tài khoản này!");
             }
+        }
 
-            return string.Format(ErrorBar, "Không tìm thấy tài khoản này!");
+        [WebMethod]
+        public void ChangeUserInformation()
+        {
+
+        }
+
+        [WebMethod]
+        public void ChangeUserPassword(string oldPassword, string newPassword)
+        {
+            var user = Membership.GetUser();
+            
+            if (!user.ChangePassword(oldPassword, newPassword))
+            {
+                throw new Exception("Cannot change password!");
+            }
+            else
+            {
+                var args = new Dictionary<string, string>();
+                args["newsvn.account.name"] = user.UserName;
+                args["newsvn.account.password"] = newPassword;
+                ApplicationMailing.Send(new string[] { user.Email }, ApplicationMailing.SendPurpose.ChangePassword, args);
             }
         }
 

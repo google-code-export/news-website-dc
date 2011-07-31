@@ -17,19 +17,21 @@ namespace NewsVn.Web.Utils
             CreateAccount,
             DeleteAccount,
             ChangeApproval,
-            ResetPassword
+            ResetPassword,
+            ChangePassword,
+            UpdateInfo
         }
 
         static ApplicationMailing()
         {
             _smtpClient = new SmtpClient
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
+                Host = "mail.homevn.vn",
+                Port = 25,
                 Timeout = 100000,
                 EnableSsl = true,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("xxx@gmail.com", "xxx"),                
+                Credentials = new NetworkCredential("noreply@homevn.vn", "newsvn123"),
                 DeliveryMethod = SmtpDeliveryMethod.Network
             };
         }
@@ -63,8 +65,8 @@ namespace NewsVn.Web.Utils
                     bodySb.Append("<p>Vui lòng liên hệ admin của newsvn.com để biết thêm chi tiết.</p>");
                     break;
                 case SendPurpose.ChangeApproval:
-                    subject += "Cập nhật lại tài khoản của bạn";
-                    bodySb.Append("<h1>Thông tin tài khoản vừa được cập nhật</h1>");
+                    subject += "Cập nhật lại trạng thái tài khoản của bạn";
+                    bodySb.Append("<h1>Trạng thái tài khoản vừa được cập nhật</h1>");
                     bodySb.Append("<p>Website: <b>http://www.newsvn.vn</b></p>");
                     bodySb.AppendFormat("<p>Tài khoản: <b>{0}</b><p>", args["newsvn.account.name"]);
                     bodySb.AppendFormat("<p>Trạng thái: <b>{0}</b><p>", args["newsvn.account.status"]);
@@ -77,6 +79,26 @@ namespace NewsVn.Web.Utils
                     bodySb.AppendFormat("<p>Tài khoản: <b>{0}</b><p>", args["newsvn.account.name"]);
                     bodySb.AppendFormat("<p>Mật khẩu mới: <b>{0}</b><p>", args["newsvn.account.password"]);
                     bodySb.Append("<p>Vui lòng thay đổi mật khẩu ngay sau khi bạn đăng nhập lại.</p>");
+                    break;
+                case SendPurpose.ChangePassword:
+                    subject += "Bạn đã thay đổi mật khẩu mới";
+                    bodySb.Append("<h1>Bạn đã thay đổi mật khẩu mới cho tài khoản</h1>");
+                    bodySb.Append("<p>Website: <b>http://www.newsvn.vn</b></p>");
+                    bodySb.AppendFormat("<p>Tài khoản: <b>{0}</b><p>", args["newsvn.account.name"]);
+                    bodySb.AppendFormat("<p>Mật khẩu mới: <b>{0}</b><p>", args["newsvn.account.password"]);
+                    break;
+                case SendPurpose.UpdateInfo:
+                    subject += "Bạn vừa cập nhật tài khoản";
+                    bodySb.Append("<h1>Bạn vừa cập nhật tài khoản</h1>");
+                    bodySb.Append("<p>Website: <b>http://www.newsvn.vn</b></p>");
+                    bodySb.AppendFormat("<p>Tài khoản: <b>{0}</b><p>", args["newsvn.account.name"]);
+                    bodySb.AppendFormat("<p>Họ tên: <b>{0}</b><p>", args["newsvn.account.name2"]);
+                    bodySb.AppendFormat("<p>Số CMND: <b>{0}</b><p>", args["newsvn.account.idnumber"]);
+                    bodySb.AppendFormat("<p>Điện thoại: <b>{0}</b><p>", args["newsvn.account.phone"]);
+                    bodySb.AppendFormat("<p>Ngày sinh: <b>{0}</b><p>", args["newsvn.account.dob"]);
+                    bodySb.AppendFormat("<p>Giới tính: <b>{0}</b><p>", args["newsvn.account.gender"]);
+                    bodySb.AppendFormat("<p>Khu vực: <b>{0}</b><p>", args["newsvn.account.location"]);
+                    bodySb.AppendFormat("<p>Trình độ: <b>{0}</b><p>", args["newsvn.account.education"]);
                     break;
             }
 
