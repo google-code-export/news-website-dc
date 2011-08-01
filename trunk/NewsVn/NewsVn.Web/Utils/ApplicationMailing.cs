@@ -29,7 +29,7 @@ namespace NewsVn.Web.Utils
                 Host = "mail.homevn.vn",
                 Port = 25,
                 Timeout = 100000,
-                EnableSsl = true,
+                EnableSsl = false,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential("noreply@homevn.vn", "newsvn123"),
                 DeliveryMethod = SmtpDeliveryMethod.Network
