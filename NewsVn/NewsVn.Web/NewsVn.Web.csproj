@@ -93,6 +93,7 @@
     <Content Include="AdPost.aspx" />
     <Content Include="AdSubCategory.aspx" />
     <Content Include="Category.aspx" />
+    <Content Include="Config\RolesRedirect.xml" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\Clean.htm" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\colorpicker.aspx" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\colorpicker_basic.aspx" />

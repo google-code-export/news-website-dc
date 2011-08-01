@@ -28,8 +28,8 @@
                 <AnonymousTemplate>
                     <asp:Panel DefaultButton="login$LoginButton" runat="server">
                     <asp:Login ID="login" runat="server" FailureAction="Refresh" Width="100%"
-                        DestinationPageUrl="~/Account/SiteAdmin/"
-                        PasswordRecoveryUrl="~/Account/Form/LostPassword.aspx">
+                        DestinationPageUrl="~/Account/Form/Redirector.aspx"
+                        PasswordRecoveryUrl="~/tai-khoan/quen-mat-khau.aspx">
                         <LayoutTemplate>                
                             <ul id="loginform_box" class="ui-form ui-widget">
                                 <li>
@@ -45,7 +45,7 @@
                                     <asp:CheckBox ID="RememberMe" runat="server" Text="Nhớ thông tin" /> |
                                     
                                     <asp:HyperLink ID="PasswordRecoveryLink" runat="server" Text="Quên mật khẩu?"
-                                        NavigateUrl="~/tinh-yeu-gia-dinh/tai-khoan/quen-mat-khau.aspx" />
+                                        NavigateUrl="~/tai-khoan/quen-mat-khau.aspx" />
                                 </li>                            
                                 <li class="commands">
                                     <asp:Button ID="LoginButton" style="display:none;" UseSubmitBehavior="false" CommandName="Login" runat="server" />
