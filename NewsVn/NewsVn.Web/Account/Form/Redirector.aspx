@@ -4,9 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>NewsVN - Cổng thông tin điện tử 24/07 ::: Đang chuyển trang</title>
 </head>
 <body>
-    <form id="frmDefault" runat="server"></form>
+    <h1>Đang chuyển trang, vui lòng đợi giây lát...</h1>
 </body>
 </html>
