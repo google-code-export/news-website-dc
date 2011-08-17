@@ -61,8 +61,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Vietstream.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\resources\assemblies\Vietstream.Data.dll</HintPath>
+      <HintPath>..\..\..\..\VSS\Research\Ongoing\20110724\Vietstream\Vietstream.Data\bin\Debug\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +74,9 @@
     <Content Include="Account\Form\Signup.aspx" />
     <Content Include="Account\Guest\index.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\AddAdPost.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\EditAdPost.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx" />
     <Content Include="Account\SiteAdmin\index.htm" />
     <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
@@ -1689,6 +1691,7 @@
     <Content Include="Modules\ResultProfilesearchResult.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
     <Content Include="Modules\SiteAdmin_Menu.ascx" />
+    <Content Include="Modules\SiteAdmin_UpdateAdPost.ascx" />
     <Content Include="Modules\SiteAdmin_UpdateCategory.ascx" />
     <Content Include="Modules\SiteAdmin_UpdatePost.ascx" />
     <Content Include="Modules\SiteAdmin_FilterPost.ascx" />
@@ -1835,6 +1838,27 @@
     </Compile>
     <Compile Include="Account\Guest\MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\AddAdPost.aspx.cs">
+      <DependentUpon>AddAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\AddAdPost.aspx.designer.cs">
+      <DependentUpon>AddAdPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\EditAdPost.aspx.cs">
+      <DependentUpon>EditAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\EditAdPost.aspx.designer.cs">
+      <DependentUpon>EditAdPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.cs">
+      <DependentUpon>ViewAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.designer.cs">
+      <DependentUpon>ViewAdPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddCategory.aspx.cs">
       <DependentUpon>AddCategory.aspx</DependentUpon>
@@ -2238,6 +2262,13 @@
     <Compile Include="Modules\SiteAdmin_Menu.ascx.designer.cs">
       <DependentUpon>SiteAdmin_Menu.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdateAdPost.ascx.cs">
+      <DependentUpon>SiteAdmin_UpdateAdPost.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdateAdPost.ascx.designer.cs">
+      <DependentUpon>SiteAdmin_UpdateAdPost.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\SiteAdmin_UpdateCategory.ascx.cs">
       <DependentUpon>SiteAdmin_UpdateCategory.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2424,7 +2455,6 @@
   <ItemGroup>
     <Folder Include="Account\Editor\AdPost\" />
     <Folder Include="Account\Editor\Video\" />
-    <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
