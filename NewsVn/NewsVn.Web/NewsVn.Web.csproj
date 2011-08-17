@@ -66,13 +66,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Editor\index.htm" />
+    <Content Include="Account\Editor\Post\AddPost.aspx" />
+    <Content Include="Account\Editor\Post\ViewPost.aspx" />
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\LostPassword.aspx" />
     <Content Include="Account\Form\Redirector.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
     <Content Include="Account\Guest\index.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
-    <Content Include="Account\Mod\index.htm" />
     <Content Include="Account\SiteAdmin\index.htm" />
     <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
@@ -1641,6 +1643,7 @@
     <Content Include="Modules\CommentBox.ascx" />
     <Content Include="Modules\DetailedAdPostItem.ascx" />
     <Content Include="Modules\DetailedPostItem.ascx" />
+    <Content Include="Modules\Editor_Menu.ascx" />
     <Content Include="Modules\FocusPostsPortlet.ascx" />
     <Content Include="Modules\FooterCopyright.ascx" />
     <Content Include="Modules\FooterIntro.ascx" />
@@ -1770,6 +1773,27 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Editor\Editor.Master.cs">
+      <DependentUpon>Editor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Editor\Editor.Master.designer.cs">
+      <DependentUpon>Editor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Editor\Post\AddPost.aspx.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Editor\Post\AddPost.aspx.designer.cs">
+      <DependentUpon>AddPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Editor\Post\ViewPost.aspx.cs">
+      <DependentUpon>ViewPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Editor\Post\ViewPost.aspx.designer.cs">
+      <DependentUpon>ViewPost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Form\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1811,13 +1835,6 @@
     </Compile>
     <Compile Include="Account\Guest\MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Mod\Mod.Master.cs">
-      <DependentUpon>Mod.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\Mod\Mod.Master.designer.cs">
-      <DependentUpon>Mod.Master</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddCategory.aspx.cs">
       <DependentUpon>AddCategory.aspx</DependentUpon>
@@ -2077,6 +2094,13 @@
     </Compile>
     <Compile Include="Modules\DetailedPostItem.ascx.designer.cs">
       <DependentUpon>DetailedPostItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Editor_Menu.ascx.cs">
+      <DependentUpon>Editor_Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Editor_Menu.ascx.designer.cs">
+      <DependentUpon>Editor_Menu.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\FocusPostsPortlet.ascx.cs">
       <DependentUpon>FocusPostsPortlet.ascx</DependentUpon>
@@ -2398,10 +2422,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Account\Mod\AdPost\" />
-    <Folder Include="Account\Mod\Post\" />
-    <Folder Include="Account\Mod\Profile\" />
-    <Folder Include="Account\Mod\Video\" />
+    <Folder Include="Account\Editor\AdPost\" />
+    <Folder Include="Account\Editor\Video\" />
     <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
     <Folder Include="App_Data\" />
@@ -2440,9 +2462,6 @@
     <Content Include="Account\Guest\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\Mod\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Account\SiteAdmin\Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2456,7 +2475,8 @@
   <ItemGroup>
     <Content Include="Account\Guest\Guest.Master" />
     <Content Include="Account\SysAdmin\SysAdmin.Master" />
-    <Content Include="Account\Mod\Mod.Master" />
+    <Content Include="Account\Editor\Editor.Master" />
+    <Content Include="Account\Editor\Web.config" />
     <None Include="CuteSoft_Client\CuteEditor\Blank.cep" />
     <Content Include="CuteSoft_Client\CuteEditor\Configuration\AutoConfigure\Compact.config" />
     <Content Include="CuteSoft_Client\CuteEditor\Configuration\AutoConfigure\Default.config" />

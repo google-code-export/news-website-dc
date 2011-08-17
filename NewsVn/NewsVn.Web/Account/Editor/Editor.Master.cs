@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NewsVn.Web.Account.Mod
+namespace NewsVn.Web.Account.Editor
 {
-    public partial class Mod : System.Web.UI.MasterPage
+    public partial class Editor : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

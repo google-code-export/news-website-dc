@@ -3,10 +3,10 @@
 <asp:Content ContentPlaceHolderID="extraHead" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    
+    <nsn:CategorizedVideoList runat="server" ID="_CategorizedVideoList" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
-
+    
 </asp:Content>
 <asp:Content ContentPlaceHolderID="extraContent" runat="server">
 </asp:Content>
