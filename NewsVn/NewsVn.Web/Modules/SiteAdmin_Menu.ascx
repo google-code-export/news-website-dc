@@ -19,13 +19,10 @@
         </ul>
     </li>
     <li class="side_main_menu">
-        <asp:HyperLink NavigateUrl="#" Text="Quản lý rao nhanh" runat="server" />
+        <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/AdPost/ViewAdPost.aspx" Text="Quản lý rao nhanh" runat="server" />
         <ul style="margin-left:10px;display:none">
             <li>
-                <asp:HyperLink NavigateUrl="#" Text="Thêm rao nhanh mới" runat="server" />
-            </li>
-            <li>
-                <asp:HyperLink NavigateUrl="#" Text="Quản lý chủ đề" runat="server" />
+                <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/AdPost/AddAdPost.aspx" Text="Thêm rao nhanh mới" runat="server" />
             </li>
         </ul>
     </li>
