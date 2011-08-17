@@ -19,6 +19,6 @@ namespace NewsVn.Web {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CuteEditor.CategorizedVideoList _CategorizedVideoList;
+        protected global::NewsVn.Web.Modules.CategorizedVideoList _CategorizedVideoList;
     }
 }
