@@ -2426,7 +2426,6 @@
     <Folder Include="Account\Editor\Video\" />
     <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="Account\SiteAdmin\Misc\" />
-    <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
     <Folder Include="Resources\Media\" />
