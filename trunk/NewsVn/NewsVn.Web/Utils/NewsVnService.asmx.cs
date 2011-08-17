@@ -446,6 +446,7 @@ namespace NewsVn.Web.Utils
                         sb.AppendFormat("<li><label>Giới tính:</label><b>{0}</b></li>", profile.Gender.Value ? "Nam" : "Nữ");
                         sb.AppendFormat("<li><label>Khu vực:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Location) ? profile.Location : "<i>Chưa xác định</i>");
                         sb.AppendFormat("<li><label>Trình độ:</label><b>{0}</b></li>", !string.IsNullOrEmpty(profile.Education) ? profile.Education : "<i>Chưa xác định</i>");
+                        sb.Append("<li><a class=\"dialog-trigger[editInfoBox]\" href=\"javascript:void(0)\" style=\"color:#104687;text-decoration:underline\">Chỉnh sửa thông tin</a></li>");
                     }
 
                     return sb.ToString();

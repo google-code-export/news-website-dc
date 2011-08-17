@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SysAdmin.master.cs" Inherits="NewsVn.Web.Account.SysAdmin.SysAdmin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Editor.master.cs" Inherits="NewsVn.Web.Account.Editor.Editor" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -20,7 +20,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server" />
 </head>
 <body>
-    <form id="frmSysAdmin" runat="server">
+    <form id="frmEditor" runat="server">
     <asp:ScriptManager runat="server" />
     <asp:Image ID="datePickerIcon" ImageUrl="~/Images/icons/calendar.png" CssClass="invisible" runat="server" />
     <div id="side_content" class="left">
@@ -28,7 +28,7 @@
         <div class="wrapper">            
             <nsn:Account_LoginBar runat="server" />
             <asp:ContentPlaceHolder ID="sideContent" runat="server" />
-            <nsn:SysAdmin_Menu runat="server" /> 
+            <nsn:Editor_Menu runat="server" /> 
         </div>      
     </div>
     <div id="main_content" class="right">
