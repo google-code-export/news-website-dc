@@ -61,23 +61,24 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Vietstream.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\VSS\Research\Ongoing\20110724\Vietstream\Vietstream.Data\bin\Debug\Vietstream.Data.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\resources\assemblies\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\Editor\index.htm" />
+    <Content Include="Account\Editor\default.htm" />
     <Content Include="Account\Editor\Post\AddPost.aspx" />
     <Content Include="Account\Editor\Post\ViewPost.aspx" />
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\LostPassword.aspx" />
     <Content Include="Account\Form\Redirector.aspx" />
     <Content Include="Account\Form\Signup.aspx" />
-    <Content Include="Account\Guest\index.htm" />
+    <Content Include="Account\Guest\default.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\AddAdPost.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\EditAdPost.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx" />
-    <Content Include="Account\SiteAdmin\index.htm" />
+    <Content Include="Account\SiteAdmin\default.htm" />
     <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditCategory.aspx" />
@@ -88,7 +89,7 @@
     <Content Include="Account\SiteAdmin\Post\ViewPostComment.aspx" />
     <Content Include="Account\SiteAdmin\Video\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Video\ViewVideo.aspx" />
-    <Content Include="Account\SysAdmin\index.htm" />
+    <Content Include="Account\SysAdmin\default.htm" />
     <Content Include="Account\SysAdmin\Setting\ViewSetting.aspx" />
     <Content Include="Account\SysAdmin\User\AddUser.aspx" />
     <Content Include="Account\SysAdmin\User\ViewUser.aspx" />
