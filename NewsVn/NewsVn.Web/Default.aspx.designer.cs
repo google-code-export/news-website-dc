@@ -67,15 +67,6 @@ namespace NewsVn.Web {
         protected global::NewsVn.Web.Modules.AdBoxList AdBoxList1;
         
         /// <summary>
-        /// pletSideTabBar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::NewsVn.Web.Modules.SideTabsBox pletSideTabBar;
-        
-        /// <summary>
         /// HotVideoList1 control.
         /// </summary>
         /// <remarks>
@@ -83,5 +74,14 @@ namespace NewsVn.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::NewsVn.Web.Modules.HotVideoList HotVideoList1;
+        
+        /// <summary>
+        /// pletSideTabBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.SideTabsBox pletSideTabBar;
     }
 }

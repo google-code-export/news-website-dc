@@ -13,6 +13,7 @@
     <RootNamespace>NewsVn.Web</RootNamespace>
     <AssemblyName>NewsVn.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,6 +80,9 @@
     <Content Include="Account\SiteAdmin\AdPost\EditAdPost.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx" />
     <Content Include="Account\SiteAdmin\default.htm" />
+    <Content Include="Account\SiteAdmin\Guest\ViewGuest.aspx" />
+    <Content Include="Account\SiteAdmin\Misc\ViewAdBox.aspx" />
+    <Content Include="Account\SiteAdmin\Misc\ViewVideoBox.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditCategory.aspx" />
@@ -87,6 +91,10 @@
     <Content Include="Account\SiteAdmin\Post\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPostComment.aspx" />
+    <Content Include="Account\SiteAdmin\Video\AddCategory.aspx" />
+    <Content Include="Account\SiteAdmin\Video\AddVideo.aspx" />
+    <Content Include="Account\SiteAdmin\Video\EditCategory.aspx" />
+    <Content Include="Account\SiteAdmin\Video\EditVideo.aspx" />
     <Content Include="Account\SiteAdmin\Video\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Video\ViewVideo.aspx" />
     <Content Include="Account\SysAdmin\default.htm" />
@@ -1861,6 +1869,27 @@
     <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.designer.cs">
       <DependentUpon>ViewAdPost.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\SiteAdmin\Guest\ViewGuest.aspx.cs">
+      <DependentUpon>ViewGuest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Guest\ViewGuest.aspx.designer.cs">
+      <DependentUpon>ViewGuest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\ViewAdBox.aspx.cs">
+      <DependentUpon>ViewAdBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\ViewAdBox.aspx.designer.cs">
+      <DependentUpon>ViewAdBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\ViewVideoBox.aspx.cs">
+      <DependentUpon>ViewVideoBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\ViewVideoBox.aspx.designer.cs">
+      <DependentUpon>ViewVideoBox.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddCategory.aspx.cs">
       <DependentUpon>AddCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1923,6 +1952,34 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\SiteAdmin.Master.designer.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\AddCategory.aspx.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\AddCategory.aspx.designer.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\AddVideo.aspx.cs">
+      <DependentUpon>AddVideo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\AddVideo.aspx.designer.cs">
+      <DependentUpon>AddVideo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\EditCategory.aspx.cs">
+      <DependentUpon>EditCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\EditCategory.aspx.designer.cs">
+      <DependentUpon>EditCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\EditVideo.aspx.cs">
+      <DependentUpon>EditVideo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Video\EditVideo.aspx.designer.cs">
+      <DependentUpon>EditVideo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Video\ViewCategory.aspx.cs">
       <DependentUpon>ViewCategory.aspx</DependentUpon>
@@ -2456,7 +2513,6 @@
   <ItemGroup>
     <Folder Include="Account\Editor\AdPost\" />
     <Folder Include="Account\Editor\Video\" />
-    <Folder Include="Account\SiteAdmin\Misc\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
     <Folder Include="Resources\Media\" />
