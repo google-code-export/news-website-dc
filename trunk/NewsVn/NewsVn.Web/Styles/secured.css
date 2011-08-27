@@ -160,5 +160,6 @@ a
 
 .side_nav li a.selected
 {
+    color: #104687 !important;
     text-decoration: underline;    
 }

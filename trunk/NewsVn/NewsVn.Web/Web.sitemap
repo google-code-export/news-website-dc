@@ -13,6 +13,18 @@
             <siteMapNode url="~/account/siteadmin/post/viewcategory.aspx" title="" description="view-category" />
             <siteMapNode url="~/account/siteadmin/post/viewpostcomment.aspx" title="" description="view-post-comment" />
         </siteMapNode>
+        <siteMapNode roles="siteadmin" url="~/account/siteadmin/adpost/viewadpost.aspx" title="" description="view-adpost">
+          <siteMapNode url="~/account/siteadmin/adpost/addadpost.aspx" title="" description="add-adpost" />
+        </siteMapNode>
+        <siteMapNode roles="siteadmin" url="~/account/siteadmin/video/viewvideo.aspx" title="" description="view-video">
+          <siteMapNode url="~/account/siteadmin/video/addvideo.aspx" title="" description="add-video" />
+          <siteMapNode url="~/account/siteadmin/video/viewcategory.aspx" title="" description="view-video-category" />
+        </siteMapNode>
+        <siteMapNode roles="siteadmin" url="~/account/siteadmin/guest/viewguest.aspx" title="" description="view-guest">
+        </siteMapNode>
+        <siteMapNode roles="siteadmin" url="~/account/siteadmin/misc/viewadbox.aspx" title="" description="view-adbox">
+          <siteMapNode url="~/account/siteadmin/misc/viewvideobox.aspx" title="" description="view-videobox" />
+        </siteMapNode>
         <siteMapNode roles="editor" url="~/account/editor/post/viewpost.aspx" title="" description="view-post">
             <siteMapNode url="~/account/editor/post/addpost.aspx" title="" description="add-post" />
         </siteMapNode>
