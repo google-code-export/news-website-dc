@@ -87,7 +87,16 @@ namespace NewsVn.Impl.Entity
         public string UpdatedBy { get; set; }
 
         [Column]
-        public DateTime ExpiredOn { get; set; }
+        public bool Approved { get; set; }
+
+        [Column]
+        public DateTime? ApprovedOn { get; set; }
+
+        [Column]
+        public string ApprovedBy { get; set; }
+
+        [Column]
+        public DateTime? ExpiredOn { get; set; }
 
         [Column]
         public bool Actived { get; set; }
