@@ -6,20 +6,20 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <div id="adpostHelpBox" class="dialog" title="Trợ giúp">
-        <p><b>Thêm tin mới</b>: Bấm vào nút 'Thêm'</p>
-        <p><b>Sửa tin</b>: Bấm vào tiêu đề của một tin bất kỳ</p>
-        <p><b>Xóa tin</b>: Chọn các dòng muốn xóa trong danh sách tin, sau đó bấm nút 'Xóa'</p>
-        <p><b>Ẩn/Hiện tin</b>: Chọn các dòng trong danh sách tin, bấm nút 'Ẩn/Hiện'</p>
-        <p><b>Duyệt tin</b>: Chọn các dòng trong danh sách tin, bấm 'Duyệt'</p>
+        <p><b>Sửa rao nhanh</b>: Bấm vào tiêu đề của một tin bất kỳ</p>
+        <p><b>Xóa rao nhanh</b>: Chọn các dòng muốn xóa trong danh sách tin, sau đó bấm nút 'Xóa'</p>
+        <p><b>Ẩn/Hiện rao nhanh</b>: Chọn các dòng trong danh sách tin, bấm nút 'Ẩn/Hiện'</p>
     </div>
     <div class="ui-table-toolbar">
         <ul class="ui-form ui-widget">
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>
         <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
-            OnClientClick="return confirmAction('Xóa tin được chọn?')" OnClick="btnDelete_Click" />
+            OnClientClick="return confirmAction('Xóa rao nhanh được chọn?')" OnClick="btnDelete_Click" />
         <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
-            OnClientClick="return confirmAction('Ẩn/Hiện tin được chọn?')" OnClick="btnToggleActive_Click" />
+            OnClientClick="return confirmAction('Ẩn/Hiện rao nhanh được chọn?')" OnClick="btnToggleActive_Click" />
+        <asp:LinkButton ID="btnApprove" Text="Duyệt" CssClass="button-ok left" runat="server"
+            OnClientClick="return confirmAction('Duyệt rao nhanh được chọn?')" OnClick="btnApprove_Click" />
         <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[adpostHelpBox]" runat="server" />
         <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh right" runat="server"
             OnClick="btnRefresh_Click" />
@@ -55,13 +55,17 @@
         <HeaderTemplate>
             <table id="post-table" class="ui-table" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                    <th><asp:CheckBox EnableViewState="false" runat="server" /></th>
+                    <th><asp:CheckBox EnableViewState="false" runat="server" /></th>                    
                     <th>Tiêu đề</th>
                     <th>Danh mục</th>
+                    <th>Xem</th>
                     <th>Tạo vào</th>
                     <th>Tạo bởi</th>
                     <th>Sửa vào</th>
                     <th>Sửa bởi</th>
+                    <th>Đã duyệt</th>
+                    <th>Duyệt vào</th>
+                    <th>Duyệt bởi</th>
                     <th>Hết hạn</th>
                     <th>Hiển thị</th>
                 </tr>
@@ -74,19 +78,26 @@
                 </td>
                 <td>
                     <a href='<%= HostName + "account/siteadmin/adpost/editadpost.aspx?pid=" %><%# Eval("ID") %>'
-                        title='<%# Eval("Title") %>'>
-                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 30) %>
-                    </a>
-                </td>
+                        title='<%# Eval("Title") %>'><%# Eval("AdTitle") %></a>
+                </td>                
                 <td><%# Eval("CategoryName") %></td>
+                <td>
+                    <a href='<%= HostName + "account/siteadmin/adpost/previewadpost.aspx?pid=" %><%# Eval("ID") %>'
+                        title='Xem: <%# Eval("Title") %>' target="_blank">Xem</a>
+                </td>
                 <td title='<%# Eval("CreatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("CreatedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td><%# Eval("CreatedBy")%></td>
+                <td style="width:30px"><%# Eval("CreatedBy") %></td>
                 <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("UpdatedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td><%# Eval("UpdatedBy") %></td>
+                <td style="width:30px"><%# Eval("UpdatedBy") %></td>
+                <td align="center"><asp:CheckBox Checked='<%# Eval("Approved") %>' Enabled="false" runat="server" /></td>
+                <td title='<%# Eval("ApprovedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
+                    <%# Eval("ApprovedOn", "{0:dd/MM/yy}")%>
+                </td>
+                <td style="width:30px"><%# Eval("ApprovedBy") %></td>
                 <td title='<%# Eval("ExpiredOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("ExpiredOn", "{0:dd/MM/yy}")%>
                 </td>

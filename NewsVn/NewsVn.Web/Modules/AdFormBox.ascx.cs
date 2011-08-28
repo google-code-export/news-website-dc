@@ -57,9 +57,7 @@ namespace NewsVn.Web.Modules
                     {
                         adsPost.CreatedBy = "anonymous";
                     }
-                    adsPost.UpdatedOn = DateTime.Now;
-                    adsPost.UpdatedBy = txtContact.Text.Trim();
-                    adsPost.ExpiredOn = DateTime.Now.AddDays(3);//setting day expired from created day
+                    adsPost.Approved = false;
                     adsPost.Actived = true;
                     uploadImg();
 
