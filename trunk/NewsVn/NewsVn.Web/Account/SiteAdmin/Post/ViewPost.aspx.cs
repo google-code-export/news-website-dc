@@ -32,7 +32,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    ctx.PostRepo.Setter.deleteMany(this.getSelectedPosts(ctx));
+                    ctx.PostRepo.Setter.deleteMany(this.GetSelectedPosts(ctx));
                 }
             }
             catch (Exception)
@@ -49,7 +49,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    foreach (var post in this.getSelectedPosts(ctx))
+                    foreach (var post in this.GetSelectedPosts(ctx))
                     {
                         post.Actived = !post.Actived;
                     }
@@ -70,7 +70,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    foreach (var post in this.getSelectedPosts(ctx).Where(p => !p.Approved))
+                    foreach (var post in this.GetSelectedPosts(ctx).Where(p => !p.Approved))
                     {
                         post.Approved = true;
                         post.ApprovedOn = DateTime.Now;
@@ -139,11 +139,12 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var posts = ctx.PostRepo.Getter.getQueryable().OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsEnumerable();
+                var posts = ctx.PostRepo.Getter.getQueryable().OrderByDescending(p => p.ApprovedOn == null).ThenByDescending(p => p.CreatedOn).AsEnumerable();
                 rptPostList.DataSource = ctx.PostRepo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
                     {
                         p.ID,
                         p.Title,
+                        PostTitle = this.GetPostTitle(p.Title, p.Approved, p.Actived),
                         p.SeoUrl,
                         p.CreatedOn,
                         p.CreatedBy,
@@ -174,7 +175,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
         }
 
-        private IQueryable<Impl.Entity.Post> getSelectedPosts(NewsVnContext ctx)
+        private IQueryable<Impl.Entity.Post> GetSelectedPosts(NewsVnContext ctx)
         {
             var selectedPostIDs = new List<int>();
 
@@ -193,6 +194,20 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
 
             return ctx.PostRepo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
+        }
+
+        private string GetPostTitle(string title, bool approved, bool active)
+        {
+            title = Utils.clsCommon.getEllipsisText(title, 30);
+            if (!approved)
+            {
+                title = string.Format("<b>{0}</b>", title);
+            }
+            if (!active)
+            {
+                title = string.Format("<span style=\"color:#666 !important\">{0}</span>", title);
+            }
+            return title;
         }
     }
 }

@@ -20,11 +20,6 @@
     </li>
     <li class="side_main_menu">
         <asp:HyperLink CssClass="view-adpost" NavigateUrl="~/Account/SiteAdmin/AdPost/ViewAdPost.aspx" Text="Quản lý rao nhanh" runat="server" />
-        <ul style="margin-left:10px;display:none">
-            <li>
-                <asp:HyperLink CssClass="add-adpost" NavigateUrl="~/Account/SiteAdmin/AdPost/AddAdPost.aspx" Text="Thêm rao nhanh mới" runat="server" />
-            </li>
-        </ul>
     </li>
     <li class="side_main_menu">
         <asp:HyperLink CssClass="view-video" NavigateUrl="~/Account/SiteAdmin/Video/ViewVideo.aspx" Text="Quản lý Video clip" runat="server" />

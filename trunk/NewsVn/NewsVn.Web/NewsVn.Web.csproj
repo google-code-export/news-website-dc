@@ -77,6 +77,7 @@
     <Content Include="Account\Guest\default.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\EditAdPost.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx" />
     <Content Include="Account\SiteAdmin\default.htm" />
     <Content Include="Account\SiteAdmin\Guest\ViewGuest.aspx" />
@@ -1853,6 +1854,13 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\AdPost\EditAdPost.aspx.designer.cs">
       <DependentUpon>EditAdPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx.cs">
+      <DependentUpon>PreviewAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx.designer.cs">
+      <DependentUpon>PreviewAdPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.cs">
       <DependentUpon>ViewAdPost.aspx</DependentUpon>

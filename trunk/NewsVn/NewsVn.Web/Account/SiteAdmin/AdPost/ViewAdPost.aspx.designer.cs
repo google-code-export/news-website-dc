@@ -40,6 +40,15 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost {
         protected global::System.Web.UI.WebControls.LinkButton btnToggleActive;
         
         /// <summary>
+        /// btnApprove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnApprove;
+        
+        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>

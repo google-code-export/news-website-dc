@@ -23,27 +23,79 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
 
         protected void Pager_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            this.GoToCurrentPage();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    ctx.AdPostRepo.Setter.deleteMany(this.GetSelectedAdPosts(ctx));
+                }
+            }
+            catch (Exception)
+            {
+                ltrError.Text = string.Format(ErrorBar, "Không thể xóa rao nhanh được chọn!");
+            }
+
+            this.GoToCurrentPage();
         }
 
         protected void btnToggleActive_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    foreach (var adpost in this.GetSelectedAdPosts(ctx))
+                    {
+                        adpost.Actived = !adpost.Actived;
+                    }
+                    ctx.SubmitChanges();
+                }
+            }
+            catch (Exception)
+            {
+                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn/hiện rao nhanh được chọn!");
+            }
+
+            this.GoToCurrentPage();
+        }
+
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    foreach (var adpost in this.GetSelectedAdPosts(ctx).Where(p => !p.Approved))
+                    {
+                        adpost.Approved = true;
+                        adpost.ApprovedOn = DateTime.Now;
+                        adpost.ApprovedBy = HttpContext.Current.User.Identity.Name;
+                        adpost.ExpiredOn = adpost.ApprovedOn.Value.AddDays(7);
+                    }
+                    ctx.SubmitChanges();
+                }
+            }
+            catch (Exception)
+            {
+                ltrError.Text = string.Format(ErrorBar, "Không thể duyệt tin được chọn!");
+            }
+
+            this.GoToCurrentPage();
         }
 
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
-            
+            this.GoToCurrentPage();
         }
 
         protected void btnFilter_Click(object sender, EventArgs e)
         {
-            
+            this.GoToCurrentPage();
         }
 
         private void GoToCurrentPage()
@@ -73,15 +125,20 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                rptAdPostList.DataSource = ctx.AdPostRepo.Getter.getPagedList(pageIndex, pageSize).Select(p => new
+                var adposts = ctx.AdPostRepo.Getter.getQueryable().OrderByDescending(p => p.ApprovedOn == null).ThenByDescending(p => p.CreatedOn).AsEnumerable();
+                rptAdPostList.DataSource = ctx.AdPostRepo.Getter.getPagedList(adposts, pageIndex, pageSize).Select(p => new
                 {
                     p.ID,
                     p.Title,
+                    AdTitle = this.GetAdPostTitle(p.Title, p.Approved, p.ExpiredOn, p.Actived),
                     p.SeoUrl,
                     p.CreatedOn,
                     p.CreatedBy,
                     p.UpdatedOn,
                     p.UpdatedBy,
+                    p.Approved,
+                    p.ApprovedOn,
+                    p.ApprovedBy,
                     p.ExpiredOn,
                     p.Actived,
                     CategoryID = p.Category.ID,
@@ -95,7 +152,7 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRepo.Getter.getQueryable().Count() / pageSize);
+                int numOfPages = (int)Math.Ceiling((decimal)ctx.AdPostRepo.Getter.getQueryable().Count() / pageSize);
                 ddlPageIndex.Items.Clear();
                 for (int i = 1; i <= numOfPages; i++)
                 {
@@ -104,7 +161,7 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             }
         }
 
-        private IQueryable<Impl.Entity.AdPost> getSelectedAdPosts(NewsVnContext ctx)
+        private IQueryable<Impl.Entity.AdPost> GetSelectedAdPosts(NewsVnContext ctx)
         {
             var selectedAdPostIDs = new List<int>();
 
@@ -123,6 +180,24 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             }
 
             return ctx.AdPostRepo.Getter.getQueryable(p => selectedAdPostIDs.Contains(p.ID));
+        }
+
+        private string GetAdPostTitle(string title, bool approved, DateTime? expiredOn, bool active)
+        {
+            title = Utils.clsCommon.getEllipsisText(title, 30);
+            if (!approved)
+            {
+                title = string.Format("<b>{0}</b>", title);
+            }
+            if (expiredOn.HasValue && expiredOn.Value < DateTime.Now)
+            {
+                title = string.Format("<span style=\"text-decoration:line-through !important\">{0}</span>", title);
+            }
+            if (!active)
+            {
+                title = string.Format("<span style=\"color:#666 !important\">{0}</span>", title);
+            }
+            return title;
         }
     }
 }
