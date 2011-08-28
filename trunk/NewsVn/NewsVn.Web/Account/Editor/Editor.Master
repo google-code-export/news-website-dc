@@ -24,7 +24,9 @@
     <asp:ScriptManager runat="server" />
     <asp:Image ID="datePickerIcon" ImageUrl="~/Images/icons/calendar.png" CssClass="invisible" runat="server" />
     <div id="side_content" class="left">
-        <asp:Image ImageUrl="~/Images/logo.jpg" Width="200" runat="server" />
+        <a href="<%= HostName %>" target="_blank">
+            <asp:Image ImageUrl="~/Images/logo.jpg" Width="200" runat="server" />
+        </a>
         <div class="wrapper">            
             <nsn:Account_LoginBar runat="server" />
             <asp:ContentPlaceHolder ID="sideContent" runat="server" />

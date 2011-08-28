@@ -49,7 +49,14 @@ namespace NewsVn.Web.Modules
                     adsPost.ContactAddress = txtContactAddress.Text.Trim();
                     adsPost.ContactPhone = txtContactPhone.Text.Trim();
                     adsPost.CreatedOn = DateTime.Now;
-                    adsPost.CreatedBy = txtContact.Text.Trim();
+                    if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        adsPost.CreatedBy = HttpContext.Current.User.Identity.Name;
+                    }
+                    else
+                    {
+                        adsPost.CreatedBy = "anonymous";
+                    }
                     adsPost.UpdatedOn = DateTime.Now;
                     adsPost.UpdatedBy = txtContact.Text.Trim();
                     adsPost.ExpiredOn = DateTime.Now.AddDays(3);//setting day expired from created day

@@ -1,16 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserProfileList.ascx.cs" Inherits="NewsVn.Web.Modules.UserProfileList" %>
 
-<script runat="server">
-	
-</script>
-
 <div class="portlet">
     <h2>Danh sách tìm bạn</h2>
     <ul class="post-item-list">        
 		<asp:ListView ID="lvProfiles" runat="server"
             OnDataBound="lvProfiles_DataBound"
-            OnPagePropertiesChanged="lvProfiles_PagePropertiesChanged" 
-            onitemdatabound="lvProfiles_ItemDataBound">
+            OnPagePropertiesChanged="lvProfiles_PagePropertiesChanged">
 			<LayoutTemplate>
 				<asp:Panel ID="itemPlaceHolder" runat="server" />
 			</LayoutTemplate>

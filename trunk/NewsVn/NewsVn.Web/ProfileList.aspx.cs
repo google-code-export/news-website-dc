@@ -40,7 +40,7 @@ namespace NewsVn.Web
                     Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
                 })
                 .ToList();
-                pletUserProfileList.Datasource = data;
+                pletUserProfileList.DataSource = data;
                 pletUserProfileList.DataBind();
                 data = null;
             }
