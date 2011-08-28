@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Account.SiteAdmin.Guest
 {
-    public partial class ViewGuest : System.Web.UI.Page
+    public partial class ViewGuest : BaseUI.SecuredPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
