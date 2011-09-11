@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace NewsVn.Web.Account.SysAdmin.User
+{
+    public partial class AddUser : BaseUI.SecuredPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            this.Title = this.SiteTitle + "Thêm tài khoản mới";
+        }
+    }
+}

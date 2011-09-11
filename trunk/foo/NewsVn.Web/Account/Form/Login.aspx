@@ -1,0 +1,79 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="NewsVn.Web.Account.Form.Login" %>
+
+<asp:Content ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        #content { min-height: 0; padding-top: 10px; }
+    </style>
+    <link href="<%= Page.ResolveUrl("~/styles/validation.css") %>" rel="stylesheet" type="text/css" />
+    <script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.validationEngine.js") %>" type="text/javascript"></script>
+    <script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.validationEngine-vi.js") %>" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("input[id$=UserName]:eq(0)").focus();
+        });
+
+        function checkValidation() {
+            return $("#loginform_box").validationEngine('validate');
+        }
+    </script>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="body" runat="server">
+    <div class="portlet" style="margin:0">
+        <h2>Thông tin đăng nhập</h2>        
+        <div class="left" style="width:590px">
+            <asp:Image ImageUrl="~/Images/login_banner.jpg" Width="590" runat="server" />
+        </div>
+        <div class="right" style="width:358px">
+            <asp:LoginView ID="loginView" runat="server">
+                <AnonymousTemplate>
+                    <asp:Panel DefaultButton="login$LoginButton" runat="server">
+                    <asp:Login ID="login" runat="server" FailureAction="Refresh" Width="100%"
+                        DestinationPageUrl="~/Account/Form/Redirector.aspx"
+                        PasswordRecoveryUrl="~/tai-khoan/quen-mat-khau.aspx">
+                        <LayoutTemplate>                
+                            <ul id="loginform_box" class="ui-form ui-widget">
+                                <li>
+                                    <asp:Label ID="UserNameLabel" runat="server" Width="70" AssociatedControlID="UserName" Text="Tài khoản:" />
+                                    <asp:TextBox ID="UserName" CssClass="validate[required]" runat="server" />
+                                </li>
+                                <li>
+                                    <asp:Label ID="PasswordLabel" runat="server" Width="70" AssociatedControlID="Password" Text="Mật khẩu:" />
+                                    <asp:TextBox ID="Password" CssClass="validate[required]" runat="server" TextMode="Password" />
+                                </li>
+                                <li>
+                                    <label style="width:67px"></label>
+                                    <asp:CheckBox ID="RememberMe" runat="server" Text="Nhớ thông tin" /> |
+                                    
+                                    <asp:HyperLink ID="PasswordRecoveryLink" runat="server" Text="Quên mật khẩu?"
+                                        NavigateUrl="~/tai-khoan/quen-mat-khau.aspx" />
+                                </li>                            
+                                <li class="commands">
+                                    <asp:Button ID="LoginButton" style="display:none;" UseSubmitBehavior="false" CommandName="Login" runat="server" />
+                                    <asp:LinkButton ID="LoginLinkButton" runat="server" CommandName="Login" CssClass="button-login right" Text="Đăng nhập"
+                                        OnClientClick="return checkValidation()" />
+                                    <div class="clear"></div>
+                                </li>
+                                <asp:Literal ID="FailureText" runat="server" EnableViewState="False" />
+                            </ul>
+                        </LayoutTemplate>
+                    </asp:Login>
+                    </asp:Panel>
+                    <hr />
+                    <p>
+                        Bạn chưa có tài khoản? Hay nhanh tay đăng ký để được tham gia tìm bạn 4 phương trên trang web của chúng tôi.
+                        Với lượt truy cập lớn và hồ sơ mới cập nhật mỗi ngày. Còn chờ gì nữa, hay đăng ký ngay thôi!
+                    </p>
+                    <a href='<%= HostName+ "tai-khoan/dang-ky.aspx" %>' class="button-register right" style="font-size:1.19em">Đăng ký</a>
+                    <div class="clear"></div>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    <ul class="ui-form ui-widget">
+                        <%= string.Format(InfoBar, "Bạn đã đăng nhập. Click <a href='#'><b>vào đây</b></a> để vào tài khoản.")%>
+                    </ul>
+                </LoggedInTemplate>
+            </asp:LoginView>
+        </div>
+        <div class="clear"></div>
+    </div>
+</asp:Content>
+

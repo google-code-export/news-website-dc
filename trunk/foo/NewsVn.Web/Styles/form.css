@@ -1,0 +1,114 @@
+﻿.textbox
+{
+    padding: 5px;
+    width: 270px;
+    border: 1px solid #FFB4AE;
+    *vertical-align: middle;  
+}
+
+.textbox-icon
+{
+    position: relative;    
+}
+
+.textbox-icon .ui-icon,
+.textbox-icon img
+{
+    position: absolute;
+    right: 4px;
+    top: 6px;    
+}
+
+.textbox-icon img
+{
+    right: 8px;
+    cursor: pointer;
+}
+
+.checkbox
+{
+    vertical-align: bottom;    
+}
+
+textarea
+{
+    vertical-align: top;    
+}
+
+/* Overrides 'selectmenu' styles */
+.select
+{
+    color: #333;
+    border: 1px solid #FFB4AE !important;
+    background: #fff !important;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 3px;
+}
+
+.select-item
+{
+    color: #333 !important;
+    padding: 3px 5px !important;
+    font-weight: normal;
+}
+
+.ui-table
+{
+    border-collapse: collapse;    
+    border: 1px solid #FFB4AE;
+    width: 100%;
+}
+
+.ui-table .even
+{
+    background: #feeceb;  
+}
+
+.ui-table th, .ui-table td
+{
+    padding: 7px;
+}
+
+.link-button
+{
+	background: #ffd6d4;
+	padding: 7px;
+	text-align: center;
+    color: #104687;
+}
+
+.ui-form li
+{
+    padding: 5px 0;
+    position: relative;    
+}
+
+.ui-form li.head
+{
+    padding-top: 0;    
+}
+
+.ui-form label
+{
+    display: inline-block;
+    width: 60px;    
+}
+
+.ui-form label.forarea
+{
+    vertical-align: top;    
+}
+
+.ui-form .checkbox-label
+{
+    width: auto;    
+}
+
+.ui-form .decoy
+{
+    position: absolute;
+    left: 105px;
+    z-index: -1;
+    visibility: hidden;
+}

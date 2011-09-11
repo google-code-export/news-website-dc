@@ -1,0 +1,164 @@
+﻿@import url('reset.css');
+@import url('ui.css');
+@import url('form.css');
+
+body
+{
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 13px;
+    line-height: 1.4em;
+}
+
+a
+{
+    color: #104687;
+}
+
+.left
+{
+    float: left;
+}
+
+.right
+{
+    float: right;
+}
+
+.clear
+{
+    clear: both;
+    height: 0;
+}
+
+.invisible
+{
+    display: none;
+}
+
+#side_content
+{
+    width: 200px;
+    position: fixed;
+    background: #FFD6D4;
+}
+
+#side_content .wrapper
+{
+    padding: 10px;    
+}
+
+#main_content
+{
+    padding: 10px;
+}
+
+.portlet
+{
+    background: url('../images/trans_bg.jpg') repeat-x;
+    border: 1px solid #ffb4ae;
+    padding: 0 14px 14px;
+}
+
+.portlet h2
+{
+    font-size: 13px;
+    color: #bd0d0d;
+    text-transform: uppercase;
+    height: 40px; width: 100%;
+    line-height: 40px;
+    background: url('../images/content_sep.jpg') repeat-x 0 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.ui-table th
+{
+    text-align: left;
+    white-space: nowrap;
+}
+
+.ui-table th, .ui-table td
+{
+    padding: 3px;
+}
+
+.ui-table .even
+{
+    background: none;
+    border: 1px solid #feeceb;
+    border-width: 1px 0;
+}
+
+.ui-table .hover, .ui-table .focus
+{
+    background: #feeceb;
+}
+
+.ui-table .tail
+{
+    border-bottom: 1px solid #ffb4ae;
+}
+
+.ui-table-toolbar
+{
+    background: #FFFFFF;
+    padding: 10px 0 0;
+    position: fixed;
+    padding-bottom: 5px;
+    top: 0; /*width:100% !important;     max-width:1044px !important;*/
+}
+
+.ui-table-toolbar .left
+{
+    margin-right: 5px;
+}
+
+.ui-form label
+{
+    width: 100px;
+}
+
+.ui-form label.checkbox-label
+{
+    width: auto;
+}
+
+.ui-form .checkbox
+{
+    vertical-align: middle;
+}
+
+.ui-form .decoy
+{
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
+}
+
+.ui-form .commands .ui-button
+{
+    margin-right: 0;
+}
+
+.side_nav 
+{
+    margin: 10px 0 0;
+}
+
+.side_nav li.side_main_menu
+{
+    padding: 0.3em 0.5em;
+    border: 1px solid #FFB4AE;
+    margin: 0.2em 0;
+}
+
+.side_nav li a
+{
+    color: #BD0D0D !important;
+    font-weight: bold;
+}
+
+.side_nav li a.selected
+{
+    text-decoration: underline;    
+}
