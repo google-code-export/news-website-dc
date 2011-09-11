@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode>
+        <siteMapNode roles="siteadmin" url="~/account/siteadmin/post/viewpost.aspx" title="" description="view-post">
+            <siteMapNode url="~/account/siteadmin/post/addpost.aspx" title="" description="add-post" />
+            <siteMapNode url="~/account/siteadmin/post/viewcategory.aspx" title="" description="view-category" />
+            <siteMapNode url="~/account/siteadmin/post/viewpostcomment.aspx" title="" description="view-post-comment" />
+        </siteMapNode>
+        <siteMapNode roles="sysadmin" url="~/account/sysadmin/user/viewuser.aspx" title="" description="view-user">
+            <siteMapNode url="~/account/sysadmin/user/adduser.aspx" title="" description="add-user" />
+        </siteMapNode>
+        <siteMapNode roles="sysadmin" url="~/account/sysadmin/setting/viewsetting.aspx" title="" description="view-setting">
+            <siteMapNode url="~/account/sysadmin/setting/editsetting.aspx" title="" description="edit-setting" />
+        </siteMapNode>
+    </siteMapNode>
+</siteMap>
