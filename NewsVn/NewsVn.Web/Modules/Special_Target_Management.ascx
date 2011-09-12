@@ -106,7 +106,7 @@
         <asp:BoundField HeaderText="Tiêu đề" DataField="Title" ControlStyle-Font-Names="Arial" />
         <asp:BoundField HeaderText="Danh mục" DataField="CategoryName" />
         <asp:BoundField HeaderText="Người duyệt" DataField="ApprovedBy" />
-        <asp:BoundField HeaderText="Ngày duyệt" DataField="ApprovedOn" DataFormatString="{0:dd/mm/yyyy HH:MM}" />
+        <asp:BoundField HeaderText="Ngày duyệt" DataField="ApprovedOn" DataFormatString="{0:dd/MM/yyyy H:MM}" />
         <asp:BoundField HeaderText="Avatar" DataField="Avatar" />
         <asp:BoundField HeaderText="SeoUrl" DataField="SeoUrl"/>
         <asp:BoundField HeaderText="Description" DataField="Description" />
