@@ -153,7 +153,7 @@ namespace NewsVn.Web.Modules
                                 r["Title"] = post.Title;
                                 r["CateName"] = post.Category.Name;
                                 r["ApprovedBy"] = post.ApprovedBy;
-                                r["ApprovedOn"] = string.Format("{0:dd/mm/yyyy HH:MM}", post.ApprovedOn);
+                                r["ApprovedOn"] = string.Format("{0:dd/MM/yyyy H:MM}", post.ApprovedOn);
                                 r["SeoUrl"] = post.SeoUrl;
                                 r["Avatar"] = post.Avatar;
                                 r["Description"] = post.Description;
