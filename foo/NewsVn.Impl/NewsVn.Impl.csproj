@@ -52,6 +52,7 @@
     <Compile Include="Entity\AdPost.cs" />
     <Compile Include="Entity\AdBox.cs" />
     <Compile Include="Entity\KeyValueRef.cs" />
+    <Compile Include="Entity\Location.cs" />
     <Compile Include="Entity\MemberProfile.cs" />
     <Compile Include="Entity\PostComment.cs" />
     <Compile Include="Entity\UserProfileComment.cs" />

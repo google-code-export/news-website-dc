@@ -6,6 +6,8 @@ using System.Data.Linq.Mapping;
 using System.Runtime.Serialization;
 using Vietstream.Data.Model;
 using System.Data.Linq;
+using System.IO;
+using System.Web;
 
 namespace NewsVn.Impl.Entity
 {
@@ -19,7 +21,6 @@ namespace NewsVn.Impl.Entity
             if (this.UserProfileComments == null)
                 this.UserProfileComments = new EntitySet<UserProfileComment>();
         }
-        
         [Column(IsPrimaryKey = true)]
         public string Account { get; set; }
 
@@ -39,16 +40,16 @@ namespace NewsVn.Impl.Entity
         public int Age { get; set; }
 
         [Column]
-        public bool Gender { get; set; }
+        public int? Gender { get; set; }
 
         [Column]
         public string Avatar { get; set; }
 
         [Column]
-        public string Location { get; set; }
+        public int? Location { get; set; }
 
         [Column]
-        public string Country { get; set; }
+        public int? Country { get; set; }
 
         [Column]
         public string Email { get; set; }
@@ -78,13 +79,13 @@ namespace NewsVn.Impl.Entity
         public bool? Smoke { get; set; }
 
         [Column]
-        public string MaritalStatus { get; set; }
+        public int? MaritalStatus { get; set; }
 
         [Column]
-        public string Religion { get; set; }
+        public int? Religion { get; set; }
 
         [Column]
-        public string Education { get; set; }
+        public int? Education { get; set; }
 
         [Column]
         public string Career { get; set; }
@@ -107,5 +108,11 @@ namespace NewsVn.Impl.Entity
         {
             throw new NotImplementedException();
         }
+        //public  void WriteTextLog( string err)
+        //{
+        //    StreamWriter logFile = File.AppendText("C:\\logfile.txt");
+        //    logFile.WriteLine(err);
+        //    logFile.Close();
+        //}
     }
 }
