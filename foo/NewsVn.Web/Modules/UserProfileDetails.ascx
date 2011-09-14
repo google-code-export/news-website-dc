@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td><b>Giới tính:</b></td>
-            <td><%=Datasource.Gender==true?"Nam":"Nữ" %></td>
+            <td><%=Datasource.Gender%></td>
         </tr>
         <tr>
             <td><b>Tỉnh/Thành phố:</b></td>

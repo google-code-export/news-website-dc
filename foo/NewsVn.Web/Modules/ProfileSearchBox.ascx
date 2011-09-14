@@ -55,62 +55,52 @@
                 <span style="margin-left:88px">Tuổi từ:</span>
                 <span style="margin-left:20px"> Đến:</span>
             </p>
-            <asp:DropDownList ID="ddlGender" runat="server" 
-                ondatabinding="ddlGender_DataBinding">
-            </asp:DropDownList>
+            <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>
             <asp:DropDownList ID="ddlFromAge" runat="server" />
             <asp:DropDownList ID="ddlToAge" runat="server" />
         </li>
         <li>
             <p style="margin-top:0">Hình đại diện:</p>
-            <asp:DropDownList ID="ddlAvatarAvailable" runat="server" 
-                ondatabinding="ddlAvatarAvailable_DataBinding">                
+            <asp:DropDownList ID="ddlAvatarAvailable" runat="server">                
             </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">Tình trạng hôn nhân:</p>
             <asp:DropDownList ID="ddlMaritalStatus" runat="server">
-                <asp:ListItem Value="0" Text="Sao cũng được" />
-                <asp:ListItem Value="1" Text="Độc thân" />
-                <asp:ListItem Value="2" Text="Có người yêu" />
-                <asp:ListItem Value="3" Text="Kết hôn" />
-                <asp:ListItem Value="4" Text="Ly thân" />
-                <asp:ListItem Value="5" Text="Ly dị" />
             </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">Học vấn:</p>
-            <asp:DropDownList ID="ddlEducation" runat="server" 
-                ondatabinding="ddlEducation_DataBinding">                
+            <asp:DropDownList ID="ddlEducation" runat="server">                
             </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">Tôn giáo:</p>
-            <asp:DropDownList ID="ddlReligion" runat="server" 
-                ondatabinding="ddlReligion_DataBinding"></asp:DropDownList>
+            <asp:DropDownList ID="ddlReligion" runat="server">
+            </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">
                 <span>Hút thuốc:</span>
                 <span style="margin-left:80px">Uống rượu:</span>
             </p>
-            <asp:DropDownList ID="ddlSmoke" runat="server" 
-                ondatabinding="ddlSmoke_DataBinding">                
+            <asp:DropDownList ID="ddlSmoke" runat="server">                
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlDrink" runat="server" 
-                ondatabinding="ddlDrink_DataBinding">                
+            <asp:DropDownList ID="ddlDrink" runat="server">                
             </asp:DropDownList>
         </li>
         
         <li>
             <p style="margin-top:0">Quốc gia:</p>
-            <asp:DropDownList ID="ddlCountry" runat="server" 
-                ondatabinding="ddlCountry_DataBinding">                
+            <asp:DropDownList ID="ddlCountry" runat="server" AutoPostBack="True" 
+                onselectedindexchanged="ddlCountry_SelectedIndexChanged">                
             </asp:DropDownList>
         </li>
         <li>
             <p style="margin-top:0">Tỉnh/Thành phố:</p>
-            <asp:TextBox ID="txtLocation" runat="server" />
+            <asp:DropDownList ID="ddlLocation" runat="server">
+                <asp:ListItem>Tất cả</asp:ListItem>
+            </asp:DropDownList>
         </li>
         <li class="commands">
             <asp:LoginView ID="LoginView1" runat="server">

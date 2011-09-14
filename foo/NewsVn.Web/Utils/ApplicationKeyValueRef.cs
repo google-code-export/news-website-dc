@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using NewsVn.Impl.Context;
+using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Utils
 {
@@ -32,8 +33,18 @@ namespace NewsVn.Web.Utils
             }
             catch (Exception)
             {
-                return "Không tìm được giá trị.";
+                return "";
             }
         }
+
+        public static void BindingDataToComboBox(DropDownList ddl, string keyRefType)
+        {
+            var refValueResult = _keyValueRef.Where(g => g.Type == keyRefType).ToList();
+            ddl.DataSource = refValueResult;
+            ddl.DataTextField = "Value";
+            ddl.DataValueField = "Key";
+            ddl.DataBind();    
+        }
+              
     }
 }

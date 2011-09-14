@@ -27,7 +27,7 @@ namespace NewsVn.Web
                 string requestUrl = Request.Url.ToString();
                 string []  prams = requestUrl.Split('=')[1].ToString().ToString().Split('-');
                 //gender-fagetage-avatar-marital-education-religion-smoke-drink-nation-location-name
-                bool bGender = (prams[0]=="1") ?true:false ;
+                string strGender = prams[0];
                 string strFage = prams[1].Substring(0,2);
                 string strTage = prams[1].Substring(2, 2);
                 string strAvatar = prams[2];
@@ -43,17 +43,17 @@ namespace NewsVn.Web
                 using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
                     var _Profile = ctx.UserProfileRepo.Getter.getQueryable();
-                    var profileResult = _Profile.Where(p => p.Gender == bGender
+                    var profileResult = _Profile.Where(p => p.Gender == int.Parse(strGender)
                         && p.Age >= int.Parse(strFage)
                         && p.Age <= int.Parse(strTage)
                         && p.Avatar == strAvatar
-                        && p.MaritalStatus == strMarital
-                        && p.Education == strEducation
-                        && p.Religion == strReligion
+                        && p.MaritalStatus == int.Parse(strMarital)
+                        && p.Education == int.Parse(strEducation)
+                        && p.Religion == int.Parse(strReligion)
                         && p.Smoke == bSmoke
                         && p.Drink == bDrunk
-                        && p.Country == strNation
-                        && p.Location == strLocation
+                        && p.Country == int.Parse(strNation)
+                        && p.Location == int.Parse(strLocation)
                         && p.Name == strName
                         )
                         .Select(pf => new
