@@ -30,10 +30,10 @@ namespace NewsVn.Web
                 {
                     Account=u.Account,
                     u.Age,
-                    u.Country,
+                    Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
                     u.UpdatedOn,
-                    Gender = u.Gender == true ? "Nam" : "Nữ",
-                    u.Location,
+                    Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Gender.ToString()),
+                    Location = GetLocationByLocationID(int.Parse(u.Location.ToString())),
                     u.Name,
                     u.Nickname,
                     u.Expectation,
@@ -57,10 +57,10 @@ namespace NewsVn.Web
                          layoutPosition = "",
                          Account=u.Account,
                          u.Age,
-                         u.Country,
+                         Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
                          u.UpdatedOn,
-                         Gender = u.Gender == true ? "Nam" : "Nữ",
-                         u.Location,
+                         Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Gender.ToString()),
+                         Location = GetLocationByLocationID(int.Parse(u.Location.ToString())),
                          u.Name,
                          u.Nickname,
                          u.Expectation,
@@ -69,16 +69,16 @@ namespace NewsVn.Web
                 for (int i = 0; i < 8; i++)
                 {
                     var data = _UserProfiles_var.OrderByDescending(u => u.Account)
-                    .Skip(x.Next(0, _UserProfiles_var.Count() - 1)).Take(1)
+                        .Skip(x.Next(0, _UserProfiles_var.Count() == 0 ? 0 : _UserProfiles_var.Count() - 1)).Take(1)
                     .Select(u => new
                     {
                         layoutPosition = i % 2 == 0 ? "left" : "right",
                         Account = u.Account,
                         u.Age,
-                        u.Country,
+                        Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
                         u.UpdatedOn,
-                        Gender = u.Gender == true ? "Nam" : "Nữ",
-                        u.Location,
+                        Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Gender.ToString()),
+                        Location = GetLocationByLocationID(int.Parse(u.Location.ToString())),
                         u.Name,
                         u.Nickname,
                         u.Expectation,
@@ -93,6 +93,23 @@ namespace NewsVn.Web
                 cloneDataStructure = null;
             }
             
+        }
+        private string GetLocationByLocationID(int intLocationID)
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var _Location = ctx.LocationRepo.Getter.getOne(e=>e.LocationID==intLocationID).LocationName;
+                if (_Location != "")
+                {
+                    return _Location.ToString();
+
+                }
+                else
+                {
+                    return "";                    
+                }
+
+            }
         }
     }
 }

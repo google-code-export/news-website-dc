@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web.Modules
 {
@@ -11,143 +12,88 @@ namespace NewsVn.Web.Modules
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                GenerateAgeDropDownLists();
-                loadDdlGender();
-                loadDdlSmoke();
-                loadDdlDrunk();
-                loadDdlReligion();
-                loadDdlEducation();
-                loadDdlAvatarAvailable();
-                loadDdlCountry();
-                    
+                if (!IsPostBack)
+                {
+                    GenerateAgeDropDownLists();
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlCountry, "Dropdown.Nation");
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlGender, "Dropdown.Gender");
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlEducation, "Dropdown.Education");
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlSmoke, "Dropdown.Smoke");
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlDrink, "Dropdown.Drunk");
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlReligion, "Dropdown.Religion");
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlMaritalStatus, "Dropdown.MaritalStatus");
+                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlAvatarAvailable, "Dropdown.HasAvatar");
+                }
             }
-        }
+            catch (Exception)
+            {
 
-        private void loadDdlCountry()
-        {
-            var countryRefValue = Utils.ApplicationKeyValueRef.GetAll().Where(g => g.Type == "List.Nation").ToList();
-            ddlCountry.DataSource = countryRefValue;
-            ddlCountry.DataBind();  
-        }
+                throw;
+            }
 
-        private void loadDdlAvatarAvailable()
-        {
-            var hasAvatarRefValue = Utils.ApplicationKeyValueRef.GetAll().Where(g => g.Type == "DropDown.HasAvatar").ToList();
-            ddlAvatarAvailable.DataSource = hasAvatarRefValue;
-            ddlAvatarAvailable.DataBind();  
-        }
-
-        private void loadDdlEducation()
-        {
-            var educationRefValue = Utils.ApplicationKeyValueRef.GetAll().Where(g => g.Type == "List.Education").ToList();
-            ddlEducation.DataSource = educationRefValue;
-            ddlEducation.DataBind();  
-        }
-
-        private void loadDdlDrunk()
-        {
-            var drunkRefValue = Utils.ApplicationKeyValueRef.GetAll().Where(g => g.Type == "Dropdown.Drunk").ToList();
-            ddlDrink.DataSource = drunkRefValue;
-            ddlDrink.DataBind();  
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            //gender-fagetage-avatar-material-education-religion-smoke-drink-nation-city-name
-            string query =  ddlGender.SelectedValue + "-" + ddlFromAge.SelectedValue + ddlToAge.SelectedValue + "-" + ddlAvatarAvailable.SelectedValue + "-" + ddlMaritalStatus.SelectedValue + "-" + ddlEducation.SelectedValue + "-" + ddlReligion.SelectedValue + "-" + ddlSmoke.SelectedValue + "-" + ddlDrink.SelectedValue + "-"; 
-            query+= ddlCountry.SelectedValue + "-" + Utils.clsCommon.RemoveDangerousMarks(txtLocation.Text.Trim().Length>=1?txtLocation.Text.Trim().ToLower():"0") + "-" + Utils.clsCommon.RemoveDangerousMarks(txtName.Text.Trim().Length>=1?txtName.Text.Trim().ToLower():"0");
-            string[] arr = query.Split('-');
-            Response.Redirect(HostName + "tinh-yeu-gia-dinh/tim-ban-tim-kiem/" + query + ".aspx");
-        }
-
-
-        protected void loadDdlReligion()
-        {
             try
             {
-                var religionRefValue = Utils.ApplicationKeyValueRef.GetAll().Where(g => g.Type == "List.Religion").ToList();
-                ddlReligion.DataSource = religionRefValue;
-                ddlReligion.DataBind();
+                //gender-fagetage-avatar-material-education-religion-smoke-drink-nation-city-name
+                string query = ddlGender.SelectedValue + "-" + ddlFromAge.SelectedValue + ddlToAge.SelectedValue + "-" + ddlAvatarAvailable.SelectedValue + "-" + ddlMaritalStatus.SelectedValue + "-" + ddlEducation.SelectedValue + "-" + ddlReligion.SelectedValue + "-" + ddlSmoke.SelectedValue + "-" + ddlDrink.SelectedValue + "-";
+                query += ddlCountry.SelectedValue + "-" + ddlLocation.SelectedValue + "-" + Utils.clsCommon.RemoveDangerousMarks(txtName.Text.Trim().Length >= 1 ? txtName.Text.Trim().ToLower() : "0");
+                string[] arr = query.Split('-');
+                Response.Redirect(HostName + "tinh-yeu-gia-dinh/tim-ban-tim-kiem/" + query + ".aspx");
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         protected void GenerateAgeDropDownLists()
         {
-            string age = string.Empty;
-            for (int i = 18; i <= 80; i++)
-            {
-                age = i.ToString();
-                ddlFromAge.Items.Add(new ListItem(age, age));
-                ddlToAge.Items.Add(new ListItem(age, age));
-            }
-        }
-
-        protected void loadDdlGender()
-        {
             try
             {
-                var genderRefValue = Utils.ApplicationKeyValueRef.GetAll().Where(g => g.Type == "Dropdown.Gender").ToList();
-                ddlGender.DataSource = genderRefValue;
-                ddlGender.DataBind();
+                string age = string.Empty;
+                for (int i = 18; i <= 80; i++)
+                {
+                    age = i.ToString();
+                    ddlFromAge.Items.Add(new ListItem(age, age));
+                    ddlToAge.Items.Add(new ListItem(age, age));
+                }
             }
-            catch (Exception) { }
-        }
-
-        protected void ddlGender_DataBinding(object sender, EventArgs e)
-        {
-            ddlGender.DataTextField = "Value";
-            ddlGender.DataValueField = "Key";
-        }
-
-        protected void loadDdlSmoke()
-        {
-            try
+            catch (Exception)
             {
-               var smokeRefValue = Utils.ApplicationKeyValueRef.GetAll().Where(g => g.Type == "Dropdown.Smoke").ToList();
-                ddlSmoke.DataSource = smokeRefValue;
-                ddlSmoke.DataBind();
+
+                throw;
             }
-            catch (Exception){}
         }
 
-        protected void ddlSmoke_DataBinding(object sender, EventArgs e)
+        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlSmoke.DataTextField = "Value";
-            ddlSmoke.DataValueField = "Key";
+            LoadLocationByCountryId(ddlCountry.SelectedValue);
         }
 
-        protected void ddlDrink_DataBinding(object sender, EventArgs e)
+        private void LoadLocationByCountryId(string strCountryId)
         {
-            ddlDrink.DataTextField = "Value";
-            ddlDrink.DataValueField = "Key";
-        }
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var _Location = ctx.LocationRepo.Getter.getEnumerable(l => l.CountryID == int.Parse(strCountryId))
+                    .Select(l => new
+                    {
+                        l.LocationID,
+                        l.LocationName 
+                    }).ToList();
 
-        protected void ddlReligion_DataBinding(object sender, EventArgs e)
-        {
-            ddlReligion.DataTextField = "Value";
-            ddlReligion.DataValueField = "Key";
+                ddlLocation.DataSource = _Location;
+                ddlLocation.DataTextField = "LocationName";
+                ddlLocation.DataValueField = "LocationID";
+                ddlLocation.DataBind();
+            }
         }
-
-        protected void ddlEducation_DataBinding(object sender, EventArgs e)
-        {
-            ddlEducation.DataTextField = "Value";
-            ddlEducation.DataValueField = "Key";
-
-        }
-
-        protected void ddlAvatarAvailable_DataBinding(object sender, EventArgs e)
-        {
-            ddlAvatarAvailable.DataTextField = "Value";
-            ddlAvatarAvailable.DataValueField = "Key";
-        }
-
-        protected void ddlCountry_DataBinding(object sender, EventArgs e)
-        {
-            ddlCountry.DataTextField = "Value";
-            ddlCountry.DataValueField="Key";
-        }
+                         
     }
 }

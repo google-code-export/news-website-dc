@@ -113,14 +113,14 @@ namespace NewsVn.Web.Account.Form
                     newProfile.Nickname = txtNickname.Text.Trim();
                     newProfile.Name = txtName.Text.Trim();
                     newProfile.Age = int.Parse(ddlAge.SelectedValue);
-                    newProfile.Gender = Boolean.Parse(ddlGender.SelectedValue);
+                    newProfile.Gender = int.Parse(ddlGender.SelectedValue);
                     if (!txtLocation.Text.Trim().Equals(string.Empty))
                     {
-                        newProfile.Location = txtLocation.Text.Trim();
+                        newProfile.Location = int.Parse (txtLocation.Text.Trim());
                     }
                     if (!ddlCountry.SelectedValue.Equals(string.Empty))
                     {
-                        newProfile.Country = ddlCountry.SelectedItem.Text;
+                        newProfile.Country = int.Parse(ddlCountry.SelectedItem.Text);
                     }
                     newProfile.Email = txtEmail.Text.Trim();
                     if (!txtPhone.Text.Trim().Equals(string.Empty))

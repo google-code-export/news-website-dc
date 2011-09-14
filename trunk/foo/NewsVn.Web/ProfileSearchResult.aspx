@@ -6,5 +6,5 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:ProfileSearchBox runat="server" />
-    <%--<nsn:RandomProfileBox runat="server" />--%>
+    <nsn:RandomProfileBox runat="server" />
 </asp:Content>
