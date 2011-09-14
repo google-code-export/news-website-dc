@@ -20,6 +20,19 @@ namespace NewsVn.Impl.Context
         private Repository<Entity.UserProfileComment> _userProfileCommentRepo;
         private Repository<Entity.Video> _videoRepo;
         private Repository<Entity.KeyValueRef> _keyValueRefRepo;
+        private Repository<Entity.Location> _locationRepo;
+
+        public Repository<Entity.Location> LocationRepo
+        {
+            get
+            {
+                if (_locationRepo == null)
+                {
+                    _locationRepo = new Repository<Entity.Location>(_ctx);
+                }
+                return _locationRepo;
+            }
+        }
 
         public Repository<Entity.AdBox> AdBoxRepo
         {
