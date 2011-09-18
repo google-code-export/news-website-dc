@@ -77,7 +77,7 @@ namespace NewsVn.Web
             }
             catch (Exception)
             {
-                throw;
+                //throw;
             }
         }
 

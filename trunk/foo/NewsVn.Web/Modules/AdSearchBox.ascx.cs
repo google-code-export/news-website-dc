@@ -13,17 +13,17 @@ namespace NewsVn.Web.Modules
         {
 
         }
-
+               
         protected void lnkbtnSearchAd_Click(object sender, EventArgs e)
         {
-            string SearchText = Server.UrlEncode(Utils.clsCommon.RemoveUnicodeMarks(Utils.clsCommon.RemoveDangerousMarks(txtSearch.Text.Trim())));
+            string SearchText = Server.UrlEncode(Utils.clsCommon.RemoveUnicodeMarks(Utils.clsCommon.RemoveDangerousMarks(txtSearch.Text.Trim()))).Replace('-',' ');
             string Region = ddlLocation.SelectedIndex.ToString ();
-            string dateFrom = txtAdFromDate.Text;
-            string dateTo = txtAdToDate.Text;
-            Response.Redirect("SearchAdResult.aspx?searchtext=" + SearchText + "&region=" + Region + "&datefrom=" + dateFrom + "&dateto="+dateTo );
-            //string dateFrom = txtAdFromDate.Text.Replace("/", "-");
-            //string dateTo = txtAdToDate.Text.Replace("/", "-");
-            //Response.Redirect("~/rao-nhanh/tim-kiem/" + SearchText + "/" + Region + "/" + dateFrom + "/" + dateTo);
+            string dateFrom = txtAdFromDate.Text.Replace("/","_");
+            string dateTo = txtAdToDate.Text.Replace("/", "_");
+            string requestUrl = SearchText + "-" + Region + "-" + dateFrom + "-" + dateTo;
+            //Response.Redirect("SearchAdResult.aspx?searchtext=" + SearchText + "&region=" + Region + "&datefrom=" + dateFrom + "&dateto=" + dateTo);
+            Response.Redirect("SearchAdResult.aspx?keysearch=" + requestUrl);
+            Response.Redirect(HostName + "rao-nhanh/timkiem/" + requestUrl + ".aspx");
         }
     }
 }

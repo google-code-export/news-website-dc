@@ -36,8 +36,17 @@ namespace NewsVn.Web.Modules
 
         private void LoadConversation()
         {
-            lvConversation.DataSource = DataSource;
-            lvConversation.DataBind();
+            try
+            {
+                lvConversation.DataSource = DataSource;
+                lvConversation.DataBind();
+            }
+            catch (Exception)
+            {
+                
+                //throw;
+            }
+            
         }
 
         protected void lvConversation_PagePropertiesChanged(object sender, EventArgs e)
