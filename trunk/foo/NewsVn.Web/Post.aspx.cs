@@ -52,8 +52,7 @@ namespace NewsVn.Web
 
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var postData = ctx.PostRepo.Getter.getOne(p => p.ID == postID);
-                var _UserProfiles = ctx.UserProfileRepo.Getter.getOne(u => u.Account=="1");
+                var postData = ctx.PostRepo.Getter.getOne(p => p.ID == postID);                
                 var postComment = ctx.PostCommentRepo.Getter
                     .getQueryable(pc => pc.Post.ID == postID && pc.UpdatedOn <= DateTime.Now)
                     .Select(pc => new
