@@ -24,12 +24,14 @@ namespace NewsVn.Web
         {
             try
             {
-                string searchText = Request.QueryString["searchtext"].ToString().Replace("-", " ");
-                string location = Request.QueryString["region"];
-                //string strDateFrom = Request.QueryString["datefrom"].ToString().Replace("-","/");
-                //string strDateTo = Request.QueryString["dateto"].ToString().Replace("-", "/");
-                string strDateFrom = Request.QueryString["datefrom"].ToString();
-                string strDateTo = Request.QueryString["dateto"].ToString();
+
+                string requestUrl = Request.QueryString["keysearch"];
+                string [] searchArgs  = requestUrl.Split('-');
+
+                string searchText = searchArgs[0];
+                string location = searchArgs[1];
+                string strDateFrom = searchArgs[2].Replace('_','/');
+                string strDateTo = searchArgs[3].Replace('_', '/');
                 strDateFrom = (strDateFrom != "") ? strDateFrom : "01/01/1970";
                 strDateTo = (strDateTo != "") ? strDateTo : DateTime.Now.ToShortDateString();
 

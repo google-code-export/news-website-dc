@@ -17,6 +17,7 @@ namespace NewsVn.Web.Modules
                 if (!IsPostBack)
                 {
                     GenerateAgeDropDownLists();
+                    LoadLocation();
                     Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlCountry, "Dropdown.Nation");
                     Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlGender, "Dropdown.Gender");
                     Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlEducation, "Dropdown.Education");
@@ -74,7 +75,7 @@ namespace NewsVn.Web.Modules
 
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadLocationByCountryId(ddlCountry.SelectedValue);
+            //LoadLocationByCountryId(ddlCountry.SelectedValue);
         }
 
         private void LoadLocationByCountryId(string strCountryId)
@@ -86,6 +87,24 @@ namespace NewsVn.Web.Modules
                     {
                         l.LocationID,
                         l.LocationName 
+                    }).ToList();
+
+                ddlLocation.DataSource = _Location;
+                ddlLocation.DataTextField = "LocationName";
+                ddlLocation.DataValueField = "LocationID";
+                ddlLocation.DataBind();
+            }
+        }
+
+        private void LoadLocation()
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var _Location = ctx.LocationRepo.Getter.getEnumerable()
+                    .Select(l => new
+                    {
+                        l.LocationID,
+                        l.LocationName
                     }).ToList();
 
                 ddlLocation.DataSource = _Location;

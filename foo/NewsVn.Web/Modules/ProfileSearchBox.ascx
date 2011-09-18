@@ -4,13 +4,17 @@
 <script type="text/javascript">
     $(function () {
         var selector = "#<%= ddlAvatarAvailable.ClientID %>, #<%= ddlMaritalStatus.ClientID %>,"
-            + "#<%= ddlEducation.ClientID %>, #<%= ddlReligion.ClientID %>, #<%= ddlCountry.ClientID %>";
+            + "#<%= ddlEducation.ClientID %>, #<%= ddlReligion.ClientID %>, #<%= ddlCountry.ClientID %>, #<%= ddlLocation.ClientID %>";
         $(selector).selectmenu({ width: "274px" });
         $(selector).each(function () {
             $("#" + $(this).attr("id") + "-menu").width(280);
         });
         $("#<%= ddlCountry.ClientID %>-button .ui-selectmenu-icon").click(function () {
             $("#<%= ddlCountry.ClientID %>-menu").css({ "zIndex": 100 });
+        });
+
+        $("#<%= ddlLocation.ClientID %>-button .ui-selectmenu-icon").click(function () {
+            $("#<%= ddlLocation.ClientID %>-menu").css({ "zIndex": 100 });
         });
 
         selector = "#<%= ddlGender.ClientID %>, #<%= ddlSmoke.ClientID %>, #<%= ddlDrink.ClientID %>";

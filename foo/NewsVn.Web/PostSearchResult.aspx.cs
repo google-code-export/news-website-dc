@@ -51,7 +51,7 @@ namespace NewsVn.Web
                     .Select(p => new
                     {
                         p.Title,
-                        p.SeoUrl,
+                        SeoUrl=HostName+ p.SeoUrl,
                         p.Description,
                         p.ApprovedOn,
                         p.Avatar,
