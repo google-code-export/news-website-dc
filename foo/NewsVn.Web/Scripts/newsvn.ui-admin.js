@@ -168,14 +168,31 @@ function refineTableStyles() {
 }
 
 function refineSideMenu() {
+    var addIcons = function () {
+        $(".side_main_menu").each(function () {
+            if ($(this).find("ul").size() > 0) {
+                if ($(this).find(":hidden").size() > 0) {
+                    $(this).css({ "background": "url('data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAJCAYAAAARml2dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAA7SURBVHjaYvz//z8DNsDCwMDAsJefFybLyMDAwOD88TMDE5pCuHYmLKb8xyXBQLIEIzYJRjgDlz8AAwDteQwN3zCTVAAAAABJRU5ErkJggg%3D%3D') no-repeat 162px 8px" });
+                } else {
+                    $(this).css({ "background": "url('data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAGCAYAAAARx7TFAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAA4SURBVHjaYvz//z8DIcDCwMDAsJefF6dK54+fGZkYiAAwRYw45BmRFWFTCOczEuNwAAAAAP//AwCQbwoLdwHTAwAAAABJRU5ErkJggg%3D%3D') no-repeat 162px 8px" });
+                }
+            }
+        });
+    };    
     $(".side_main_menu").click(function () {
-        $(this).find("ul").slideToggle(500);
+        $(this).find("ul").slideToggle(500, function () {
+            addIcons();
+        });
+    });
+    $(".side_main_menu a").click(function (e) {
+        e.stopPropagation();
     });
     $(".side_main_menu").each(function () {
         if ($(this).children("a").hasClass("selected") || $(this).find("li a").hasClass("selected")) {
             $(this).find("ul").show();
         }
     });
+    addIcons();
 }
 
 function confirmAction(msg) {
