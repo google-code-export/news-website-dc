@@ -8,7 +8,7 @@
                 <asp:HyperLink CssClass="add-post" NavigateUrl="~/Account/SiteAdmin/Post/AddPost.aspx" Text="Thêm tin mới" runat="server" />
             </li>
             <li>
-                <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ManageSpecialEventNews.aspx" Text="Quản lý sự kiện nổi bật" runat="server" />
+                <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ManageSpecialEventNews.aspx" Text="Sự kiện nổi bật" runat="server" />
             </li>
             <li>
                 <asp:HyperLink CssClass="view-category" NavigateUrl="~/Account/SiteAdmin/Post/ViewCategory.aspx" Text="Quản lý chủ đề" runat="server" />
@@ -19,40 +19,30 @@
         </ul>
     </li>
     <li class="side_main_menu">
-        <asp:HyperLink NavigateUrl="#" Text="Quản lý rao nhanh" runat="server" />
+        <asp:HyperLink CssClass="view-adpost" NavigateUrl="~/Account/SiteAdmin/AdPost/ViewAdPost.aspx" Text="Quản lý rao nhanh" runat="server" />
+    </li>
+    <li class="side_main_menu">
+        <asp:HyperLink CssClass="view-video" NavigateUrl="~/Account/SiteAdmin/Video/ViewVideo.aspx" Text="Quản lý Video clip" runat="server" />
         <ul style="margin-left:10px;display:none">
             <li>
-                <asp:HyperLink NavigateUrl="#" Text="Thêm rao nhanh mới" runat="server" />
+                <asp:HyperLink CssClass="add-video" NavigateUrl="~/Account/SiteAdmin/Video/AddVideo.aspx" Text="Thêm Video clip mới" runat="server" />
             </li>
             <li>
-                <asp:HyperLink NavigateUrl="#" Text="Quản lý chủ đề" runat="server" />
+                <asp:HyperLink CssClass="view-video-category" NavigateUrl="~/Account/SiteAdmin/Video/ViewCategory.aspx" Text="Quản lý chủ đề" runat="server" />
             </li>
         </ul>
     </li>
     <li class="side_main_menu">
-        <asp:HyperLink NavigateUrl="#" Text="Quản lý Video clip" runat="server" />
-        <ul style="margin-left:10px;display:none">
-            <li>
-                <asp:HyperLink NavigateUrl="#" Text="Thêm Video clip mới" runat="server" />
-            </li>
-            <li>
-                <asp:HyperLink NavigateUrl="#" Text="Quản lý chủ đề" runat="server" />
-            </li>
-        </ul>
+        <asp:HyperLink CssClass="view-guest" NavigateUrl="~/Account/SiteAdmin/Guest/ViewGuest.aspx" Text="Quản lý tìm bạn" runat="server" />
     </li>
     <li class="side_main_menu">
-        <asp:HyperLink NavigateUrl="#" Text="Quản lý tìm bạn" runat="server" />
+        <asp:HyperLink NavigateUrl="javascript:void(0)" Text="Quản lý khác" runat="server" />
         <ul style="margin-left:10px;display:none">
             <li>
-            
+                <asp:HyperLink CssClass="view-adbox" NavigateUrl="~/Account/SiteAdmin/Misc/ViewAdBox.aspx" Text="Banner quảng cáo" runat="server" />
             </li>
-        </ul>
-    </li>
-    <li class="side_main_menu">
-        <asp:HyperLink NavigateUrl="#" Text="Quản lý khác" runat="server" />
-        <ul style="margin-left:10px;display:none">
             <li>
-            
+                <asp:HyperLink CssClass="view-videobox" NavigateUrl="~/Account/SiteAdmin/Misc/ViewVideoBox.aspx" Text="Video quảng cáo" runat="server" />
             </li>
         </ul>
     </li>
