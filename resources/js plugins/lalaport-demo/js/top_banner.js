@@ -325,7 +325,7 @@
 					timeout = clearTimeout(timeout);
 				}
 				timeout = setTimeout(function() {
-					//slideTo(i + 1);
+					slideTo(i + 1);
 				}, $(this).attr("itv"));				
 			});
 		});
