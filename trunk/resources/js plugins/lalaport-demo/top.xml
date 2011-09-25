@@ -56,16 +56,6 @@
 			<end><![CDATA[]]></end>
 			<visible>true</visible>
 		</item>
-		<item>
-			<main_path>/image/watashiwohareni_banner.jpg</main_path>
-			<thumbnail_path>/image/watashiwohareni_topbanner.jpg</thumbnail_path>
-			<url></url>
-			<target><![CDATA[]]></target>
-			<time>3</time>
-			<title></title>
-			<start><![CDATA[]]></start>
-			<end><![CDATA[]]></end>
-			<visible>true</visible>
-		</item>
+
 	</items>
 </root>
