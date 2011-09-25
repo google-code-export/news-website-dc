@@ -14,6 +14,7 @@
             });
         });
     </script>
+	
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" Runat="Server">
     <nsn:SpecialAdPostsPortlet ID="pletSpecialAds" runat="server" />
