@@ -7,7 +7,7 @@
     <role name="siteadmin">
         <default-url><![CDATA[~/account/siteadmin/]]></default-url>
     </role>
-    <role name="mod">
+    <role name="editor">
         <default-url><![CDATA[~/account/editor/]]></default-url>
     </role>
     <role name="guest">
