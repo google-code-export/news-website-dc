@@ -11,7 +11,7 @@
     <script type="text/javascript">
         $(function () {
             $("#content").css({ "min-height": "120px" });
-            $(".ui-winzard-side-bar a:not(:hidden)").each(function (i) {
+            $(".ui-winzard-side-bar table a:not(:hidden)").each(function (i) {
                 $(this).text(function (idx, txt) {
                     return (i + 1) + ". " + txt;
                 });
@@ -66,11 +66,11 @@
 <asp:Content ContentPlaceHolderID="body" runat="server">
     <div class="portlet" style="margin:0">
         <h2><asp:Literal ID="ltrTitle" runat="server" /></h2>        
-        <asp:Wizard ID="wzUserSignUp" CssClass="ui-wizard left" DisplaySideBar="true" runat="server"           
+        <asp:Wizard ID="wzUserSignUp" CssClass="ui-wizard left" runat="server"           
             OnActiveStepChanged="wzUserSignUp_OnActiveStepChanged">
             <SideBarStyle CssClass="ui-winzard-side-bar" />
             <WizardSteps>
-                <asp:WizardStep StepType="Start" AllowReturn="false" Title="Đăng ký tài khoản mới" runat="server">                    
+                <asp:WizardStep StepType="Start" Title="Đăng ký tài khoản mới" runat="server">                    
                     <ul id="accountform_box" class="ui-form ui-widget" style="width:480px">
                         <li style="border-bottom:1px dotted #333;">
                             Các thông tin bắt buộc để khởi tạo tài khoản
@@ -128,19 +128,21 @@
                             <asp:TextBox ID="txtName" Width="352" CssClass="validate[required]" MaxLength="150" runat="server" />
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="" Text="Tuổi:" Width="110" runat="server" />
+                            <asp:Label AssociatedControlID="ddlAge" Text="Tuổi:" Width="110" runat="server" />
                             <asp:DropDownList ID="ddlAge" runat="server" />
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="" Text="Giới tính:" Width="110" runat="server" />
+                            <asp:Label AssociatedControlID="ddlGender" Text="Giới tính:" Width="110" runat="server" />
                             <asp:DropDownList ID="ddlGender" runat="server">
-                                <asp:ListItem Value="True" Text="Nam" />
-                                <asp:ListItem Value="False" Text="Nữ" />
+                             <asp:ListItem Value="0" Text="[Chọn giới tính]" />
+                            <asp:ListItem Value="1" Text="Nam" />
+                            <asp:ListItem Value="2" Text="Nữ" />
                             </asp:DropDownList>
                         </li>
                         <li>
-                            <asp:Label AssociatedControlID="txtLocation" Text="Tỉnh/Thành phố:" Width="110" runat="server" />
-                            <asp:TextBox ID="txtLocation" Width="352" MaxLength="200" runat="server" />
+                            <asp:Label AssociatedControlID="ddlLocation" Text="Tỉnh/Thành phố:" Width="110" runat="server" />
+                            <%--<asp:TextBox ID="txtLocation" Width="352" MaxLength="200" runat="server" />--%>
+                             <asp:DropDownList ID="ddlLocation" runat="server"/>
                         </li>
                         <li>
                             <asp:Label AssociatedControlID="ddlCountry" Text="Quốc gia:" Width="110" runat="server" />
@@ -407,7 +409,7 @@
                 </asp:WizardStep>
                 <asp:WizardStep StepType="Complete" Title="Hoàn tất đăng ký" runat="server">
                     <ul class="ui-form ui-widget">                    
-                        <%= string.Format(InfoBar, "Bạn đã đăng ký thành công. Xem hồ sơ của bạn <a href='" + HostName + "tinh-yeu-gia-dinh/tai-khoan/quan-ly-tai-khoan.aspx'><b>tại đây</b></a>.") %>
+                        <%= string.Format(InfoBar, "Bạn đã đăng ký thành công. Xem hồ sơ của bạn <a href='" + HostName + "account/form/redirector.aspx'><b>tại đây</b></a>.") %>
                     </ul>
                 </asp:WizardStep>
             </WizardSteps>

@@ -23,6 +23,9 @@ namespace NewsVn.Web.Account.Form
             if (!IsPostBack)
             {
                 ltrTitle.Text = wzUserSignUp.ActiveStep.Title;
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlGender, "Dropdown.Gender");
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlCountry, "Dropdown.Nation");
+                LoadLocation();
             }
         }
 
@@ -114,13 +117,13 @@ namespace NewsVn.Web.Account.Form
                     newProfile.Name = txtName.Text.Trim();
                     newProfile.Age = int.Parse(ddlAge.SelectedValue);
                     newProfile.Gender = int.Parse(ddlGender.SelectedValue);
-                    if (!txtLocation.Text.Trim().Equals(string.Empty))
+                    if (!ddlLocation.SelectedValue.Equals(string.Empty))
                     {
-                        newProfile.Location = int.Parse (txtLocation.Text.Trim());
+                        newProfile.Location = int.Parse(ddlLocation.SelectedValue);
                     }
                     if (!ddlCountry.SelectedValue.Equals(string.Empty))
                     {
-                        newProfile.Country = int.Parse(ddlCountry.SelectedItem.Text);
+                        newProfile.Country = int.Parse(ddlCountry.SelectedValue);
                     }
                     newProfile.Email = txtEmail.Text.Trim();
                     if (!txtPhone.Text.Trim().Equals(string.Empty))
@@ -139,6 +142,23 @@ namespace NewsVn.Web.Account.Form
             catch (Exception)
             {
                 ltrInitInfoError.Text = string.Format(ErrorBar, "Không thể khởi tạo hồ sơ. Vui lòng thử lại.");
+            }
+        }
+        private void LoadLocation()
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var _Location = ctx.LocationRepo.Getter.getEnumerable(p => p.CountryID != 0)
+                    .Select(l => new
+                    {
+                        l.LocationID,
+                        l.LocationName
+                    }).ToList();
+
+                ddlLocation.DataSource = _Location;
+                ddlLocation.DataTextField = "LocationName";
+                ddlLocation.DataValueField = "LocationID";
+                ddlLocation.DataBind();
             }
         }
     }
