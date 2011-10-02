@@ -45,6 +45,59 @@ namespace NewsVn.Web.Utils
             ddl.DataValueField = "Key";
             ddl.DataBind();    
         }
-              
+        /// <summary>
+        /// get location by parentID | 02/10/2011
+        /// </summary>
+        /// <param name="ddl">ddl control</param>
+        /// <param name="ParentID">int value</param>
+        public static void LoadLocation(DropDownList ddl, int ParentID, bool isSelectAllCountry)
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var _Location = ctx.LocationRepo.Getter.getEnumerable()
+                    .Select(l => new
+                    {
+                        l.LocationID,
+                        l.LocationName,
+                        l.CountryID
+                    }).Take(0).ToList();
+                if (isSelectAllCountry)
+                {
+                    _Location = _Location.Where(p => p.CountryID == ParentID).Select(l => new
+                    {
+                        l.LocationID,
+                        l.LocationName,
+                        l.CountryID
+                    }).ToList();
+                }
+                else
+                {
+                    _Location = _Location.Where(p => p.CountryID != ParentID).Select(l => new
+                    {
+                        l.LocationID,
+                        l.LocationName,
+                        l.CountryID
+                    }).ToList();
+                }
+                ddl.DataSource = _Location;
+                ddl.DataTextField = "LocationName";
+                ddl.DataValueField = "LocationID";
+                ddl.DataBind();
+            }
+        }
+
+        /// <summary>
+        /// return (string) location Name by LocationID | 02/10/2011
+        /// </summary>
+        /// <param name="ParentID">int Location ID</param>
+        public static string getLocationNameByID(int LocationID) {
+            var  LocationName = "";
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var _Location = ctx.LocationRepo.Getter.getOne(l => l.LocationID == LocationID);
+                LocationName = _Location.LocationName;
+            }
+            return LocationName;
+        }
     }
 }
