@@ -99,6 +99,18 @@ a
     border-bottom: 1px solid #ffb4ae;
 }
 
+.ui-table .sorted-asc,
+.ui-table .sorted-desc
+{
+    text-indent: 15px;
+    background: url('data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABISURBVHjaYvz//z8DuYCJgQIwHDXv5efFG5qM6KG9l58XxkSWYGRgYGBw/viZKJv/E+Dj1PyfSAMpCzDG0RRGGgAAAAD//wMAnZYS582abu8AAAAASUVORK5CYII%3D') no-repeat 0 50%;
+}
+
+.ui-table .sorted-desc
+{
+    background: url('data:application/octet-stream;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABHSURBVHjaYvz//z8DuYCJgQIwRDWzoAvs5efFGYLOHz8z0tTZjDjUMhLrZ0aiDPz//z9OvIeP5z8+ecbRFEYaAAAAAP//AwDHvzXGNyZXOAAAAABJRU5ErkJggg%3D%3D') no-repeat 0 50%;
+}
+
 .ui-table-toolbar
 {
     background: #FFFFFF;
