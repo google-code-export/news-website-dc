@@ -12,6 +12,8 @@ namespace NewsVn.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             if (!IsPostBack)
             {
                 string strAcc = Request.QueryString["acc"];
@@ -22,10 +24,18 @@ namespace NewsVn.Web
                 myConversation.CurrentAccount = strAcc;
                 myConversation.DataBind();
             }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void load_UserProfileDetailsByAccount(string Account)
         {
+            try
+            {
             using (var ctx=new NewsVnContext(ApplicationManager.ConnectionString))
             {
                 var _UserProfiles = ctx.UserProfileRepo.Getter.getOne(u => u.Account.Equals(Account, StringComparison.OrdinalIgnoreCase));
@@ -37,6 +47,11 @@ namespace NewsVn.Web
                 BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
                 _UserProfiles = null;
 
+            }
+            }
+            catch 
+            {
+                             
             }
         }
 

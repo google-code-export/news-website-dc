@@ -64,8 +64,10 @@
         <li class="commands">            
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
-                    <asp:HyperLink ID="HyperLink1" CssClass="button-login right" Text="Đăng nhập để gởi tin" runat="server"
-                        NavigateUrl="~/account/form/login.aspx" style="margin:0" />
+                    <%--<asp:HyperLink ID="HyperLink1" CssClass="button-login right" Text="Đăng nhập để gởi tin" runat="server"
+                        NavigateUrl='<%= HostName+ "tinh-yeu-gia-dinh/tim-ban/dang-nhap.aspx" %>' style="margin:0" />--%>
+                        <div class="button-login right"><a  href='<%=HostName + "tai-khoan/dang-nhap.aspx"%>' >Đăng nhập để gởi tin</a></div>
+
                 </AnonymousTemplate>
                 <RoleGroups>
                     <asp:RoleGroup Roles="Guest">

@@ -23,12 +23,12 @@ namespace NewsVn.Web
         private void load_PletUserProfileList()
         {
             //xu ly paging trong khoang vd: <<< 95 96 97 98 99 100 >>>
-            using (var ctx =new  NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 var data = ctx.UserProfileRepo.Getter.getQueryable(u => u.Description != null).OrderByDescending(u => u.Account)
                 .Select(u => new
                 {
-                    Account=u.Account,
+                    Account = u.Account,
                     u.Age,
                     Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
                     u.UpdatedOn,
@@ -47,7 +47,7 @@ namespace NewsVn.Web
         }
         private void load_RandomUserProfile()
         {
-            using (var ctx =new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 Random x = new Random();
                 var _UserProfiles_var = ctx.UserProfileRepo.Getter.getQueryable();
@@ -55,7 +55,7 @@ namespace NewsVn.Web
                      .Select(u => new
                      {
                          layoutPosition = "",
-                         Account=u.Account,
+                         Account = u.Account,
                          u.Age,
                          Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
                          u.UpdatedOn,
@@ -92,23 +92,30 @@ namespace NewsVn.Web
                 pletRandomProfile.DataBind();
                 cloneDataStructure = null;
             }
-            
+
         }
         private string GetLocationByLocationID(int intLocationID)
         {
-            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            try
             {
-                var _Location = ctx.LocationRepo.Getter.getOne(e=>e.LocationID==intLocationID).LocationName;
-                if (_Location != "")
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
-                    return _Location.ToString();
+                    var _Location = ctx.LocationRepo.Getter.getOne(e => e.LocationID == intLocationID).LocationName;
+                    if (_Location != "")
+                    {
+                        return _Location.ToString();
+
+                    }
+                    else
+                    {
+                        return "";
+                    }
 
                 }
-                else
-                {
-                    return "";                    
-                }
-
+            }
+            catch 
+            {
+                return "";
             }
         }
     }

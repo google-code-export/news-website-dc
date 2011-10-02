@@ -9,7 +9,7 @@ using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class ProfileCommentBox : System.Web.UI.UserControl
+    public partial class ProfileCommentBox : BaseUI.BaseModule
     {
 
         public object Datasource { get; set; }
