@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdSearchBox.ascx.cs" Inherits="NewsVn.Web.Modules.AdSearchBox" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdSearchBox.ascx.cs"
+    Inherits="NewsVn.Web.Modules.AdSearchBox" %>
 <script type="text/javascript">
     $(function () {
         var initText = "Tìm rao vặt...";
@@ -31,37 +31,42 @@
         searchInput.css({ "font-style": "italic" });
     }
 </script>
-
 <div class="side-part adpost-search portlet">
-	<h2>Tìm kiếm</h2>
-	<ul class="ui-form ui-widget">
-        <li class="head">
-            <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" />
-        </li>
-        <li>
-            <asp:DropDownList ID="ddlLocation" runat="server">
-                <asp:ListItem Text="Toàn quốc" />
-                <asp:ListItem Text="Hà Nội" />
-                <asp:ListItem Text="Hồ Chí Minh" />
-                <asp:ListItem Text="Các tỉnh miền Bắc" />
-                <asp:ListItem Text="Các tỉnh miền Nam" />
-            </asp:DropDownList>
-        </li>
-        <li>
-            <p style="margin-top:0">Tìm từ ngày - đến ngày:</p>
-            <div class="textbox-icon left">
-                <asp:TextBox ID="txtAdFromDate" CssClass="datepicker" style="width:125px" runat="server" />
-            </div>
-            <div class="textbox-icon right">
-                <asp:TextBox ID="txtAdToDate" CssClass="datepicker" style="width:125px" runat="server" />
-            </div>
-            <div class="clear"></div>
-        </li>
-        <li class="command">
-            <a href='<%=HostName +"rao-nhanh-dang-ky.aspx" %>' class="button left">Đăng mới</a>
-            <asp:LinkButton ID="lnkbtnSearchAd" Text="Tìm" CssClass="button-search right" 
-                style="margin-right:0;" runat="server" onclick="lnkbtnSearchAd_Click" />
-            <div class="clear"></div>
-        </li>
-    </ul>
+    <h2>
+        Tìm kiếm</h2>
+    <asp:Panel ID="Panel1" DefaultButton="lnkbtnSearchAd" runat="server">
+        <ul class="ui-form ui-widget">
+            <li class="head">
+                <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" />
+            </li>
+            <li>
+                <asp:DropDownList ID="ddlLocation" runat="server">
+                    <asp:ListItem Text="Toàn quốc" />
+                    <asp:ListItem Text="Hà Nội" />
+                    <asp:ListItem Text="Hồ Chí Minh" />
+                    <asp:ListItem Text="Các tỉnh miền Bắc" />
+                    <asp:ListItem Text="Các tỉnh miền Nam" />
+                </asp:DropDownList>
+            </li>
+            <li>
+                <p style="margin-top: 0">
+                    Tìm từ ngày - đến ngày:</p>
+                <div class="textbox-icon left">
+                    <asp:TextBox ID="txtAdFromDate" CssClass="datepicker" Style="width: 125px" runat="server" />
+                </div>
+                <div class="textbox-icon right">
+                    <asp:TextBox ID="txtAdToDate" CssClass="datepicker" Style="width: 125px" runat="server" />
+                </div>
+                <div class="clear">
+                </div>
+            </li>
+            <li class="command"><a href='<%=HostName +"rao-nhanh-dang-ky.aspx" %>' class="button left">
+                Đăng mới</a>
+                <asp:LinkButton ID="lnkbtnSearchAd" Text="Tìm" CssClass="button-search right" Style="margin-right: 0;"
+                    runat="server" OnClick="lnkbtnSearchAd_Click" />
+                <div class="clear">
+                </div>
+            </li>
+        </ul>
+    </asp:Panel>
 </div>
