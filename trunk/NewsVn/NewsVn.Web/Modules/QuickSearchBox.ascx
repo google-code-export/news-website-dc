@@ -31,8 +31,10 @@
 <div class="side-part portlet">
 	<h2>Tìm kiếm</h2>
 	<div class="textbox-icon" style="height:30px">
-        <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" Width="268px" />
+      <asp:Panel ID="Panel1" DefaultButton="lnkbtnSearch" runat="server">
+      <asp:TextBox ID="txtSearch" CssClass="search-input" runat="server" Width="268px" />
         &nbsp;<asp:LinkButton ID="lnkbtnSearch" CssClass="ui-icon ui-icon-search" 
             runat="server" onclick="lnkbtnSearch_Click" />
+      </asp:Panel>
     </div>
 </div>
