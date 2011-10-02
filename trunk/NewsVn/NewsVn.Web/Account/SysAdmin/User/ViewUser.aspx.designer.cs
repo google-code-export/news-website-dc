@@ -76,31 +76,22 @@ namespace NewsVn.Web.Account.SysAdmin.User {
         protected global::System.Web.UI.WebControls.LinkButton btnRefresh;
         
         /// <summary>
-        /// ddlFilterColumn control.
+        /// ddlSortColumn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFilterColumn;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortColumn;
         
         /// <summary>
-        /// txtFilterText control.
+        /// ddlSortDirection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilterText;
-        
-        /// <summary>
-        /// btnFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnFilter;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortDirection;
         
         /// <summary>
         /// ddlPageIndex control.
@@ -121,12 +112,12 @@ namespace NewsVn.Web.Account.SysAdmin.User {
         protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
         
         /// <summary>
-        /// rptUserList control.
+        /// lvUserList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUserList;
+        protected global::System.Web.UI.WebControls.ListView lvUserList;
     }
 }

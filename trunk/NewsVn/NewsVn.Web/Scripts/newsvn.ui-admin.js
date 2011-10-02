@@ -135,7 +135,7 @@ $(function () {
 function fixLayoutContent() {
     $("#main_content").css({ width: $(window).width() - $("#side_content").width() - 30 });
     $("#side_content").css({ height: $(window).height() });
-    $(".ui-table-toolbar").css({ width: $(".ui-table-toolbar + .ui-table, .ui-table-toolbar + div .ui-table").width() + 2 });
+    $(".ui-table-toolbar").css({ width: $("#main_content").width() + "px" });
     $(".ui-table").css({ "margin-top": $(".ui-table-toolbar").height() + 10 });
     $(".portlet").css({ width: $(".ui-form.main").width() });
 }

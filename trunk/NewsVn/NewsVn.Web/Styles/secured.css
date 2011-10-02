@@ -99,6 +99,18 @@ a
     border-bottom: 1px solid #ffb4ae;
 }
 
+.ui-table .empty
+{
+    border: 1px solid #ffb4ae;
+}
+
+.ui-table .empty td
+{
+    padding: 5px;
+    text-align: center;
+    font-style: italic;    
+}
+
 .ui-table .sorted-asc,
 .ui-table .sorted-desc
 {
