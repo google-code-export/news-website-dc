@@ -8,7 +8,7 @@
         <default-url><![CDATA[~/account/siteadmin/]]></default-url>
     </role>
     <role name="mod">
-        <default-url><![CDATA[~/account/mod/]]></default-url>
+        <default-url><![CDATA[~/account/editor/]]></default-url>
     </role>
     <role name="guest">
         <default-url><![CDATA[~/account/guest/]]></default-url>
