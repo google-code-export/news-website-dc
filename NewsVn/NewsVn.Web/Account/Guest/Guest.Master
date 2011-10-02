@@ -29,12 +29,7 @@
             <asp:Image ImageUrl="~/Images/logo.jpg" Width="200" runat="server" />
         </a>
         <div class="wrapper">            
-            <asp:LoginView runat="server">
-            <LoggedInTemplate>
-                Tài khoản: <asp:LoginName Font-Bold="true" runat="server" /> |
-                <asp:LoginStatus LogoutPageUrl="~/trang-chu.aspx" LogoutText="Thoát" runat="server" />
-            </LoggedInTemplate>
-            </asp:LoginView>        
+            <nsn:Account_LoginBar runat="server" />   
             <asp:ContentPlaceHolder ID="sideContent" runat="server" />
         </div>       
     </div>
