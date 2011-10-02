@@ -34,19 +34,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CuteEditor">
-      <HintPath>..\..\resources\assemblies\CuteEditor\CuteEditor.dll</HintPath>
+      <HintPath>..\..\..\TINH VAN 2010\BNV_SBS\source\Bin\CuteEditor.dll</HintPath>
     </Reference>
     <Reference Include="CuteEditor.ImageEditor">
-      <HintPath>..\..\resources\assemblies\CuteEditor\CuteEditor.ImageEditor.dll</HintPath>
+      <HintPath>..\..\..\TINH VAN 2010\BNV_SBS\source\Bin\CuteEditor.ImageEditor.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
-      <HintPath>..\..\resources\assemblies\Elmah.dll</HintPath>
+      <HintPath>..\..\..\NEWSVN\SVN\resources\assemblies\Elmah.dll</HintPath>
     </Reference>
     <Reference Include="Intelligencia.UrlRewriter">
-      <HintPath>..\..\resources\assemblies\Intelligencia.UrlRewriter.dll</HintPath>
+      <HintPath>..\..\..\NEWSVN\SVN\resources\assemblies\Intelligencia.UrlRewriter.dll</HintPath>
     </Reference>
     <Reference Include="NetSpell.SpellChecker">
-      <HintPath>..\..\resources\assemblies\CuteEditor\NetSpell.SpellChecker.dll</HintPath>
+      <HintPath>C:\wwwSourceFromHost\Newsvn\httpdocs_1809\bin\NetSpell.SpellChecker.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,7 +63,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Vietstream.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\resources\assemblies\Vietstream.Data.dll</HintPath>
+      <HintPath>..\..\..\NEWSVN\SVN\resources\assemblies\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1777,18 +1777,21 @@
   <ItemGroup>
     <Compile Include="Account\Editor\Editor.Master.cs">
       <DependentUpon>Editor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\Editor\Editor.Master.designer.cs">
       <DependentUpon>Editor.Master</DependentUpon>
     </Compile>
     <Compile Include="Account\Editor\Post\AddPost.aspx.cs">
       <DependentUpon>AddPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\Editor\Post\AddPost.aspx.designer.cs">
       <DependentUpon>AddPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Editor\Post\ViewPost.aspx.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\Editor\Post\ViewPost.aspx.designer.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>
