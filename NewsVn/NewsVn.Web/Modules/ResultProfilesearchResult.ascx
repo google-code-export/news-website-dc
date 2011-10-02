@@ -22,7 +22,7 @@
                         <b>Biệt danh:</b> '<%#Eval("Nickname")%>'<br />
                         <b>Giới tính/Tuổi:</b> '<%#Eval("Gender")%>'/'<%#Eval("Age")%>'<br />
                         <b>Chỗ ở:</b> '<%#Eval("Location")%>'<br/>
-						<b>Chi tiết:</b> <a href="../tinh-yeu-gia-dinh/tim-ban/ho-so/<%#Eval("Account")%>'.aspx">Xem hồ sơ</a>
+						<b>Chi tiết:</b> <a href="../tinh-yeu-gia-dinh/tim-ban/ho-so/<%#Eval("Account")%>.aspx">Xem hồ sơ</a>
                         <p>
                             <b>Muốn tìm:</b>
                             '<%#Eval("Expectation")%>'

@@ -82,10 +82,10 @@ namespace NewsVn.Web
                     AdSearchResult1.DataBind();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                throw ex;
             }
+
 
         }
     }

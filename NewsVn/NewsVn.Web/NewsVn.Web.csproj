@@ -34,19 +34,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CuteEditor">
-      <HintPath>..\..\..\TINH VAN 2010\BNV_SBS\source\Bin\CuteEditor.dll</HintPath>
+      <HintPath>..\..\NewsVn\resources\assemblies\CuteEditor\CuteEditor.dll</HintPath>
     </Reference>
     <Reference Include="CuteEditor.ImageEditor">
-      <HintPath>..\..\..\TINH VAN 2010\BNV_SBS\source\Bin\CuteEditor.ImageEditor.dll</HintPath>
+      <HintPath>..\..\NewsVn\resources\assemblies\CuteEditor\CuteEditor.ImageEditor.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
-      <HintPath>..\..\..\NEWSVN\SVN\resources\assemblies\Elmah.dll</HintPath>
+      <HintPath>..\..\NewsVn\resources\assemblies\Elmah.dll</HintPath>
     </Reference>
     <Reference Include="Intelligencia.UrlRewriter">
-      <HintPath>..\..\..\NEWSVN\SVN\resources\assemblies\Intelligencia.UrlRewriter.dll</HintPath>
+      <HintPath>..\..\NewsVn\resources\assemblies\Intelligencia.UrlRewriter.dll</HintPath>
     </Reference>
     <Reference Include="NetSpell.SpellChecker">
-      <HintPath>C:\wwwSourceFromHost\Newsvn\httpdocs_1809\bin\NetSpell.SpellChecker.dll</HintPath>
+      <HintPath>..\..\NewsVn\resources\assemblies\CuteEditor\NetSpell.SpellChecker.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,7 +63,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Vietstream.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\NEWSVN\SVN\resources\assemblies\Vietstream.Data.dll</HintPath>
+      <HintPath>..\..\Newsvn\resources\assemblies\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Modules
 {
-    public partial class UserProfileDetails : System.Web.UI.UserControl
+    public partial class UserProfileDetails : BaseUI.BaseModule
     {
         public Impl.Entity.UserProfile Datasource { get; set; }
         //Sample property used only for building layout
@@ -19,6 +19,11 @@ namespace NewsVn.Web.Modules
         //Use to set sample properties
         //used only for building layout
         public List<string> arr { get; set; }
+        protected override void OnInit(EventArgs e)
+        {
+            Datasource = new Impl.Entity.UserProfile();
+            
+        }
         protected override void OnDataBinding(EventArgs e)
         {
             //<%--Every user has maximum 3 avatars, first avatar will be shown on profile list, if user didnt upload an avatar, use default 'No Photo' image in replace--%>

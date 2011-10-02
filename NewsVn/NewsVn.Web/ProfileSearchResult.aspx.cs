@@ -42,24 +42,24 @@ namespace NewsVn.Web
                                 
                 using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
-                    var _Profile = ctx.UserProfileRepo.Getter.getQueryable();
-                    var profileResult = _Profile.Where(p => p.Gender == int.Parse(strGender)
+                    var _Profile = ctx.UserProfileRepo.Getter.getEnumerable(p => p.Gender == int.Parse(strGender)
                         && p.Age >= int.Parse(strFage)
                         && p.Age <= int.Parse(strTage)
-                        && p.Avatar == strAvatar
-                        && p.MaritalStatus == int.Parse(strMarital)
-                        && p.Education == int.Parse(strEducation)
-                        && p.Religion == int.Parse(strReligion)
+                        && CompareInt((p.Avatar != "") ? 1 : 0, int.Parse(strAvatar), CompareOpt.Equal)
+                        && CompareInt(p.MaritalStatus, int.Parse(strMarital), CompareOpt.Equal)
+                        && CompareInt(p.Education, int.Parse(strEducation), CompareOpt.Equal)
+                        && CompareInt(p.Religion, int.Parse(strReligion), CompareOpt.Equal)
                         && p.Smoke == bSmoke
                         && p.Drink == bDrunk
-                        && p.Country == int.Parse(strNation)
-                        && p.Location == int.Parse(strLocation)
+                        && CompareInt(p.Country, int.Parse(strNation), CompareOpt.Equal)
+                        && CompareInt(p.Location, int.Parse(strLocation), CompareOpt.Equal)
                         && p.Name == strName
                         )
                         .Select(pf => new
                         {
                             pf.Account,
                             pf.Avatar,
+                            Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", pf.Gender.ToString()), 
                             pf.Age,
                             pf.Location,
                             pf.Nickname,
@@ -70,14 +70,14 @@ namespace NewsVn.Web
 
                         }).OrderByDescending(pf => pf.Account).ThenByDescending(pf => pf.UpdatedOn).ToList();
 
-                    profileSearchResult.DataSource = profileResult;
+                    profileSearchResult.DataSource = _Profile;
                     
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //throw;
+                string msg = ex.Message.ToString(); 
             }
         }
 
@@ -96,5 +96,52 @@ namespace NewsVn.Web
                 return 0;
             }
         }
+
+        
+        
+        enum CompareOpt
+        {
+            Equal, NotEqual, Greater, GreaterOrEqual, Less, LessOrEqual
+        }
+
+        private bool CompareInt(int? a, int? b, CompareOpt opt)
+        {
+            if (a == null || b == null)
+            {
+                return true;
+            }
+            
+            if (a == 0 || b == 0)
+            {
+                return true;
+            }
+
+            bool condition = false;
+
+            switch (opt)
+            {
+                case CompareOpt.Equal:
+                    condition = a == b;
+                    break;
+                case CompareOpt.NotEqual:
+                    condition = a != b;
+                    break;
+                case CompareOpt.Greater:
+                    condition = a > b;
+                    break;
+                case CompareOpt.GreaterOrEqual:
+                    condition = a >= b;
+                    break;
+                case CompareOpt.Less:
+                    condition = a < b;
+                    break;
+                case CompareOpt.LessOrEqual:
+                    condition = a <= b;
+                    break;
+            }
+
+            return condition;
+        }
+
     }
 }
