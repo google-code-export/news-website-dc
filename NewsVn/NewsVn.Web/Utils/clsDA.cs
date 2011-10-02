@@ -159,11 +159,19 @@ namespace NewsVn.Web.Utils
             ScriptManager.RegisterStartupScript((Control)obj, obj.GetType(), "javascriptfunction", strFunction, bolAddScriptTags);
         }
 
+        public static string getEllipsisText(object input, int maxLenth)
+        {
+            if (input == null) return getEllipsisText(string.Empty, maxLenth);
+            return getEllipsisText(input.ToString(), maxLenth);
+        }
+
         public static string getEllipsisText(string input, int maxLenth)
         {
+            if (string.IsNullOrEmpty(input)) return string.Empty;
             if (input.Length > maxLenth) return input.Substring(0, maxLenth) + "...";
             return input;
         }
+
         #region Log4net config
         public static string GetIPAddress()
         {
