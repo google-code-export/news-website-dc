@@ -53,15 +53,15 @@
                         <asp:LoginView runat="server">
                             <LoggedInTemplate>
                                 Xin chào!
-                                <a style="color:#fff" href="<%= HostName + "/tai-khoan.aspx" %>"><asp:LoginName runat="server" /></a> |                                
+                                <a style="color:#fff" href="<%= HostName + "tai-khoan.aspx" %>"><asp:LoginName runat="server" /></a> |                                
                             </LoggedInTemplate>
                             <AnonymousTemplate>
-                                <a style="color:#fff" href='<%= HostName + "/tai-khoan/dang-ky.aspx" %>'>Đăng ký</a> | 
+                                <a style="color:#fff" href='<%= HostName + "tai-khoan/dang-ky.aspx" %>'>Đăng ký</a> | 
                             </AnonymousTemplate>                          
                         </asp:LoginView>
                         <asp:LoginStatus
                             ForeColor="White" LoginText="Đăng nhập"
-                            LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName + "/trang-chu.aspx" %>'
+                            LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName %>'
                             LogoutText="Thoát" runat="server" />
                     </div>
                     <div style="text-align:right">

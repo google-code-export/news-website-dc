@@ -12,6 +12,22 @@ namespace NewsVn.Web.Account.SysAdmin.User
 {
     public partial class ViewUser : BaseUI.SecuredPage
     {
+        static string orderBy = string.Empty;
+
+        static string _orderColumn = string.Empty;
+        protected string OrderColumn
+        {
+            get { return _orderColumn; }
+            set { _orderColumn = value; }
+        }
+
+        static string _orderDirection = string.Empty;
+        protected string OrderDirection
+        {
+            get { return _orderDirection.ToLower(); }
+            set { _orderDirection = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = this.SiteTitle + "Quản lý tài khoản";
@@ -20,6 +36,19 @@ namespace NewsVn.Web.Account.SysAdmin.User
             {
                 this.GoToPage(1, int.Parse(ddlPageSize.SelectedValue));
             }
+        }
+
+        protected void Sorter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _orderColumn = ddlSortColumn.SelectedValue;
+            _orderDirection = ddlSortDirection.SelectedValue;
+            orderBy = string.Format("{0} {1}", _orderColumn, _orderDirection);
+            this.GoToCurrentPage();
+        }
+
+        protected void Pager_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.GoToCurrentPage();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -143,8 +172,8 @@ namespace NewsVn.Web.Account.SysAdmin.User
                         Approved = u.IsApproved,
                         Status = u.IsOnline ? "Online" : "Offline"
                     });
-                rptUserList.DataSource = profiles;
-                rptUserList.DataBind();
+                lvUserList.DataSource = profiles;
+                lvUserList.DataBind();
             }
         }
 
@@ -154,11 +183,19 @@ namespace NewsVn.Web.Account.SysAdmin.User
             {
                 var users = Membership.GetAllUsers().Cast<MembershipUser>()
                     .Where(u => !Roles.IsUserInRole(u.UserName, "guest") && !u.UserName.Equals(User.Identity.Name));
-                int numOfPages = (int)Math.Ceiling((decimal)users.Count() / pageSize);
-                ddlPageIndex.Items.Clear();
-                for (int i = 1; i <= numOfPages; i++)
+
+                if (users.Count() > 0)
                 {
-                    ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                    int numOfPages = (int)Math.Ceiling((decimal)users.Count() / pageSize);
+                    ddlPageIndex.Items.Clear();
+                    for (int i = 1; i <= numOfPages; i++)
+                    {
+                        ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                    }
+                }
+                else
+                {
+                    ddlPageIndex.Items.Add("1");
                 }
             }
         }
@@ -179,9 +216,9 @@ namespace NewsVn.Web.Account.SysAdmin.User
         {
             var selectedUserNames = new List<string>();
 
-            foreach (RepeaterItem item in rptUserList.Items)
+            foreach (ListViewDataItem item in lvUserList.Items)
             {
-                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                if (item.ItemType == ListViewItemType.DataItem)
                 {
                     CheckBox chkAccount = item.FindControl("chkAccount") as CheckBox;
 
