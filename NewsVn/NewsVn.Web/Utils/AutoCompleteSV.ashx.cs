@@ -29,9 +29,9 @@ namespace NewsVn.Web.Utils
                     //    .Select(p => new { p.Title, p.ApprovedOn }).OrderByDescending(p => p.ApprovedOn);
 
                     //koha chinh sua ngay 21/08/2011
-                    var data = ctx.PostRepo.Getter.getQueryable(p => p.Title.ToLower().Contains(prefixText.ToLower()) && p.Actived == true) // DateTime.Now.Subtract(p.ApprovedOn.Value).Days<=30 &&
+                    var data = ctx.PostRepo.Getter.getQueryable(p => p.Title.ToLower().Contains(prefixText.ToLower()) || p.TitleAscii.ToLower().Contains(prefixText.ToLower()) && p.Actived == true) // DateTime.Now.Subtract(p.ApprovedOn.Value).Days<=30 &&
                        .Select(p => new { p.Title, p.ApprovedOn }).OrderByDescending(p => p.ApprovedOn);
-
+                    
                     foreach (var item in data)
                     {
                         sb.Append(item.Title).Append(Environment.NewLine);
