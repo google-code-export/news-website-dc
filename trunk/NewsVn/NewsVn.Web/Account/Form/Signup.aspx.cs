@@ -12,10 +12,13 @@ namespace NewsVn.Web.Account.Form
 {
     public partial class Signup : BaseUI.BasePage
     {
-        MembershipUser newUser;
-
         protected void Page_Load(object sender, EventArgs args)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                Response.Redirect(HostName + "tai-khoan/dang-nhap.aspx");
+            }
+            
             this.Title = SiteTitle + "Đăng ký";
 
             this.GenerateAgeDropDownList();
@@ -54,7 +57,7 @@ namespace NewsVn.Web.Account.Form
             var mcs = new MembershipCreateStatus();
             bool success = false;
 
-            newUser = Membership.CreateUser(txtUsername.Text.Trim(), txtConfirmPassword.Text, txtEmail.Text.Trim(), ddlSecurityQuestion.SelectedItem.Text, txtSecurityAnswer.Text.Trim(), true, out mcs);
+            var newUser = Membership.CreateUser(txtUsername.Text.Trim(), txtConfirmPassword.Text, txtEmail.Text.Trim(), ddlSecurityQuestion.SelectedItem.Text, txtSecurityAnswer.Text.Trim(), true, out mcs);
 
             switch (mcs)
             {
@@ -95,6 +98,10 @@ namespace NewsVn.Web.Account.Form
                 try
                 {
                     Roles.AddUserToRole(newUser.UserName, "guest");
+
+                    Session["newsvn-signup-user"] = newUser;
+                    Session["newsvn-signup-pass"] = txtConfirmPassword.Text;
+
                     wzUserSignUp.ActiveStepIndex = 1;
                 }
                 catch (Exception)
@@ -136,14 +143,44 @@ namespace NewsVn.Web.Account.Form
 
                     ctx.UserProfileRepo.Setter.addOne(newProfile);
 
+                    AutoLogin();
+                    SendInformMail();
+
                     wzUserSignUp.ActiveStepIndex = 2;
                 }
             }
             catch (Exception)
             {
+                if (Session["newsvn-signup-user"] != null)
+                {
+                    Membership.DeleteUser(((MembershipUser)Session["newsvn-signup-user"]).UserName, true);
+                }
                 ltrInitInfoError.Text = string.Format(ErrorBar, "Không thể khởi tạo hồ sơ. Vui lòng thử lại.");
             }
         }
+
+        private void SendInformMail()
+        {
+            if (Session["newsvn-signup-user"] != null)
+            {
+                var user = (MembershipUser)Session["newsvn-signup-user"];
+                var args = new Dictionary<string, string>();
+                args["newsvn.account.name"] = user.UserName;
+                args["newsvn.account.password"] = Session["newsvn-signup-pass"].ToString();
+                ApplicationMailing.Send(new string[] { user.Email }, ApplicationMailing.SendPurpose.CreateAccount, args);
+            }
+        }
+
+        private void AutoLogin()
+        {
+            if (Session["newsvn-signup-user"] != null)
+            {
+                var user = (MembershipUser)Session["newsvn-signup-user"];
+                Membership.ValidateUser(user.UserName, Session["newsvn-signup-pass"].ToString());
+                FormsAuthentication.SetAuthCookie(user.UserName, false);
+            }
+        }
+
         private void LoadLocation()
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))

@@ -68,7 +68,7 @@
                 </AnonymousTemplate>
                 <LoggedInTemplate>
                     <ul class="ui-form ui-widget">
-                        <%= string.Format(InfoBar, "Bạn đã đăng nhập. Click <a href='#'><b>vào đây</b></a> để vào tài khoản.")%>
+                        <%= string.Format(InfoBar, "Bạn đã đăng nhập. Click <a href='" + HostName + "tai-khoan.aspx'><b>vào đây</b></a> để vào tài khoản.") %>
                     </ul>
                 </LoggedInTemplate>
             </asp:LoginView>

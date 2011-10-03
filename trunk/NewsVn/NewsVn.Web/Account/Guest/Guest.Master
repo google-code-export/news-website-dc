@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="<%= Page.ResolveUrl("~/images/icons/favico.ico") %>" rel="shortcut icon" type="image/x-icon" />
+    <link href="<%= Page.ResolveUrl("~/images/icons/favico.ico") %>" rel="icon" type="image/x-icon"" />
     <link href="<%= Page.ResolveUrl("~/styles/secured.css") %>" rel="stylesheet" type="text/css" />
     <!--[if lte IE 7]>
     <link href="<%= Page.ResolveUrl("~/styles/secured-lte-ie7.css") %>" rel="stylesheet" type="text/css" />
