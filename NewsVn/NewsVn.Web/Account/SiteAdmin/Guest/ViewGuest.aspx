@@ -41,8 +41,6 @@
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>        
         <div class="left">
-            <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add" runat="server"
-                NavigateUrl="~/Account/SysAdmin/User/AddUser.aspx" />
             <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete" runat="server"
                 OnClientClick="return confirmAction('Xóa tài khoản được chọn?')" 
                 onclick="btnDelete_Click" />

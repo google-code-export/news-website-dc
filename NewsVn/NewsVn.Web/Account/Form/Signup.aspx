@@ -409,7 +409,7 @@
                 </asp:WizardStep>
                 <asp:WizardStep StepType="Complete" Title="Hoàn tất đăng ký" runat="server">
                     <ul class="ui-form ui-widget">                    
-                        <%= string.Format(InfoBar, "Bạn đã đăng ký thành công. Xem hồ sơ của bạn <a href='" + HostName + "account/form/redirector.aspx'><b>tại đây</b></a>.") %>
+                        <%= string.Format(InfoBar, "Bạn đã đăng ký thành công. Xem hồ sơ của bạn <a href='" + HostName + "tai-khoan.aspx'><b>tại đây</b></a>.") %>
                     </ul>
                 </asp:WizardStep>
             </WizardSteps>

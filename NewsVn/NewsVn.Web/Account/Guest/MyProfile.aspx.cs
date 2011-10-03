@@ -29,9 +29,10 @@ namespace NewsVn.Web.Account.Guest
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Title = this.SiteTitle + "Tài khoản của tôi";
+            
             if (!IsPostBack)
             {
-
                 load_UserDetail();
             }
         }

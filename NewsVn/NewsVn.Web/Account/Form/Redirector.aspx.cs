@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace NewsVn.Web.Account.Form
 {
-    public partial class Redirector : System.Web.UI.Page
+    public partial class Redirector : BaseUI.BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,7 +29,7 @@ namespace NewsVn.Web.Account.Form
                 }
                 else
                 {
-                    throw new HttpException(404, "Không tìm thấy trang quản trị!");
+                    Response.Redirect(HostName + "tai-khoan/dang-nhap.aspx");
                 }
             }
         }
