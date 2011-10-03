@@ -30,11 +30,7 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <div id="userHelpBox" class="dialog" title="Trợ giúp">
-        <%--<p><b>Thêm tin mới</b>: Bấm vào nút 'Thêm'</p>
-        <p><b>Sửa tin</b>: Bấm vào tiêu đề của một tin bất kỳ</p>
-        <p><b>Xóa tin</b>: Chọn các dòng muốn xóa trong danh sách tin, sau đó bấm nút 'Xóa'</p>
-        <p><b>Ẩn/Hiện tin</b>: Chọn các dòng trong danh sách tin, bấm nút 'Ẩn/Hiện'</p>
-        <p><b>Duyệt tin</b>: Chọn các dòng trong danh sách tin, bấm 'Duyệt'</p>--%>
+        
     </div>
     <div id="userDetailsBox" class="dialog" title="Chi tiết tài khoản" style="display:none">
         <ul class="ui-form ui-widget"></ul>
@@ -94,53 +90,71 @@
         </div>
         <div class="clear"></div>
     </div>
-    <asp:ListView ID="lvUserList" runat="server">
-        <LayoutTemplate>
+    <asp:Repeater ID="rptUserList" runat="server">
+        <HeaderTemplate>
             <table id="user-table" class="ui-table" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <th><asp:CheckBox EnableViewState="false" runat="server" /></th>
+                    <% if (OrderColumn.Equals("Account", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Tài khoản</th>
+                    <% } else { %>
                     <th>Tài khoản</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("Name", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Họ tên</th>
+                    <% } else { %>
                     <th>Họ tên</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("IdNumber", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>CMND</th>
+                    <% } else { %>
                     <th>CMND</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("Email", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Email</th>
+                    <% } else { %>
                     <th>Email</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("UpdatedOn", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Ngày tạo</th>
+                    <% } else { %>
                     <th>Ngày tạo</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("UpdatedBy", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Người tạo</th>
+                    <% } else { %>
                     <th>Người tạo</th>
+                    <% } %>
                     <th>Quyền</th>
                     <th>Kích hoạt</th>
                     <th>Trạng thái</th>
                 </tr>
-                <tr>
-                    <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
-                </tr>
-            </table>
-        </LayoutTemplate>
+        </HeaderTemplate>
         <ItemTemplate>
-            <td>
-                <asp:CheckBox ID="chkAccount" EnableViewState="false" runat="server" />
-                <asp:HiddenField ID="hidAccount" Value='<%# Eval("Account") %>' runat="server" />
-            </td>
-	        <td>
-                <a href='<%# Eval("Account", "javascript:viewUserDetails(\"{0}\")") %>'>
-                    <b><%# Eval("Account") %></b>
-                </a>
-            </td>
-            <td><%# Eval("Name") %></td>
-            <td><%# Eval("IdNumber") %></td>
-            <td><%# Eval("Email") %></td>
-            <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
-                <%# Eval("UpdatedOn", "{0:dd/MM/yy}")%>
-            </td>
-            <td><%# Eval("UpdatedBy") %></td>
-            <td><%# Eval("RoleName") %></td>
-            <td><asp:CheckBox Checked='<%# Eval("Approved") %>' Enabled="false" runat="server" /></td>
-            <td><%# Eval("Status") %></td>
+            <tr>
+                <td>
+                    <asp:CheckBox ID="chkAccount" EnableViewState="false" runat="server" />
+                    <asp:HiddenField ID="hidAccount" Value='<%# Eval("Account") %>' runat="server" />
+                </td>
+	            <td>
+                    <a href='<%# Eval("Account", "javascript:viewUserDetails(\"{0}\")") %>'>
+                        <b><%# Eval("Account") %></b>
+                    </a>
+                </td>
+                <td><%# Eval("Name") %></td>
+                <td><%# Eval("IdNumber") %></td>
+                <td><%# Eval("Email") %></td>
+                <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
+                    <%# Eval("UpdatedOn", "{0:dd/MM/yy}")%>
+                </td>
+                <td><%# Eval("UpdatedBy") %></td>
+                <td><%# Eval("RoleName") %></td>
+                <td><asp:CheckBox Checked='<%# Eval("Approved") %>' Enabled="false" runat="server" /></td>
+                <td><%# Eval("Status") %></td>
+            </tr>
         </ItemTemplate>
-        <EmptyDataTemplate>
-            <table id="user-table" class="ui-table" border="0" cellpadding="0" cellspacing="0" style="width:100%">
-                <tr class="empty">
-                    <td>Chưa có tài khoản nào được khởi tạo</td>
-                </tr>
+        <FooterTemplate>
             </table>
-        </EmptyDataTemplate>
-    </asp:ListView>
+        </FooterTemplate>
+    </asp:Repeater>
 </asp:Content>
