@@ -159,8 +159,11 @@ namespace NewsVn.Web.Account.SysAdmin.User
                 var users = Membership.GetAllUsers().Cast<MembershipUser>()
                     .Where(u => !Roles.IsUserInRole(u.UserName, "guest") && !Roles.IsUserInRole(u.UserName, "sysadmin"))
                     .Skip((pageIndex - 1) * pageSize).Take(pageSize);
-                var profiles = ctx.MemberProfileRepo.Getter.getEnumerable()
-                    .Join(users, p => p.Account, u => u.UserName, (p, u) => new
+
+                var profiles = ctx.MemberProfileRepo.Getter
+                    .getSortedList(ctx.MemberProfileRepo.Getter.getQueryable(), orderBy);  
+                  
+                rptUserList.DataSource = profiles.Join(users, p => p.Account, u => u.UserName, (p, u) => new
                     {
                         p.Account,
                         p.Name,
@@ -172,8 +175,7 @@ namespace NewsVn.Web.Account.SysAdmin.User
                         Approved = u.IsApproved,
                         Status = u.IsOnline ? "Online" : "Offline"
                     });
-                lvUserList.DataSource = profiles;
-                lvUserList.DataBind();
+                rptUserList.DataBind();
             }
         }
 
@@ -216,9 +218,9 @@ namespace NewsVn.Web.Account.SysAdmin.User
         {
             var selectedUserNames = new List<string>();
 
-            foreach (ListViewDataItem item in lvUserList.Items)
+            foreach (RepeaterItem item in rptUserList.Items)
             {
-                if (item.ItemType == ListViewItemType.DataItem)
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
                     CheckBox chkAccount = item.FindControl("chkAccount") as CheckBox;
 

@@ -139,13 +139,16 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
             foreach (RepeaterItem item in rptCommentList.Items)
             {
-                CheckBox chkID = item.FindControl("chkID") as CheckBox;
-
-                if (chkID.Checked)
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
-                    HiddenField hidID = item.FindControl("hidID") as HiddenField;
-                    selectedCommentIDs.Add(int.Parse(hidID.Value));
-                }
+                    CheckBox chkID = item.FindControl("chkID") as CheckBox;
+
+                    if (chkID.Checked)
+                    {
+                        HiddenField hidID = item.FindControl("hidID") as HiddenField;
+                        selectedCommentIDs.Add(int.Parse(hidID.Value));
+                    }
+                }                
             }
 
             return ctx.PostCommentRepo.Getter.getQueryable(c => selectedCommentIDs.Contains(c.ID));
