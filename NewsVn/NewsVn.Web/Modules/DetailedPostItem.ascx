@@ -10,7 +10,11 @@
             titlePosition: 'inside',
             cyclic: true
         });
-        $(".detailed-post .content img").lazyload({ threshold: 150, effect: "fadeIn" });
+        $(".detailed-post .content img").lazyload({
+            threshold: 150,
+            effect: "fadeIn",
+            placeholder: "http://lh5.ggpht.com/_XrWO8mEpDy0/TEdXIqjrAUI/AAAAAAAAAkU/3lwqSFT8IRQ/grey.gif"
+        });
         $(".comment-button, .comment-link").click(function () {
             $("#comment_box").dialog("open");
         });

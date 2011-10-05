@@ -3,6 +3,11 @@
 <script type="text/javascript">
     $(function () {
         $(".side-part .side-part-list li:last-child").addClass("tail");
+        $(".side-part-list img").lazyload({
+            threshold: 150,
+            effect: "fadeIn",
+            placeholder: "http://lh5.ggpht.com/_XrWO8mEpDy0/TEdXIqjrAUI/AAAAAAAAAkU/3lwqSFT8IRQ/grey.gif"
+        });
     });
 </script>
 
