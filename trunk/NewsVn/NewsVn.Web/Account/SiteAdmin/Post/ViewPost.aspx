@@ -5,7 +5,9 @@
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    <nsn:SiteAdmin_FilterPost runat="server" />    
+    
+    <nsn:SiteAdmin_FilterPost ID="fpViewPost" runat="server" OnFiltered="fpViewPost_Filtered" />    
+
     <div id="postHelpBox" class="dialog" title="Trợ giúp">
         <p><b>Thêm tin mới</b>: Bấm vào nút 'Thêm'</p>
         <p><b>Sửa tin</b>: Bấm vào tiêu đề của một tin bất kỳ</p>
@@ -15,6 +17,7 @@
     </div>
     <div class="ui-table-toolbar">
         <ul class="ui-form ui-widget">
+            <asp:Literal ID="ltrInfo" EnableViewState="false" runat="server" />
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>
         <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add left" runat="server"
@@ -30,21 +33,34 @@
             OnClick="btnRefresh_Click" />
         <div class="clear"></div>
         <hr />
-        <span class="left" style="margin-top:4px">Lọc theo:</span>
-        <asp:DropDownList ID="ddlFilterColumn" CssClass="dropdown left" runat="server">
-            <asp:ListItem Value="Title" Text="Tiêu đề" />
-            <asp:ListItem Value="" Text="Danh mục" />
-            <asp:ListItem Value="UpdatedBy" Text="Người tạo" />
-            <asp:ListItem Value="UpdatedBy" Text="Người sửa" />
-            <asp:ListItem Value="ApprovedBy" Text="Người duyệt" />
-        </asp:DropDownList>
-        <asp:TextBox ID="txtFilterText" CssClass="left" Width="150" runat="server" />
-        <asp:LinkButton ID="btnFilter" Text="Lọc danh sách" CssClass="button-filter left" runat="server"
-            OnClick="btnFilter_Click" />
-        <asp:HyperLink Text="Lọc nâng cao" CssClass="button-filter left dialog-trigger[advancedFilterBox]" runat="server" />
+        <div class="left">
+            Sắp xếp theo:
+            <asp:DropDownList ID="ddlSortColumn" CssClass="dropdown" Width="120px" runat="server"
+                AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
+                <asp:ListItem Value="Title" Text="Tiêu đề" />
+                <asp:ListItem Value="PageView" Text="Lượt xem" />
+                <asp:ListItem Value="Category.Name" Text="Danh mục" />                
+                <asp:ListItem Value="CreatedOn" Text="Ngày đăng" />
+                <asp:ListItem Value="CreatedBy" Text="Người đăng" />                               
+                <asp:ListItem Value="UpdatedOn" Text="Ngày sửa" />
+                <asp:ListItem Value="UpdatedBy" Text="Người sửa" />
+                <asp:ListItem Value="ApprovedOn" Text="Ngày duyệt" />
+                <asp:ListItem Value="ApprovedBy" Text="Người duyệt" />
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlSortDirection" CssClass="dropdown" Width="70px" runat="server"
+                AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
+                <asp:ListItem Value="ASC" Text="A -> Z" />
+                <asp:ListItem Value="DESC" Text="Z -> A" />
+            </asp:DropDownList>
+            <asp:LinkButton ID="btnClearSort" CssClass="button-clear" Text="Bỏ sắp xếp" Visible="false" 
+                runat="server" onclick="btnClearSort_Click" />
+            <asp:HyperLink ID="lnkFilter" Text="Lọc tin tức" CssClass="button-filter dialog-trigger[filterBox]" runat="server" />
+            <asp:LinkButton ID="btnClearFilter" CssClass="button-clear" Text="Bỏ lọc" Visible="false" 
+                runat="server" onclick="btnClearFilter_Click" />
+        </div>
         <div class="right">
             Trang:
-            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" runat="server" Width="50"
+            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" Width="50" runat="server"
                 AutoPostBack="true" OnSelectedIndexChanged="Pager_SelectedIndexChanged" />
             &nbsp;Số dòng/Trang:
             <asp:DropDownList ID="ddlPageSize" CssClass="dropdown" runat="server"
@@ -63,16 +79,52 @@
             <table id="post-table" class="ui-table" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <th><asp:CheckBox EnableViewState="false" runat="server" /></th>
+                    <% if (OrderColumn.Equals("Title", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Tiêu đề</th>
+                    <% } else { %>
                     <th>Tiêu đề</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("PageView", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Lượt xem</th>
+                    <% } else { %>
                     <th>Lượt xem</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("Category.Name", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Danh mục</th>
+                    <% } else { %>
                     <th>Danh mục</th>
-                    <th>Tạo vào</th>
-                    <th>Tạo bởi</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("CreatedOn", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Đăng vào</th>
+                    <% } else { %>
+                    <th>Đăng vào</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("CreatedBy", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Đăng bởi</th>
+                    <% } else { %>
+                    <th>Đăng bởi</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("UpdatedOn", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Sửa vào</th>
+                    <% } else { %>
                     <th>Sửa vào</th>
-                    <th>Sửa bởi</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("UpdatedBy", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Sừa bởi</th>
+                    <% } else { %>
+                    <th>Sừa bởi</th>
+                    <% } %>
                     <th>Đã duyệt</th>
+                    <% if (OrderColumn.Equals("ApprovedOn", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Duyệt vào</th>
+                    <% } else { %>
                     <th>Duyệt vào</th>
+                    <% } %>
+                    <% if (OrderColumn.Equals("ApprovedBy", StringComparison.OrdinalIgnoreCase)) { %>
+                    <th class='sorted-<%= OrderDirection %>'>Duyệt bởi</th>
+                    <% } else { %>
                     <th>Duyệt bởi</th>
+                    <% } %>
                     <th>Hiển thị</th>
                 </tr>
         </HeaderTemplate>
@@ -85,28 +137,35 @@
                 <td>
                     <a href='<%= HostName + "account/siteadmin/post/editpost.aspx?pid=" %><%# Eval("ID") %>'
                         title='<%# Eval("Title") %>'>
-                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title").ToString(), 30) %>
+                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title"), 30) %>
                     </a>
                 </td>
                 <td align="center"><%#Eval("PageView", "{0:N0}") %></td>
                 <td>
-                    <a href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("CategoryID") %>'>
-                        <%# Eval("CategoryName") %>
+                    <a href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("CategoryID") %>'
+                        title='<%# Eval("CategoryName") %>'>
+                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("CategoryName"), 30) %>
                     </a>
                 </td>
                 <td title='<%# Eval("CreatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("CreatedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td><%# Eval("CreatedBy")%></td>
+                <td title='<%# Eval("CreatedBy")%>'>
+                    <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("CreatedBy"), 20)%>
+                </td>
                 <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("UpdatedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td><%# Eval("UpdatedBy") %></td>
+                <td title='<%# Eval("UpdatedBy")%>'>
+                    <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("UpdatedBy"), 20)%>
+                </td>
                 <td align="center"><asp:CheckBox Checked='<%# Eval("Approved") %>' Enabled="false" runat="server" /></td>
                 <td title='<%# Eval("ApprovedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("ApprovedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td><%# Eval("ApprovedBy") %></td>
+                <td title='<%# Eval("ApprovedBy")%>'>
+                    <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("ApprovedBy"), 20)%>
+                </td>
                 <td align="center"><asp:CheckBox Checked='<%# Eval("Actived") %>' Enabled="false" runat="server" /></td>
             </tr>
         </ItemTemplate>

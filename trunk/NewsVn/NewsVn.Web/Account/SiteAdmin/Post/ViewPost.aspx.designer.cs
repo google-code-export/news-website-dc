@@ -13,6 +13,24 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
     public partial class ViewPost {
         
         /// <summary>
+        /// fpViewPost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.SiteAdmin_FilterPost fpViewPost;
+        
+        /// <summary>
+        /// ltrInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrInfo;
+        
+        /// <summary>
         /// ltrError control.
         /// </summary>
         /// <remarks>
@@ -67,31 +85,49 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
         protected global::System.Web.UI.WebControls.LinkButton btnRefresh;
         
         /// <summary>
-        /// ddlFilterColumn control.
+        /// ddlSortColumn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFilterColumn;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortColumn;
         
         /// <summary>
-        /// txtFilterText control.
+        /// ddlSortDirection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilterText;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortDirection;
         
         /// <summary>
-        /// btnFilter control.
+        /// btnClearSort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnFilter;
+        protected global::System.Web.UI.WebControls.LinkButton btnClearSort;
+        
+        /// <summary>
+        /// lnkFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkFilter;
+        
+        /// <summary>
+        /// btnClearFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnClearFilter;
         
         /// <summary>
         /// ddlPageIndex control.
