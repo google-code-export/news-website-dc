@@ -60,6 +60,7 @@
     <Compile Include="Entity\UserMessage.cs" />
     <Compile Include="Entity\Setting.cs" />
     <Compile Include="Entity\Post.cs" />
+    <Compile Include="Model\FilterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
