@@ -74,6 +74,11 @@ $(function () {
             primary: "ui-icon-key"
         }
     });
+    $(".button-clear").button({
+        icons: {
+            primary: "ui-icon-circle-close"
+        }
+    });
 
     //datepicker
     $(".datepicker").datepicker({
