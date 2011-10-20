@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.CodeDom;
 using System.Web.Compilation;
-using System.CodeDom;
 using System.Web.UI;
 
 namespace NewsVn.Web

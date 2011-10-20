@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.Configuration;
-using NewsVn.Impl.Context;
 using System.Globalization;
+using System.Linq;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Web
 {

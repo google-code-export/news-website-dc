@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Data.Linq.Mapping;
-using System.Text;
 using System.Runtime.Serialization;
 using Vietstream.Data.Model;
 

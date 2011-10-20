@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Text;
-using System.Data.SqlClient;
-using System.Data;
-using System.Web.Configuration;
+using System.Web;
 using NewsVn.Impl.Context;
 
 namespace NewsVn.Web.Utils

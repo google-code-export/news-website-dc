@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 
 namespace NewsVn.Web.Utils
@@ -24,7 +22,7 @@ namespace NewsVn.Web.Utils
 
         static ApplicationMailing()
         {
-            _smtpClient = new SmtpClient
+            /*_smtpClient = new SmtpClient
             {
                 Host = "mail.homevn.vn",
                 Port = 25,
@@ -33,12 +31,22 @@ namespace NewsVn.Web.Utils
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential("noreply@homevn.vn", "newsvn123"),
                 DeliveryMethod = SmtpDeliveryMethod.Network
+            };*/
+            _smtpClient = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                Timeout = 100000,
+                EnableSsl = true,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("wastonnguyen@gmail.com", "handsomeboy"),
+                DeliveryMethod = SmtpDeliveryMethod.Network
             };
         }
 
         public static bool Send(string[] to, SendPurpose purpose, Dictionary<string, string> args)
         {
-            string from = "noreply@homevn.vn";
+            string from = "wastonnguyen@gmail.com";
             return Send(from, to, purpose, args);
         }
 
