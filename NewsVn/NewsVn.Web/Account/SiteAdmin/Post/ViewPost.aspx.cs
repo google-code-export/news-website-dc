@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
-using System.Text;
-using System.Linq.Expressions;
 
 namespace NewsVn.Web.Account.SiteAdmin.Post
 {
@@ -29,7 +27,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             set { _orderDirection = value; }
         }
 
-        static Impl.Model.FilterModel postFilter;
+        static Func<Impl.Entity.Post, bool> postPredicate = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -127,15 +125,21 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             this.GoToFirstPage();
         }
 
-        protected void fpViewPost_Filtered(object sender, ref Impl.Model.FilterModel filterModel)
+        protected void fpViewPost_Filtering(object sender, Impl.Entity.Post token)
         {
-            postFilter = filterModel;
+            var filter = sender as Modules.SiteAdmin_FilterPost;
+            token.Title = (filter.FindControl("txtTitle") as TextBox).Text.Trim();
+        }
+
+        protected void fpViewPost_Filtered(object sender, Func<Impl.Entity.Post,bool> predicate)
+        {
+            postPredicate = predicate;
             this.GoToFirstPage();
         }
 
         protected void btnClearFilter_Click(object sender, EventArgs e)
         {
-            postFilter = null;
+            postPredicate = null;
             this.GoToFirstPage();
         }
 
@@ -178,9 +182,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var posts = FilterPost(ctx);
+                Func<Impl.Entity.Post, bool> predicate = p => true;
 
-                posts = posts.OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsEnumerable();
+                if (postPredicate != null)
+                {
+                    predicate = postPredicate;
+                }
+
+                var posts = ctx.PostRepo.Getter.getEnumerable(predicate)
+                    .OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsEnumerable();
 
                 posts = ctx.PostRepo.Getter.getSortedList(posts, orderBy);
 
@@ -230,7 +240,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         private void CheckSortingAndFiltering()
         {
             btnClearSort.Visible = !string.IsNullOrEmpty(orderBy);
-            lnkFilter.Visible = postFilter == null;
+            lnkFilter.Visible = postPredicate == null;
             btnClearFilter.Visible = !lnkFilter.Visible;
 
             var sb = new StringBuilder();
@@ -241,7 +251,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 sb.AppendFormat(", chiều: <b>{0}</b>", ddlSortDirection.SelectedItem.Text);
             }
 
-            if (postFilter != null)
+            if (postPredicate != null)
             {
                 sb.Append(string.IsNullOrEmpty(orderBy) ? "" : " | ");
                 sb.Append("Bật chế độ lọc");
@@ -272,67 +282,6 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
 
             return ctx.PostRepo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
-        }
-
-        private bool CheckStringCompare(string strHost, string strCompare)
-        {
-            if (string.IsNullOrEmpty(strHost) || string.IsNullOrEmpty(strCompare))
-            {
-                return true;
-            }
-
-            strHost = strHost.Trim();
-            strCompare = strCompare.Trim();
-
-            return strHost.Equals(strCompare, StringComparison.OrdinalIgnoreCase);
-        }
-
-        private IEnumerable<Impl.Entity.Post> FilterPost(NewsVnContext ctx)
-        {
-            if (postFilter == null)
-            {
-                return ctx.PostRepo.Getter.getEnumerable();
-            }
-
-            var token = postFilter.Token as Impl.Entity.Post;
-            var method = postFilter.Method;
-            var chain = postFilter.Chain;
-
-            if (method == Impl.Model.FilterMethod.Absolute && chain == Impl.Model.FilterChain.LinkAll)
-            {
-                return ctx.PostRepo.Getter.getEnumerable(p => CheckStringCompare(p.Title, token.Title)
-                    && CheckStringCompare(p.Category.Name, token.Category.Name));
-            }
-            if (method == Impl.Model.FilterMethod.Absolute && chain == Impl.Model.FilterChain.LinkOne)
-            {
-                return ctx.PostRepo.Getter.getEnumerable(p => CheckStringCompare(p.Title, token.Title)
-                    || CheckStringCompare(p.Category.Name, token.Category.Name));
-            }
-            if (method == Impl.Model.FilterMethod.Relative && chain == Impl.Model.FilterChain.LinkAll)
-            {
-                return ctx.PostRepo.Getter.getEnumerable(p => CheckStringContain(p.Title, token.Title)
-                    && CheckStringContain(p.Category.Name, token.Category.Name));
-            }
-            if (method == Impl.Model.FilterMethod.Relative && chain == Impl.Model.FilterChain.LinkOne)
-            {
-                return ctx.PostRepo.Getter.getEnumerable(p => CheckStringContain(p.Title, token.Title)
-                    || CheckStringContain(p.Category.Name, token.Category.Name));
-            }
-
-            return ctx.PostRepo.Getter.getEnumerable();
-        }
-
-        private bool CheckStringContain(string strHost, string strContain)
-        {
-            if (string.IsNullOrEmpty(strHost) || string.IsNullOrEmpty(strContain))
-            {
-                return true;
-            }
-
-            strHost = strHost.ToLower().Trim();
-            strContain = strContain.ToLower().Trim();
-
-            return strHost.Contains(strContain);
         }
     }
 }

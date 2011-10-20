@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Web.Configuration;
-using System.Collections.Generic;
-using NewsVn.Impl.Caching;
-using System.IO;
-using System.Globalization;
+﻿using System.Web.Configuration;
 
 namespace NewsVn.Web.Utils
 {

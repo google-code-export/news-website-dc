@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using NewsVn.Web;
 using NewsVn.Web.Utils;
-using System.Text;
 namespace NewsVn.Web.BaseUI
 {
     public class BaseMaster : System.Web.UI.MasterPage

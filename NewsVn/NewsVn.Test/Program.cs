@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NewsVn.Impl.Context;
-using NewsVn.Impl.Entity;
 using System.Text.RegularExpressions;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Test
 {

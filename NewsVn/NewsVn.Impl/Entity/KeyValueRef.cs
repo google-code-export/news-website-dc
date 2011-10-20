@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.Serialization;
 using System.Data.Linq.Mapping;
+using System.Runtime.Serialization;
 using Vietstream.Data.Model;
 
 namespace NewsVn.Impl.Entity
