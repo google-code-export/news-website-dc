@@ -11,6 +11,6 @@
         <default-url><![CDATA[~/account/editor/]]></default-url>
     </role>
     <role name="guest">
-        <default-url><![CDATA[~/account/guest/]]></default-url>
+        <default-url><![CDATA[~/thanh-vien/thong-tin-tai-khoan.aspx]]></default-url>
     </role>
 </roles>
