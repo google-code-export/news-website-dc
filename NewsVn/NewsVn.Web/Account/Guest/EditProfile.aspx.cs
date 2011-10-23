@@ -104,7 +104,7 @@ namespace NewsVn.Web.Account.Guest
                    
                     txtPhone.Text = _UserProfiles.Phone;
                     lblEmail.Text = _UserProfiles.Email;
-                    chkShowEmail.Checked = _UserProfiles.ShowPhone;
+                    chkShowPhone.Checked = _UserProfiles.ShowPhone;
                     chkShowEmail.Checked = _UserProfiles.ShowEmail;
 
                     try
