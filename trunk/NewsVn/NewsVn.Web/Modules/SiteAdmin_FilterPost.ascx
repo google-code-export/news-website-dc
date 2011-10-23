@@ -1,8 +1,18 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteAdmin_FilterPost.ascx.cs" Inherits="NewsVn.Web.Modules.SiteAdmin_FilterPost" %>
 
+<script type="text/javascript">
+    $(function () {
+        // This is to fix bug related to jquery ui dialog
+        // is not rendered inside asp.net form tag
+        // cause server controls lose values on postback
+        $("#filterBox").parent().appendTo("#filterBoxContainer");
+    });     
+</script>
+
 <div id="postFilterHelpBox" class="dialog" title="Trợ giúp">
     Filter Hint
 </div>
+<div id="filterBoxContainer"></div>
 <div id="filterBox" class="dialog" title="Lọc danh sách tin tức">
     <ul class="ui-form ui-widget">
         <li>

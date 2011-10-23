@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+using NewsVn.Impl.Model;
 
 namespace NewsVn.Web.Account.SiteAdmin.Post
 {
@@ -28,6 +29,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         }
 
         static Func<Impl.Entity.Post, bool> postPredicate = null;
+
+        static FilterModel postFilterModel = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -125,21 +128,17 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             this.GoToFirstPage();
         }
 
-        protected void fpViewPost_Filtering(object sender, Impl.Entity.Post token)
-        {
-            var filter = sender as Modules.SiteAdmin_FilterPost;
-            token.Title = (filter.FindControl("txtTitle") as TextBox).Text.Trim();
-        }
-
-        protected void fpViewPost_Filtered(object sender, Func<Impl.Entity.Post,bool> predicate)
+        protected void fpViewPost_Filtered(object sender, Func<Impl.Entity.Post,bool> predicate, FilterModel model)
         {
             postPredicate = predicate;
+            postFilterModel = model;
             this.GoToFirstPage();
         }
 
         protected void btnClearFilter_Click(object sender, EventArgs e)
         {
             postPredicate = null;
+            postFilterModel = null;
             this.GoToFirstPage();
         }
 
@@ -240,8 +239,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         private void CheckSortingAndFiltering()
         {
             btnClearSort.Visible = !string.IsNullOrEmpty(orderBy);
-            lnkFilter.Visible = postPredicate == null;
-            btnClearFilter.Visible = !lnkFilter.Visible;
+            btnClearFilter.Visible = postPredicate != null;
 
             var sb = new StringBuilder();
 
@@ -252,14 +250,55 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
 
             if (postPredicate != null)
-            {
+            {                                
                 sb.Append(string.IsNullOrEmpty(orderBy) ? "" : " | ");
-                sb.Append("Bật chế độ lọc");
+                sb.Append("Đang lọc theo: ");
+
+                var token = postFilterModel.Token as Impl.Entity.Post;
+
+                if (!string.IsNullOrEmpty(token.Title))
+                {
+                    sb.AppendFormat("Tiêu đề: <b>{0}</b>, ", token.Title);
+                }
+                if (!string.IsNullOrEmpty(token.Category.Name))
+                {
+                    sb.AppendFormat("Danh mục: <b>{0}</b>, ", token.Category.Name);
+                }
+                if (!string.IsNullOrEmpty(token.UpdatedBy))
+                {
+                    sb.AppendFormat("Người sửa: <b>{0}</b>, ", token.UpdatedBy);
+                }
+                if (token.UpdatedOn != null)
+                {
+                    sb.AppendFormat("Ngày sửa: <b>{0:dd/MM/yyyy}</b>, ", token.UpdatedOn);
+                }
+                if (!string.IsNullOrEmpty(token.ApprovedBy))
+                {
+                    sb.AppendFormat("Người duyệt: <b>{0}</b>, ", token.ApprovedBy);
+                }
+                if (token.ApprovedOn != null)
+                {
+                    sb.AppendFormat("Ngày duyệt: <b>{0:dd/MM/yyyy}</b>, ", token.ApprovedOn);
+                }
+
+                if (postFilterModel.Data.Keys.Contains("ManagePost_FilterMethod"))
+                {
+                    sb.AppendFormat("Phương pháp: <b>{0}</b>, ",
+                        postFilterModel.Data["ManagePost_FilterMethod"].ToString());
+                }
+
+                if (postFilterModel.Data.Keys.Contains("ManagePost_FilterChain"))
+                {
+                    sb.AppendFormat("Kết điều kiện: <b>{0}</b>",
+                        postFilterModel.Data["ManagePost_FilterChain"].ToString());
+                }
             }
 
-            if (!string.IsNullOrEmpty(sb.ToString()))
+            string infoText = sb.ToString();
+
+            if (!string.IsNullOrEmpty(infoText))
             {
-                ltrInfo.Text = string.Format(InfoBar, sb.ToString());
+                ltrInfo.Text = string.Format(InfoBar, infoText);
             }
         }
 
