@@ -19,12 +19,14 @@
     <h2>
         Thông tin của:
         <asp:Label runat="server" ID="lblNickName" Text=""/>
-        <a href="javascript:void(0)" onclick="gotoProfileCommentBox()" class="text-normal font-normal right">
-            <asp:Image ID="Image1" ImageUrl="~/images/icons/mail.png" runat="server" style="vertical-align:top;margin-top:12px" />
-            Nhắn tin
+       <a href="javascript:void(0)" onclick="gotoProfileCommentBox()" class="text-normal font-normal right">
+           <asp:LinkButton runat="server" ID="lnkbtnEditProfile" PostBackUrl="~/thanh-vien/cap-nhat-tai-khoan.aspx" >
+           <asp:Image ID="Image1" ImageUrl="~/images/icons/EditProfile.png" runat="server"  style="vertical-align:top;margin-top:12px"/>
+           Cập nhật tài khoản</asp:LinkButton> 
         </a>
-        <div class="clear"></div>
+       
     </h2>
+     <div class="clear"></div>
     <table class="ui-table" border="0" cellpadding="0" cellspacing="0">
        <%-- <tr>
             <th colspan="3" align="left">
