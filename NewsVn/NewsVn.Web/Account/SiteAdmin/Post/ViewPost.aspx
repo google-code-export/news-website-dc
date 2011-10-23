@@ -4,13 +4,9 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
-<asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    
+<asp:Content ContentPlaceHolderID="mainContent" runat="server">    
     <nsn:SiteAdmin_FilterPost ID="fpViewPost" runat="server"
-        EnableViewState="true"
-        OnFiltering="fpViewPost_Filtering"
-        OnFiltered="fpViewPost_Filtered" />    
-
+        OnFiltered="fpViewPost_Filtered" />
     <div id="postHelpBox" class="dialog" title="Trợ giúp">
         <p><b>Thêm tin mới</b>: Bấm vào nút 'Thêm'</p>
         <p><b>Sửa tin</b>: Bấm vào tiêu đề của một tin bất kỳ</p>
