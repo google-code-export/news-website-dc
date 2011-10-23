@@ -165,7 +165,7 @@ namespace NewsVn.Web.Account.Guest
                     _u.Location = int.Parse(ddlProvince.SelectedValue);
                     _u.Phone = txtPhone.Text;
                     _u.Email = lblEmail.Text;
-                    _u.ShowPhone = chkShowEmail.Checked;
+                    _u.ShowPhone = chkShowPhone.Checked;
                     _u.ShowEmail = chkShowEmail.Checked;
                     _u.UpdatedOn = DateTime.Now;
 
