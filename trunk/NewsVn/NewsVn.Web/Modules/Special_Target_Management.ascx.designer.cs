@@ -13,40 +13,76 @@ namespace NewsVn.Web.Modules {
     public partial class Special_Target_Management {
         
         /// <summary>
-        /// ddlFilterColumn control.
+        /// grvShow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFilterColumn;
+        protected global::System.Web.UI.WebControls.GridView grvShow;
         
         /// <summary>
-        /// TextBox1 control.
+        /// btnAddHot control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Button btnAddHot;
         
         /// <summary>
-        /// HyperLink2 control.
+        /// btnRefresh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::System.Web.UI.WebControls.LinkButton btnRefresh;
         
         /// <summary>
-        /// HyperLink3 control.
+        /// ddlSortColumn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortColumn;
+        
+        /// <summary>
+        /// ddlSortDirection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortDirection;
+        
+        /// <summary>
+        /// btnClearSort control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnClearSort;
+        
+        /// <summary>
+        /// lnkFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkFilter;
+        
+        /// <summary>
+        /// btnClearFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnClearFilter;
         
         /// <summary>
         /// ddlPageIndex control.
@@ -65,24 +101,6 @@ namespace NewsVn.Web.Modules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
-        
-        /// <summary>
-        /// grvShow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvShow;
-        
-        /// <summary>
-        /// btnAddHot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddHot;
         
         /// <summary>
         /// GridView1 control.

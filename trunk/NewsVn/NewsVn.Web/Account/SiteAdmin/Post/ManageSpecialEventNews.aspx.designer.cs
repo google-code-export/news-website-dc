@@ -13,12 +13,12 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
     public partial class ManageSpecialEventNews {
         
         /// <summary>
-        /// SiteAdmin_FilterPost1 control.
+        /// fpViewPost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::NewsVn.Web.Modules.Special_Target_Management SiteAdmin_FilterPost1;
+        protected global::NewsVn.Web.Modules.SiteAdmin_FilterPost fpViewPost;
     }
 }
