@@ -69,7 +69,6 @@ namespace NewsVn.Web.Modules
                 GridView1.DataSource = ctx.PostRepo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
                     {
                         p.ID,
-                        p.Avatar,
                         p.Title,
                         p.Description,
                         p.SeoUrl,
@@ -80,9 +79,6 @@ namespace NewsVn.Web.Modules
                         CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
                     });
                 GridView1.DataBind();
-                GridView1.Columns[8].Visible = false;
-                GridView1.Columns[7].Visible = true;
-                GridView1.Columns[6].Visible = false;
             }
         }
 
