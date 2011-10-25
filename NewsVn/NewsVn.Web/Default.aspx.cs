@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Xml.Linq;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+using System.Diagnostics;
 
 namespace NewsVn.Web
 {
@@ -23,11 +24,16 @@ namespace NewsVn.Web
         {
             if (!IsPostBack)
             {
+                //Stopwatch stopwatch = new Stopwatch();
+                //stopwatch.Start();
                 List<int> lstArrayID = load_pletLatestNews();
                 load_pletSpecialEvents();
                 load_pletHotNews(lstArrayID);
                 load_pletPosts();
                 load_sideTabBar();
+                //stopwatch.Stop();
+                //BaseUI.BaseMaster.SiteTitle = stopwatch.Elapsed.ToString();
+                //result: ~ 12 - 13s
             }
         }
 
