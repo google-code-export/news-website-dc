@@ -75,7 +75,13 @@ namespace NewsVn.Web
                 //check_PageView  - khong su dung pageview thi ko can update
                 if (postData.CheckPageView)
                 {
-                    Allow_Update_PageView(postID);
+                    //Allow_Update_PageView(postID); //25/10/2011
+                    //fix tam thoi bo session
+                    if (postData != null)
+                    {
+                        postData.PageView += 1;
+                        ctx.SubmitChanges();
+                    }
                 }
             }
         }
