@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+using System.Diagnostics;
 
 namespace NewsVn.Web
 {
@@ -32,10 +33,15 @@ namespace NewsVn.Web
             {
                 try
                 {
+                    //Stopwatch stopwatch = new Stopwatch();
+                    //stopwatch.Start();
                     int codePost = int.Parse(Request.QueryString["cp"]);
                     //checkCateID_By_SEONAME(Request.QueryString["ct"]);
                     load_postDetail(codePost);
                     load_pletFocusPost();
+                    //stopwatch.Stop();
+                    //BaseUI.BaseMaster.SiteTitle = stopwatch.Elapsed.ToString();
+                    //result: ~ 12 - 13s
                 }
                 catch (Exception)
                 {
@@ -75,13 +81,7 @@ namespace NewsVn.Web
                 //check_PageView  - khong su dung pageview thi ko can update
                 if (postData.CheckPageView)
                 {
-                    //Allow_Update_PageView(postID); //25/10/2011
-                    //fix tam thoi bo session
-                    if (postData != null)
-                    {
-                        postData.PageView += 1;
-                        ctx.SubmitChanges();
-                    }
+                    Allow_Update_PageView(postID); //25/10/2011
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace NewsVn.Web
                 var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
                 var listData = _Posts.Where(p => p.CheckPageView == true
                 && p.Category.ID == intCateID || (p.Category.Parent != null && p.Category.Parent.ID == intCateID))
-                    //.Where(p => p.ApprovedOn.Value.AddDays(30) >= DateTime.Now)
+                    .Where(p => p.ApprovedOn.Value.AddDays(30) >= DateTime.Now)
                 .Select(p => new
                 {
                     p.ID,

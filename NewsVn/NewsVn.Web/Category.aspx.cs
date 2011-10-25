@@ -148,7 +148,7 @@ namespace NewsVn.Web
                 var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
                 var listData = _Posts.Where(p =>p.CheckPageView == true && p.Category.ID == intCateID 
                     || (p.Category.Parent != null && p.Category.ParentID == intCateID))
-                    //.Where(p=> p.ApprovedOn.Value.AddDays(30)>=DateTime.Now)
+                     .Where(p => p.ApprovedOn.Value.AddDays(30) >= DateTime.Now)
                 .Select(p => new
                 {
                     p.ID,
