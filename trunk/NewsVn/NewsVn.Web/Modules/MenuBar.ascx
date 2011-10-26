@@ -1,4 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MenuBar.ascx.cs" Inherits="NewsVn.Web.Modules.MenuBar" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MenuBar.ascx.cs"
+   EnableViewState="false" Inherits="NewsVn.Web.Modules.MenuBar" %>
+
 <script type="text/javascript">
     $(function () {
         $("#menu_bar .sub-menu").each(function () {

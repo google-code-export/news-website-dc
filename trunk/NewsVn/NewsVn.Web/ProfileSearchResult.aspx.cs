@@ -37,7 +37,7 @@ namespace NewsVn.Web
                                 
                 using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
-                    var _Profile = ctx.UserProfileRepo.Getter.getEnumerable(p => p.Gender == int.Parse(strGender)
+                    var _Profile = ctx.UserProfileRepo.Getter.getQueryable(p => p.Gender == int.Parse(strGender)
                         && p.Age >= int.Parse(strFage)
                         && p.Age <= int.Parse(strTage)
                         && CompareInt((p.Avatar != "") ? 1 : 0, int.Parse(strAvatar), CompareOpt.Equal)

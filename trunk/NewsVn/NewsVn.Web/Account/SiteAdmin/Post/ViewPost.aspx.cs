@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
 using NewsVn.Impl.Context;
-using NewsVn.Web.Utils;
 using NewsVn.Impl.Model;
+using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Account.SiteAdmin.Post
 {
@@ -28,7 +29,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             set { _orderDirection = value; }
         }
 
-        static Func<Impl.Entity.Post, bool> postPredicate = null;
+        static Expression<Func<Impl.Entity.Post, bool>> postExpression = null;
 
         static FilterModel postFilterModel = null;
 
@@ -128,16 +129,16 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             this.GoToFirstPage();
         }
 
-        protected void fpViewPost_Filtered(object sender, Func<Impl.Entity.Post,bool> predicate, FilterModel model)
+        protected void fpViewPost_Filtered(object sender, Expression<Func<Impl.Entity.Post, bool>> expression, FilterModel model)
         {
-            postPredicate = predicate;
+            postExpression = expression;
             postFilterModel = model;
             this.GoToFirstPage();
         }
 
         protected void btnClearFilter_Click(object sender, EventArgs e)
         {
-            postPredicate = null;
+            postExpression = null;
             postFilterModel = null;
             this.GoToFirstPage();
         }
@@ -181,15 +182,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                Func<Impl.Entity.Post, bool> predicate = p => true;
+                Expression<Func<Impl.Entity.Post, bool>> expression = p => true;
 
-                if (postPredicate != null)
+                if (postExpression != null)
                 {
-                    predicate = postPredicate;
+                    expression = postExpression;
                 }
 
-                var posts = ctx.PostRepo.Getter.getEnumerable(predicate)
-                    .OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsEnumerable();
+                var posts = ctx.PostRepo.Getter.getQueryable(expression)
+                    .OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsQueryable();
 
                 posts = ctx.PostRepo.Getter.getSortedList(posts, orderBy);
 
@@ -218,7 +219,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRepo.Getter.getEnumerable().Count() / pageSize);
+                Expression<Func<Impl.Entity.Post, bool>> expression = p => true;
+
+                if (postExpression != null)
+                {
+                    expression = postExpression;
+                }
+                int numOfRecords = ctx.PostRepo.Getter.getQueryable(expression).Count();
+                int numOfPages = (int)Math.Ceiling((decimal)numOfRecords / pageSize);
                 
                 ddlPageIndex.Items.Clear();
 
@@ -233,13 +241,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 {
                     ddlPageIndex.Items.Add("1");
                 }
+
+                ltrPostCount.Text = string.Format("Có {0:N0} tin", numOfRecords);
             }
         }
 
         private void CheckSortingAndFiltering()
         {
             btnClearSort.Visible = !string.IsNullOrEmpty(orderBy);
-            btnClearFilter.Visible = postPredicate != null;
+            btnClearFilter.Visible = postExpression != null;
 
             var sb = new StringBuilder();
 
@@ -249,7 +259,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 sb.AppendFormat(", chiều: <b>{0}</b>", ddlSortDirection.SelectedItem.Text);
             }
 
-            if (postPredicate != null)
+            if (postExpression != null)
             {                                
                 sb.Append(string.IsNullOrEmpty(orderBy) ? "" : " | ");
                 sb.Append("Đang lọc theo: ");

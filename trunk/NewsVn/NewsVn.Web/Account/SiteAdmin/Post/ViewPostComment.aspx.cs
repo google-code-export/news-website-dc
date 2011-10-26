@@ -97,8 +97,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var comments = ctx.PostCommentRepo.Getter.getEnumerable()
-                    .OrderByDescending(c => c.UpdatedOn).ThenBy(c => c.PostID).AsEnumerable();
+                var comments = ctx.PostCommentRepo.Getter.getQueryable()
+                    .OrderByDescending(c => c.UpdatedOn).ThenBy(c => c.PostID).AsQueryable();
 
                 comments = ctx.PostCommentRepo.Getter.getSortedList(comments, orderBy);
 

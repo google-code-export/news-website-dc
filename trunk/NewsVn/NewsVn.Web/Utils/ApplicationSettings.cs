@@ -13,7 +13,7 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                _settings = ctx.SettingRepo.Getter.getEnumerable().ToList();
+                _settings = ctx.SettingRepo.Getter.getQueryable().ToList();
             }
         }
 

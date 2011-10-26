@@ -65,7 +65,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).OrderByDescending(p => p.ApprovedOn).AsEnumerable();
+                var posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).OrderByDescending(p => p.ApprovedOn);
                 GridView1.DataSource = ctx.PostRepo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
                     {
                         p.ID,

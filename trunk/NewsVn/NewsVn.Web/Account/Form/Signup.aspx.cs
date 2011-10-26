@@ -183,7 +183,7 @@ namespace NewsVn.Web.Account.Form
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Location = ctx.LocationRepo.Getter.getEnumerable(p => p.CountryID != 0)
+                var _Location = ctx.LocationRepo.Getter.getQueryable(p => p.CountryID != 0)
                     .Select(l => new
                     {
                         l.LocationID,

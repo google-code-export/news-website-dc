@@ -79,7 +79,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Location = ctx.LocationRepo.Getter.getEnumerable(l => l.CountryID == int.Parse(strCountryId))
+                var _Location = ctx.LocationRepo.Getter.getQueryable(l => l.CountryID == int.Parse(strCountryId))
                     .Select(l => new
                     {
                         l.LocationID,
@@ -97,7 +97,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Location = ctx.LocationRepo.Getter.getEnumerable()
+                var _Location = ctx.LocationRepo.Getter.getQueryable()
                     .Select(l => new
                     {
                         l.LocationID,

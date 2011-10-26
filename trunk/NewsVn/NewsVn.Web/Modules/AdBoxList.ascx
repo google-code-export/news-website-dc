@@ -1,4 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdBoxList.ascx.cs" Inherits="NewsVn.Web.Modules.AdBoxList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AdBoxList.ascx.cs"
+    EnableViewState="false" Inherits="NewsVn.Web.Modules.AdBoxList" %>
+<%@ OutputCache Duration="10080" VaryByParam="None" Shared="true" %>
 
 <script type="text/javascript">
     $(function () {

@@ -1,4 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HotVideoList.ascx.cs" Inherits="NewsVn.Web.Modules.HotVideoList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HotVideoList.ascx.cs"
+    EnableViewState="false" Inherits="NewsVn.Web.Modules.HotVideoList" %>
+<%@ OutputCache Duration="10080" VaryByParam="None" Shared="true" %>
 
 <div class="side-part portlet">
 	<h2>Video Clip</h2>
