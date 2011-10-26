@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FooterCategoryList.ascx.cs"
-   EnableViewState="false" Inherits="NewsVn.Web.Modules.FooterCategoryList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FooterCategoryList.ascx.cs" Inherits="NewsVn.Web.Modules.FooterCategoryList" %>
 
 <div class="section cate-list left">
 	<h2>Danh mục chủ đề</h2>
