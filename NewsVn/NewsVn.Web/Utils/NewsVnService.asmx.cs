@@ -68,7 +68,7 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var postComments = ctx.PostCommentRepo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now).AsEnumerable();
+                var postComments = ctx.PostCommentRepo.Getter.getQueryable(c => c.PostID == postID && c.UpdatedOn <= DateTime.Now);
 
                 if (oldestOnTop)
                     postComments = ctx.PostCommentRepo.Getter.getPagedList(postComments.OrderBy(c => c.UpdatedOn), pageIndex, pageSize);

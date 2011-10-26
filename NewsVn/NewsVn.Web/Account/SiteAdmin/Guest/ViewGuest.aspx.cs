@@ -62,7 +62,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Guest
                         args["newsvn.account.name"] = user.UserName;
                         if (Membership.DeleteUser(user.UserName))
                         {
-                            var deleteComments = ctx.UserProfileCommentRepo.Getter.getEnumerable
+                            var deleteComments = ctx.UserProfileCommentRepo.Getter.getQueryable
                                 (c => c.ForAccount.Equals(user.UserName) || c.UpdatedBy.Equals(user.UserName));
                             var deletedProfile = ctx.UserProfileRepo.Getter.getOne(u => u.Account.Equals(user.UserName));
                             ctx.UserProfileCommentRepo.Setter.deleteMany(deleteComments);

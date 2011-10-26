@@ -1,4 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PostsPortlet.ascx.cs" Inherits="NewsVn.Web.Modules.PostsPortlet" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PostsPortlet.ascx.cs"
+   EnableViewState="false" Inherits="NewsVn.Web.Modules.PostsPortlet" %>
+
 <asp:Panel ID="container" CssClass="cate-posts portlet" runat="server">
     
     <script type="text/javascript">

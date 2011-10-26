@@ -14,7 +14,7 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                _keyValueRef = ctx.KeyValueRefRepo.Getter.getEnumerable().ToList();
+                _keyValueRef = ctx.KeyValueRefRepo.Getter.getQueryable().ToList();
             }
         }
 
@@ -53,7 +53,7 @@ namespace NewsVn.Web.Utils
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var _Location = ctx.LocationRepo.Getter.getEnumerable()
+                var _Location = ctx.LocationRepo.Getter.getQueryable()
                     .Select(l => new
                     {
                         l.LocationID,

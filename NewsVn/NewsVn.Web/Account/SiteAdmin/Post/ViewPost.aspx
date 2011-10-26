@@ -19,17 +19,22 @@
             <asp:Literal ID="ltrInfo" EnableViewState="false" runat="server" />
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>
-        <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add left" runat="server"
-            NavigateUrl="~/Account/SiteAdmin/Post/AddPost.aspx" />
-        <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
-            OnClientClick="return confirmAction('Xóa tin được chọn?')" OnClick="btnDelete_Click" />
-        <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
-            OnClientClick="return confirmAction('Ẩn/Hiện tin được chọn?')" OnClick="btnToggleActive_Click" />
-        <asp:LinkButton ID="btnApprove" Text="Duyệt" CssClass="button-ok left" runat="server"
-            OnClientClick="return confirmAction('Duyệt tin được chọn?')" OnClick="btnApprove_Click" />
-        <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[postHelpBox]" runat="server" />
-        <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh right" runat="server"
+        <div class="left">
+            <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add" runat="server"
+                NavigateUrl="~/Account/SiteAdmin/Post/AddPost.aspx" />
+            <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete" runat="server"
+                OnClientClick="return confirmAction('Xóa tin được chọn?')" OnClick="btnDelete_Click" />
+            <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle" runat="server"
+                OnClientClick="return confirmAction('Ẩn/Hiện tin được chọn?')" OnClick="btnToggleActive_Click" />
+            <asp:LinkButton ID="btnApprove" Text="Duyệt" CssClass="button-ok" runat="server"
+                OnClientClick="return confirmAction('Duyệt tin được chọn?')" OnClick="btnApprove_Click" />
+            <asp:HyperLink Text="Trợ giúp" CssClass="button-help dialog-trigger[postHelpBox]" runat="server" />
+        </div>
+        <div class="right">
+            <b><asp:Literal ID="ltrPostCount" runat="server" /></b>&nbsp;&nbsp;
+            <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh" runat="server"
             OnClick="btnRefresh_Click" />
+        </div>
         <div class="clear"></div>
         <hr />
         <div class="left">

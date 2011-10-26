@@ -76,6 +76,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
         protected global::System.Web.UI.WebControls.LinkButton btnApprove;
         
         /// <summary>
+        /// ltrPostCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrPostCount;
+        
+        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>

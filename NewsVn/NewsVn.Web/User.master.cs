@@ -16,8 +16,7 @@ namespace NewsVn.Web
                 Page.Header.DataBind();
                 //Error--------------
                 Generate_SeoMeta();
-                Load_Menu();
-                Load_FooterCate();
+                Load_DB_Data();
             }
         }
         
@@ -38,54 +37,37 @@ namespace NewsVn.Web
 
         }
 
-        private void Load_Menu()
-        {
-            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString) )
-            {
-
-                var Catechildren=ctx.CategoryRepo.Getter.getQueryable(c => c.Parent != null && c.Type=="post" && c.Actived==true);
-                var CateList = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent == null && c.Type == "post" && c.Actived == true).Union(Catechildren);
-
-                CtrMenu.Datasource = CateList;
-                CtrMenu.DataBind();
-            }
-        }
-
-        protected void Load_FooterCate()
+        private void Load_DB_Data()
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-
-                var Catechildren = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent != null && c.Type == "post" && c.Actived == true);
-                var CateList = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post")
-                    .Select(c => new
-               {
-                   c.Name,
-                   c.SeoName,
-                   SeoUrl = HostName + c.SeoUrl,
-                   c.ID,
-                   //khong the thuc hien count toan bo item trong he thong dc/ bad performance
-                   //Waston: Test thử với pattern mới
-                  // PostCount = this.CountChildCateFigures(c)
-               }).ToList();
-                CtrFooterCateList.Datasource = CateList;
-                CtrFooterCateList.DataBind();
+                var categories = Load_Menu(ctx);
+                Load_FooterCate(categories);
             }
         }
 
-        private int CountChildCateFigures(Impl.Entity.Category cate)
+        private IQueryable<Impl.Entity.Category> Load_Menu(NewsVnContext ctx)
         {
-            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
-            {
-                int count = cate.Posts.Count;
+            var CateList = ctx.CategoryRepo.Getter.getQueryable(c => c.Type == "post" && c.Actived == true);
 
-                foreach (var child in cate.Children)
+            CtrMenu.Datasource = CateList;
+            CtrMenu.DataBind();
+
+            return CateList;
+        }
+
+        protected void Load_FooterCate(IQueryable<Impl.Entity.Category> categories)
+        {
+            var CateList = categories.Where(c => c.Parent == null)
+                .Select(c => new
                 {
-                    count += child.Posts.Count;
-                }
-
-                return count;
-            }
+                    c.Name,
+                    c.SeoName,
+                    SeoUrl = HostName + c.SeoUrl,
+                    c.ID
+                });
+            CtrFooterCateList.Datasource = CateList;
+            CtrFooterCateList.DataBind();
         }
     }
 }
