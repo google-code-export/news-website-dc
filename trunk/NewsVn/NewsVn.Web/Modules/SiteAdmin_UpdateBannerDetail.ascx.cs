@@ -26,7 +26,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var BannerDetail = ctx.BannerDetailRepo.Getter.getEnumerable(c => c.ID == intBannerId)
+                var BannerDetail = ctx.BannerDetailRepo.Getter.getQueryable(c => c.ID == intBannerId)
                 .Select(c => new
                 {
                     c.ID,

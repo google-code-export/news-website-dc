@@ -32,7 +32,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var BannerLists = ctx.BannerDetailRepo.Getter.getEnumerable(c => c.BannerID == intPositionID)
+                var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable (c => c.BannerID == intPositionID)
                 .Select(c => new
                 {
                     c.ID,
