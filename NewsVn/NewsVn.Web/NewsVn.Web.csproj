@@ -62,7 +62,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Vietstream.Data">
-      <HintPath>..\..\..\Vietstream.Data\Vietstream.Data.dll</HintPath>
+      <HintPath>..\..\NewsVn\resources\assemblies\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var BannerLists = ctx.BannerDetailRepo.Getter.getEnumerable()
+                var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable()
                 .Select(c=>new{
                 c.ID ,
                 c.Height,
@@ -39,7 +39,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var BannerPositionLists = ctx.BannerRepo.Getter.getEnumerable()
+                var BannerPositionLists = ctx.BannerRepo.Getter.getQueryable() 
                     .Select(
                     c => new {
                     c.PositionID,
