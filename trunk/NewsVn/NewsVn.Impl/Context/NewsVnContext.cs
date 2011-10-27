@@ -18,6 +18,9 @@ namespace NewsVn.Impl.Context
         private Repository<Entity.Video> _videoRepo;
         private Repository<Entity.KeyValueRef> _keyValueRefRepo;
         private Repository<Entity.Location> _locationRepo;
+        private Repository<Entity.Banner> _bannerRepo;
+        private Repository<Entity.BannerDetail> _bannerDetailRepo;
+
 
         public Repository<Entity.Location> LocationRepo
         {
@@ -185,6 +188,31 @@ namespace NewsVn.Impl.Context
             this.CreateDataContext();
         }
 
+
+        public Repository<Entity.Banner> BannerRepo
+        {
+            get
+            {
+                if (_bannerRepo == null)
+                {
+                    _bannerRepo = new Repository<Entity.Banner>(_ctx);
+                }
+                return _bannerRepo;
+            }
+        }
+
+        public Repository<Entity.BannerDetail> BannerDetailRepo
+        {
+            get
+            {
+                if (_bannerDetailRepo == null)
+                {
+                    _bannerDetailRepo = new Repository<Entity.BannerDetail>(_ctx);
+                }
+                return _bannerDetailRepo;
+            }
+        }
+
         public void Dispose()
         {
             if (_adBoxRepo != null) this.AdBoxRepo.Dispose();
@@ -198,6 +226,8 @@ namespace NewsVn.Impl.Context
             if (_userProfileCommentRepo != null) this.UserProfileCommentRepo.Dispose();
             if (_videoRepo != null) this.VideoRepo.Dispose();
             if (_keyValueRefRepo  != null) this.KeyValueRefRepo.Dispose();
+            if (_bannerRepo != null) this.KeyValueRefRepo.Dispose();
+            if (_bannerDetailRepo != null) this.KeyValueRefRepo.Dispose();
         }
     }
 }
