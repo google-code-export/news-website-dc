@@ -10,16 +10,16 @@
 namespace NewsVn.Web.Account.SiteAdmin.Misc {
     
     
-    public partial class ViewAdBox {
+    public partial class EditAdPostPosition {
         
         /// <summary>
-        /// rptBannerPositon control.
+        /// ddlBannerType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptBannerPositon;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBannerType;
         
         /// <summary>
         /// rptCurrentBannerList control.
@@ -29,5 +29,23 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptCurrentBannerList;
+        
+        /// <summary>
+        /// btnInsert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnInsert;
+        
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnUpdate;
     }
 }

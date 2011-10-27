@@ -8,7 +8,7 @@ namespace NewsVn.Web.Utils
 {
     public class ApplicationKeyValueRef
     {
-        private static List<Impl.Entity.KeyValueRef> _keyValueRef;
+        public static List<Impl.Entity.KeyValueRef> _keyValueRef;
 
          static ApplicationKeyValueRef()
         {

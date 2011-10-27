@@ -61,8 +61,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Vietstream.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\resources\assemblies\Vietstream.Data.dll</HintPath>
+    <Reference Include="Vietstream.Data">
+      <HintPath>..\..\..\Vietstream.Data\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +75,9 @@
     <Content Include="Account\Form\Signup.aspx" />
     <Content Include="Account\Guest\default.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
+    <Content Include="Account\SiteAdmin\Misc\AddNewBanner.aspx" />
+    <Content Include="Account\SiteAdmin\Misc\EditAdPostPosition.aspx" />
+    <Content Include="Account\SiteAdmin\Misc\EditBannerDetail.aspx" />
     <Content Include="Account\SiteAdmin\default.htm" />
     <Content Include="Account\SiteAdmin\Guest\ViewGuest.aspx" />
     <Content Include="Account\SiteAdmin\Misc\ViewAdBox.aspx" />
@@ -1641,6 +1644,7 @@
     <Content Include="Modules\AdPostsPortlet.ascx" />
     <Content Include="Modules\AdSearchBox.ascx" />
     <Content Include="Modules\AdSearchResult.ascx" />
+    <Content Include="Modules\BannerControl.ascx" />
     <Content Include="Modules\CategorizedAdPostList.ascx" />
     <Content Include="Modules\CategorizedPostList.ascx" />
     <Content Include="Modules\CategorizedVideoList.ascx" />
@@ -1691,7 +1695,9 @@
     <Content Include="Modules\RelatedPostList.ascx" />
     <Content Include="Modules\ResultProfilesearchResult.ascx" />
     <Content Include="Modules\SideTabsBox.ascx" />
+    <Content Include="Modules\SiteAdmin_AddNewBanner.ascx" />
     <Content Include="Modules\SiteAdmin_Menu.ascx" />
+    <Content Include="Modules\SiteAdmin_UpdateBannerDetail.ascx" />
     <Content Include="Modules\SiteAdmin_UpdateCategory.ascx" />
     <Content Include="Modules\SiteAdmin_UpdatePost.ascx" />
     <Content Include="Modules\SiteAdmin_FilterPost.ascx" />
@@ -1839,6 +1845,27 @@
     </Compile>
     <Compile Include="Account\Guest\MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\AddNewBanner.aspx.cs">
+      <DependentUpon>AddNewBanner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\AddNewBanner.aspx.designer.cs">
+      <DependentUpon>AddNewBanner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\EditAdPostPosition.aspx.cs">
+      <DependentUpon>EditAdPostPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\EditAdPostPosition.aspx.designer.cs">
+      <DependentUpon>EditAdPostPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\EditBannerDetail.aspx.cs">
+      <DependentUpon>EditBannerDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Misc\EditBannerDetail.aspx.designer.cs">
+      <DependentUpon>EditBannerDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Guest\ViewGuest.aspx.cs">
       <DependentUpon>ViewGuest.aspx</DependentUpon>
@@ -2085,6 +2112,13 @@
     <Compile Include="Modules\AdSearchResult.ascx.designer.cs">
       <DependentUpon>AdSearchResult.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\BannerControl.ascx.cs">
+      <DependentUpon>BannerControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\BannerControl.ascx.designer.cs">
+      <DependentUpon>BannerControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\CategorizedAdPostList.ascx.cs">
       <DependentUpon>CategorizedAdPostList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2256,12 +2290,26 @@
     <Compile Include="Modules\SideTabsBox.ascx.designer.cs">
       <DependentUpon>SideTabsBox.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\SiteAdmin_AddNewBanner.ascx.cs">
+      <DependentUpon>SiteAdmin_AddNewBanner.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_AddNewBanner.ascx.designer.cs">
+      <DependentUpon>SiteAdmin_AddNewBanner.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\SiteAdmin_Menu.ascx.cs">
       <DependentUpon>SiteAdmin_Menu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\SiteAdmin_Menu.ascx.designer.cs">
       <DependentUpon>SiteAdmin_Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdateBannerDetail.ascx.cs">
+      <DependentUpon>SiteAdmin_UpdateBannerDetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\SiteAdmin_UpdateBannerDetail.ascx.designer.cs">
+      <DependentUpon>SiteAdmin_UpdateBannerDetail.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SiteAdmin_UpdateCategory.ascx.cs">
       <DependentUpon>SiteAdmin_UpdateCategory.ascx</DependentUpon>

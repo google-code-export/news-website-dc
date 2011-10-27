@@ -40,6 +40,15 @@ namespace NewsVn.Web {
         protected global::System.Web.UI.ScriptManager smUser;
         
         /// <summary>
+        /// BannerControlTop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.BannerControl BannerControlTop;
+        
+        /// <summary>
         /// CtrMenu control.
         /// </summary>
         /// <remarks>
