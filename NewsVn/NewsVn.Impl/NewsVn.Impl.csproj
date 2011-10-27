@@ -39,14 +39,16 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Vietstream.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\resources\assemblies\Vietstream.Data.dll</HintPath>
+    <Reference Include="Vietstream.Data">
+      <HintPath>..\..\..\Vietstream.Data\Vietstream.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caching\CacheUtils.cs" />
     <Compile Include="Caching\HttpContextCache.cs" />
     <Compile Include="Context\NewsVnContext.cs" />
+    <Compile Include="Entity\Banner.cs" />
+    <Compile Include="Entity\BannerDetail.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\AdPost.cs" />
     <Compile Include="Entity\AdBox.cs" />
