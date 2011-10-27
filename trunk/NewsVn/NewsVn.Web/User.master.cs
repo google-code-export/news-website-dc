@@ -17,6 +17,7 @@ namespace NewsVn.Web
                 //Error--------------
                 Generate_SeoMeta();
                 Load_DB_Data();
+                LoadTopBanner();
             }
         }
         
@@ -69,5 +70,31 @@ namespace NewsVn.Web
             CtrFooterCateList.Datasource = CateList;
             CtrFooterCateList.DataBind();
         }
+
+        protected void LoadTopBanner()
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                int BannerPosition = BannerControlTop.BannerPosition;  
+                int BannerType = BannerControlTop.BannerType;
+                int RepeatDirection = BannerControlTop.RepeatDirection;
+                int TopBannerId = ctx.BannerRepo.Getter.getOne(b => b.PositionID == BannerPosition && b.TypeID == BannerType).ID;
+                var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable(a=> a.BannerID ==TopBannerId).Select (c=> new
+                {
+                  c.ID,
+                  c.Title,
+                  c.Width,
+                  c.Height,
+                  c.Url,
+                  bnDirection = RepeatDirection
+                }).ToList();
+
+                
+                BannerControlTop.Datasource = BannerLists;
+                BannerControlTop.DataBind();
+            }
+
+        }
+
     }
 }

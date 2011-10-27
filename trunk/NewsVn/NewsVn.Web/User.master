@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.master.cs" Inherits="NewsVn.Web.User" %>
 
+<%@ Register src="Modules/BannerControl.ascx" tagname="BannerControl" tagprefix="uc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -65,8 +67,11 @@
                             LogoutText="Thoát" runat="server" />
                     </div>
                     <div style="text-align:right">
-                        <img src="http://3.bp.blogspot.com/_o0vvRBkTFCM/TVIueyRj5eI/AAAAAAAAAH0/OukuoSUn5TM/s320/fastest%2Bortho%2Bnote%2Bbanner.jpg" width="320" height="120" />
-                        <img src="http://i47.tinypic.com/2hp2ln6.png" width="320" height="120" style="margin-left:10px" />
+                        <%--<img src="http://3.bp.blogspot.com/_o0vvRBkTFCM/TVIueyRj5eI/AAAAAAAAAH0/OukuoSUn5TM/s320/fastest%2Bortho%2Bnote%2Bbanner.jpg" width="320" height="120" />
+                        <img src="http://i47.tinypic.com/2hp2ln6.png" width="320" height="120" style="margin-left:10px" />--%>
+                        
+                        <nsn:BannerControl ID="BannerControlTop" runat="server" BannerType="2" RepeatDirection="0" BannerPosition="1"/>
+                        
                     </div>
                 </div>
             </div>
