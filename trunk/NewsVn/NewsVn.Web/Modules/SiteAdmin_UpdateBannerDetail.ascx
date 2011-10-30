@@ -29,11 +29,14 @@
             <asp:Image ID="imgBanner" runat="server" />
         </li>
         <li>
-            <asp:LinkButton ID="lbtnUpload" Text="Upload banner khác" CssClass="button-ok" runat="server" />
+             <asp:FileUpload ID="fileAvatar"  runat="server" />
+           <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Upload" CssClass="button-ok"/>
         </li>
         <li class="commands">
-            <div class="right">
-                <asp:LinkButton ID="btnUpdate" Text="Lưu" CssClass="button-ok" runat="server" />
+             <div class="left">
+                <asp:LinkButton ID="btnUpdate" Text="Lưu" CssClass="button-ok" runat="server" 
+                     onclick="btnUpdate_Click" />&nbsp;
+               <a href="ViewAdBox.aspx" class="button-back">Hủy</a>
             </div>
             <div class="clear">
             </div>
