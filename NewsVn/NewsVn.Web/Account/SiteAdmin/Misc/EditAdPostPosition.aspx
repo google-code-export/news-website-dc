@@ -6,6 +6,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="mainContent" runat="server">
+<script type="text/javascript">
+    function ConfirmDelete(id) {
+        if (confirm('Bạn có muốn xóa banner này không?')) {
+            $("#<%=hidDel.ClientID %>").val(id);
+            return true;
+        }
+        return false;
+    }
+</script>
     <div class="portlet">
         <h2>
             vị trí:
@@ -15,7 +24,8 @@
         </asp:DropDownList>
         <h2>
             Danh sách các Banner</h2>
-        <asp:Repeater ID="rptCurrentBannerList" runat="server">
+        <asp:Repeater ID="rptCurrentBannerList" runat="server" 
+            onitemdatabound="rptCurrentBannerList_ItemDataBound">
             <HeaderTemplate>
                 <table id="post-table" class="ui-table" border="0" cellpadding="0" cellspacing="0">
                     <tr>
@@ -84,18 +94,18 @@
                 </table>
             </FooterTemplate>
         </asp:Repeater>
-        </br>
+        <br />
         <ul id="update_category_form" class="ui-form ui-widget main" style="width: 766px">
             <li class="commands">
                 <div class="right">
                     <asp:LinkButton ID="btnInsert" Text="Thêm banner" CssClass="button-ok" 
                         runat="server" onclick="btnInsert_Click" />
-                    <asp:LinkButton ID="btnUpdate" Text="Lưu" CssClass="button-ok" runat="server" 
-                        onclick="btnUpdate_Click" />
+                    <a href="ViewAdBox.aspx" class="button-back">Hủy</a>
                 </div>
                 <div class="clear">
                 </div>
             </li>
         </ul>
     </div>
+     <asp:HiddenField ID="hidDel" runat="server" Value="0" />
 </asp:Content>

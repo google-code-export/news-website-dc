@@ -94,13 +94,29 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc
         {
             try
             {
-
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                {
+                    int ID = int.Parse(hidDel.Value);
+                    var BannerDetail = ctx.BannerDetailRepo.Getter.getOne(c => c.ID == ID);
+                    ctx.BannerDetailRepo.Setter.deleteOne(BannerDetail);
+                    ctx.SubmitChanges();
+                }
+                loadPositionBannerDetail();
             }
             catch
             {
                 
             }
-            Response.Redirect(HostName + "account/siteadmin/misc/AddNewBanner.aspx?pid=" + intPositionID + "&tid=" + intTypeID);
+        }
+        protected void rptCurrentBannerList_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
+        {
+            //OnClientClick="javascript:return ConfirmDelete('"+<%#Eval("ID") %>+"');"
+            if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
+            {
+                LinkButton lnkbtnDelete = new LinkButton();
+                lnkbtnDelete = (LinkButton)e.Item.FindControl("lbtnDel");
+                lnkbtnDelete.Attributes.Add("onclick", "return ConfirmDelete('" + DataBinder.Eval(e.Item.DataItem, "ID").ToString() + "');");
+            }
         }
         
     }
