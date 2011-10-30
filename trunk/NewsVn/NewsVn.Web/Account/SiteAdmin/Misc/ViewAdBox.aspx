@@ -4,6 +4,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="mainContent" runat="server">
+<script type="text/javascript">
+    function ConfirmDelete(id) {
+        if (confirm('Bạn có muốn xóa banner này không?')) {
+            $("#<%=hidDel.ClientID %>").val(id);
+            return true;
+        }
+        return false;
+    }
+</script>
     <div class="portlet">
         <h2>Danh sách các vị trí Banner quảng cáo</h2>
         <asp:Repeater ID="rptBannerPositon" runat="server">
@@ -34,7 +43,8 @@
 </br>
 <div class="portlet">
         <h2>Danh sách các Banner quảng cáo hiện tại</h2>
-         <asp:Repeater ID="rptCurrentBannerList" runat="server">
+         <asp:Repeater ID="rptCurrentBannerList" runat="server" 
+            onitemdatabound="rptCurrentBannerList_ItemDataBound">
         <HeaderTemplate>
             <table id="post-table" class="ui-table" border="0" cellpadding="0" cellspacing="0">
                 <tr>
@@ -80,12 +90,16 @@
                      <a href='<%= HostName + "account/siteadmin/misc/editbannerdetail.aspx?bannerid=" %><%# Eval("ID") %>' 
                     title='<%# Eval("ID") %>'>Chỉnh sửa</a>
                 </td>
+                 <td>
+                   <asp:LinkButton runat="server" ID="lnkbtnDel" Text="Xóa"  onclick="lnkbtnDel_Click"  />
+                </td>
             </tr>
         </ItemTemplate>
         <FooterTemplate>
             </table>
         </FooterTemplate>
     </asp:Repeater>
+    <asp:HiddenField ID="hidDel" runat="server" Value="0" />
 </div>  
 
 </asp:Content>

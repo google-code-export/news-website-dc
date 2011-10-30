@@ -29,5 +29,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptCurrentBannerList;
+        
+        /// <summary>
+        /// hidDel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidDel;
     }
 }
