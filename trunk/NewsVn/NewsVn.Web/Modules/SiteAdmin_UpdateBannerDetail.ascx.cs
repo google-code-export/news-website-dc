@@ -62,7 +62,7 @@ namespace NewsVn.Web.Modules
                             string filename = Path.GetFileName(fileAvatar.FileName);
                             //create folder if it does not exists
                             string subPath = "Resources/Ads"; // your code goes here
-                            bool IsExists = Directory.Exists(Server.MapPath(subPath));
+                            bool IsExists = Directory.Exists(Server.MapPath("~/"+subPath));
                             if (!IsExists)
                                 Directory.CreateDirectory(Server.MapPath(subPath));
                             fileAvatar.SaveAs(Server.MapPath("~/" + subPath) + "/" + filename);
