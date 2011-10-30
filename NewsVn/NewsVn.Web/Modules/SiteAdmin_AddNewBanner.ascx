@@ -1,4 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteAdmin_AddNewBanner.ascx.cs" Inherits="NewsVn.Web.Modules.SiteAdmin_AddNewBanner" %>
+
+
+<asp:UpdatePanel runat="server" ID="upd">
+<Triggers>
+        <asp:PostBackTrigger ControlID="Button1" />
+</Triggers>
+<ContentTemplate>
+
+
+
+
 <div class="portlet">
     <h2>
         Thêm banner mới</h2>
@@ -27,16 +38,21 @@
             <%--<asp:Label ID="Label4" Text="Hình ảnh:" runat="server" Width="120" />
             <asp:Image ID="imgBanner" runat="server" />--%>
             <asp:Label ID="Label4" Text="Upload Banner:" runat="server" Width="120" />
-            <asp:FileUpload ID="FileUpload1" runat="server" />
+            <asp:FileUpload ID="fileAvatar"  runat="server" />
+           <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Upload" CssClass="button-ok"/>
+            
         </li>
         
         <li class="commands">
-            <div class="right">
+            <div class="left">
                 <asp:LinkButton ID="btnInsert" Text="Thêm" CssClass="button-ok" runat="server" 
-                    onclick="btnInsert_Click" />
+                    onclick="btnInsert_Click" />&nbsp;
+               <a href="ViewAdBox.aspx" class="button-back">Hủy</a>
             </div>
             <div class="clear">
             </div>
         </li>
     </ul>
 </div>
+</ContentTemplate>
+</asp:UpdatePanel>
