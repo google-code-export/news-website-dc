@@ -40,12 +40,12 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc {
         protected global::System.Web.UI.WebControls.LinkButton btnInsert;
         
         /// <summary>
-        /// btnUpdate control.
+        /// hidDel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnUpdate;
+        protected global::System.Web.UI.WebControls.HiddenField hidDel;
     }
 }
