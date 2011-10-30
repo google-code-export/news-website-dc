@@ -20,6 +20,7 @@ namespace NewsVn.Web.Modules
             intTypeID = int.Parse(Request.QueryString["tid"]);
             if (!IsPostBack)
             {
+                imgBanner.ImageUrl = HostName + "Resources/Images/No_Image/no-ads.gif";
                 txtPosition.Text = ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerPosition", intPositionID.ToString());
             }
         }
@@ -64,17 +65,19 @@ namespace NewsVn.Web.Modules
                             string filename = Path.GetFileName(fileAvatar.FileName);
                             //create folder if it does not exists
                             string subPath = "Resources/Ads"; // your code goes here
-                            bool IsExists = Directory.Exists(Server.MapPath(subPath));
+                            bool IsExists = Directory.Exists(Server.MapPath("~/"+subPath));
                             if (!IsExists)
                                 Directory.CreateDirectory(Server.MapPath(subPath));
-                            fileAvatar.SaveAs(Server.MapPath("~/" + subPath) + "/" + filename);
+                            fileAvatar.SaveAs( Server.MapPath("~/" + subPath) + "/" + filename);
                             txtUrl.Text =HostName+ subPath +"/"+ filename;
+                            imgBanner.ImageUrl = HostName + subPath + "/" + filename;
                             return true;
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    ltrError.Text = ex.Message.ToString();
                     return false;
                 }
             }

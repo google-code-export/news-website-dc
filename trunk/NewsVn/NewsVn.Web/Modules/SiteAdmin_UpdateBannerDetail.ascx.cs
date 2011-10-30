@@ -67,12 +67,14 @@ namespace NewsVn.Web.Modules
                                 Directory.CreateDirectory(Server.MapPath(subPath));
                             fileAvatar.SaveAs(Server.MapPath("~/" + subPath) + "/" + filename);
                             txtUrl.Text = HostName + subPath + "/" + filename;
+                            imgBanner.ImageUrl = HostName + subPath + "/" + filename;
                             return true;
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    ltrError.Text = ex.Message.ToString();
                     return false;
                 }
             }
