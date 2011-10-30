@@ -2,6 +2,9 @@
 using System.Linq;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Account.SiteAdmin.Misc
 {
@@ -34,22 +37,50 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc
                 rptCurrentBannerList.DataBind();
             }
         }
+        
 
         protected void loadBannerPositionList()
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                var BannerPositionLists = ctx.BannerRepo.Getter.getQueryable() 
+                var BannerPositionLists = ctx.BannerRepo.Getter.getQueryable()
                     .Select(
-                    c => new {
-                    c.PositionID,
-                    c.TypeID,
-                    bannerPosition=  ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerPosition",c.PositionID.ToString()),
-                    bannerType = ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerType", c.TypeID.ToString()),
+                    c => new
+                    {
+                        c.PositionID,
+                        c.TypeID,
+                        bannerPosition = ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerPosition", c.PositionID.ToString()),
+                        bannerType = ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerType", c.TypeID.ToString()),
                     }
                     );
                 rptBannerPositon.DataSource = BannerPositionLists;
                 rptBannerPositon.DataBind();
+            }
+        }
+
+        protected void lnkbtnDel_Click(object sender, EventArgs e)
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                int ID = int.Parse(hidDel.Value);
+                var BannerDetail = ctx.BannerDetailRepo.Getter.getOne(c => c.ID == ID);
+                ctx.BannerDetailRepo.Setter.deleteOne(BannerDetail);
+                ctx.SubmitChanges();
+            }
+            loadBannerPositionList();
+            loadCurrentBannerList(); 
+        }
+
+        protected void rptCurrentBannerList_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
+        {
+            //OnClientClick="javascript:return ConfirmDelete('"+<%#Eval("ID") %>+"');"
+            if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
+            {
+                LinkButton lnkbtnDelete = new LinkButton();
+                lnkbtnDelete = (LinkButton)e.Item.FindControl("lnkbtnDel");
+                //ScriptManager sm = System.Web.UI.ScriptManager.GetCurrent(this.Page);
+                //sm.RegisterAsyncPostBackControl(lnkbtnDelete);
+                lnkbtnDelete.Attributes.Add("onclick", "return ConfirmDelete('" + DataBinder.Eval(e.Item.DataItem, "ID").ToString() + "');");
             }
         }
     }
