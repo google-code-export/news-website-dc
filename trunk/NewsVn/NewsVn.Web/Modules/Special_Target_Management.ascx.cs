@@ -63,6 +63,7 @@ namespace NewsVn.Web.Modules
 
         private void LoadPostList(int pageIndex, int pageSize)
         {
+            string[] strKeyName = new string[] { "Id", "Title"};
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
                 var posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).OrderByDescending(p => p.ApprovedOn);
@@ -78,6 +79,7 @@ namespace NewsVn.Web.Modules
                         p.Actived,
                         CategoryName = p.Category.Parent == null ? p.Category.Name : p.Category.Parent.Name + "/" + p.Category.Name,
                     });
+                GridView1.DataKeyNames = strKeyName;
                 GridView1.DataBind();
             }
         }
@@ -124,7 +126,7 @@ namespace NewsVn.Web.Modules
                             bool existThisItem = false;
                             foreach (DataRow dtRow in dt.Rows)
                             {
-                                if (dtRow["ID"].ToString() == row.Cells[1].Text)
+                                if (dtRow["ID"].ToString() == GridView1.DataKeys[row.RowIndex]["Id"].ToString())
                                 {
                                     existThisItem = true;
                                 }
@@ -132,17 +134,17 @@ namespace NewsVn.Web.Modules
 
                             if (existThisItem)
                             {
-                                msgExist += "+ [ID:" + row.Cells[1].Text + "] -" + row.Cells[2].Text + "\\n";
+                                msgExist += "+ [ID:" + GridView1.DataKeys[row.RowIndex]["Id"].ToString() + "] -" + GridView1.DataKeys[row.RowIndex]["Title"].ToString() + "\\n";
 
                                 continue;
                             }
-                            int pID = int.Parse(row.Cells[1].Text);
+                            int pID = int.Parse(GridView1.DataKeys[row.RowIndex]["Id"].ToString());
 
                             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                             {
                                 var post = ctx.PostRepo.Getter.getOne(p => p.ID == pID);
                                 DataRow r = dt.NewRow();
-                                r["ID"] = row.Cells[1].Text;
+                                r["ID"] = GridView1.DataKeys[row.RowIndex]["Title"].ToString();
                                 r["Title"] = post.Title;
                                 r["CateName"] = post.Category.Name;
                                 r["ApprovedBy"] = post.ApprovedBy;
