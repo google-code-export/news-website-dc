@@ -187,3 +187,18 @@ a
     color: #104687 !important;
     text-decoration: underline;    
 }
+
+.post-not-approved
+{
+    color: #ff0000 !important;
+}
+
+.post-not-actived
+{
+    color: #666 !important;
+}
+
+.post-expired
+{
+    text-decoration: line-through !important;
+}
