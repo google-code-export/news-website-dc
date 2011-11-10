@@ -64,29 +64,29 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             this.GoToCurrentPage();
         }
 
-        protected void btnApprove_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
-                {
-                    foreach (var adpost in this.GetSelectedAdPosts(ctx).Where(p => !p.Approved))
-                    {
-                        adpost.Approved = true;
-                        adpost.ApprovedOn = DateTime.Now;
-                        adpost.ApprovedBy = HttpContext.Current.User.Identity.Name;
-                        adpost.ExpiredOn = adpost.ApprovedOn.Value.AddDays(7);
-                    }
-                    ctx.SubmitChanges();
-                }
-            }
-            catch (Exception)
-            {
-                ltrError.Text = string.Format(ErrorBar, "Không thể duyệt tin được chọn!");
-            }
+        //protected void btnApprove_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+        //        {
+        //            foreach (var adpost in this.GetSelectedAdPosts(ctx))
+        //            {
+        //                adpost.Approved = true;
+        //                adpost.ApprovedOn = DateTime.Now;
+        //                adpost.ApprovedBy = HttpContext.Current.User.Identity.Name;
+        //                adpost.ExpiredOn = adpost.ApprovedOn.Value.AddDays(7);
+        //            }
+        //            ctx.SubmitChanges();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        ltrError.Text = string.Format(ErrorBar, "Không thể duyệt tin được chọn!");
+        //    }
 
-            this.GoToCurrentPage();
-        }
+        //    this.GoToCurrentPage();
+        //}
 
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -125,20 +125,17 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var adposts = ctx.AdPostRepo.Getter.getQueryable().OrderByDescending(p => p.ApprovedOn == null).ThenByDescending(p => p.CreatedOn).AsEnumerable();
+                var adposts = ctx.AdPostRepo.Getter.getQueryable().OrderByDescending(p => p.CreatedOn);
                 rptAdPostList.DataSource = ctx.AdPostRepo.Getter.getPagedList(adposts, pageIndex, pageSize).Select(p => new
                 {
                     p.ID,
                     p.Title,
-                    AdTitle = this.GetAdPostTitle(p.Title, p.Approved, p.ExpiredOn, p.Actived),
+                    TitleCssClass = GetTitleCssClass(p.Actived, p.ExpiredOn),
                     p.SeoUrl,
                     p.CreatedOn,
                     p.CreatedBy,
                     p.UpdatedOn,
                     p.UpdatedBy,
-                    p.Approved,
-                    p.ApprovedOn,
-                    p.ApprovedBy,
                     p.ExpiredOn,
                     p.Actived,
                     CategoryID = p.Category.ID,
@@ -180,6 +177,23 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             }
 
             return ctx.AdPostRepo.Getter.getQueryable(p => selectedAdPostIDs.Contains(p.ID));
+        }
+
+        private string GetTitleCssClass(bool actived, DateTime? expiredOn)
+        {
+            string cssClass = string.Empty;
+
+            if (!actived)
+            {
+                cssClass += "post-not-actived ";
+            }
+
+            if (expiredOn.HasValue && expiredOn.Value < DateTime.Now)
+            {
+                cssClass += "post-expired ";
+            }
+
+            return cssClass;
         }
 
         private string GetAdPostTitle(string title, bool approved, DateTime? expiredOn, bool active)

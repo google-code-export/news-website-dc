@@ -75,6 +75,9 @@
     <Content Include="Account\Form\Signup.aspx" />
     <Content Include="Account\Guest\default.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\EditAdPost.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx" />
     <Content Include="Account\SiteAdmin\Misc\AddNewBanner.aspx" />
     <Content Include="Account\SiteAdmin\Misc\EditAdPostPosition.aspx" />
     <Content Include="Account\SiteAdmin\Misc\EditBannerDetail.aspx" />
@@ -1846,6 +1849,27 @@
     <Compile Include="Account\Guest\MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\EditAdPost.aspx.cs">
+      <DependentUpon>EditAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\EditAdPost.aspx.designer.cs">
+      <DependentUpon>EditAdPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx.cs">
+      <DependentUpon>PreviewAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx.designer.cs">
+      <DependentUpon>PreviewAdPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.cs">
+      <DependentUpon>ViewAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.designer.cs">
+      <DependentUpon>ViewAdPost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\SiteAdmin\Misc\AddNewBanner.aspx.cs">
       <DependentUpon>AddNewBanner.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2506,7 +2530,6 @@
   <ItemGroup>
     <Folder Include="Account\Editor\AdPost\" />
     <Folder Include="Account\Editor\Video\" />
-    <Folder Include="Account\SiteAdmin\AdPost\" />
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />

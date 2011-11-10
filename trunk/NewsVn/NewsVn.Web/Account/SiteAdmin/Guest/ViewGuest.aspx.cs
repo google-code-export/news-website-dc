@@ -162,7 +162,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Guest
                     .Skip((pageIndex - 1) * pageSize).Take(pageSize);
 
                 var profiles = ctx.UserProfileRepo.Getter
-                    .getSortedList(ctx.UserProfileRepo.Getter.getQueryable(), orderBy);
+                    .getSortedList(ctx.UserProfileRepo.Getter.getQueryable(), orderBy).AsEnumerable();
 
                 rptUserList.DataSource = profiles.Join(users, p => p.Account, u => u.UserName, (p, u) => new
                 {

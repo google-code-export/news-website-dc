@@ -17,24 +17,14 @@
         <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
             OnClientClick="return confirmAction('Xóa rao nhanh được chọn?')" OnClick="btnDelete_Click" />
         <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
-            OnClientClick="return confirmAction('Ẩn/Hiện rao nhanh được chọn?')" OnClick="btnToggleActive_Click" />
-        <asp:LinkButton ID="btnApprove" Text="Duyệt" CssClass="button-ok left" runat="server"
-            OnClientClick="return confirmAction('Duyệt rao nhanh được chọn?')" OnClick="btnApprove_Click" />
+            OnClientClick="return confirmAction('Ẩn/Hiện rao nhanh được chọn?')" OnClick="btnToggleActive_Click" />        
         <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[adpostHelpBox]" runat="server" />
         <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh right" runat="server"
             OnClick="btnRefresh_Click" />
         <div class="clear"></div>
         <hr />
-        <span class="left" style="margin-top:4px">Lọc theo:</span>
-        <asp:DropDownList ID="ddlFilterColumn" CssClass="dropdown left" runat="server">
-            <asp:ListItem Value="Title" Text="Tiêu đề" />
-            <asp:ListItem Value="" Text="Danh mục" />
-            <asp:ListItem Value="UpdatedBy" Text="Người tạo" />
-            <asp:ListItem Value="UpdatedBy" Text="Người sửa" />
-        </asp:DropDownList>
-        <asp:TextBox ID="txtFilterText" CssClass="left" Width="150" runat="server" />
-        <asp:LinkButton ID="btnFilter" Text="Lọc danh sách" CssClass="button-filter left" runat="server"
-            OnClick="btnFilter_Click" />
+
+
         <div class="right">
             Trang:
             <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" runat="server" Width="50"
@@ -58,14 +48,11 @@
                     <th><asp:CheckBox EnableViewState="false" runat="server" /></th>                    
                     <th>Tiêu đề</th>
                     <th>Danh mục</th>
-                    <th>Xem</th>
+                    <%--<th>Xem</th>--%>
                     <th>Tạo vào</th>
                     <th>Tạo bởi</th>
                     <th>Sửa vào</th>
                     <th>Sửa bởi</th>
-                    <th>Đã duyệt</th>
-                    <th>Duyệt vào</th>
-                    <th>Duyệt bởi</th>
                     <th>Hết hạn</th>
                     <th>Hiển thị</th>
                 </tr>
@@ -77,27 +64,35 @@
                     <asp:HiddenField ID="hidID" Value='<%# Eval("ID") %>' runat="server" /> 
                 </td>
                 <td>
-                    <a href='<%= HostName + "account/siteadmin/adpost/editadpost.aspx?pid=" %><%# Eval("ID") %>'
-                        title='<%# Eval("Title") %>'><%# Eval("AdTitle") %></a>
+                    <a class="<%# Eval("TitleCssClass") %>"
+                        href='<%= HostName + "account/siteadmin/adpost/editadpost.aspx?pid=" %>
+                        <%# Eval("ID") %>'
+                        title='<%# Eval("Title") %>'>
+                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title"), 40) %>    
+                    </a>
                 </td>                
-                <td><%# Eval("CategoryName") %></td>
                 <td>
+                    <a href='<%= HostName + "account/siteadmin/adpost/editcategory.aspx?cid=" %><%# Eval("CategoryID") %>'
+                        title='<%# Eval("CategoryName") %>'>
+                        <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("CategoryName"), 30) %>
+                    </a>
+                </td>
+                <%--<td>
                     <a href='<%= HostName + "account/siteadmin/adpost/previewadpost.aspx?pid=" %><%# Eval("ID") %>'
                         title='Xem: <%# Eval("Title") %>' target="_blank">Xem</a>
-                </td>
+                </td>--%>
                 <td title='<%# Eval("CreatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("CreatedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td style="width:30px"><%# Eval("CreatedBy") %></td>
+                <td style="width:30px" title='<%# Eval("CreatedBy")%>'>
+                    <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("CreatedBy"), 20)%>
+                </td>
                 <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("UpdatedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td style="width:30px"><%# Eval("UpdatedBy") %></td>
-                <td align="center"><asp:CheckBox Checked='<%# Eval("Approved") %>' Enabled="false" runat="server" /></td>
-                <td title='<%# Eval("ApprovedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
-                    <%# Eval("ApprovedOn", "{0:dd/MM/yy}")%>
+                <td style="width:30px" title='<%# Eval("UpdatedBy")%>'>
+                    <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("UpdatedBy"), 20)%>
                 </td>
-                <td style="width:30px"><%# Eval("ApprovedBy") %></td>
                 <td title='<%# Eval("ExpiredOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("ExpiredOn", "{0:dd/MM/yy}")%>
                 </td>

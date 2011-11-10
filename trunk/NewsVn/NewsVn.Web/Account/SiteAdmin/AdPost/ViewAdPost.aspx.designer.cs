@@ -40,15 +40,6 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost {
         protected global::System.Web.UI.WebControls.LinkButton btnToggleActive;
         
         /// <summary>
-        /// btnApprove control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnApprove;
-        
-        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>
@@ -56,33 +47,6 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnRefresh;
-        
-        /// <summary>
-        /// ddlFilterColumn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFilterColumn;
-        
-        /// <summary>
-        /// txtFilterText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilterText;
-        
-        /// <summary>
-        /// btnFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnFilter;
         
         /// <summary>
         /// ddlPageIndex control.
