@@ -13,6 +13,15 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost {
     public partial class ViewAdPost {
         
         /// <summary>
+        /// ltrInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrInfo;
+        
+        /// <summary>
         /// ltrError control.
         /// </summary>
         /// <remarks>
