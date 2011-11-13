@@ -13,25 +13,137 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 {
     public partial class ViewPost : BaseUI.SecuredPage
     {
-        static string orderBy = string.Empty;
-
-        static string _orderColumn = string.Empty;
+        const string OrderBySK = "siteadmin.post.sort.orderBy";
+        const string OrderColumnSK = "siteadmin.post.sort.orderColumn";
+        const string OrderDirectionSK = "siteadmin.post.sort.orderDirection";
+        const string FilterExpressionSK = "siteadmin.post.filter.expression";
+        const string FilterModelSK = "siteadmin.post.filter.model";
+               
+        public string OrderBy
+        {
+            get
+            {
+                if (Session[OrderBySK] != null)
+                {
+                    _orderBy = Session[OrderBySK] as string;
+                }
+                return _orderBy;
+            }
+            set
+            {
+                _orderBy = value;
+                if (string.IsNullOrEmpty(_orderBy))
+                {
+                    Session.Remove(OrderBySK);
+                }
+                else
+                {
+                    Session[OrderBySK] = _orderBy;
+                }                
+            }
+        }
+        private string _orderBy = string.Empty;
+                
         protected string OrderColumn
         {
-            get { return _orderColumn; }
-            set { _orderColumn = value; }
+            get
+            {
+                if (Session[OrderColumnSK] != null)
+                {
+                    _orderColumn = Session[OrderColumnSK] as string;
+                }
+                return _orderColumn;
+            }
+            set
+            {
+                _orderColumn = value;
+                if (string.IsNullOrEmpty(_orderColumn))
+                {
+                    Session.Remove(OrderColumnSK);
+                }
+                else
+                {
+                    Session[OrderColumnSK] = _orderColumn;
+                }                
+            }
         }
-
-        static string _orderDirection = string.Empty;
+        private string _orderColumn = string.Empty;
+        
         protected string OrderDirection
         {
-            get { return _orderDirection.ToLower(); }
-            set { _orderDirection = value; }
+            get
+            {
+                if (Session[OrderDirectionSK] != null)
+                {
+                    _orderDirection = Session[OrderDirectionSK] as string;
+                }
+                return _orderDirection.ToLower();
+            }
+            set
+            {
+                _orderDirection = value;
+                if (string.IsNullOrEmpty(_orderDirection))
+                {
+                    Session.Remove(OrderDirectionSK);
+                }
+                else
+                {
+                    Session[OrderDirectionSK] = _orderDirection;
+                }                
+            }
         }
+        private string _orderDirection = string.Empty;        
+                
+        public Expression<Func<Impl.Entity.Post, bool>> FilterExpression
+        {
+            get
+            {
+                if (Session[FilterExpressionSK] != null)
+                {
+                    _filterExpression = Session[FilterExpressionSK] as Expression<Func<Impl.Entity.Post, bool>>;
+                }
+                return _filterExpression;
+            }
+            set
+            {
+                _filterExpression = value;
+                if (_filterExpression == null)
+                {
+                    Session.Remove(FilterExpressionSK);
+                }
+                else
+                {
+                    Session[FilterExpressionSK] = _filterExpression;
+                }
+                
+            }
+        }
+        private Expression<Func<Impl.Entity.Post, bool>> _filterExpression = null;        
 
-        static Expression<Func<Impl.Entity.Post, bool>> postExpression = null;
-
-        static FilterModel postFilterModel = null;
+        public FilterModel FilterModel
+        {
+            get
+            {
+                if (Session[FilterModelSK] != null)
+                {
+                    _filterModel = Session[FilterModelSK] as FilterModel;
+                }
+                return _filterModel;
+            }
+            set
+            {
+                _filterModel = value;
+                if (_filterModel == null)
+                {
+                    Session.Remove(FilterModelSK);
+                }
+                else
+                {
+                    Session[FilterModelSK] = _filterModel;
+                }                
+            }
+        }
+        private FilterModel _filterModel = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -45,9 +157,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         protected void Sorter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _orderColumn = ddlSortColumn.SelectedValue;
-            _orderDirection = ddlSortDirection.SelectedValue;
-            orderBy = string.Format("{0} {1}", _orderColumn, _orderDirection);
+            OrderColumn = ddlSortColumn.SelectedValue;
+            OrderDirection = ddlSortDirection.SelectedValue;
+            OrderBy = string.Format("{0} {1}", _orderColumn, _orderDirection);
             this.GoToFirstPage();
         }
 
@@ -119,9 +231,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         protected void btnClearSort_Click(object sender, EventArgs e)
         {
-            orderBy = string.Empty;
-            _orderColumn = string.Empty;
-            _orderDirection = string.Empty;
+            OrderBy = string.Empty;
+            OrderColumn = string.Empty;
+            OrderDirection = string.Empty;
 
             ddlSortColumn.SelectedIndex = 0;
             ddlSortDirection.SelectedIndex = 0;
@@ -131,15 +243,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         protected void fpViewPost_Filtered(object sender, Expression<Func<Impl.Entity.Post, bool>> expression, FilterModel model)
         {
-            postExpression = expression;
-            postFilterModel = model;
+            FilterExpression = expression;
+            FilterModel = model;
             this.GoToFirstPage();
         }
 
         protected void btnClearFilter_Click(object sender, EventArgs e)
         {
-            postExpression = null;
-            postFilterModel = null;
+            FilterExpression = null;
+            FilterModel = null;
             this.GoToFirstPage();
         }
 
@@ -184,15 +296,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 Expression<Func<Impl.Entity.Post, bool>> expression = p => true;
 
-                if (postExpression != null)
+                if (FilterExpression != null)
                 {
-                    expression = postExpression;
+                    expression = FilterExpression;
                 }
 
                 var posts = ctx.PostRepo.Getter.getQueryable(expression)
                     .OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsQueryable();
 
-                posts = ctx.PostRepo.Getter.getSortedList(posts, orderBy);
+                posts = ctx.PostRepo.Getter.getSortedList(posts, OrderBy);
 
                 rptPostList.DataSource = ctx.PostRepo.Getter.getPagedList(posts, pageIndex, pageSize).Select(p => new
                     {
@@ -221,9 +333,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 Expression<Func<Impl.Entity.Post, bool>> expression = p => true;
 
-                if (postExpression != null)
+                if (FilterExpression != null)
                 {
-                    expression = postExpression;
+                    expression = FilterExpression;
                 }
                 int numOfRecords = ctx.PostRepo.Getter.getQueryable(expression).Count();
                 int numOfPages = (int)Math.Ceiling((decimal)numOfRecords / pageSize);
@@ -248,23 +360,23 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         private void CheckSortingAndFiltering()
         {
-            btnClearSort.Visible = !string.IsNullOrEmpty(orderBy);
-            btnClearFilter.Visible = postExpression != null;
+            btnClearSort.Visible = !string.IsNullOrEmpty(OrderBy);
+            btnClearFilter.Visible = FilterExpression != null;
 
             var sb = new StringBuilder();
 
-            if (!string.IsNullOrEmpty(orderBy))
+            if (!string.IsNullOrEmpty(OrderBy))
             {
                 sb.AppendFormat("Đang sắp xếp theo: <b>{0}</b>", ddlSortColumn.SelectedItem.Text);
                 sb.AppendFormat(", chiều: <b>{0}</b>", ddlSortDirection.SelectedItem.Text);
             }
 
-            if (postExpression != null)
+            if (FilterExpression != null)
             {                                
-                sb.Append(string.IsNullOrEmpty(orderBy) ? "" : " | ");
+                sb.Append(string.IsNullOrEmpty(OrderBy) ? "" : " | ");
                 sb.Append("Đang lọc theo: ");
 
-                var token = postFilterModel.Token as Impl.Entity.Post;
+                var token = FilterModel.Token as Impl.Entity.Post;
 
                 if (!string.IsNullOrEmpty(token.Title))
                 {
@@ -291,16 +403,16 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     sb.AppendFormat("Ngày duyệt: <b>{0:dd/MM/yyyy}</b>, ", token.ApprovedOn);
                 }
 
-                if (postFilterModel.Data.Keys.Contains("ManagePost_FilterMethod"))
+                if (FilterModel.Data.Keys.Contains("ManagePost_FilterMethod"))
                 {
                     sb.AppendFormat("Phương pháp: <b>{0}</b>, ",
-                        postFilterModel.Data["ManagePost_FilterMethod"].ToString());
+                        FilterModel.Data["ManagePost_FilterMethod"].ToString());
                 }
 
-                if (postFilterModel.Data.Keys.Contains("ManagePost_FilterChain"))
+                if (FilterModel.Data.Keys.Contains("ManagePost_FilterChain"))
                 {
                     sb.AppendFormat("Kết điều kiện: <b>{0}</b>",
-                        postFilterModel.Data["ManagePost_FilterChain"].ToString());
+                        FilterModel.Data["ManagePost_FilterChain"].ToString());
                 }
             }
 

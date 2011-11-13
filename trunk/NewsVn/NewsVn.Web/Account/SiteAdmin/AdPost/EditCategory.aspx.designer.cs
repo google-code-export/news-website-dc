@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NewsVn.Web.Modules
+namespace NewsVn.Web.Account.SiteAdmin.AdPost
 {
 
 
-    public partial class SiteAdmin_UpdateAdPost
+    public partial class EditCategory
     {
     }
 }

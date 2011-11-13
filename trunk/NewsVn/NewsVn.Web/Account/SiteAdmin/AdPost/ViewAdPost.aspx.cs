@@ -14,11 +14,16 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = SiteTitle + "Quản lý rao nhanh";
-            
+
             if (!IsPostBack)
             {
                 this.GoToPage(1, int.Parse(ddlPageSize.SelectedValue));
             }
+        }
+
+        protected void Sorter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         protected void Pager_SelectedIndexChanged(object sender, EventArgs e)
@@ -28,74 +33,27 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
-                {
-                    ctx.AdPostRepo.Setter.deleteMany(this.GetSelectedAdPosts(ctx));
-                }
-            }
-            catch (Exception)
-            {
-                ltrError.Text = string.Format(ErrorBar, "Không thể xóa rao nhanh được chọn!");
-            }
 
-            this.GoToCurrentPage();
         }
 
         protected void btnToggleActive_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
-                {
-                    foreach (var adpost in this.GetSelectedAdPosts(ctx))
-                    {
-                        adpost.Actived = !adpost.Actived;
-                    }
-                    ctx.SubmitChanges();
-                }
-            }
-            catch (Exception)
-            {
-                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn/hiện rao nhanh được chọn!");
-            }
 
-            this.GoToCurrentPage();
         }
-
-        //protected void btnApprove_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
-        //        {
-        //            foreach (var adpost in this.GetSelectedAdPosts(ctx))
-        //            {
-        //                adpost.Approved = true;
-        //                adpost.ApprovedOn = DateTime.Now;
-        //                adpost.ApprovedBy = HttpContext.Current.User.Identity.Name;
-        //                adpost.ExpiredOn = adpost.ApprovedOn.Value.AddDays(7);
-        //            }
-        //            ctx.SubmitChanges();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        ltrError.Text = string.Format(ErrorBar, "Không thể duyệt tin được chọn!");
-        //    }
-
-        //    this.GoToCurrentPage();
-        //}
 
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
             this.GoToCurrentPage();
         }
 
-        protected void btnFilter_Click(object sender, EventArgs e)
+        protected void btnClearSort_Click(object sender, EventArgs e)
         {
-            this.GoToCurrentPage();
+
+        }
+
+        protected void btnClearFilter_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void GoToCurrentPage()
@@ -158,27 +116,6 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             }
         }
 
-        private IQueryable<Impl.Entity.AdPost> GetSelectedAdPosts(NewsVnContext ctx)
-        {
-            var selectedAdPostIDs = new List<int>();
-
-            foreach (RepeaterItem item in rptAdPostList.Items)
-            {
-                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
-                {
-                    CheckBox chkID = item.FindControl("chkID") as CheckBox;
-
-                    if (chkID.Checked)
-                    {
-                        HiddenField hidID = item.FindControl("hidID") as HiddenField;
-                        selectedAdPostIDs.Add(int.Parse(hidID.Value));
-                    }
-                }
-            }
-
-            return ctx.AdPostRepo.Getter.getQueryable(p => selectedAdPostIDs.Contains(p.ID));
-        }
-
         private string GetTitleCssClass(bool actived, DateTime? expiredOn)
         {
             string cssClass = string.Empty;
@@ -194,24 +131,6 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             }
 
             return cssClass;
-        }
-
-        private string GetAdPostTitle(string title, bool approved, DateTime? expiredOn, bool active)
-        {
-            title = Utils.clsCommon.getEllipsisText(title, 30);
-            if (!approved)
-            {
-                title = string.Format("<b>{0}</b>", title);
-            }
-            if (expiredOn.HasValue && expiredOn.Value < DateTime.Now)
-            {
-                title = string.Format("<span style=\"text-decoration:line-through !important\">{0}</span>", title);
-            }
-            if (!active)
-            {
-                title = string.Format("<span style=\"color:#666 !important\">{0}</span>", title);
-            }
-            return title;
         }
     }
 }

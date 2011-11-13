@@ -76,8 +76,9 @@
     <Content Include="Account\Guest\default.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\EditAdPost.aspx" />
-    <Content Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\EditCategory.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Misc\AddNewBanner.aspx" />
     <Content Include="Account\SiteAdmin\Misc\EditAdPostPosition.aspx" />
     <Content Include="Account\SiteAdmin\Misc\EditBannerDetail.aspx" />
@@ -1654,6 +1655,7 @@
     <Content Include="Modules\CommentBox.ascx" />
     <Content Include="Modules\DetailedAdPostItem.ascx" />
     <Content Include="Modules\DetailedPostItem.ascx" />
+    <Content Include="Modules\Secured\FilterAdPost.ascx" />
     <Content Include="Modules\FocusPostsPortlet.ascx" />
     <Content Include="Modules\FooterCopyright.ascx" />
     <Content Include="Modules\FooterIntro.ascx" />
@@ -1703,7 +1705,7 @@
     <Content Include="Modules\SiteAdmin_UpdateBannerDetail.ascx" />
     <Content Include="Modules\SiteAdmin_UpdateCategory.ascx" />
     <Content Include="Modules\SiteAdmin_UpdatePost.ascx" />
-    <Content Include="Modules\SiteAdmin_FilterPost.ascx" />
+    <Content Include="Modules\Secured\FilterPost.ascx" />
     <Content Include="Modules\SpecialAdPostsPortlet.ascx" />
     <Content Include="Modules\SpecialEventsPortlet.ascx" />
     <Content Include="Modules\SpecialPostsPortlet.ascx" />
@@ -1856,12 +1858,12 @@
     <Compile Include="Account\SiteAdmin\AdPost\EditAdPost.aspx.designer.cs">
       <DependentUpon>EditAdPost.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx.cs">
-      <DependentUpon>PreviewAdPost.aspx</DependentUpon>
+    <Compile Include="Account\SiteAdmin\AdPost\EditCategory.aspx.cs">
+      <DependentUpon>EditCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\SiteAdmin\AdPost\PreviewAdPost.aspx.designer.cs">
-      <DependentUpon>PreviewAdPost.aspx</DependentUpon>
+    <Compile Include="Account\SiteAdmin\AdPost\EditCategory.aspx.designer.cs">
+      <DependentUpon>EditCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.cs">
       <DependentUpon>ViewAdPost.aspx</DependentUpon>
@@ -1869,6 +1871,13 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx.designer.cs">
       <DependentUpon>ViewAdPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\ViewCategory.aspx.cs">
+      <DependentUpon>ViewCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\ViewCategory.aspx.designer.cs">
+      <DependentUpon>ViewCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Misc\AddNewBanner.aspx.cs">
       <DependentUpon>AddNewBanner.aspx</DependentUpon>
@@ -2185,6 +2194,13 @@
     <Compile Include="Modules\DetailedPostItem.ascx.designer.cs">
       <DependentUpon>DetailedPostItem.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Secured\FilterAdPost.ascx.cs">
+      <DependentUpon>FilterAdPost.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Secured\FilterAdPost.ascx.designer.cs">
+      <DependentUpon>FilterAdPost.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\FocusPostsPortlet.ascx.cs">
       <DependentUpon>FocusPostsPortlet.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2349,12 +2365,12 @@
     <Compile Include="Modules\SiteAdmin_UpdatePost.ascx.designer.cs">
       <DependentUpon>SiteAdmin_UpdatePost.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\SiteAdmin_FilterPost.ascx.cs">
-      <DependentUpon>SiteAdmin_FilterPost.ascx</DependentUpon>
+    <Compile Include="Modules\Secured\FilterPost.ascx.cs">
+      <DependentUpon>FilterPost.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\SiteAdmin_FilterPost.ascx.designer.cs">
-      <DependentUpon>SiteAdmin_FilterPost.ascx</DependentUpon>
+    <Compile Include="Modules\Secured\FilterPost.ascx.designer.cs">
+      <DependentUpon>FilterPost.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\SpecialAdPostsPortlet.ascx.cs">
       <DependentUpon>SpecialAdPostsPortlet.ascx</DependentUpon>

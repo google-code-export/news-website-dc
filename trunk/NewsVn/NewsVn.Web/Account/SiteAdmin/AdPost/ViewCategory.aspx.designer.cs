@@ -11,7 +11,7 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
 {
 
 
-    public partial class PreviewAdPost
+    public partial class ViewCategory
     {
     }
 }

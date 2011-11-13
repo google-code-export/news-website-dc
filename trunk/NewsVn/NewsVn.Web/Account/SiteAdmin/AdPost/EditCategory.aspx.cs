@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Account.SiteAdmin.AdPost
 {
-    public partial class PreviewAdPost : BaseUI.SecuredPage
+    public partial class EditCategory : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

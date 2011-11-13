@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 using NewsVn.Impl.Model;
 using NewsVn.Web.Utils;
 
-namespace NewsVn.Web.Modules
+namespace NewsVn.Web.Modules.Secured
 {    
-    public partial class SiteAdmin_FilterPost : BaseUI.SecuredModule
+    public partial class FilterPost : BaseUI.SecuredModule
     {
         public delegate void FilteredEventHandler(object sender, Expression<Func<Impl.Entity.Post, bool>> expression, FilterModel model);
         

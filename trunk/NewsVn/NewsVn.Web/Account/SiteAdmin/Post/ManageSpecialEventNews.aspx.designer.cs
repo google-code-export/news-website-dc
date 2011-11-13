@@ -19,6 +19,6 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::NewsVn.Web.Modules.SiteAdmin_FilterPost fpViewPost;
+        protected global::NewsVn.Web.Modules.Secured.FilterPost fpViewPost;
     }
 }

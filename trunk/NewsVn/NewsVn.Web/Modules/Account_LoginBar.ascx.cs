@@ -8,5 +8,10 @@ namespace NewsVn.Web.Modules
         {
 
         }
+
+        protected void lsNewsVn_LoggedOut(object sender, EventArgs e)
+        {
+            Session.Clear();
+        }
     }
 }

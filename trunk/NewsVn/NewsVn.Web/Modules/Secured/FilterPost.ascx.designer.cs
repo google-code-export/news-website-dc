@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NewsVn.Web.Modules {
+namespace NewsVn.Web.Modules.Secured {
     
     
-    public partial class SiteAdmin_FilterPost {
+    public partial class FilterPost {
         
         /// <summary>
         /// txtTitle control.
