@@ -159,7 +159,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         {
             OrderColumn = ddlSortColumn.SelectedValue;
             OrderDirection = ddlSortDirection.SelectedValue;
-            OrderBy = string.Format("{0} {1}", _orderColumn, _orderDirection);
+            OrderBy = string.Format("{0} {1}", OrderColumn, OrderDirection);
             this.GoToFirstPage();
         }
 

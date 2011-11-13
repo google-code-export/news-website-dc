@@ -6,11 +6,145 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+using System.Linq.Expressions;
+using NewsVn.Impl.Model;
 
 namespace NewsVn.Web.Account.SiteAdmin.AdPost
 {
     public partial class ViewAdPost : BaseUI.SecuredPage
     {
+        const string OrderBySK = "siteadmin.adPost.sort.orderBy";
+        const string OrderColumnSK = "siteadmin.adPost.sort.orderColumn";
+        const string OrderDirectionSK = "siteadmin.adPost.sort.orderDirection";
+        const string FilterExpressionSK = "siteadmin.adPost.filter.expression";
+        const string FilterModelSK = "siteadmin.adPost.filter.model";
+
+        public string OrderBy
+        {
+            get
+            {
+                if (Session[OrderBySK] != null)
+                {
+                    _orderBy = Session[OrderBySK] as string;
+                }
+                return _orderBy;
+            }
+            set
+            {
+                _orderBy = value;
+                if (string.IsNullOrEmpty(_orderBy))
+                {
+                    Session.Remove(OrderBySK);
+                }
+                else
+                {
+                    Session[OrderBySK] = _orderBy;
+                }
+            }
+        }
+        private string _orderBy = string.Empty;
+
+        protected string OrderColumn
+        {
+            get
+            {
+                if (Session[OrderColumnSK] != null)
+                {
+                    _orderColumn = Session[OrderColumnSK] as string;
+                }
+                return _orderColumn;
+            }
+            set
+            {
+                _orderColumn = value;
+                if (string.IsNullOrEmpty(_orderColumn))
+                {
+                    Session.Remove(OrderColumnSK);
+                }
+                else
+                {
+                    Session[OrderColumnSK] = _orderColumn;
+                }
+            }
+        }
+        private string _orderColumn = string.Empty;
+
+        protected string OrderDirection
+        {
+            get
+            {
+                if (Session[OrderDirectionSK] != null)
+                {
+                    _orderDirection = Session[OrderDirectionSK] as string;
+                }
+                return _orderDirection.ToLower();
+            }
+            set
+            {
+                _orderDirection = value;
+                if (string.IsNullOrEmpty(_orderDirection))
+                {
+                    Session.Remove(OrderDirectionSK);
+                }
+                else
+                {
+                    Session[OrderDirectionSK] = _orderDirection;
+                }
+            }
+        }
+        private string _orderDirection = string.Empty;
+
+        public Expression<Func<Impl.Entity.AdPost, bool>> FilterExpression
+        {
+            get
+            {
+                if (Session[FilterExpressionSK] != null)
+                {
+                    _filterExpression = Session[FilterExpressionSK] as Expression<Func<Impl.Entity.AdPost, bool>>;
+                }
+                return _filterExpression;
+            }
+            set
+            {
+                _filterExpression = value;
+                if (_filterExpression == null)
+                {
+                    Session.Remove(FilterExpressionSK);
+                }
+                else
+                {
+                    Session[FilterExpressionSK] = _filterExpression;
+                }
+
+            }
+        }
+        private Expression<Func<Impl.Entity.AdPost, bool>> _filterExpression = null;
+
+        public FilterModel FilterModel
+        {
+            get
+            {
+                if (Session[FilterModelSK] != null)
+                {
+                    _filterModel = Session[FilterModelSK] as FilterModel;
+                }
+                return _filterModel;
+            }
+            set
+            {
+                _filterModel = value;
+                if (_filterModel == null)
+                {
+                    Session.Remove(FilterModelSK);
+                }
+                else
+                {
+                    Session[FilterModelSK] = _filterModel;
+                }
+            }
+        }
+        private FilterModel _filterModel = null;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = SiteTitle + "Quản lý rao nhanh";
@@ -23,7 +157,10 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
 
         protected void Sorter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            OrderColumn = ddlSortColumn.SelectedValue;
+            OrderDirection = ddlSortDirection.SelectedValue;
+            OrderBy = string.Format("{0} {1}", OrderColumn, OrderDirection);
+            this.GoToFirstPage();
         }
 
         protected void Pager_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,12 +185,27 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
 
         protected void btnClearSort_Click(object sender, EventArgs e)
         {
+            OrderBy = string.Empty;
+            OrderColumn = string.Empty;
+            OrderDirection = string.Empty;
 
+            ddlSortColumn.SelectedIndex = 0;
+            ddlSortDirection.SelectedIndex = 0;
+
+            this.GoToFirstPage();
         }
 
         protected void btnClearFilter_Click(object sender, EventArgs e)
         {
+            FilterExpression = null;
+            FilterModel = null;
+            this.GoToFirstPage();
+        }
 
+        private void GoToFirstPage()
+        {
+            int pageSize = int.Parse(ddlPageSize.SelectedValue);
+            GoToPage(1, pageSize);
         }
 
         private void GoToCurrentPage()
@@ -83,7 +235,18 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var adposts = ctx.AdPostRepo.Getter.getQueryable().OrderByDescending(p => p.CreatedOn);
+                Expression<Func<Impl.Entity.AdPost, bool>> expression = p => true;
+
+                if (FilterExpression != null)
+                {
+                    expression = FilterExpression;
+                }
+                
+                var adposts = ctx.AdPostRepo.Getter.getQueryable(expression)
+                    .OrderByDescending(p => p.CreatedOn).AsQueryable();
+
+                adposts = ctx.AdPostRepo.Getter.getSortedList(adposts, OrderBy);
+
                 rptAdPostList.DataSource = ctx.AdPostRepo.Getter.getPagedList(adposts, pageIndex, pageSize).Select(p => new
                 {
                     p.ID,
@@ -107,12 +270,30 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                int numOfPages = (int)Math.Ceiling((decimal)ctx.AdPostRepo.Getter.getQueryable().Count() / pageSize);
-                ddlPageIndex.Items.Clear();
-                for (int i = 1; i <= numOfPages; i++)
+                Expression<Func<Impl.Entity.AdPost, bool>> expression = p => true;
+
+                if (FilterExpression != null)
                 {
-                    ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                    expression = FilterExpression;
                 }
+                int numOfRecords = ctx.AdPostRepo.Getter.getQueryable(expression).Count();
+                int numOfPages = (int)Math.Ceiling((decimal)numOfRecords / pageSize);
+
+                ddlPageIndex.Items.Clear();                
+
+                if (numOfPages > 0)
+                {
+                    for (int i = 1; i <= numOfPages; i++)
+                    {
+                        ddlPageIndex.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                    }
+                }
+                else
+                {
+                    ddlPageIndex.Items.Add("1");
+                }
+
+                ltrAdPostCount.Text = string.Format("Có {0:N0} rao nhanh", numOfRecords);
             }
         }
 
