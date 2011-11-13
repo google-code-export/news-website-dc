@@ -25,11 +25,19 @@
                 <asp:TextBox ID="txtCategoryName" runat="server" />
             </li>
             <li>
-                <asp:Label AssociatedControlID="txtCreatedBy" Text="Người tạo:" runat="server" />
+                <asp:Label AssociatedControlID="ddlAdPostType" Text="Loại tin:" runat="server" />
+                <asp:DropDownList ID="ddlAdPostType" CssClass="dropdown" Width="275" runat="server">
+                    <asp:ListItem Value="" Text="Tất cả" />
+                    <asp:ListItem Value="False" Text="Thông thường" />
+                    <asp:ListItem Value="True" Text="Có phí" />
+                </asp:DropDownList>
+            </li>
+            <li>
+                <asp:Label AssociatedControlID="txtCreatedBy" Text="Người đăng:" runat="server" />
                 <asp:TextBox ID="txtCreatedBy" runat="server" />
             </li>
             <li>
-                <asp:Label AssociatedControlID="txtCreatedOn" Text="Ngày tạo:" runat="server" />            
+                <asp:Label AssociatedControlID="txtCreatedOn" Text="Ngày đăng:" runat="server" />            
                 <div class="textbox-icon right">
                     <asp:TextBox ID="txtCreatedOn" CssClass="datepicker" runat="server" />
                 </div>

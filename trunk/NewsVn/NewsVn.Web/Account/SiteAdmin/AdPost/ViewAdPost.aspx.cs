@@ -8,6 +8,7 @@ using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
 using System.Linq.Expressions;
 using NewsVn.Impl.Model;
+using System.Text;
 
 namespace NewsVn.Web.Account.SiteAdmin.AdPost
 {
@@ -202,6 +203,13 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             this.GoToFirstPage();
         }
 
+        protected void fpViewAdPost_Filtered(object sender, Expression<Func<Impl.Entity.AdPost, bool>> expression, FilterModel model)
+        {
+            FilterExpression = expression;
+            FilterModel = model;
+            this.GoToFirstPage();
+        }
+
         private void GoToFirstPage()
         {
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
@@ -218,6 +226,7 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         private void GoToPage(int pageIndex, int pageSize)
         {
             this.GenerateDataPager(pageSize);
+            this.CheckSortingAndFiltering();
             try
             {
                 ddlPageSize.Text = pageSize.ToString();
@@ -294,6 +303,87 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
                 }
 
                 ltrAdPostCount.Text = string.Format("Có {0:N0} rao nhanh", numOfRecords);
+            }
+        }
+
+        private void CheckSortingAndFiltering()
+        {
+            btnClearSort.Visible = !string.IsNullOrEmpty(OrderBy);
+            btnClearFilter.Visible = FilterExpression != null;
+
+            var sb = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(OrderBy))
+            {
+                sb.AppendFormat("Đang sắp xếp theo: <b>{0}</b>", ddlSortColumn.SelectedItem.Text);
+                sb.AppendFormat(", chiều: <b>{0}</b>", ddlSortDirection.SelectedItem.Text);
+            }
+
+            if (FilterExpression != null)
+            {
+                sb.Append(string.IsNullOrEmpty(OrderBy) ? "" : " | ");
+                sb.Append("Đang lọc theo: ");
+
+                var token = FilterModel.Token as Impl.Entity.AdPost;
+
+                if (!string.IsNullOrEmpty(token.Title))
+                {
+                    sb.AppendFormat("Tiêu đề: <b>{0}</b>, ", token.Title);
+                }
+                if (!string.IsNullOrEmpty(token.Category.Name))
+                {
+                    sb.AppendFormat("Danh mục: <b>{0}</b>, ", token.Category.Name);
+                }
+                if (token.Payment == 0)
+                {
+                    sb.Append("Loại tin: <b>Tất cả</b>, ");
+                }
+                else
+                {
+                    if (token.Payment == 1)
+                    {
+                        sb.Append("Loại tin: <b>Thông thường</b>, ");
+                    }
+                    else
+                    {
+                        sb.Append("Loại tin: <b>Có phí</b>, ");
+                    }
+                }
+                if (!string.IsNullOrEmpty(token.CreatedBy))
+                {
+                    sb.AppendFormat("Người đăng: <b>{0}</b>, ", token.CreatedBy);
+                }
+                if (token.CreatedOn != default(DateTime))
+                {
+                    sb.AppendFormat("Ngày đăng: <b>{0}</b>, ", token.CreatedOn);
+                }
+                if (!string.IsNullOrEmpty(token.UpdatedBy))
+                {
+                    sb.AppendFormat("Người sửa: <b>{0}</b>, ", token.UpdatedBy);
+                }
+                if (token.UpdatedOn != null)
+                {
+                    sb.AppendFormat("Ngày sửa: <b>{0:dd/MM/yyyy}</b>, ", token.UpdatedOn);
+                }
+
+                if (FilterModel.Data.Keys.Contains("ManagePost_FilterMethod"))
+                {
+                    sb.AppendFormat("Phương pháp: <b>{0}</b>, ",
+                        FilterModel.Data["ManagePost_FilterMethod"].ToString());
+                }
+
+                if (FilterModel.Data.Keys.Contains("ManagePost_FilterChain"))
+                {
+                    sb.AppendFormat("Kết điều kiện: <b>{0}</b>",
+                        FilterModel.Data["ManagePost_FilterChain"].ToString());
+                }
+            }
+
+            string infoText = sb.ToString();
+
+            if (!string.IsNullOrEmpty(infoText))
+            {
+                ltrInfo.Text = string.Format(InfoBar, infoText);
             }
         }
 

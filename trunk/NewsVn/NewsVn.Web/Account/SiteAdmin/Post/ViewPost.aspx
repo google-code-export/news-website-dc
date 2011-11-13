@@ -140,7 +140,7 @@
                 </td>
                 <td>
                     <a href='<%= HostName + "account/siteadmin/post/editpost.aspx?pid=" %><%# Eval("ID") %>'
-                        title='<%# Eval("Title") %>'>
+                        class='<%# Eval("TitleCssClass") %>' title='<%# Eval("Title") %>'>
                         <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title"), 30) %>
                     </a>
                 </td>

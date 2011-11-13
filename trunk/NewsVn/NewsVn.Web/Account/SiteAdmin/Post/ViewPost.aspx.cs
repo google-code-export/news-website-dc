@@ -310,6 +310,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     {
                         p.ID,
                         p.Title,
+                        TitleCssClass = GetTitleCssClass(p.Actived, p.Approved),
                         p.SeoUrl,
                         p.CreatedOn,
                         p.CreatedBy,
@@ -443,6 +444,23 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
 
             return ctx.PostRepo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
+        }
+
+        private string GetTitleCssClass(bool actived, bool approved)
+        {
+            string cssClass = string.Empty;
+
+            if (!actived)
+            {
+                cssClass += "post-not-actived ";
+            }
+
+            if (!approved)
+            {
+                cssClass += "post-not-approved ";
+            }
+
+            return cssClass;
         }
     }
 }

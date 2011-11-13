@@ -5,7 +5,7 @@
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    <nsn:FilterAdPost runat="server" />
+    <nsn:FilterAdPost OnFiltered="fpViewAdPost_Filtered" runat="server" />
     <div id="adpostHelpBox" class="dialog" title="Trợ giúp">
         <p><b>Sửa rao nhanh</b>: Bấm vào tiêu đề của một tin bất kỳ</p>
         <p><b>Xóa rao nhanh</b>: Chọn các dòng muốn xóa trong danh sách tin, sau đó bấm nút 'Xóa'</p>
@@ -13,6 +13,7 @@
     </div>
     <div class="ui-table-toolbar">
         <ul class="ui-form ui-widget">
+            <asp:Literal ID="ltrInfo" EnableViewState="false" runat="server" />
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>
         <div class="left">

@@ -31,6 +31,15 @@ namespace NewsVn.Web.Modules.Secured {
         protected global::System.Web.UI.WebControls.TextBox txtCategoryName;
         
         /// <summary>
+        /// ddlAdPostType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAdPostType;
+        
+        /// <summary>
         /// txtCreatedBy control.
         /// </summary>
         /// <remarks>

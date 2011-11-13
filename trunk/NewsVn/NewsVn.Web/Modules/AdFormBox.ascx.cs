@@ -48,7 +48,11 @@ namespace NewsVn.Web.Modules
                     adsPost.CreatedBy = txtContact.Text.Trim();
                     adsPost.UpdatedOn = DateTime.Now;
                     adsPost.UpdatedBy = txtContact.Text.Trim();
-                    adsPost.ExpiredOn = DateTime.Now.AddDays(3);//setting day expired from created day
+                    // setting day expired from created day
+                    //adsPost.ExpiredOn = DateTime.Now.AddDays(3);
+                    // CuongNguyen: Currently, there's no expriration
+                    // therefore, add an amount of 100 years ahead
+                    adsPost.ExpiredOn = DateTime.Now.AddYears(100);
                     adsPost.Actived = true;
                     uploadImg();
 
