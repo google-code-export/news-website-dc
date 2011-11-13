@@ -4,6 +4,6 @@
 <asp:Content  ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    <nsn:SiteAdmin_FilterPost ID="fpViewPost" runat="server" />
+    <nsn:FilterPost ID="fpViewPost" runat="server" />
     <nsn:SiteAdmin_ManageHotEventNews runat="server" /> 
 </asp:Content>

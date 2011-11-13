@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteAdmin_FilterPost.ascx.cs" Inherits="NewsVn.Web.Modules.SiteAdmin_FilterPost" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FilterAdPost.ascx.cs" Inherits="NewsVn.Web.Modules.Secured.FilterAdPost" %>
 
 <script type="text/javascript">
     $(function () {
@@ -13,7 +13,7 @@
     Filter Hint
 </div>
 <div id="filterBoxContainer"></div>
-<div id="filterBox" class="dialog" title="Lọc danh sách tin tức">
+<div id="filterBox" class="dialog" title="Lọc danh sách rao nhanh">
     <asp:Panel DefaultButton="btnFilter" runat="server">
         <ul class="ui-form ui-widget">
             <li>
@@ -25,6 +25,17 @@
                 <asp:TextBox ID="txtCategoryName" runat="server" />
             </li>
             <li>
+                <asp:Label AssociatedControlID="txtCreatedBy" Text="Người tạo:" runat="server" />
+                <asp:TextBox ID="txtCreatedBy" runat="server" />
+            </li>
+            <li>
+                <asp:Label AssociatedControlID="txtCreatedOn" Text="Ngày tạo:" runat="server" />            
+                <div class="textbox-icon right">
+                    <asp:TextBox ID="txtCreatedOn" CssClass="datepicker" runat="server" />
+                </div>
+                <div class="clear"></div>
+            </li>
+            <li>
                 <asp:Label AssociatedControlID="txtUpdatedBy" Text="Người cập nhật:" runat="server" />
                 <asp:TextBox ID="txtUpdatedBy" runat="server" />
             </li>
@@ -34,18 +45,7 @@
                     <asp:TextBox ID="txtUpdatedOn" CssClass="datepicker" runat="server" />
                 </div>
                 <div class="clear"></div>
-            </li>
-            <li>
-                <asp:Label AssociatedControlID="txtApprovedBy" Text="Người duyệt:" runat="server" />
-                <asp:TextBox ID="txtApprovedBy" runat="server" />
-            </li>
-            <li>
-                <asp:Label AssociatedControlID="txtApprovedOn" Text="Ngày duyệt:" runat="server" />            
-                <div class="textbox-icon right">
-                    <asp:TextBox ID="txtApprovedOn" CssClass="datepicker" runat="server" />
-                </div>
-                <div class="clear"></div>
-            </li>
+            </li>            
             <li>
                 <asp:Label AssociatedControlID="ddlFilterMethod" Text="Phương pháp:" runat="server" />
                 <asp:DropDownList ID="ddlFilterMethod" CssClass="dropdown" Width="276" runat="server">

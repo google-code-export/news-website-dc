@@ -1,30 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-    <siteMapNode>
-        <siteMapNode roles="sysadmin" url="~/account/sysadmin/user/viewuser.aspx" title="" description="view-user">
-            <siteMapNode url="~/account/sysadmin/user/adduser.aspx" title="" description="add-user" />
-        </siteMapNode>
-        <siteMapNode roles="sysadmin" url="~/account/sysadmin/setting/viewsetting.aspx" title="" description="view-setting">
-            <siteMapNode url="~/account/sysadmin/setting/editsetting.aspx" title="" description="edit-setting" />
-        </siteMapNode>
-        <siteMapNode roles="siteadmin" url="~/account/siteadmin/post/viewpost.aspx" title="" description="view-post">
-            <siteMapNode url="~/account/siteadmin/post/addpost.aspx" title="" description="add-post" />
-            <siteMapNode url="~/account/siteadmin/post/viewcategory.aspx" title="" description="view-category" />
-            <siteMapNode url="~/account/siteadmin/post/viewpostcomment.aspx" title="" description="view-post-comment" />
-        </siteMapNode>
-        <siteMapNode roles="siteadmin" url="~/account/siteadmin/adpost/viewadpost.aspx" title="" description="view-adpost" />
-        <siteMapNode roles="siteadmin" url="~/account/siteadmin/video/viewvideo.aspx" title="" description="view-video">
-          <siteMapNode url="~/account/siteadmin/video/addvideo.aspx" title="" description="add-video" />
-          <siteMapNode url="~/account/siteadmin/video/viewcategory.aspx" title="" description="view-video-category" />
-        </siteMapNode>
-        <siteMapNode roles="siteadmin" url="~/account/siteadmin/guest/viewguest.aspx" title="" description="view-guest">
-        </siteMapNode>
-        <siteMapNode roles="siteadmin" url="~/account/siteadmin/misc/viewadbox.aspx" title="" description="view-adbox">
-          <siteMapNode url="~/account/siteadmin/misc/viewvideobox.aspx" title="" description="view-videobox" />
-        </siteMapNode>
-        <siteMapNode roles="editor" url="~/account/editor/post/viewpost.aspx" title="" description="view-post">
-            <siteMapNode url="~/account/editor/post/addpost.aspx" title="" description="add-post" />
-        </siteMapNode>
+  <siteMapNode>
+    <siteMapNode roles="sysadmin" url="~/account/sysadmin/user/viewuser.aspx" title="" description="view-user">
+      <siteMapNode url="~/account/sysadmin/user/adduser.aspx" title="" description="add-user" />
     </siteMapNode>
+    <siteMapNode roles="sysadmin" url="~/account/sysadmin/setting/viewsetting.aspx" title="" description="view-setting">
+      <siteMapNode url="~/account/sysadmin/setting/editsetting.aspx" title="" description="edit-setting" />
+    </siteMapNode>
+    <siteMapNode roles="siteadmin" url="~/account/siteadmin/post/viewpost.aspx" title="" description="view-post">
+      <siteMapNode url="~/account/siteadmin/post/addpost.aspx" title="" description="add-post" />
+      <siteMapNode url="~/account/siteadmin/post/viewcategory.aspx" title="" description="view-category" />
+      <siteMapNode url="~/account/siteadmin/post/viewpostcomment.aspx" title="" description="view-post-comment" />
+    </siteMapNode>
+    <siteMapNode roles="siteadmin" url="~/account/siteadmin/adpost/viewadpost.aspx" title="" description="view-adpost">
+      <siteMapNode url="~/account/siteadmin/adpost/viewcategory.aspx" title="" description="view-adcategory" />
+    </siteMapNode>
+    <siteMapNode roles="siteadmin" url="~/account/siteadmin/video/viewvideo.aspx" title="" description="view-video">
+      <siteMapNode url="~/account/siteadmin/video/addvideo.aspx" title="" description="add-video" />
+      <siteMapNode url="~/account/siteadmin/video/viewcategory.aspx" title="" description="view-video-category" />
+    </siteMapNode>
+    <siteMapNode roles="siteadmin" url="~/account/siteadmin/guest/viewguest.aspx" title="" description="view-guest">
+    </siteMapNode>
+    <siteMapNode roles="siteadmin" url="~/account/siteadmin/misc/viewadbox.aspx" title="" description="view-adbox">
+      <siteMapNode url="~/account/siteadmin/misc/viewvideobox.aspx" title="" description="view-videobox" />
+    </siteMapNode>
+    <siteMapNode roles="editor" url="~/account/editor/post/viewpost.aspx" title="" description="view-post">
+      <siteMapNode url="~/account/editor/post/addpost.aspx" title="" description="add-post" />
+    </siteMapNode>
+  </siteMapNode>
 </siteMap>

@@ -149,4 +149,6 @@ Xin chào,
     title='Xem thông tin [<%= HttpContext.Current.User.Identity.Name %>]'>
     <b><%= NewsVn.Web.Utils.clsCommon.getEllipsisText(HttpContext.Current.User.Identity.Name, 8) %></b>
 </a>
-| <asp:LoginStatus LogoutAction="Redirect" LogoutPageUrl='<%$ Code: HostName %>' LogoutText="Thoát" runat="server" />
+| <asp:LoginStatus ID="lsNewsVn" LogoutAction="Redirect" 
+    LogoutPageUrl='<%$ Code: HostName %>' LogoutText="Thoát" runat="server" 
+    onloggedout="lsNewsVn_LoggedOut" />

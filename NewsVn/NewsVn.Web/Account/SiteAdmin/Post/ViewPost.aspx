@@ -5,7 +5,7 @@
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">    
-    <nsn:SiteAdmin_FilterPost ID="fpViewPost" runat="server"
+    <nsn:FilterPost ID="fpViewPost" runat="server"
         OnFiltered="fpViewPost_Filtered" />
     <div id="postHelpBox" class="dialog" title="Trợ giúp">
         <p><b>Thêm tin mới</b>: Bấm vào nút 'Thêm'</p>

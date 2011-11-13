@@ -5,6 +5,7 @@
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
+    <nsn:FilterAdPost runat="server" />
     <div id="adpostHelpBox" class="dialog" title="Trợ giúp">
         <p><b>Sửa rao nhanh</b>: Bấm vào tiêu đề của một tin bất kỳ</p>
         <p><b>Xóa rao nhanh</b>: Chọn các dòng muốn xóa trong danh sách tin, sau đó bấm nút 'Xóa'</p>
@@ -14,20 +15,47 @@
         <ul class="ui-form ui-widget">
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>
-        <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
-            OnClientClick="return confirmAction('Xóa rao nhanh được chọn?')" OnClick="btnDelete_Click" />
-        <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
-            OnClientClick="return confirmAction('Ẩn/Hiện rao nhanh được chọn?')" OnClick="btnToggleActive_Click" />        
-        <asp:HyperLink Text="Trợ giúp" CssClass="button-help left dialog-trigger[adpostHelpBox]" runat="server" />
+        <div class="left">
+            <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add" runat="server"
+                NavigateUrl="~/rao-nhanh-dang-ky.aspx" Target="_blank" />
+            <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete" runat="server"
+                OnClientClick="return confirmAction('Xóa rao nhanh được chọn?')" OnClick="btnDelete_Click" />
+            <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle" runat="server"
+                OnClientClick="return confirmAction('Ẩn/Hiện rao nhanh được chọn?')" OnClick="btnToggleActive_Click" />        
+            <asp:HyperLink Text="Trợ giúp" CssClass="button-help dialog-trigger[adpostHelpBox]" runat="server" />    
+        </div>
         <asp:LinkButton ID="btnRefresh" Text="Nạp lại" CssClass="button-refresh right" runat="server"
             OnClick="btnRefresh_Click" />
         <div class="clear"></div>
         <hr />
-
-
+        <div class="left">
+            Sắp xếp theo:
+            <asp:DropDownList ID="ddlSortColumn" CssClass="dropdown" Width="120px" runat="server"
+                AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
+                <asp:ListItem Value="Title" Text="Tiêu đề" />
+                <asp:ListItem Value="PageView" Text="Lượt xem" />
+                <asp:ListItem Value="Category.Name" Text="Danh mục" />                
+                <asp:ListItem Value="CreatedOn" Text="Ngày đăng" />
+                <asp:ListItem Value="CreatedBy" Text="Người đăng" />                               
+                <asp:ListItem Value="UpdatedOn" Text="Ngày sửa" />
+                <asp:ListItem Value="UpdatedBy" Text="Người sửa" />
+                <asp:ListItem Value="ApprovedOn" Text="Ngày duyệt" />
+                <asp:ListItem Value="ApprovedBy" Text="Người duyệt" />
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlSortDirection" CssClass="dropdown" Width="70px" runat="server"
+                AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
+                <asp:ListItem Value="ASC" Text="A -> Z" />
+                <asp:ListItem Value="DESC" Text="Z -> A" />
+            </asp:DropDownList>
+            <asp:LinkButton ID="btnClearSort" CssClass="button-clear" Text="Bỏ sắp xếp" Visible="false" 
+                runat="server" onclick="btnClearSort_Click" />
+            <asp:HyperLink ID="lnkFilter" Text="Lọc rao nhanh" CssClass="button-filter dialog-trigger[filterBox]" runat="server" />
+            <asp:LinkButton ID="btnClearFilter" CssClass="button-clear" Text="Bỏ lọc" Visible="false" 
+                runat="server" onclick="btnClearFilter_Click" />
+        </div>
         <div class="right">
             Trang:
-            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" runat="server" Width="50"
+            <asp:DropDownList ID="ddlPageIndex" CssClass="dropdown" Width="50" runat="server"
                 AutoPostBack="true" OnSelectedIndexChanged="Pager_SelectedIndexChanged" />
             &nbsp;Số dòng/Trang:
             <asp:DropDownList ID="ddlPageSize" CssClass="dropdown" runat="server"
