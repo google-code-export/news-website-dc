@@ -302,7 +302,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 }
 
                 var posts = ctx.PostRepo.Getter.getQueryable(expression)
-                    .OrderByDescending(p => p.ApprovedOn).ThenByDescending(p => p.ApprovedOn).AsQueryable();
+                    .OrderByDescending(p => p.CreatedOn).AsQueryable();
 
                 posts = ctx.PostRepo.Getter.getSortedList(posts, OrderBy);
 

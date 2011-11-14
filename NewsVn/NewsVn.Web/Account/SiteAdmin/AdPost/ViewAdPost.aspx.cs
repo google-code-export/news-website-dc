@@ -171,12 +171,40 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    ctx.AdPostRepo.Setter.deleteMany(this.getSelectedAdPosts(ctx));
+                }
+            }
+            catch (Exception)
+            {
+                ltrError.Text = string.Format(ErrorBar, "Không thể xóa rao nhanh được chọn!");
+            }
 
+            this.GoToCurrentPage();
         }
 
         protected void btnToggleActive_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                {
+                    foreach (var adPost in this.getSelectedAdPosts(ctx))
+                    {
+                        adPost.Actived = !adPost.Actived;
+                    }
+                    ctx.SubmitChanges();
+                }
+            }
+            catch (Exception)
+            {
+                ltrError.Text = string.Format(ErrorBar, "Không thể ẩn/hiện rao nhanh được chọn!");
+            }
 
+            this.GoToCurrentPage();
         }
 
         protected void btnRefresh_Click(object sender, EventArgs e)
@@ -385,6 +413,27 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
             {
                 ltrInfo.Text = string.Format(InfoBar, infoText);
             }
+        }
+
+        private IQueryable<Impl.Entity.AdPost> getSelectedAdPosts(NewsVnContext ctx)
+        {
+            var selectedPostIDs = new List<int>();
+
+            foreach (RepeaterItem item in rptAdPostList.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                {
+                    CheckBox chkID = item.FindControl("chkID") as CheckBox;
+
+                    if (chkID.Checked)
+                    {
+                        HiddenField hidID = item.FindControl("hidID") as HiddenField;
+                        selectedPostIDs.Add(int.Parse(hidID.Value));
+                    }
+                }
+            }
+
+            return ctx.AdPostRepo.Getter.getQueryable(p => selectedPostIDs.Contains(p.ID));
         }
 
         private string GetTitleCssClass(bool actived, DateTime? expiredOn)
