@@ -59,7 +59,7 @@
         </li>
          <li>
             <asp:Label ID="Label5" Text="Url:" runat="server" Width="120" />
-            <asp:TextBox ID="txtUrl" Width="450" runat="server" MaxLength="280" Enabled="false" />
+            <asp:TextBox ID="txtUrl" Width="450" runat="server" MaxLength="280" Enabled="true" />
         </li>
         <li>
             <asp:Label ID="Label111" Text="Hình ảnh:" runat="server" Width="120px" />
