@@ -21,7 +21,8 @@ namespace NewsVn.Web.Modules
             if (!IsPostBack)
             {
                 imgBanner.ImageUrl = HostName + "Resources/Images/No_Image/no-ads.gif";
-                txtPosition.Text = ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerPosition", intPositionID.ToString());
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlPositionType, "Dropdown.BannerPosition");
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlObjectType, "Dropdown.BannerType");
             }
         }
 
@@ -33,11 +34,19 @@ namespace NewsVn.Web.Modules
                 {
                     var bannerdtl = new Impl.Entity.BannerDetail
                     {
+                        TypeBanner = int.Parse(ddlObjectType.SelectedValue),
+                        TypePosition = int.Parse(ddlPositionType.SelectedValue),
                         BannerID = intPositionID,
                         Width = int.Parse(txtWidth.Text),
                         Height = int.Parse(txtHeight.Text),
                         Title = txtTitle.Text,
-                        Url = txtUrl.Text
+                        Url = txtUrl.Text,
+                        LinkUrl = string.IsNullOrEmpty(txtUrlLinkTo.Text) ? "" : txtUrlLinkTo.Text.Trim(),
+                        Created = DateTime.Now,
+                        Price = decimal.Parse(string.IsNullOrEmpty(txtPrice.Text) ? "0" : txtPrice.Text.Trim()),
+                        CustomerName = string.IsNullOrEmpty(txtCustomer.Text) ? "" : txtCustomer.Text.Trim(),
+                        CustomerDescription = string.IsNullOrEmpty(txtCustomerDesc.Text) ? "" : txtCustomerDesc.Text.Trim(),
+                        Activated = chkActivated.Checked
                     };
 
                     ctx.BannerDetailRepo.Setter.addOne(bannerdtl);

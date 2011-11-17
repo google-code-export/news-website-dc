@@ -23,7 +23,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" runat="server">
     <nsn:QuickSearchBox ID="QuickSearchBox1" runat="server" />
     <nsn:FocusPostsPortlet runat="server" ID="pletFocusPost" />
-    <nsn:AdBoxList ID="AdBoxList1" runat="server" />
+     <div id="adboxArea" runat="server"></div>
+   <%-- <nsn:AdBoxList ID="AdBoxList1" runat="server" />--%>
 	<nsn:HotVideoList ID="HotVideoList1" runat="server" />
 </asp:Content>
 

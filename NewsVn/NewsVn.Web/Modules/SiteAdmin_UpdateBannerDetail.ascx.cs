@@ -19,6 +19,8 @@ namespace NewsVn.Web.Modules
             intBannerId = int.Parse(Request.QueryString["bannerid"]);
             if (!IsPostBack)
             {
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlPositionType, "Dropdown.BannerPosition");
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlObjectType, "Dropdown.BannerType");
                 loadBannerDetail();
             }
         }
@@ -35,14 +37,28 @@ namespace NewsVn.Web.Modules
                     c.Width,
                     c.Title,
                     c.Url,
-                    BannerPosition = ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerPosition", c.BannerID.ToString())
+                    c.CustomerName,
+                    c.CustomerDescription,
+                    c.Created,
+                    c.LinkUrl,
+                    c.Price,
+                    c.TypeBanner,
+                    c.Activated,
+                    c.TypePosition
                 }).First();
 
                 txtHeight.Text = BannerDetail.Height.ToString() ;
                 txtWidth.Text = BannerDetail.Width.ToString ();
-                txtPosition.Text = BannerDetail.BannerPosition;
+                ddlPositionType.SelectedValue = BannerDetail.TypePosition.ToString();
+                ddlObjectType.SelectedValue = BannerDetail.TypeBanner.ToString();
                 txtUrl.Text = BannerDetail.Url;
                 txtTitle.Text = BannerDetail.Title;
+                txtCustomer.Text = BannerDetail.CustomerName;
+                txtCustomerDesc.Text = BannerDetail.CustomerDescription;
+                txtPrice.Text = BannerDetail.Price.ToString();
+                txtUrlLinkTo.Text = BannerDetail.LinkUrl;
+                lblCreated.Text = string.IsNullOrEmpty(BannerDetail.Created.ToString()) ? "" : BannerDetail.Created.ToString();
+                chkActivated.Checked = BannerDetail.Activated;
                 imgBanner.ImageUrl = BannerDetail.Url;
                 imgBanner.DataBind();
             }
@@ -96,11 +112,18 @@ namespace NewsVn.Web.Modules
 
                     if (Banner != null)
                     {
+                        Banner.TypeBanner = int.Parse(ddlObjectType.SelectedValue);
+                        Banner.TypePosition = int.Parse(ddlPositionType.SelectedValue);
                         Banner.Width = int.Parse(txtWidth.Text);
                         Banner.Height = int.Parse(txtHeight.Text);
                         Banner.Title = txtTitle.Text;
                         Banner.Url = txtUrl.Text;
-
+                        Banner.LinkUrl = string.IsNullOrEmpty(txtUrlLinkTo.Text) ? "" : txtUrlLinkTo.Text.Trim();
+                        Banner.Created = DateTime.Now;
+                        Banner.Price = decimal.Parse(string.IsNullOrEmpty(txtPrice.Text) ? "0" : txtPrice.Text.Trim());
+                        Banner.CustomerName = string.IsNullOrEmpty(txtCustomer.Text) ? "" : txtCustomer.Text.Trim();
+                        Banner.CustomerDescription = string.IsNullOrEmpty(txtCustomerDesc.Text) ? "" : txtCustomerDesc.Text.Trim();
+                        Banner.Activated = chkActivated.Checked;
                         ctx.SubmitChanges();
 
                         Response.Redirect(HostName + "account/siteadmin/misc/ViewAdBox.aspx");

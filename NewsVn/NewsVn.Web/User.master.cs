@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.UI;
 using NewsVn.Impl.Context;
+using System.Collections.Generic;
 
 namespace NewsVn.Web
 {
@@ -75,23 +76,25 @@ namespace NewsVn.Web
         {
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
-                int BannerPosition = BannerControlTop.BannerPosition;  
-                int BannerType = BannerControlTop.BannerType;
-                int RepeatDirection = BannerControlTop.RepeatDirection;
-                int TopBannerId = ctx.BannerRepo.Getter.getOne(b => b.PositionID == BannerPosition && b.TypeID == BannerType).ID;
-                var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable(a=> a.BannerID ==TopBannerId).Select (c=> new
-                {
-                  c.ID,
-                  c.Title,
-                  c.Width,
-                  c.Height,
-                  c.Url,
-                  bnDirection = RepeatDirection
-                }).ToList();
+                
+                //lay random 1 top banner  | Typebanner = 1: top banner, 2: righ banner
+                var bannerListID = ctx.BannerDetailRepo.Getter.getQueryable(c=>c.Activated && c.TypePosition==1).Select(c => c.ID).ToArray();
+               
+              
+                if (bannerListID.Length>=1)
+                {   //lay random 1 list right banner
+                    var randon = new Random();
+                    int _randomIndex = randon.Next(0, bannerListID.Length - 1);
+                    _randomIndex = bannerListID[_randomIndex];
+                    var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable(a => a.ID ==_randomIndex).ToList();
+                    BannerControlTop.Datasource = BannerLists;
+                    BannerControlTop.DataBind();
+                }
+                
+             
 
                 
-                BannerControlTop.Datasource = BannerLists;
-                BannerControlTop.DataBind();
+              
             }
 
         }
