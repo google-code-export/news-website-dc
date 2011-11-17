@@ -203,7 +203,7 @@ namespace NewsVn.Web.Modules
             if (e.Row.RowIndex >= 0)
             {
                 LinkButton lnkbtnDel = e.Row.FindControl("lnkbtnDel") as LinkButton;
-                lnkbtnDel.Attributes.Add("onClick", "return confirmDelete(" + System.Web.UI.DataBinder.Eval(e.Row.DataItem, "ID").ToString() + ");");
+                lnkbtnDel.Attributes.Add("onClick", "return confirmDelete('" + System.Web.UI.DataBinder.Eval(e.Row.DataItem, "ID").ToString() + "');");
             }
         }
 
