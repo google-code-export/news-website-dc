@@ -13,12 +13,12 @@ namespace NewsVn.Web.Modules {
     public partial class BannerControl {
         
         /// <summary>
-        /// rptBanner control.
+        /// divContentAds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptBanner;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContentAds;
     }
 }

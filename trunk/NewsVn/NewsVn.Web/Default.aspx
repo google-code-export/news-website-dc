@@ -33,7 +33,8 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
     <nsn:QuickSearchBox ID="QuickSearchBox1" runat="server" />
-    <nsn:AdBoxList ID="AdBoxList1" runat="server" />
+    <div id="adboxArea" runat="server"></div>
+    <%--<nsn:AdBoxList ID="AdBoxList1" runat="server" />--%>
     <nsn:SideTabsBox runat="server" ID="pletSideTabBar"  />
     <nsn:HotVideoList ID="HotVideoList1" runat="server" />
 </asp:Content>

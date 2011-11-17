@@ -10,6 +10,6 @@
 <asp:Content ContentPlaceHolderID="sideContent" Runat="Server">
     <nsn:QuickSearchBox runat="server" />
     <nsn:FocusPostsPortlet ID="pletFocusPost" runat="server" />
-    <nsn:AdBoxList runat="server" />
+     <div id="adboxArea" runat="server"></div>
     <nsn:HotVideoList runat="server" />
 </asp:Content>
