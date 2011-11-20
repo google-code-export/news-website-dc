@@ -156,10 +156,11 @@ namespace NewsVn.Web.Account.SysAdmin.User
             {
                 var users = Membership.GetAllUsers().Cast<MembershipUser>()
                     .Where(u => !Roles.IsUserInRole(u.UserName, "guest") && !Roles.IsUserInRole(u.UserName, "sysadmin"))
-                    .Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                    .Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
 
                 var profiles = ctx.MemberProfileRepo.Getter
-                    .getSortedList(ctx.MemberProfileRepo.Getter.getQueryable(), orderBy);  
+                    .getSortedList(ctx.MemberProfileRepo.Getter.getQueryable(x => users.Select(y => y.UserName)
+                    .ToList().Contains(x.Account)), orderBy).ToList();
                   
                 rptUserList.DataSource = profiles.Join(users, p => p.Account, u => u.UserName, (p, u) => new
                     {

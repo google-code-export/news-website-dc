@@ -9,11 +9,11 @@
             </li>
         </ul>
     </li>
-    <li class="side_main_menu">
+    <%--<li class="side_main_menu">
         <asp:HyperLink CssClass="view-setting" NavigateUrl="~/account/sysadmin/setting/viewsetting.aspx" Text="Quản lý cấu hình" runat="server" />
     </li>
     <li></li>
-    <li></li>
+    <li></li>--%>
 </ul>
 <div style="position:fixed;bottom:10px;left:40px">
     <a href="http://www.histats.com" alt="page hit counter" target="_blank" >
