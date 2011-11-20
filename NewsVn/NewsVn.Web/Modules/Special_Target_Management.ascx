@@ -9,29 +9,19 @@
         } else return false;
     }
     $(function () {
-        $("#TitleRegion h3").css({ 'cursor': 'pointer', 'color': '#BD0D0D' });
-        $("#TitleRegion").click(function () {
-            $("#ContentRegion").toggle('slow');
-        });
+        //        $("#TitleRegion h3").css({ 'cursor': 'pointer', 'color': '#BD0D0D' });
+        //        $("#TitleRegion").click(function () {
+        //            $("#ContentRegion").toggle('slow');
+        //        });
+        $(".ui-table:first").css("margin-top", 10);
     });
 </script>
-<style type="text/css">
-    .ui-table-remove-padding
-    {
-        margin-top: 5px !important;
-    }
-    .remove-fixed
-    {
-        position: inherit;
-    }
-</style>
-
-<div class="ui-table-toolbar remove-fixed" style="padding-top:0">
-    <div id="TitleRegion">
+<div class="ui-table-toolbar" style="padding:0">
+    <%--<div id="TitleRegion">
         <h3>Danh sách tin sự kiện nổi bật</h3>
-    </div>
+    </div>--%>
     <div id="ContentRegion">
-        <asp:GridView runat="server" ID="grvShow" AutoGenerateColumns="false" CssClass="ui-table ui-table-remove-padding"
+        <asp:GridView runat="server" ID="grvShow" AutoGenerateColumns="false" CssClass="ui-table"
             OnRowDataBound="grvShow_RowDataBound" GridLines="None">
             <Columns>
                 <asp:TemplateField HeaderText="STT" ItemStyle-HorizontalAlign="Center">
@@ -99,7 +89,7 @@
     </div>
     <div class="clear"></div>
 </div>
-<asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" CssClass="ui-table ui-table-remove-padding"
+<asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" CssClass="ui-table"
     GridLines="None">
     <Columns>
         <asp:TemplateField>

@@ -71,6 +71,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                     {
                         c.ID,
                         c.Name,
+                        NameCssClass = GetNameCssClass(c.Actived),
                         c.UpdatedOn,
                         c.Actived,
                         ParentName = c.Parent.Name
@@ -98,6 +99,18 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             }
 
             return ctx.CategoryRepo.Getter.getQueryable(c => selectedCategoryIDs.Contains(c.ID));
+        }
+
+        private string GetNameCssClass(bool actived)
+        {
+            string cssClass = string.Empty;
+
+            if (!actived)
+            {
+                cssClass += "post-not-actived ";
+            }
+
+            return cssClass;
         }
     }
 }

@@ -141,7 +141,7 @@ function fixLayoutContent() {
     $("#main_content").css({ width: $(window).width() - $("#side_content").width() - 30 });
     $("#side_content").css({ height: $(window).height() });
     $(".ui-table-toolbar").css({ width: $("#main_content").width() + "px" });
-    $(".ui-table").css({ "margin-top": $(".ui-table-toolbar").height() + 10 });
+    $(".ui-table:last").css({ "margin-top": $(".ui-table-toolbar").height() + 10 });
     $(".portlet").css({ width: $(".ui-form.main").width() });
 }
 
