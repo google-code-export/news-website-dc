@@ -36,7 +36,7 @@
         </div>       
     </div>
     <div id="main_content" class="right">
-        <div class="load_content">
+        <div id="load_content">
             <asp:ContentPlaceHolder ID="mainContent" runat="server" />
         </div>
     </div>
