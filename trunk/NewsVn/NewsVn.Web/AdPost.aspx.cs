@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using NewsVn.Impl.Context;
+using System.Collections.Generic;
+using System.Web.UI;
 
 namespace NewsVn.Web
 {
@@ -14,6 +16,7 @@ namespace NewsVn.Web
                 int AdsID = 0;
                 int.TryParse(Request.QueryString["cp"],out AdsID);
                 load_pletAdsDetail(AdsID);
+                bindBannerRight();
             }
         }
         //load Ads details by ID
@@ -76,6 +79,41 @@ namespace NewsVn.Web
                 pletAdsRelated.DataBind();
             }
             
+        }
+
+        void bindBannerRight()
+        {
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                var bannerRightListID = ctx.BannerDetailRepo.Getter.getQueryable(c => c.Activated && c.TypePosition == 2).Select(c => c.ID).ToArray();
+                if (bannerRightListID.Length >= 1)
+                {   //lay random 1 list right banner
+                    var lstID = new List<int>();
+                    for (int i = 0; i <= (bannerRightListID.Length < 5 ? bannerRightListID.Length - 1 : 5); i++)
+                    {
+                        if (bannerRightListID.Length <= 5)
+                        {
+                            for (int j = 0; j <= bannerRightListID.Length - 1; j++)
+                            {
+                                lstID.Add(bannerRightListID[j]);
+                            }
+                            break;
+                        }
+                        var randon = new Random();
+                        int _randomIndex = randon.Next(0, bannerRightListID.Length - 1);
+                        if (!lstID.Contains(bannerRightListID[_randomIndex]))
+                        {
+                            lstID.Add(bannerRightListID[_randomIndex]);
+                        }
+                    }
+                    Control UC_PortletAdPost = LoadControl("~/Modules/AdBoxList.ascx");
+                    var bannerRightLists = ctx.BannerDetailRepo.Getter.getQueryable(a => lstID.Contains(a.ID)).OrderByDescending(a => a.Price).ToList();
+                    var _AdBoxList1 = ((Modules.AdBoxList)UC_PortletAdPost);
+                    _AdBoxList1.Datasource = bannerRightLists;
+                    _AdBoxList1.DataBind();
+                    adboxArea.Controls.Add(_AdBoxList1);
+                }
+            }
         }
     }
 }
