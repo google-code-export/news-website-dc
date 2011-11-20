@@ -13,12 +13,12 @@ namespace NewsVn.Web {
     public partial class AdFormBox {
         
         /// <summary>
-        /// AdBoxList1 control.
+        /// adboxArea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::NewsVn.Web.Modules.AdBoxList AdBoxList1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl adboxArea;
     }
 }
