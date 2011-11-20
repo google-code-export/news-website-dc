@@ -12,7 +12,6 @@ namespace NewsVn.Web.BaseUI
         protected override void OnInit(EventArgs e)
         {
             HostName = ApplicationManager.HostName;
-
             base.OnInit(e);
         }
         public static void ExecuteSEO(string title, string metaKeyWords, string metaDes)

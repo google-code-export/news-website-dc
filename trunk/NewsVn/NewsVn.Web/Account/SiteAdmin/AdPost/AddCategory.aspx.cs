@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace NewsVn.Web.Account.SiteAdmin.AdPost
 {
-    public partial class EditCategory : BaseUI.SecuredPage
+    public partial class AddCategory : BaseUI.SecuredPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Title = SiteTitle + "Sửa thông tin danh mục";
+            this.Title = SiteTitle + "Thêm mới danh mục tin";
         }
     }
 }

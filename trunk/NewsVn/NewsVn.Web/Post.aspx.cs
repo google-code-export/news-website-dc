@@ -109,6 +109,8 @@ namespace NewsVn.Web
             strCateName = postData.Category.Name;
             //seo
             BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-', ' ') + " " + postData.Title, clsCommon.hintDesc(postData.Description, 300));
+            // Fix for static title : 2011/11/20
+            this.SiteTitle = " - " + postData.Title;
             //related post
             load_pletRelationPostList(postData, ctx);
             //commentbox

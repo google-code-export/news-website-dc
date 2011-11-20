@@ -38,7 +38,7 @@
     </li>    
     <li class="commands">
         <div class="right">
-            <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ViewCategory.aspx" Text="Quay lại" CssClass="button-back" runat="server" />
+            <a href='<%= HostName + "account/siteadmin/" + CategoryType + "/viewcategory.aspx" %>' class="button-back">Quay lại</a>
             <asp:HyperLink Text="Trợ giúp" CssClass="button-help dialog-trigger[updateCategoryHelpBox]" runat="server" />
             <asp:LinkButton ID="btnUpdate" Text="Lưu" CssClass="button-ok" runat="server"
                 OnClientClick="return checkValidation()" OnClick="btnUpdate_Click" />

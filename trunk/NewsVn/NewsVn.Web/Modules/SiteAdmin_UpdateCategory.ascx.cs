@@ -10,6 +10,23 @@ namespace NewsVn.Web.Modules
     {
         public bool AllowEdit { get; set; }
 
+        public string CategoryType
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_categoryType))
+                {
+                    _categoryType = "post";
+                }
+                return _categoryType;
+            }
+            set
+            {
+                _categoryType = value;
+            }
+        }
+        private string _categoryType;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,7 +51,7 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                var parentCates = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == "post").OrderBy(p => p.Name);
+                var parentCates = ctx.CategoryRepo.Getter.getQueryable(c => c.Parent == null && c.Type.Trim().ToLower() == CategoryType).OrderBy(p => p.Name);
                 foreach (var cate in parentCates)
                     ddlParentCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
             }
@@ -86,7 +103,7 @@ namespace NewsVn.Web.Modules
 
                     var category = new Impl.Entity.Category
                     {
-                        Type = "post",
+                        Type = CategoryType,
                         Name = txtName.Text.Trim(),
                         Description = txtDescription.Text.Trim(),
                         Actived = chkActived.Checked,
@@ -118,7 +135,7 @@ namespace NewsVn.Web.Modules
                     {
                         var parentCategory = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlParentCategory.SelectedValue));
 
-                        category.Type = "post";
+                        category.Type = CategoryType;
                         category.Name = txtName.Text.Trim();
                         category.Description = txtDescription.Text.Trim();
                         category.Actived = category.Actived;
