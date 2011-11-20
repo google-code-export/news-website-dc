@@ -115,14 +115,15 @@
                     <asp:CheckBox ID="chkID" EnableViewState="false" runat="server"  />
                     <asp:HiddenField ID="hidID" Value='<%# Eval("ID") %>' runat="server" /> 
                 </td>
-                <td>
+                <td style="width:300px">
+                    <!--href='<%= HostName + "account/siteadmin/adpost/editadpost.aspx?pid=" %><%# Eval("ID") %>'-->
                     <a class="<%# Eval("TitleCssClass") %>"
-                        href='<%= HostName + "account/siteadmin/adpost/editadpost.aspx?pid=" %><%# Eval("ID") %>'
+                        href='#'
                         title='<%# Eval("Title") %>'>
                         <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("Title"), 40) %>    
                     </a>
                 </td>                
-                <td>
+                <td style="width:200px">
                     <a href='<%= HostName + "account/siteadmin/adpost/editcategory.aspx?cid=" %><%# Eval("CategoryID") %>'
                         title='<%# Eval("CategoryName") %>'>
                         <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("CategoryName"), 30) %>
@@ -131,7 +132,7 @@
                 <td title='<%# Eval("CreatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>
                     <%# Eval("CreatedOn", "{0:dd/MM/yy}")%>
                 </td>
-                <td style="width:30px" title='<%# Eval("CreatedBy")%>'>
+                <td style="width:150px" title='<%# Eval("CreatedBy")%>'>
                     <%# NewsVn.Web.Utils.clsCommon.getEllipsisText(Eval("CreatedBy"), 20)%>
                 </td>
                 <td title='<%# Eval("UpdatedOn", "{0:dd/MM/yy HH:mm:ss}") %>'>

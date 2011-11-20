@@ -13,7 +13,7 @@
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>
         <asp:HyperLink ID="btnAdd" Text="Thêm" CssClass="button-add left" runat="server"
-            NavigateUrl="~/Account/SiteAdmin/Post/AddCategory.aspx" />
+            NavigateUrl="~/Account/SiteAdmin/AdPost/AddCategory.aspx" />
         <asp:LinkButton ID="btnDelete" Text="Xóa" CssClass="button-delete left" runat="server"
             OnClientClick="return confirmAction('Xóa danh mục được chọn?')" OnClick="btnDelete_Click" />
         <asp:LinkButton ID="btnToggleActive" Text="Ẩn/Hiện" CssClass="button-toggle left" runat="server"
@@ -42,7 +42,8 @@
                     <asp:HiddenField ID="hidID" Value='<%# Eval("ID") %>' runat="server" />
                 </td>
                 <td>
-                    <a href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("ID") %>'>
+                    <a  class="<%# Eval("NameCssClass") %>"
+                        href='<%= HostName + "account/siteadmin/adpost/editcategory.aspx?cid=" %><%# Eval("ID") %>'>
                         <%# Eval("Name") %>
                     </a>
                 </td>

@@ -21,6 +21,13 @@ namespace NewsVn.Web.Modules
         {
             var _html = new System.Text.StringBuilder();
             _html.Append("<br /> <ul class=\"side-part-list\">");
+
+            // CuongNguyen: Add to prevent NULL
+            if (Datasource == null)
+            {
+                Datasource = new List<Impl.Entity.BannerDetail>();
+            }
+
             foreach (var item in Datasource)
             {
                 //kiem tra loai item la gi?: video hay image hay flash de lay control html tuong ung

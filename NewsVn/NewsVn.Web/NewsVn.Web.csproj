@@ -75,6 +75,7 @@
     <Content Include="Account\Form\Signup.aspx" />
     <Content Include="Account\Guest\default.htm" />
     <Content Include="Account\Guest\MyProfile.aspx" />
+    <Content Include="Account\SiteAdmin\AdPost\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\EditAdPost.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\EditCategory.aspx" />
     <Content Include="Account\SiteAdmin\AdPost\ViewAdPost.aspx" />
@@ -1850,6 +1851,13 @@
     </Compile>
     <Compile Include="Account\Guest\MyProfile.aspx.designer.cs">
       <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\AddCategory.aspx.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\AdPost\AddCategory.aspx.designer.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\AdPost\EditAdPost.aspx.cs">
       <DependentUpon>EditAdPost.aspx</DependentUpon>

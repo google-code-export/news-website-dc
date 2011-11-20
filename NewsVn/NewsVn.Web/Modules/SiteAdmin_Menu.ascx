@@ -8,7 +8,7 @@
                 <asp:HyperLink CssClass="add-post" NavigateUrl="~/Account/SiteAdmin/Post/AddPost.aspx" Text="Thêm tin mới" runat="server" />
             </li>
             <li>
-                <asp:HyperLink NavigateUrl="~/Account/SiteAdmin/Post/ManageSpecialEventNews.aspx" Text="Sự kiện nổi bật" runat="server" />
+                <asp:HyperLink CssClass="hot-event" NavigateUrl="~/Account/SiteAdmin/Post/ManageSpecialEventNews.aspx" Text="Sự kiện nổi bật" runat="server" />
             </li>
             <li>
                 <asp:HyperLink CssClass="view-category" NavigateUrl="~/Account/SiteAdmin/Post/ViewCategory.aspx" Text="Quản lý chủ đề" runat="server" />

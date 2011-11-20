@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Account/SiteAdmin/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="EditCategory.aspx.cs" Inherits="NewsVn.Web.Account.SiteAdmin.Post.EditCategory" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Account/SiteAdmin/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddCategory.aspx.cs" Inherits="NewsVn.Web.Account.SiteAdmin.AdPost.AddCategory" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <link href="<%= Page.ResolveUrl("~/styles/validation.css") %>" rel="stylesheet" type="text/css" />
@@ -7,9 +7,9 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
-<asp:Content ContentPlaceHolderID="mainContent" runat="server">    
+<asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <div class="portlet">
-        <h2>Chỉnh sửa danh mục</h2>
-        <nsn:SiteAdmin_UpdateCategory AllowEdit="true" runat="server" />
+        <h2>Thêm danh mục mới</h2>
+        <nsn:SiteAdmin_UpdateCategory CategoryType="adpost" runat="server" />
     </div>
 </asp:Content>
