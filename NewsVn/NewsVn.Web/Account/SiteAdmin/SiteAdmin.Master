@@ -39,7 +39,9 @@
         </div>       
     </div>
     <div id="main_content" class="right">
-        <asp:ContentPlaceHolder ID="mainContent" runat="server" />
+        <div id="load_content">
+            <asp:ContentPlaceHolder ID="mainContent" runat="server" />
+        </div>
     </div>
     <div class="clear" />
     </form>
