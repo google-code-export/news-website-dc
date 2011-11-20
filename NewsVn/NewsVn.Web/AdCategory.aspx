@@ -26,6 +26,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="extraContent" runat="server">
     <div id="AdPostArea" runat="server"></div>
+     <div id="adboxArea" runat="server"></div>
     <script type="text/javascript">
     //set up other ads
         $(function () {

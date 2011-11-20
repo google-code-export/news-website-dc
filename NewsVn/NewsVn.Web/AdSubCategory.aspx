@@ -6,5 +6,5 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="sideContent" runat="server">
     <nsn:AdSearchBox ID="AdSearchBox1" runat="server" />
-    <nsn:AdBoxList ID="AdBoxList1" runat="server" />
+    <div id="adboxArea" runat="server"></div>
 </asp:Content>
