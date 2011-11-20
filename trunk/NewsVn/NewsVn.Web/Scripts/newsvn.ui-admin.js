@@ -135,6 +135,12 @@ $(function () {
     $(window).resize(function () {
         fixLayoutContent();
     });
+
+    $(window).load(function () {
+        $("#load_content").css("visibility", "visible");
+        $("#load_content").hide();
+        $("#load_content").fadeIn(500);
+    });
 });
 
 function fixLayoutContent() {

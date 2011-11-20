@@ -52,6 +52,11 @@ a
     padding: 10px;
 }
 
+#load_content
+{
+    visibility: hidden;   
+}
+
 .portlet
 {
     background: url('../images/trans_bg.jpg') repeat-x;
