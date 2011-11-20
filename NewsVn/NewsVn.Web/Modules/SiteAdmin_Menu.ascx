@@ -49,9 +49,9 @@
             <li>
                 <asp:HyperLink CssClass="view-adbox" NavigateUrl="~/Account/SiteAdmin/Misc/ViewAdBox.aspx" Text="Banner quảng cáo" runat="server" />
             </li>
-            <li>
+            <%--<li>
                 <asp:HyperLink CssClass="view-videobox" NavigateUrl="~/Account/SiteAdmin/Misc/ViewVideoBox.aspx" Text="Video quảng cáo" runat="server" />
-            </li>
+            </li>--%>
         </ul>
     </li>
 </ul>
