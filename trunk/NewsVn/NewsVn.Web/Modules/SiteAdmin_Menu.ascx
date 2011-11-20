@@ -29,7 +29,7 @@
             </li>
         </ul>
     </li>
-    <li class="side_main_menu">
+    <%--<li class="side_main_menu">
         <asp:HyperLink CssClass="view-video" NavigateUrl="~/Account/SiteAdmin/Video/ViewVideo.aspx" Text="Quản lý Video clip" runat="server" />
         <ul style="margin-left:10px;display:none">
             <li>
@@ -39,7 +39,7 @@
                 <asp:HyperLink CssClass="view-video-category" NavigateUrl="~/Account/SiteAdmin/Video/ViewCategory.aspx" Text="Quản lý chủ đề" runat="server" />
             </li>
         </ul>
-    </li>
+    </li>--%>
     <li class="side_main_menu">
         <asp:HyperLink CssClass="view-guest" NavigateUrl="~/Account/SiteAdmin/Guest/ViewGuest.aspx" Text="Quản lý tìm bạn" runat="server" />
     </li>

@@ -42,7 +42,8 @@
                     <asp:HiddenField ID="hidID" Value='<%# Eval("ID") %>' runat="server" />
                 </td>
                 <td>
-                    <a href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("ID") %>'>
+                    <a  class="<%# Eval("NameCssClass") %>"
+                        href='<%= HostName + "account/siteadmin/post/editcategory.aspx?cid=" %><%# Eval("ID") %>'>
                         <%# Eval("Name") %>
                     </a>
                 </td>

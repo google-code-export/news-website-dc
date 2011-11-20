@@ -88,7 +88,8 @@ namespace NewsVn.Web.Modules
         {
             using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
             {
-                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRepo.Getter.getTable().Count() / pageSize);
+                int numOfPages = (int)Math.Ceiling((decimal)ctx.PostRepo.Getter.
+                    getQueryable(p => p.Actived == true && p.Approved == true).Count() / pageSize);
                 ddlPageIndex.Items.Clear();
                 for (int i = 1; i <= numOfPages; i++)
                 {
