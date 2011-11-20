@@ -28,6 +28,30 @@ namespace NewsVn.Impl.Entity
         [Column]
         public string Url { get; set; }
 
+        [Column]
+        public string LinkUrl { get; set; }
+
+        [Column]
+        public DateTime? Created { get; set; }
+
+        [Column]
+        public decimal? Price { get; set; }
+
+        [Column]
+        public string CustomerName { get; set; }
+
+        [Column]
+        public string CustomerDescription { get; set; }
+
+        [Column]
+        public bool Activated { get; set; }
+
+        [Column]
+        public int? TypeBanner { get; set; }
+
+        [Column]
+        public int? TypePosition { get; set; }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             throw new NotImplementedException();
