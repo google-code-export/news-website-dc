@@ -41,7 +41,7 @@ namespace NewsVn.Web.Account.Guest
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
                     var _UserProfiles = ctx.UserProfileRepo.Getter.getOne(u => u.Account.ToLower() == HttpContext.Current.User.Identity.Name.ToLower());
-                    // BaseUI.BaseMaster.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
+                    // var mtb = new BaseUI.BaseMaster();mtb.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
                     lblNickName.Text = _UserProfiles.Nickname;
                     lblNickName_01.Text = _UserProfiles.Nickname;
                     lblGender.Text = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", _UserProfiles.Gender.ToString());
