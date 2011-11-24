@@ -111,8 +111,8 @@
                 <AnonymousTemplate>
                     <div id="confirmBox" class="dialog" title="Bạn chưa đăng nhập">
                         <br />
-                        <a href='<%= HostName+ "tinh-yeu-gia-dinh/tim-ban/dang-nhap.aspx" %>' class="button-login">Đăng nhập</a>
-                        <a href='<%= HostName+ "tinh-yeu-gia-dinh/tai-khoan/dang-ky.aspx" %>' class="button-register" style="margin-left:4px">Đăng ký</a>
+                        <a href='<%= HostName+ "tai-khoan/dang-nhap.aspx" %>' class="button-login">Đăng nhập</a>
+                        <a href='<%= HostName+ "tai-khoan/dang-ky.aspx" %>' class="button-register" style="margin-left:4px">Đăng ký</a>
                     </div>
                     <asp:LinkButton ID="LinkButton1" Text="Hồ sơ của tôi" CssClass="button left" runat="server"
                         OnClientClick="return openLoginConfirm()" />
