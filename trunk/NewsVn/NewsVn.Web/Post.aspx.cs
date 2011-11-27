@@ -34,26 +34,28 @@ namespace NewsVn.Web
             //params querystring post: PostID,SeoName
             if (!IsPostBack)
             {
+                var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString);
                 try
-                {                    
-                    using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
-                    {
-                        //Stopwatch stopwatch = new Stopwatch();
-                        //stopwatch.Start();
-                        int codePost = int.Parse(Request.QueryString["cp"]);
-                        //checkCateID_By_SEONAME(Request.QueryString["ct"]);
-                        load_postDetail(codePost, ctx);
-                        load_pletFocusPost(ctx);
-                        bindBannerRight(ctx);
-                        //stopwatch.Stop();
-                        //BaseUI.BaseMaster.SiteTitle = stopwatch.Elapsed.ToString();
-                        //result: ~ 12 - 13s
-
-                    }
+                {
+                    //Stopwatch stopwatch = new Stopwatch();
+                    //stopwatch.Start();
+                    int codePost = int.Parse(Request.QueryString["cp"]);
+                    //checkCateID_By_SEONAME(Request.QueryString["ct"]);
+                    load_postDetail(codePost, ctx);
+                    load_pletFocusPost(ctx);
+                    bindBannerRight(ctx);
+                    //stopwatch.Stop();
+                    //BaseUI.BaseMaster.SiteTitle = stopwatch.Elapsed.ToString();
+                    //result: ~ 12 - 13s
                 }
                 catch (Exception)
                 {
-                   
+                    // Do nothing here
+                }
+                finally
+                {
+                    // Explicitly dispose DataContext
+                    ctx.Dispose();
                 }
             }
         }
