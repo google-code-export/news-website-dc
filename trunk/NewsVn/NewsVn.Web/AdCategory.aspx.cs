@@ -137,12 +137,6 @@ namespace NewsVn.Web
                             lstID.Add(bannerRightListID[_randomIndex]);
                         }
                     }
-                    Control UC_PortletAdPost = LoadControl("~/Modules/AdBoxList.ascx");
-                    var bannerRightLists = ctx.BannerDetailRepo.Getter.getQueryable(a => lstID.Contains(a.ID)).OrderByDescending(a => a.Price).ToList();
-                    var _AdBoxList1 = ((Modules.AdBoxList)UC_PortletAdPost);
-                    _AdBoxList1.Datasource = bannerRightLists;
-                    _AdBoxList1.DataBind();
-                    adboxArea.Controls.Add(_AdBoxList1);
                 }
             }
         }
