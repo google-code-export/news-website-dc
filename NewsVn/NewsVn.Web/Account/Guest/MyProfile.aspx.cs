@@ -72,19 +72,15 @@ namespace NewsVn.Web.Account.Guest
                         int count = arr.Count();
                         while (count <= 2)
                         {
-                            arr.Add("/resources/Images/No_Image/no_avatar.jpg");
+                            arr.Add("resources/Images/No_Image/no_avatar.jpg");
                             count++;
                         }
-                        Image2.ImageUrl = arr[0];
-                        Image3.ImageUrl = arr[1];
-                        Image4.ImageUrl = arr[2];
+                        Image2.ImageUrl =ApplicationManager.HostName+ arr[0];
                     }
                     catch (Exception)
                     {
 
-                        Image2.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
-                        Image3.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
-                        Image4.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
+                        Image2.ImageUrl = ApplicationManager.HostName + "resources/Images/No_Image/no_avatar.jpg";
                     }
 
                     _UserProfiles = null;

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+using System.IO;
 
 namespace NewsVn.Web.Account.Guest
 {
@@ -25,7 +26,7 @@ namespace NewsVn.Web.Account.Guest
         protected override void OnInit(EventArgs e)
         {
             Datasource = new Impl.Entity.UserProfile();
-
+            
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,17 +34,14 @@ namespace NewsVn.Web.Account.Guest
             if (!IsPostBack)
             {
                 this.GenerateAgeDropDownList();
+                hidImagePath.Value = ApplicationManager.HostName + "resources/Images/No_Image/no_avatar.jpg";
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlGender, "Dropdown.Gender");
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlReligion, "Dropdown.Religion");
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlEdu, "Dropdown.Education");
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlMaritalStatus, "Dropdown.MaritalStatus");
+                Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlCountry, "Dropdown.Nation");
 
-                if (!IsPostBack)
-                {
-                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlGender, "Dropdown.Gender");
-                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlReligion, "Dropdown.Religion");
-                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlEdu, "Dropdown.Education");
-                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlMaritalStatus, "Dropdown.MaritalStatus");
-                    Utils.ApplicationKeyValueRef.BindingDataToComboBox(ddlCountry, "Dropdown.Nation");
-                    
-                    LoadLocation();
-                }
+                LoadLocation();
                 load_UserDetail();
             }
         }
@@ -113,19 +111,14 @@ namespace NewsVn.Web.Account.Guest
                         int count = arr.Count();
                         while (count <= 2)
                         {
-                            arr.Add("/resources/Images/No_Image/no_avatar.jpg");
+                            arr.Add("resources/Images/No_Image/no_avatar.jpg");
                             count++;
                         }
-                        Image2.ImageUrl = arr[0];
-                        Image3.ImageUrl = arr[1];
-                        Image4.ImageUrl = arr[2];
+                        Image2.ImageUrl = ApplicationManager.HostName+ arr[0];//dèault image
                     }
                     catch (Exception)
                     {
-
-                        Image2.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
-                        Image3.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
-                        Image4.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
+                        Image2.ImageUrl = ApplicationManager.HostName + "resources/Images/No_Image/no_avatar.jpg";
                     }
 
                     _UserProfiles = null;
@@ -183,5 +176,120 @@ namespace NewsVn.Web.Account.Guest
         {
             Response.Redirect("~/thanh-vien/thong-tin-tai-khoan.aspx");
         }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            var _imgUrl = uploadImg();
+            if (!string.IsNullOrEmpty(_imgUrl))
+            {
+                try
+                {
+                    using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+                    {
+                        var _u = ctx.UserProfileRepo.Getter.getOne(u => u.Account.ToLower()==HttpContext.Current.User.Identity.Name.ToLower());
+                        // var mtb = new BaseUI.BaseMaster();mtb.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
+                        _u.Avatar = _imgUrl;
+                        _u.UpdatedOn = DateTime.Now;
+                        ctx.SubmitChanges();
+                        string script = "<SCRIPT LANGUAGE='JavaScript'> ";
+                        script += "location.href=location.href";
+                        script += "</SCRIPT>";
+                        this.Page.RegisterStartupScript("ClientScript", script);
+
+                        //Response.Redirect("~/thanh-vien/thong-tin-tai-khoan.aspx");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ltrInitInfoError.Text = "Không thể cập nhật hồ sơ. Vui lòng thử lại. Lỗi (" + ex.Message.ToString() + ")";// string.Format(ErrorBar, "Không thể cập nhật hồ sơ. Vui lòng thử lại. Lỗi (" + ex.Message.ToString()+ ")");
+                }
+            }
+            
+        }
+        private string uploadImg()
+        {
+            string _imgUrl = "";
+            if (fileAvatar.HasFile)
+            {
+                try
+                {
+                    if (fileAvatar.PostedFile.ContentType.Contains("image"))
+                    {
+                        if (fileAvatar.PostedFile.ContentLength < 1024000)
+                        {
+                            //file [image name]
+                            string filename = Path.GetFileName(fileAvatar.FileName);
+                            //create folder if it does not exists
+                            string subPath = "Resources/Profile"; // your code goes here
+                            bool IsExists = Directory.Exists(Server.MapPath("~/" + subPath));
+                            if (!IsExists)
+                                Directory.CreateDirectory(Server.MapPath(subPath));
+                            fileAvatar.SaveAs(Server.MapPath("~/" + subPath) + "/" + filename);
+                            _imgUrl =  subPath + "/" + filename;
+                            imgAvatar.ImageUrl = ApplicationManager.HostName + subPath + "/" + filename;
+                            return _imgUrl;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ltrInitInfoError.Text = ex.Message.ToString();
+                    return "";
+                }
+            }
+            return _imgUrl;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        //public void create_Image_Thumbnail(string pDirectoryFileImage)
+        //{
+        //    System.IO.FileInfo fileDetail = null;
+        //    System.Drawing.Image fullSizeImg = null;
+        //    try
+        //    {
+        //        fileDetail = My.Computer.FileSystem.GetFileInfo(pDirectoryFileImage);
+        //        if (fileDetail.Length != 0)
+        //        {
+        //            string strFileName = fileDetail.Name;
+        //            int imageWidth = 192;
+        //            //get default by the same of designed pattern 96x96 ->w:96px
+        //            int imageHeight = 0;
+        //            string fullStringPath = fileDetail.DirectoryName + "\\" + fileDetail.Name;
+        //            fullSizeImg = System.Drawing.Image.FromFile(fullStringPath);
+        //            //fullSizeImg.Dispose()
+        //            if (fullSizeImg.Width > imageWidth)
+        //            {
+        //                imageHeight = (fullSizeImg.Height / fullSizeImg.Width) * imageWidth;
+        //                Image.GetThumbnailImageAbort dummyCallBack = new Image.GetThumbnailImageAbort(ThumbnailCallback);
+        //                System.Drawing.Image thumbNailImg = null;
+        //                thumbNailImg = fullSizeImg.GetThumbnailImage(imageWidth, imageHeight, dummyCallBack, IntPtr.Zero);
+        //                fullSizeImg.Dispose();
+        //                //del original upload image
+        //                File.Delete(pDirectoryFileImage);
+        //                //save thumbnail image
+        //                thumbNailImg.Save(fullStringPath);
+        //            }
+        //            else
+        //            {
+        //                fullSizeImg.Dispose();
+        //            }
+        //            //Clean up / Dispose...
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        fullSizeImg.Dispose();
+        //    }
+
+        //}
+        //public bool ThumbnailCallback()
+        //{
+        //    return true;
+        //}
+
     }
 }

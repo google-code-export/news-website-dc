@@ -28,20 +28,12 @@
     </h2>
      <div class="clear"></div>
     <table class="ui-table" border="0" cellpadding="0" cellspacing="0">
-       <%-- <tr>
-            <th colspan="3" align="left">
-                Hiện tại: <%= string.Format("{0:dd/MM/yyyy HH:mm:ss}", DateTime.Now) %>
-                | Xem: <%= string.Format("{0:N0}", 1234) %>
-            </th>
-        </tr>--%>
         <tr>
             <td style="width:150px"><b>Biệt danh:</b></td>
             <td style="width:303px"><asp:Label runat="server" ID="lblNickName_01" Text=""/></td>
             <td rowspan="15" valign="top" style="width:155px;background:#fff;padding-top:0">
                 
                 <asp:Image ID="Image2"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
-                <asp:Image ID="Image3"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
-                <asp:Image ID="Image4"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
             </td>
         </tr>
         <tr>
