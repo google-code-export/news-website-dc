@@ -12,14 +12,14 @@ namespace NewsVn.Web
 {
     public partial class Default : BaseUI.BasePage
     {
-        //private static log4net.ILog  log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected override void OnInit(EventArgs e)
         {
-            BaseUI.BaseMaster.SiteTitle = "- Cổng thông tin điện tử 24/07";
-            BaseUI.BaseMaster.MetaKeyWords = "newsvn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
-            BaseUI.BaseMaster.MetaKeyDes = "Newsvn, Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07, thông tin Việt nam - Thế giới...";
             base.OnInit(e);
+            SiteTitle += "Trang nhất";
+            MetaKeyWords = "newsvn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
+            MetaKeyDes = "Newsvn, Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07, thông tin Việt nam - Thế giới...";            
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -13,39 +13,17 @@ namespace NewsVn.Web
     {
         private int intCateID = -1;
         private string strCateName;
-        private bool checkCateID_By_SEONAME(string seoNAME)
-        {
-            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
-            {
-                var cates = ctx.CategoryRepo.Getter.getQueryable(c => c.SeoName == seoNAME && c.Actived == true).Select(c => new { c.ID, c.Name });
-                if (cates.Count() > 0)
-                {
-                    var cate = cates.FirstOrDefault();
-                    intCateID = cate.ID;
-                    strCateName = cate.Name;
-                    return true;
-                }
-                else
-                    return false;
-            }
-        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            //params querystring post: PostID,SeoName
             if (!IsPostBack)
             {
                 using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
-                    //Stopwatch stopwatch = new Stopwatch();
-                    //stopwatch.Start();
                     int codePost = int.Parse(Request.QueryString["cp"]);
-                    //checkCateID_By_SEONAME(Request.QueryString["ct"]);
                     load_postDetail(codePost, ctx);
                     load_pletFocusPost(ctx);
                     bindBannerRight(ctx);
-                    //stopwatch.Stop();
-                    //BaseUI.BaseMaster.SiteTitle = stopwatch.Elapsed.ToString();
-                    //result: ~ 12 - 13s
                 }
             }
         }
@@ -100,9 +78,11 @@ namespace NewsVn.Web
             intCateID = postData.CategoryID;
             strCateName = postData.Category.Name;
             //seo
-            BaseUI.BaseMaster.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07", clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-', ' ') + " " + postData.Title, clsCommon.hintDesc(postData.Description, 300));
+            this.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07",
+                clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-', ' ') + " " + postData.Title,
+                clsCommon.hintDesc(postData.Description, 300));
             // Fix for static title : 2011/11/20
-            this.SiteTitle = " - " + postData.Title;
+            //this.SiteTitle = " - " + postData.Title;
             //related post
             load_pletRelationPostList(postData, ctx);
             //commentbox

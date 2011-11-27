@@ -12,40 +12,18 @@ namespace NewsVn.Web
         {
             if (!IsPostBack)
             {
-                //Fix: thay <%= %> bang <%# %> sau do dung  Page.Header.DataBind();
-                //Error: The Controls collection cannot be modified because the control contains code blocks (i.e. <% ... %>).
-                Page.Header.DataBind();
-                //Error--------------
-                Generate_SeoMeta();
-                Load_DB_Data();
-                LoadTopBanner();
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                {
+                    Load_DB_Data(ctx);
+                    LoadTopBanner(ctx);
+                }
             }
-        }
-        
-        public void Generate_SeoMeta()
-        {
-            Page.Header.Controls.Add(new LiteralControl("\n"));
-            System.Web.UI.HtmlControls.HtmlMeta metaKeyWords = new System.Web.UI.HtmlControls.HtmlMeta();
-            metaKeyWords.Name="Keywords";
-            metaKeyWords.Content = MetaKeyWords;
+        }               
 
-            System.Web.UI.HtmlControls.HtmlMeta metaKeyDescription = new System.Web.UI.HtmlControls.HtmlMeta();
-            metaKeyDescription.Name = "Description";
-            metaKeyDescription.Content =  MetaKeyDes;
-
-            Page.Header.Controls.Add(metaKeyWords);
-            Page.Header.Controls.Add(new LiteralControl("\n"));
-            Page.Header.Controls.Add(metaKeyDescription);
-
-        }
-
-        private void Load_DB_Data()
-        {
-            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
-            {
-                var categories = Load_Menu(ctx);
-                Load_FooterCate(categories);
-            }
+        private void Load_DB_Data(NewsVnContext ctx)
+        {            
+            var categories = Load_Menu(ctx);
+            Load_FooterCate(categories);
         }
 
         private IQueryable<Impl.Entity.Category> Load_Menu(NewsVnContext ctx)
@@ -72,31 +50,19 @@ namespace NewsVn.Web
             CtrFooterCateList.DataBind();
         }
 
-        protected void LoadTopBanner()
+        protected void LoadTopBanner(NewsVnContext ctx)
         {
-            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
-            {
-                
-                //lay random 1 top banner  | Typebanner = 1: top banner, 2: righ banner
-                var bannerListID = ctx.BannerDetailRepo.Getter.getQueryable(c=>c.Activated && c.TypePosition==1).Select(c => c.ID).ToArray();
-               
-              
-                if (bannerListID.Length>=1)
-                {   //lay random 1 list right banner
-                    var randon = new Random();
-                    int _randomIndex = randon.Next(0, bannerListID.Length - 1);
-                    _randomIndex = bannerListID[_randomIndex];
-                    var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable(a => a.ID ==_randomIndex).ToList();
-                    BannerControlTop.Datasource = BannerLists;
-                    BannerControlTop.DataBind();
-                }
-                
-             
-
-                
-              
+            //lay random 1 top banner  | Typebanner = 1: top banner, 2: righ banner
+            var bannerListID = ctx.BannerDetailRepo.Getter.getQueryable(c => c.Activated && c.TypePosition == 1).Select(c => c.ID).ToArray();
+            if (bannerListID.Length >= 1)
+            {   //lay random 1 list right banner
+                var randon = new Random();
+                int _randomIndex = randon.Next(0, bannerListID.Length - 1);
+                _randomIndex = bannerListID[_randomIndex];
+                var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable(a => a.ID == _randomIndex).ToList();
+                BannerControlTop.Datasource = BannerLists;
+                BannerControlTop.DataBind();
             }
-
         }
 
     }

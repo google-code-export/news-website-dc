@@ -6,7 +6,7 @@ namespace NewsVn.Web.Account.Form
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Title = SiteTitle + "Đăng nhập";
+            SiteTitle += "Đăng nhập";
             
             if (!(IsPostBack))
             {

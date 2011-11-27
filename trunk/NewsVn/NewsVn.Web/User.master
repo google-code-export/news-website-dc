@@ -6,7 +6,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>NewsVN <%# SiteTitle %></title>
     <meta name="robots" content="INDEX,FOLLOW"/>
     <meta name="author" content="VSS Vietstream Software Solution - contact: 01224 742 472" />
     <meta name="revisit-after" content="1 days"/>

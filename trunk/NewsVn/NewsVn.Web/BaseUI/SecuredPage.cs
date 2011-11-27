@@ -8,7 +8,8 @@ namespace NewsVn.Web.BaseUI
         {
             base.OnInit(e);
 
-            SiteTitle = "NewsVN - Cổng thông tin điện tử 24/07 ::: ";
+            SiteTitle = "NewsVN - Trang bảo mật ::: ";
+            ExeSeo = false;
         }
     }
 }
