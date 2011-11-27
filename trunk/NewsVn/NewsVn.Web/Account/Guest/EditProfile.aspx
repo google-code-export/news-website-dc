@@ -12,6 +12,16 @@
             scrollTop: $("#pmessageform_box").offset().top
         }, 1000);
     }
+    $(function () {
+        $("#<%=Image2.ClientID %>").click(function () {
+            $("#comment_box").attr("title", "Change Avatar");        
+            $("#comment_box").dialog("open");
+        });
+
+    });
+    function fncRL() {
+            location.reload(true);
+        }
 </script>
 
 <div class="portlet">
@@ -29,11 +39,10 @@
         <tr>
             <td style="width:150px"><b>Biệt danh:</b></td>
             <td style="width:303px"><b> <asp:Label runat="server" ID="lblNickName_01" Text=""/></b></td>
-            <td rowspan="15" valign="top" style="width:155px;background:#fff;padding-top:0">
-                
-                <asp:Image ID="Image2"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
-                <asp:Image ID="Image3"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
-                <asp:Image ID="Image4"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
+            <td rowspan="16" valign="top" style="width:155px;background:#fff;padding-top:0">
+                <asp:Image ID="Image2"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0; cursor:pointer;" />
+                <asp:Image ID="Image3"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0;  cursor:pointer;" />
+                <asp:Image ID="Image4"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0;  cursor:pointer;" />
             </td>
         </tr>
         <tr>
@@ -125,5 +134,10 @@
              </td>
         </tr>
     </table>
+</div>
+<div id="comment_box" class="dialog" style="display:none;">
+<div style="width:300px; height:150px;">
+    <a href="javascript:void(0);" onclick="fncRL();">click</a>
+    </div>
 </div>
 </asp:Content>
