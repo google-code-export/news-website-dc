@@ -11,6 +11,7 @@ namespace NewsVn.Web
         {
             if (!IsPostBack )
             {
+                SiteTitle += "Kết quả tìm kiếm";
                 LoadProfileResult();
             }
         }
@@ -61,7 +62,7 @@ namespace NewsVn.Web
                             pf.Name,
                             pf.Expectation,
                             pf.UpdatedOn,
-                            profileCommentCount = this.GetProfileCommentByAccount(pf.Account)
+                            profileCommentCount = this.GetProfileCommentByAccount(pf.Account, ctx)
 
                         }).OrderByDescending(pf => pf.Account).ThenByDescending(pf => pf.UpdatedOn).ToList();
 
@@ -76,24 +77,11 @@ namespace NewsVn.Web
             }
         }
 
-        private int GetProfileCommentByAccount(string strAccount)
+        private int GetProfileCommentByAccount(string strAccount, NewsVnContext ctx)
         {
-            try
-            {
-                using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
-                {
-                    return ctx.UserProfileCommentRepo.Getter.getQueryable(c => c.ForAccount == strAccount).Count();
-                }
-            }
-            catch (Exception)
-            {
-
-                return 0;
-            }
+            return ctx.UserProfileCommentRepo.Getter.getQueryable(c => c.ForAccount == strAccount).Count();
         }
 
-        
-        
         enum CompareOpt
         {
             Equal, NotEqual, Greater, GreaterOrEqual, Less, LessOrEqual

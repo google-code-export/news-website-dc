@@ -1,21 +1,28 @@
 ﻿using System;
 using System.Text;
 using NewsVn.Web.Utils;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
 
 namespace NewsVn.Web.BaseUI
 {
     public class BasePage : System.Web.UI.Page
     {
         public string SiteTitle { get; set; }
+        public string MetaKeyWords { get; set; }
+        public string MetaKeyDes { get; set; }
 
         public string InfoBar { get; set; }
         public string ErrorBar { get; set; }
 
         public string HostName { get; set; }
 
+        // CuongNguyen: 28/11/2011
+        protected bool ExeSeo = true;
+
         protected override void OnInit(EventArgs e)
         {
-            SiteTitle = "NewsVN - xxx :: ";
+            SiteTitle = "NewsVN - Cổng thông tin điện tử 24/07 :: ";
 
             var sb = new StringBuilder();
             sb.Append("<li><div class=\"ui-widget\"><div class=\"ui-state-highlight ui-corner-all\" style=\"padding: 0 .7em;\">");
@@ -31,7 +38,49 @@ namespace NewsVn.Web.BaseUI
 
             HostName = ApplicationManager.HostName;
 
+            ExeSeo = true;
+
             base.OnInit(e);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            this.Title = SiteTitle;
+            
+            if (!IsPostBack)
+            {
+                this.Header.DataBind();
+
+                if (ExeSeo)
+                {
+                    Generate_SeoMeta();
+                }
+            }            
+        }
+
+        protected void ExecuteSEO(string title, string metaKeyWords, string metaDes)
+        {
+            SiteTitle += title;
+            MetaKeyWords = metaKeyWords.Length <= 0 ? "NewsVn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh" : metaKeyWords;
+            MetaKeyDes = metaDes.Length <= 0 ? "Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07 thông tin Việt nam - Thế giới về Kinh tế" : metaDes;
+        }
+
+        private void Generate_SeoMeta()
+        {
+            this.Header.Controls.Add(new LiteralControl("\n"));
+            HtmlMeta metaKeyWords = new HtmlMeta();
+            metaKeyWords.Name = "Keywords";
+            metaKeyWords.Content = MetaKeyWords;
+
+            HtmlMeta metaKeyDescription = new HtmlMeta();
+            metaKeyDescription.Name = "Description";
+            metaKeyDescription.Content = MetaKeyDes;
+
+            this.Header.Controls.Add(metaKeyWords);
+            this.Header.Controls.Add(new LiteralControl("\n"));
+            this.Header.Controls.Add(metaKeyDescription);
         }
     }
 }
