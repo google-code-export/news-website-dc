@@ -120,7 +120,7 @@
                 <RoleGroups>
                     <asp:RoleGroup Roles="Guest">
                         <ContentTemplate>
-                            <asp:HyperLink ID="HyperLink3" Text="Hồ sơ của tôi" NavigateUrl="#" CssClass="button left" runat="server" />
+                          <a href='<%= HostName+ "thanh-vien/thong-tin-tai-khoan.aspx" %>' class="button left">Hồ sơ của tôi</a>
                         </ContentTemplate>                        
                     </asp:RoleGroup>
                 </RoleGroups>
