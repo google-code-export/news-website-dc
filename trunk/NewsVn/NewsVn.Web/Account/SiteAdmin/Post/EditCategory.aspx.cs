@@ -6,7 +6,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Title = SiteTitle + "Sửa thông tin danh mục";
+            SiteTitle += "Sửa thông tin chủ đề tin tức";
         }
     }
 }

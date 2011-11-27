@@ -95,8 +95,6 @@
     <Content Include="Account\SiteAdmin\Post\ViewCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ViewPostComment.aspx" />
-    <Content Include="Account\SiteAdmin\Video\ViewCategory.aspx" />
-    <Content Include="Account\SiteAdmin\Video\ViewVideo.aspx" />
     <Content Include="Account\SysAdmin\default.htm" />
     <Content Include="Account\SysAdmin\Setting\ViewSetting.aspx" />
     <Content Include="Account\SysAdmin\User\AddUser.aspx" />
@@ -1989,20 +1987,6 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\SiteAdmin.Master.designer.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Video\ViewCategory.aspx.cs">
-      <DependentUpon>ViewCategory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Video\ViewCategory.aspx.designer.cs">
-      <DependentUpon>ViewCategory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Video\ViewVideo.aspx.cs">
-      <DependentUpon>ViewVideo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\SiteAdmin\Video\ViewVideo.aspx.designer.cs">
-      <DependentUpon>ViewVideo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SysAdmin\Setting\ViewSetting.aspx.cs">
       <DependentUpon>ViewSetting.aspx</DependentUpon>

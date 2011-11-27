@@ -14,8 +14,11 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc
         int intPositionID;
         int intTypeID;
         public string bannerPosition = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            SiteTitle += "";
+            
             intPositionID = int.Parse(Request.QueryString["pid"]);
             intTypeID = int.Parse(Request.QueryString["tid"]);
             bannerPosition = ApplicationKeyValueRef.GetKeyValue("Dropdown.BannerPosition", intPositionID.ToString());

@@ -148,7 +148,7 @@ namespace NewsVn.Web.Account.SiteAdmin.AdPost
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Title = SiteTitle + "Quản lý rao nhanh";
+            SiteTitle += "Quản lý rao nhanh";
 
             if (!IsPostBack)
             {
