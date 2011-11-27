@@ -34,8 +34,7 @@ namespace NewsVn.Web
             //params querystring post: PostID,SeoName
             if (!IsPostBack)
             {
-                var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString);
-                try
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
                     //Stopwatch stopwatch = new Stopwatch();
                     //stopwatch.Start();
@@ -47,15 +46,6 @@ namespace NewsVn.Web
                     //stopwatch.Stop();
                     //BaseUI.BaseMaster.SiteTitle = stopwatch.Elapsed.ToString();
                     //result: ~ 12 - 13s
-                }
-                catch (Exception)
-                {
-                    // Do nothing here
-                }
-                finally
-                {
-                    // Explicitly dispose DataContext
-                    ctx.Dispose();
                 }
             }
         }
