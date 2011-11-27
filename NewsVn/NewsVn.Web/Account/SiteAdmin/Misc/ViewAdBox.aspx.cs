@@ -12,6 +12,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Misc
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SiteTitle += "Quản lý Banner quảng cáo";
+
             if (!IsPostBack )
             {
                 loadBannerPositionList();

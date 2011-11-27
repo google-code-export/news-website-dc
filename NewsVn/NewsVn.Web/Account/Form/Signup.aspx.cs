@@ -17,7 +17,7 @@ namespace NewsVn.Web.Account.Form
                 Response.Redirect(HostName + "tai-khoan/dang-nhap.aspx");
             }
             
-            this.Title = SiteTitle + "Đăng ký";
+            SiteTitle += "Đăng ký";
 
             this.GenerateAgeDropDownList();
 

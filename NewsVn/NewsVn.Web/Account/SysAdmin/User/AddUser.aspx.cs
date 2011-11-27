@@ -6,7 +6,7 @@ namespace NewsVn.Web.Account.SysAdmin.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Title = this.SiteTitle + "Thêm tài khoản mới";
+            SiteTitle += "Thêm tài khoản mới";
         }
     }
 }
