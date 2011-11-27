@@ -226,8 +226,8 @@ namespace NewsVn.Impl.Context
             if (_userProfileCommentRepo != null) this.UserProfileCommentRepo.Dispose();
             if (_videoRepo != null) this.VideoRepo.Dispose();
             if (_keyValueRefRepo  != null) this.KeyValueRefRepo.Dispose();
-            if (_bannerRepo != null) this.KeyValueRefRepo.Dispose();
-            if (_bannerDetailRepo != null) this.KeyValueRefRepo.Dispose();
+            if (_bannerRepo != null) this.BannerRepo.Dispose();
+            if (_bannerDetailRepo != null) this.BannerDetailRepo.Dispose();
         }
     }
 }
