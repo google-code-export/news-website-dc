@@ -27,14 +27,14 @@ namespace NewsVn.Web
                 {
                     Account = u.Account,
                     u.Age,
-                    Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
+                    Country =GetLocationByLocationID(int.Parse(u.Country.Value.ToString()), ctx),
                     u.UpdatedOn,
-                    Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Gender.ToString()),
+                    Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Country.Value.ToString()),
                     Location = GetLocationByLocationID(int.Parse(u.Location.ToString()), ctx),
                     u.Name,
                     u.Nickname,
                     u.Expectation,
-                    Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
+                    Avatar =u.Avatar.Length<=0 || u.Avatar==null?HostName+ "resources/Images/No_Image/no_avatar.jpg" :HostName+u.Avatar
                 })
                 .ToList();
             pletUserProfileList.Datasource = data;
@@ -52,7 +52,7 @@ namespace NewsVn.Web
                      layoutPosition = "",
                      Account = u.Account,
                      u.Age,
-                     Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
+                     Country = GetLocationByLocationID(int.Parse(u.Country.Value.ToString()), ctx),
                      u.UpdatedOn,
                      Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Gender.ToString()),
                      Location = GetLocationByLocationID(int.Parse(u.Location.ToString()), ctx),
@@ -61,6 +61,7 @@ namespace NewsVn.Web
                      u.Expectation,
                      u.Avatar
                  }).ToList();
+
             for (int i = 0; i < 8; i++)
             {
                 var data = _UserProfiles_var.OrderByDescending(u => u.Account)
@@ -70,14 +71,14 @@ namespace NewsVn.Web
                     layoutPosition = i % 2 == 0 ? "left" : "right",
                     Account = u.Account,
                     u.Age,
-                    Country = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Nation", u.Country.ToString()),
+                    Country = GetLocationByLocationID(int.Parse(u.Country.Value.ToString()), ctx),
                     u.UpdatedOn,
                     Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Gender.ToString()),
                     Location = GetLocationByLocationID(int.Parse(u.Location.ToString()), ctx),
                     u.Name,
                     u.Nickname,
                     u.Expectation,
-                    Avatar = u.Avatar.Length < 1 ? "/resources/Images/No_Image/no_avatar.jpg" : u.Avatar
+                    Avatar = u.Avatar.Length < 1 || u.Avatar == null ? HostName + "resources/Images/No_Image/no_avatar.jpg" : HostName + u.Avatar
                 }).FirstOrDefault();
                 cloneDataStructure.Add(data);
                 data = null;
