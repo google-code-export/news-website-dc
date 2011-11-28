@@ -94,7 +94,11 @@ namespace NewsVn.Web.Utils
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
                 var _Location = ctx.LocationRepo.Getter.getOne(l => l.LocationID == LocationID);
-                LocationName = _Location.LocationName;
+                if (_Location!=null)
+                {
+                    LocationName = _Location.LocationName;
+                }
+                
             }
             return LocationName;
         }
