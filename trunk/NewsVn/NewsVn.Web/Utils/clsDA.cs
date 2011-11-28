@@ -103,23 +103,32 @@ namespace NewsVn.Web.Utils
         //remove unicode vietnam
         public static string RemoveUnicodeMarks(string accented)
         {
-            accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
+            if (!string.IsNullOrEmpty(accented))
+            {
+                accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
 
-            string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            accented = string.Join("-", splitted).ToLower();
+                string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                accented = string.Join("-", splitted).ToLower();
 
-            Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
-            string strFormD = accented.Normalize(System.Text.NormalizationForm.FormD);
+                Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
+                string strFormD = accented.Normalize(System.Text.NormalizationForm.FormD);
 
-            return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+                return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+            }
+            else return "";
+            
         }
         public static string RemoveDangerousMarks(string accented)
         {
-            accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
+            if (!string.IsNullOrEmpty(accented))
+            {
+                accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
 
-            string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            accented = string.Join(" ", splitted).ToLower();
-            return accented;
+                string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                accented = string.Join(" ", splitted).ToLower();
+                return accented;
+            }
+            else return "";
         }
         //cut string fix to words expectation
         public static string hintDesc(string desc,int intWords)
