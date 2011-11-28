@@ -33,10 +33,7 @@
             <td style="width:150px"><b>Biệt danh:</b></td>
             <td style="width:303px"><%=Datasource.Nickname %></td>
             <td rowspan="15" valign="top" style="width:155px;background:#fff;padding-top:0">
-                
                 <asp:Image ID="Image2"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
-                <asp:Image ID="Image3"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
-                <asp:Image ID="Image4"  AlternateText="" Width="155px" Height="155px" runat="server" style="margin:7px 0 0" />
             </td>
         </tr>
         <tr>
@@ -49,23 +46,23 @@
         </tr>
         <tr>
             <td><b>Giới tính:</b></td>
-            <td><%=Datasource.Gender%></td>
+            <td><asp:Label runat="server" ID="lblGender" Text=""/></td>
         </tr>
         <tr>
             <td><b>Tỉnh/Thành phố:</b></td>
-            <td><%=Datasource.Location %></td>
+            <td><asp:Label runat="server" ID="lblLocation" Text=""/></td>
         </tr>
         <tr>
             <td><b>Quốc gia:</b></td>
-            <td><%=Datasource.Country %></td>
+            <td><asp:Label runat="server" ID="lblCountry" Text=""/></td>
         </tr>
         <tr>
             <td><b>Chiều cao:</b></td>
-            <td><%=Datasource.Height %> (cm)</td>
+            <td><asp:Label runat="server" ID="lblHeight" Text=""/></td>
         </tr>
         <tr>
             <td><b>Cân nặng:</b></td>
-            <td><%=Datasource.Weight %> (kg)</td>
+            <td><asp:Label runat="server" ID="lblWeight" Text=""/></td>
         </tr>
         <tr>
             <td><b>Thân hình:</b></td>
@@ -81,15 +78,15 @@
         </tr>
         <tr>
             <td><b>Tình trạng hôn nhân:</b></td>
-            <td><%=Datasource.MaritalStatus %></td>
+            <td><asp:Label runat="server" ID="lblMarialStatus" Text=""/></td>
         </tr>
         <tr>
             <td><b>Tôn giáo:</b></td>
-            <td><%=Datasource.Religion %></td>
+            <td><asp:Label runat="server" ID="lblReligion" Text=""/></td>
         </tr>
         <tr>
             <td><b>Học vấn:</b></td>
-            <td><%=Datasource.Education %></td>
+            <td><asp:Label runat="server" ID="lblEducation" Text=""/></td>
         </tr>
         <tr>
             <td><b>Nghề nghiệp:</b></td>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NewsVn.Impl.Context;
+using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.Modules
 {
@@ -31,23 +33,33 @@ namespace NewsVn.Web.Modules
                 int count = arr.Count();
                 while (count <= 2)
                 {
-                    arr.Add("/resources/Images/No_Image/no_avatar.jpg");
+                    arr.Add("resources/Images/No_Image/no_avatar.jpg");
                     count++;
                 }
-                Image2.ImageUrl = arr[0];
-                Image3.ImageUrl = arr[1];
-                Image4.ImageUrl = arr[2];
+                Image2.ImageUrl = Utils.ApplicationManager.HostName + arr[0];
             }
             catch (Exception)
             {
 
-                Image2.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
-                Image3.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
-                Image4.ImageUrl = "/resources/Images/No_Image/no_avatar.jpg";
+                Image2.ImageUrl = Utils.ApplicationManager.HostName + "resources/Images/No_Image/no_avatar.jpg";
             }
-           
+            using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
+            {
+                string strAcc = Request.QueryString["acc"];
+            }
             this.ShowEmail = Datasource.ShowEmail;
             this.ShowPhone = Datasource.ShowPhone;
+            lblGender.Text = ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", Datasource.Gender.ToString());
+            lblReligion.Text = ApplicationKeyValueRef.GetKeyValue("Dropdown.Religion", Datasource.Religion.ToString());
+            lblMarialStatus.Text = ApplicationKeyValueRef.GetKeyValue("Dropdown.MaritalStatus", Datasource.MaritalStatus.ToString());
+            lblEducation.Text = ApplicationKeyValueRef.GetKeyValue("Dropdown.Education", Datasource.Education.ToString());
+            lblHeight.Text = string.IsNullOrEmpty(Datasource.Height.ToString()) ? "" : Datasource.Height.ToString() + " (cm)";
+            lblWeight.Text = string.IsNullOrEmpty(Datasource.Weight.ToString()) ? "" : Datasource.Weight.ToString() + " (kg)";
+            if (Datasource.Country.HasValue)
+                lblCountry.Text = ApplicationKeyValueRef.getLocationNameByID(Datasource.Country.Value);
+            if (Datasource.Location.HasValue)
+                lblLocation.Text = ApplicationKeyValueRef.getLocationNameByID(Datasource.Location.Value);
+           
         }
     }
 }
