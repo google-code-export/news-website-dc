@@ -5,7 +5,6 @@
     <asp:LoginView ID="lgConversation" runat="server">
         <AnonymousTemplate>
             Vui lòng
-            <%--<asp:HyperLink ID="HyperLink1" NavigateUrl='<%= HostName+ "tinh-yeu-gia-dinh/tim-ban/dang-nhap.aspx" %>' Text="đăng nhập" runat="server" />--%>
              <a href='<%=HostName + "tai-khoan/dang-nhap.aspx"%>' >Đăng Nhập</a>
             để xem thông tin
         </AnonymousTemplate>
