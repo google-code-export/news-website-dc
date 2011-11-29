@@ -13,6 +13,15 @@ namespace NewsVn.Web.Account.Guest {
     public partial class MyProfile {
         
         /// <summary>
+        /// hplBackProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hplBackProfile;
+        
+        /// <summary>
         /// lblNickName control.
         /// </summary>
         /// <remarks>
