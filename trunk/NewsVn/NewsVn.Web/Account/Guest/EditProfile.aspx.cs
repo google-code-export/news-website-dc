@@ -10,7 +10,7 @@ using System.IO;
 
 namespace NewsVn.Web.Account.Guest
 {
-    public partial class EditProfile : BaseUI.BasePage
+    public partial class EditProfile : BaseUI.SecuredPage
     {
         // HttpContext.Current.User.Identity.Name
         public Impl.Entity.UserProfile Datasource { get; set; }
