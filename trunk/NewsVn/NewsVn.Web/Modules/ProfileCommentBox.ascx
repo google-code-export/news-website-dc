@@ -17,13 +17,13 @@
 <script src="<%= Page.ResolveUrl("~/scripts/plugins/jquery.validationEngine-vi.js") %>" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $(function () {
-        var linkSelector = $("#<%= ddlCategory.ClientID %>")
-        linkSelector.selectmenu({ width: "274px" });
-        linkSelector.next(".ui-selectmenu").addClass("select");
-        linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
-        $("#<%= ddlCategory.ClientID %>" + "-menu").width(280);
-    });
+//    $(function () {
+////        var linkSelector = $("#<= ddlCategory.ClientID %>")
+////        linkSelector.selectmenu({ width: "274px" });
+////        linkSelector.next(".ui-selectmenu").addClass("select");
+////        linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
+////        $("#<= ddlCategory.ClientID %>" + "-menu").width(280);
+//    });
 
     function checkValidation() {
         return $("#pmessageform_box").validationEngine('validate');
@@ -43,7 +43,8 @@
         <%--Shows options only when host profile allow to view email address--%>
         <%--Message sender can choose whether to send to NewsVN account (insert record into database)--%>
         <%--or directly to host profile's email (use POP3)--%>
-        <% if (ShowEmail) { %>
+        <%-- temporary invisible 30/10/2011--%>
+        <%--<% if (ShowEmail) { %>
         <li>
             <asp:Label ID="Label1" AssociatedControlID="ddlCategory" Text="Gởi lời nhắn đến:" Width="100" runat="server" />
             <asp:DropDownList ID="ddlCategory" runat="server">
@@ -51,7 +52,7 @@
                 <asp:ListItem Value="2" Text="Tài khoản Email" />
             </asp:DropDownList>            
         </li>
-        <% } %>
+        <% } %>--%>
         <li>
             <asp:Label ID="Label2" AssociatedControlID="txtTitle" Text="* Tiêu đề:" Width="100" runat="server" />
             <asp:TextBox ID="txtTitle" Width="534" CssClass="validate[required]" runat="server" />
@@ -64,10 +65,7 @@
         <li class="commands">            
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
-                    <%--<asp:HyperLink ID="HyperLink1" CssClass="button-login right" Text="Đăng nhập để gởi tin" runat="server"
-                        NavigateUrl='<%= HostName+ "tinh-yeu-gia-dinh/tim-ban/dang-nhap.aspx" %>' style="margin:0" />--%>
                         <div class="button-login right"><a  href='<%=HostName + "tai-khoan/dang-nhap.aspx"%>' >Đăng nhập để gởi tin</a></div>
-
                 </AnonymousTemplate>
                 <RoleGroups>
                     <asp:RoleGroup Roles="Guest">

@@ -27,6 +27,7 @@ namespace NewsVn.Web.Modules
         {
             //<%--Every user has maximum 3 avatars, first avatar will be shown on profile list, if user didnt upload an avatar, use default 'No Photo' image in replace--%>
             //<%--In database, each image url will be separated by ';'--%>
+            Image1.ImageUrl = Utils.ApplicationManager.HostName + "images/icons/mail.png";
             try
             {
                 arr = Datasource.Avatar.Split(';').ToList();

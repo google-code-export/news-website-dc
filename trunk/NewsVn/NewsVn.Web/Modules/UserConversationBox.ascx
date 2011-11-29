@@ -1,12 +1,12 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserConversationBox.ascx.cs" Inherits="NewsVn.Web.Modules.UserConversationBox" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserConversationBox.ascx.cs"
+    Inherits="NewsVn.Web.Modules.UserConversationBox" %>
 <div class="side-part portlet">
-    <h2>Thông tin trao đổi</h2>
+    <h2>
+        Thông tin trao đổi</h2>
     <asp:LoginView ID="lgConversation" runat="server">
         <AnonymousTemplate>
-            Vui lòng
-             <a href='<%=HostName + "tai-khoan/dang-nhap.aspx"%>' >Đăng Nhập</a>
-            để xem thông tin
+            Vui lòng <a href='<%=HostName + "tai-khoan/dang-nhap.aspx"%>'>Đăng Nhập</a> để xem
+            thông tin
         </AnonymousTemplate>
         <LoggedInTemplate>
             <ul class="imagehead-list">
@@ -17,16 +17,18 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <li>
-                            <asp:Image ID="Image1" ImageUrl="<%#Eval("SenderAvatar")%>" Width="50" Height="50"
-                                runat="server" AlternateText="<%#Eval("SenderNickName")%>" ToolTip="<%#Eval("SenderNickName")%>" />
-                            <span class="inline">
-                                <%#Eval("Content")%><i>
+                            <img src='<%=HostName %><%#Eval("SenderAvatar") %>' width="50" height="50" alt='<%#Eval("SenderNickName")%>'
+                                title='<%#Eval("SenderNickName")%>' style="top:0; position:relative;"/>
+                            <span class="inline"><b>
+                                <a href='<%#Eval("SenderNickName")%>.aspx'> <%#Eval("SenderNickName")%></a></b><br />
+                                <%#Eval("Content")%><br /><i>
                                     <%# Eval("UpdatedOn", "({0:dddd, dd/MM/yyyy, HH:mm})" ) %></i> </span>
                         </li>
                     </ItemTemplate>
                 </asp:ListView>
             </ul>
-            <asp:Panel ID="pnPagerConversationContainer" runat="server" CssClass="data-pager" Style="margin-top: 10px;">                
+            <asp:Panel ID="pnPagerConversationContainer" runat="server" CssClass="data-pager"
+                Style="margin-top: 10px;">
                 <asp:DataPager ID="dpConversation" PagedControlID="lvConversation" PageSize="5" QueryStringField="page"
                     runat="server">
                     <Fields>
@@ -34,8 +36,8 @@
                             NextPageText="&raquo;" />
                     </Fields>
                 </asp:DataPager>
-            </asp:Panel>                
+            </asp:Panel>
             </ul>
         </LoggedInTemplate>
-    </asp:LoginView>    
+    </asp:LoginView>
 </div>

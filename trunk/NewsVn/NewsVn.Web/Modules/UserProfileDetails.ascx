@@ -17,7 +17,7 @@
         Thông tin của:
         <span><%= Datasource.Nickname %></span>
         <a href="javascript:void(0)" onclick="gotoProfileCommentBox()" class="text-normal font-normal right">
-            <asp:Image ID="Image1" ImageUrl="~/images/icons/mail.png" runat="server" style="vertical-align:top;margin-top:12px" />
+            <asp:Image ID="Image1" ImageUrl="" runat="server" style="vertical-align:top;margin-top:12px" />
             Nhắn tin
         </a>
         <div class="clear"></div>
