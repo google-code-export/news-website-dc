@@ -9,7 +9,13 @@ namespace NewsVn.Web.BaseUI
             base.OnInit(e);
 
             SiteTitle = "NewsVN - Trang bảo mật ::: ";
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
             ExeSeo = false;
+
+            base.OnLoad(e);
         }
     }
 }
