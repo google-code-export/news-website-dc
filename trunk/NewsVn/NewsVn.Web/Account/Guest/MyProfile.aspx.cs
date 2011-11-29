@@ -36,6 +36,7 @@ namespace NewsVn.Web.Account.Guest
         }
         void load_UserDetail()
         {
+            hplBackProfile.NavigateUrl = ApplicationManager.HostName + "tinh-yeu-gia-dinh/tim-ban/ho-so/" + HttpContext.Current.User.Identity.Name.ToLower() + ".aspx";
             try
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))

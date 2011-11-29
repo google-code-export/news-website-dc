@@ -138,7 +138,7 @@ namespace NewsVn.Web.Account.Guest
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    var _u = ctx.UserProfileRepo.Getter.getOne(u => u.Account.Equals(HttpContext.Current.User.Identity.Name, StringComparison.OrdinalIgnoreCase));
+                    var _u = ctx.UserProfileRepo.Getter.getOne(u => u.Account.ToLower()== HttpContext.Current.User.Identity.Name.ToLower());
                     // var mtb = new BaseUI.BaseMaster();mtb.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
                     _u.Gender=int.Parse( ddlGender.SelectedValue );
                     _u.Age=int.Parse( ddlAge.SelectedValue );
@@ -150,8 +150,18 @@ namespace NewsVn.Web.Account.Guest
                     _u.Education = int.Parse(ddlEdu.SelectedValue);
                     _u.Expectation = txtExpectation.Text;
                     _u.Name = txtFullName.Text;
-                    _u.Height = int.Parse(txtHeight.Text);
-                    _u.Weight = int.Parse(txtWeight.Text);
+                    int _h = 0;
+                    int _w = 0;
+                    int.TryParse(txtHeight.Text, out _h);
+                    int.TryParse(txtWeight.Text, out _w);
+                    if (_h!=0)
+                    {
+                        _u.Height = int.Parse(txtHeight.Text);
+                    }
+                    if (_w!=0)
+                    {
+                        _u.Weight = int.Parse(txtWeight.Text);
+                    }
                     _u.MaritalStatus = int.Parse(ddlMaritalStatus.SelectedValue);
                     _u.Career = txtOccu.Text;
                     _u.Country = int.Parse(ddlCountry.SelectedValue);

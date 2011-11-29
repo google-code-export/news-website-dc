@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="sideContent" runat="server">
+<asp:HyperLink runat="server" ID="hplBackProfile" CssClass="text-normal font-normal" Text="Trở lại"></asp:HyperLink>
     
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="mainContent" runat="server">
