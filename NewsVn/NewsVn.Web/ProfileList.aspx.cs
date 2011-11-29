@@ -22,7 +22,7 @@ namespace NewsVn.Web
         private void load_PletUserProfileList(NewsVnContext ctx)
         {
             //xu ly paging trong khoang vd: <<< 95 96 97 98 99 100 >>>
-            var data = ctx.UserProfileRepo.Getter.getQueryable(u => u.Description != null).OrderByDescending(u => u.Account)
+            var data = ctx.UserProfileRepo.Getter.getQueryable().OrderByDescending(u => u.UpdatedOn)
                 .Select(u => new
                 {
                     Account = u.Account,
@@ -64,8 +64,11 @@ namespace NewsVn.Web
 
             for (int i = 0; i < 8; i++)
             {
-                var data = _UserProfiles_var.OrderByDescending(u => u.Account)
-                    .Skip(x.Next(0, _UserProfiles_var.Count() == 0 ? 0 : _UserProfiles_var.Count() - 1)).Take(1)
+                var item = new Random().Next(_UserProfiles_var.Count());
+                try
+                {
+                    var data = _UserProfiles_var.OrderByDescending(u => u.UpdatedOn)
+                    .Skip(item)
                 .Select(u => new
                 {
                     layoutPosition = i % 2 == 0 ? "left" : "right",
@@ -80,8 +83,13 @@ namespace NewsVn.Web
                     u.Expectation,
                     Avatar = u.Avatar.Length < 1 || u.Avatar == null ? HostName + "resources/Images/No_Image/no_avatar.jpg" : HostName + u.Avatar
                 }).FirstOrDefault();
-                cloneDataStructure.Add(data);
-                data = null;
+                    cloneDataStructure.Add(data);
+                    data = null;
+                }
+                catch (Exception)
+                {
+                    //
+                }
             }
 
             pletRandomProfile.Datasource = cloneDataStructure;
@@ -91,11 +99,10 @@ namespace NewsVn.Web
 
         private string GetLocationByLocationID(int intLocationID, NewsVnContext ctx)
         {
-            var _Location = ctx.LocationRepo.Getter.getOne(e => e.LocationID == intLocationID).LocationName;
-            if (_Location != "")
+            var _Location = ctx.LocationRepo.Getter.getOne(e => e.LocationID == intLocationID);
+            if ( _Location!=null)
             {
-                return _Location.ToString();
-
+                return _Location.LocationName;
             }
             else
             {
