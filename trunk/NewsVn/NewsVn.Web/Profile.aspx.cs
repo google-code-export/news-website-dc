@@ -26,13 +26,21 @@ namespace NewsVn.Web
         private void load_UserProfileDetailsByAccount(string Account, NewsVnContext ctx)
         {
             var _UserProfiles = ctx.UserProfileRepo.Getter.getOne(u => u.Account == Account);
-            //var _UserProfiles = ctx.UserProfileRepo.Getter.getQueryable().Where(u=>u.Account=="1").ToList();
-            myProfileCommentBox.UserNickName = _UserProfiles.Nickname;
-            myProfileCommentBox.DataBind();
-            pletUserProfileDetails.Datasource = _UserProfiles;
-            pletUserProfileDetails.DataBind();
-            this.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
-            _UserProfiles = null;
+
+            if (_UserProfiles != null)
+            {
+                //var _UserProfiles = ctx.UserProfileRepo.Getter.getQueryable().Where(u=>u.Account=="1").ToList();
+                myProfileCommentBox.UserNickName = _UserProfiles.Nickname;
+                myProfileCommentBox.DataBind();
+                pletUserProfileDetails.Datasource = _UserProfiles;
+                pletUserProfileDetails.DataBind();
+                this.ExecuteSEO("Thông tin hồ sơ " + Account, "newsvn, newsvn.vn, ket noi ban be, tim ban 4 phuong," + clsCommon.RemoveUnicodeMarks(_UserProfiles.Description).Replace('-', ' ') + " - " + clsCommon.RemoveUnicodeMarks(_UserProfiles.Expectation).Replace('-', ' '), Account + " - " + _UserProfiles.Description + " - " + _UserProfiles.Expectation);
+                _UserProfiles = null;   
+            }
+            else
+            {
+                Response.Redirect(HostName);
+            }
         }
 
         private void load_UserConversation(string Account, NewsVnContext ctx)
