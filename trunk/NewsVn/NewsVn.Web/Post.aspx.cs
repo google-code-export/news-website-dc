@@ -20,7 +20,8 @@ namespace NewsVn.Web
             {
                 using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
-                    int codePost = int.Parse(Request.QueryString["cp"]);
+                    int codePost = 0;
+                    int.TryParse(Request.QueryString["cp"], out codePost);
                     load_postDetail(codePost, ctx);
                     load_pletFocusPost(ctx);
                     bindBannerRight(ctx);
@@ -61,7 +62,9 @@ namespace NewsVn.Web
         private void load_postDetail(int postID, NewsVnContext ctx)
         {
             var postData = ctx.PostRepo.Getter.getOne(p => p.ID == postID);
-            var postComment = ctx.PostCommentRepo.Getter
+            if (postData != null)
+            {
+                var postComment = ctx.PostCommentRepo.Getter
                 .getQueryable(pc => pc.Post.ID == postID && pc.UpdatedOn <= DateTime.Now)
                 .Select(pc => new
                 {
@@ -70,27 +73,33 @@ namespace NewsVn.Web
                     pc.Title,
                     pc.UpdatedBy,
                 }).OrderByDescending(pc => pc.UpdatedOn);
-            pletPostDetail.CountedComment = postComment.Count();
-            pletPostDetail.AllowComment = postData.AllowComments;
-            pletPostDetail.Datasource = postData;
-            pletPostDetail.DataBind();
-            //cateid by post
-            intCateID = postData.CategoryID;
-            strCateName = postData.Category.Name;
-            //seo
-            this.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07",
-                clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-', ' ') + " " + postData.Title,
-                clsCommon.hintDesc(postData.Description, 300));
-            // Fix for static title : 2011/11/20
-            //this.SiteTitle = " - " + postData.Title;
-            //related post
-            load_pletRelationPostList(postData, ctx);
-            //commentbox
-            pletCommentBox.PostID = postID;
-            //check_PageView  - khong su dung pageview thi ko can update
-            if (postData.CheckPageView)
+                pletPostDetail.CountedComment = postComment.Count();
+                pletPostDetail.AllowComment = postData.AllowComments;
+                pletPostDetail.Datasource = postData;
+                pletPostDetail.DataBind();
+
+                //cateid by post
+                intCateID = postData.CategoryID;
+                strCateName = postData.Category.Name;
+                //seo
+                this.ExecuteSEO(postData.Title.Trim().Length > 0 ? postData.Title.Trim() : "Cổng thông tin điện tử 24/07",
+                    clsCommon.RemoveUnicodeMarks(postData.Title).Replace('-', ' ') + " " + postData.Title,
+                    clsCommon.hintDesc(postData.Description, 300));
+                // Fix for static title : 2011/11/20
+                //this.SiteTitle = " - " + postData.Title;
+                //related post
+                load_pletRelationPostList(postData, ctx);
+                //commentbox
+                pletCommentBox.PostID = postID;
+                //check_PageView  - khong su dung pageview thi ko can update
+                if (postData.CheckPageView)
+                {
+                    Allow_Update_PageView(postID, ctx); //25/10/2011
+                }
+            }
+            else
             {
-                Allow_Update_PageView(postID, ctx); //25/10/2011
+                Response.Redirect(HostName);
             }
         }
         private void Allow_Update_PageView(int postID, NewsVnContext ctx)
