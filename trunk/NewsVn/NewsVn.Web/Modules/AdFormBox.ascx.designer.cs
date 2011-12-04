@@ -202,6 +202,15 @@ namespace NewsVn.Web.Modules {
         protected global::System.Web.UI.WebControls.TextBox txtContactPhone;
         
         /// <summary>
+        /// ltrInitInfoError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrInitInfoError;
+        
+        /// <summary>
         /// btnResetAdPost control.
         /// </summary>
         /// <remarks>
@@ -218,5 +227,14 @@ namespace NewsVn.Web.Modules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnSubmitAdPost;
+        
+        /// <summary>
+        /// hidImagePath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidImagePath;
     }
 }
