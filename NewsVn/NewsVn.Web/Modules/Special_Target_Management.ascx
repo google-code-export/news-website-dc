@@ -14,8 +14,10 @@
         //            $("#ContentRegion").toggle('slow');
         //        });
         $(".ui-table:first").css("margin-top", 10);
+        $("input[id$=chkItem]").removeAttr("checked");
     });
 </script>
+<nsn:FilterPost ID="fpViewPost" OnFiltered="fpViewPost_Filtered" runat="server" />
 <div class="ui-table-toolbar" style="padding:0">
     <%--<div id="TitleRegion">
         <h3>Danh sách tin sự kiện nổi bật</h3>
@@ -42,7 +44,11 @@
             </Columns>
         </asp:GridView>
     </div>
-    <div style="padding-top:10px">
+    <ul class="ui-form ui-widget" style="padding:10px 0 0">
+        <asp:Literal ID="ltrInfo" runat="server" />
+        <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
+    </ul>
+    <div>
         <div class="left">
             <asp:Button ID="btnAddHot" Text="Chọn làm tin Hot" runat="server" CssClass="button-add"
                 OnClick="btnAddHot_Click" />
@@ -54,24 +60,26 @@
     <hr />
     <div id="postHelpBox" class="dialog" title="Trợ giúp">
         Hint
-    </div>    
+    </div>
     <div class="left">
         Sắp xếp theo:
         <asp:DropDownList ID="ddlSortColumn" CssClass="dropdown" Width="120px" runat="server"
-            AutoPostBack="true">
+            AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
             <asp:ListItem Value="Title" Text="Tiêu đề" />
             <asp:ListItem Value="Category.Name" Text="Danh mục" />
             <asp:ListItem Value="ApprovedOn" Text="Ngày duyệt" />
             <asp:ListItem Value="ApprovedBy" Text="Người duyệt" />
         </asp:DropDownList>
         <asp:DropDownList ID="ddlSortDirection" CssClass="dropdown" Width="70px" runat="server"
-            AutoPostBack="true">
+            AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
             <asp:ListItem Value="ASC" Text="A -> Z" />
             <asp:ListItem Value="DESC" Text="Z -> A" />
         </asp:DropDownList>
-        <asp:LinkButton ID="btnClearSort" CssClass="button-clear" Text="Bỏ sắp xếp" Visible="false" runat="server" />
+        <asp:LinkButton ID="btnClearSort" CssClass="button-clear" Text="Bỏ sắp xếp" Visible="false" 
+            runat="server" onclick="btnClearSort_Click" />
         <asp:HyperLink ID="lnkFilter" Text="Lọc tin tức" CssClass="button-filter dialog-trigger[filterBox]" runat="server" />
-        <asp:LinkButton ID="btnClearFilter" CssClass="button-clear" Text="Bỏ lọc" Visible="false" runat="server" />
+        <asp:LinkButton ID="btnClearFilter" CssClass="button-clear" Text="Bỏ lọc" Visible="false" 
+            runat="server" onclick="btnClearFilter_Click" />
     </div>
     <div class="right">
         Trang:
