@@ -91,6 +91,7 @@
     <Content Include="Account\SiteAdmin\Misc\ViewVideoBox.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\AddPost.aspx" />
+    <Content Include="Account\SiteAdmin\Post\AutoFetchPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditCategory.aspx" />
     <Content Include="Account\SiteAdmin\Post\EditPost.aspx" />
     <Content Include="Account\SiteAdmin\Post\ManageSpecialEventNews.aspx" />
@@ -106,6 +107,7 @@
     <Content Include="AdPost.aspx" />
     <Content Include="AdSubCategory.aspx" />
     <Content Include="Category.aspx" />
+    <Content Include="Config\PostFetchSites.xml" />
     <Content Include="Config\RolesRedirect.xml" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\Clean.htm" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\colorpicker.aspx" />
@@ -1955,6 +1957,13 @@
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\AddPost.aspx.designer.cs">
       <DependentUpon>AddPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AutoFetchPost.aspx.cs">
+      <DependentUpon>AutoFetchPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SiteAdmin\Post\AutoFetchPost.aspx.designer.cs">
+      <DependentUpon>AutoFetchPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\SiteAdmin\Post\EditCategory.aspx.cs">
       <DependentUpon>EditCategory.aspx</DependentUpon>
