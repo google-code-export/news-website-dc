@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using NewsVn.Web.Utils;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using NewsVn.Web.Utils;
 
 namespace NewsVn.Web.BaseUI
 {
@@ -22,7 +22,7 @@ namespace NewsVn.Web.BaseUI
 
         protected override void OnInit(EventArgs e)
         {
-            SiteTitle = "NewsVN - Cổng thông tin điện tử 24/07 :: ";
+            SiteTitle = "NewsVN :: ";
 
             var sb = new StringBuilder();
             sb.Append("<li><div class=\"ui-widget\"><div class=\"ui-state-highlight ui-corner-all\" style=\"padding: 0 .7em;\">");
@@ -47,7 +47,7 @@ namespace NewsVn.Web.BaseUI
         {
             base.OnLoad(e);
 
-            this.Title = SiteTitle;
+            this.Title = SiteTitle + " :: Cổng thông tin điện tử 24/07";
             
             if (!IsPostBack)
             {

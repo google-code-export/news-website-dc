@@ -2,11 +2,11 @@
 
 namespace NewsVn.Web.Account.Editor.Post
 {
-    public partial class AddPost : BaseUI.SecuredPage
+    public partial class EditPost : BaseUI.SecuredPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.SiteTitle += "Thêm tin mới";
+            SiteTitle += "Sửa thông tin bài viết";
         }
     }
 }

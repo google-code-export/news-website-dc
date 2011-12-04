@@ -35,5 +35,8 @@
     <siteMapNode roles="editor" url="~/account/editor/post/viewpost.aspx" title="" description="view-post">
       <siteMapNode url="~/account/editor/post/addpost.aspx" title="" description="add-post" />
     </siteMapNode>
+    <siteMapNode roles="editor" url="~/account/editor/adpost/viewadpost.aspx" title="" description="view-adpost">
+      <siteMapNode url="~/account/editor/adpost/editadpost.aspx" title="" description="view-adpost" />    
+    </siteMapNode>
   </siteMapNode>
 </siteMap>

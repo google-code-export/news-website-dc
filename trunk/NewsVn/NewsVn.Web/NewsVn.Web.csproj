@@ -69,6 +69,7 @@
     <Content Include="Account\Editor\AdPost\ViewAdPost.aspx" />
     <Content Include="Account\Editor\default.htm" />
     <Content Include="Account\Editor\Post\AddPost.aspx" />
+    <Content Include="Account\Editor\Post\EditPost.aspx" />
     <Content Include="Account\Editor\Post\ViewPost.aspx" />
     <Content Include="Account\Form\Login.aspx" />
     <Content Include="Account\Form\LostPassword.aspx" />
@@ -1807,6 +1808,13 @@
     </Compile>
     <Compile Include="Account\Editor\Post\AddPost.aspx.designer.cs">
       <DependentUpon>AddPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Editor\Post\EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Editor\Post\EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Editor\Post\ViewPost.aspx.cs">
       <DependentUpon>ViewPost.aspx</DependentUpon>
