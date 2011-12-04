@@ -90,6 +90,9 @@
             <asp:TextBox ID="txtContactPhone" CssClass="validate[custom[phone2]]" runat="server" />
         </li>
         <li class="commands">
+        <div>
+                                <asp:Literal ID="ltrInitInfoError" EnableViewState="false" runat="server" />
+                            </div>
             <asp:LinkButton ID="btnResetAdPost" Text="Hủy bỏ" CssClass="button-cancel right" runat="server" />
             <asp:LinkButton ID="btnSubmitAdPost" Text="Đăng tin" CssClass="button-ok right" runat="server"
                 OnClientClick="return checkValidation();" style="margin-right:5px;" 
@@ -97,4 +100,5 @@
             <div class="clear"></div>
         </li>
     </ul>
+    <asp:HiddenField runat="server" ID="hidImagePath" Value="" />
 </div>

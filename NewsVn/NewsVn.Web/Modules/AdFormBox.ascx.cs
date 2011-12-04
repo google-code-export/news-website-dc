@@ -33,10 +33,11 @@ namespace NewsVn.Web.Modules
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
+                   var strImgUrl= uploadImg();
                     var adsPost = new Impl.Entity.AdPost();
                     adsPost.Title = txtTitle.Text.Trim();
                     adsPost.Content = txtContent.Text.Trim();
-                    adsPost.Avatar = "Ads/" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + "/" + fileAvatar.FileName;
+                    adsPost.Avatar =  strImgUrl;
                     adsPost.SeoUrl = "";
                     adsPost.Category = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                     adsPost.Location = ddlLocation.SelectedValue;
@@ -54,11 +55,9 @@ namespace NewsVn.Web.Modules
                     // therefore, add an amount of 100 years ahead
                     adsPost.ExpiredOn = DateTime.Now.AddYears(100);
                     adsPost.Actived = true;
-                    uploadImg();
 
                     ctx.AdPostRepo.Setter.addOne(adsPost);
-                    
-                    adsPost.SeoUrl = string.Format("rao-nhanh-chi-tiet/{0}/{1}", adsPost.ID, clsCommon.RemoveUnicodeMarks(adsPost.Title));
+                    adsPost.SeoUrl = string.Format("rao-nhanh-chi-tiet/{0}/{1}.aspx", adsPost.ID, clsCommon.RemoveUnicodeMarks(adsPost.Title));
                     
                     ctx.SubmitChanges();
 
@@ -67,39 +66,41 @@ namespace NewsVn.Web.Modules
                     Response.Redirect(HostName + data.SeoUrl);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                ltrInitInfoError.Text = ex.Message.ToString();
             }
         }
-        private bool uploadImg()
+        private string  uploadImg()
         {
+            string _imgUrl = "";
             if (fileAvatar.HasFile)
             {
                 try
                 {
-                    if (fileAvatar.PostedFile.ContentType == "image/jpeg")
+                    if (fileAvatar.PostedFile.ContentType.Contains("image"))
                     {
                         if (fileAvatar.PostedFile.ContentLength < 1024000)
                         {
                             //file [image name]
-                            string filename = Path.GetFileName(fileAvatar.FileName);
+                            string filename = DateTime.Now.Millisecond.ToString()+ Path.GetFileName(fileAvatar.FileName);
                             //create folder if it does not exists
-                            string subPath = "Resources/Ads/" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString(); // your code goes here
-                            bool IsExists = Directory.Exists(Server.MapPath(subPath));
+                            string subPath = "Resources/Ads/" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString(); //12_2011 your code goes here
+                            bool IsExists = Directory.Exists(Server.MapPath("~/" + subPath));
                             if (!IsExists)
-                                Directory.CreateDirectory(Server.MapPath(subPath));
-                            fileAvatar.SaveAs(Server.MapPath(subPath + "/") + filename);
-                            return true;
+                                Directory.CreateDirectory(Server.MapPath("~/" + subPath));
+                            fileAvatar.SaveAs(Server.MapPath("~/" + subPath + "/") + filename);
+                            _imgUrl = subPath + "/" + filename;
+                            return _imgUrl;
                         }
                     }
                 }
                 catch (Exception)
                 {
-                    return false;
+                    return "";
                 }
             }
-            return false;
+            return _imgUrl;
         }
     }
 }
