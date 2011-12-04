@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Web.UI;
 using NewsVn.Impl.Context;
-using System.Collections.Generic;
 
 namespace NewsVn.Web
 {

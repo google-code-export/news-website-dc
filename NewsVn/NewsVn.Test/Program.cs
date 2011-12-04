@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
-using System.Linq;
 using NewsVn.Impl.Context;
 
 namespace NewsVn.Test

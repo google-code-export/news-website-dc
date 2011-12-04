@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Xml.Linq;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
-using System.Diagnostics;
 
 namespace NewsVn.Web
 {
