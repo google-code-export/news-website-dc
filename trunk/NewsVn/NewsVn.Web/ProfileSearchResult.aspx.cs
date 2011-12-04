@@ -34,27 +34,68 @@ namespace NewsVn.Web
                 string strNation = prams[8];
                 string strLocation = prams[9];
                 string strName = prams[10];
+
+                int intEdu = 0;
+                int intFage = 0;
+                int intTage = 0;
+                int intHasAvatar = 0;
+                int intMaritalStatus = 0;
+                int intReligion = 0;
+                int intNation = 0;
+                int intLocation = 0;
+
+                int.TryParse(prams[4], out intEdu);
+                int.TryParse(prams[1].Substring(0, 2), out intFage);
+                int.TryParse(prams[1].Substring(2, 2), out intTage);
+                int.TryParse(prams[2], out intHasAvatar);
+                int.TryParse(prams[3], out intMaritalStatus);
+                int.TryParse(prams[4], out intReligion);
+                int.TryParse(prams[8], out intNation);
+                int.TryParse(prams[9], out intLocation);
+
                                 
                 using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                 {
                     var _Profile = ctx.UserProfileRepo.Getter.getQueryable(p => p.Gender == int.Parse(strGender)
                         && p.Age >= int.Parse(strFage)
                         && p.Age <= int.Parse(strTage)
-                        && CompareInt((p.Avatar != "") ? 1 : 0, int.Parse(strAvatar), CompareOpt.Equal)
-                        && CompareInt(p.MaritalStatus, int.Parse(strMarital), CompareOpt.Equal)
-                        && CompareInt(p.Education, int.Parse(strEducation), CompareOpt.Equal)
-                        && CompareInt(p.Religion, int.Parse(strReligion), CompareOpt.Equal)
                         && p.Smoke == bSmoke
                         && p.Drink == bDrunk
-                        && CompareInt(p.Country, int.Parse(strNation), CompareOpt.Equal)
-                        && CompareInt(p.Location, int.Parse(strLocation), CompareOpt.Equal)
-                        && p.Name == strName
-                        )
-                        .Select(pf => new
+                        
+                        );
+                    if (strName != "0")
+                    {
+                        _Profile = _Profile.Where(c => c.Name.Contains( strName));
+                    }
+                    if (intEdu!=0)
+                    {
+                        _Profile = _Profile.Where(c => c.Education == intEdu);
+                    }
+                    if (intHasAvatar != 0)
+                    {
+                        //_Profile = _Profile.Where(c => c.a == intHasAvatar);
+                    }
+                    if (intMaritalStatus != 0)
+                    {
+                        _Profile = _Profile.Where(c => c.MaritalStatus == intMaritalStatus);
+                    }
+                    if (intReligion != 0)
+                    {
+                        _Profile = _Profile.Where(c => c.Religion == intReligion);
+                    }
+                    if (intNation != 0)
+                    {
+                        _Profile = _Profile.Where(c => c.Country == intNation);
+                    }
+                    if (intLocation != 0)
+                    {
+                        _Profile = _Profile.Where(c => c.Location == intLocation);
+                    }
+                    var dataResult=_Profile.Select(pf => new
                         {
                             pf.Account,
                             pf.Avatar,
-                            Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", pf.Gender.ToString()), 
+                            Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", pf.Gender.ToString()),
                             pf.Age,
                             pf.Location,
                             pf.Nickname,
@@ -65,10 +106,10 @@ namespace NewsVn.Web
 
                         }).OrderByDescending(pf => pf.Account).ThenByDescending(pf => pf.UpdatedOn).ToList();
 
-                    profileSearchResult.DataSource = _Profile;
-                    
+                    profileSearchResult.DataSource = dataResult;
                 }
-
+                
+                
             }
             catch (Exception ex)
             {
