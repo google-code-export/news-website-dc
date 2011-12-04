@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Editor\AdPost\ViewAdPost.aspx" />
     <Content Include="Account\Editor\default.htm" />
     <Content Include="Account\Editor\Post\AddPost.aspx" />
     <Content Include="Account\Editor\Post\ViewPost.aspx" />
@@ -1654,6 +1655,7 @@
     <Content Include="Modules\CommentBox.ascx" />
     <Content Include="Modules\DetailedAdPostItem.ascx" />
     <Content Include="Modules\DetailedPostItem.ascx" />
+    <Content Include="Modules\Editor_Menu.ascx" />
     <Content Include="Modules\Secured\FilterAdPost.ascx" />
     <Content Include="Modules\FocusPostsPortlet.ascx" />
     <Content Include="Modules\FooterCopyright.ascx" />
@@ -1785,6 +1787,13 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Editor\AdPost\ViewAdPost.aspx.cs">
+      <DependentUpon>ViewAdPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Editor\AdPost\ViewAdPost.aspx.designer.cs">
+      <DependentUpon>ViewAdPost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Editor\Editor.Master.cs">
       <DependentUpon>Editor.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2184,6 +2193,13 @@
     <Compile Include="Modules\DetailedPostItem.ascx.designer.cs">
       <DependentUpon>DetailedPostItem.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Editor_Menu.ascx.cs">
+      <DependentUpon>Editor_Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Editor_Menu.ascx.designer.cs">
+      <DependentUpon>Editor_Menu.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Secured\FilterAdPost.ascx.cs">
       <DependentUpon>FilterAdPost.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2520,7 +2536,6 @@
     <Compile Include="Utils\PredicateBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Account\Editor\AdPost\" />
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />
