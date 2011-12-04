@@ -66,11 +66,13 @@
                 <asp:ListItem Value="Email" Text="Email" />
                 <asp:ListItem Value="UpdatedOn" Text="Ngày tạo" />              
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlSortDirection" CssClass="dropdown" runat="server"
+            <asp:DropDownList ID="ddlSortDirection" CssClass="dropdown" Width="70px" runat="server"
                 AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
                 <asp:ListItem Value="ASC" Text="A -> Z" />
                 <asp:ListItem Value="DESC" Text="Z -> A" />
             </asp:DropDownList>
+            <asp:LinkButton ID="btnClearSort" CssClass="button-clear" Text="Bỏ sắp xếp" Visible="false" 
+                runat="server" onclick="btnClearSort_Click" />
         </div>
         <div class="right">
             Trang:

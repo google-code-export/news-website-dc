@@ -3,7 +3,6 @@
 </asp:Content>
 <asp:Content  ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
-<asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    <nsn:FilterPost ID="fpViewPost" runat="server" />
+<asp:Content ContentPlaceHolderID="mainContent" runat="server">    
     <nsn:SiteAdmin_ManageHotEventNews runat="server" /> 
 </asp:Content>

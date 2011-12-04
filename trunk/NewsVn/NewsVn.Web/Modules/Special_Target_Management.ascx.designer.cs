@@ -13,6 +13,15 @@ namespace NewsVn.Web.Modules {
     public partial class Special_Target_Management {
         
         /// <summary>
+        /// fpViewPost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::NewsVn.Web.Modules.Secured.FilterPost fpViewPost;
+        
+        /// <summary>
         /// grvShow control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,24 @@ namespace NewsVn.Web.Modules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvShow;
+        
+        /// <summary>
+        /// ltrInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrInfo;
+        
+        /// <summary>
+        /// ltrError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrError;
         
         /// <summary>
         /// btnAddHot control.

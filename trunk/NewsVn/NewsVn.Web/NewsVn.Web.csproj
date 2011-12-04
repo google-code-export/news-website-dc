@@ -2521,7 +2521,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account\Editor\AdPost\" />
-    <Folder Include="Account\Editor\Video\" />
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Files\" />
     <Folder Include="Resources\Flashes\" />

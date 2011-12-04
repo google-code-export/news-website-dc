@@ -34,6 +34,7 @@
     </div>
     <div class="ui-table-toolbar">
         <ul class="ui-form ui-widget">
+            <asp:Literal ID="ltrInfo" EnableViewState="false" runat="server" />
             <asp:Literal ID="ltrError" EnableViewState="false" runat="server" />
         </ul>
         <div class="left">
@@ -55,11 +56,13 @@
                 <asp:ListItem Value="UpdatedBy" Text="Người gởi" />
                 <asp:ListItem Value="UpdatedOn" Text="Ngày gởi" />
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlSortDirection" CssClass="dropdown" runat="server"
+            <asp:DropDownList ID="ddlSortDirection" CssClass="dropdown" Width="70px" runat="server"
                 AutoPostBack="true" OnSelectedIndexChanged="Sorter_SelectedIndexChanged">
                 <asp:ListItem Value="ASC" Text="A -> Z" />
                 <asp:ListItem Value="DESC" Text="Z -> A" />
             </asp:DropDownList>
+            <asp:LinkButton ID="btnClearSort" CssClass="button-clear" Text="Bỏ sắp xếp" Visible="false" 
+                runat="server" onclick="btnClearSort_Click" />
         </div>
         <div class="right">
             Trang:
