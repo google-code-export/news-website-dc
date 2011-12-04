@@ -10,18 +10,10 @@
         </ul>
     </li>
     <li class="side_main_menu">
-        <asp:HyperLink NavigateUrl="#" Text="Quản lý rao nhanh" runat="server" />
+        <asp:HyperLink CssClass="view-adpost" NavigateUrl="~/Account/Editor/AdPost/ViewAdPost.aspx" Text="Quản lý rao nhanh" runat="server" />
         <ul style="margin-left:10px;display:none">
             <li>
-                <asp:HyperLink NavigateUrl="#" Text="Thêm rao nhanh mới" runat="server" />
-            </li>
-        </ul>
-    </li>
-    <li class="side_main_menu">
-        <asp:HyperLink NavigateUrl="#" Text="Quản lý Video clip" runat="server" />
-        <ul style="margin-left:10px;display:none">
-            <li>
-                <asp:HyperLink NavigateUrl="#" Text="Thêm Video clip mới" runat="server" />
+                <asp:HyperLink CssClass="add-adpost" NavigateUrl="~/rao-nhanh-dang-ky.aspx" Target="_blank" Text="Thêm rao nhanh" runat="server" />
             </li>
         </ul>
     </li>
