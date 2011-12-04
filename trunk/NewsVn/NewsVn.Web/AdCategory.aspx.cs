@@ -40,7 +40,7 @@ namespace NewsVn.Web
                 .Select(p => new
                 {
                     p.Category.Name,
-                    Avatar = HostName + "/Resources/" + p.Avatar,
+                    Avatar = HostName +  p.Avatar,
                     p.Title,
                     p.Content,//=Utils.clsCommon.hintDesc(p.Content,200),
                     p.Payment,
