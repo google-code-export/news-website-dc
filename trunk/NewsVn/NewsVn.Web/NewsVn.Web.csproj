@@ -107,7 +107,9 @@
     <Content Include="AdPost.aspx" />
     <Content Include="AdSubCategory.aspx" />
     <Content Include="Category.aspx" />
-    <Content Include="Config\PostFetchSites.xml" />
+    <Content Include="Config\PostFetchSites.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Config\RolesRedirect.xml" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\Clean.htm" />
     <Content Include="CuteSoft_Client\CuteEditor\Dialogs\colorpicker.aspx" />
@@ -1777,6 +1779,7 @@
     <Content Include="Styles\user.css" />
     <Content Include="Styles\validation.css" />
     <Content Include="Utils\NewsVnService.asmx" />
+    <Content Include="Utils\PostFetchWebService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2548,6 +2551,10 @@
     <Compile Include="Utils\FormRewiter.cs" />
     <Compile Include="Utils\NewsVnService.asmx.cs">
       <DependentUpon>NewsVnService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utils\PostFetchWebService.asmx.cs">
+      <DependentUpon>PostFetchWebService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utils\PredicateBuilder.cs" />
