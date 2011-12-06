@@ -2,12 +2,14 @@
 
 <news-sites>
 	<site name="VnExpress" url="http://vnexpress.net/">		
-		<categories type="rss">
-			<category url="http://vnexpress.net/rss/gl/xa-hoi.rss" target-id="2">Xã hội</category>
-			<category url="http://vnexpress.net/rss/gl/the-gioi.rss" target-id="17">Thế giới</category>
-			<category url="http://vnexpress.net/rss/gl/kinh-doanh.rss" target-id="1">Kinh doanh</category>
-			<category url="http://vnexpress.net/rss/gl/van-hoa.rss" target-id="3">Văn hóa</category>
-			<category url="http://vnexpress.net/rss/gl/the-thao.rss" target-id="4">Thể thao</category>
+		<categories>			
+      <group type="rss">
+        <category url="http://vnexpress.net/rss/gl/xa-hoi.rss" target-id="2">Xã hội</category>
+        <category url="http://vnexpress.net/rss/gl/the-gioi.rss" target-id="17">Thế giới</category>
+        <category url="http://vnexpress.net/rss/gl/kinh-doanh.rss" target-id="1">Kinh doanh</category>
+        <category url="http://vnexpress.net/rss/gl/van-hoa.rss" target-id="3">Văn hóa</category>
+        <category url="http://vnexpress.net/rss/gl/the-thao.rss" target-id="4">Thể thao</category>  
+      </group>
 		</categories>
     <!-- Follows CSS selector rules -->
     <filters>      
@@ -28,11 +30,13 @@
     </rules>
 	</site>
 	<site name="MegaFun" url="http://hcm.megafun.vn/">		
-    <categories type="html">
-      <category url="http://hcm.megafun.vn/cuoc-song/" target-id="3">Cuộc sống</category>
-      <category url="http://hcm.megafun.vn/tin-tuc/nghe-thuat/" target-id="3">Nghệ thuật</category>
-      <category url="http://hcm.megafun.vn/tin-tuc/cong-nghe/" target-id="32">Công nghệ</category>
-      <category url="http://hcm.megafun.vn/the-thao/" target-id="4">Thể thao</category>
+    <categories>      
+      <group type="html">
+        <category url="http://hcm.megafun.vn/cuoc-song/" target-id="3">Cuộc sống</category>
+        <category url="http://hcm.megafun.vn/tin-tuc/nghe-thuat/" target-id="3">Nghệ thuật</category>
+        <category url="http://hcm.megafun.vn/tin-tuc/cong-nghe/" target-id="32">Công nghệ</category>
+        <category url="http://hcm.megafun.vn/the-thao/" target-id="4">Thể thao</category>
+      </group>
     </categories>
     <filters>
       <group type="fetch">

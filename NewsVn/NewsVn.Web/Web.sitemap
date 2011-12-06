@@ -10,6 +10,7 @@
     </siteMapNode>
     <siteMapNode roles="siteadmin" url="~/account/siteadmin/post/viewpost.aspx" title="" description="view-post">
       <siteMapNode url="~/account/siteadmin/post/addpost.aspx" title="" description="add-post" />
+      <siteMapNode url="~/account/siteadmin/post/autofetchpost.aspx" title="" description="fetch-post" />
       <siteMapNode url="~/account/siteadmin/post/editpost.aspx" title="" description="view-post" />
       <siteMapNode url="~/account/siteadmin/post/managespecialeventnews.aspx" title="" description="hot-event" />
       <siteMapNode url="~/account/siteadmin/post/viewcategory.aspx" title="" description="view-category" />

@@ -63,6 +63,17 @@
     <Compile Include="Entity\Setting.cs" />
     <Compile Include="Entity\Post.cs" />
     <Compile Include="Model\FilterModel.cs" />
+    <Compile Include="PostFetch\Constants.cs" />
+    <Compile Include="PostFetch\ISettingReader.cs" />
+    <Compile Include="PostFetch\Models\PostItemModel.cs" />
+    <Compile Include="PostFetch\Models\PostSettingModel.cs" />
+    <Compile Include="PostFetch\Services\DefaultPostFetchService.cs" />
+    <Compile Include="PostFetch\Services\PostFetchServiceAbstract.cs" />
+    <Compile Include="PostFetch\Settings\CategorySetting.cs" />
+    <Compile Include="PostFetch\Settings\FilterSetting.cs" />
+    <Compile Include="PostFetch\Settings\RuleSetting.cs" />
+    <Compile Include="PostFetch\Settings\SiteSetting.cs" />
+    <Compile Include="PostFetch\XmlSettingReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
