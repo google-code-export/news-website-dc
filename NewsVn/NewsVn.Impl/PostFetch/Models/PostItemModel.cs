@@ -15,7 +15,7 @@ namespace NewsVn.Impl.PostFetch.Models
 
         public string Content { get; set; }
 
-        public DateTime PubDate { get; set; }
+        public DateTime? PubDate { get; set; }
 
         public string Url { get; set; }
 
