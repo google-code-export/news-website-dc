@@ -1747,6 +1747,7 @@
     <Content Include="Resources\Xml\TinMoiNong_Newsvn.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\newsvn.tool-postfetch.js" />
     <Content Include="Scripts\newsvn.ui-admin.js" />
     <Content Include="Scripts\newsvn.ui-init.js" />
     <Content Include="Scripts\plugins\jquery-1.4.2-vsdoc.js" />
