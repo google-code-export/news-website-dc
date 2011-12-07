@@ -1,0 +1,17 @@
+﻿AUTO FETCH POST CLASS STRUCTURE
+
+No.		Namespace								ClassName						Description
+-----------------------------------------------------------------------------------------------------------------------------------------
+1		NewsVn.Impl.PostFetch					ISettingReader					Setting reader interface
+2		NewsVn.Impl.PostFetch					XmlSettingReader				Setting reader of XML source
+3		NewsVn.Impl.PostFetch					Constants						Contains all common constants in this tool
+4		NewsVn.Impl.PostFetch.Models			PostItemModel					Represents a post item fetched from other sites
+5		NewsVn.Impl.PostFetch.Models			PostSettingModel				Represents a setting unit needed for formatting post item
+6		NewsVn.Impl.PostFetch.Services			PostFetchServiceAbstract		Abstract service of Auto Fetch Post
+7		NewsVn.Impl.PostFetch.Services			DefaultPostFetchService			Default implementation of Abstract service
+8		NewsVn.Impl.PostFetch.Settings			SiteSetting						Contains settings of a target site
+9		NewsVn.Impl.PostFetch.Settings			CategorySetting					Contains settings of a target category
+10		NewsVn.Impl.PostFetch.Settings			FilterSetting					Contains filter conditions against a fetch item
+11		NewsVn.Impl.PostFetch.Settings			RuleSetting						Contains rules against a fetch item
+12		NewsVn.Web.Utils						PostFetchWebService				Web service used for AJAX requests
+13		NewsVn.Web.Account.SiteAdmin.Post		AutoFetchPost					User interface
