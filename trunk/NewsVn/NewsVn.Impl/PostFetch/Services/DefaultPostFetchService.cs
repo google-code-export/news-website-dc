@@ -4,6 +4,7 @@ namespace NewsVn.Impl.PostFetch.Services
 {
     public class DefaultPostFetchService : PostFetchServiceAbstract
     {
+
     }
 }
 

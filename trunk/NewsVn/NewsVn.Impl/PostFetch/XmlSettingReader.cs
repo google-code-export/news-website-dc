@@ -68,7 +68,7 @@ namespace NewsVn.Impl.PostFetch
         /// </summary>
         /// <param name="parentNode"></param>
         /// <returns></returns>
-        private IList<FilterSetting> GetFilterSettings(XElement parentNode)
+        public IList<FilterSetting> GetFilterSettings(XElement parentNode)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace NewsVn.Impl.PostFetch
         /// </summary>
         /// <param name="parentNode"></param>
         /// <returns></returns>
-        private IList<RuleSetting> GetRuleSettings(XElement parentNode)
+        public IList<RuleSetting> GetRuleSettings(XElement parentNode)
         {
             try
             {
