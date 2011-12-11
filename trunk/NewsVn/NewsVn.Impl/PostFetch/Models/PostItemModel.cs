@@ -15,7 +15,7 @@ namespace NewsVn.Impl.PostFetch.Models
 
         public string Content { get; set; }
 
-        public DateTime? PubDate { get; set; }
+        public DateTime PubDate { get; set; }
 
         public string Url { get; set; }
 
@@ -25,7 +25,15 @@ namespace NewsVn.Impl.PostFetch.Models
         /// <returns>Post entity</returns>
         public Post ToPostEntity()
         {
-            return null;
+            Post PostEntity = new Post();
+            PostEntity.ID = ID;
+            PostEntity.Title = Title.Trim();
+            PostEntity.Avatar = Avatar;
+            PostEntity.Description = Description.Trim();
+            PostEntity.Content = Content;
+            PostEntity.SeoUrl = Url.Trim();
+            PostEntity.CreatedOn = PubDate;
+            return PostEntity;
         }
     }
 }
