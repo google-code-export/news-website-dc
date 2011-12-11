@@ -29,7 +29,7 @@ namespace NewsVn.Web
                     u.Age,
                     Country =GetLocationByLocationID(int.Parse(u.Country.Value.ToString()), ctx),
                     u.UpdatedOn,
-                    Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Country.Value.ToString()),
+                    Gender = Utils.ApplicationKeyValueRef.GetKeyValue("Dropdown.Gender", u.Gender.Value.ToString()),
                     Location = GetLocationByLocationID(int.Parse(u.Location.ToString()), ctx),
                     u.Name,
                     u.Nickname,
