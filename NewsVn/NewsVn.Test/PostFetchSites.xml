@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<news-sites>
+	<site id="1" name="VnExpress" url="http://vnexpress.net/">		
+		<categories>			
+      <group type="rss">
+        <category id="1" url="http://vnexpress.net/rss/gl/xa-hoi.rss" target-id="2">Xã hội</category>
+        <category id="2" url="http://vnexpress.net/rss/gl/the-gioi.rss" target-id="17" type="html">Thế giới</category>
+        <category id="3" url="http://vnexpress.net/rss/gl/kinh-doanh.rss" target-id="1">Kinh doanh</category>
+        <category id="4" url="http://vnexpress.net/rss/gl/van-hoa.rss" target-id="3">Văn hóa</category>
+        <category id="5" url="http://vnexpress.net/rss/gl/the-thao.rss" target-id="4">Thể thao</category>  
+      </group>
+		</categories>
+    <!-- Follows CSS selector rules -->
+    <filters>      
+      <group type="post">
+        <filter target="title">.title</filter>
+        <filter target="avatar">.img-subject</filter>
+        <filter target="description">.lead</filter>
+        <filter target="content">.content</filter>
+      </group>
+    </filters>
+    <rules>
+      <group type="post">
+        <!-- rss | list | post -->
+        <rule target="avatar">list</rule>
+        <!-- title | description | avatar -->
+        <rule target="exclude">title,description</rule>
+      </group>      
+    </rules>
+	</site>
+	<site id="2" name="MegaFun" url="http://hcm.megafun.vn/">		
+    <categories>      
+      <group type="html">
+        <category id="1" url="http://hcm.megafun.vn/cuoc-song/" target-id="3">Cuộc sống</category>
+        <category id="2" url="http://hcm.megafun.vn/tin-tuc/nghe-thuat/" target-id="3">Nghệ thuật</category>
+        <category id="3" url="http://hcm.megafun.vn/tin-tuc/cong-nghe/" target-id="32">Công nghệ</category>
+        <category id="4" url="http://hcm.megafun.vn/the-thao/" target-id="4">Thể thao</category>
+      </group>
+    </categories>
+    <filters>
+      <group type="fetch">
+        <filter target="list">.list-full</filter>
+        <filter target="item">li</filter>
+        <filter target="title">.title h4</filter>
+        <filter target="avatar">.avatar img</filter>
+        <filter target="description">.lead</filter>
+      </group>
+      <group type="post">
+        <filter target="title">#title</filter>
+        <filter target="avatar">.avatar img</filter>
+        <filter target="description">#content strong:first</filter>
+        <filter target="content">#content</filter>
+      </group>
+    </filters>
+    <rules>
+      <group type="post">
+        <rule target="avatar">post</rule>
+        <rule target="exclude">description</rule>
+      </group>
+    </rules>
+	</site>
+</news-sites>

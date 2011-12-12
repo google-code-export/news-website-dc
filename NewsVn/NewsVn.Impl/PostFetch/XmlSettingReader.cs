@@ -1,16 +1,14 @@
+using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using System.Xml;
 using System.Linq;
+using System.Xml.Linq;
+using NewsVn.Impl.Caching;
 using NewsVn.Impl.PostFetch.Settings;
-
 
 namespace NewsVn.Impl.PostFetch
 {
     public class XmlSettingReader : ISettingReader
     {
-        private const string CacheKey = "Fetch.Settings.Xml";
-
         private readonly string _xmlPath;
 
         /// <summary>
@@ -31,36 +29,137 @@ namespace NewsVn.Impl.PostFetch
         }
 
         /// <summary>
+        /// @see NewsVn.Impl.PostFetch.ISettingReader#GetSiteSettings()
+        /// </summary>
+        /// <returns></returns>
+        public IList<SiteSetting> GetSiteSettings()
+        {
+            // Get list of settings from cache
+            IList<SiteSetting> siteSettings = GetCachedSiteSettings();
+
+            // Return from cache
+            if (siteSettings != null)
+            {
+                return siteSettings;
+            }
+
+            // No Cache: Create the query
+            var sites = from x in XElement.Load(_xmlPath).Elements(Constants.SiteNode)
+                        select (new SiteSetting
+                        {
+                            ID = int.Parse(x.Attribute(Constants.IdAttr).Value),
+                            Name = x.Attribute(Constants.NameAttr).Value,
+                            Url = x.Attribute(Constants.UrlAttr).Value,
+                            Categories = GetCategorySettings(x.Element(Constants.CategoriesNode)),
+                            Filters = GetFilterSettings(x.Element(Constants.FiltersNode)),
+                            Rules = GetRuleSettings(x.Element(Constants.RulesNode))
+                        });            
+
+            if (sites != null)
+            {
+                // Order by ID
+                sites = from x in sites orderby x.ID select x;
+                
+                // Define check token
+                int idToken = 0;
+                // Loop over to validate ID input
+                foreach (var site in sites)
+                {
+                    int id = site.ID; 
+                    // Throw XmlException in case IDs are not well-inputted
+                    if (id != idToken + 1)
+                    {
+                        throw new System.Xml.XmlException();
+                    }
+                    idToken = id;
+                }
+
+                // Cache and return
+                siteSettings = sites.ToList();
+                CacheSiteSettings(siteSettings);
+            }
+
+            return siteSettings;
+        }
+
+        /// <summary>
+        /// @see NewsVn.Impl.PostFetch.ISettingReader#GetCachedSiteSettings()
+        /// </summary>
+        /// <returns></returns>
+        public IList<SiteSetting> GetCachedSiteSettings()
+        {
+            IList<SiteSetting> siteSettings = null;
+
+            // Return from cache
+            if (HttpContextCache.Exists(Constants.XmlCacheKey))
+            {
+                siteSettings = HttpContextCache.Get<IList<SiteSetting>>(Constants.XmlCacheKey);
+            }
+
+            return siteSettings;
+        }
+
+        /// <summary>
+        /// @see NewsVn.Impl.PostFetch.ISettingReader#CacheSiteSettings()
+        /// </summary>
+        public void CacheSiteSettings(IList<SiteSetting> siteSettings)
+        {
+            if (!HttpContextCache.Exists(Constants.XmlCacheKey) && siteSettings != null)
+            {
+                HttpContextCache.Add(Constants.XmlCacheKey,
+                    siteSettings, TimeSpan.FromDays(Constants.CacheDays));
+            }
+        }
+
+        /// <summary>
         /// Gets category settings from XML
         /// </summary>
         /// <param name="parentNode"></param>
         /// <returns></returns>
         private IList<CategorySetting> GetCategorySettings(XElement parentNode)
         {
-            try
+            if (parentNode == null)
             {
-                if (parentNode == null)
-                {
-                    return null;
-                }
-                var categoryList = from c in parentNode.Descendants("category")
-                                   select (new CategorySetting
-                                   {
-                                       // Add properties here
-                                       ID = int.Parse(c.Attribute("id").Value),
-                                       TargetID = int.Parse(c.Attribute("target-id").Value),
-                                       Type = c.Parent.Attribute("type").Value,
-                                       Name = c.Value,
-                                       Url = c.Attribute("url").Value
-                                       //Site=new SiteSetting ()
-                                   });
-                return categoryList.ToList();
+                return null;
             }
-            catch (System.Exception)
-            {
 
-                throw;
+            IList<CategorySetting> categorySettings = null;
+
+            // Create the query
+            var categories = from x in parentNode.Descendants(Constants.CategoryNode)
+                             select (new CategorySetting
+                             {
+                                 ID = int.Parse(x.Attribute(Constants.IdAttr).Value),
+                                 TargetID = int.Parse(x.Attribute(Constants.TargetIdAttr).Value),
+                                 Type = GetTypeAttribute(x),
+                                 Name = x.Value,
+                                 Url = x.Attribute(Constants.UrlAttr).Value
+                             });
+
+            if (categories != null)
+            {
+                // Order by ID
+                categories = from x in categories orderby x.ID select x;
+
+                // Define check token
+                int idToken = 0;
+                // Loop over to validate ID input
+                foreach (var category in categories)
+                {
+                    int id = category.ID;
+                    // Throw XmlException in case IDs are not well-inputted
+                    if (id != idToken + 1)
+                    {
+                        throw new System.Xml.XmlException();
+                    }
+                    idToken = id;
+                }
+
+                // Return
+                categorySettings = categories.ToList();
             }
+
+            return categorySettings;
         }
 
         /// <summary>
@@ -70,29 +169,28 @@ namespace NewsVn.Impl.PostFetch
         /// <returns></returns>
         public IList<FilterSetting> GetFilterSettings(XElement parentNode)
         {
-            try
+            if (parentNode == null)
             {
-                if (parentNode == null)
-                {
-                    return null;
-                }
-                var filterList = from c in parentNode.Descendants("filter")
-                                 select (new FilterSetting
-                                 {
-                                     // Add properties here
-                                     Type = c.Parent.Attribute("type").Value,
-                                     Selector = c.Value,
-                                     Target = c.Attribute("target").Value
-                                     //Site=new SiteSetting()
-                                 });
-                return filterList.ToList();
-
+                return null;
             }
-            catch (System.Exception)
+
+            IList<FilterSetting> filterSettings = null;
+
+            // Create the query
+            var filters = from x in parentNode.Descendants(Constants.FilterNode)
+                             select (new FilterSetting
+                             {
+                                 Type = GetTypeAttribute(x),                                 
+                                 Target = x.Attribute(Constants.TargetAttr).Value,
+                                 Selector = x.Value
+                             });
+
+            if (filters != null)
             {
-
-                throw;
+                filterSettings = filters.ToList();
             }
+
+            return filterSettings;
         }
 
         /// <summary>
@@ -102,98 +200,59 @@ namespace NewsVn.Impl.PostFetch
         /// <returns></returns>
         public IList<RuleSetting> GetRuleSettings(XElement parentNode)
         {
-            try
+            if (parentNode == null)
             {
-                if (parentNode == null)
-                {
-                    return null;
-                }
-                var ruleList = from c in parentNode.Descendants("rule")
-                               select (new RuleSetting
-                               {
-                                   // Add properties here
-                                   Type = c.Parent.Attribute("type").Value,
-                                   Target = c.Attribute("target").Value,
-                                   Condition = c.Value
-                                   //Site=new SiteSetting()
-                               });
-                return ruleList.ToList();
+                return null;
             }
-            catch (System.Exception)
-            {
 
-                throw;
+            IList<RuleSetting> ruleSettings = null;
+
+            // Create the query
+            var rules = from x in parentNode.Descendants(Constants.RuleNode)
+                           select (new RuleSetting
+                           {
+                               Type = GetTypeAttribute(x),
+                               Target = x.Attribute(Constants.TargetAttr).Value,
+                               Condition = x.Value
+                           });
+
+            if (rules != null)
+            {
+                ruleSettings = rules.ToList();
             }
+
+            return ruleSettings;
         }
 
-        /// <summary>
-        /// @see NewsVn.Impl.PostFetch.ISettingReader#GetSiteSettings()
-        /// </summary>
-        /// <returns></returns>
-        public IList<SiteSetting> GetSiteSettings()
+        private string GetTypeAttribute(XElement currentNode)
         {
-            try
+            string type = string.Empty;                       
+
+            XAttribute typeAttr = currentNode.Attribute(Constants.TypeAttr);
+
+            // Get current node attribute if any
+            if (typeAttr != null)
             {
-                // Create the query
-                var sites = from c in XElement.Load(_xmlPath).Elements("site")
-                            select (new SiteSetting
-                            {
-                                // Add properties here
-                                ID = int.Parse(c.Attribute("id").Value),
-                                Name = c.Attribute("name").Value,
-                                Url = c.Attribute("url").Value,
-                                Categories = GetCategorySettings(c),
-                                Filters = GetFilterSettings(c),
-                                Rules = GetRuleSettings(c)
-                            });
+                type = typeAttr.Value;
+            }
+            // Get group node attribute if any
+            else
+            {
+                XElement groupNode = null;
+                XElement parentNode = currentNode.Parent;
 
-                string siteCacheKey = CacheKey + ".sitelist";
-
-                if (!NewsVn.Impl.Caching.HttpContextCache.Exists(siteCacheKey))
+                if (parentNode != null && parentNode.Name == Constants.GroupNode)
                 {
-                    NewsVn.Impl.Caching.HttpContextCache.Add(siteCacheKey, sites.ToList());
+                    groupNode = parentNode;
                 }
 
-                return sites.ToList();
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// @see NewsVn.Impl.PostFetch.ISettingReader#GetCachedSiteSettings()
-        /// </summary>
-        /// <returns></returns>
-        public IList<SiteSetting> GetCachedSiteSettings()
-        {
-            try
-            {
-                string siteCacheKey = CacheKey + ".sitelist";
-                if (NewsVn.Impl.Caching.HttpContextCache.Exists(siteCacheKey))
+                if (groupNode != null)
                 {
-                    return (IList<SiteSetting>)NewsVn.Impl.Caching.HttpContextCache.Get<IList<SiteSetting>>(siteCacheKey);
-                }
-                else
-                {
-                    return GetSiteSettings();
+                    type = groupNode.Attribute(Constants.TypeAttr).Value;   
                 }
             }
-            catch (System.Exception)
-            {
 
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// @see NewsVn.Impl.PostFetch.ISettingReader#CacheSiteSettings()
-        /// </summary>
-        public void CacheSiteSettings()
-        {
-
+            return type;
         }
     }
 }

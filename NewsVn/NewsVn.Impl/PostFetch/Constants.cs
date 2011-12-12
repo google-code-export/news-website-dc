@@ -2,7 +2,9 @@ namespace NewsVn.Impl.PostFetch
 {
 	public class Constants
 	{
-		public const string NameAttr = "name";
+        public const string IdAttr = "id";
+        
+        public const string NameAttr = "name";
 		 
 		public const string TargetAttr = "target";
 		 
@@ -10,7 +12,11 @@ namespace NewsVn.Impl.PostFetch
 		 
 		public const string UrlAttr = "url";
 		 
-		public const string TargetIDAttr = "target-id";
+		public const string TargetIdAttr = "target-id";
+
+        public const string SitesNode = "news-sites";
+
+        public const string SiteNode = "site";
 		 
 		public const string CategoriesNode = "categories";
 		 
@@ -44,7 +50,11 @@ namespace NewsVn.Impl.PostFetch
 		 
 		public const string DescriptionValue = "description";
 		 
-		public const string ContentValue = "content";		 
+		public const string ContentValue = "content";
+
+        public const string XmlCacheKey = "Fetch.Settings.Xml";
+
+        public const int CacheDays = 7;
 	}	 
 }
  
