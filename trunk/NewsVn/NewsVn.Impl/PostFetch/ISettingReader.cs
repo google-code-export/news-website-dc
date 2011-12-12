@@ -20,7 +20,7 @@ namespace NewsVn.Impl.PostFetch
         /// <summary>
         /// Caches all settings to memory
         /// </summary>
-        void CacheSiteSettings();
+        void CacheSiteSettings(IList<SiteSetting> siteSettings);
     }
 }
 

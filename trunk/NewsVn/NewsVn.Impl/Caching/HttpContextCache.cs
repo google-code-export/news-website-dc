@@ -34,6 +34,14 @@ namespace NewsVn.Impl.Caching
             }
         }
 
+        public static void Add(string key, object data, TimeSpan slidingExpiration)
+        {
+            lock (_lockObject)
+            {
+                _cache.Insert(key, data, null, Cache.NoAbsoluteExpiration, slidingExpiration, CacheItemPriority.AboveNormal, null);
+            }
+        }
+
         public static bool Exists(string key)
         {
             lock (_lockObject)
