@@ -20,34 +20,5 @@ namespace NewsVn.Web.Utils
         {
             _fetchService = new DefaultPostFetchService();
         }
-
-        [WebMethod]
-        public PostSettingModel RequestSetting(int siteID, int categoryID)
-        {
-            return _fetchService.RequestSetting(siteID, categoryID);
-        }
-
-        [WebMethod]
-        public IList<PostItemModel> RequestPostItemList(string categoryUrl)
-        {
-            return _fetchService.RequestPostItemList(categoryUrl);
-        }
-
-        public string RequestRawPostItemList(string categoryUrl)
-        {
-            return _fetchService.RequestRawPostItemList(categoryUrl);
-        }
-
-        [WebMethod]
-        public string RequestRawPostItem(string itemUrl)
-        {
-            return _fetchService.RequestRawPostItem(itemUrl);
-        }
-
-        [WebMethod]
-        public bool AddPostItem(PostItemModel item)
-        {
-            return _fetchService.AddPostItem(item);
-        }
     }
 }

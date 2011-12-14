@@ -43,6 +43,10 @@ namespace NewsVn.Impl.PostFetch
 		public const string ExcludeValue = "exclude";
 		 
 		public const string IncludeValue = "include";
+
+        public const string ListValue = "list";
+
+        public const string ItemValue = "item";
 		 
 		public const string TitleValue = "title";
 		 
