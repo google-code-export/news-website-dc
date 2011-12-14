@@ -20,6 +20,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             if (xmlFile.Exists)
             {
                 _settingReader = new XmlSettingReader(xmlPath);
+                _settingReader.GetSiteSettings();
             }
         }
         

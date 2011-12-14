@@ -2,6 +2,7 @@
 using NewsVn.Impl.Context;
 using NewsVn.Impl.PostFetch;
 using NewsVn.Impl.Caching;
+using NewsVn.Impl.PostFetch.Services;
 
 namespace NewsVn.Test
 {
@@ -9,7 +10,8 @@ namespace NewsVn.Test
     {
         static void Main(string[] args)
         {
-            Test_PostFetch_XmlReader();
+            //Test_PostFetch_XmlReader();
+            Test_Service_RqPostList();
         }
 
         static void Test_PostFetch_XmlReader()
@@ -58,6 +60,18 @@ namespace NewsVn.Test
             catch (Exception)
             {
 
+            }
+        }
+
+        static void Test_Service_RqPostList()
+        {
+            var sv = new DefaultPostFetchService();
+            var setting = sv.RequestSetting(2, 2);
+            var list = sv.RequestPostItemList(setting.Url, setting);
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Title);
             }
         }
 

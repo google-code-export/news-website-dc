@@ -5,6 +5,8 @@ namespace NewsVn.Impl.PostFetch.Models
 {
     public class PostSettingModel
     {
+        public string Type { get; set; }
+        
         public string Url { get; set; }
 
         public int TargetID { get; set; }
@@ -14,4 +16,3 @@ namespace NewsVn.Impl.PostFetch.Models
         public IList<RuleSetting> Rules { get; set; }
     }
 }
-
