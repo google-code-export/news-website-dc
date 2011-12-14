@@ -18,7 +18,7 @@ namespace NewsVn.Impl.PostFetch.Services
         public PostFetchServiceAbstract()
         {
             //string xmlPath = "../../PostFetchSites.xml";
-            _settingReader = new XmlSettingReader(xmlPath);
+            _settingReader = new XmlSettingReader();
         }
 
         /// <summary>
