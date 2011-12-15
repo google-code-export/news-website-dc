@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Linq;
 using XCSS3SE;
+using NewsVn.Impl.PostFetch.Settings;
 
 namespace NewsVn.Impl.PostFetch.Services
 {
@@ -17,8 +18,8 @@ namespace NewsVn.Impl.PostFetch.Services
         /// </summary>
         public PostFetchServiceAbstract()
         {
-            //string xmlPath = "../../PostFetchSites.xml";
-            _settingReader = new XmlSettingReader();
+            string xmlPath = "../../PostFetchSites.xml";
+            _settingReader = new XmlSettingReader(xmlPath);
         }
 
         /// <summary>
@@ -97,39 +98,13 @@ namespace NewsVn.Impl.PostFetch.Services
         {
             IList<PostItemModel> itemList = null;
 
-            if (postSetting != null && postSetting.Filters != null && postSetting.Rules != null)
+            if (postSetting != null)
             {
-                string listSelector = string.Empty;
-                string itemSelector = string.Empty;
-                string titleSelector = string.Empty;
-                string avatarSelector = string.Empty;
-                string descriptionSelector = string.Empty;
-
-                var listFilters = postSetting.Filters.Where(x => x.Type == Constants.FetchValue);
-
-                foreach (var filter in listFilters)
-                {
-                    if (filter.Target == Constants.ListValue)
-                    {
-                        listSelector = filter.Selector;
-                    }
-                    else if (filter.Target == Constants.ItemValue)
-                    {
-                        itemSelector = filter.Selector;
-                    }
-                    else if (filter.Target == Constants.TitleValue)
-                    {
-                        titleSelector = filter.Selector;
-                    }
-                    else if (filter.Target == Constants.AvatarValue)
-                    {
-                        avatarSelector = filter.Selector;
-                    }
-                    else if (filter.Target == Constants.DescriptionValue)
-                    {
-                        descriptionSelector = filter.Selector;
-                    }
-                }
+                string listSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.ListValue);
+                string itemSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.ItemValue);
+                string titleSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.TitleValue);
+                string avatarSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.AvatarValue);
+                string descriptionSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.DescriptionValue);
 
                 if (!string.IsNullOrEmpty(listSelector) && !string.IsNullOrEmpty(itemSelector))
                 {
@@ -149,6 +124,30 @@ namespace NewsVn.Impl.PostFetch.Services
             }
      
             return itemList;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filters"></param>
+        /// <param name="type"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        private string GetSelector(IList<FilterSetting> filters, string type, string target)
+        {
+            string selector = string.Empty;
+            
+            if (filters != null)
+            {
+                var filter = filters.FirstOrDefault(x => type.Equals(x.Type) && target.Equals(x.Target));
+
+                if (filter != null)
+                {
+                    selector = filter.Selector;
+                }
+            }
+
+            return selector;
         }
 
         /// <summary>
