@@ -18,7 +18,7 @@ namespace NewsVn.Web.Utils
 
         public PostFetchWebService()
         {
-            _fetchService = new DefaultPostFetchService();
+           
         }
     }
 }

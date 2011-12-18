@@ -65,9 +65,13 @@ namespace NewsVn.Test
 
         static void Test_Service_RqPostList()
         {
-            var sv = new DefaultPostFetchService();
+            string xmlPath = "../../PostFetchSites.xml";
+
+            ISettingReader sr = new XmlSettingReader(xmlPath);
+
+            var sv = new DefaultPostFetchService(sr);
             var setting = sv.RequestSetting(2, 2);
-            var list = sv.RequestPostItemList(setting.Url, setting);
+            var list = sv.RequestPostItemList(setting);
 
             foreach (var item in list)
             {
