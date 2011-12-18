@@ -16,10 +16,9 @@ namespace NewsVn.Impl.PostFetch.Services
         /// <summary>
         /// Inits with setting reader as Cache reader
         /// </summary>
-        public PostFetchServiceAbstract()
+        public PostFetchServiceAbstract(ISettingReader settingReader)
         {
-            string xmlPath = "../../PostFetchSites.xml";
-            _settingReader = new XmlSettingReader(xmlPath);
+            _settingReader = settingReader;
         }
 
         /// <summary>
@@ -61,17 +60,17 @@ namespace NewsVn.Impl.PostFetch.Services
         /// <param name="categoryUrl"></param>
         /// <param name="postSetting"></param>
         /// <returns></returns>
-        public virtual IList<PostItemModel> RequestPostItemList(string categoryUrl, PostSettingModel postSetting)
+        public virtual IList<PostItemModel> RequestPostItemList(PostSettingModel postSetting)
         {
             IList<PostItemModel> itemList = null;
 
             if (postSetting.Type == Constants.RssValue)
             {
-                itemList = RequestRssPostItemList(categoryUrl, postSetting);
+                itemList = RequestRssPostItemList(postSetting);
             }
             else
             {
-                itemList = RequestRawPostItemList(categoryUrl, postSetting);
+                itemList = RequestRawPostItemList(postSetting);
             }
 
             return itemList;
@@ -83,9 +82,23 @@ namespace NewsVn.Impl.PostFetch.Services
         /// <param name="categoryUrl"></param>
         /// <param name="postSetting"></param>
         /// <returns></returns>
-        protected virtual IList<PostItemModel> RequestRssPostItemList(string categoryUrl, PostSettingModel postSetting)
+        protected virtual IList<PostItemModel> RequestRssPostItemList(PostSettingModel postSetting)
         {
-            return null;
+            IList<PostItemModel> itemList = null;
+
+            itemList = new List<PostItemModel>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                itemList.Add(new PostItemModel
+                {
+                    Title = "Test Item",
+                    Description = "dasdbasdas dsad sajdjsa djsaj dsadsajdh sad sadj sajdajsd asd asd aksdask dasda sadas ksad sad asdas as dasdasd",
+                    Url = "ddksdksjdksakdskadskadsa"
+                });
+            }
+
+            return itemList;
         }
 
         /// <summary>
@@ -94,7 +107,7 @@ namespace NewsVn.Impl.PostFetch.Services
         /// <param name="categoryUrl"></param>
         /// <param name="postSetting"></param>
         /// <returns></returns>
-        protected virtual IList<PostItemModel> RequestRawPostItemList(string categoryUrl, PostSettingModel postSetting)
+        protected virtual IList<PostItemModel> RequestRawPostItemList(PostSettingModel postSetting)
         {
             IList<PostItemModel> itemList = null;
 
@@ -110,7 +123,7 @@ namespace NewsVn.Impl.PostFetch.Services
                 {
                     itemList = new List<PostItemModel>();
 
-                    var sq = new SharpQuery(categoryUrl);
+                    var sq = new SharpQuery(postSetting.Url);
 
                     foreach (var el in sq.Find(listSelector + " " + itemSelector + " " + titleSelector))
                     {
