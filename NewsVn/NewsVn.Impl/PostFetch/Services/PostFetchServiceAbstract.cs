@@ -146,6 +146,16 @@ namespace NewsVn.Impl.PostFetch.Services
                         };
                         itemList.Add(postItem);
                     }
+
+                    var uri = new Uri(postSetting.Url);
+                    var siteDomain = "http://" + uri.Host;
+
+                    var avatarQuery = sq.Find(listSelector + " " + itemSelector + " " + avatarSelector).ToArray();
+
+                    for (int i = 0; i < avatarQuery.Length; i++)
+                    {
+                        itemList[i].Avatar = siteDomain + avatarQuery[i].Attributes["src"].Value;
+                    }
                 }
             }
      
