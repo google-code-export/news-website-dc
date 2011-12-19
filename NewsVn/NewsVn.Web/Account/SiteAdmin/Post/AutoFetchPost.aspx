@@ -47,7 +47,7 @@
         {
             width: 130px;
             height: 110px;
-            margin-right: 10px;
+            margin-right: 20px;
         }
 
         .post-item-list .post-item
@@ -67,7 +67,7 @@
         runat="server" OnClick="btnGetPostList_Click" />
     <asp:LinkButton ID="btnAddPostItems" Text="Cập nhật" CssClass="button" 
         runat="server" OnClick="btnAddPostItems_Click" />
-    <asp:Repeater ID="rptPostList" runat="server">
+    <asp:Repeater ID="rptPostList" runat="server" OnItemDataBound="rptPostList_ItemDataBound">
     <HeaderTemplate>
         <div class="portlet">
             <ul class="post-item-list">
@@ -76,17 +76,19 @@
         <li>                    
             <div class="left">
                 <asp:CheckBox EnableViewState="false" runat="server" />
-                <asp:DropDownList CssClass="" runat="server" />
             </div>
-            
             <div class="post-item right">                       
                 <div class="wrap">
                     <a href='<%#Eval("Url") %>' class="post-title inline"><%#Eval("Title") %></a>
                     <span class="post-info"><%#string.Format("{0:dddd, dd/MM/yyyy HH:MM}",Eval("PubDate")) %></span>
                 </div>            
                 <p><%#Eval("Description") %></p>
+                <br />
+                <i>Danh mục:</i> <asp:DropDownList ID="ddlTargetCategory" CssClass="dropdown" runat="server" />
             </div>
-            <img src="<%#Eval("Avatar") %>" alt='<%#Eval("Title") %>' title='<%#Eval("Title") %>' class="post-avatar right" />
+            <asp:Image ID="imgAvatar" ImageUrl='<%# Eval("Avatar") %>'
+                AlternateText='<%#Eval("Title") %>' ToolTip='<%#Eval("Title") %>'
+                CssClass="post-avatar right" Width="130" Height="110" runat="server" />
             <div class="clear"></div>
         </li>
     </ItemTemplate>
