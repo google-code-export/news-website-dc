@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using NewsVn.Impl.Context;
 using NewsVn.Impl.PostFetch;
 using NewsVn.Impl.PostFetch.Settings;
 using System.Linq;
 using NewsVn.Impl.PostFetch.Services;
+using System.Web.UI.WebControls;
+using NewsVn.Impl.PostFetch.Models;
 
 namespace NewsVn.Web.Account.SiteAdmin.Post
 {
@@ -110,11 +113,35 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         /// <summary>
         /// Binds category from database to dropdowns
         /// </summary>
-        private void BindTargetCategoriesDropDowns()
+        private void BindTargetCategoriesDropDowns(DropDownList ddlTargetCategory)
         {
-            if (_siteSettings != null)
+            if (_service != null && ddlTargetCategory != null)
             {
+                int selectedSiteID = 0;
+                int.TryParse(ddlFetchSite.SelectedValue, out selectedSiteID);
 
+                int selectedCategoryID = 0;
+                int.TryParse(ddlFetchCategory.SelectedValue, out selectedCategoryID);
+
+                var setting = _service.RequestSetting(selectedSiteID, selectedCategoryID);
+                
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                {
+                    var cates = ctx.CategoryRepo.Getter.getQueryable(c => c.Type.Trim().ToLower() == "post")
+                        .OrderByDescending(c => c.Parent == null).ThenBy(c => c.Parent.Name);
+
+                    foreach (var cate in cates)
+                    {
+                        if (cate.Parent == null)
+                            ddlTargetCategory.Items.Add(new ListItem(cate.Name, cate.ID.ToString()));
+                        else
+                            ddlTargetCategory.Items.Add(new ListItem(cate.Parent.Name + " / " + cate.Name, cate.ID.ToString()));
+                    }
+
+                    // Set default to Target ID
+                    var item = ddlTargetCategory.Items.FindByValue(setting.TargetID.ToString());
+                    item.Selected = true;
+                }
             }
         }
 
@@ -131,6 +158,29 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         protected void btnAddPostItems_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void rptPostList_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            try
+            {
+                if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+                {
+                    var ddlTargetCategory = e.Item.FindControl("ddlTargetCategory") as DropDownList;
+                    BindTargetCategoriesDropDowns(ddlTargetCategory);
+
+                    var postItem = e.Item.DataItem as PostItemModel;
+                    if (postItem != null && string.IsNullOrEmpty(postItem.Avatar))
+                    {
+                        var imgAvatar = e.Item.FindControl("imgAvatar") as Image;
+                        imgAvatar.ImageUrl = "~/resources/images/no_image/no-ads.gif";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
         }
     }
 }

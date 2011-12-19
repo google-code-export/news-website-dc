@@ -6,6 +6,8 @@ using System.Net;
 using System.Linq;
 using XCSS3SE;
 using NewsVn.Impl.PostFetch.Settings;
+using System.Xml.Linq;
+using System;
 
 namespace NewsVn.Impl.PostFetch.Services
 {
@@ -86,19 +88,30 @@ namespace NewsVn.Impl.PostFetch.Services
         {
             IList<PostItemModel> itemList = null;
 
-            itemList = new List<PostItemModel>();
+            var feedDoc = XDocument.Load(postSetting.Url);
 
-            for (int i = 0; i < 10; i++)
+            if (feedDoc != null)
             {
-                itemList.Add(new PostItemModel
+                itemList = feedDoc.Descendants("item").Select(x => new PostItemModel
                 {
-                    Title = "Test Item",
-                    Description = "dasdbasdas dsad sajdjsa djsaj dsadsajdh sad sadj sajdajsd asd asd aksdask dasda sadas ksad sad asdas as dasdasd",
-                    Url = "ddksdksjdksakdskadskadsa"
-                });
+                    Title = GetXElementValue(x.Element("title")),
+                    Description = GetXElementValue(x.Element("description")),
+                    Url = GetXElementValue(x.Element("link")),
+                    Avatar = GetXElementValue(x.Element("avatar")),
+                    PubDate = DateTime.Parse(GetXElementValue(x.Element("pubDate")))
+                }).ToList();
             }
 
             return itemList;
+        }
+
+        private string GetXElementValue(XElement elem)
+        {
+            if (elem != null)
+            {
+                return elem.Value;
+            }
+            return null;
         }
 
         /// <summary>
