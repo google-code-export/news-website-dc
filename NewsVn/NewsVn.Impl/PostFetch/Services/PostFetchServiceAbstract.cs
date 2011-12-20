@@ -1,13 +1,14 @@
-using NewsVn.Impl.PostFetch;
+﻿using NewsVn.Impl.PostFetch;
 using NewsVn.Impl.PostFetch.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Linq;
-using XCSS3SE;
 using NewsVn.Impl.PostFetch.Settings;
 using System.Xml.Linq;
 using System;
+using HtmlAgilityPack;
+using Fizzler.Systems.HtmlAgilityPack;
 
 namespace NewsVn.Impl.PostFetch.Services
 {
@@ -44,6 +45,7 @@ namespace NewsVn.Impl.PostFetch.Services
                 {
                     setting = new PostSettingModel
                     {
+                        SiteUrl = siteSetting.Url,
                         Type = categorySetting.Type,
                         Url = categorySetting.Url,
                         TargetID = categorySetting.TargetID,
@@ -95,14 +97,34 @@ namespace NewsVn.Impl.PostFetch.Services
                 itemList = feedDoc.Descendants("item").Select(x => new PostItemModel
                 {
                     Title = GetXElementValue(x.Element("title")),
-                    Description = GetXElementValue(x.Element("description")),
+                    Description = GetDescriptionValue(x.Element("description")),
                     Url = GetXElementValue(x.Element("link")),
-                    Avatar = GetXElementValue(x.Element("avatar")),
+                    Avatar = GetAvatarValue(x.Element("description")),
                     PubDate = DateTime.Parse(GetXElementValue(x.Element("pubDate")))
                 }).ToList();
             }
 
             return itemList;
+        }
+
+        private string GetDescriptionValue(XElement elem)
+        {
+            string htmlString = GetXElementValue(elem);
+            var html = new HtmlDocument();
+            html.LoadHtml(htmlString);
+            var doc = html.DocumentNode;
+            return doc.InnerText;
+        }
+
+        private string GetAvatarValue(XElement elem)
+        {
+            string htmlString = GetXElementValue(elem);
+            var html = new HtmlDocument();
+            html.LoadHtml(htmlString);
+            var doc = html.DocumentNode;
+            doc = doc.QuerySelector("img");
+
+            return doc.Attributes["src"].Value;
         }
 
         private string GetXElementValue(XElement elem)
@@ -136,25 +158,21 @@ namespace NewsVn.Impl.PostFetch.Services
                 {
                     itemList = new List<PostItemModel>();
 
-                    var sq = new SharpQuery(postSetting.Url);
+                    var web = new HtmlWeb();
+                    var html = web.Load(postSetting.Url);
 
-                    foreach (var el in sq.Find(listSelector + " " + itemSelector + " " + titleSelector))
+                    var doc = html.DocumentNode;
+                    var resultDocs = doc.QuerySelectorAll(listSelector + " " + itemSelector);
+
+                    foreach (var resultDoc in resultDocs)
                     {
                         var postItem = new PostItemModel
                         {
-                            Title = el.InnerText
+                            Title = resultDoc.QuerySelector(titleSelector).InnerText,
+                            Description = resultDoc.QuerySelector(descriptionSelector).InnerText,
+                            Avatar = postSetting.SiteUrl + resultDoc.QuerySelector(avatarSelector).Attributes["src"].Value
                         };
                         itemList.Add(postItem);
-                    }
-
-                    var uri = new Uri(postSetting.Url);
-                    var siteDomain = "http://" + uri.Host;
-
-                    var avatarQuery = sq.Find(listSelector + " " + itemSelector + " " + avatarSelector).ToArray();
-
-                    for (int i = 0; i < avatarQuery.Length; i++)
-                    {
-                        itemList[i].Avatar = siteDomain + avatarQuery[i].Attributes["src"].Value;
                     }
                 }
             }

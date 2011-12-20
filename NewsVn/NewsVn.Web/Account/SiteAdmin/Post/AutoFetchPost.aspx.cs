@@ -148,6 +148,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
         protected void ddlFetchSite_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindCategoriesDropDown();
+            rptPostList.DataSource = null;
+            rptPostList.DataBind();
+        }
+
+        protected void ddlFetchCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            rptPostList.DataSource = null;
+            rptPostList.DataBind();
         }
 
         protected void btnGetPostList_Click(object sender, EventArgs e)

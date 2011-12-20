@@ -9,6 +9,8 @@ namespace NewsVn.Impl.PostFetch.Models
         
         public string Url { get; set; }
 
+        public string SiteUrl { get; set; }
+
         public int TargetID { get; set; }
 
         public IList<FilterSetting> Filters { get; set; }

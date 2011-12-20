@@ -62,7 +62,8 @@
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <asp:DropDownList ID="ddlFetchSite" CssClass="dropdown" runat="server" 
         AutoPostBack="true" OnSelectedIndexChanged="ddlFetchSite_SelectedIndexChanged" />
-    <asp:DropDownList ID="ddlFetchCategory" CssClass="dropdown" runat="server" />
+    <asp:DropDownList ID="ddlFetchCategory" CssClass="dropdown" runat="server" 
+        AutoPostBack="true" OnSelectedIndexChanged="ddlFetchCategory_SelectedIndexChanged" />
     <asp:LinkButton ID="btnGetPostList" Text="Lấy tin" CssClass="button" 
         runat="server" OnClick="btnGetPostList_Click" />
     <asp:LinkButton ID="btnAddPostItems" Text="Cập nhật" CssClass="button" 
