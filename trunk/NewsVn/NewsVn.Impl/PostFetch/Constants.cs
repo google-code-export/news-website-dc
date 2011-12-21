@@ -56,6 +56,8 @@ namespace NewsVn.Impl.PostFetch
 		 
 		public const string ContentValue = "content";
 
+        public const string LinkValue = "link";
+
         public const string XmlCacheKey = "Fetch.Settings.Xml";
 
         public const int CacheDays = 7;

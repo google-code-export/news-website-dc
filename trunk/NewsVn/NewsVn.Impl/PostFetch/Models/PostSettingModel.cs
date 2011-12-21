@@ -5,6 +5,10 @@ namespace NewsVn.Impl.PostFetch.Models
 {
     public class PostSettingModel
     {
+        public int SiteID { get; set; }
+
+        public int CategoryID { get; set; }
+
         public string Type { get; set; }
         
         public string Url { get; set; }
