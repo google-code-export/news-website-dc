@@ -71,6 +71,7 @@
     <Compile Include="Model\FilterModel.cs" />
     <Compile Include="PostFetch\Constants.cs" />
     <Compile Include="PostFetch\ISettingReader.cs" />
+    <Compile Include="PostFetch\Models\PostItemKey.cs" />
     <Compile Include="PostFetch\Models\PostItemModel.cs" />
     <Compile Include="PostFetch\Models\PostSettingModel.cs" />
     <Compile Include="PostFetch\Services\DefaultPostFetchService.cs" />

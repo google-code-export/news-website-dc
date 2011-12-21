@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using System;
 using HtmlAgilityPack;
 using Fizzler.Systems.HtmlAgilityPack;
+using NewsVn.Impl.Context;
 
 namespace NewsVn.Impl.PostFetch.Services
 {
@@ -153,6 +154,7 @@ namespace NewsVn.Impl.PostFetch.Services
                 string titleSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.TitleValue);
                 string avatarSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.AvatarValue);
                 string descriptionSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.DescriptionValue);
+                string linkSelector = GetSelector(postSetting.Filters, Constants.FetchValue, Constants.LinkValue);
 
                 if (!string.IsNullOrEmpty(listSelector) && !string.IsNullOrEmpty(itemSelector))
                 {
@@ -170,7 +172,8 @@ namespace NewsVn.Impl.PostFetch.Services
                         {
                             Title = resultDoc.QuerySelector(titleSelector).InnerText,
                             Description = resultDoc.QuerySelector(descriptionSelector).InnerText,
-                            Avatar = postSetting.SiteUrl + resultDoc.QuerySelector(avatarSelector).Attributes["src"].Value
+                            Avatar = postSetting.SiteUrl + resultDoc.QuerySelector(avatarSelector).Attributes["src"].Value,
+                            Url = postSetting.SiteUrl + resultDoc.QuerySelector(linkSelector).Attributes["href"].Value
                         };
                         itemList.Add(postItem);
                     }
@@ -222,7 +225,34 @@ namespace NewsVn.Impl.PostFetch.Services
         /// <returns></returns>
         public virtual PostItemModel RequestRawPostItem(string itemUrl, PostSettingModel postSetting)
         {
-            return null;
+            PostItemModel item = null;
+
+            try
+            {
+                string titleSelector = GetSelector(postSetting.Filters, Constants.PostValue, Constants.TitleValue);
+                //string avatarSelector = GetSelector(postSetting.Filters, Constants.PostValue, Constants.AvatarValue);
+                string descriptionSelector = GetSelector(postSetting.Filters, Constants.PostValue, Constants.DescriptionValue);
+                string contentSelector = GetSelector(postSetting.Filters, Constants.PostValue, Constants.ContentValue);
+
+                var web = new HtmlWeb();
+                var html = web.Load(itemUrl);
+                var doc = html.DocumentNode;
+
+                item = new PostItemModel
+                {
+                    Title = doc.QuerySelector(titleSelector).InnerText,
+                    //Avatar = doc.QuerySelector(avatarSelector).Attributes["src"].Value,
+                    Description = doc.QuerySelector(descriptionSelector).InnerText,
+                    Content = doc.QuerySelector(contentSelector).InnerHtml
+                };
+                item.Avatar = "";
+            }
+            catch (Exception ex)
+            {
+                item = null;
+            }
+
+            return item;
         }
 
         /// <summary>
@@ -230,9 +260,32 @@ namespace NewsVn.Impl.PostFetch.Services
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public virtual bool AddPostItem(PostItemModel item)
+        public virtual bool AddPostItem(PostItemModel item, NewsVnContext ctx)
         {
-            return false;
+            bool success = true;
+
+            try
+            {
+                var cate = ctx.CategoryRepo.Getter.getFirst(x => x.ID == item.TargetID);
+
+                if (cate != null)
+                {
+                    var post = item.ToPostEntity();
+                    ctx.PostRepo.Setter.addOne(post, true);
+                    //post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, item.RemoveUnicodeMarks(post.Title));
+                    //ctx.SubmitChanges();
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                success = false;
+            }
+
+            return success;
         }
 
         /// <summary>

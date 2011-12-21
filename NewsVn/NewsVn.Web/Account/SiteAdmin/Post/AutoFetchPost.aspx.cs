@@ -165,7 +165,42 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         protected void btnAddPostItems_Click(object sender, EventArgs e)
         {
+            if (_service != null)
+            {
+                int selectedSiteID = 0;
+                int.TryParse(ddlFetchSite.SelectedValue, out selectedSiteID);
 
+                int selectedCategoryID = 0;
+                int.TryParse(ddlFetchCategory.SelectedValue, out selectedCategoryID);
+
+                var setting = _service.RequestSetting(selectedSiteID, selectedCategoryID);
+
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                {
+                    foreach (var item in rptPostList.Items.Cast<RepeaterItem>())
+                    {
+                        var chkAccept = item.FindControl("chkAccept") as CheckBox;
+
+                        if (chkAccept.Checked)
+                        {
+                            var ddlTargetCategory = item.FindControl("ddlTargetCategory") as DropDownList;
+                            int targetID = int.Parse(ddlTargetCategory.SelectedValue);
+
+                            var hidGetUrl = item.FindControl("hidGetUrl") as HiddenField;
+                            string itemUrl = hidGetUrl.Value;
+
+                            var postItem = _service.RequestRawPostItem(itemUrl, setting);
+
+                            if (postItem != null)
+                            {
+                                postItem.TargetID = targetID;
+                                bool success = _service.AddPostItem(postItem, ctx);
+                            }
+                        }
+                    }
+                    ctx.SubmitChanges();
+                }
+            }
         }
 
         protected void rptPostList_ItemDataBound(object sender, RepeaterItemEventArgs e)

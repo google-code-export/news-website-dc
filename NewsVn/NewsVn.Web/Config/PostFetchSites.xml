@@ -14,9 +14,9 @@
     <!-- Follows CSS selector rules -->
     <filters>      
       <group type="post">
-        <filter target="title">.title</filter>
+        <filter target="title">.Title</filter>
         <filter target="avatar">.img-subject</filter>
-        <filter target="description">.lead</filter>
+        <filter target="description">.Lead</filter>
         <filter target="content">.content</filter>
       </group>
     </filters>
@@ -45,11 +45,12 @@
         <filter target="title">.title h4</filter>
         <filter target="avatar">.avatar img</filter>
         <filter target="description">.lead</filter>
+        <filter target="link">.title.avatar</filter>
       </group>
       <group type="post">
         <filter target="title">#title</filter>
         <filter target="avatar">.avatar img</filter>
-        <filter target="description">#content strong:first</filter>
+        <filter target="description">#content strong:first-child</filter>
         <filter target="content">#content</filter>
       </group>
     </filters>
