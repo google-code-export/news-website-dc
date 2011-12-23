@@ -11,20 +11,10 @@
         });
     });
 </script>
+
 <div class="side-part portlet">
-    <ul class="side-part-list">
-        <li><a href="#" title="Quảng cáo 1" target="_blank" rel="nofollow">
-            <img src="http://doanhnhansaigon.vn/files/articles/2010/1040959/advertising-creative-large.jpg"
-                alt="Quảng cáo 1" />
-        </a></li>
-        <li>
-            <iframe title="Adam Lambert Interview" width="280" height="200" src="http://www.youtube.com/embed/0a3mV57i2QA"
-                frameborder="0" allowfullscreen></iframe>
-        </li>
-    </ul>
     <h2>
         Quảng cáo</h2>
     <div runat="server" id="divContentAds">
-       
     </div>
 </div>
