@@ -33,7 +33,7 @@ namespace NewsVn.Web
                     p.ID,
                     p.Title,
                     p.Content,
-                    p.Avatar,
+                    Avatar =  p.Avatar.Length == 0 ? "/resources/Images/No_Image/no-ads.gif" : HostName + p.Avatar,
                     p.SeoUrl,
                     p.CreatedOn,
                     p.CreatedBy,
@@ -44,6 +44,7 @@ namespace NewsVn.Web
                 pletAdsDetail.CreateBy = data.CreatedBy;
                 pletAdsDetail.CreatedOn = data.CreatedOn;
                 pletAdsDetail.Location = data.Location == null ? 0 : int.Parse(data.Location);
+                pletAdsDetail.Avatar = data.Avatar;
                 //Load Ads relation by Created Date and Difference with current ID
                 this.ExecuteSEO(data.Title.Trim().Length > 0 ? "RAO NHANH - " + data.Title.Trim() : "RAO NHANH - Mua bán nhà đất, điện thoại, máy tính, ô tô xe máy, dịch vụ", Utils.clsCommon.RemoveUnicodeMarks(data.Title).Replace('-', ' ') + "," + data.Title + "," + Utils.clsCommon.RemoveUnicodeMarks(data.Content).Replace('-', ' '), "Newsvn, " + data.CreatedBy + " - " + Utils.clsCommon.hintDesc(data.Content, 300));
                 load_pletAdsRelated(datafilter.FirstOrDefault(), ctx);
