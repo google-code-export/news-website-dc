@@ -47,7 +47,7 @@ namespace NewsVn.Web.BaseUI
         {
             base.OnLoad(e);
 
-            this.Title = SiteTitle + " :: Cổng thông tin điện tử 24/07";
+            this.Title = SiteTitle + " - Cổng thông tin điện tử 24/07";
             
             if (!IsPostBack)
             {
