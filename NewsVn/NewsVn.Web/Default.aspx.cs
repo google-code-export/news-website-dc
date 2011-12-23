@@ -14,9 +14,9 @@ namespace NewsVn.Web
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            SiteTitle += "Trang nhất";
-            MetaKeyWords = "newsvn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
-            MetaKeyDes = "Newsvn, Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07, thông tin Việt nam - Thế giới...";            
+            SiteTitle += "Cổng thông tin điện tử 24/07 - tin tức online";
+            MetaKeyWords = "newsvn,socl,homevn,Vietnam news daily,24/7,online,economic,internet,ads,education,rao vat,quang cao,tin hot,tu van,viec lam,works,tim ban,blog,tin tuc,sai gon,ha noi,da nang,du lich,dien anh";
+            MetaKeyDes = "Newsvn, Cổng thông tin điện tử - thông tin nhanh, chính xác được đăng tải liên tục 24/07, thông tin Việt nam - Thế giới... Liên kết Socl, Homevn...";            
         }
 
         protected void Page_Load(object sender, EventArgs e)
