@@ -17,7 +17,7 @@ namespace NewsVn.Web.Modules
             string dateTo = txtAdToDate.Text.Replace("/", "_");
             string requestUrl = SearchText + "-" + Region + "-" + dateFrom + "-" + dateTo;
             //Response.Redirect("SearchAdResult.aspx?searchtext=" + SearchText + "&region=" + Region + "&datefrom=" + dateFrom + "&dateto=" + dateTo);
-            Response.Redirect(HostName + "rao-nhanh/tim-kiem/" + requestUrl + ".html");
+            Response.Redirect(HostName + "rao-nhanh/tim-kiem/" + requestUrl + ".aspx");
         }
     }
 }
