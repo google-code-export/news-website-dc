@@ -22,7 +22,7 @@ namespace NewsVn.Web.BaseUI
 
         protected override void OnInit(EventArgs e)
         {
-            SiteTitle = "NewsVN :: ";
+            SiteTitle = "NewsVN - ";
 
             var sb = new StringBuilder();
             sb.Append("<li><div class=\"ui-widget\"><div class=\"ui-state-highlight ui-corner-all\" style=\"padding: 0 .7em;\">");
