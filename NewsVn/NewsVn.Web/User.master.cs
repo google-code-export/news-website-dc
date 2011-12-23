@@ -55,7 +55,7 @@ namespace NewsVn.Web
             if (bannerListID.Length >= 1)
             {   //lay random 1 list right banner
                 var randon = new Random();
-                int _randomIndex = randon.Next(0, bannerListID.Length - 1);
+                int _randomIndex = randon.Next(0, bannerListID.Length);
                 _randomIndex = bannerListID[_randomIndex];
                 var BannerLists = ctx.BannerDetailRepo.Getter.getQueryable(a => a.ID == _randomIndex).ToList();
                 BannerControlTop.Datasource = BannerLists;
