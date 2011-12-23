@@ -157,7 +157,7 @@ namespace NewsVn.Web
                     adp.ID,
                     adp.Title,
                     Description = adp.Content,// clsCommon.hintDesc(adp.Content),
-                    Avatar = adp.Avatar.Length == 0 ? "/resources/Images/No_Image/no-ads.gif" : "/resources/Images/" + adp.Avatar,
+                    Avatar = adp.Avatar.Length == 0 ? "/resources/Images/No_Image/no-ads.gif" : HostName + adp.Avatar,
                     adp.SeoUrl,
                     ApprovedOn = adp.CreatedOn,
                     AllowComments = false,
