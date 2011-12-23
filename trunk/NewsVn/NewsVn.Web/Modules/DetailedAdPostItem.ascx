@@ -21,9 +21,19 @@
         <div class="clear"></div>
     </div>
     <div class="content">
-        <p>
+   <table width="100%">
+    <tr>
+    <td style="vertical-align:top">
+    <p >
             <%=AdsContent %>
         </p>
+    </td>
+    
+    <td style="vertical-align:top">
+    <img src='<%=Avatar %>' alt='<%=AdsTitle %>' width="120px" height="120px" style="overflow:hidden; margin: 10px 10px 10px 5px; border:2px solid #ffb4ae" />
+    </td>
+    </tr>
+   </table>
     </div>
     <div class="info-bar tail">
         <div class="left">
