@@ -217,6 +217,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                         post.Approved = true;
                         post.ApprovedOn = DateTime.Now;
                         post.ApprovedBy = HttpContext.Current.User.Identity.Name;
+
+                        // Added by CuongNguyen Dec 26, 2011
+                        // Update SeoUrl for approved items
+                        if (post.AutoFetch)
+                        {
+                            var cate = post.Category;
+                            post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
+                        }
                     }
                     ctx.SubmitChanges();
                 }

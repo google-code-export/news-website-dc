@@ -40,6 +40,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {                
                 BindSitesDropDown();
                 BindCategoriesDropDown();
+                ltrInfo.Text = string.Format(InfoBar, "Vui lòng nhấn '<b>Lấy tin</b>' để hiện danh sách.");
             }
         }
 
@@ -92,6 +93,8 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         private void BindPostListRepeater()
         {
+            IList<PostItemModel> postList = new List<PostItemModel>();
+            
             if (_service != null)
             {
                 int selectedSiteID = 0;
@@ -104,9 +107,18 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
                 if (setting != null)
                 {
-                    rptPostList.DataSource = _service.RequestPostItemList(setting);
-                    rptPostList.DataBind();
+                    postList = _service.RequestPostItemList(setting);
                 }
+            }
+
+            if (postList.Count > 0)
+            {
+                rptPostList.DataSource = postList;
+                rptPostList.DataBind();    
+            }
+            else
+            {
+                ltrInfo.Text = string.Format(InfoBar, "Danh sách không tồn tại tin tức nào.");
             }
         }
 
@@ -150,12 +162,14 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             BindCategoriesDropDown();
             rptPostList.DataSource = null;
             rptPostList.DataBind();
+            ltrInfo.Text = string.Format(InfoBar, "Vui lòng nhấn '<b>Lấy tin</b>' để hiện danh sách.");
         }
 
         protected void ddlFetchCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             rptPostList.DataSource = null;
             rptPostList.DataBind();
+            ltrInfo.Text = string.Format(InfoBar, "Vui lòng nhấn '<b>Lấy tin</b>' để hiện danh sách.");        
         }
 
         protected void btnGetPostList_Click(object sender, EventArgs e)
@@ -193,6 +207,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
                             if (postItem != null)
                             {
+                                var hidAvatar = item.FindControl("hidAvatar") as HiddenField;
+
+                                postItem.Avatar = hidAvatar.Value;
                                 postItem.TargetID = targetID;
                                 bool success = _service.AddPostItem(postItem, ctx);
                             }
@@ -218,6 +235,11 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                         var imgAvatar = e.Item.FindControl("imgAvatar") as Image;
                         imgAvatar.ImageUrl = "~/resources/images/no_image/no-ads.gif";
                     }
+                }
+                if (e.Item.ItemType == ListItemType.Header)
+                {
+                    var ltrListName = e.Item.FindControl("ltrListName") as Literal;
+                    ltrListName.Text = ddlFetchSite.SelectedItem.Text + " - " + ddlFetchCategory.SelectedItem.Text;
                 }
             }
             catch (Exception)
