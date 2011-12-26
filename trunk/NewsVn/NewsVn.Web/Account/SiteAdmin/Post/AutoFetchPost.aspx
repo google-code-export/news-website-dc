@@ -31,17 +31,33 @@
 <asp:Content ContentPlaceHolderID="sideContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
-    <asp:DropDownList ID="ddlFetchSite" CssClass="dropdown" runat="server" 
-        AutoPostBack="true" OnSelectedIndexChanged="ddlFetchSite_SelectedIndexChanged" />
-    <asp:DropDownList ID="ddlFetchCategory" CssClass="dropdown" runat="server" 
-        AutoPostBack="true" OnSelectedIndexChanged="ddlFetchCategory_SelectedIndexChanged" />
-    <asp:LinkButton ID="btnGetPostList" Text="Lấy tin" CssClass="button" 
-        runat="server" OnClick="btnGetPostList_Click" />
-    <asp:LinkButton ID="btnAddPostItems" Text="Cập nhật" CssClass="button" 
-        runat="server" OnClick="btnAddPostItems_Click" />
+    <div id="postHelpBox" class="dialog" title="Trợ giúp">
+        
+    </div>
+    <div>
+        <div class="right">
+            <asp:DropDownList ID="ddlFetchSite" CssClass="dropdown" runat="server" 
+                AutoPostBack="true" OnSelectedIndexChanged="ddlFetchSite_SelectedIndexChanged" />
+            <asp:DropDownList ID="ddlFetchCategory" CssClass="dropdown" runat="server" 
+                AutoPostBack="true" OnSelectedIndexChanged="ddlFetchCategory_SelectedIndexChanged" />
+            <asp:LinkButton ID="btnGetPostList" Text="Lấy tin" CssClass="button" 
+                runat="server" OnClick="btnGetPostList_Click" />
+        </div>
+        <div class="left">
+            <asp:LinkButton ID="btnAddPostItems" Text="Cập nhật" CssClass="button" 
+                runat="server" OnClick="btnAddPostItems_Click" />
+            <asp:HyperLink Text="Trợ giúp" CssClass="button-help dialog-trigger[postHelpBox]" runat="server" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <hr />
     <asp:Repeater ID="rptPostList" runat="server" OnItemDataBound="rptPostList_ItemDataBound">
     <HeaderTemplate>
-        <div class="portlet">
+        <div class="ui-widget-header" style="padding:5px 15px">
+            <asp:CheckBox EnableViewState="false" runat="server" style="margin-right:25px" />
+            <asp:Literal ID="ltrListName" runat="server" />
+        </div>
+        <div class="portlet" style="margin-top:0;border-top:0;padding-top:10px">            
             <ul class="post-item-list">
     </HeaderTemplate>
     <ItemTemplate>
@@ -49,6 +65,7 @@
             <div class="left">
                 <asp:CheckBox ID="chkAccept" EnableViewState="false" runat="server" />
                 <asp:HiddenField ID="hidGetUrl" Value='<%#Eval("Url") %>' runat="server" />
+                <asp:HiddenField ID="hidAvatar" Value='<%# Eval("Avatar") %>' runat="server" />
             </div>
             <div class="post-item right">                       
                 <div class="wrap">
@@ -69,5 +86,8 @@
             </ul>
         </div>
     </FooterTemplate>
-    </asp:Repeater>        
+    </asp:Repeater>
+    <ul>
+        <asp:Literal ID="ltrInfo" EnableViewState="false" runat="server" />
+    </ul>
 </asp:Content>
