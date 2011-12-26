@@ -97,6 +97,9 @@
 		<nsn:FooterCopyright runat="server" />
     </div>
   </form>
-  
+  <!-- Begin: VietAd -->
+<script src="http://www.vietad.vn/keyword.aspx?pubid=5008"></script>
+<script src="http://embed.vietad.vn/MagicWords.js"></script>
+<!-- End: VietAd -->
 </body>
 </html>
