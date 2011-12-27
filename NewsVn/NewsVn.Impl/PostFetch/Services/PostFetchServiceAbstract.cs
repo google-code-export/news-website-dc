@@ -208,6 +208,33 @@ namespace NewsVn.Impl.PostFetch.Services
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rules"></param>
+        /// <param name="type"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        private string[] GetConditions(IList<RuleSetting> rules, string type, string target)
+        {
+            IList<string> conditionList = new List<string>();
+
+            if (rules != null)
+            {
+                var ruleSet = rules.Where(x => type.Equals(x.Type) && target.Equals(x.Target));
+
+                if (ruleSet != null)
+                {
+                    foreach (var rule in ruleSet)
+                    {
+                        conditionList.Add(rule.Condition);
+                    }
+                }
+            }
+
+            return conditionList.ToArray();
+        }
+
+        /// <summary>
         /// Filters and removes duplicate post items
         /// </summary>
         /// <param name="itemList"></param>
@@ -246,6 +273,14 @@ namespace NewsVn.Impl.PostFetch.Services
                     Content = doc.QuerySelector(contentSelector).InnerHtml
                 };
                 item.Avatar = "";
+
+                string[] conditions = GetConditions(postSetting.Rules, Constants.PostValue, Constants.ExcludeValue);
+                for (int i = 0; i < conditions.Length; i++)
+                {
+                    var excludeHtml = doc.QuerySelector(conditions[i]).OuterHtml;
+                    item.Content = item.Content.Replace(excludeHtml, string.Empty);
+                }
+                item.Content = item.Content.Replace("src=\"", "src=\"" + postSetting.SiteUrl);
             }
             catch (Exception ex)
             {

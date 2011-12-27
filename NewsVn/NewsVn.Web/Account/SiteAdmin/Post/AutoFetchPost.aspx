@@ -11,7 +11,6 @@
         .post-item-list li.head {padding:0 0 7px}
         .post-item-list .post-avatar {height:110px;margin-right:20px;width:130px}
     </style>
-    <script src="<%= Page.ResolveUrl("~/scripts/newsvn.tool-postfetch.js") %>" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             adjustPostItemWidth();
@@ -19,8 +18,32 @@
                 adjustPostItemWidth();
             });
             $(".post-item-list li:last").css({ "border": "none" });
+            bindCheckBoxEvts();
         });
-
+        function bindCheckBoxEvts() {
+            $(":checkbox").removeAttr("checked");
+            var allCheckbox = $(":checkbox[id$=chkAll]");
+            var childCheckboxes = $(":checkbox[id$=chkAccept]");
+            allCheckbox.change(function () {
+                var checked = $(this).attr("checked");
+                if (checked) {
+                    childCheckboxes.attr("checked", true);
+                }
+                else {
+                    childCheckboxes.removeAttr("checked");
+                }
+            });
+            childCheckboxes.change(function () {
+                var count = childCheckboxes.size();
+                var checkedCount = childCheckboxes.filter(":checked").size();
+                if (checkedCount == count) {
+                    allCheckbox.attr("checked", true);
+                }
+                else {
+                    allCheckbox.removeAttr("checked");
+                }
+            });
+        }
         function adjustPostItemWidth() {
             $(".post-item-list .post-item").each(function () {
                 $(this).css({"width": $(".portlet").width() - $(this).next("img").width() - 70 + "px" })
@@ -54,7 +77,7 @@
     <asp:Repeater ID="rptPostList" runat="server" OnItemDataBound="rptPostList_ItemDataBound">
     <HeaderTemplate>
         <div class="ui-widget-header" style="padding:5px 15px">
-            <asp:CheckBox EnableViewState="false" runat="server" style="margin-right:25px" />
+            <asp:CheckBox ID="chkAll" EnableViewState="false" runat="server" style="margin-right:25px" />
             <asp:Literal ID="ltrListName" runat="server" />
         </div>
         <div class="portlet" style="margin-top:0;border-top:0;padding-top:10px">            
