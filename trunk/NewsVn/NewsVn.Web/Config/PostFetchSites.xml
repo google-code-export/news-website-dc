@@ -17,15 +17,13 @@
         <filter target="title">.Title</filter>
         <filter target="avatar">.img-subject</filter>
         <filter target="description">.Lead</filter>
-        <filter target="content">.content</filter>
+        <filter target="content">.content > div</filter>
       </group>
     </filters>
     <rules>
       <group type="post">
-        <!-- rss | list | post -->
-        <rule target="avatar">list</rule>
-        <!-- title | description | avatar -->
-        <rule target="exclude">title,description</rule>
+        <rule target="exclude">.Title</rule>
+        <rule target="exclude">.Lead</rule>
       </group>      
     </rules>
 	</site>
@@ -56,8 +54,7 @@
     </filters>
     <rules>
       <group type="post">
-        <rule target="avatar">post</rule>
-        <rule target="exclude">description</rule>
+        <rule target="exclude">#content strong:first-child</rule>
       </group>
     </rules>
 	</site>
