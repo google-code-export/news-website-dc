@@ -15,9 +15,10 @@
 <div class="side-part portlet">
     <h2> Quảng cáo</h2>
     <div runat="server" id="divContentAds"></div>
+	
 </div>
-<div class="side-part portlet" style="padding:10px 5px 10px 5px !important; width:300px;">
-    <h2> Quảng cáo liên kết</h2>
+<div style="padding:10px 5px 10px 5px !important; width:300px;" class="side-part portlet">
+ <h2>Quảng cáo liên kết</h2>
     <!-- Begin VietAd -->
 <script language="javascript" type="text/javascript">
     var vietad_zoneId = 'va_FCD03E3283ADA54F';
@@ -33,5 +34,7 @@
 </script> <script type="text/javascript" src="http://embed.vietad.vn/MagicBanner.js"></script> 
 <!-- End: VietAd -->
  <div id="VietAd" ></div>
+
 </div>
+
 
