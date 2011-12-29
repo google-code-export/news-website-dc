@@ -58,4 +58,31 @@
       </group>
     </rules>
 	</site>
+
+    <site id="3" name="DanTri" url="http://dantri.com.vn/">
+        <categories>
+            <group type="rss">
+                <category id="1" url="http://dantri.com.vn/xa-hoi.rss" target-id="2">Xã hội</category>
+                <category id="2" url="http://dantri.com.vn/chinh-tri.rss" target-id="2">Chính Trị</category>
+                <category id="3" url="http://dantri.com.vn/Thegioi.rss" target-id="17">Kinh doanh</category>
+                <category id="4" url="http://dantri.com.vn/giaitri.rss" target-id="3">Văn hóa</category>
+                <category id="5" url="http://dantri.com.vn/The-Thao.rss" target-id="4">Thể thao</category>
+            </group>
+        </categories>
+        <!-- Follows CSS selector rules -->
+        <filters>
+            <group type="post">
+                <filter target="title">.fon6</filter>
+                <filter target="avatar">a > .img130</filter>
+                <filter target="description">.fon33 mt1</filter>
+                <filter target="content">.fon34 mt3 mr2 fon43</filter>
+            </group>
+        </filters>
+        <rules>
+            <group type="post">
+                <rule target="exclude">.fon6</rule>
+                <rule target="exclude">.fon33 mt1</rule>
+            </group>
+        </rules>
+    </site>
 </news-sites>
