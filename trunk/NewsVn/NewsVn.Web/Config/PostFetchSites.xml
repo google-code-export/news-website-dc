@@ -1,21 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <news-sites>
-	<site id="1" name="VnExpress" url="http://vnexpress.net/">		
-		<categories>			
+  <site id="1" name="VnExpress" url="http://vnexpress.net/">
+    <categories>
       <group type="rss">
         <category id="1" url="http://vnexpress.net/rss/gl/xa-hoi.rss" target-id="2">Xã hội</category>
         <category id="2" url="http://vnexpress.net/rss/gl/the-gioi.rss" target-id="17">Thế giới</category>
         <category id="3" url="http://vnexpress.net/rss/gl/kinh-doanh.rss" target-id="1">Kinh doanh</category>
         <category id="4" url="http://vnexpress.net/rss/gl/van-hoa.rss" target-id="3">Văn hóa</category>
-        <category id="5" url="http://vnexpress.net/rss/gl/the-thao.rss" target-id="4">Thể thao</category>  
+        <category id="5" url="http://vnexpress.net/rss/gl/the-thao.rss" target-id="4">Thể thao</category>
       </group>
-		</categories>
+    </categories>
     <!-- Follows CSS selector rules -->
-    <filters>      
+    <filters>
       <group type="post">
         <filter target="title">.Title</filter>
-        <filter target="avatar">.img-subject</filter>
         <filter target="description">.Lead</filter>
         <filter target="content">.content > div</filter>
       </group>
@@ -24,11 +23,11 @@
       <group type="post">
         <rule target="exclude">.Title</rule>
         <rule target="exclude">.Lead</rule>
-      </group>      
+      </group>
     </rules>
-	</site>
-	<site id="2" name="MegaFun" url="http://hcm.megafun.vn/">		
-    <categories>      
+  </site>
+  <site id="2" name="MegaFun" url="http://hcm.megafun.vn/">
+    <categories>
       <group type="html">
         <category id="1" url="http://hcm.megafun.vn/cuoc-song/" target-id="3">Cuộc sống</category>
         <category id="2" url="http://hcm.megafun.vn/tin-tuc/nghe-thuat/" target-id="3">Nghệ thuật</category>
@@ -47,7 +46,6 @@
       </group>
       <group type="post">
         <filter target="title">#title</filter>
-        <filter target="avatar">.avatar img</filter>
         <filter target="description">#content strong:first-child</filter>
         <filter target="content">#content</filter>
       </group>
@@ -55,34 +53,27 @@
     <rules>
       <group type="post">
         <rule target="exclude">#content strong:first-child</rule>
+        <rule target="dateFormat">dd/MM/yyyy</rule>
       </group>
     </rules>
-	</site>
-
-    <site id="3" name="DanTri" url="http://dantri.com.vn/">
-        <categories>
-            <group type="rss">
-                <category id="1" url="http://dantri.com.vn/xa-hoi.rss" target-id="2">Xã hội</category>
-                <category id="2" url="http://dantri.com.vn/chinh-tri.rss" target-id="2">Chính Trị</category>
-                <category id="3" url="http://dantri.com.vn/Thegioi.rss" target-id="17">Kinh doanh</category>
-                <category id="4" url="http://dantri.com.vn/giaitri.rss" target-id="3">Văn hóa</category>
-                <category id="5" url="http://dantri.com.vn/The-Thao.rss" target-id="4">Thể thao</category>
-            </group>
-        </categories>
-        <!-- Follows CSS selector rules -->
-        <filters>
-            <group type="post">
-                <filter target="title">.fon6</filter>
-                <filter target="avatar">a > .img130</filter>
-                <filter target="description">.fon33 mt1</filter>
-                <filter target="content">.fon34 mt3 mr2 fon43</filter>
-            </group>
-        </filters>
-        <rules>
-            <group type="post">
-                <rule target="exclude">.fon6</rule>
-                <rule target="exclude">.fon33 mt1</rule>
-            </group>
-        </rules>
-    </site>
+  </site>
+  <site id="3" name="DanTri" url="http://dantri.com.vn/">
+    <categories>
+      <group type="rss">
+        <category id="1" url="http://dantri.com.vn/xa-hoi.rss" target-id="2">Xã hội</category>
+        <category id="2" url="http://dantri.com.vn/chinh-tri.rss" target-id="2">Chính Trị</category>
+        <category id="3" url="http://dantri.com.vn/Thegioi.rss" target-id="17">Kinh doanh</category>
+        <category id="4" url="http://dantri.com.vn/giaitri.rss" target-id="3">Văn hóa</category>
+        <category id="5" url="http://dantri.com.vn/The-Thao.rss" target-id="4">Thể thao</category>
+      </group>
+    </categories>
+    <!-- Follows CSS selector rules -->
+    <filters>
+      <group type="post">
+        <filter target="title">#ctl00_IDContent_ctl00_divContent .fon31</filter>
+        <filter target="description">#ctl00_IDContent_ctl00_divContent .fon33</filter>
+        <filter target="content">#ctl00_IDContent_ctl00_divContent .fon43</filter>
+      </group>
+    </filters>
+  </site>
 </news-sites>

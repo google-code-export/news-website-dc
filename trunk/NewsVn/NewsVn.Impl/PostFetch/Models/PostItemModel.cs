@@ -44,7 +44,8 @@ namespace NewsVn.Impl.PostFetch.Models
                 CheckPageView = true,
                 AllowComments = true,
                 Actived = true,
-                AutoFetch = true
+                AutoFetch = true,
+                AutoFetchUrl = Url.Trim().ToLower()
             };
             return post;
         }
