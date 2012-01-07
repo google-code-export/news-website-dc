@@ -10,6 +10,7 @@ using System;
 using HtmlAgilityPack;
 using Fizzler.Systems.HtmlAgilityPack;
 using NewsVn.Impl.Context;
+using NewsVn.Impl.Entity;
 
 namespace NewsVn.Impl.PostFetch.Services
 {
@@ -65,7 +66,7 @@ namespace NewsVn.Impl.PostFetch.Services
         /// <param name="categoryUrl"></param>
         /// <param name="postSetting"></param>
         /// <returns></returns>
-        public virtual IList<PostItemModel> RequestPostItemList(PostSettingModel postSetting)
+        public virtual IList<PostItemModel> RequestPostItemList(PostSettingModel postSetting, NewsVnContext ctx)
         {
             IList<PostItemModel> itemList = null;
 
@@ -78,7 +79,30 @@ namespace NewsVn.Impl.PostFetch.Services
                 itemList = RequestRawPostItemList(postSetting);
             }
 
+            var oldLinks = RequestOldPostLinks(ctx);
+            
+            if (oldLinks != null)
+            {
+                itemList = itemList.Where(x => !oldLinks.Contains(x.Url.Trim().ToLower())).ToList();    
+            }
+
             return itemList;
+        }
+
+        /// <summary>
+        /// Requests a query of fetched links
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
+        protected virtual IQueryable<string> RequestOldPostLinks(NewsVnContext ctx)
+        {
+            var links = ctx.PostRepo.Getter.getQueryable();
+
+            if (links != null)
+            {
+                return links.Select(x => x.AutoFetchUrl);
+            }
+            return null;
         }
 
         /// <summary>
@@ -125,7 +149,11 @@ namespace NewsVn.Impl.PostFetch.Services
             var doc = html.DocumentNode;
             doc = doc.QuerySelector("img");
 
-            return doc.Attributes["src"].Value;
+            if (doc != null)
+            {
+                return doc.Attributes["src"].Value;
+            }
+            return string.Empty;            
         }
 
         private string GetXElementValue(XElement elem)
@@ -280,7 +308,11 @@ namespace NewsVn.Impl.PostFetch.Services
                     var excludeHtml = doc.QuerySelector(conditions[i]).OuterHtml;
                     item.Content = item.Content.Replace(excludeHtml, string.Empty);
                 }
-                item.Content = item.Content.Replace("src=\"", "src=\"" + postSetting.SiteUrl);
+                bool hasHttp = item.Content.Contains("src=\"http");
+                if (!hasHttp)
+                {
+                    item.Content = item.Content.Replace("src=\"", "src=\"" + postSetting.SiteUrl);
+                }
             }
             catch (Exception ex)
             {
@@ -315,7 +347,7 @@ namespace NewsVn.Impl.PostFetch.Services
                     success = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 success = false;
             }

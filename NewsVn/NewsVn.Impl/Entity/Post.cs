@@ -100,6 +100,9 @@ namespace NewsVn.Impl.Entity
         [Column]
         public bool AutoFetch { get; set; }
 
+        [Column]
+        public string AutoFetchUrl { get; set; }
+
         public override string ToString()
         {
             return "[Post] ID: " + ID + ", Title: " + Title + ", CategoryID: " + CategoryID;

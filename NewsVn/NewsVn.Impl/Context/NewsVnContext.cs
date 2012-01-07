@@ -10,7 +10,7 @@ namespace NewsVn.Impl.Context
         private Repository<Entity.Category> _categoryRepo;
         private Repository<Entity.MemberProfile> _memberProfileRepo;
         private Repository<Entity.Post> _postRepo;
-        private Repository<Entity.PostComment> _postCommentRepo;
+        private Repository<Entity.PostComment> _postCommentRepo;        
         private Repository<Entity.Setting> _settingRepo;
         private Repository<Entity.UserMessage> _userMessageRepo;
         private Repository<Entity.UserProfile> _userProfileRepo;
@@ -20,7 +20,6 @@ namespace NewsVn.Impl.Context
         private Repository<Entity.Location> _locationRepo;
         private Repository<Entity.Banner> _bannerRepo;
         private Repository<Entity.BannerDetail> _bannerDetailRepo;
-
 
         public Repository<Entity.Location> LocationRepo
         {

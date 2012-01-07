@@ -107,19 +107,23 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
                 if (setting != null)
                 {
-                    postList = _service.RequestPostItemList(setting);
+                    using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                    {
+                        postList = _service.RequestPostItemList(setting, ctx);
+                    }                    
                 }
             }
 
             if (postList.Count > 0)
             {
                 rptPostList.DataSource = postList;
-                rptPostList.DataBind();    
             }
             else
             {
-                ltrInfo.Text = string.Format(InfoBar, "Danh sách không tồn tại tin tức nào.");
+                rptPostList.DataSource = null;
+                ltrInfo.Text = string.Format(InfoBar, "Danh sách không tồn tại tin nào hoặc tin đã được cập nhật");
             }
+            rptPostList.DataBind();
         }
 
         /// <summary>
@@ -174,49 +178,68 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         protected void btnGetPostList_Click(object sender, EventArgs e)
         {
-            BindPostListRepeater();
+            try
+            {
+                BindPostListRepeater();
+            }
+            catch (Exception)
+            {
+                ltrError.Text = string.Format(ErrorBar, "Có lỗi xảy ra trong quá trình lấy tin");
+            }
         }
 
         protected void btnAddPostItems_Click(object sender, EventArgs e)
         {
-            if (_service != null)
+            try
             {
-                int selectedSiteID = 0;
-                int.TryParse(ddlFetchSite.SelectedValue, out selectedSiteID);
-
-                int selectedCategoryID = 0;
-                int.TryParse(ddlFetchCategory.SelectedValue, out selectedCategoryID);
-
-                var setting = _service.RequestSetting(selectedSiteID, selectedCategoryID);
-
-                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                if (_service != null)
                 {
-                    foreach (var item in rptPostList.Items.Cast<RepeaterItem>())
+                    int selectedSiteID = 0;
+                    int.TryParse(ddlFetchSite.SelectedValue, out selectedSiteID);
+
+                    int selectedCategoryID = 0;
+                    int.TryParse(ddlFetchCategory.SelectedValue, out selectedCategoryID);
+
+                    var setting = _service.RequestSetting(selectedSiteID, selectedCategoryID);
+
+                    using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                     {
-                        var chkAccept = item.FindControl("chkAccept") as CheckBox;
-
-                        if (chkAccept.Checked)
+                        foreach (var item in rptPostList.Items.Cast<RepeaterItem>())
                         {
-                            var ddlTargetCategory = item.FindControl("ddlTargetCategory") as DropDownList;
-                            int targetID = int.Parse(ddlTargetCategory.SelectedValue);
+                            var chkAccept = item.FindControl("chkAccept") as CheckBox;
 
-                            var hidGetUrl = item.FindControl("hidGetUrl") as HiddenField;
-                            string itemUrl = hidGetUrl.Value;
-
-                            var postItem = _service.RequestRawPostItem(itemUrl, setting);
-
-                            if (postItem != null)
+                            if (chkAccept.Checked)
                             {
-                                var hidAvatar = item.FindControl("hidAvatar") as HiddenField;
+                                var ddlTargetCategory = item.FindControl("ddlTargetCategory") as DropDownList;
+                                int targetID = int.Parse(ddlTargetCategory.SelectedValue);
 
-                                postItem.Avatar = hidAvatar.Value;
-                                postItem.TargetID = targetID;
-                                bool success = _service.AddPostItem(postItem, ctx);
+                                var hidGetUrl = item.FindControl("hidGetUrl") as HiddenField;
+                                string itemUrl = hidGetUrl.Value;
+
+                                var postItem = _service.RequestRawPostItem(itemUrl, setting);
+
+                                if (postItem != null)
+                                {
+                                    var hidAvatar = item.FindControl("hidAvatar") as HiddenField;
+
+                                    postItem.Url = itemUrl;
+                                    postItem.Avatar = hidAvatar.Value;
+                                    postItem.TargetID = targetID;
+                                    bool success = _service.AddPostItem(postItem, ctx);
+                                }
                             }
                         }
+                        ctx.SubmitChanges();
+
+                        BindPostListRepeater();
+
+                        ltrInfo.Text = string.Format(InfoBar, "Đã cập nhập thành công tin đã chọn");
                     }
-                    ctx.SubmitChanges();
                 }
+            }
+            catch (Exception)
+            {
+                ltrError.Text = string.Format(ErrorBar, "Có lỗi xảy ra trong quá trình cập nhật tin");
             }
         }
 

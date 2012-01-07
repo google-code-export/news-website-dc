@@ -65,17 +65,30 @@ namespace NewsVn.Test
 
         static void Test_Service_RqPostList()
         {
-            string xmlPath = "../../PostFetchSites.xml";
-
-            ISettingReader sr = new XmlSettingReader(xmlPath);
-
-            var sv = new DefaultPostFetchService(sr);
-            var setting = sv.RequestSetting(2, 2);
-            var list = sv.RequestPostItemList(setting);
-
-            foreach (var item in list)
+            try
             {
-                Console.WriteLine(item.Title);
+                string _connectionString = Connection.ConnectionString;
+
+                using (var ctx = new NewsVnContext(_connectionString))
+                {
+                    string xmlPath = "../../PostFetchSites.xml";
+
+                    ISettingReader sr = new XmlSettingReader(xmlPath);
+
+                    var sv = new DefaultPostFetchService(sr);
+                    var setting = sv.RequestSetting(2, 2);
+
+                    var list = sv.RequestPostItemList(setting, ctx);
+
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine(item.Title);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
