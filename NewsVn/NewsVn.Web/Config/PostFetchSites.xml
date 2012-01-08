@@ -76,4 +76,35 @@
       </group>
     </filters>
   </site>
+  <site id="4" name="DatViet" url="http://baodatviet.vn/">
+    <categories>
+      <group type="html">
+        
+      </group>
+    </categories>
+  </site>
+  <site id="5" name="NgoiSao" url="http://ngoisao.net/">
+    <categories>
+      <group type="rss">
+        <category id="1" url="http://ngoisao.net/rss/hau-truong.rss" target-id="3">Hậu trường</category>
+        <category id="2" url="http://ngoisao.net/rss/the-thao.rss" target-id="4">Thể thao</category>
+      </group>
+    </categories>
+  </site>
+  <site id="6" name="Tin24h" url="http://hcm.24h.com.vn/">
+    <categories>
+      <group type="rss">
+        <category id="1" url="http://www.24h.com.vn/upload/rss/bongda.rss" target-id="4">Bóng đá</category>
+        <category id="2" url="http://www.24h.com.vn/upload/rss/anninhhinhsu.rss" target-id="2">Xã hội</category>
+      </group>
+    </categories>
+  </site>
+  <site id="7" name="TuoiTre" url="http://hcm.24h.com.vn/">
+    <categories>
+      <group type="rss">
+        <category id="1" url="http://tuoitre.vn/RssFeeds.aspx?ChannelID=3" target-id="4">Chính trị - Xã hội</category>
+        <category id="2" url="http://tuoitre.vn/RssFeeds.aspx?ChannelID=2" target-id="17">Thế giới</category>
+      </group>
+    </categories>
+  </site>
 </news-sites>

@@ -124,8 +124,8 @@ namespace NewsVn.Impl.PostFetch.Services
                     Title = GetXElementValue(x.Element("title")),
                     Description = GetDescriptionValue(x.Element("description")),
                     Url = GetXElementValue(x.Element("link")),
-                    Avatar = GetAvatarValue(x.Element("description")),
-                    PubDate = DateTime.Parse(GetXElementValue(x.Element("pubDate")))
+                    Avatar = GetAvatarValue(x.Element("description"))//,
+                    //PubDate = DateTime.Parse(GetXElementValue(x.Element("pubDate")))
                 }).ToList();
             }
 
