@@ -16,10 +16,10 @@
                 <category id="10" url="http://vnexpress.net/rss/gl/oto-xe-may.rss" target-id="40">Văn hóa</category>
                 <category id="11" url="http://vnexpress.net/rss/gl/ban-doc-viet-tam-su.rss" target-id="38">Tâm tình</category>
                 <category id="12" url="http://vnexpress.net/rss/gl/cuoi.rss" target-id="9">Thư giãn</category>
-                <category id="13" url="http://gamethu.vnexpress.net/rss/gt/diem-tin.rss" target-id="123">Game</category>
-                <category id="14" url="http://gamethu.vnexpress.net/rss/gt/chuyen-game.rss" target-id="123">Game</category>
-                <category id="15" url="http://gamethu.vnexpress.net/rss/gt/sap-choi.rss" target-id="123">Game</category>
-                <category id="16" url="http://gamethu.vnexpress.net/rss/gt/cong-nghe.rss" target-id="123">Game</category>
+                <category id="13" url="http://gamethu.vnexpress.net/rss/gt/diem-tin.rss" target-id="123">Game - Điểm tin</category>
+                <category id="14" url="http://gamethu.vnexpress.net/rss/gt/chuyen-game.rss" target-id="123">Game - Chuyện làng Game</category>
+                <category id="15" url="http://gamethu.vnexpress.net/rss/gt/sap-choi.rss" target-id="123">Game - Sắp ra mắt</category>
+                <category id="16" url="http://gamethu.vnexpress.net/rss/gt/cong-nghe.rss" target-id="123">Game - Công nghệ Game</category>
                 
             </group>
         </categories>
