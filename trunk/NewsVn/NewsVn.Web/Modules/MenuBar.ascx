@@ -16,7 +16,7 @@
 
 <ul id="menu_bar">
     <li class="head">
-        <a class="menu-item" href='<%= HostName + "trang-chu.aspx" %>'>Trang chủ</a>
+        <a class="home-page menu-item" href='<%= HostName + "trang-chu.aspx" %>' title="Trang chủ">Trang chủ</a>
     </li>
     <asp:Repeater runat="server" ID="rptMenu" 
         OnItemDataBound="rptMenu_ItemDataBound">
