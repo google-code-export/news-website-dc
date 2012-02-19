@@ -11,13 +11,12 @@ using HtmlAgilityPack;
 using Fizzler.Systems.HtmlAgilityPack;
 using NewsVn.Impl.Context;
 using NewsVn.Impl.Entity;
-
+using System.Threading;
 namespace NewsVn.Impl.PostFetch.Services
 {
     public class PostFetchServiceAbstract
     {
         private readonly ISettingReader _settingReader;
-
         /// <summary>
         /// Inits with setting reader as Cache reader
         /// </summary>
