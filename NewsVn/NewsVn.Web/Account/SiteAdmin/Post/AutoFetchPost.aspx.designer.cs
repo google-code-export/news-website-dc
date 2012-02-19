@@ -13,6 +13,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
     public partial class AutoFetchPost {
         
         /// <summary>
+        /// lblCurrentSetting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCurrentSetting;
+        
+        /// <summary>
         /// ddlFetchSite control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,24 @@ namespace NewsVn.Web.Account.SiteAdmin.Post {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnAddPostItems;
+        
+        /// <summary>
+        /// lnkbtnAutoMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnAutoMode;
+        
+        /// <summary>
+        /// lnkbtnOffAutoMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnOffAutoMode;
         
         /// <summary>
         /// ltrError control.

@@ -10,7 +10,18 @@ namespace NewsVn.Web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            ApplicationManager.Init();
+            
+            try
+            {
+                ApplicationManager.Init();
+                NewsVnService _NewsVnService = new NewsVnService();
+                _NewsVnService.initRefreshScheduler();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -8,6 +8,13 @@ using System.Xml.Linq;
 using NewsVn.Impl.Caching;
 using NewsVn.Impl.Context;
 
+using System.Threading;
+using System.IO;
+using NewsVn.Impl.PostFetch;
+using NewsVn.Impl.PostFetch.Settings;
+using NewsVn.Impl.PostFetch.Services;
+using NewsVn.Impl.PostFetch.Models;
+
 namespace NewsVn.Web.Utils
 {
     /// <summary>
@@ -17,8 +24,174 @@ namespace NewsVn.Web.Utils
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     [System.Web.Script.Services.ScriptService]
+    
     public class NewsVnService : BaseUI.BaseService
     {
+        //auto postfetch / config time execute job 
+        public static long TimerSetting = long.Parse(System.Configuration.ConfigurationManager.AppSettings["AutoPostFetch_TimeValue"].ToString());
+        long timerdelay = 60000;//3600s = 1h //7200000
+        Timer timer;
+        object SyncRoot = new object();
+        public NewsVnService()
+        {
+            timerdelay = TimerSetting;
+            //
+            string xmlPath = Server.MapPath("~/Config/PostFetchSites.xml");
+            var xmlFile = new FileInfo(xmlPath);
+
+            if (xmlFile.Exists)
+            {
+                _settingReader = new XmlSettingReader(xmlPath);
+                _service = new DefaultPostFetchService(_settingReader);
+            }     
+
+            //init site setting
+            if (_settingReader != null)
+            {
+                _siteSettings = _settingReader.GetSiteSettings();
+            }
+        }
+
+        public void initRefreshScheduler()
+        {
+            //using delegate function timercallback
+            try
+            {
+                TimerCallback OnTimerTick = new TimerCallback(TimerTick);
+                timer = new Timer(OnTimerTick, null, 0, timerdelay);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void setAutoMode()
+        {
+            excuteAutoPostFetch();
+        }
+        private void TimerTick(object state)
+        {
+            lock (SyncRoot)
+            {
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                {
+                    //check status of AutoFetchPost / allow or not allow!
+                    var AutoFetchPostIsRunning = ctx.SettingRepo.Getter.getQueryable(c => c.Name == "AutoFetchPostIsRunning").FirstOrDefault();
+                    if (AutoFetchPostIsRunning != null)
+                    {
+                        if (AutoFetchPostIsRunning.Value == "True")
+                        {
+                            excuteAutoPostFetch();            
+                        }
+                    }
+                }
+                
+            }
+        }
+        private readonly ISettingReader _settingReader;
+        private readonly PostFetchServiceAbstract _service;
+        private IList<SiteSetting> _siteSettings;
+
+        private void excuteAutoPostFetch()
+        {
+     
+        //read all site
+            if (_siteSettings != null)
+            {
+                foreach (var site in _siteSettings)
+                {
+                    //get categories by site
+                    int selectedSiteID = 0;
+                    int.TryParse(site.ID.ToString(), out selectedSiteID);
+                    var siteSetting = _siteSettings.FirstOrDefault(x => x.ID == selectedSiteID);
+
+                    if (siteSetting != null)
+                    {
+                        //read all category of one site
+                        foreach (var category in siteSetting.Categories)
+                        {
+                            getPostList(selectedSiteID, category.ID);
+                        }
+                    }
+                }
+                //Turn the autoFetchPost to off status
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                {
+                    //check status of AutoFetchPost / allow or not allow!
+                    var AutoFetchPostIsRunning = ctx.SettingRepo.Getter.getQueryable(c => c.Name == "AutoFetchPostIsRunning").FirstOrDefault();
+                    if (AutoFetchPostIsRunning != null)
+                    {
+                        AutoFetchPostIsRunning.Value = "False";
+                        ctx.SubmitChanges();
+                    }
+                }
+            }
+
+        }
+        //get list of news from category of one site
+        private IList<PostItemModel> getPostList(int siteID, int CategoryID)
+        {
+            IList<PostItemModel> postList = new List<PostItemModel>();
+
+            if (_service != null)
+            {
+                int selectedSiteID = siteID;
+
+                int selectedCategoryID = CategoryID;
+
+                var setting = _service.RequestSetting(selectedSiteID, selectedCategoryID);
+
+                if (setting != null)
+                {
+                    using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                    {
+                        postList = _service.RequestPostItemList(setting, ctx);
+                       autoInsertPost(postList, setting);
+                    }
+                }
+            }
+
+            if (postList.Count > 0)
+            {
+                return postList;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        //add postFetch
+        private void autoInsertPost(IList<PostItemModel> pPostItemModel, PostSettingModel pSetting) {
+            try
+            {
+                if (_service != null)
+                {
+                    //get setting by
+                    var setting = pSetting;
+
+                    using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                    {
+                        foreach (var item in pPostItemModel)
+                        {
+                            string itemUrl = item.Url;
+                            var postItem = _service.RequestRawPostItem(itemUrl, setting);
+                            if (postItem != null)
+                            {
+                                postItem.Url = itemUrl;
+                                postItem.Avatar = item.Avatar;
+                                postItem.TargetID = setting.TargetID;
+                                postItem.Creator = "AutoFetch";
+                                bool success = _service.AddPostItem(postItem, ctx);
+                            }
+                        }
+                        ctx.SubmitChanges();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
         #region CommentBox
 
         private int CountPostComments(int postID)
