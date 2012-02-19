@@ -23,12 +23,24 @@ namespace NewsVn.Impl.PostFetch.Models
 
         public int TargetID { get; set; }
 
+        public string Creator { get; set; }
+
         /// <summary>
         /// Converts this model into Post Entity
         /// </summary>
         /// <returns>Post entity</returns>
         public Post ToPostEntity()
         {
+            
+            bool approved = false;
+            if (Creator == "AutoFetch")
+            {
+                approved = true;
+            }
+            else if (HttpContext.Current != null)
+            {
+                Creator = HttpContext.Current.User.Identity.Name;
+            }
             var post = new Post
             {
                 Title = Title.Trim(),
@@ -37,7 +49,7 @@ namespace NewsVn.Impl.PostFetch.Models
                 Description = Description.Trim(),
                 Content = Content.Trim(),
                 CategoryID = TargetID,
-                CreatedBy = HttpContext.Current.User.Identity.Name,
+                CreatedBy = Creator,
                 CreatedOn = DateTime.Now,
                 PageView = 0,
                 SeoUrl = string.Empty,
@@ -45,7 +57,10 @@ namespace NewsVn.Impl.PostFetch.Models
                 AllowComments = true,
                 Actived = true,
                 AutoFetch = true,
-                AutoFetchUrl = Url.Trim().ToLower()
+                AutoFetchUrl = Url.Trim().ToLower(),
+                Approved = approved,
+                ApprovedOn = DateTime.Now,
+                ApprovedBy = Creator == "AutoFetch" ? "AutoFetch" : ""
             };
             return post;
         }
