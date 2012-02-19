@@ -37,7 +37,25 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             InitSiteSettings();
 
             if (!IsPostBack)
-            {                
+            {
+                using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+                {
+                    //check status of AutoFetchPost / allow or not allow button set auto Mode
+                    var AutoFetchPostIsRunning = ctx.SettingRepo.Getter.getQueryable(c => c.Name == "AutoFetchPostIsRunning").FirstOrDefault();
+                    if (AutoFetchPostIsRunning != null)
+                    {
+                        lnkbtnAutoMode.Visible = AutoFetchPostIsRunning.Value == "True" ? false : true;
+                        lnkbtnOffAutoMode.Visible = AutoFetchPostIsRunning.Value == "True" ? true : false;
+                        //
+                        btnGetPostList.Enabled = AutoFetchPostIsRunning.Value == "True" ? false : true;
+                        btnAddPostItems.Enabled = AutoFetchPostIsRunning.Value == "True" ? false : true;
+                        ddlFetchCategory.Enabled = AutoFetchPostIsRunning.Value == "True" ? false : true;
+                        ddlFetchSite.Enabled = AutoFetchPostIsRunning.Value == "True" ? false : true;
+                        int setting=int.Parse(System.Configuration.ConfigurationManager.AppSettings["AutoPostFetch_TimeValue"].ToString())/1000;
+
+                        lblCurrentSetting.Text = (setting / 3600).ToString();
+                    }
+                }
                 BindSitesDropDown();
                 BindCategoriesDropDown();
                 ltrInfo.Text = string.Format(InfoBar, "Vui lòng nhấn '<b>Lấy tin</b>' để hiện danh sách.");
@@ -269,6 +287,44 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 
             }
+        }
+
+        protected void lnkbtnAutoMode_Click(object sender, EventArgs e)
+        {
+            //Turn the autoFetchPost to off status
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                //check status of AutoFetchPost / allow or not allow!
+                var AutoFetchPostIsRunning = ctx.SettingRepo.Getter.getQueryable(c => c.Name == "AutoFetchPostIsRunning").FirstOrDefault();
+                if (AutoFetchPostIsRunning != null)
+                {
+                    if (AutoFetchPostIsRunning.Value == "False")
+                    {
+                        AutoFetchPostIsRunning.Value = "True";
+                        ctx.SubmitChanges();
+                    }
+                }
+            }
+            Response.Redirect(Request.Url.ToString());
+        }
+
+        protected void lnkbtnOffAutoMode_Click(object sender, EventArgs e)
+        {
+            //Turn the autoFetchPost to off status
+            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
+            {
+                //check status of AutoFetchPost / allow or not allow!
+                var AutoFetchPostIsRunning = ctx.SettingRepo.Getter.getQueryable(c => c.Name == "AutoFetchPostIsRunning").FirstOrDefault();
+                if (AutoFetchPostIsRunning != null)
+                {
+                    if (AutoFetchPostIsRunning.Value == "True")
+                    {
+                        AutoFetchPostIsRunning.Value = "False";
+                        ctx.SubmitChanges();
+                    }
+                }
+            }
+            Response.Redirect(Request.Url.ToString());
         }
     }
 }

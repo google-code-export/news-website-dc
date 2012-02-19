@@ -67,7 +67,13 @@
         Check các checkbox để chọn tin cần cập nhật<br />
         Nhấn nút <b>Cập nhật</b> để thêm vào <b><asp:HyperLink NavigateUrl="~/account/siteadmin/post/viewpost.aspx" Text="Quản lý tin tức" runat="server" /></b><br />        
         Chuyển qua phần <b><asp:HyperLink NavigateUrl="~/account/siteadmin/post/viewpost.aspx" Text="Quản lý tin tức" runat="server" /></b>, sẽ thấy các tin vừa thêm ở dạng chưa duyệt<br />
-        Chọn và duyệt các tin này để Publish ra bên ngoài
+        Chọn và duyệt các tin này để Publish ra bên ngoài<br />
+        <b>Đối với lấy tin tự động:</b><br />
+        Chọn <b>Bật</b> để mở chế độ tự động lấy tin tức<br />
+        Chọn <b>Tắt</b> để tắt chế độ lấy tin tự động<br />
+        <b>Thời gian lấy tin tự động:</b><br />
+        Mặc định: 6h/lần<br />
+        Đang thiết lập: <asp:Label runat="server" ID="lblCurrentSetting" Text="" />h/lần
     </div>
     <div id="topContent">
         <div>
@@ -83,6 +89,11 @@
                 <asp:LinkButton ID="btnAddPostItems" Text="Cập nhật" CssClass="button" 
                     runat="server" OnClick="btnAddPostItems_Click" />
                 <asp:HyperLink Text="Trợ giúp" CssClass="button-help dialog-trigger[postHelpBox]" runat="server" />
+                <span>Lấy tin tự động: </span>
+                 <asp:LinkButton ID="lnkbtnAutoMode" Text="Bật" Visible="false" CssClass="button" 
+                    runat="server" onclick="lnkbtnAutoMode_Click" />
+                    <asp:LinkButton ID="lnkbtnOffAutoMode" Visible="false" Text="Tắt" CssClass="button" 
+                    runat="server" onclick="lnkbtnOffAutoMode_Click" />
             </div>
             <div class="clear"></div>
         </div>
