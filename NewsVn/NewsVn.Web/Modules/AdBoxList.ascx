@@ -17,7 +17,7 @@
     <div runat="server" id="divContentAds"></div>
 	
 </div>
-<div style="padding:10px 5px 10px 5px !important; width:300px;" class="side-part portlet">
+<%--<div style="padding:10px 5px 10px 5px !important; width:300px;" class="side-part portlet">
  <h2>Quảng cáo liên kết</h2>
     <!-- Begin VietAd -->
 <script language="javascript" type="text/javascript">
@@ -36,5 +36,5 @@
  <div id="VietAd" ></div>
 
 </div>
-
+--%>
 
