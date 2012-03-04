@@ -1622,6 +1622,7 @@
     <Content Include="Images\icons\favico.ico" />
     <Content Include="Images\icons\feed.png" />
     <Content Include="Images\icons\home.png" />
+    <Content Include="Images\icons\home_white.png" />
     <Content Include="Images\icons\mail.png" />
     <Content Include="Images\icons\post_cmt.png" />
     <Content Include="Images\icons\post_rss.png" />
