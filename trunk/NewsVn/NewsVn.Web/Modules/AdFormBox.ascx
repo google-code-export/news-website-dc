@@ -43,8 +43,17 @@
             <asp:TextBox ID="txtTitle" Width="534" CssClass="validate[required]" runat="server" />
         </li>
         <li>
-            <asp:Label ID="Label2" AssociatedControlID="txtContent" Text="* Nội dung:" runat="server" />
-            <asp:TextBox ID="txtContent" Width="534" CssClass="validate[required]" TextMode="MultiLine" Rows="16" runat="server" />
+        <table><tr>
+        <td align="left">
+        <asp:Label ID="Label2" AssociatedControlID="editorContent" Text="* Nội dung:" runat="server" />
+        </td><td align="right">
+        <nsn:Editor ID="editorContent" runat="server" AutoConfigure="Minimal" CssClass="validate[required]"
+            Height="250" Width="534" ContextMenuMode="Minimal" ShowDecreaseButton="False" ShowToolBar="false" ShowBottomBar="false"
+            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="" />
+        </td></tr></table>
+            
+            <%--<asp:TextBox ID="txtContent" Width="534" CssClass="validate[required]" TextMode="MultiLine" Rows="16" runat="server" />--%>
+        
         </li>
         <li>
             <asp:Label ID="Label3" AssociatedControlID="fileAvatar" Text="Ảnh minh họa:" runat="server" />

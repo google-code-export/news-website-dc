@@ -36,7 +36,7 @@ namespace NewsVn.Web.Modules
                    var strImgUrl= uploadImg();
                     var adsPost = new Impl.Entity.AdPost();
                     adsPost.Title = txtTitle.Text.Trim();
-                    adsPost.Content = txtContent.Text.Trim();
+                    adsPost.Content = editorContent.Text; //txtContent.Text.Trim();
                     adsPost.Avatar =  strImgUrl;
                     adsPost.SeoUrl = "";
                     adsPost.Category = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
