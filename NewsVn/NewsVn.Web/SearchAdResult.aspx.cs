@@ -4,11 +4,16 @@ using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using NewsVn.Impl.Context;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace NewsVn.Web
 {
     public partial class SearchAdResult : BaseUI.BasePage
     {
+        private string strConnection { get; set; }
+        private string connection { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,57 +34,95 @@ namespace NewsVn.Web
 
             string searchText = searchArgs[0];
             string location = searchArgs[1];
-            string strDateFrom = searchArgs[2].Replace('_', '/');
-            string strDateTo = searchArgs[3].Replace('_', '/');
-            strDateFrom = (strDateFrom != "") ? strDateFrom : "01/01/1970";
-            strDateTo = (strDateTo != "") ? strDateTo : DateTime.Now.ToShortDateString();
+            double numberofDays = 0;
 
-            IFormatProvider format = new CultureInfo("vi-VN");
+            string strDateTo = searchArgs[2];
+            double.TryParse(strDateTo, out numberofDays);
+            DateTime searchDate = DateTime.Now.AddDays(-numberofDays);
+            //neu ngay chi co ngay bat dau -> lay ngay bat dau >= fDate
+            //neu chi co ngay ket thuc -> lay ngay theo ngay ket thuc <=fDate
 
+            //var _Ads = ctx.AdPostRepo.Getter.getQueryable(a => a.Actived == true);
+            //if (location == "0")
+            //{
+            //    var searchResult = _Ads.Where(a => a.Title.Contains( searchText ) && (a.CreatedOn >= searchDate))
+            //      .Select(a => new
+            //      {
+            //          a.ID,
+            //          a.SeoUrl,
+            //          a.Title,
+            //          a.Content,
+            //          a.CreatedOn,
+            //          a.CreatedBy,
+            //          a.Location,
+            //          a.Avatar
+            //      }).OrderByDescending(a => a.CreatedOn).ThenByDescending(a => a.ID).ToList();
+            //    AdSearchResult1.DataSource = searchResult;
+            //}
+            //else {
+            //    var searchResult = _Ads.Where(a => a.Title.Contains("%" + searchText + "%") && (a.Location == location) && (a.CreatedOn >= searchDate))
+            //          .Select(a => new
+            //          {
+            //              a.ID,
+            //              a.SeoUrl,
+            //              a.Title,
+            //              a.Content,
+            //              a.CreatedOn,
+            //              a.CreatedBy,
+            //              a.Location,
+            //              a.Avatar
+            //          }).OrderByDescending(a => a.CreatedOn).ThenByDescending(a => a.ID).ToList();
+            //    AdSearchResult1.DataSource = searchResult;
+            //}
 
-            DateTime fDate = DateTime.Parse(strDateFrom, format);
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["NewsVnMain"].ToString();
 
-            DateTime tDate = DateTime.Parse(strDateTo, format);
-
-            var _Ads = ctx.AdPostRepo.Getter.getQueryable(a => a.Actived == true);
-
-            if (location == "0")
+            // Specify the parameter value.
+            int paramLocation = 0;
+            int.TryParse(location, out paramLocation);
+            string paramTitle = searchText;
+            DateTime paramCreated = searchDate;
+            DataTable dt = new DataTable();
+            // Create and open the connection in a using block. This
+            // ensures that all resources will be closed and disposed
+            // when the code exits.
+            using (SqlConnection connection =
+                new SqlConnection(connectionString))
             {
-                var searchResult = _Ads.Where(a => a.TitleAscii.Contains(searchText) && a.CreatedOn >= fDate && a.CreatedOn <= tDate)
-                  .Select(a => new
-                  {
-                      a.ID,
-                      a.SeoUrl,
-                      a.Title,
-                      a.Content,
-                      a.CreatedOn,
-                      a.CreatedBy,
-                      a.Location,
-                      a.Avatar
-                  }).OrderByDescending(a => a.CreatedOn).ThenByDescending(a => a.ID).ToList();
-                AdSearchResult1.DataSource = searchResult;
-            }
-            else
-            {
-                var searchResult = _Ads.Where(a => a.TitleAscii.Contains(searchText) && a.Location == location && a.CreatedOn >= fDate && a.CreatedOn <= tDate)
-                 .Select(a => new
-                 {
-                     a.ID,
-                     a.SeoUrl,
-                     a.Title,
-                     a.Content,
-                     a.CreatedOn,
-                     a.CreatedBy,
-                     a.Location,
-                     a.Avatar
-                 }).OrderByDescending(a => a.CreatedOn).ThenByDescending(a => a.ID).ToList();
-                AdSearchResult1.DataSource = searchResult;
+                SqlCommand command = new SqlCommand();
+               
+                command.Connection = connection;
+                command.CommandText = "sp_AdPost_Search";
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@title", paramTitle);
+                command.Parameters.AddWithValue("@titleAsii", Utils.clsCommon.RemoveDangerousMarks(paramTitle));
+                if (paramLocation != 0)
+                {
+                    command.Parameters.AddWithValue("@location", paramLocation);
+                }
+                else
+                    command.Parameters.AddWithValue("@location", DBNull.Value);
+
+                command.Parameters.AddWithValue("@created", paramCreated);
+                
+                
+                SqlDataAdapter adt = new SqlDataAdapter(command);
+                try
+                {
+                    connection.Open();
+                    adt.SelectCommand = command;
+                    adt.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                }
             }
 
+            AdSearchResult1.DataSource = dt;
             AdSearchResult1.DataBind();
         }
         void bindBannerRight(NewsVnContext ctx)
-        {            
+        {
             var bannerRightListID = ctx.BannerDetailRepo.Getter.getQueryable(c => c.Activated && c.TypePosition == 2).Select(c => c.ID).ToArray();
             if (bannerRightListID.Length >= 1)
             {   //lay random 1 list right banner
