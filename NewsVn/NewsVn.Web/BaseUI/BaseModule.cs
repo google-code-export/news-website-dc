@@ -13,9 +13,9 @@ namespace NewsVn.Web.BaseUI
         protected override void OnInit(EventArgs e)
         {
             var sb = new StringBuilder();
-            sb.Append("<li><div class=\"ui-widget\"><div class=\"ui-state-highlight ui-corner-all\" style=\"padding: 0 .7em;\">");
+            sb.Append("<li><div id='divInforBar' class=\"ui-widget\"><div class=\"ui-state-highlight ui-corner-all\" style=\"padding: 0 .7em;\">");
             sb.Append("<p><span class=\"ui-icon ui-icon-info\" style=\"float: left; margin: .15em .3em 0 0;\"></span>");
-            sb.Append("<b>Thông báo:</b> {0}</p></div></div></li>");
+            sb.Append("<b><span id='spanInfoBar'>Thông báo:</span></b> {0}</p></div></div></li>");
             InfoBar = sb.ToString();
 
             sb = new StringBuilder();
