@@ -40,22 +40,22 @@ namespace NewsVn.Web.Modules {
         protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
         
         /// <summary>
-        /// txtAdFromDate control.
+        /// ddlFollowday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdFromDate;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFollowday;
         
         /// <summary>
-        /// txtAdToDate control.
+        /// ltrError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdToDate;
+        protected global::System.Web.UI.WebControls.Label ltrError;
         
         /// <summary>
         /// lnkbtnSearchAd control.

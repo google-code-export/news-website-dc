@@ -2,6 +2,7 @@
     Inherits="NewsVn.Web.Modules.AdSearchBox" %>
 <script type="text/javascript">
     $(function () {
+        $("#divInforBar").attr("style", "display:none !important;");
         var initText = "Tìm rao vặt...";
         var searchInput = $("#<%= txtSearch.ClientID %>");
         initSearchInput(initText, searchInput);
@@ -16,16 +17,30 @@
                 initSearchInput(initText, searchInput);
             }
         });
+        setGuiUIDropdownlist("#<%= ddlLocation.ClientID %>");
+        setGuiUIDropdownlist("#<%= ddlFollowday.ClientID %>");
 
-        var selectorID = "#<%= ddlLocation.ClientID %>";
+
+        $(".side-part .datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
+        var btnSearch = $("#<%= lnkbtnSearchAd.ClientID %>");
+        btnSearch.click(function () {
+            if (searchInput.val() == initText) {
+
+                $("#divInforBar").attr("style", "padding: 0 .7em;");
+                $("#spanInfoBar").text("Vui lòng nhập chuỗi tìm kiếm");
+                return false;
+            }
+            else { $("#divInforBar").attr("style", "display:none !important;"); }
+        })
+    });
+    function setGuiUIDropdownlist(controlID) {
+        var selectorID =controlID;
         var linkSelector = $(selectorID);
         linkSelector.selectmenu({ width: "274px" });
         linkSelector.next(".ui-selectmenu").addClass("select");
         linkSelector.next(".ui-selectmenu").find(".ui-selectmenu-status").addClass("select-item");
         $(selectorID + "-menu").width(280);
-        $(".side-part .datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
-    });
-
+    }
     function initSearchInput(initText, searchInput) {
         searchInput.val(initText);
         searchInput.css({ "font-style": "italic" });
@@ -50,15 +65,20 @@
             </li>
             <li>
                 <p style="margin-top: 0">
-                    Tìm từ ngày - đến ngày:</p>
-                <div class="textbox-icon left">
-                    <asp:TextBox ID="txtAdFromDate" CssClass="datepicker" Style="width: 125px" runat="server" />
-                </div>
-                <div class="textbox-icon right">
-                    <asp:TextBox ID="txtAdToDate" CssClass="datepicker" Style="width: 125px" runat="server" />
-                </div>
-                <div class="clear">
-                </div>
+                    Tìm trong khoảng thời gian:</p>
+               <asp:DropDownList ID="ddlFollowday" runat="server">
+                    <asp:ListItem Text="Hôm nay" Value="0" />
+                    <asp:ListItem Text="3 ngày trước" Value="3"/>
+                    <asp:ListItem Text="5 ngày trước" Value="5"/>
+                    <asp:ListItem Text="7 tuần trước" Value="7"/>
+                    <asp:ListItem Text="1 tháng trước" Value="30"/>
+                    <asp:ListItem Text="3 tháng trước" Value="90"/>
+                    <asp:ListItem Text="1 năm trước" Value="365"/>
+                </asp:DropDownList>
+            </li>
+            <li>
+            <asp:Label ID="ltrError" EnableViewState="false" runat="server" />
+             
             </li>
             <li class="command"><a href='<%=HostName +"rao-nhanh-dang-ky.aspx" %>' class="button left">
                 Đăng mới</a>
