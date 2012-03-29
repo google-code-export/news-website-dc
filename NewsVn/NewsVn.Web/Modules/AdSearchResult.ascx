@@ -27,6 +27,14 @@
                 <div class="clear"></div>
                 </li>
 		</ItemTemplate>
+        <EmptyDataTemplate>
+        <li>
+         <div style="height:200px;">
+         <p>Không tìm thấy dữ liệu</p>
+         </div>
+         <div class="clear"></div>
+         </li>
+        </EmptyDataTemplate>
     </asp:ListView>
     </ul>
        
