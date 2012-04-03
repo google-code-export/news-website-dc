@@ -95,7 +95,7 @@ namespace NewsVn.Impl.PostFetch.Services
         /// <returns></returns>
         protected virtual IQueryable<string> RequestOldPostLinks(NewsVnContext ctx)
         {
-            var links = ctx.PostRepo.Getter.getQueryable();
+            var links = ctx.PostRepo.Getter.getQueryable(x => x.AutoFetch);
 
             if (links != null)
             {
@@ -122,9 +122,9 @@ namespace NewsVn.Impl.PostFetch.Services
                 {
                     Title = GetXElementValue(x.Element("title")),
                     Description = GetDescriptionValue(x.Element("description")),
-                    Url = GetXElementValue(x.Element("link")),
-                    Avatar = GetAvatarValue(x.Element("description"))//,
-                    //PubDate = DateTime.Parse(GetXElementValue(x.Element("pubDate")))
+                    Url = FixUrl(GetXElementValue(x.Element("link")), postSetting.SiteUrl),
+                    Avatar = FixUrl(GetAvatarValue(x.Element("description")), postSetting.SiteUrl)
+                    //, //PubDate = DateTime.Parse(GetXElementValue(x.Element("pubDate")))
                 }).ToList();
             }
 
@@ -142,6 +142,7 @@ namespace NewsVn.Impl.PostFetch.Services
 
         private string GetAvatarValue(XElement elem)
         {
+
             string htmlString = GetXElementValue(elem);
             var html = new HtmlDocument();
             html.LoadHtml(htmlString);
@@ -195,18 +196,34 @@ namespace NewsVn.Impl.PostFetch.Services
 
                     foreach (var resultDoc in resultDocs)
                     {
-                        var postItem = new PostItemModel
+                        var titleNode = resultDoc.QuerySelector(titleSelector);
+                        var descriptionNode = resultDoc.QuerySelector(descriptionSelector);
+                        var avatarNode = resultDoc.QuerySelector(avatarSelector);
+                        var linkNode = resultDoc.QuerySelector(linkSelector);
+
+                        var postItem = new PostItemModel();
+                        
+                        if (titleNode != null)
                         {
-                            Title = resultDoc.QuerySelector(titleSelector).InnerText,
-                            Description = resultDoc.QuerySelector(descriptionSelector).InnerText,
-                            Avatar = postSetting.SiteUrl + resultDoc.QuerySelector(avatarSelector).Attributes["src"].Value,
-                            Url = postSetting.SiteUrl + resultDoc.QuerySelector(linkSelector).Attributes["href"].Value
-                        };
+                            postItem.Title = resultDoc.QuerySelector(titleSelector).InnerText;
+                        }
+                        if (descriptionNode != null)
+                        {
+                            postItem.Description = resultDoc.QuerySelector(descriptionSelector).InnerText;
+                        }
+                        if (avatarNode != null)
+                        {
+                            postItem.Avatar = FixUrl(resultDoc.QuerySelector(avatarSelector).Attributes["src"].Value, postSetting.SiteUrl);
+                        }
+                        if (linkNode != null)
+                        {
+                            postItem.Url = FixUrl(resultDoc.QuerySelector(linkSelector).Attributes["href"].Value, postSetting.SiteUrl);
+                        }
+
                         itemList.Add(postItem);
                     }
                 }
             }
-     
             return itemList;
         }
 
@@ -292,26 +309,44 @@ namespace NewsVn.Impl.PostFetch.Services
                 var html = web.Load(itemUrl);
                 var doc = html.DocumentNode;
 
-                item = new PostItemModel
+                var titleNode = doc.QuerySelector(titleSelector);
+                var descriptionNode = doc.QuerySelector(descriptionSelector);
+                var contentNode = doc.QuerySelector(contentSelector);
+
+                item = new PostItemModel();
+
+                if (titleNode != null)
                 {
-                    Title = doc.QuerySelector(titleSelector).InnerText,
-                    //Avatar = doc.QuerySelector(avatarSelector).Attributes["src"].Value,
-                    Description = doc.QuerySelector(descriptionSelector).InnerText,
-                    Content = doc.QuerySelector(contentSelector).InnerHtml
-                };
+                    item.Title = doc.QuerySelector(titleSelector).InnerText;
+                }
+                if (descriptionNode != null)
+                {
+                    item.Description = doc.QuerySelector(descriptionSelector).InnerText;
+                }
+                if (contentNode != null)
+                {
+                    item.Content = doc.QuerySelector(contentSelector).InnerHtml;
+                }
                 item.Avatar = "";
 
                 string[] conditions = GetConditions(postSetting.Rules, Constants.PostValue, Constants.ExcludeValue);
                 for (int i = 0; i < conditions.Length; i++)
                 {
-                    var excludeHtml = doc.QuerySelector(conditions[i]).OuterHtml;
-                    item.Content = item.Content.Replace(excludeHtml, string.Empty);
+                    var excludeNode = doc.QuerySelector(conditions[i]);
+                    if (excludeNode != null && !string.IsNullOrEmpty(item.Content))
+                    {
+                        var excludeHtml = excludeNode.OuterHtml;
+                        item.Content = item.Content.Replace(excludeHtml, string.Empty);
+                    }                    
                 }
-                bool hasHttp = item.Content.Contains("src=\"http");
-                if (!hasHttp)
+                if (!string.IsNullOrEmpty(item.Content))
                 {
-                    item.Content = item.Content.Replace("src=\"", "src=\"" + postSetting.SiteUrl);
-                }
+                    bool hasHttp = item.Content.Contains("src=\"http");
+                    if (!hasHttp)
+                    {
+                        item.Content = item.Content.Replace("src=\"", "src=\"" + postSetting.SiteUrl);
+                    }   
+                }                
             }
             catch (Exception ex)
             {
@@ -362,6 +397,27 @@ namespace NewsVn.Impl.PostFetch.Services
         protected virtual bool CheckExist(PostItemModel item)
         {
             return false;
+        }
+
+        protected virtual string FixUrl(string url, string prefix)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                return null;
+            }
+            else
+            {
+                url = url.Trim();
+            }
+            if (url.StartsWith("http://") || url.StartsWith("www"))
+            {
+                return url;    
+            }
+            if (string.IsNullOrEmpty(prefix))
+            {
+                prefix = string.Empty;
+            }
+            return prefix + url;
         }
     }
 }

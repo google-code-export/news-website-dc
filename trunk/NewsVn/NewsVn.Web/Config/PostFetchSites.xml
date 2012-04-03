@@ -15,12 +15,7 @@
                 <category id="9" url="http://vnexpress.net/rss/gl/vi-tinh.rss" target-id="41">Vi Tính</category>
                 <category id="10" url="http://vnexpress.net/rss/gl/oto-xe-may.rss" target-id="40">Văn hóa</category>
                 <category id="11" url="http://vnexpress.net/rss/gl/ban-doc-viet-tam-su.rss" target-id="38">Tâm tình</category>
-                <category id="12" url="http://vnexpress.net/rss/gl/cuoi.rss" target-id="9">Thư giãn</category>
-                <category id="13" url="http://gamethu.vnexpress.net/rss/gt/diem-tin.rss" target-id="123">Game - Điểm tin</category>
-                <category id="14" url="http://gamethu.vnexpress.net/rss/gt/chuyen-game.rss" target-id="123">Game - Chuyện làng Game</category>
-                <category id="15" url="http://gamethu.vnexpress.net/rss/gt/sap-choi.rss" target-id="123">Game - Sắp ra mắt</category>
-                <category id="16" url="http://gamethu.vnexpress.net/rss/gt/cong-nghe.rss" target-id="123">Game - Công nghệ Game</category>
-                
+                <category id="12" url="http://vnexpress.net/rss/gl/cuoi.rss" target-id="9">Thư giãn</category>                
             </group>
         </categories>
         <!-- Follows CSS selector rules -->
@@ -75,43 +70,41 @@
                 <category id="1" url="http://dantri.com.vn/xa-hoi.rss" target-id="2">Xã hội</category>
                 <category id="2" url="http://dantri.com.vn/moi-truong.rss" target-id="29">Môi trường</category>
                 <category id="3" url="http://dantri.com.vn/Thegioi.rss" target-id="17">Thế giới</category>
-                <category id="4" url="http://dantri.com.vn/giaitri.rss" target-id="3">Văn hóa</category>
-                <category id="5" url="http://dantri.com.vn/bongtrongnuoc.rss" target-id="25">Bóng đá</category>
-                <category id="6" url="http://dantri.com.vn/bongquocte.rss" target-id="25">Bóng đá</category>
-                <category id="7" url="http://dantri.com.vn/cupchauau.rss" target-id="25">Bóng đá</category>
-                <category id="8" url="http://dantri.com.vn/bongdaitalia.rss" target-id="25">Bóng đá</category>
-                <category id="9" url="http://dantri.com.vn/bongdataybannha.rss" target-id="25">Bóng đá</category>
-                <category id="10" url="http://dantri.com.vn/cacmonkhac.rss" target-id="26">Tennis</category>
+                <category id="4" url="http://dantri.com.vn/giaitri.rss" target-id="3">Giải trí</category>
+                <category id="5" url="http://dantri.com.vn/bongtrongnuoc.rss" target-id="25">Bóng đá trong nước</category>
+                <category id="6" url="http://dantri.com.vn/bongquocte.rss" target-id="25">Bóng đá quốc tế</category>
+                <category id="7" url="http://dantri.com.vn/cupchauau.rss" target-id="25">Cúp Châu Âu</category>
+                <category id="8" url="http://dantri.com.vn/bongdaitalia.rss" target-id="25">Bóng đá Italia</category>
+                <category id="9" url="http://dantri.com.vn/bongdataybannha.rss" target-id="25">Bóng đá Tây Ban Nha</category>
+                <category id="10" url="http://dantri.com.vn/cacmonkhac.rss" target-id="26">Thể thao khác</category>
 
                 <category id="11" url="http://dantri.com.vn/giaoduc-khuyenhoc.rss" target-id="15">Giáo dục</category>
                 <category id="12" url="http://dantri.com.vn/duhoc.rss" target-id="16">Du học</category>
-                <category id="13" url="http://dantri.com.vn/khuyen-hoc.rss" target-id="15">Giáo dục</category>
-                <category id="14" url="http://dantri.com.vn/tamlongnhanai.rss" target-id="42">Tấm lòng vàng</category>
-                <category id="15" url="http://dantri.com.vn/hoan-canh.rss" target-id="42">Tấm lòng vàng</category>
-                <category id="16" url="http://dantri.com.vn/kinhdoanh.rss" target-id="1">Kinh tế</category>
+                <category id="13" url="http://dantri.com.vn/khuyen-hoc.rss" target-id="15">Khuyến học</category>
+                <category id="14" url="http://dantri.com.vn/tamlongnhanai.rss" target-id="42">Tấm lòng nhân ái</category>
+                <category id="15" url="http://dantri.com.vn/hoan-canh.rss" target-id="42">Hoàn cảnh khó khăn</category>
+                <category id="16" url="http://dantri.com.vn/kinhdoanh.rss" target-id="1">Kinh doanh</category>
                 <category id="17" url="http://dantri.com.vn/chungkhoan.rss" target-id="10">Chứng khoán</category>
-                <category id="18" url="http://dantri.com.vn/thitruong.rss" target-id="1">Kinh tế</category>
-                <category id="19" url="http://dantri.com.vn/giaitri.rss" target-id="3">Văn hóa</category>
+                <category id="18" url="http://dantri.com.vn/thitruong.rss" target-id="1">Thị trường</category>
+                <category id="19" url="http://dantri.com.vn/giaitri.rss" target-id="3">Giải trí</category>
                 <category id="20" url="http://dantri.com.vn/van-hoa.rss" target-id="3">Văn hóa</category>
 
                 <category id="21" url="http://dantri.com.vn/amnhac.rss" target-id="20">Âm nhạc</category>
                 <category id="22" url="http://dantri.com.vn/phim.rss" target-id="22">Điện ảnh</category>
                 <category id="23" url="http://dantri.com.vn/thoitrang.rss" target-id="21">Thời trang</category>
-                <category id="24" url="http://dantri.com.vn/anchoi.rss" target-id="3">Văn hóa</category>
+                <category id="24" url="http://dantri.com.vn/anchoi.rss" target-id="3">Ăn chơi</category>
                 <category id="25" url="http://dantri.com.vn/skphapluat.rss" target-id="39">Pháp luật</category>
-                <category id="26" url="http://dantri.com.vn/nhipsongtre.rss" target-id="5">Góc teen</category>
-                <category id="27" url="http://dantri.com.vn/tinhyeu-gioitinh.rss" target-id="8">Đời sống</category>
-                <category id="28" url="http://dantri.com.vn/tinhyeu.rss" target-id="36">Hôn nhân - Gia đình</category>
-                <category id="29" url="http://dantri.com.vn/giadinh.rss" target-id="36">Hôn nhân - Gia đình</category>
-                <category id="30" url="http://dantri.com.vn/gioitinh.rss" target-id="37">Sức khỏe - Giới tính</category>
-
-                <category id="31" url="http://dantri.com.vn/lam-dep.rss" target-id="37">Sức khỏe - Giới tính</category>
-                <category id="32" url="http://dantri.com.vn/cong-nghe.rss" target-id="6">Khoa học</category>
+                <category id="26" url="http://dantri.com.vn/nhipsongtre.rss" target-id="5">Nhịp sống trẻ</category>
+                <category id="27" url="http://dantri.com.vn/tinhyeu-gioitinh.rss" target-id="8">Tình yêu - Giới tính</category>
+                <category id="28" url="http://dantri.com.vn/tinhyeu.rss" target-id="36">Tình yêu</category>
+                <category id="29" url="http://dantri.com.vn/giadinh.rss" target-id="36">Gia đình</category>
+                <category id="30" url="http://dantri.com.vn/gioitinh.rss" target-id="37">Giới tính</category>
+                <category id="31" url="http://dantri.com.vn/lam-dep.rss" target-id="37">Làm đẹp</category>
+                <category id="32" url="http://dantri.com.vn/cong-nghe.rss" target-id="6">Công nghệ</category>
                 <category id="33" url="http://dantri.com.vn/vitinh.rss" target-id="41">Vi tính</category>
-                <category id="34" url="http://dantri.com.vn/dienthoai.rss" target-id="6">Khoa học</category>
+                <category id="34" url="http://dantri.com.vn/dienthoai.rss" target-id="6">Điện thoại</category>
                 <category id="35" url="http://dantri.com.vn/otoxemay.rss" target-id="40">Ôtô - Xe máy</category>
-                <category id="36" url="http://dantri.com.vn/tingame.rss" target-id="123">Game</category>
-                
+                <category id="36" url="http://dantri.com.vn/tingame.rss" target-id="123">Tin Game</category>                
             </group>
         </categories>
         <!-- Follows CSS selector rules -->
@@ -125,17 +118,38 @@
     </site>
     <site id="4" name="DatViet" url="http://baodatviet.vn/">
         <categories>
-            <group type="html">
-
+            <group type="html">                
+                <category id="1" url="http://baodatviet.vn/Home/chinhtrixahoi.datviet" target-id="2">Chính trị - Xã hội</category>
+                <category id="2" url="http://baodatviet.vn/Home/kinhte.datviet" target-id="1">Kinh tế</category>
+                <category id="3" url="http://baodatviet.vn/Home/thegioi.datviet" target-id="17">Thế giới</category>
+                <category id="4" url="http://baodatviet.vn/Home/vanhoa.datviet" target-id="3">Văn hóa</category>
+                <category id="5" url="http://baodatviet.vn/Home/phapluat.datviet" target-id="39">Pháp luật</category>
+                <category id="6" url="http://baodatviet.vn/Home/doisong/tinhyeuhonnhan.datviet" target-id="8">Tình yêu - Hôn nhân</category>
+                <category id="7" url="http://baodatviet.vn/Home/thethao.datviet" target-id="4">Thể thao</category>
             </group>
         </categories>
+		<!-- Follows CSS selector rules -->
+		<filters>
+            <group type="fetch">
+                <filter target="list">#blq-content</filter>
+                <filter target="item">.categories_item_small</filter>
+                <filter target="title">.categories_item_small_title a:nth-child(2)</filter>
+                <filter target="avatar">.categories_item_small_title img</filter>
+                <filter target="description">.categories_item_small_summary span</filter>
+                <filter target="link">.categories_item_small_title a:nth-child(2)</filter>
+            </group>
+            <group type="post">
+                <filter target="title">.detail_header</filter>
+                <filter target="description">#DetailtBody1_lbDesc</filter>
+                <filter target="content">#DetailtBody1_lbBody</filter>
+            </group>
+        </filters>
     </site>
     <site id="5" name="NgoiSao" url="http://ngoisao.net/">
         <categories>
             <group type="rss">
                 <category id="1" url="http://ngoisao.net/rss/hau-truong.rss" target-id="19">Nghệ sĩ</category>
                 <category id="2" url="http://ngoisao.net/rss/the-thao.rss" target-id="4">Thể thao</category>
-
                 <category id="3" url="http://ngoisao.net/rss/thoi-cuoc.rss" target-id="2">Xã hội</category>
                 <category id="4" url="http://ngoisao.net/rss/phong-cach.rss" target-id="8">Đời sống</category>
                 <category id="5" url="http://ngoisao.net/rss/thu-gian.rss" target-id="9">Thư giãn</category>
@@ -144,16 +158,31 @@
                 <category id="8" url="http://ngoisao.net/rss/hollywood.rss" target-id="19">Nghệ sĩ</category>
                 <category id="9" url="http://ngoisao.net/rss/chuyen-la.rss" target-id="7">Buôn chuyện</category>
                 <category id="10" url="http://ngoisao.net/rss/hinh-su.rss" target-id="39">Pháp luật</category>
-
                 <category id="11" url="http://ngoisao.net/rss/thuong-truong.rss" target-id="1">Kinh tế</category>
                 <category id="12" url="http://ngoisao.net/rss/thoi-trang.rss" target-id="21">Thời trang</category>
                 <category id="13" url="http://ngoisao.net/rss/tam-tinh.rss" target-id="38">Tâm tình</category>
                 <category id="14" url="http://ngoisao.net/rss/dan-choi.rss" target-id="6">Khoa học</category>
                 <category id="15" url="http://ngoisao.net/rss/an-choi-xem.rss" target-id="7">Buôn chuyện</category>
                 <category id="16" url="http://ngoisao.net/rss/game.rss" target-id="123">Game</category>
-                
             </group>
         </categories>
+		<!-- Follows CSS selector rules -->
+        <filters>
+            <group type="post">
+                <filter target="title">.Title</filter>
+                <filter target="description">.Lead</filter>
+                <filter target="content">.detailCT[cpms_content=true]</filter>
+            </group>
+        </filters>
+        <rules>
+            <group type="post">
+                <rule target="exclude">.Title</rule>
+                <rule target="exclude">.Lead</rule>
+                <rule target="exclude">.topDetail</rule>
+                <rule target="exclude">.RelatedLeadSubject</rule>
+                <rule target="exclude">.relateNewsDetail</rule>                
+            </group>
+        </rules>
     </site>
     <site id="6" name="Tin24h" url="http://hcm.24h.com.vn/">
         <categories>
@@ -169,9 +198,16 @@
                 <category id="9" url="http://www.24h.com.vn/upload/rss/dienthoai.rss" target-id="6">Khoa học</category>
                 <category id="10" url="http://www.24h.com.vn/upload/rss/otoxemay.rss" target-id="40">Ôtô - Xe máy</category>
                 <category id="11" url="http://www.24h.com.vn/upload/rss/thitruongtieudung.rss" target-id="1">Kinh tế</category>
-                
             </group>
         </categories>
+		<!-- Follows CSS selector rules -->
+        <filters>
+            <group type="post">
+                <filter target="title">.baiviet-title</filter>
+                <filter target="description">.baiviet-head-noidung</filter>
+                <filter target="content">.text-conent</filter>
+            </group>
+        </filters>
     </site>
     <site id="7" name="TuoiTre" url="http://tuoitre.vn/">
         <categories>
@@ -188,5 +224,79 @@
                 <category id="10" url="http://tuoitre.vn/RssFeeds.aspx?ChannelID=2" target-id="17">Thế giới</category>
             </group>
         </categories>
+		<!-- Follows CSS selector rules -->
+        <filters>
+            <group type="post">
+                <filter target="title">.pTitle</filter>
+                <filter target="description">.pHead</filter>
+                <filter target="content">#divContent</filter>
+            </group>
+        </filters>
+        <rules>
+            <group type="post">
+                <rule target="exclude">.pTitle</rule>
+                <rule target="exclude">.pHead</rule>
+                <rule target="exclude">.pSuperTitle</rule>
+                <rule target="exclude">#winMediaPlayerID</rule>
+            </group>
+        </rules>
+    </site>
+	<site id="8" name="GameThu.VnExpress" url="http://gamethu.vnexpress.net/">
+		<categories>
+            <group type="rss">
+                <category id="1" url="http://gamethu.vnexpress.net/rss/gt/diem-tin.rss" target-id="123">Game - Điểm tin</category>
+                <category id="2" url="http://gamethu.vnexpress.net/rss/gt/chuyen-game.rss" target-id="123">Game - Chuyện làng Game</category>
+                <category id="3" url="http://gamethu.vnexpress.net/rss/gt/sap-choi.rss" target-id="123">Game - Sắp ra mắt</category>
+                <category id="4" url="http://gamethu.vnexpress.net/rss/gt/cong-nghe.rss" target-id="123">Game - Công nghệ Game</category>
+			</group>
+		</categories>
+        <!-- Follows CSS selector rules -->
+        <filters>
+            <group type="post">
+                <filter target="title">.Title</filter>
+                <filter target="description">.Lead</filter>
+                <filter target="content">.DetailThirdPage div[cpms_content=true]</filter>
+            </group>
+        </filters>
+        <rules>
+            <group type="post">
+                <rule target="exclude">.Title</rule>
+                <rule target="exclude">p.Lead</rule>
+                <rule target="exclude">h2.Lead</rule>
+                <rule target="exclude">.SubTitle</rule>
+                <rule target="exclude">[id^=tdTopic]</rule>                
+            </group>
+        </rules>
+	</site>
+    <site id="9" name="Zing News" url="http://www.zing.vn/">
+        <categories>
+            <group type="rss">
+                <category id="1" url="http://www.zing.vn/news/rss/xa-hoi.html" target-id="2">Xã hội</category>
+                <category id="2" url="http://www.zing.vn/news/rss/kinh-doanh.html" target-id="1">Kinh doanh</category>
+                <category id="3" url="http://www.zing.vn/news/rss/the-thao.html" target-id="4">Thể thao</category>
+                <category id="4" url="http://www.zing.vn/news/rss/the-gioi.html" target-id="17">Thế giới</category>
+                <category id="5" url="http://www.zing.vn/news/rss/nhip-song-tre.html" target-id="5">Nhịp sống trẻ</category>
+                <category id="6" url="http://www.zing.vn/news/rss/sanh-dieu.html" target-id="32">Sành điệu</category>
+                <category id="7" url="http://www.zing.vn/news/rss/tinh-yeu-gioi-tinh.html" target-id="37">Tình yêu - Giới tính</category>
+                <category id="8" url="http://www.zing.vn/news/rss/phim-anh.html" target-id="22">Phim ảnh</category>
+                <category id="9" url="http://www.zing.vn/news/rss/phong-cach.html" target-id="21">Phong cách</category>
+                <category id="10" url="http://www.zing.vn/news/rss/dep.html" target-id="21">Đẹp</category>
+                <category id="11" url="http://www.zing.vn/news/rss/hinh-su.html" target-id="39">Hình sự</category>
+            </group>
+        </categories>
+        <!-- Follows CSS selector rules -->
+        <filters>
+            <group type="post">
+                <filter target="title">#content_document .pTitle</filter>
+                <filter target="description">#content_document .pHead</filter>
+                <filter target="content">#content_document</filter>
+            </group>
+        </filters>
+        <rules>
+            <group type="post">
+                <rule target="exclude">#content_document .pTitle</rule>
+                <rule target="exclude">#content_document .pHead</rule>
+            </group>
+        </rules>
     </site>
 </news-sites>
