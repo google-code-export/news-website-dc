@@ -97,7 +97,9 @@ namespace NewsVn.Web
         private void load_pletPosts(NewsVnContext ctx)
         {
             int indexArea = 0;
-            var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true && c.Type == "post").AsEnumerable();
+            //128 la ID game |GameCategoryID
+            int GameID = int.Parse(System.Configuration.ConfigurationManager.AppSettings["GameCategoryID"].ToString());
+            var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true && c.Type == "post" && c.ID!=GameID).AsEnumerable();
             var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true);
             for (int i = 0; i < _Categories.Count(); i++)
             {
