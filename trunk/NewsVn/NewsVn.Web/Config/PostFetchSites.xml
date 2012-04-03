@@ -145,6 +145,7 @@
             </group>
         </filters>
     </site>
+    <!--
     <site id="5" name="NgoiSao" url="http://ngoisao.net/">
         <categories>
             <group type="rss">
@@ -166,7 +167,7 @@
                 <category id="16" url="http://ngoisao.net/rss/game.rss" target-id="123">Game</category>
             </group>
         </categories>
-		<!-- Follows CSS selector rules -->
+		<!-/- Follows CSS selector rules -/->
         <filters>
             <group type="post">
                 <filter target="title">.Title</filter>
@@ -183,8 +184,8 @@
                 <rule target="exclude">.relateNewsDetail</rule>                
             </group>
         </rules>
-    </site>
-    <site id="6" name="Tin24h" url="http://hcm.24h.com.vn/">
+    </site>-->
+    <site id="5" name="Tin24h" url="http://hcm.24h.com.vn/">
         <categories>
             <group type="rss">
                 <category id="1" url="http://www.24h.com.vn/upload/rss/bongda.rss" target-id="25">Bóng đá</category>
@@ -209,7 +210,7 @@
             </group>
         </filters>
     </site>
-    <site id="7" name="TuoiTre" url="http://tuoitre.vn/">
+    <site id="6" name="TuoiTre" url="http://tuoitre.vn/">
         <categories>
             <group type="rss">
                 <category id="1" url="http://tuoitre.vn/RssFeeds.aspx?ChannelID=3" target-id="2">Xã hội</category>
@@ -241,7 +242,7 @@
             </group>
         </rules>
     </site>
-	<site id="8" name="GameThu.VnExpress" url="http://gamethu.vnexpress.net/">
+	<site id="7" name="GameThu.VnExpress" url="http://gamethu.vnexpress.net/">
 		<categories>
             <group type="rss">
                 <category id="1" url="http://gamethu.vnexpress.net/rss/gt/diem-tin.rss" target-id="123">Game - Điểm tin</category>
@@ -268,7 +269,7 @@
             </group>
         </rules>
 	</site>
-    <site id="9" name="Zing News" url="http://www.zing.vn/">
+    <site id="8" name="Zing News" url="http://www.zing.vn/">
         <categories>
             <group type="rss">
                 <category id="1" url="http://www.zing.vn/news/rss/xa-hoi.html" target-id="2">Xã hội</category>
