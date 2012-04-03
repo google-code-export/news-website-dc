@@ -114,16 +114,7 @@
 			<p class="pHelp">
 				<font style="font-size: 9pt;" face="Arial">&nbsp;&nbsp;- Khách hàng sau khi điền đầy đủ thông tin vào form đăng ký trên trang Rao vặt, ấn Cập nhật sẽ nhận được một thông báo: “<b><i>Tin của bạn đã được lưu trong hệ thống. Để được đăng, bạn hãy soạn tin: “DTA (khoảng cách) Mã số tin” gửi đến <span style="color: red;">8700</span> (với các tin Nhà đất và Ôtô Xe máy - Chi phí 15.000 VNĐ/tin) hoặc <span style="color: red;">8600</span> (với các tin Điện thoại di động và Máy tính - Chi phí 10.000 VNĐ/tin)</i></b>”.</font> 
 			</p>
-			<p class="pHelp">
-				<font style="font-size: 9pt;" face="Arial">&nbsp;&nbsp;- Nếu tin được đăng, sẽ có thông báo gửi về điện thoại di động, kèm theo đường dẫn.</font> 
-			</p>
-			<p class="pHelp">
-				<font style="font-size: 9pt;" face="Arial">&nbsp;&nbsp;- Nếu tin không được đăng (vẫn sẽ bị trừ tiền) sẽ có thông báo kèm lý do (tài khoản di động không đủ tiền, do vi phạm nội quy đăng….).</font> 
-			</p>
-			<p class="Help">
-				<font style="font-size: 9pt;" face="Arial">&nbsp;&nbsp;- Trong trường hợp muốn cập nhật nội dung, khách hàng chọn "Sửa tin" để nhận mã số mới và nhắn tin theo cú pháp <i><b>"DTM (khoảng cách) Mã số tin mới" gửi đến <span style="color: red;">8700</span> (với các tin Nhà đất và Ôtô Xe máy - Chi phí 15.000 VNĐ/tin) hoặc <span style="color: red;">8600</span> (với các tin Điện thoại di động và Máy tính - Chi phí 10.000 VNĐ/tin)</b></i>”. Lưu ý, số điện thoại để cập nhật phải trùng với số điện thoại đã đăng tin. 
-			</font></p>
-<font style="font-size: 9pt;" face="Arial">			</font><p class="pHelp">
+<font style="font-size: 9pt;" face="Arial"></font><p class="pHelp">
 <font style="font-size: 9pt;" face="Arial">				<font style="font-size: 9pt;" face="Arial">&nbsp;&nbsp;- Tin sẽ lên trang tự động trong thời gian từ 7h30 đến 19h30 (từ thứ 2 đến thứ 6), và từ 7h30 đến 12h (thứ bảy)</font>
 			</font></p><font style="font-size: 9pt;" face="Arial">			
 			</font><p class="pHelp">
@@ -140,6 +131,9 @@
 			</font> </font></p>
 <font style="font-size: 9pt;" face="Arial">			</font><p class="pHelp">
 <font style="font-size: 9pt;" face="Arial">				<font style="font-size: 9pt;" face="Arial">&nbsp;&nbsp;- Khi thanh toán hoàn tất, tin sẽ được đăng trên Rao vặt.
+			</font> </font></p>
+            <p class="pHelp">
+<font style="font-size: 9pt;" face="Arial">				<font style="font-size: 9pt;" face="Arial">&nbsp;&nbsp;- Khi có bất kỳ thắc mắc, vui lòng Liên hệ HotLine: 0909 505 365
 			</font> </font></p>
 <font style="font-size: 9pt;" face="Arial">			</font><p class="pHelp">
 <font style="font-size: 9pt;" face="Arial">				<font style="font: bold 12px Arial; color: rgb(123, 17, 17);">2. &nbsp;Đối với tin miễn phí:</font> 
@@ -169,29 +163,11 @@
 			<p class="pHelp">
 				<font style="font: bold 12px Arial; color: rgb(123, 17, 17);">1.&nbsp;&nbsp;<span style="text-decoration: underline;">Thanh toán trực tiếp tại địa chỉ:</span></font>
 			</p>
-			<p class="pHelp">
-				<font style="font-size: 9pt; font-weight: bold;" face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tại Hà Nội</font> 
+			<p class="pHelp" style="padding-left: 30px;">
+				<font style="font-size: 9pt;" face="Arial">Hot Line: 0909 505 365</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Chi nhánh tại Hà Nội - Công ty CP dịch vụ trực tuyến FPT</font> 
-			</p>
-			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Tầng 4, Hà Thành Plaza, 102 Thái Thịnh, Đống Đa, Hà Nội.</font> 
-			</p>
-			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">ĐT: 84-4-73008899(máy lẻ 4561, 4562)</font> 
-			</p>
-			<p class="pHelp">
-				<font style="font-size: 9pt; font-weight: bold;" face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tại TP.HCM</font> 
-			</p>
-			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Công ty CP dịch vụ trực tuyến FPT</font> 
-			</p>
-			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Tầng 6, Tòa nhà FPT Online, 408 Điện Biên Phủ, P.11, Q.10, TP.HCM</font> 
-			</p>
-			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">ĐT: 84-8-73008899(máy lẻ 8561)</font> 
+				<font style="font-size: 9pt;" face="Arial">Email: newsvn.vn@gmail.com</font> 
 			</p>
 			
 			<p class="pHelp">
@@ -201,19 +177,19 @@
 				<font style="font-size: 9pt; font-weight: bold;" face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tại Hà Nội</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Tài khoản chuyển khoản: 045 100 1915900 - Ngân Hàng Ngoại Thương Việt Nam – CN Thành Công</font> 
+				<font style="font-size: 9pt;" face="Arial">Hot Line: 0909 505 365</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Người hưởng lợi: Chi nhánh tại Hà Nội – Công ty CP dịch vụ trực tuyến FPT - Tầng 3-4, Hà Thành Plaza, 102 Thái Thịnh, Đống Đa, Hà Nội.</font> 
+				<font style="font-size: 9pt;" face="Arial">Email: newsvn.vn@gmail.com</font> 
 			</p>
 			<p class="pHelp">
 				<font style="font-size: 9pt; font-weight: bold;" face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tại TP.HCM</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Tài khoản chuyển khoản: 007 100 3950999 - Ngân hàng Ngoại thương Việt Nam – CN Hồ Chí Minh</font> 
+				<font style="font-size: 9pt;" face="Arial">Hot Line: 0909 505 365</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Người hưởng lợi: Công ty CP dịch vụ trực tuyến FPT - 408 Điện Biên Phủ, P.11, Q.10, TP.HCM.</font> 
+				<font style="font-size: 9pt;" face="Arial">Email: newsvn.vn@gmail.com</font> 
 			</p>
 			<br>
 			<p class="pHelp">
@@ -233,41 +209,31 @@
 				<font style="font: bold 12px Arial; color: rgb(123, 17, 17);">Với các hình thức đăng tin Nổi bật, tin VIP, tin in đậm trên NewsVN</font>
 			</p>
 			<p class="pHelp">
-				<font style="font: bold 12px Arial; color: rgb(123, 17, 17);"><span style="text-decoration: underline;">Liên hệ trực tiếp tại địa chỉ:</span></font>
+				<font style="font: bold 12px Arial; color: rgb(123, 17, 17);"><span style="text-decoration: underline;">Liên hệ trực tiếp qua Đường dây nóng:</span></font>
 			</p>
 			<p class="pHelp">
 				<font style="font-size: 9pt; font-weight: bold;" face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tại Hà Nội</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Chi nhánh tại Hà Nội - Công ty TNHH VietStream Software Solution</font> 
+				<font style="font-size: 9pt;" face="Arial">Hot Line: 0909 505 365</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Tầng 4, Hà Thành Plaza, 102 Thái Thịnh, Đống Đa, Hà Nội.</font> 
-			</p>
-			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">ĐT: 84-4-73008899(máy lẻ 4561, 4562)</font> 
+				<font style="font-size: 9pt;" face="Arial">Email: newsvn.vn@gmail.com</font> 
 			</p>
 			<p class="pHelp">
 				<font style="font-size: 9pt; font-weight: bold;" face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tại TP.HCM</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Công ty TNHH VietStream Software Solution</font> 
+				<font style="font-size: 9pt;" face="Arial">Hot Line: 0909 505 365</font> 
 			</p>
 			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">Tầng 1, Tòa nhà PAT, 27 Hồ Bá Kiện, P.11, Q.10, TP.HCM</font> 
-			</p>
-			<p class="pHelp" style="padding-left: 30px;">
-				<font style="font-size: 9pt;" face="Arial">ĐT: 84-8-73008899(máy lẻ 8561)</font> 
+				<font style="font-size: 9pt;" face="Arial">Email: newsvn.vn@gmail.com</font> 
 			</p>
             <p class="pHelp">
 				<font style="font: bold 12px Arial; color: rgb(123, 17, 17);"><span style="text-decoration: underline;">Liên hệ qua Email:</span></font>
 			</p>
 			<p>
-				<font style="font-size: 9pt; font-weight: bold;" face="Arial">- Ads@newsvn.vn</font> 
+				<font style="font-size: 9pt; font-weight: bold;" face="Arial">- newsvn.vn@gmail.com</font> 
 			</p>
-            <p>
-                <font style="font-size: 9pt; font-weight: bold;" face="Arial">- Ads@vss.vn</font> 
-            </p>
-			
     </p>
 </div>
