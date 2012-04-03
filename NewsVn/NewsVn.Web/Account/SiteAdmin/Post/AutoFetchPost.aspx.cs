@@ -242,6 +242,10 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
                                     postItem.Url = itemUrl;
                                     postItem.Avatar = hidAvatar.Value;
+                                    if (string.IsNullOrEmpty(postItem.Avatar))
+                                    {
+                                        postItem.Avatar = HostName + "resources/images/no_image/no-ads.gif";
+                                    }
                                     postItem.TargetID = targetID;
                                     bool success = _service.AddPostItem(postItem, ctx);
                                 }
