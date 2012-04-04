@@ -113,7 +113,7 @@ namespace NewsVn.Web
                     continue;
                 }
                 //load 1st news
-                var oActivePost = _Posts.Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID) && cate.Actived == true)
+                var oActivePost = _Posts.Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID) && cate.Actived == true && p.Approved==false)
                     .Select(p => new
                     {
                         p.ID,
@@ -176,7 +176,7 @@ namespace NewsVn.Web
         void load_pletHotNews(List<int> lstArrayID, NewsVnContext ctx)
         {
             pletHotNews.CateTitle = "Tin Nổi Bật";
-            var iPost = ctx.PostRepo.Getter.getQueryable(p => !lstArrayID.Contains(p.ID));
+            var iPost = ctx.PostRepo.Getter.getQueryable(p => !lstArrayID.Contains(p.ID) && p.Approved==true);
             var oData = iPost.Select(p => new
             {
                 p.Title,
