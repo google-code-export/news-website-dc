@@ -11,8 +11,12 @@ namespace NewsVn.Web.Modules
 
         protected void lnkbtnSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect(HostName + "tim-kiem/" + Server.UrlEncode( Utils.clsCommon.RemoveDangerousMarks(txtSearch.Text.Trim())) + ".aspx");
-            //Response.Redirect(HostName + "tim-kiem/" + txtSearch.Text.Trim() + ".aspx");//PostSearchResult.aspx
+            string search = "";
+            //RemoveUnicodeMarks_Whitespace
+            search = Utils.clsCommon.RemoveDangerousMarks(Utils.clsCommon.RemoveUnicodeMarks(txtSearch.Text.Trim()));
+            Session["searchNews"] = txtSearch.Text.Trim();
+            Response.Redirect(HostName + "tim-kiem/" + Server.UrlEncode(search) + ".aspx");
+            
         }
     }
 }
