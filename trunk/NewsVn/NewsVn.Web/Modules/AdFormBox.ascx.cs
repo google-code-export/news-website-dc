@@ -39,7 +39,7 @@ namespace NewsVn.Web.Modules
                     adsPost.Content = editorContent.Text; //txtContent.Text.Trim();
                     adsPost.Avatar =  strImgUrl;
                     adsPost.SeoUrl = "";
-                    adsPost.TitleAscii = clsCommon.RemoveDangerousMarks(txtTitle.Text.Trim());
+                    adsPost.TitleAscii = clsCommon.RemoveUnicodeMarks_Whitespace(txtTitle.Text.Trim());
                     adsPost.Category = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                     adsPost.Location = ddlLocation.SelectedValue;
                     adsPost.Contact = txtContact.Text.Trim();
@@ -57,7 +57,7 @@ namespace NewsVn.Web.Modules
                     adsPost.ExpiredOn = DateTime.Now.AddYears(100);
                     adsPost.Actived = true;
 
-                    ctx.AdPostRepo.Setter.addOne(adsPost);
+                    ctx.AdPostRepo.Setter.addOne(adsPost,true);
                     adsPost.SeoUrl = string.Format("rao-nhanh-chi-tiet/{0}/{1}.aspx", adsPost.ID, clsCommon.RemoveUnicodeMarks(adsPost.Title));
                     
                     ctx.SubmitChanges();
