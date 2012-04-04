@@ -59,7 +59,12 @@ namespace NewsVn.Web
 
             pletSearchResult.Datasource = data;
             pletSearchResult.ItemFounded = data.Count();
-            pletSearchResult.keySearch = keySearch;
+           
+            if (!string.IsNullOrEmpty(Session["searchNews"].ToString()))
+            {
+                 pletSearchResult.keySearch =  Session["searchNews"].ToString();
+                 Session["searchNews"] = null;
+            }
             pletSearchResult.DataBind();
             //string strConn = WebConfigurationManager.ConnectionStrings["NewsVnMain"].ConnectionString;
             //sau nay cho vao cai webconfig | xai cay tren thi sua lai roi comment cai duoi lai cho tao 
