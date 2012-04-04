@@ -12,6 +12,7 @@ using Fizzler.Systems.HtmlAgilityPack;
 using NewsVn.Impl.Context;
 using NewsVn.Impl.Entity;
 using System.Threading;
+using System.Text;
 namespace NewsVn.Impl.PostFetch.Services
 {
     public class PostFetchServiceAbstract
@@ -46,6 +47,8 @@ namespace NewsVn.Impl.PostFetch.Services
                 {
                     setting = new PostSettingModel
                     {
+                        // Added by CuongNguyen: 04/04/2012
+                        SiteName = siteSetting.Name,
                         SiteUrl = siteSetting.Url,
                         Type = categorySetting.Type,
                         Url = categorySetting.Url,
@@ -345,7 +348,16 @@ namespace NewsVn.Impl.PostFetch.Services
                     if (!hasHttp)
                     {
                         item.Content = item.Content.Replace("src=\"", "src=\"" + postSetting.SiteUrl);
-                    }   
+                    }
+                    // Added by CuongNguyen: 04/04/2012
+                    if (!string.IsNullOrEmpty(postSetting.SiteName))
+                    {
+                        var sbCredit = new StringBuilder();
+                        sbCredit.Append("<div class='post-credit' ");
+                        sbCredit.Append("style='display:block;font-weight:bold;font-style:italic;text-align:right'>");
+                        sbCredit.AppendFormat("Theo {0}</div>", postSetting.SiteName);
+                        item.Content += sbCredit.ToString();   
+                    }                    
                 }                
             }
             catch (Exception ex)
