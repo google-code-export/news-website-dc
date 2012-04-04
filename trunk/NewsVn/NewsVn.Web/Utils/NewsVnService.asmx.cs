@@ -94,25 +94,35 @@ namespace NewsVn.Web.Utils
 
         private void excuteAutoPostFetch()
         {
-     
+            bool allowAutoPostFetch = true;
         //read all site
             if (_siteSettings != null)
             {
                 foreach (var site in _siteSettings)
                 {
                     //get categories by site
-                    int selectedSiteID = 0;
-                    int.TryParse(site.ID.ToString(), out selectedSiteID);
-                    var siteSetting = _siteSettings.FirstOrDefault(x => x.ID == selectedSiteID);
-
-                    if (siteSetting != null)
+                    if (allowAutoPostFetch)
                     {
-                        //read all category of one site
-                        foreach (var category in siteSetting.Categories)
+                        int selectedSiteID = 0;
+                        int.TryParse(site.ID.ToString(), out selectedSiteID);
+                        var siteSetting = _siteSettings.FirstOrDefault(x => x.ID == selectedSiteID);
+
+                        if (siteSetting != null)
                         {
-                            getPostList(selectedSiteID, category.ID);
+                            //read all category of one site
+                            foreach (var category in siteSetting.Categories)
+                            {
+                                if (allowAutoPostFetch)
+                                {
+                                    allowAutoPostFetch = getPostList(selectedSiteID, category.ID);
+                                }
+                                else
+                                    break;
+                            }
                         }
                     }
+                    else
+                        break;
                 }
                 //Turn the autoFetchPost to off status
                 using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
@@ -129,10 +139,10 @@ namespace NewsVn.Web.Utils
 
         }
         //get list of news from category of one site
-        private IList<PostItemModel> getPostList(int siteID, int CategoryID)
+        private bool getPostList(int siteID, int CategoryID)
         {
             IList<PostItemModel> postList = new List<PostItemModel>();
-
+            bool allowAutoPostFetch = true;
             if (_service != null)
             {
                 int selectedSiteID = siteID;
@@ -146,51 +156,66 @@ namespace NewsVn.Web.Utils
                     using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                     {
                         postList = _service.RequestPostItemList(setting, ctx);
-                       autoInsertPost(postList, setting);
+                     allowAutoPostFetch=  autoInsertPost(postList, setting);
                     }
                 }
             }
 
-            if (postList.Count > 0)
-            {
-                return postList;
-            }
-            else
-            {
-                return null;
-            }
+            return allowAutoPostFetch;
         }
         //add postFetch
-        private void autoInsertPost(IList<PostItemModel> pPostItemModel, PostSettingModel pSetting) {
+        private bool autoInsertPost(IList<PostItemModel> pPostItemModel, PostSettingModel pSetting) {
             try
             {
                 if (_service != null)
                 {
                     //get setting by
                     var setting = pSetting;
-
                     using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
                     {
-                        foreach (var item in pPostItemModel)
+                        //recheck status of allow autopostfetch
+                        //du co dang chay ma stop, thi auto van se thuc thi cho het 1 sitesetting vd excute den vnexpress thi van phai excute cho xong moi stop
+                        var AutoFetchPostIsRunning = ctx.SettingRepo.Getter.getQueryable(c => c.Name == "AutoFetchPostIsRunning").FirstOrDefault();
+                        if (AutoFetchPostIsRunning.Value == "True")
                         {
-                            string itemUrl = item.Url;
-                            var postItem = _service.RequestRawPostItem(itemUrl, setting);
-                            if (postItem != null)
+                            foreach (var item in pPostItemModel)
                             {
-                                postItem.Url = itemUrl;
-                                postItem.Avatar = item.Avatar;
-                                postItem.TargetID = setting.TargetID;
-                                postItem.Creator = "AutoFetch";
-                                bool success = _service.AddPostItem(postItem, ctx);
+                                string itemUrl = item.Url;
+                                var postItem = _service.RequestRawPostItem(itemUrl, setting);
+                                if (postItem != null)
+                                {
+                                    postItem.Url = itemUrl;
+                                    postItem.Avatar = item.Avatar;
+                                    postItem.TargetID = setting.TargetID;
+                                    postItem.Creator = "AutoFetch";
+                                    bool success = _service.AddPostItem(postItem, ctx);
+                                }
                             }
+                            ctx.SubmitChanges();
+                            //thuc thi update seourl
+                            var posts = ctx.PostRepo.Getter.getQueryable(p => p.Approved == true && p.CreatedBy == "AutoFetch" && p.SeoUrl == "");
+                            foreach (var post in posts)
+                            {
+                                // Added by DuyNguyen Apr 05, 2012
+                                // Update SeoUrl for autofetch Item
+                                if (post.AutoFetch)
+                                {
+                                    var cate = post.Category;
+                                    post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
+                                }
+                            }
+                            ctx.SubmitChanges();
                         }
-                        ctx.SubmitChanges();
+                        else
+                            return false;
                     }
                 }
             }
             catch (Exception)
             {
+                return false;
             }
+            return true;
         }
         #region CommentBox
 
