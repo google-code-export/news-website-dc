@@ -295,25 +295,15 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
 
         protected void lnkbtnAutoMode_Click(object sender, EventArgs e)
         {
-            //Turn the autoFetchPost to off status
-            using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
-            {
-                //check status of AutoFetchPost / allow or not allow!
-                var AutoFetchPostIsRunning = ctx.SettingRepo.Getter.getQueryable(c => c.Name == "AutoFetchPostIsRunning").FirstOrDefault();
-                if (AutoFetchPostIsRunning != null)
-                {
-                    if (AutoFetchPostIsRunning.Value == "False")
-                    {
-                        AutoFetchPostIsRunning.Value = "True";
-                        ctx.SubmitChanges();
-                    }
-                }
-            }
-            Response.Redirect(Request.Url.ToString());
+            SwitchAutoMode("True");
         }
 
         protected void lnkbtnOffAutoMode_Click(object sender, EventArgs e)
         {
+            SwitchAutoMode("False");
+        }
+
+        protected void SwitchAutoMode(string allow) {
             //Turn the autoFetchPost to off status
             using (var ctx = new NewsVnContext(Utils.ApplicationManager.ConnectionString))
             {
@@ -323,7 +313,7 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
                 {
                     if (AutoFetchPostIsRunning.Value == "True")
                     {
-                        AutoFetchPostIsRunning.Value = "False";
+                        AutoFetchPostIsRunning.Value = allow;//off=false ? on=true
                         ctx.SubmitChanges();
                     }
                 }
@@ -331,4 +321,5 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             Response.Redirect(Request.Url.ToString());
         }
     }
+    
 }
