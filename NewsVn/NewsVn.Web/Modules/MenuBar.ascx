@@ -16,7 +16,10 @@
 
 <ul id="menu_bar">
     <li class="head">
-        <a class="home-page menu-item" href='<%= HostName + "trang-chu.aspx" %>' title="Trang chủ">Trang chủ</a>
+        <a class="menu-item" href='<%= HostName + "trang-chu.aspx" %>' title="Trang chủ">
+            <asp:Image ImageUrl="~/Images/icons/home_white.png" AlternateText="Trang chủ"
+               style="vertical-align:middle;margin-top:-5px" runat="server" />
+        </a>
     </li>
     <asp:Repeater runat="server" ID="rptMenu" 
         OnItemDataBound="rptMenu_ItemDataBound">
