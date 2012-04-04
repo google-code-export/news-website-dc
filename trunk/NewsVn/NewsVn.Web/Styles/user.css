@@ -87,7 +87,7 @@ body
     line-height: 60px;
     padding-left: 11px;
     overflow: hidden;
-    display: block;
+    /*display: block;*/
     filter: progid:DXImageTransform.Microsoft.DropShadow(color='#000000',offX='1',offY='1');
 }
 
