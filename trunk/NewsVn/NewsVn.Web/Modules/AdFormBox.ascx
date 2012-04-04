@@ -49,7 +49,7 @@
         </td><td align="right">
         <nsn:Editor ID="editorContent" runat="server" AutoConfigure="Minimal" CssClass="validate[required]"
             Height="250" Width="534" ContextMenuMode="Minimal" ShowDecreaseButton="False" ShowToolBar="false" ShowBottomBar="false"
-            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="" />
+            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="" BreakElement="Br" />
         </td></tr></table>
             
             <%--<asp:TextBox ID="txtContent" Width="534" CssClass="validate[required]" TextMode="MultiLine" Rows="16" runat="server" />--%>
