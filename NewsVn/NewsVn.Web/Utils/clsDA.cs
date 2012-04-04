@@ -118,6 +118,28 @@ namespace NewsVn.Web.Utils
             else return "";
             
         }
+        /// <summary>
+        /// without "-" character
+        /// </summary>
+        /// <param name="accented"></param>
+        /// <returns>none unicode word and separate by white space</returns>
+        public static string RemoveUnicodeMarks_Whitespace(string accented)
+        {
+            if (!string.IsNullOrEmpty(accented))
+            {
+                accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
+
+                string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                accented = string.Join("-", splitted).ToLower();
+
+                Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
+                string strFormD = accented.Normalize(System.Text.NormalizationForm.FormD);
+
+                return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+            }
+            else return "";
+
+        }
         public static string RemoveDangerousMarks(string accented)
         {
             if (!string.IsNullOrEmpty(accented))
