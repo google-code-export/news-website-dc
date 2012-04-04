@@ -7,6 +7,9 @@ namespace NewsVn.Impl.PostFetch.Models
     {
         public int SiteID { get; set; }
 
+        // Added by CuongNguyen: 04/04/2012
+        public string SiteName { get; set; }
+
         public int CategoryID { get; set; }
 
         public string Type { get; set; }
