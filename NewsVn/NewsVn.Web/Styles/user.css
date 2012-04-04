@@ -111,6 +111,7 @@ body
 
 #header #menu_bar .sub-menu
 {
+    top: 50px;
     position: absolute;
     display: none;
     padding: 0 10px;
