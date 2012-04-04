@@ -12,7 +12,7 @@
 		</LayoutTemplate>
         <ItemTemplate>
         <li>
-            <asp:Image ImageUrl='<%#Eval("Avatar")%>' AlternateText='<%#Eval("Title") %>' CssClass="left" Width="135px" Height="135px" runat="server" />
+            <asp:Image ImageUrl='<%#excuteAvatar(Eval("Avatar").ToString())%>' AlternateText='<%#Eval("Title") %>' CssClass="left" Width="135px" Height="135px" runat="server" />
                 <div class="post-item left">
                     <a href='<%#Eval("SeoUrl") %>' class="post-title"><%#Eval("Title") %></a>
                     <p>
