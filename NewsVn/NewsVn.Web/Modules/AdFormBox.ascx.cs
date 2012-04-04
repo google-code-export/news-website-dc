@@ -39,6 +39,7 @@ namespace NewsVn.Web.Modules
                     adsPost.Content = editorContent.Text; //txtContent.Text.Trim();
                     adsPost.Avatar =  strImgUrl;
                     adsPost.SeoUrl = "";
+                    adsPost.TitleAscii = clsCommon.RemoveDangerousMarks(txtTitle.Text.Trim());
                     adsPost.Category = ctx.CategoryRepo.Getter.getOne(c => c.ID == int.Parse(ddlCategory.SelectedValue));
                     adsPost.Location = ddlLocation.SelectedValue;
                     adsPost.Contact = txtContact.Text.Trim();

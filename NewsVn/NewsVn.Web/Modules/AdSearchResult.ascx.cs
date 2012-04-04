@@ -2,7 +2,7 @@
 
 namespace NewsVn.Web.Modules
 {
-    public partial class AdSearchResult : System.Web.UI.UserControl
+    public partial class AdSearchResult : BaseUI.SecuredModule
     {
 
         public object DataSource { get; set; }    
@@ -12,6 +12,12 @@ namespace NewsVn.Web.Modules
             this.LoadResultAds();
         }
 
+        public string excuteAvatar(string pAvatar)
+        {
+            string Avatar = "";
+            Avatar = pAvatar.Length == 0 ? "/resources/Images/No_Image/no-ads.gif" : HostName + pAvatar;
+            return Avatar;
+        }
         private void LoadResultAds()
         {
             lvAdResult.DataSource = DataSource;
