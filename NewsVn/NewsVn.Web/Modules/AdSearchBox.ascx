@@ -67,7 +67,7 @@
                 <p style="margin-top: 0">
                     Tìm trong khoảng thời gian:</p>
                <asp:DropDownList ID="ddlFollowday" runat="server">
-                    <asp:ListItem Text="Hôm nay" Value="1" />
+                    <asp:ListItem Text="Hôm nay" Value="0" />
                     <asp:ListItem Text="3 ngày trước" Value="3"/>
                     <asp:ListItem Text="5 ngày trước" Value="5"/>
                     <asp:ListItem Text="7 tuần trước" Value="7"/>

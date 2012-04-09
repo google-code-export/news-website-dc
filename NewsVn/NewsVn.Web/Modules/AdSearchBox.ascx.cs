@@ -16,12 +16,14 @@ namespace NewsVn.Web.Modules
         {
             
             string SearchText = Server.UrlEncode(Utils.clsCommon.RemoveUnicodeMarks(Utils.clsCommon.RemoveDangerousMarks(txtSearch.Text.Trim()))).Replace('-',' ');
+            
             if (SearchText == "" || SearchText == "tim rao vat")
             {
                 txtSearch.Focus();
             }
             else
             {
+                Session["searchAdPost"] = txtSearch.Text.Trim();
                 string Region = ddlLocation.SelectedIndex.ToString();
                 string dateFrom = ddlFollowday.SelectedItem.Value;
                 string requestUrl = SearchText + "-" + Region + "-" + dateFrom;
