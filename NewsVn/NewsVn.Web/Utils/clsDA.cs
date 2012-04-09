@@ -146,7 +146,7 @@ namespace NewsVn.Web.Utils
             {
                 accented = accented.Length > 50 ? accented.Substring(0, 50) : accented;
 
-                string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                string[] splitted = accented.Split("~!@#$%^&*:()_+ '\",.?/`“”-–|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 accented = string.Join(" ", splitted).ToLower();
                 return accented;
             }
