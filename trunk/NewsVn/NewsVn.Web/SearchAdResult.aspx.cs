@@ -78,9 +78,14 @@ namespace NewsVn.Web
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["NewsVnMain"].ToString();
 
             // Specify the parameter value.
+            
             int paramLocation = 0;
             int.TryParse(location, out paramLocation);
             string paramTitle = searchText;
+            if (Session["searchAdPost"] !=null)
+            {
+                paramTitle = Session["searchAdPost"].ToString();
+            }
             DateTime paramCreated = searchDate;
             DataTable dt = new DataTable();
             // Create and open the connection in a using block. This
@@ -95,7 +100,7 @@ namespace NewsVn.Web
                 command.CommandText = "sp_AdPost_Search";
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@title", paramTitle);
-                command.Parameters.AddWithValue("@titleAsii", Utils.clsCommon.RemoveDangerousMarks(paramTitle));
+                command.Parameters.AddWithValue("@titleAsii", Utils.clsCommon.RemoveUnicodeMarks_Whitespace(paramTitle));
                 if (paramLocation != 0)
                 {
                     command.Parameters.AddWithValue("@location", paramLocation);
