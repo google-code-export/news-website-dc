@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+using System.Text.RegularExpressions;
 
 namespace NewsVn.Web.Modules
 {
@@ -36,7 +37,7 @@ namespace NewsVn.Web.Modules
                    var strImgUrl= uploadImg();
                     var adsPost = new Impl.Entity.AdPost();
                     adsPost.Title = txtTitle.Text.Trim();
-                    adsPost.Content = editorContent.Text; //txtContent.Text.Trim();
+                    adsPost.Content = editorContent.Text.Replace(Environment.NewLine, "</br>");
                     adsPost.Avatar =  strImgUrl;
                     adsPost.SeoUrl = "";
                     adsPost.TitleAscii = clsCommon.RemoveUnicodeMarks_Whitespace(txtTitle.Text.Trim());
@@ -57,7 +58,7 @@ namespace NewsVn.Web.Modules
                     adsPost.ExpiredOn = DateTime.Now.AddYears(100);
                     adsPost.Actived = true;
 
-                    ctx.AdPostRepo.Setter.addOne(adsPost,true);
+                    ctx.AdPostRepo.Setter.addOne(adsPost,false);
                     adsPost.SeoUrl = string.Format("rao-nhanh-chi-tiet/{0}/{1}.aspx", adsPost.ID, clsCommon.RemoveUnicodeMarks(adsPost.Title));
                     
                     ctx.SubmitChanges();

@@ -47,12 +47,13 @@
         <td align="left">
         <asp:Label ID="Label2" AssociatedControlID="editorContent" Text="* Nội dung:" runat="server" />
         </td><td align="right">
-        <nsn:Editor ID="editorContent" runat="server" AutoConfigure="Minimal" CssClass="validate[required]"
+        <%--<nsn:Editor ID="editorContent" runat="server" AutoConfigure="Minimal" CssClass="validate[required]"
             Height="250" Width="534" ContextMenuMode="Minimal" ShowDecreaseButton="False" ShowToolBar="false" ShowBottomBar="false"
-            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="" BreakElement="Br" />
+            ShowEnlargeButton="False" ShowGroupMenuImage="False" FilesPath="" Text="" BreakElement="Br" />--%>
+            <asp:TextBox ID="editorContent"  Height="250" Width="534" CssClass="validate[required]" TextMode="MultiLine" Rows="16" runat="server" />
         </td></tr></table>
             
-            <%--<asp:TextBox ID="txtContent" Width="534" CssClass="validate[required]" TextMode="MultiLine" Rows="16" runat="server" />--%>
+            
         
         </li>
         <li>

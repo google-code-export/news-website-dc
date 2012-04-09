@@ -72,7 +72,7 @@ namespace NewsVn.Web
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
-                    }).OrderByDescending(p => p.Payment).ToList();
+                    }).OrderByDescending(p => p.Payment).ThenByDescending(p => p.CreatedOn).ToList();
                 pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
                 pletCatAdsPost.HostName = this.HostName;
             }
@@ -90,7 +90,7 @@ namespace NewsVn.Web
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
                         p.Location// = Utils.clsCommon.getLocationName(int.Parse(p.Location))
-                    }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
+                    }).OrderByDescending(p => p.Payment).ThenByDescending(p => p.CreatedOn).Skip(pageindex * 20).Take(20).ToList();
                 pletCatAdsPost.CateTitle = CateTitle;//bind Ads CateTitle
                 pletCatAdsPost.HostName = this.HostName;
             }

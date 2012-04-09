@@ -450,7 +450,8 @@ namespace NewsVn.Web.Utils
                     p.UpdatedOn,
                     p.Payment,
                     isFree = p.Payment <= 0 ? true : false,
-                    p.Location
+                    p.Location,
+                    p.CreatedOn
                 }).Take(0).ToList();
                 Datasource.Clear();
                 //end clone
@@ -475,8 +476,9 @@ namespace NewsVn.Web.Utils
                             p.UpdatedOn,
                             p.Payment,
                             isFree = p.Payment <= 0 ? true : false,
-                            p.Location
-                        }).OrderByDescending(p => p.Payment).ToList();
+                            p.Location,
+                            p.CreatedOn
+                        }).OrderByDescending(p => p.Payment).ThenByDescending(p=>p.CreatedOn).ToList();
                     //Search by date not paging
                 }
                 //2: search by location
@@ -498,8 +500,9 @@ namespace NewsVn.Web.Utils
                         p.UpdatedOn,
                         p.Payment,
                         isFree = p.Payment <= 0 ? true : false,
-                        p.Location
-                    }).OrderByDescending(p => p.Payment).Skip(pageindex * 20).Take(20).ToList();
+                        p.Location,
+                        p.CreatedOn
+                    }).OrderByDescending(p => p.Payment).ThenByDescending(p=>p.CreatedOn).Skip(pageindex * 20).Take(20).ToList();
                 }
                 //generate result
                 if (Datasource.Count >= 1)
@@ -518,7 +521,7 @@ namespace NewsVn.Web.Utils
                         html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", HostName + itemAds.SeoUrl.ToString() + ".aspx");
                         html.AppendLine(itemAds.Title + "</a>");
                         html.AppendLine("</td><td >");
-                        html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.UpdatedOn));
+                        html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.CreatedOn));
                         html.AppendLine("</td>");
                         html.AppendLine("</td><td style=\"width:100px;\">");
                         html.AppendLine(Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)));
@@ -556,8 +559,9 @@ namespace NewsVn.Web.Utils
                                 p.UpdatedOn,
                                 p.Payment,
                                 isFree = p.Payment <= 0 ? true : false,
-                                p.Location
-                            }).OrderByDescending(p => p.Payment).Take(20).ToList();
+                                p.Location,
+                                p.CreatedOn
+                            }).OrderByDescending(p => p.Payment).ThenByDescending(p=>p.CreatedOn).Take(20).ToList();
                     var html = new System.Text.StringBuilder();
 
                     if (data.Count() >= 1)
@@ -574,7 +578,7 @@ namespace NewsVn.Web.Utils
                             html.AppendFormat("<a {0} href='{1}'>", itemAds.isFree ? "" : "style='font-weight: bold;'", HostName + itemAds.SeoUrl.ToString() + ".aspx");
                             html.AppendLine(itemAds.Title + "</a>");
                             html.AppendLine("</td><td>");
-                            html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.UpdatedOn));
+                            html.AppendLine(string.Format("{0:dd/MM/yyyy}", itemAds.CreatedOn));
                             html.AppendLine("</td>");
                             html.AppendLine("<td style='width: 120px;'>" + Utils.clsCommon.getLocationName(int.Parse(itemAds.Location)) + "</td>");
                             html.AppendLine("</tr>");
