@@ -59,11 +59,14 @@ namespace NewsVn.Web
 
             pletSearchResult.Datasource = data;
             pletSearchResult.ItemFounded = data.Count();
-           
-            if (!string.IsNullOrEmpty(Session["searchNews"].ToString()))
+
+            if (Session["searchNews"]!=null)
             {
-                 pletSearchResult.keySearch =  Session["searchNews"].ToString();
-                 Session["searchNews"] = null;
+                pletSearchResult.keySearch = Session["searchNews"].ToString();
+                Session["searchNews"] = null;
+            }
+            else {
+                pletSearchResult.keySearch = keySearch;
             }
             pletSearchResult.DataBind();
             //string strConn = WebConfigurationManager.ConnectionStrings["NewsVnMain"].ConnectionString;

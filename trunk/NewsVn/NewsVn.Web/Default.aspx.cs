@@ -100,7 +100,7 @@ namespace NewsVn.Web
             //128 la ID game |GameCategoryID
             int GameID = int.Parse(System.Configuration.ConfigurationManager.AppSettings["GameCategoryID"].ToString());
             var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true && c.Type == "post" && c.ID!=GameID).AsEnumerable();
-            var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true);
+            var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
             for (int i = 0; i < _Categories.Count(); i++)
             {
                 var cate = _Categories.ElementAt(i);
@@ -113,7 +113,7 @@ namespace NewsVn.Web
                     continue;
                 }
                 //load 1st news
-                var oActivePost = _Posts.Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID) && cate.Actived == true && p.Approved==false)
+                var oActivePost = _Posts.Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID) && cate.Actived == true )
                     .Select(p => new
                     {
                         p.ID,
@@ -165,7 +165,7 @@ namespace NewsVn.Web
                     AllowComments = false,
                     adp.Payment,
                     Comments = 0
-                }).OrderByDescending(adp => adp.Payment).ThenByDescending(adp => adp.ApprovedOn);
+                }).OrderByDescending(adp=>adp.Payment).ThenByDescending(adp => adp.ApprovedOn);
             ctrPortletPost_Ad.oActivePost = IOrderQueryableData.Take(1).ToList();
             ctrPortletPost_Ad.OtherPosts = IOrderQueryableData.Skip(1).Take(4).ToList();
             ctrPortletPost_Ad.DataBind();
