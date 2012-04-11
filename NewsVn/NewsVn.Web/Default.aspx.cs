@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Xml.Linq;
 using NewsVn.Impl.Context;
 using NewsVn.Web.Utils;
+//using System.Diagnostics;
 
 namespace NewsVn.Web
 {
@@ -25,16 +26,16 @@ namespace NewsVn.Web
             {
                 using (var ctx = new NewsVnContext(ApplicationManager.ConnectionString))
                 {
-                    //Stopwatch stopwatch = new Stopwatch();
-                    //stopwatch.Start();
+                   
                     List<int> lstArrayID = load_pletLatestNews(ctx);
                     load_pletSpecialEvents();
                     load_pletHotNews(lstArrayID, ctx);
+                   
                     load_pletPosts(ctx);
+                   
                     load_sideTabBar();
                     bindBannerRight(ctx);
-                    //stopwatch.Stop();
-                    //BaseUI.BaseMaster.SiteTitle = stopwatch.Elapsed.ToString();
+                    
                     //result: ~ 12 - 13s   
                 }                
             }
@@ -100,7 +101,10 @@ namespace NewsVn.Web
             //128 la ID game |GameCategoryID
             int GameID = int.Parse(System.Configuration.ConfigurationManager.AppSettings["GameCategoryID"].ToString());
             var _Categories = ctx.CategoryRepo.Getter.getQueryable(c => c.Actived == true && c.Type == "post" && c.ID!=GameID).AsEnumerable();
-            var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true);
+            var _Posts = ctx.PostRepo.Getter.getQueryable(p => p.Actived == true && p.Approved == true).OrderByDescending(p=>p.ApprovedOn);
+            //Stopwatch stopwatch = new Stopwatch();
+            //stopwatch.Start();
+          
             for (int i = 0; i < _Categories.Count(); i++)
             {
                 var cate = _Categories.ElementAt(i);
@@ -113,7 +117,7 @@ namespace NewsVn.Web
                     continue;
                 }
                 //load 1st news
-                var oActivePost = _Posts.Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID) && cate.Actived == true )
+                var oActivePost = _Posts.Where(p => p.CategoryID == cate.ID || (p.Category.Parent != null && p.Category.ParentID == cate.ID) )
                     .Select(p => new
                     {
                         p.ID,
@@ -124,7 +128,7 @@ namespace NewsVn.Web
                         p.ApprovedOn,
                         p.AllowComments,
                         Comments = CountPostComments(p, ctx)
-                    }).OrderByDescending(p => p.ApprovedOn);
+                    });//.OrderByDescending(p => p.ApprovedOn);
 
                 ctrPortletPost.oActivePost = oActivePost.Take(1).ToList();
                 //load 4th news
@@ -143,6 +147,8 @@ namespace NewsVn.Web
                 postArea.Controls.Add(ctrPortletPost);
                 indexArea += 1;
             }
+           // stopwatch.Stop();
+           //var x = stopwatch.Elapsed.ToString();
             
             //Bind Control Quang Cao
             var _AdPosts = ctx.AdPostRepo.Getter.getQueryable(adp => adp.Actived == true);

@@ -245,10 +245,10 @@
 	<site id="7" name="GameThu.VnExpress" url="http://gamethu.vnexpress.net/">
 		<categories>
             <group type="rss">
-                <category id="1" url="http://gamethu.vnexpress.net/rss/gt/diem-tin.rss" target-id="123">Game - Điểm tin</category>
-                <category id="2" url="http://gamethu.vnexpress.net/rss/gt/chuyen-game.rss" target-id="123">Game - Chuyện làng Game</category>
-                <category id="3" url="http://gamethu.vnexpress.net/rss/gt/sap-choi.rss" target-id="123">Game - Sắp ra mắt</category>
-                <category id="4" url="http://gamethu.vnexpress.net/rss/gt/cong-nghe.rss" target-id="123">Game - Công nghệ Game</category>
+                <category id="1" url="http://gamethu.vnexpress.net/rss/gt/diem-tin.rss" target-id="132">Game - Điểm tin</category>
+                <category id="2" url="http://gamethu.vnexpress.net/rss/gt/chuyen-game.rss" target-id="132">Game - Chuyện làng Game</category>
+                <category id="3" url="http://gamethu.vnexpress.net/rss/gt/sap-choi.rss" target-id="132">Game - Sắp ra mắt</category>
+                <category id="4" url="http://gamethu.vnexpress.net/rss/gt/cong-nghe.rss" target-id="132">Game - Công nghệ Game</category>
 			</group>
 		</categories>
         <!-- Follows CSS selector rules -->
