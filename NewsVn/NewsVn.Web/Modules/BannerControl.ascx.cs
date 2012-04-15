@@ -28,7 +28,7 @@ namespace NewsVn.Web.Modules
                 }
                 else if (item.TypeBanner == 2)
                 {
-                    _html.AppendLine(" <div style=' z-index: -1; top: auto; left: auto; background-color:#ffffff;'>");
+                    _html.AppendLine(" <div style=' z-index: -1; top: auto; left: auto; background-color:#ffffff;width:" + item.Width.ToString() + "px !important'>");
                     _html.AppendLine("<object classid='clsid:d27cdb6e-ae6d-11cf-96b8-444553540000'  width=" + item.Width.ToString() + " height=" + item.Height.ToString() + " id='movie_name' align='middle'>");
 
                     _html.AppendLine("<param name='movie' value='" + item.Url + "'/>");
