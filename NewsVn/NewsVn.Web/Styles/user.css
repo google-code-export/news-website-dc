@@ -86,12 +86,11 @@ body
     height: 50px;
     line-height: 60px;
     padding-left: 11px;
-    overflow: hidden;
-    /*display: block;*/
+    overflow: hidden; /*display: block;*/
     filter: progid:DXImageTransform.Microsoft.DropShadow(color='#000000',offX='1',offY='1');
 }
 
-#header #menu_bar li.head .menu-item 
+#header #menu_bar li.head .menu-item
 {
     padding-left: 5px;
 }
@@ -106,7 +105,7 @@ body
     background: url('../images/icons/home_white.png') no-repeat 70% 65%;
     width: 20px;
     text-indent: 200px;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 #header #menu_bar .sub-menu
@@ -349,6 +348,14 @@ body
     height: 90px;
 }
 
+.rightHome
+{
+    width: 280px !important;
+}
+.rightHome a img
+{
+     width: 200px!important;
+}
 .cate-posts.portlet
 {
     width: 305px;
