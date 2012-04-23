@@ -62,16 +62,17 @@ namespace NewsVn.Web
             for (int i = 0; i < _AdCategories.Count(); i++)
             {
                 var cate = _AdCategories.AsEnumerable().ElementAt(i);
+            
+                if (cate.Parent != null)
+                {
+                    continue;
+                }
                 Control UC_PortletAdPost = LoadControl("~/Modules/AdPostsPortlet.ascx");
                 var ctrPortletPost = ((Modules.AdPostsPortlet)UC_PortletAdPost);
                 ctrPortletPost.Title = cate.Name;
                 ctrPortletPost.SeoName = cate.SeoName;
                 ctrPortletPost.SeoUrl = cate.SeoUrl;
                 ctrPortletPost.indexCtrl = i.ToString();
-                if (cate.Parent != null)
-                {
-                    continue;
-                }
                 //set position
                 if (indexArea % 2 == 0)
                     ctrPortletPost.CssClass = "left";

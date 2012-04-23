@@ -11,6 +11,19 @@ using System.Xml.Linq;
 
 namespace NewsVn.Web.Utils
 {
+    public class PostT
+    {
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime ApprovedOn { get; set; }
+        public string Avatar { get; set; }
+        public string SeoUrl { get; set; }
+        public bool AllowComments { get; set; }
+        public int Comments { get; set; }
+        public decimal Payment { get; set; }
+
+    }
     public class clsPost
     {
         public string ID { get; set; }

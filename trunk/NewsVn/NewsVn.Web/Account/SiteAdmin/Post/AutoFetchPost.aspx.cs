@@ -200,9 +200,9 @@ namespace NewsVn.Web.Account.SiteAdmin.Post
             {
                 BindPostListRepeater();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                ltrError.Text = string.Format(ErrorBar, "Có lỗi xảy ra trong quá trình lấy tin");
+                ltrError.Text = string.Format(ErrorBar, "Có lỗi xảy ra trong quá trình lấy tin" + ex.Message.ToString());
             }
         }
 
