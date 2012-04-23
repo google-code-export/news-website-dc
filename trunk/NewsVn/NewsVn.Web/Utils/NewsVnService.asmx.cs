@@ -204,7 +204,7 @@ namespace NewsVn.Web.Utils
                                     post.SeoUrl = string.Format("pt/{0}/{1}/{2}.aspx", cate.SeoName, post.ID, clsCommon.RemoveUnicodeMarks(post.Title));
                                 }
                             }
-                            ctx.SubmitChanges();
+                           ctx.SubmitChanges();
                         }
                         else
                             return false;
