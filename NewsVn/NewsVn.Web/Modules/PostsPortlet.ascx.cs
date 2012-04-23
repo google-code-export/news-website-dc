@@ -3,6 +3,8 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using NewsVn.Web.Utils;
+using System.Data;
+using System.Collections.Generic;
 
 namespace NewsVn.Web.Modules
 {
@@ -20,7 +22,7 @@ namespace NewsVn.Web.Modules
 
         public Impl.Entity.Post ActivePost { get; set; }
 
-        public object oActivePost { get; set; }
+        public List< PostT> oActivePost { get; set; }
 
         public object OtherPosts { get; set; }
 
@@ -53,15 +55,19 @@ namespace NewsVn.Web.Modules
             rptOtherItems.DataBind();
             //load 4th avatar
             rptSubAvatar.DataSource = OtherPosts;
-            rptOtherItems.DataBind();
+            rptSubAvatar.DataBind();
         }
 
         protected void rptFirstItem_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            if (e.Item.ItemType==ListItemType.Item)
+            if (e.Item.ItemType == ListItemType.Item)
             {
-                //load 1st avatar
-                this.NoComments =Convert.ToBoolean( DataBinder.Eval(e.Item.DataItem, "AllowComments"));
+                //if (e.Item.ItemIndex==0)
+                //{
+                //    //load 1st avatar
+                   
+                //}
+                this.NoComments = Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "AllowComments"));
                 imgMain.ImageUrl = DataBinder.Eval(e.Item.DataItem, "Avatar").ToString();
                 imgMain.AlternateText = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
                 imgMain.ToolTip = DataBinder.Eval(e.Item.DataItem, "Title").ToString();
