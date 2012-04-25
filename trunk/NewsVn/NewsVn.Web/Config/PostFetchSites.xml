@@ -36,7 +36,7 @@
     <site id="2" name="MegaFun" url="http://hcm.megafun.vn/">
         <categories>
             <group type="html">
-                <category id="1" url="http://hcm.megafun.vn/cuoc-song/" target-id="7">Buôn chuyện</category>
+                <category id="1" url="http://hcm.megafun.vn/cuoc-song/" target-id="8">Tình yêu gia đình</category>
                 <category id="2" url="http://hcm.megafun.vn/tin-tuc/nghe-thuat/" target-id="19">Nghệ thuật</category>
                 <category id="3" url="http://hcm.megafun.vn/tin-tuc/cong-nghe/" target-id="32">Công nghệ</category>
                 <category id="4" url="http://hcm.megafun.vn/the-thao/" target-id="4">Thể thao</category>
