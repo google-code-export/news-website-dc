@@ -24,14 +24,20 @@
 		<![endif]-->
 		
         <!--[if lt IE 9]>
-		<script src="js/html5shiv.js"></script>
-		<script src="js/ie9.js"></script>
+		<script src="js/vendor/html5shiv.js"></script>
+		<script src="js/vendor/ie9.js"></script>	
 		<![endif]-->
 		<!--[if lt IE 8 ]>
-		<script src="js/pngfix.js"></script>
+		<script src="js/vendor/pngfix.js"></script>
 		<![endif]-->
     </head>
     <body>
+		<!-- Dialogs Section (All dialogs go here) -->		
+		<div id="fp-dialog" class="dialog" title="Forgot Your Password?">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>		
+		<!-- END Dialogs Section -->
+		
 		<header id="header" role="siteheader">
 			<a id="logo" role="sitelogo" href="/"><img alt="1ClicMAX&trade;" src="img/logo.gif"></a>
 			<section class="hcnt">
@@ -61,7 +67,10 @@
 				<section class="login left">
 					<div class="fly-box login-box">
 						<h2>Account Login</h2>
-						<form action="02_main.html">
+						<!-- Show this message after server checks failed -->
+						<div class="notif notif-error">Invalid Username or Password</div>
+						<!-- Login form -->
+						<form action="02_home.html">
 							<ul class="xform">
 								<li>
 									<label>Username</label>
@@ -76,7 +85,7 @@
 								</li>							
 							</ul>
 						</form>
-						<a href="#">Forgot your password?</a>
+						<a id="fp-link" href="#">Forgot your password?</a>
 					</div>
 					<span class="xman"></span>
 				</section>
@@ -100,21 +109,19 @@
 			instructions how to enable JavaScript in your web browser</a>.
 		</noscript>
 		
-        <script src="js/jquery-1.9.0.min.js"></script>
+        <script src="js/vendor/jquery-1.9.0.min.js"></script>
+		<script src="js/vendor/sugar-1.3.9.min.js"></script>
 		<script src="plg/jqui/jquery-ui.min.js"></script>
         <script src="js/site.js"></script>
-		<script>
-			$(function() {
-				$(":submit").button();
-			});
-		</script>
+		<script src="js/site-ui.js"></script>
+		<script src="js/site-login.js"></script>
 		
-        <!-- Google Analytics -->
-        <script>
+        <!-- Google Analytics: Uncomment this on production -->
+        <!--<script>
             var _gaq=[['_setAccount','UA-37560206-1'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+        </script>-->
     </body>
 </html>

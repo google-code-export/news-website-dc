@@ -1185,7 +1185,7 @@ input.ui-button,
 }
 .ui-dialog {
 	border: 0 none;
-	box-shadow: 0 0 10px #555;
+	box-shadow: 0 0 10px #333;
 }
 .ui-dialog .ui-dialog-title {
 	font-family: 'Roboto Condensed', Arial, sans-serif;
@@ -1198,6 +1198,9 @@ input.ui-button,
 }
 .ui-dialog .ui-dialog-titlebar .ui-button {
 	min-width: 0;
+}
+.ui-dialog .ui-dialog-titlebar .ui-button .ui-icon {
+	margin-left: -9px;
 }
 .ui-dialog .ui-dialog-buttonpane {
 	border-color: #123785;
@@ -1225,5 +1228,5 @@ input.ui-button,
 	background: #fdd106 url('images/ui-bg_highlight-soft_60_fdd106_1x100.png') repeat-x 50% 50%;
 }
 .ui-widget-overlay {
-	opacity: .2;
+	opacity: .5;
 }

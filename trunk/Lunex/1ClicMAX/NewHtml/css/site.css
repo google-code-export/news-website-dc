@@ -84,11 +84,6 @@ input, select {
 .right {
 	float: right;
 }
-/* 1clicMAX Plugin Override: jQuery UI */
-/* -------------------------------------------------------------------- */
-.ui-dialog .ui-dialog-title {
-	
-}
 
 /* 1clicMAX POS Layout */
 /* -------------------------------------------------------------------- */
@@ -240,9 +235,21 @@ input, select {
 #content .stroke-box {
     border: 1px solid #aaa;
 }
+#content .notif p {
+	margin: .2em 0;
+}
 
 /* 1clicMAX POS Form */
 /* -------------------------------------------------------------------- */
+.xform {
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.xform.auto {
+	width: auto;
+}
 .xform input[type=text], .xform input[type=password], .xform input[type=search], 
 .xform input[type=email], .xform input[type=number], .xform textarea, .xform select {
 	font-family: 'Roboto', Tahoma, sans-serif;
@@ -301,8 +308,8 @@ input, select {
 #content .login-container .login .login-box {
 	padding: 20px 30px;
 }
-.login-container .login .login-box .xform {
-	width: 250px;
+.login-container .login .login-box .notif {
+	margin-bottom: 10px;
 }
 .login-container .login .login-box .xform input[type=submit] {
 	margin: 8px 0;
