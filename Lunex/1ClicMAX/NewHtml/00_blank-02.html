@@ -22,7 +22,10 @@
 		<link rel="stylesheet" href="css/site-ie.css" />
 		<![endif]-->
 		
-        <script src="js/modernizr-2.6.2.min.js"></script>
+        <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/ie9.js"></script>
+		<![endif]-->
 		<!--[if lt IE 8 ]>
 		<script src="js/pngfix.js"></script>
 		<![endif]-->
@@ -93,9 +96,8 @@
 			instructions how to enable JavaScript in your web browser</a>.
 		</noscript>
 		
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>        
-        <script src="js/site.js"></script>
+        <script src="js/jquery-1.9.0.min.js"></script>
+		<script src="js/site.js"></script>
 
         <!-- Google Analytics -->
         <script>
