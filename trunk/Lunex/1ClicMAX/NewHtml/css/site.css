@@ -6,42 +6,178 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 /* -------------------------------------------------------------------- */
 ::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}img{vertical-align:middle}fieldset{border:0;margin:0;padding:0}textarea{resize:auto}.chromeframe{margin:.2em 0;background:#ccc;color:#000;padding:.2em 0}.ir{background-color:transparent;border:0;overflow:hidden;*text-indent:-9999px}.ir:before{content:"";display:block;width:0;height:150%}.hidden{display:none!important;visibility:hidden}.invisible{visibility:hidden}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.clearfix{*zoom:1}@media print{*{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100%!important}@page{margin:.5cm}p,h2,h3{orphans:3;widows:3}h2,h3{page-break-after:avoid}}
 
-/* 1clicMAX POS */
+/* 1clicMAX POS Defaults & Helpers */
 /* -------------------------------------------------------------------- */
 body {
 	font-family: 'Roboto', Tahoma, sans-serif;
 	font-size: 16px;
-	line-height: 1.4em;
+	line-height: 1.5em;
 	color: #222;
 	background-color: #eaeaea;
 }
-.htext {
-	font-family: 'Roboto Condensed', Arial, sans-serif;
+a {
+	color: #e40;
+	outline: none;
+	text-decoration: none;
 }
+a:hover {
+	text-decoration: underline;
+}
+h1, h2, h3, h4, h5, h6, .htext {
+	font-family: 'Roboto Condensed', Arial, sans-serif;
+	font-weight: bold;
+	color: #123785;
+}
+menu, ol, ul {
+    list-style: none;
+	list-style-image: none;
+}
+input, select {
+	font-weight: bold;
+	outline: none;
+}
+.emp {
+	color: #ec2028 !important;
+}
+.align-left {
+	text-align: left !important;
+}
+.align-right {
+	text-align: right !important;
+}
+.align-center {
+	text-align: center !important;
+}
+
+/* 1clicMAX POS Layout */
+/* -------------------------------------------------------------------- */
 #header, #footer, #content {
 	background-color: #fafafa;
-	width: 100%;
-	padding: 0 5px;
+	width: 100%;	
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
 #header {
-	height: 80px;
+	height: 84px;
+	padding: 0 0 0 8px;
 	border-bottom: 3px solid #123785;
+	position: relative;
+}
+#header #logo {
+	display: inline-block;
+	margin-top: 5px;
+}
+#header .hcnt {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#header .hcnt .hcnt-upper,
+#header .hcnt .hcnt-lower {
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+}
+#header .hcnt .hcnt-upper {	
+	font-size: 14px;
+	padding-right: 10px;
+}
+#header .hcnt .sep,
+#header .hcnt .menu,
+#header .hcnt .lang-selector,
+#header .hcnt .customer-support,
+#header .hcnt .account-log,
+#header .hcnt .account-toolbar {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+#header .hcnt .sep {
+	display: inline-block;
+	vertical-align: middle;
+	height: 20px;
+	width: 1px;
+	margin: 0 10px;
+	background-color: #ddd;	
+}
+#header .hcnt .menu li {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 10px;
+}
+#header .hcnt .menu li a {
+	color: #999;
+	text-transform: uppercase;
+}
+#header .hcnt .lang-selector select {
+	color: #123785;
+}
+#header .hcnt-upper .customer-support {
+	font-size: 18px;
+}
+#header .hcnt-lower .customer-support {
+	font-size: 24px;
+	line-height: 1.2em;
+	padding-right: 10px;
+	vertical-align: top;
+}
+#header .hcnt .account-toolbar {
+	margin-right: -4px;
+	padding-left: 62px;
+	background: url('../img/accbar_leftend.gif') no-repeat 0 0;
+}
+#header .hcnt .account-toolbar .barinner {
+	padding-right: 10px;
+	background-color: #eaeaea;
+}
+#header .hcnt .account-toolbar .account-mgt {
+	color: #123785;
+	font-weight: bold;	
+}
+#header .hcnt .account-log .welcome {
+	display: block;
+	color: #fafafa;
+	background-color: #444;
+	padding: 0 10px 0 15px;
+}
+#header .hcnt .account-log .welcome:hover {
+	background-color: #123785;
+	text-decoration: none;
 }
 #footer {
 	height: 60px;
+	padding: 0 10px;
 	border-top: 3px solid #123785;
 	position: absolute;
 	bottom: 0;
+	font-size: 12px;	
 }
-#logo {
-	display: inline-block;
-	margin-top: 3px;
+#footer #copyright {
+	padding-top: 12px;
+}
+#footer #copyright p {
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+}
+#footer #demo-button {
+	position: absolute;
+    left: 10px;
+    top: 12px;
+}
+#footer #lunex-logo {
+	position: absolute;
+    right: 10px;
+    top: 12px;
 }
 #content {
 	width: 1000px;
-	padding: 20px;
+	padding: 0;
 	margin: 20px auto;
+}
+#content.w-auto {
+	width: 100%;
+	padding: 0 50px;
 }
