@@ -84,6 +84,11 @@ input, select {
 .right {
 	float: right;
 }
+/* 1clicMAX Plugin Override: jQuery UI */
+/* -------------------------------------------------------------------- */
+.ui-dialog .ui-dialog-title {
+	
+}
 
 /* 1clicMAX POS Layout */
 /* -------------------------------------------------------------------- */
@@ -218,7 +223,7 @@ input, select {
 	display: table;
 	width: auto;
 	max-width: 1580px;
-	margin: 10px auto;
+	margin: 30px auto;
 }
 #content .fly-box,
 #content .stroke-box {
@@ -270,7 +275,7 @@ input, select {
 /* -------------------------------------------------------------------- */
 @media screen and (min-height: 700px) {
 	#content.w-auto {
-		margin-top: 40px;
+		margin-top: 50px;
 	}
 }
 @media screen and (min-height: 750px) {
@@ -293,8 +298,16 @@ input, select {
 	padding: 30px 300px 0 0;
 	position: relative;	
 }
+#content .login-container .login .login-box {
+	padding: 20px 30px;
+}
 .login-container .login .login-box .xform {
 	width: 250px;
+}
+.login-container .login .login-box .xform input[type=submit] {
+	margin: 8px 0;
+	padding: .5em 1em;
+	width: 100px;	
 }
 .login-container .login .xman {
 	width: 386px;
