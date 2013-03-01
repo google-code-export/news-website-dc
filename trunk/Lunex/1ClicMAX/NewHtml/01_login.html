@@ -18,23 +18,38 @@
 
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic|Roboto+Condensed:700">
 		<link rel="stylesheet" href="plg/jqui/jquery-ui.css">
+        <link rel="stylesheet" href="plg/validation/jquery.validationEngine.css">
 		<link rel="stylesheet" href="css/site.css">
 		<!--[if IE ]>
 		<link rel="stylesheet" href="css/site-ie.css" />
 		<![endif]-->
 		
         <!--[if lt IE 9]>
-		<script src="js/vendor/html5shiv.js"></script>
-		<script src="js/vendor/ie9.js"></script>	
+		<script src="lib/html5shiv.js"></script>
+		<script src="lib/ie9.js"></script>	
 		<![endif]-->
 		<!--[if lt IE 8 ]>
-		<script src="js/vendor/pngfix.js"></script>
+		<script src="lib/pngfix.js"></script>
 		<![endif]-->
     </head>
     <body>
 		<!-- Dialogs Section (All dialogs go here) -->		
-		<div id="fp-dialog" class="dialog" title="Forgot Your Password?">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		<div id="forgotPassDialog" class="dialog" title="Forgot Your Password?">
+			<article>
+            	<h6>24hr Customer or Retailer Support:</h6>
+                <ul>
+                    <li><strong>1-888-333-2404</strong> (English)</li>
+                    <li><strong>1-888-333-5154</strong> (Spanish)</li>
+                    <li><strong>1-888-333-0008</strong> (Vietnamese)</li>
+                </ul>
+            </article>
+            <article>
+            	<h6>Accounting Support <span>(Mon-Fri 9AM - 5PM, EST)</span></h6>
+                <ul>
+                    <li><strong>1-888-755-3535</strong></li>
+                    <li>Email: <a href="mailto:support@lunextelecom.com">Support@LunexTelecom.com</a></li>
+                </ul>
+            </article>
 		</div>		
 		<!-- END Dialogs Section -->
 		
@@ -70,22 +85,24 @@
 						<!-- Show this message after server checks failed -->
 						<div class="notif notif-error">Invalid Username or Password</div>
 						<!-- Login form -->
-						<form action="02_home.html">
+						<form id="loginForm" method="post" action="02_home.html">
 							<ul class="xform">
 								<li>
 									<label>Username</label>
-									<input type="text" value="demomax" autofocus />
+									<input type="text" value="demomax" autofocus
+                                    	data-validation-engine="validate[required]" data-errormessage-value-missing="Username is required" />
 								</li>
 								<li>
 									<label>Password</label>
-									<input type="password" value="webteam" />
+									<input type="password" value="webteam"
+                                    	data-validation-engine="validate[required]" data-errormessage-value-missing="Password is required" />
 								</li>
 								<li>
 									<input type="submit" value="Login" />
 								</li>							
 							</ul>
 						</form>
-						<a id="fp-link" href="#">Forgot your password?</a>
+						<a class="dialog-trigger" data-dialog-id="forgotPassDialog" href="#">Forgot your password?</a>
 					</div>
 					<span class="xman"></span>
 				</section>
@@ -109,12 +126,16 @@
 			instructions how to enable JavaScript in your web browser</a>.
 		</noscript>
 		
-        <script src="js/vendor/jquery-1.9.0.min.js"></script>
-		<script src="js/vendor/sugar-1.3.9.min.js"></script>
+        <script src="lib/jquery-1.9.0.min.js"></script>
+		<script src="lib/sugar-1.3.9.min.js"></script>
 		<script src="plg/jqui/jquery-ui.min.js"></script>
+        <script src="plg/validation/jquery.validationEngine-en.js"></script>
+        <script src="plg/validation/jquery.validationEngine.js"></script>
         <script src="js/site.js"></script>
+        <script src="js/site-util.js"></script>
 		<script src="js/site-ui.js"></script>
-		<script src="js/site-login.js"></script>
+        <script src="js/site-form.js"></script>
+		<script src="js/page-login.js"></script>
 		
         <!-- Google Analytics: Uncomment this on production -->
         <!--<script>
