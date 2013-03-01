@@ -49,8 +49,8 @@ h5 {
 	margin: 0 0 1.67em;
 }
 h6 {
-	font-size: .67em;
-	margin: 0 0 2.33em;
+	font-size: 16px;
+	margin: 0 0 .2em;
 }
 menu, ol, ul {
     list-style: none;
@@ -186,10 +186,13 @@ input, select {
 	height: 60px;
 	padding: 0 10px;
 	background-color: #fafafa;
-	border-top: 3px solid #123785;
+	border-top: 3px solid #123785;	
+	font-size: 12px;
+	position: relative;
+}
+#footer.docked {
 	position: absolute;
 	bottom: 0;
-	font-size: 12px;	
 }
 #footer #copyright {
 	padding-top: 12px;
@@ -199,7 +202,7 @@ input, select {
 	padding: 0;
 	line-height: 1.5em;
 }
-#footer #demo-button {
+#footer #demoButton {
 	position: absolute;
     left: 10px;
     top: 12px;
@@ -218,7 +221,7 @@ input, select {
 	display: table;
 	width: auto;
 	max-width: 1580px;
-	margin: 30px auto;
+	margin: 30px auto 20px;
 }
 #content .fly-box,
 #content .stroke-box {
@@ -237,6 +240,9 @@ input, select {
 }
 #content .notif p {
 	margin: .2em 0;
+}
+.dialog {
+	display: none;	
 }
 
 /* 1clicMAX POS Form */
@@ -361,4 +367,16 @@ input, select {
 	height: 450px;
 	line-height: 390px;
 	text-align: center;
+}
+#forgotPassDialog {
+	width: 450px;	
+}
+#forgotPassDialog article {
+	margin: 0 0 10px 30px;
+}
+#forgotPassDialog article h6 span {
+	color: #444;
+}
+#forgotPassDialog article ul {
+	margin-left: 30px;
 }

@@ -5,10 +5,26 @@ var ui = {
 		focused: "focused",
 		selected: "selected",
 		collapsed: "collapsed",
-		expanded: "expanded"
+		expanded: "expanded",
+		docked: "docked"
 	},
 	layout: {
-		
+		dockFooter: function() {
+			var autoDock = function() {
+				var windowH = $(window).height();
+				var headerH = $("#header").outerHeight(true);
+				var contentH = $("#content").outerHeight(true);
+				if (headerH + contentH < windowH) {
+					$("#footer").addClass(ui.clazz.docked);
+				} else {
+					$("#footer").removeClass(ui.clazz.docked);	
+				}
+			};
+			autoDock();
+			$(window).resize(function() {
+                autoDock();
+            });
+		}
 	},
 	jWidget: {
 		// Required:
@@ -32,7 +48,6 @@ var ui = {
 			var dateInputs = $(".date-input");			
 			if (dateInputs.datepicker) {
 				dateInputs.each(function(i) {
-					console.log(i);
 					var wrapper = $("<div>", { "class": "input-wrapper" });
 					var picker = $("<a>", {
 						"href": "#",
@@ -57,6 +72,10 @@ var ui = {
 		// jquery.ui.core.min.js
 		// jquery.ui.button.min.js
 		setupButtons: function() {
+			// Don't do anything if missing jQuery UI Buttons
+			if (!$(":button").button) {
+				return;	
+			}
 			// Common buttons
 			$(":button, :submit, :reset, .button").button();
 			// Iconic buttons with text
@@ -161,6 +180,16 @@ var ui = {
 		// Required:
 		// jquery.ui.core.min.js
 		setupNotifs: function() {
+			ui.jWidget._loadNotifs();
+		},
+		// Required:
+		// jquery.ui.core.min.js
+		reloadNotifs: function() {
+			ui.jWidget._loadNotifs(true);
+		},
+		// Required:
+		// jquery.ui.core.min.js
+		_loadNotifs: function(isReload) {
 			// Notif parts
 			var notif, notifClazz, notifText, notifInner, notifParaf, notifIcon;
 			// Extra notif clazz
@@ -184,40 +213,48 @@ var ui = {
 			$(".notif").each(function() {
                 // Create new elements
 				notif = $(this);
-				notifClazz = getNotifClazz(notif);
-				notifText = $.trim(notif.text());
-				notifInner = $("<div>", {
-					"class": "ui-corner-all" + notifClazz[0]
-				}).css({
-					"padding": ".2em .7em"
-				});
-				notifParaf = $("<p>", {
-					"text": notifText
-				});
-				notifIcon = $("<span>", {
-					"class": "ui-icon" + notifClazz[1]
-				}).css({
-					"float": "left",
-					"margin": ".2em .3em 0 0"
-				});
-				// Add to DOM
-				notif.empty();
-				notifParaf.prepend(notifIcon);
-				notifInner.append(notifParaf);
-				notif.append(notifInner).addClass("ui-widget");
+				if (!isReload || !notif.hasClass("ui-widget")) {
+					notifClazz = getNotifClazz(notif);
+					notifText = $.trim(notif.text());
+					notifInner = $("<div>", {
+						"class": "ui-corner-all" + notifClazz[0]
+					}).css({
+						"padding": ".2em .7em"
+					});
+					notifParaf = $("<p>", {
+						"text": notifText
+					});
+					notifIcon = $("<span>", {
+						"class": "ui-icon" + notifClazz[1]
+					}).css({
+						"float": "left",
+						"margin": ".2em .3em 0 0"
+					});
+					// Add to DOM
+					notif.empty();
+					notifParaf.prepend(notifIcon);
+					notifInner.append(notifParaf);
+					notif.append(notifInner).addClass("ui-widget");	
+				}				
             });
 		},
 		// Required:
 		// jquery.ui.interations.min.js (Dragging Ability)
 		// jquery.ui.dialog.min.js
 		setupDialogs: function() {
-			$(".dialog, dialog").each(function() {
+			$(".dialog").each(function() {
 				$(this).dialog({
 					autoOpen: false,
 					minWidth: 400,
 					width: $(this).width(),
 					modal: true,
-					resizable: false
+					resizable: false,
+					buttons: {
+						// Default button
+						"OK": function() {
+							$(this).dialog("close")
+						}
+					}
 				});
 			});
 			$(".dialog .dialog-close").click(function() {
@@ -226,8 +263,7 @@ var ui = {
 			});
 			$(".dialog-trigger").on("click", function() {
 				var dialogId = $(this).attr("data-dialog-id");
-				var targetDialog = $("#" + dialogId);
-				ui.jWidget.showDialog(targetDialog);
+				ui.jWidget.showDialog(dialogId);
 			});
 			// Auto open a dialog if it is specified
 			$(".dialog-trigger").each(function() {
@@ -239,22 +275,60 @@ var ui = {
 		// Required:
 		// jquery.ui.interations.min.js (Dragging Ability)
 		// jquery.ui.dialog.min.js
-		showDialog: function(targetDialog, option) {
+		showDialog: function(dialogId, option, callback) {
+			var dialogId = util.html.getJqueryIdSelector(dialogId);
+			var targetDialog = $(dialogId);
 			// Do nothing if cannot find the target dialog
 			if (targetDialog.size() == 0) {
 				return false;
 			}
-			targetDialog.dialog("option", option).dialog("open");
+			if (!option) { option = {};	}
+			targetDialog.on("dialogopen", callback);
+			targetDialog.dialog("option", option).dialog("open");			
 		},
 		// Required:
 		// jquery.ui.interations.min.js (Dragging Ability)
 		// jquery.ui.dialog.min.js
-		closeDialog: function(targetDialog)  {
+		showDialogs: function(dialogArr) {
+			for (var i = 0; i < dialogArr.length; i++) {
+				ui.jWidget.showDialog(
+					dialogArr[i].dialog,
+					dialogArr[i].option,
+					dialogArr[i].callback
+				);
+			}
+		},
+		// Required:
+		// jquery.ui.interations.min.js (Dragging Ability)
+		// jquery.ui.dialog.min.js
+		closeDialog: function(dialogId, callback)  {
+			var dialogId = util.html.getJqueryIdSelector(dialogId);
+			var targetDialog = $(dialogId);
 			// Do nothing if cannot find the target dialog
 			if (targetDialog.size() == 0) {
 				return false;
 			}
+			targetDialog.on("dialogclose", callback);
 			targetDialog.dialog("close");
+		},
+		closeDialogs: function(dialogArr) {
+			for (var i = 0; i < dialogArr.length; i++) {
+				ui.jWidget.closeDialog(
+					dialogArr[i].dialog,
+					dialogArr[i].callback
+				);
+			}
+		},
+		// Required:
+		// jquery.ui.dialog.min.js
+		checkDialogOpen: function(dialogId) {
+			var dialogId = util.html.getJqueryIdSelector(dialogId);
+			var targetDialog = $(dialogId);
+			// Do nothing if cannot find the target dialog
+			if (targetDialog.size() == 0) {
+				return false;
+			}
+			return targetDialog.dialog("isOpen");
 		},
 		// Required:
 		// jquery.ui.interations.min.js (Dragging Ability)
@@ -428,5 +502,6 @@ var ui = {
 
 $(function() {
 	ui.element.setupSharpLinks();
+	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
 });

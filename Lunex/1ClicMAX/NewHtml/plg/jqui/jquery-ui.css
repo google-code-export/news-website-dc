@@ -802,9 +802,6 @@ body .ui-tooltip {
 	background: #fafafa url(images/ui-bg_flat_75_fafafa_40x100.png) 50% 50% repeat-x;
 	color: #444;
 }
-.ui-widget-content a {
-	color: #444;
-}
 .ui-widget-header {
 	border: 1px solid #aaa;
 	background: #fafafa url(images/ui-bg_flat_75_fafafa_40x100.png) 50% 50% repeat-x;
@@ -1178,6 +1175,7 @@ body .ui-tooltip {
 /* -------------------------------------------------------------------- */
 .ui-button {
 	min-width: 80px;
+	outline: none;
 }
 input.ui-button,
 .ui-button-text-only .ui-button-text {
@@ -1190,20 +1188,27 @@ input.ui-button,
 .ui-dialog .ui-dialog-title {
 	font-family: 'Roboto Condensed', Arial, sans-serif;
 	font-size: 20px;
+	color: #EC2029;
 }
 .ui-dialog .ui-dialog-titlebar {
 	border: 1px solid #123785;
 	border-width: 0 0 1px;
 	border-radius: 0;
+	padding: .3em 10px .55em;
 }
 .ui-dialog .ui-dialog-titlebar .ui-button {
 	min-width: 0;
+	right: 10px;
 }
 .ui-dialog .ui-dialog-titlebar .ui-button .ui-icon {
 	margin-left: -9px;
 }
+.ui-dialog .ui-dialog-content {
+	padding: 20px;	
+}
 .ui-dialog .ui-dialog-buttonpane {
 	border-color: #123785;
+	padding: .3em .3em .3em .4em;
 }
 .ui-datepicker .ui-datepicker-title {
 	font-family: 'Roboto Condensed', Arial, sans-serif;
@@ -1229,4 +1234,7 @@ input.ui-button,
 }
 .ui-widget-overlay {
 	opacity: .5;
+}
+.ui-front {
+	z-index: 1000;	
 }
