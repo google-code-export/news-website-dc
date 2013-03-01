@@ -6,9 +6,35 @@ var ui = {
 		selected: "selected",
 		collapsed: "collapsed",
 		expanded: "expanded",
-		docked: "docked"
+		docked: "docked",
+		hCenter: "h-center",
+		autoCenter: "auto-center"
 	},
 	layout: {
+		centerContent: function() {
+			if (!$("#content").hasClass(ui.clazz.autoCenter)) {
+				return;
+			}
+			var autoCenter = function() {
+				var windowH = $(window).height();
+				var windowW = $(window).width();
+				var headerH = $("#header").outerHeight(true);
+				var contentH = $("#content").outerHeight(true);
+				if (headerH + contentH < windowH) {
+					$("#content").addClass(ui.clazz.hCenter);
+				} else {
+					$("#content").removeClass(ui.clazz.hCenter);	
+				}
+				$("#content").css({
+					top: (windowH - contentH) / 2 + "px",
+					left: (windowW - 1000) / 2 + "px"
+				});
+			}
+			autoCenter();
+			$(window).resize(function() {
+                autoCenter();
+            });
+		},
 		dockFooter: function() {
 			var autoDock = function() {
 				var windowH = $(window).height();
@@ -502,6 +528,7 @@ var ui = {
 
 $(function() {
 	ui.element.setupSharpLinks();
+	ui.layout.centerContent();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
 });
