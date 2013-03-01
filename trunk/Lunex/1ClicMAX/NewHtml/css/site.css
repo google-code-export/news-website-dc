@@ -207,7 +207,7 @@ input, select {
     left: 10px;
     top: 12px;
 }
-#footer #lunex-logo {
+#footer #lunexLogo {
 	position: absolute;
     right: 10px;
     top: 12px;
@@ -222,6 +222,9 @@ input, select {
 	width: auto;
 	max-width: 1580px;
 	margin: 30px auto 20px;
+}
+#content.h-center {	
+	position: absolute;
 }
 #content .fly-box,
 #content .stroke-box {
@@ -379,4 +382,51 @@ input, select {
 }
 #forgotPassDialog article ul {
 	margin-left: 30px;
+}
+
+/* 1clicMAX POS Page: Home */
+/* -------------------------------------------------------------------- */
+
+
+#productsNav ul li {
+	display: inline-block;
+	margin-right: 6px;
+	padding-bottom: 14px;
+	background: url('../img/product_box_shadow.png') no-repeat 50% 100%;
+}
+#productsNav ul li:last-of-type {
+	margin: 0;
+}
+#productsNav ul li a {
+	display: block;
+	width: 192px;
+	height: 100px;
+	background-color: #123785;	
+	background-image: url('../img/product_logos_large.png');
+	background-repeat: no-repeat;
+	text-indent: 999px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#productsNav ul li a:hover {
+	background-color: #EC2029;
+	transition: background-color 500ms ease 0s;
+	-moz-transition: background-color 500ms ease 0s;
+    -webkit-transition: background-color 500ms ease 0s;
+    -o-transition: background-color 500ms ease 0s;
+}
+#productsNav ul li.one-clic a {
+	background-position: 0 0;
+}
+#productsNav ul li.topup-world a {
+	background-position: -192px 0;
+}
+#productsNav ul li.topup-usa a {
+	background-position: -384px 0;
+}
+#productsNav ul li.phi-calling a {
+	background-position: 0 -100px;
+}
+#productsNav ul li.billmex a {
+	background-position: -192px -100px;
 }
