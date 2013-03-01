@@ -23,7 +23,7 @@ var ui = {
 				if (headerH + contentH < windowH) {
 					$("#content").addClass(ui.clazz.hCenter);
 				} else {
-					$("#content").removeClass(ui.clazz.hCenter);	
+					$("#content").removeClass(ui.clazz.hCenter);
 				}
 				$("#content").css({
 					top: (windowH - contentH) / 2 + "px",
@@ -528,7 +528,7 @@ var ui = {
 
 $(function() {
 	ui.element.setupSharpLinks();
-	ui.layout.centerContent();
+	//ui.layout.centerContent();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
 });
