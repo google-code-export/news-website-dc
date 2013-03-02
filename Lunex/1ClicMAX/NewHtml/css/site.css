@@ -52,6 +52,10 @@ h6 {
 	font-size: 16px;
 	margin: 0 0 .2em;
 }
+hr {
+	margin: .8em 0;
+	border-color: #ddd;	
+}
 menu, ol, ul {
     list-style: none;
 	list-style-image: none;
@@ -182,6 +186,17 @@ input, select {
 	background-color: #123785;
 	text-decoration: none;
 }
+#header .hcnt .account-log .dropdown {
+	display: none;
+	line-height: 1.5em;
+	background: #fafafa;
+    padding: 15px;
+	box-shadow: 0 0 10px #333;
+    position: absolute;    
+    top: 81px;
+	right: 0;
+	z-index: 990;
+}
 #footer {
 	height: 60px;
 	padding: 0 10px;
@@ -250,6 +265,30 @@ input, select {
 
 /* 1clicMAX POS Form */
 /* -------------------------------------------------------------------- */
+.gray-button {
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	padding: .32em 1em;
+    color: #444;
+	font-family: 'Roboto', Tahoma, sans-serif;
+	font-size: 16px;
+	line-height: 1em;
+    font-weight: bold;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	background: #ddd; /* Fallback */
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd));
+	background: -moz-linear-gradient(top,  #eee,  #ddd);
+	zoom: 1;
+	cursor: pointer;
+}
+.gray-button:hover {
+	text-decoration: none;
+	border: 1px solid #fdd106;
+	background: #fdd106 url(../plg/jqui/images/ui-bg_highlight-soft_60_fdd106_1x100.png) 50% 50% repeat-x;
+	color: #222;	
+}
 .xform {
 	width: 100%;
 	box-sizing: border-box;

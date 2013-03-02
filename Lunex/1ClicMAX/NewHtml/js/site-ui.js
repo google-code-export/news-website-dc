@@ -11,6 +11,15 @@ var ui = {
 		autoCenter: "auto-center"
 	},
 	layout: {
+		slideAccountDropDown: function() {
+			var dropDown = $("#header .hcnt .account-log .dropdown");
+			$("#header .hcnt .account-log").hover(function() {
+				dropDown.not(":visible").slideDown("fast");
+			},
+			function() {
+				dropDown.slideUp("fast");
+			});
+		},
 		centerContent: function() {
 			if (!$("#content").hasClass(ui.clazz.autoCenter)) {
 				return;
@@ -103,13 +112,8 @@ var ui = {
 				return;	
 			}
 			// Common buttons
-			$(":button, :submit, :reset, .button").button();
+			$(":button, :submit, :reset, .button").not(".gray-button").button();
 			// Iconic buttons with text
-			$(".button-login").button({
-				icons: {
-					primary: "ui-icon-key"
-				}
-			});
 			$(".button-save").button({
 				icons: {
 					primary: "ui-icon-disk"
@@ -275,6 +279,14 @@ var ui = {
 					width: $(this).width(),
 					modal: true,
 					resizable: false,
+					show: {
+						effect: "drop",
+						duration: 200
+					},
+					hide: {
+						effect: "drop",
+						duration: 300
+					},
 					buttons: {
 						// Default button
 						"OK": function() {
@@ -528,6 +540,7 @@ var ui = {
 
 $(function() {
 	ui.element.setupSharpLinks();
+	ui.layout.slideAccountDropDown();
 	//ui.layout.centerContent();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
