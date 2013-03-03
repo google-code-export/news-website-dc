@@ -6,9 +6,7 @@ var ui = {
 		selected: "selected",
 		collapsed: "collapsed",
 		expanded: "expanded",
-		docked: "docked",
-		hCenter: "h-center",
-		autoCenter: "auto-center"
+		docked: "docked"
 	},
 	layout: {
 		slideAccountDropDown: function() {
@@ -20,36 +18,13 @@ var ui = {
 				dropDown.slideUp("fast");
 			});
 		},
-		centerContent: function() {
-			if (!$("#content").hasClass(ui.clazz.autoCenter)) {
-				return;
-			}
-			var autoCenter = function() {
-				var windowH = $(window).height();
-				var windowW = $(window).width();
-				var headerH = $("#header").outerHeight(true);
-				var contentH = $("#content").outerHeight(true);
-				if (headerH + contentH < windowH) {
-					$("#content").addClass(ui.clazz.hCenter);
-				} else {
-					$("#content").removeClass(ui.clazz.hCenter);
-				}
-				$("#content").css({
-					top: (windowH - contentH) / 2 + "px",
-					left: (windowW - 1000) / 2 + "px"
-				});
-			}
-			autoCenter();
-			$(window).resize(function() {
-                autoCenter();
-            });
-		},
 		dockFooter: function() {
 			var autoDock = function() {
 				var windowH = $(window).height();
-				var headerH = $("#header").outerHeight(true);
+				var headerH = $("#header").outerHeight(true);				
 				var contentH = $("#content").outerHeight(true);
-				if (headerH + contentH < windowH) {
+				var footerH = $("#footer").outerHeight(true);
+				if (headerH + contentH + footerH < windowH) {
 					$("#footer").addClass(ui.clazz.docked);
 				} else {
 					$("#footer").removeClass(ui.clazz.docked);	
@@ -541,7 +516,6 @@ var ui = {
 $(function() {
 	ui.element.setupSharpLinks();
 	ui.layout.slideAccountDropDown();
-	//ui.layout.centerContent();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
 });
