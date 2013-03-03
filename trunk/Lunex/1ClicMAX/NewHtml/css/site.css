@@ -32,6 +32,9 @@ h1 {
 	font-size: 36px;
 	margin: 0 0 .67em;
 }
+h1.large {
+	font-size: 48px;
+}
 h2 {
 	font-size: 24px;
 	margin: 0 0 .8em;
@@ -263,6 +266,9 @@ input, select {
 #content .fly-box {	
     box-shadow: 0 0 4px #999;
 }
+#content .fly-box.content-holder {
+	width: 100%;	
+}
 #content .fly-box h3 {
 	margin-bottom: .8em;
 	padding-bottom: 8px;
@@ -322,8 +328,25 @@ input, select {
 .xform.auto {
 	width: auto;
 }
-.xform input[type=text], .xform input[type=password], .xform input[type=search], 
-.xform input[type=email], .xform input[type=number], .xform textarea, .xform select {
+.xform.product-form {
+	padding: 20px;
+	color: #222;
+	background-color: #fff5a5;
+}
+.xform li {
+	padding-bottom: 12px;
+}
+.xform label {
+	display: block;
+	padding-bottom: .15em;
+}
+.xform.inline label {
+	display: inline-block;
+	padding: 0;
+}
+.xform input[type=text], .xform input[type=password],
+.xform input[type=search], .xform input[type=email], .xform input[type=phone],
+.xform input[type=number], .xform textarea, .xform select {
 	font-family: 'Roboto', Tahoma, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
@@ -335,19 +358,30 @@ input, select {
 	border: 2px solid #aaa;
 	border-radius: 3px;
 	padding: .28em .4em .26em;
-	display: block;
+	display: inline-block;
+	vertical-align: middle;
 	width: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
-.xform input[type=text]:focus, .xform input[type=password]:focus, .xform input[type=search]:focus, 
-.xform input[type=email]:focus, .xform input[type=number]:focus, .xform textarea:focus, .xform select:focus {
+.xform input[type=text]:focus, .xform input[type=password]:focus,
+.xform input[type=search]:focus, .xform input[type=phone]:focus, .xform input[type=email]:focus,
+.xform input[type=number]:focus, .xform textarea:focus, .xform select:focus {
 	border-color: #4a669e;
 	box-shadow: inset 0 0 .2em #cbdcff;
 }
-.xform li {
-	padding-bottom: 12px;
+.xform input[type=text].xlarge, .xform input[type=password].xlarge,
+.xform input[type=search].xlarge, .xform input[type=email].xlarge, .xform input[type=phone].xlarge,
+.xform input[type=number].xlarge, .xform textarea.xlarge, .xform select.xlarge {
+	font-size: 72px;
+	padding: .1em 0.2em;
+}
+
+.xform input[type=button].xlarge, .xform input[type=submit].xlarge,
+.xform input[type=reset].xlarge, xform .gray-button.xlarge {
+	font-size: 36px;
+	padding: .15em 0.4em;
 }
 
 /* 1clicMAX POS Page: Login */
@@ -545,4 +579,17 @@ input, select {
 #homePage #homeFeed footer {
 	margin: .2em 0;
 	text-align: center;	
+}
+/* 1clicMAX POS Page: 1ClicMAX Product */
+/* -------------------------------------------------------------------- */
+#oneClicProductPage #phoneInputForm .xform {
+	width: 578px;
+	padding: 20px 30px;	
+}
+#oneClicProductPage #phoneInputForm .bottom {
+	text-align: right;
+	padding: 15px 0 0;
+}
+#oneClicProductPage #phoneInputForm .bottom input {
+	margin: 0;
 }

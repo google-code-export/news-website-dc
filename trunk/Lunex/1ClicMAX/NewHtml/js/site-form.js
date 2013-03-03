@@ -1,5 +1,16 @@
 ﻿// Form helper features
 var form = {
+	mask: {
+		setupMaskOne: function(formId) {
+			var formId = util.html.getJqueryIdSelector(formId);
+			$(formId + " input[data-mask-type=us-phone]").setMask({ mask: "999-999-9999", fixedChars: "-" });
+		},
+		setupMaskMany: function(formArr) {
+			for (var i = 0; i < formArr.length; i++) {
+				form.mask.setupMaskOne(formArr[i].form);
+			}
+		}
+	},
 	// Required:
 	// jquery.validationEngine.js
 	validation: {
