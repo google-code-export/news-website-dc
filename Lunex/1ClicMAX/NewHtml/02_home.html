@@ -17,6 +17,8 @@
 		<link href="favicon.ico" rel="favicon" />
 
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic|Roboto+Condensed:700">
+        <link rel="stylesheet" href="plg/jqui/jquery-ui.css">
+        <link rel="stylesheet" href="plg/nivo/nivo-slider.css">
         <link rel="stylesheet" href="css/site.css">
 		<!--[if IE ]>
 		<link rel="stylesheet" href="css/site-ie.css" />
@@ -31,7 +33,7 @@
 		<![endif]-->
     </head>
     <body>
-		<div id="homePage" class="wrapper">
+    	<div id="homePage" class="wrapper">
         	<header id="header" role="siteheader">
                 <a id="logo" role="sitelogo" href="/"><img alt="1ClicMAX&trade;" src="img/logo.gif"></a>
                 <section class="hcnt">
@@ -73,7 +75,10 @@
                             </div>
                         </div>
                         <div class="account-log">
-                            <a class="welcome" href="#">Hello, <strong>Waston Nguyen</strong></a>
+                            <a class="welcome" href="#">
+                            	Hello, <strong>Waston Nguyen</strong>
+                                <span class="arrow"></span>
+                            </a>
                             <div class="dropdown">
                             	Account Number: <strong class="emp">1985139633</strong>
                                 <hr/>
@@ -83,7 +88,7 @@
                     </div>
                 </section>
             </header>
-            <div id="content" role="sitecontent" class="auto-center">
+            <div id="content" role="sitecontent">
                 <nav id="productsNav">
                     <ul>
                         <li class="one-clic">
@@ -100,31 +105,70 @@
                         </li>
                         <li class="billmex">
                             <a href="#">BillMEX</a>
-                        </li>         
+                        </li>       
                     </ul>
                 </nav>
                 <div id="mainContent" class="clearfix">
                     <section id="homeSlider" class="fly-box left">
-                        
+                        <div class="slider-wrapper theme-default">
+                            <div class="nivoSlider">
+                                <a href="#">
+                                	<img src="res/home/slide01.jpg" data-thumb="res/home/slide01.jpg" alt="" />
+                                </a>
+                                <a href="#">
+                                	<img src="res/home/slide02.jpg" data-thumb="res/home/slide02.jpg" alt="" />
+                                </a>
+                                <a href="#">
+                                	<img src="res/home/slide03.jpg" data-thumb="res/home/slide03.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
                     </section>
                     <section id="homeFeed" class="fly-box right">
-                        
+                        <h3>New Messages</h3>
+                        <article>
+                        	<div class="content">
+                            	<a href="#"><strong>AFRICA Challenge is Back!</strong></a>
+                                <p>Get $1 Bonus for every Internation Mobile Recharge to AFRICA!</p>
+                                <p>New Countries Added!</p>
+                            </div>
+                            <footer>
+                            	<a class="button" href="#">Read more...</a>
+                            </footer>
+                        </article>
+                        <article>
+                        	<div class="content">
+                            	<a href="#"><strong>UPDATE - New T-Mobile Discount</strong></a>
+	                            <p>Starting today. March 1, 2013, discount on T-Mobile has dropped to 1.5% due to new T-Mobile policies.</p>
+                            </div>
+                            <footer>
+                            	<a class="button" href="#">Read more...</a>
+                            </footer>
+                        </article>
+                        <footer>
+                            <a href="#"><strong>View All</strong></a>
+                        </footer>
                     </section>	
                 </div>
                 <div id="oneClicDesc" class="product-desc fly-box">
                 	<strong class="upper" style="font-size:30px">1ClicMAX&trade; Description</strong>
+                    <!-- TODO: Description goes here -->
                 </div>
                 <div id="topUpWorldDesc" class="product-desc fly-box">
                 	<strong class="upper" style="font-size:30px">Top-Up the World&trade; Description</strong>
+                    <!-- TODO: Description goes here -->
                 </div>
                 <div id="topUpUsaDesc" class="product-desc fly-box">
                 	<strong class="upper" style="font-size:30px">Top-Up USA Description</strong>
+                    <!-- TODO: Description goes here -->
                 </div>
                 <div id="phiCallingDesc" class="product-desc fly-box">
                 	<strong class="upper" style="font-size:30px">Philippines Calling Description</strong>
+                    <!-- TODO: Description goes here -->
                 </div>
                 <div id="billMexDesc" class="product-desc fly-box">
                 	<strong class="upper" style="font-size:30px">BillMEX Description</strong>
+                    <!-- TODO: Description goes here -->
                 </div>
             </div>
             <footer id="footer" role="sitefooter">
@@ -136,7 +180,7 @@
                         <a href="#">Contact Us</a></p>
                     <p>Copyright &copy; 2013 <a target="_blank" href="http://www.lunextelecom.com/">Lunex Telecom</a>, Inc. All Rights Reserved.</p>
                 </div>
-                <input id="demoButton" class="gray-button" type="button" value="Enter Demo Mode" />
+                <input id="demoButton" class="gray-button" type="button" value="Enter Demo Mode" onclick="demoAction()" />
                 <a id="lunexLogo" target="_blank" href="http://www.lunextelecom.com/"><img alt="Lunex Telecom" src="img/logo_lunex.gif"></a>
             </footer>
         </div>
@@ -149,11 +193,16 @@
 		
         <script src="lib/jquery-1.9.0.min.js"></script>
 		<script src="lib/sugar-1.3.9.min.js"></script>
+        <script src="plg/jqui/jquery-ui.min.js"></script>
+        <script src="plg/nivo/jquery.nivo.slider.pack.js"></script>
+        <script src="plg/jquery.hoverIntent.min.js"></script>        
         <script src="js/site.js"></script>
+        <script src="js/site-util.js"></script>
         <script src="js/site-ui.js"></script>
         <script src="js/page-home.js"></script>
 
-        <!-- Google Analytics: Uncomment this on production -->
+        <!-- Google Analytics -->
+        <!-- TODO: Uncomment this on production ->
         <!--<script>
             var _gaq=[['_setAccount','UA-37560206-1'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
