@@ -342,7 +342,7 @@ var ui = {
 				return false;
 			}
 			return targetDialog.dialog("isOpen");
-		},
+		},		
 		// Required:
 		// jquery.ui.interations.min.js (Dragging Ability)
 		// jquery.ui.dialog.min.js
@@ -357,6 +357,44 @@ var ui = {
 			} else {
 				targetDialog.css(positionObj);
 			}
+		},
+		// Required:
+		// jquery.ui.interations.min.js (Dragging Ability)
+		// jquery.ui.dialog.min.js
+		setupPopup: function() {
+			var popup = $("<div id=\"popup\" />");
+			$("#content").before(popup);
+			popup.dialog({
+				autoOpen: false,
+				minWidth: 400,
+				modal: true,
+				resizable: false,
+				show: {
+					effect: "drop",
+					duration: 400
+				},
+				hide: {
+					effect: "drop",
+					duration: 300
+				},
+				dialogClass: "popup"
+			});
+		},
+		// Required:
+		// jquery.ui.interations.min.js (Dragging Ability)
+		// jquery.ui.dialog.min.js
+		showPopup: function(htmlContent, option, onOpenCallback, onCloseCallback) {
+			var _option =  {
+				width: "auto",
+				height: "auto"	
+			};
+			_option = $.extend(_option, option);
+			$("#popup.ui-dialog-content").empty().html(htmlContent);
+			$("#popup").on("dialogopen", onOpenCallback).on("dialogclose", onCloseCallback);
+			$("#popup").dialog("option", {
+				width: _option.width,
+				height: _option.height	
+			}).dialog("open");
 		},
 		// Required:
 		// jquery.ui.interations.min.js (Dragging Ability)

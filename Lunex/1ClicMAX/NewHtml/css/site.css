@@ -274,8 +274,17 @@ input, select {
 #content .notif p {
 	margin: .2em 0;
 }
-.dialog {
-	display: none;	
+.dialog, .popup, .popup-content {
+	display: none;
+}
+.popup .ui-dialog-titlebar {
+	border: 0 none !important;
+}
+.popup #popup {
+	padding-top: 10px;
+}
+.popup #popup iframe {
+	background: #fafafa url('../img/loader.gif') no-repeat 50% 50%;	
 }
 
 /* 1clicMAX POS Form */

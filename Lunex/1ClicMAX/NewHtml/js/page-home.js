@@ -1,6 +1,9 @@
 ﻿$(function() {
+	ui.jWidget.setupPopup();
+	
 	pages.homep.handleProductsHover();
 	pages.homep.setupSlider();
+	pages.homep.showPromoPopup();
 	// TODO: Execute page-scope functions here
 });
 
@@ -28,7 +31,14 @@ pages = $.extend(pages, {
 			});
 		},
 		setupSlider: function() {
+			$("#homeSlider a.open-youtube").click(function() {
+                ui.jWidget.showPopup($("#youtubePopupContent").html());
+            });
 			$("#homeSlider .nivoSlider").nivoSlider({ pauseTime: 5000 });
+		},
+		showPromoPopup: function() {
+			ui.jWidget.showPopup($("#startupPopupContent").html(), null,
+			function() { console.log("Open!") }, function() { console.log('Close!') })
 		}
 	}	
 });
