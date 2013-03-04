@@ -4,7 +4,7 @@ var form = {
 		setupMaskOne: function(formId) {
 			var formId = util.html.getJqueryIdSelector(formId);
 			$(formId + " input[data-mask-type=us-phone]")
-				.mask({ mask: "###-###-####", placeholder: "  " });
+				.setMask({ mask: "999-999-9999" });
 		},
 		setupMaskMany: function(formArr) {
 			for (var i = 0; i < formArr.length; i++) {

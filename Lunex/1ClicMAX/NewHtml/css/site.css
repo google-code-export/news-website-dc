@@ -548,8 +548,8 @@ input, select {
 .xform input.read-only {
 	background-color: #effaff;	
 }
-.xform input.disabled,
-.xform select.disabled {
+.xform input[disabled],
+.xform select[disabled] {
 	background-color: #f0f0f0;	
 }
 .xform select {
@@ -870,7 +870,7 @@ input, select {
 	min-width: 0;
 }
 #topupWorldProductPage #topupForm #senderInfo p span.option .child-options {
-	display: none;
+	display: block;
 	font-size: 14px;
 	padding-left: 17px;	
 }

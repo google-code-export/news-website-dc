@@ -123,7 +123,7 @@
                                     <li class="col2">
                                         <p class="first">
                                             <label>U.S. Phone Number</label>
-                                            <input class="important" type="tel" autofocus data-mask-type="us-phone" />
+                                            <input id="usPhoneNo" class="important" type="tel" autofocus data-mask-type="us-phone" />
                                         </p>
                                         <p class="phone-type">
                                             <span class="option">
@@ -269,13 +269,17 @@
                                             <label>Enter Mobile Number</label>
                                             <input class="inline read-only important phone-prefix" type="tel" maxlength="3" readonly />
                                             <input id="topupMobileNo" class="inline disabled important phone-suffix" type="tel" maxlength="15" disabled
-                                            	 data-validation-engine="validate[required]" data-errormessage-value-missing="Please enter Top-Up Mobile number" />
+                                            	 data-mask-type="us-phone"
+                                            	 data-validation-engine="validate[required]"
+                                                 data-errormessage-value-missing="Please enter Top-Up Mobile number" />
                                         </p>
                                         <p>
                                             <label>Re-Enter Mobile Number</label>
                                             <input class="inline read-only important phone-prefix" type="tel" maxlength="3" readonly />
                                             <input class="inline disabled important phone-suffix" type="tel" maxlength="15" disabled
-                                            	data-validation-engine="validate[equals[topupMobileNo]]" data-errormessage-pattern-mismatch="Top-Up Mobile number doesn't match" />
+                                            	data-mask-type="number"
+                                                data-validation-engine="validate[equals[topupMobileNo]]"
+                                                data-errormessage-pattern-mismatch="Top-Up Mobile number doesn't match" />
                                         </p>
                                     </li>
                                     <li class="col2">
@@ -319,16 +323,16 @@
                             </a>
                             <ul class="topup-logos">
                             	<li class="active">
-                                	<a href="#"><img src="res/banners/topup_world_logos01.jpg" alt="" /></a>
+                                	<img src="res/banners/topup_world_logos01.jpg" alt="" />
                                 </li>
                                 <li>
-                                	<a href="#"><img src="res/banners/topup_world_logos02.jpg" alt="" /></a>
+                                	<img src="res/banners/topup_world_logos02.jpg" alt="" />
                                 </li>
                                 <li>
-                                	<a href="#"><img src="res/banners/topup_world_logos03.jpg" alt="" /></a>
+                                	<img src="res/banners/topup_world_logos03.jpg" alt="" />
                                 </li>
                                 <li>
-                                	<a href="#"><img src="res/banners/topup_world_logos04.jpg" alt="" /></a>
+                                	<img src="res/banners/topup_world_logos04.jpg" alt="" />
                                 </li>
                             </ul>
                         </div>
@@ -358,13 +362,10 @@
         <script src="lib/jquery-1.7.2.min.js"></script>
 		<script src="lib/sugar-1.3.9.min.js"></script>
         <script src="plg/jqui/jquery-ui.min.js"></script>
-        <script src="plg/jqui/jquery-ui.mask.js"></script>
+        <script src="plg/jquery.meio.mask.min.js"></script>
         <script src="plg/validation/jquery.validationEngine-en.js"></script>
         <script src="plg/validation/jquery.validationEngine.js"></script>
         <script src="js/site.js"></script>
-        <script src="js/site-util.js"></script>
-        <script src="js/site-ui.js"></script>
-        <script src="js/site-form.js"></script>
         <script src="js/page-topup-world-product.js"></script>
 
         <!-- Google Analytics -->
