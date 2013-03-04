@@ -459,11 +459,6 @@ input, select {
 .xform.auto {
 	width: auto;
 }
-.xform.product-form {
-	padding: 20px;
-	color: #222;
-	background-color: #fff5a5;
-}
 .xform li {
 	padding-bottom: 12px;
 	font-weight: bold;
@@ -475,9 +470,14 @@ input, select {
 .xform li p {
 	margin: .5em 0 0;
 }
-.xform li.2col p {
+.xform li.col2 {
+	font-size: 0;	
+}
+.xform li.col2 p {
 	margin: 0;
+	font-size: 16px;
 	display: inline-block;
+	vertical-align: middle;
 }
 .xform li label {
 	font-weight: normal;
@@ -488,6 +488,7 @@ input, select {
 .xform.inline li label,
 .xform li label.inline {
 	display: inline-block;
+	vertical-align: middle;
 	padding: 0;
 }
 .xform li em {
@@ -530,7 +531,7 @@ input, select {
 .xform input[type=search].important, .xform input[type=email].important, .xform input[type=tel].important,
 .xform input[type=number].important, .xform textarea.important, .xform select.important {
 	font-size: 28px;
-	padding: .1em 0.25em;
+	padding: .1em 0.22em;
 }
 .xform input[type=text].xlarge, .xform input[type=password].xlarge,
 .xform input[type=search].xlarge, .xform input[type=email].xlarge, .xform input[type=tel].xlarge,
@@ -544,16 +545,43 @@ input, select {
 	font-size: 36px;
 	padding: .15em 0.4em;
 }
+.xform input.read-only {
+	background-color: #effaff;	
+}
+.xform input.disabled,
+.xform select.disabled {
+	background-color: #f0f0f0;	
+}
+.xform select {
+	/*-webkit-appearance: none;*/
+}
 .xform-cmd {
 	text-align: right;
-	padding-top: 15px;
+	margin-top: 15px;
 }
 .xform-cmd.has-sep {
 	border-top: 1px solid #123785;
-	margin-top: 15px;
+	padding-top: 15px;
 }
 .xform-cmd .ui-button, .xform-cmd .gray-button {
 	margin: 0 0 0 5px;
+}
+.product-form {	
+	color: #222;
+	background-color: #f0f0f0;
+}
+.xform.product-form,
+.product-form .xform {
+	padding: 20px;
+}
+.product-form .xform li {
+	padding-bottom: 16px;	
+}
+.product-form h2 {
+	font-size: 20px;
+	margin: 0;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
 }
 
 /* 1clicMAX POS Page: Login */
@@ -809,7 +837,74 @@ input, select {
 	font-size: 18px;
 	margin: 4px 0 0;
 }
-#topupWorldProductPage #topupForm .xform {
+#topupWorldProductPage #topupForm .product-form {
 	width: 598px;
 	margin-bottom: 5px;
+}
+#topupWorldProductPage #topupForm .product-form .xform {
+	padding-top: 10px;	 
+}
+#topupWorldProductPage #topupForm .product-form span.option,
+#topupWorldProductPage #topupForm #senderInfo p span.option .child-options span.option {
+	display: inline-block;
+	vertical-align: middle;
+	min-width: 5em;
+	margin-top: 4px;
+}
+#topupWorldProductPage #topupForm #senderInfo li {
+	padding: 0;	
+}
+#topupWorldProductPage #topupForm #senderInfo p.first {
+	width: 210px;
+	margin-right: 26px;
+	vertical-align: top;
+}
+#topupWorldProductPage #topupForm #senderInfo p.phone-type {
+	width: 320px;
+	vertical-align: bottom;
+	line-height: 1.2em;
+}
+#topupWorldProductPage #topupForm .product-form #senderInfo p span.option {
+	display: block;
+	margin-top: 6px;
+	min-width: 0;
+}
+#topupWorldProductPage #topupForm #senderInfo p span.option .child-options {
+	display: none;
+	font-size: 14px;
+	padding-left: 17px;	
+}
+#topupWorldProductPage #topupForm #senderInfo p .child-options label {
+	width: 7.5em;		
+}
+#topupWorldProductPage #topupForm #recipientInfo p {
+	width: 270px;
+}
+#topupWorldProductPage #topupForm #recipientInfo p.first {
+	margin-right: 16px;
+}
+#topupWorldProductPage #topupForm #recipientInfo p .phone-prefix {
+	width: 67px;
+	margin-right: 2px;
+}
+#topupWorldProductPage #topupForm #recipientInfo p .phone-suffix {
+	width: 196px;
+}
+#topupWorldProductPage #topupForm #recipientInfo .phi-special {
+	color: #123785;
+	position: relative;
+}
+#topupWorldProductPage #topupForm #recipientInfo .phi-special .show-disclaimer {
+	font-weight: normal;
+	position: absolute;
+	right: 0;
+}
+#topupWorldProductPage .topup-logos {
+	margin-top: 10px;
+}
+#topupWorldProductPage .topup-logos li {
+	display: none;
+}
+#topupWorldProductPage .topup-logos li.active {
+	display: block;
 }
