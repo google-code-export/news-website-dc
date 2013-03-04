@@ -117,192 +117,197 @@
                     </header>
                     <div class="clearfix">
                     	<form id="topupForm" class="left" method="post" action="15_topup-world-product.html">
-                        	<ul class="xform product-form">
-                            	<li class="header">
-                                	<h2>Sender's Phone Number (Optional)</h2>
-                                </li>
-                                <li class="2col">
-                                	<p>
-                                    	<label>U.S. Phone Number</label>
-                                        <input class="important" type="tel" autofocus data-mask-type="us-phone" />
-                                    </p>
-                                    <p class="phone-type">
-                                    	<span class="option">
-                                        	<input type="radio" name="phonetype" value="cell" /> Mobile
-                                            <span class="child-options">
-                                            	<label class="inline">Receive Text:</label>
-                                                <span class="option">
-                                                    <input type="radio" name="accepttext" value="yes" checked /> Yes
-                                                </span>
-                                                <span class="option">
-                                                    <input type="radio" name="accepttext" value="no" /> No
-                                                </span><br/>
-                                                <label class="inline">Text Language:</label>
-                                                <span class="option">
-                                                    <input type="radio" name="textlang" value="en" checked /> English
-                                                </span>
-                                                <span class="option">
-                                                    <input type="radio" name="textlang" value="es" /> Spanish
+                        	<div class="product-form">
+                            	<h2>Sender's Phone Number (Optional)</h2>
+                                <ul id="senderInfo" class="xform">
+                                    <li class="col2">
+                                        <p class="first">
+                                            <label>U.S. Phone Number</label>
+                                            <input class="important" type="tel" autofocus data-mask-type="us-phone" />
+                                        </p>
+                                        <p class="phone-type">
+                                            <span class="option">
+                                                <input type="radio" name="phonetype" value="cell" /> Mobile
+                                                <span class="child-options">
+                                                    <label class="inline">Receive Text:</label>
+                                                    <span class="option">
+                                                        <input type="radio" name="accepttext" value="yes" checked /> Yes
+                                                    </span>
+                                                    <span class="option">
+                                                        <input type="radio" name="accepttext" value="no" /> No
+                                                    </span><br/>
+                                                    <label class="inline">Text Language:</label>
+                                                    <span class="option">
+                                                        <input type="radio" name="textlang" value="en" checked /> English
+                                                    </span>
+                                                    <span class="option">
+                                                        <input type="radio" name="textlang" value="es" /> Spanish
+                                                    </span>
                                                 </span>
                                             </span>
-                                        </span>
+                                            <span class="option">
+                                                <input type="radio" name="phonetype" value="land" /> Landline
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        	<div class="product-form">
+                            	<h2>Recipient's Information</h2>
+                                <ul id="recipientInfo" class="xform">
+                                    <li class="col2">
+                                        <p class="first">
+                                            <label>Country</label>
+                                            <select data-validation-engine="validate[required]"
+                                            		data-errormessage-value-missing="Please select Top-Up country">
+                                                <option value="">Select country</option>
+                                                <option value="53">Cuba</option>
+                                                <option value="1809">Dominican Republic</option>
+                                                <option value="503">El Salvador</option>
+                                                <option value="502">Guatemala</option>
+                                                <option value="509">Haiti</option>
+                                                <option value="504">Honduras</option>
+                                                <option value="52">Mexico</option>
+                                                <option value="505">Nicaragua</option>
+                                                <option value="63">Philippines</option>
+                                                <option value="84">Vietnam</option>
+                                                <option value="">-------------------------------------------------------</option>
+                                                <option value="93">Afghanistan</option>
+                                                <option value="1264">Anguilla</option>
+                                                <option value="1268">Antigua and Barbuda</option>
+                                                <option value="374">Armenia</option>
+                                                <option value="297">Aruba</option>
+                                                <option value="880">Bangladesh</option>
+                                                <option value="1246">Barbados</option>
+                                                <option value="1441">Bermuda</option>
+                                                <option value="591">Bolivia</option>
+                                                <option value="599">Bonaire/Curacao</option>
+                                                <option value="55">Brazil</option>
+                                                <option value="1284">British Virgin Islands</option>
+                                                <option value="257">Burundi</option>
+                                                <option value="237">Cameroon</option>
+                                                <option value="1345">Cayman Islands</option>
+                                                <option value="86">China</option>
+                                                <option value="57">Colombia</option>
+                                                <option value="53">Cuba</option>
+                                                <option value="1767">Dominica</option>
+                                                <option value="1809">Dominican Republic</option>
+                                                <option value="593">Ecuador</option>
+                                                <option value="20">Egypt</option>
+                                                <option value="503">El Salvador</option>
+                                                <option value="679">Fiji</option>
+                                                <option value="594">French Guiana</option>
+                                                <option value="233">Ghana</option>
+                                                <option value="1473">Grenada</option>
+                                                <option value="590">Guadeloupe/Saint Barthelemy/Saint Martin</option>
+                                                <option value="502">Guatemala</option>
+                                                <option value="592">Guyana</option>
+                                                <option value="509">Haiti</option>
+                                                <option value="504">Honduras</option>
+                                                <option value="91">India</option>
+                                                <option value="62">Indonesia</option>
+                                                <option value="1876">Jamaica</option>
+                                                <option value="962">Jordan</option>
+                                                <option value="77">Kazakhstan</option>
+                                                <option value="856">Laos</option>
+                                                <option value="231">Liberia</option>
+                                                <option value="60">Malaysia</option>
+                                                <option value="223">Mali</option>
+                                                <option value="596">Martinique</option>
+                                                <option value="52">Mexico</option>
+                                                <option value="1664">Montserrat</option>
+                                                <option value="977">Nepal</option>
+                                                <option value="505">Nicaragua</option>
+                                                <option value="234">Nigeria</option>
+                                                <option value="92">Pakistan</option>
+                                                <option value="507">Panama</option>
+                                                <option value="675">Papua New Guinea</option>
+                                                <option value="51">Peru</option>
+                                                <option value="63">Philippines</option>
+                                                <option value="48">Poland</option>
+                                                <option value="40">Romania</option>
+                                                <option value="7">Russia</option>
+                                                <option value="1869">Saint Kitts and Nevis</option>
+                                                <option value="1758">Saint Lucia</option>
+                                                <option value="1784">Saint Vincent and the Grenadines</option>
+                                                <option value="685">Samoa</option>
+                                                <option value="221">Senegal</option>
+                                                <option value="94">Sri Lanka</option>
+                                                <option value="249">Sudan</option>
+                                                <option value="597">Suriname</option>
+                                                <option value="676">Tonga</option>
+                                                <option value="1868">Trinidad and Tobago</option>
+                                                <option value="216">Tunisia</option>
+                                                <option value="90">Turkey</option>
+                                                <option value="1649">Turks and Caicos Islands</option>
+                                                <option value="256">Uganda</option>
+                                                <option value="598">Uruguay</option>
+                                                <option value="678">Vanuatu</option>
+                                                <option value="58">Venezuela</option>
+                                                <option value="84">Vietnam</option>
+                                            </select>
+                                        </p>
+                                        <p>
+                                            <label>Mobile Operator</label>
+                                            <select class="disabled"
+                                            	disabled data-validation-engine="validate[required]"
+                                                data-errormessage-value-missing="Please select Top-Up operator">
+                                                <option value="">Select Operator</option>
+                                                <option value="157">All Mobile</option>
+                                                <option value="9000">Mobifone-PIN</option>
+                                            </select>
+                                        </p>
+                                    </li>
+                                    <li class="phi-special">
                                         <span class="option">
-                                        	<input type="radio" name="phonetype" value="land" /> Landline
+                                            <input type="checkbox" /> Free <strong class="emp">30.00 Persos</strong> to Smart in the Philippines                                            
                                         </span>
-                                    </p>
-                                </li>
-                            </ul>
-                            <ul class="xform product-form">
-                           		<li class="header">
-                                	<h2>Recipient's Information</h2>
-                                </li>
-                                <li class="2col">
-                                	<p>
-                                    	<label>Country</label>
-                                        <select>
-                                            <option value="-1">Select country</option>
-                                            <option value="53">Cuba</option>
-                                            <option value="1809">Dominican Republic</option>
-                                            <option value="503">El Salvador</option>
-                                            <option value="502">Guatemala</option>
-                                            <option value="509">Haiti</option>
-                                            <option value="504">Honduras</option>
-                                            <option value="52">Mexico</option>
-                                            <option value="505">Nicaragua</option>
-                                            <option value="63">Philippines</option>
-                                            <option value="84">Vietnam</option>
-                                            <option value="-2">-------------------------------------------------------</option>
-                                            <option value="93">Afghanistan</option>
-                                            <option value="1264">Anguilla</option>
-                                            <option value="1268">Antigua and Barbuda</option>
-                                            <option value="374">Armenia</option>
-                                            <option value="297">Aruba</option>
-                                            <option value="880">Bangladesh</option>
-                                            <option value="1246">Barbados</option>
-                                            <option value="1441">Bermuda</option>
-                                            <option value="591">Bolivia</option>
-                                            <option value="599">Bonaire/Curacao</option>
-                                            <option value="55">Brazil</option>
-                                            <option value="1284">British Virgin Islands</option>
-                                            <option value="257">Burundi</option>
-                                            <option value="237">Cameroon</option>
-                                            <option value="1345">Cayman Islands</option>
-                                            <option value="86">China</option>
-                                            <option value="57">Colombia</option>
-                                            <option value="53">Cuba</option>
-                                            <option value="1767">Dominica</option>
-                                            <option value="1809">Dominican Republic</option>
-                                            <option value="593">Ecuador</option>
-                                            <option value="20">Egypt</option>
-                                            <option value="503">El Salvador</option>
-                                            <option value="679">Fiji</option>
-                                            <option value="594">French Guiana</option>
-                                            <option value="233">Ghana</option>
-                                            <option value="1473">Grenada</option>
-                                            <option value="590">Guadeloupe/Saint Barthelemy/Saint Martin</option>
-                                            <option value="502">Guatemala</option>
-                                            <option value="592">Guyana</option>
-                                            <option value="509">Haiti</option>
-                                            <option value="504">Honduras</option>
-                                            <option value="91">India</option>
-                                            <option value="62">Indonesia</option>
-                                            <option value="1876">Jamaica</option>
-                                            <option value="962">Jordan</option>
-                                            <option value="77">Kazakhstan</option>
-                                            <option value="856">Laos</option>
-                                            <option value="231">Liberia</option>
-                                            <option value="60">Malaysia</option>
-                                            <option value="223">Mali</option>
-                                            <option value="596">Martinique</option>
-                                            <option value="52">Mexico</option>
-                                            <option value="1664">Montserrat</option>
-                                            <option value="977">Nepal</option>
-                                            <option value="505">Nicaragua</option>
-                                            <option value="234">Nigeria</option>
-                                            <option value="92">Pakistan</option>
-                                            <option value="507">Panama</option>
-                                            <option value="675">Papua New Guinea</option>
-                                            <option value="51">Peru</option>
-                                            <option value="63">Philippines</option>
-                                            <option value="48">Poland</option>
-                                            <option value="40">Romania</option>
-                                            <option value="7">Russia</option>
-                                            <option value="1869">Saint Kitts and Nevis</option>
-                                            <option value="1758">Saint Lucia</option>
-                                            <option value="1784">Saint Vincent and the Grenadines</option>
-                                            <option value="685">Samoa</option>
-                                            <option value="221">Senegal</option>
-                                            <option value="94">Sri Lanka</option>
-                                            <option value="249">Sudan</option>
-                                            <option value="597">Suriname</option>
-                                            <option value="676">Tonga</option>
-                                            <option value="1868">Trinidad and Tobago</option>
-                                            <option value="216">Tunisia</option>
-                                            <option value="90">Turkey</option>
-                                            <option value="1649">Turks and Caicos Islands</option>
-                                            <option value="256">Uganda</option>
-                                            <option value="598">Uruguay</option>
-                                            <option value="678">Vanuatu</option>
-                                            <option value="58">Venezuela</option>
-                                            <option value="84">Vietnam</option>
-                                        </select>
-                                    </p>
-                                    <p>
-                                    	<label>Mobile Operator</label>
-                                        <select>
-                                        	<option value="-1">Select Operator</option>
-                                            <option value="157">All Mobile</option>
-                                            <option value="9000">Mobifone-PIN</option>
-                                        </select>
-                                    </p>
-                                </li>
-                                <li class="phi-special">
-                                	<span class="option">
-                                    	<input type="checkbox" /> Free <strong class="emp">30.00 Persos</strong> to Smart in the Philippines
                                         <a class="dialog-trigger show-disclaimer" data-dialog-id="disclaimerDialog" href="#">Disclaimer</a>
-                                    </span>
-                                </li>
-                                <li class="2col">
-                                	<p>
-                                    	<label>Enter Mobile Number</label>
-                                        <input class="inline important phone-prefix" type="tel" maxlength="3" />
-                                        <input class="inline important phone-suffix" type="tel" maxlength="15" />
-                                    </p>
-                                    <p>
-                                    	<label>Re-Enter Mobile Number</label>
-                                        <input class="inline important phone-prefix" type="tel" maxlength="3" />
-                                        <input class="inline important phone-suffix" type="tel" maxlength="15" />
-                                    </p>
-                                </li>
-                                <li class="2col">
-                                	<p>
-                                    	<label>$ Amount</label>
-                                        <select>
-                                        	<option>Select Amount</option>
-                                            <option value="99.00">$20</option>
-                                        </select>
-                                    </p>
-                                    <p>
-                                    	<label>Estimated Transfer Amount</label>
-                                        <input type="text" readonly />
-                                    </p>
-                                </li>
-                                <li class="2col">
-                                	<p>
-                                    	<label>Name (Optional)</label>
-                                        <input class="upper" type="text" maxlength="64" />
-                                    </p>
-                                    <p>
-                                    	<label>Payment Method</label>
-                                        <span class="option">
-                                        	<input type="radio" name="payment" value="cash" checked /> Cash
-                                        </span>
-                                        <span class="option">
-                                        	<input type="radio" name="payment" value="credit" /> Credit
-                                        </span>
-                                    </p>
-                                </li>
-                            </ul>
+                                    </li>
+                                    <li class="col2">
+                                        <p class="first">
+                                            <label>Enter Mobile Number</label>
+                                            <input class="inline read-only important phone-prefix" type="tel" maxlength="3" readonly />
+                                            <input id="topupMobileNo" class="inline disabled important phone-suffix" type="tel" maxlength="15" disabled
+                                            	 data-validation-engine="validate[required]" data-errormessage-value-missing="Please enter Top-Up Mobile number" />
+                                        </p>
+                                        <p>
+                                            <label>Re-Enter Mobile Number</label>
+                                            <input class="inline read-only important phone-prefix" type="tel" maxlength="3" readonly />
+                                            <input class="inline disabled important phone-suffix" type="tel" maxlength="15" disabled
+                                            	data-validation-engine="validate[equals[topupMobileNo]]" data-errormessage-pattern-mismatch="Top-Up Mobile number doesn't match" />
+                                        </p>
+                                    </li>
+                                    <li class="col2">
+                                        <p class="first">
+                                            <label>$ Amount</label>
+                                            <select class="disabled" disabled data-validation-engine="validate[required]" data-errormessage-value-missing="Please select Amount">
+                                                <option value="">Select Amount</option>
+                                                <option value="99.00">$20</option>
+                                            </select>
+                                        </p>
+                                        <p>
+                                            <label>Estimated Transfer Amount</label>
+                                            <input class="read-only" type="text" readonly />
+                                        </p>
+                                    </li>
+                                    <li class="col2">
+                                        <p class="first">
+                                            <label>Name (Optional)</label>
+                                            <input class="upper" type="text" maxlength="64" />
+                                        </p>
+                                        <p>
+                                            <label>Payment Method</label>
+                                            <span class="option">
+                                                <input type="radio" name="payment" value="cash" checked /> Cash
+                                            </span>
+                                            <span class="option">
+                                                <input type="radio" name="payment" value="credit" /> Credit Card
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>                            
                             <div class="xform-cmd">
                                 <input class="gray-button" type="reset" value="Reset" />
                                 <input type="submit" value="Confirm" />
@@ -313,7 +318,7 @@
                             	<img src="res/banners/topup_world_sample.jpg" alt="" />
                             </a>
                             <ul class="topup-logos">
-                            	<li>
+                            	<li class="active">
                                 	<a href="#"><img src="res/banners/topup_world_logos01.jpg" alt="" /></a>
                                 </li>
                                 <li>
