@@ -1,4 +1,5 @@
 ﻿$(function() {
+	ui.jWidget.setupDialogs();
 	form.mask.setupMaskMany([
 		{ form: "topupForm" }
 	]);
