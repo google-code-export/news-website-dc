@@ -109,26 +109,66 @@
                     </ul>
                 </div>
                 <section class="fly-box content-holder">
-                	<div class="clearfix">
-                    	<form id="phoneInputForm" class="left" method="post" action="11_1clicmax-product.html">
-                        	<h1 class="large">1ClicMAX&trade;</h1>
-                            <ul class="xform product-form">
-                                <li>
-                                    <label>Enter Customer's Phone Number</label>
-                                    <input class="xlarge" type="tel" autofocus
-                                    	data-mask-type="us-phone" placeholder="      -      -        "
-                                        data-validation-engine="validate[required]"
-                                        data-errormessage-value-missing="Please enter correct phone number" />
-                                </li>
-                                <li class="bottom">
-                                    <input class="xlarge" type="submit" value="Continue" />
-                                </li>
-                            </ul>
-                        </form>
+                	<header class="fly-box-title clearfix">
+                    	<h1 class="left">Congratulations New Customer! <strong class="emp">$1 FREE</strong></h1>
                         <div class="right">
-                        	<a href="#"><img src="res/banners/1clicmax_sample.jpg" alt="" /></a>
+                        	<label>Phone Number:</label>
+                            <strong class="phoneno">245-646-4565</strong>
                         </div>
-                    </div>
+                    </header>
+                	<form id="newAccountForm" class="left" method="post" action="12_1clicmax-product.html">
+                        <ul class="xform">
+                        	<li class="dotted-sep">
+                            	<label>Language</label>
+                                <p>
+                                	<span class="option"><input type="radio" name="lang" checked /> English</span>
+                                    <span class="option"><input type="radio" name="lang" /> Spanish</span>
+                                    <span class="option"><input type="radio" name="lang" /> Vietnamese</span>
+                                    <span class="option"><input type="radio" name="lang" /> Khmer</span>
+                                </p>
+                                <p>
+                                	<span class="option"><input type="radio" name="lang" /> Chinese</span>
+                                    <span class="option"><input type="radio" name="lang" /> Thai/Laotian</span>
+                                    <span class="option"><input type="radio" name="lang" /> Korean</span>
+                                    <span class="option"><input type="radio" name="lang" /> Burmese</span>
+                                </p>                                
+                            </li>
+                            <li class="dotted-sep">
+                            	<label>Type of Phone</label>
+                                <p>
+                                	<span class="option"><input type="radio" name="phonetype" value="cell"
+                                    	data-validation-engine="validate[required]" /> Mobile</span>
+                                    <span class="option"><input type="radio" name="phonetype" value="land"
+                                    	data-validation-engine="validate[required]"
+                                        data-errormessage-value-missing="Please choose type of phone" /> Landline</span>
+                                </p>
+                            </li>
+                            <li class="dotted-sep">
+                            	<label>Receive Text Message Receipt</label>
+                                <p>
+                                	<em>Standard text message rate may apply from customer's cell phone provider. Customer must agree to receive text message</em>
+                                </p>
+                                <p>
+                                	<span class="option"><input type="radio" name="accepttext" value="yes" /> Yes</span>
+                                    <span class="option"><input type="radio" name="accepttext" value="no" /> No</span>
+                                </p>
+                            </li>
+                            <li class="refer-a-friend">
+                            	<label class="big">Were You Referred by a Friend?</label>
+                                <p>
+                                	<em>Extra <strong class="emp">BONUS</strong> for referrer when new customers make their first PIN-LESS purchase</em>
+                                </p>
+                                <p>
+                                	<label class="inline">Enter Referrer Phone Number:</label>
+                                    <input class="inline large" type="phone" data-mask-type="us-phone" />
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="xform-cmd has-sep">
+                        	<a class="gray-button" href="10_1clicmax-product.html">Cancel</a>
+                            <input type="submit" value="Continue" />
+                        </div>
+                    </form>
                 </section>
             </div>
             <footer id="footer" role="sitefooter">

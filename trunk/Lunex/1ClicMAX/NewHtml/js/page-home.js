@@ -1,6 +1,5 @@
 ﻿$(function() {
 	ui.jWidget.setupPopup();
-	ui.jWidget.setupShoutBoxes();	
 	
 	pages.homep.handleProductsHover();
 	pages.homep.setupSlider();
@@ -14,7 +13,7 @@ if (!pages) {
 pages = $.extend(pages, {
 	homep: {
 		handleProductsHover: function() {
-			$("#productsNav").hover($.noop(), function() {
+			$("#productsNav").hover($.noop, function() {
 				$("#homePage .product-desc").hide();
 				$("#mainContent").fadeIn("fast");	
 			});
@@ -26,15 +25,14 @@ pages = $.extend(pages, {
 						$("#mainContent").hide();
 						$("#homePage .product-desc").eq(i).fadeIn("fast");
 					},
-					out: $.noop(),
+					out: $.noop,
 					interval: 200	
 				});
 			});
 		},
 		setupSlider: function() {
 			$("#homeSlider a.open-youtube").click(function() {
-				//ui.jWidget.showPopup($("#youtubePopupContent").html());
-				ui.jWidget.alert("This feature is under construction.", "Not Implemented");
+				ui.jWidget.showPopup($("#youtubePopupContent").html());				
             });
 			$("#homeSlider .nivoSlider").nivoSlider({ pauseTime: 5000 });
 		},

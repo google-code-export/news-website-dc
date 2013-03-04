@@ -4,7 +4,6 @@ var form = {
 		setupMaskOne: function(formId) {
 			var formId = util.html.getJqueryIdSelector(formId);
 			$(formId + " input[data-mask-type=us-phone]")
-				.attr("placeholder", "      -      -        ")
 				.mask({ mask: "###-###-####", placeholder: "  " });
 		},
 		setupMaskMany: function(formArr) {
@@ -19,8 +18,8 @@ var form = {
 		setupOne: function(formId, option) {
 			var formId = util.html.getJqueryIdSelector(formId);
 			var _option = $.extend({
-				showOneMessage: true,
-				binded: false,
+				showOneMessage: false,
+				binded: true,
 				maxErrorsPerField: 1
 			}, option);
 			$(formId).validationEngine(_option);

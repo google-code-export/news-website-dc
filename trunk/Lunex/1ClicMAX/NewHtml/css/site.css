@@ -94,6 +94,11 @@ input, select {
 
 /* 1clicMAX POS Layout */
 /* -------------------------------------------------------------------- */
+.wrapper {
+	display: block;
+	margin: 0 auto;
+	min-width: 1000px;
+}
 #header, #footer, #content {	
 	width: 100%;	
 	box-sizing: border-box;
@@ -355,6 +360,15 @@ input, select {
 	padding-bottom: 8px;
 	border-bottom: 1px solid #123785;    	
 }
+#content .fly-box.content-holder .fly-box-title {
+	border-bottom: 1px solid #123785;
+	margin-bottom: 20px;
+}
+#content .fly-box.content-holder .fly-box-title h1 {
+	font-size: 30px;
+	margin-bottom: 10px;
+	text-transform: capitalize;
+}
 #content .stroke-box {
     border: 1px solid #aaa;
 }
@@ -415,8 +429,9 @@ input, select {
 	display: inline-block;
 	text-align: center;
 	vertical-align: middle;
-	padding: .32em 1em;
+	padding: .42em 1em;
     color: #444;
+	min-width: 70px;
 	font-family: 'Roboto', Tahoma, sans-serif;
 	font-size: 16px;
 	line-height: 1em;
@@ -451,17 +466,36 @@ input, select {
 }
 .xform li {
 	padding-bottom: 12px;
+	font-weight: bold;
 }
-.xform label {
+.xform li.dotted-sep {
+	border-bottom: 1px dotted #aaa;
+	margin-bottom: 12px;	
+}
+.xform li p {
+	margin: .5em 0 0;
+}
+.xform li.2col p {
+	margin: 0;
+	display: inline-block;
+}
+.xform li label {
+	font-weight: normal;
 	display: block;
 	padding-bottom: .15em;
+	text-transform: capitalize;
 }
-.xform.inline label {
+.xform.inline li label,
+.xform li label.inline {
 	display: inline-block;
 	padding: 0;
 }
+.xform li em {
+	font-weight: normal;
+	font-size: 14px;
+}
 .xform input[type=text], .xform input[type=password],
-.xform input[type=search], .xform input[type=email], .xform input[type=phone],
+.xform input[type=search], .xform input[type=email], .xform input[type=tel],
 .xform input[type=number], .xform textarea, .xform select {
 	font-family: 'Roboto', Tahoma, sans-serif;
 	font-size: 16px;
@@ -482,22 +516,44 @@ input, select {
 	-webkit-box-sizing: border-box;
 }
 .xform input[type=text]:focus, .xform input[type=password]:focus,
-.xform input[type=search]:focus, .xform input[type=phone]:focus, .xform input[type=email]:focus,
+.xform input[type=search]:focus, .xform input[type=tel]:focus, .xform input[type=email]:focus,
 .xform input[type=number]:focus, .xform textarea:focus, .xform select:focus {
 	border-color: #4a669e;
 	box-shadow: inset 0 0 .2em #cbdcff;
 }
+.xform input[type=text].inline, .xform input[type=password].inline,
+.xform input[type=search].inline, .xform input[type=email].inline, .xform input[type=tel].inline,
+.xform input[type=number].inline, .xform textarea.inline, .xform select.inline {
+	width: auto;
+}
+.xform input[type=text].important, .xform input[type=password].important,
+.xform input[type=search].important, .xform input[type=email].important, .xform input[type=tel].important,
+.xform input[type=number].important, .xform textarea.important, .xform select.important {
+	font-size: 28px;
+	padding: .1em 0.25em;
+}
 .xform input[type=text].xlarge, .xform input[type=password].xlarge,
-.xform input[type=search].xlarge, .xform input[type=email].xlarge, .xform input[type=phone].xlarge,
+.xform input[type=search].xlarge, .xform input[type=email].xlarge, .xform input[type=tel].xlarge,
 .xform input[type=number].xlarge, .xform textarea.xlarge, .xform select.xlarge {
 	font-size: 72px;
-	padding: .1em 0.2em;
+	padding: .1em 0.25em;
 }
 
 .xform input[type=button].xlarge, .xform input[type=submit].xlarge,
 .xform input[type=reset].xlarge, xform .gray-button.xlarge {
 	font-size: 36px;
 	padding: .15em 0.4em;
+}
+.xform-cmd {
+	text-align: right;
+	padding-top: 15px;
+}
+.xform-cmd.has-sep {
+	border-top: 1px solid #123785;
+	margin-top: 15px;
+}
+.xform-cmd .ui-button, .xform-cmd .gray-button {
+	margin: 0 0 0 5px;
 }
 
 /* 1clicMAX POS Page: Login */
@@ -604,7 +660,7 @@ input, select {
 }
 #homePage #productsNav ul li {
 	display: inline-block;
-	margin-right: 5.8px;
+	margin-right: 5.2px;
 	padding-bottom: 13px;
 	background: url('../img/product_box_shadow.png') no-repeat 50% 100%;
 }
@@ -708,4 +764,52 @@ input, select {
 }
 #oneClicProductPage #phoneInputForm .bottom input {
 	margin: 0;
+}
+#oneClicProductPage #content .fly-box .fly-box-title strong.emp {
+	font-size: 48px;	
+}
+#oneClicProductPage #content .fly-box .fly-box-title strong.phoneno {
+	font-size: 30px;
+	color: #123785;
+}
+#oneClicProductPage #content .fly-box .fly-box-title .right {
+	margin-top: 8px;	
+}
+#oneClicProductPage #newAccountForm {
+	width: 100%;
+}
+#oneClicProductPage #newAccountForm .xform {
+	width: 620px;
+	margin: 0 auto;	
+}
+#oneClicProductPage #newAccountForm .xform .option {
+	display: inline-block;
+	vertical-align: middle;
+	min-width: 9em;
+	width: 9em;
+}
+#oneClicProductPage #newAccountForm .xform li.refer-a-friend {
+	background: url('../img/new_label.png') no-repeat 0 0;
+	padding-left: 80px;
+}
+#oneClicProductPage #newAccountForm .xform li.refer-a-friend label.big {
+	font-size: 24px;
+	color: #123785;
+}
+#oneClicProductPage #newAccountForm .xform li.refer-a-friend input.large {
+	font-size: 36px;	
+    width: 276px;
+	margin-left: 10px;
+	padding: 0.1em 0.4em;
+}
+/* 1clicMAX POS Page: Top-Up the World Product */
+/* -------------------------------------------------------------------- */
+#topupWorldProductPage #content .fly-box .fly-box-title .sub-title {
+	color: #123785;
+	font-size: 18px;
+	margin: 4px 0 0;
+}
+#topupWorldProductPage #topupForm .xform {
+	width: 598px;
+	margin-bottom: 5px;
 }
