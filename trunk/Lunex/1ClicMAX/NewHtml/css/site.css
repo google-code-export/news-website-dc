@@ -252,7 +252,88 @@ input, select {
 	display: table;
 	width: auto;
 	max-width: 1580px;
-	margin: 30px auto 20px;
+	margin: 30px auto 20px;	
+}
+#content .product-tabs {
+	height: 60px;
+	display: inline-block;
+	margin-top: -6px;
+	box-shadow: 0 0 4px #999;
+	position: relative;	
+	left: 0;
+	bottom: -6px;
+	z-index: 100;
+}
+@media(-webkit-min-device-pixel-ratio:0) {
+	#content .product-tabs {
+		margin: 0;
+		bottom: 0;
+	}
+}
+#content .product-tabs ul {
+	letter-spacing: 0px;
+	word-spacing: 0px;	
+	font-size: 0;
+	/* Hide bottom shadow */
+	background-color: #fafafa;
+	padding-bottom: 5px;
+}
+#content .product-tabs ul li {
+	display: inline-block;	
+}
+#content .product-tabs ul li:last-of-type {
+	margin: 0;
+}
+#content .product-tabs ul li a,
+#content .product-tabs ul li span {
+	display: block;
+	width: 166px;
+	height: 60px;
+	border-right: 1px solid #2753B2;
+	background-color: #123785;	
+	background-image: url('../img/product_logos_medium.png');
+	background-repeat: no-repeat;
+	text-indent: 999px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#content .product-tabs ul li a:hover {
+	border-color: #fafafa;
+	background-color: #EC2029;
+	transition: background-color 800ms ease 0s;
+	-moz-transition: background-color 800ms ease 0s;
+    -webkit-transition: background-color 800ms ease 0s;
+    -o-transition: background-color 800ms ease 0s;
+}
+#content .product-tabs ul li span {
+	background-color: #fafafa;
+	border: 0 none;	
+}
+#content .product-tabs ul li:last-of-type a {
+	border: 0 none;
+}
+#content .product-tabs ul li.one-clic a,
+#content .product-tabs ul li.one-clic span {
+	background-position: 0 0;
+}
+#content .product-tabs ul li.topup-world a,
+#content .product-tabs ul li.topup-world span {
+	background-position: -166px 0;
+}
+#content .product-tabs ul li.topup-world span {
+	background-position: -332px 0;
+}
+#content .product-tabs ul li.topup-usa a,
+#content .product-tabs ul li.topup-usa span {
+	background-position: 0 -60px;
+}
+#content .product-tabs ul li.phi-calling a,
+#content .product-tabs ul li.phi-calling span {
+	background-position: -166px -60px;
+}
+#content .product-tabs ul li.billmex a,
+#content .product-tabs ul li.billmex span {
+	background-position: -332px -60px;
 }
 #content .fly-box,
 #content .stroke-box {
@@ -291,6 +372,41 @@ input, select {
 }
 .popup #popup iframe {
 	background: #fafafa url('../img/loader.gif') no-repeat 50% 50%;	
+}
+.shout-box {
+	min-width: 300px;
+	min-height: 100px;
+	padding: 10px !important;
+	display: none;
+}
+.shout-box hr {
+	margin: 1em 0 .8em;
+}
+.shout-box .dialog-content {
+	padding-top: 8px;
+}
+.shout-box .dialog-content p {
+	margin: 0;
+}
+.shout-box .dialog-bottom {
+	text-align: right;
+	min-height: 32px;
+}
+.shout-box .dialog-bottom input,
+.shout-box .dialog-bottom a[class^=button] {
+	margin-left: 5px;
+}
+#alert-box .dialog-bottom {
+	background: url('../img/shoutbox_alert.png') no-repeat 0 0;
+}
+#confirm-box .dialog-bottom {
+	background: url('../img/shoutbox_confirm.png') no-repeat 0 0;
+}
+#prompt-box .prompt-text {
+	margin-bottom: .3em;
+}
+#prompt-box .dialog-bottom{
+	background: url('../img/shoutbox_prompt.png') no-repeat 0 0;
 }
 
 /* 1clicMAX POS Form */
