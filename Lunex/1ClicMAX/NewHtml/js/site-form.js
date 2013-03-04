@@ -3,7 +3,9 @@ var form = {
 	mask: {
 		setupMaskOne: function(formId) {
 			var formId = util.html.getJqueryIdSelector(formId);
-			$(formId + " input[data-mask-type=us-phone]").setMask({ mask: "999-999-9999", fixedChars: "-" });
+			$(formId + " input[data-mask-type=us-phone]")
+				.attr("placeholder", "      -      -        ")
+				.mask({ mask: "###-###-####", placeholder: "  " });
 		},
 		setupMaskMany: function(formArr) {
 			for (var i = 0; i < formArr.length; i++) {
@@ -16,7 +18,12 @@ var form = {
 	validation: {
 		setupOne: function(formId, option) {
 			var formId = util.html.getJqueryIdSelector(formId);
-			$(formId).validationEngine(option);
+			var _option = $.extend({
+				showOneMessage: true,
+				binded: false,
+				maxErrorsPerField: 1
+			}, option);
+			$(formId).validationEngine(_option);
 		},
 		setupMany: function(formArr) {
 			for (var i = 0; i < formArr.length; i++) {

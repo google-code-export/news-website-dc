@@ -363,7 +363,7 @@ var ui = {
 		// jquery.ui.dialog.min.js
 		setupPopup: function() {
 			var popup = $("<div id=\"popup\" />");
-			$("#content").before(popup);
+			$(document.body).prepend(popup);
 			popup.dialog({
 				autoOpen: false,
 				minWidth: 400,
@@ -389,6 +389,7 @@ var ui = {
 				height: "auto"	
 			};
 			_option = $.extend(_option, option);
+			htmlContent = htmlContent.replace("data-src", "src");
 			$("#popup.ui-dialog-content").empty().html(htmlContent);
 			$("#popup").on("dialogopen", onOpenCallback).on("dialogclose", onCloseCallback);
 			$("#popup").dialog("option", {
@@ -504,6 +505,7 @@ var ui = {
 			$(".shout-box .button-no").click(function() {
 				$(this).closest(".shout-box").trigger("no");
 			});
+			ui.jWidget.setupButtons();
 		},
 		alert: function(text, title) {
 			var alertBox = $("#alert-box");			
@@ -511,7 +513,7 @@ var ui = {
 			if (title != undefined) {
 				alertBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);	
 			}
-			ui.jWidget.showDialog(alertBox);
+			ui.jWidget.showDialog("alert-box");
 		},
 		confirm: function(text, title) {
 			var confirmBox = $("#confirm-box");			
@@ -519,7 +521,7 @@ var ui = {
 			if (title != undefined) {
 				confirmBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);	
 			}
-			ui.jWidget.showDialog(confirmBox);
+			ui.jWidget.showDialog("confirm-box");
 			confirmBox.find(".button-yes").focus();
 			return confirmBox;
 		},
@@ -537,7 +539,7 @@ var ui = {
 			promptBox.bind("ok", function() {
 				promptBox.data("returnValue", promptBox.find(".prompt-input").val());
 			})
-			ui.jWidget.showDialog(promptBox);
+			ui.jWidget.showDialog("prompt-box");
 			promptBox.find(".button-ok").focus();
 			return promptBox;
 		}

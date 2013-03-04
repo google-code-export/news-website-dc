@@ -1,5 +1,6 @@
 ﻿$(function() {
 	ui.jWidget.setupPopup();
+	ui.jWidget.setupShoutBoxes();	
 	
 	pages.homep.handleProductsHover();
 	pages.homep.setupSlider();
@@ -32,13 +33,14 @@ pages = $.extend(pages, {
 		},
 		setupSlider: function() {
 			$("#homeSlider a.open-youtube").click(function() {
-                ui.jWidget.showPopup($("#youtubePopupContent").html());
+				//ui.jWidget.showPopup($("#youtubePopupContent").html());
+				ui.jWidget.alert("This feature is under construction.", "Not Implemented");
             });
 			$("#homeSlider .nivoSlider").nivoSlider({ pauseTime: 5000 });
 		},
-		showPromoPopup: function() {
+		showPromoPopup: function() {			
 			ui.jWidget.showPopup($("#startupPopupContent").html(), null,
-			function() { console.log("Open!") }, function() { console.log('Close!') })
+				function() { console.log("Open!") }, function() { console.log('Close!') })
 		}
 	}	
 });

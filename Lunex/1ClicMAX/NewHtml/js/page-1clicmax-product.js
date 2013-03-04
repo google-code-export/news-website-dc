@@ -10,6 +10,6 @@ if (!pages) {
 }
 pages = $.extend(pages, {
 	oneClicMax: {
-		// TODO: Add page-scope functions
+		
 	}	
 });
