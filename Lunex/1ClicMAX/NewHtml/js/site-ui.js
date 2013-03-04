@@ -388,10 +388,14 @@ var ui = {
 				width: "auto",
 				height: "auto"	
 			};
-			_option = $.extend(_option, option);
-			htmlContent = htmlContent.replace("data-src", "src");
-			$("#popup.ui-dialog-content").empty().html(htmlContent);
-			$("#popup").on("dialogopen", onOpenCallback).on("dialogclose", onCloseCallback);
+			_option = $.extend(_option, option);			
+			$("#popup.ui-dialog-content").html(htmlContent.replace("data-src", "src"));
+			$("#popup").on("dialogopen", onOpenCallback).on("dialogclose", function() {
+				$("#popup.ui-dialog-content").empty();
+				if (onCloseCallback) {
+					onCloseCallback()
+				};
+			});
 			$("#popup").dialog("option", {
 				width: _option.width,
 				height: _option.height	
