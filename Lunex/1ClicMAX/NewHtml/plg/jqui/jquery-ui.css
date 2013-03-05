@@ -1174,7 +1174,7 @@ body .ui-tooltip {
 /* 1clicMAX Plugin Override: jQuery UI */
 /* -------------------------------------------------------------------- */
 .ui-button {
-	min-width: 80px;
+	min-width: 100px;
 	outline: none;
 }
 input.ui-button,
