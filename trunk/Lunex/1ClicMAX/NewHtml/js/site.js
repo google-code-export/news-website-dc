@@ -121,7 +121,7 @@ var ui = {
 			var autoDock = function() {
 				var windowH = $(window).height();
 				var headerH = $("#header").outerHeight(true);				
-				var contentH = $("#content").outerHeight(true);
+				var contentH = $(".site-content").outerHeight(true);
 				var footerH = $("#footer").outerHeight(true);
 				if (headerH + contentH + footerH < windowH) {
 					$("#footer").addClass(ui.clazz.docked);
