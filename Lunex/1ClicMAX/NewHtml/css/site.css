@@ -443,6 +443,31 @@ input, select {
 #prompt-box .dialog-bottom{
 	background: url('../img/shoutbox_prompt.png') no-repeat 0 0;
 }
+.site-content .print-feature {
+	position: relative;
+}
+.site-content .print-feature .button-print {
+	margin: 0;	
+}
+.site-content .print-feature .dropdown {
+	display: none;
+	background: #fafafa;
+    padding: 8px 15px 5px;
+	min-width: 110px;
+	box-shadow: 0 0 5px #555;
+    position: absolute;    
+    top: 32px;
+	right: 0;
+	z-index: 990;
+}
+.site-content .print-feature .dropdown li {
+	border-bottom: 1px dotted #aaa;
+	padding: 8px 0 5px;
+	text-align: right;
+}
+.site-content .print-feature .dropdown li:last-child {
+	border: 0 none;	
+}
 
 /* 1clicMAX POS Form */
 /* -------------------------------------------------------------------- */
@@ -479,6 +504,16 @@ input.gray-button {
 	min-width: 30px;
 	font-size: 12px;
 	padding: .3em .8em .25em;
+}
+.button-print .ui-icon {
+	background: url('../img/button_icons.png') no-repeat 0 0;
+}
+.button-print:hover .ui-icon,
+.button-print.ui-state-focus .ui-icon {
+	background-position: 0 -16px;
+}
+.button-print .ui-button-text {
+	padding-left: 2.1em;
 }
 .xform {
 	width: 100%;
@@ -595,6 +630,10 @@ input.gray-button {
 }
 .xform-cmd .ui-button, .xform-cmd .gray-button {
 	margin: 0 0 0 5px;
+}
+.xform-cmd .left .ui-button, .xform-cmd .left .gray-button,
+.xform-cmd .ui-button.left, .xform-cmd .gray-button.left {
+	margin: 0 5px 0 0;
 }
 .product-form {	
 	color: #222;
@@ -960,6 +999,7 @@ input.gray-button {
 	margin-bottom: 10px;	
 }
 #topupWorldProductPage .express-topup header {
+	font-size: 18px;
 	border-bottom: 1px dotted #aaa;
 	padding-bottom: 5px;
 	margin-bottom: 4px;
@@ -986,19 +1026,61 @@ input.gray-button {
 	margin-bottom: 2px;
 }
 /* Top-Up Confirm */
-#topupWorldProductPage #confirmForm .product-panel {
+#topupWorldProductPage .product-panel {
 	width: 598px;
 }
-#topupWorldProductPage #confirmForm .product-panel .xform p {
+#topupWorldProductPage .product-panel .xform p {
 	width: 320px;
 }
-#topupWorldProductPage #confirmForm .product-panel .xform p.last {
+#topupWorldProductPage .product-panel .xform p.last {
 	width: 220px;
 	margin-left: 30px;
 }
-#topupWorldProductPage #confirmForm .product-panel .xform label {
+#topupWorldProductPage .product-panel .xform label {
 	width: 9.5em;
 }
-#topupWorldProductPage #confirmForm .product-panel .xform p.last label {
+#topupWorldProductPage .product-panel .xform p.last label {
 	width: 7.5em;
+}
+/* Top-Up Result */
+#topupWorldProductPage .fly-box .fly-box-title .print-feature {
+	margin-top: -8px;
+}
+#topupWorldProductPage .product-panel {
+	width: 598px;
+}
+#topupWorldProductPage .result-panel {
+	width: 558px;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+	font-size: 18px;
+}
+#topupWorldProductPage .result-panel.success {
+	background-color: #efe;
+}
+#topupWorldProductPage .result-panel.success .result {
+	color: #280;
+}
+#topupWorldProductPage .result-panel.fail {
+	background-color: #ffebed;
+}
+#topupWorldProductPage .result-panel.fail .result {
+	color: #ec222a;
+}
+#topupWorldProductPage .result-panel.fail hr {
+	border-color: #ffdce1;	
+}
+#topupWorldProductPage .result-panel .help {
+	font-style: italic;	
+}
+#topupWorldProductPage .result-panel .help p {
+	margin: .3em 0 0;
+	line-height: 1.5em;
+}
+#topupWorldProductPage .result-panel .xform li:last-child {
+	padding: 0;
+}
+#topupWorldProductPage .result-panel .xform label {
+	width: 7.3em;	
 }
