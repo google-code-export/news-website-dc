@@ -70,11 +70,30 @@ input, select {
 	line-height: 1em;
 	outline: none;
 }
+.imp {
+	font-size: 20px;
+}
+.imp2 {
+	font-size: 24px;
+}
 .emp {
 	color: #ec2028 !important;
 }
 .upper {
 	text-transform: uppercase !important;
+}
+.note {
+	font-size: 14px;
+	font-style: italic;
+}
+.note .asterisk {
+	font-size: 26px;
+	font-weight: bold;
+	color: #ec2028;
+}
+.note .title {
+	font-weight: bold;
+	text-decoration: underline;
 }
 .align-left {
 	text-align: left !important;
@@ -594,6 +613,15 @@ input.gray-button {
 	padding: 10px;
 	border-bottom: 1px solid #ddd;
 }
+.product-panel h2 {
+	font-size: 20px;
+	margin: 0;
+	padding-bottom: 12px;
+}
+.product-panel.xform li:last-child,
+.product-panel .xform li:last-child {
+	padding: 0;
+}
 
 /* 1clicMAX POS Page: Login */
 /* -------------------------------------------------------------------- */
@@ -843,6 +871,7 @@ input.gray-button {
 }
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */
+/* Top-Up Input */
 #topupWorldProductPage.site-content .fly-box.content-holder .fly-box-title {
 	margin-bottom: 15px;
 }
@@ -955,4 +984,21 @@ input.gray-button {
 #topupWorldProductPage .express-topup article .cmd .button {
 	display: block;
 	margin-bottom: 2px;
+}
+/* Top-Up Confirm */
+#topupWorldProductPage #confirmForm .product-panel {
+	width: 598px;
+}
+#topupWorldProductPage #confirmForm .product-panel .xform p {
+	width: 320px;
+}
+#topupWorldProductPage #confirmForm .product-panel .xform p.last {
+	width: 220px;
+	margin-left: 30px;
+}
+#topupWorldProductPage #confirmForm .product-panel .xform label {
+	width: 9.5em;
+}
+#topupWorldProductPage #confirmForm .product-panel .xform p.last label {
+	width: 7.5em;
 }
