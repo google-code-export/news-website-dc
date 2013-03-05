@@ -310,8 +310,9 @@ input, select {
     -webkit-transition: background-color 800ms ease 0s;
     -o-transition: background-color 800ms ease 0s;
 }
-#content .product-tabs ul li span {
-	background-color: #fafafa;
+#content .product-tabs ul li span,
+#content .product-tabs ul li.selected a  {
+	background-color: #fafafa !important;
 	border: 0 none;	
 }
 #content .product-tabs ul li:last-of-type a {
@@ -325,7 +326,8 @@ input, select {
 #content .product-tabs ul li.topup-world span {
 	background-position: -166px 0;
 }
-#content .product-tabs ul li.topup-world span {
+#content .product-tabs ul li.topup-world span,
+#content .product-tabs ul li.topup-world.selected a {
 	background-position: -332px 0;
 }
 #content .product-tabs ul li.topup-usa a,
@@ -449,6 +451,15 @@ input, select {
 	border: 1px solid #fdd106;
 	background: #fdd106 url(../plg/jqui/img/ui-bg_highlight-soft_60_fdd106_1x100.png) 50% 50% repeat-x;
 	color: #222;	
+}
+input.gray-button {
+	padding: .36em 1em;
+	min-width: 90px;
+}
+.gray-button.small {
+	min-width: 30px;
+	font-size: 12px;
+	padding: .3em .8em .25em;
 }
 .xform {
 	width: 100%;
@@ -832,6 +843,9 @@ input, select {
 }
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */
+#topupWorldProductPage #content .fly-box.content-holder .fly-box-title {
+	margin-bottom: 15px;
+}
 #topupWorldProductPage #content .fly-box .fly-box-title .sub-title {
 	color: #123785;
 	font-size: 18px;
@@ -899,7 +913,8 @@ input, select {
 	position: absolute;
 	right: 0;
 }
-#topupWorldProductPage .topup-logos {
+#topupWorldProductPage .topup-logos,
+#topupWorldProductPage .express-topup {
 	margin-top: 10px;
 }
 #topupWorldProductPage .topup-logos li {
@@ -907,4 +922,37 @@ input, select {
 }
 #topupWorldProductPage .topup-logos li.active {
 	display: block;
+}
+#topupWorldProductPage .express-topup {
+	width: 316px;
+	display: none;
+}
+#topupWorldProductPage .express-topup h3 {
+	margin-bottom: 10px;	
+}
+#topupWorldProductPage .express-topup header {
+	border-bottom: 1px dotted #aaa;
+	padding-bottom: 5px;
+	margin-bottom: 4px;
+}
+#topupWorldProductPage .express-topup article {
+	padding: 10px 0 8px;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+#topupWorldProductPage .express-topup article.alt {
+	background-color: #f0f0f0;
+}
+#topupWorldProductPage .express-topup article strong.emp {
+	display: block;
+	font-size: 20px;
+}
+#topupWorldProductPage .express-topup article .cmd {
+	position: absolute;
+	top: 9px;
+	right: 0;
+}
+#topupWorldProductPage .express-topup article .cmd .button {
+	display: block;
+	margin-bottom: 2px;
 }

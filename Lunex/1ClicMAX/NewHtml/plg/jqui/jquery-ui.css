@@ -1181,6 +1181,15 @@ input.ui-button,
 .ui-button-text-only .ui-button-text {
 	padding: .32em 1em;
 }
+.ui-button.small {
+	min-width: 34px;
+}
+input.ui-button.small,
+.ui-button-text-only.small .ui-button-text {
+	padding: .2em .8em .15em;
+	min-width: 30px;
+	font-size: 12px;
+}
 .ui-dialog {
 	border: 0 none;
 	box-shadow: 0 0 10px #333;
