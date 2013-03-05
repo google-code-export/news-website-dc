@@ -1,4 +1,5 @@
 ﻿$(function() {
+	ui.jWidget.setupDialogs();
 	form.mask.setupMaskMany([
 		{ form: "phoneInputForm" },
 		{ form: "newAccountForm" }
@@ -7,7 +8,8 @@
 		{ form: "phoneInputForm", option: { binded: false } },
 		{ form: "newAccountForm" }
 	]);
-
+	
+	pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.newAccountForm.choosePhoneType();
 	// TODO: Execute page-scope functions here
 });
@@ -17,6 +19,11 @@ if (!pages) {
 }
 pages = $.extend(pages, {
 	oneClicMax: {
+		showNewCustomerDialog: function() {
+			if ($("#newCustomerDialog").size() > 0) {
+				ui.jWidget.showDialog("newCustomerDialog", { buttons: {} });	
+			}
+		},
 		newAccountForm: {
 			choosePhoneType: function() {
 				var phoneTypeRadios = $("#newAccountForm :radio[name=phonetype]");

@@ -32,7 +32,47 @@
 		<script src="lib/pngfix.js"></script>
 		<![endif]-->
     </head>
-    <body>        
+    <body>
+    	<!-- Dialogs Section -->
+        <!-- TODO: All dialogs should be placed here ONLY -->
+		<div id="newCustomerDialog" class="dialog" title="For New Customer">
+        	<header class="clearfix">
+            	
+                <strong class="right">Welcome 1ClicMAX&trade;! You can add up to <span class="imp emp">30</span> 1Clic&trade; Numbers</strong>
+            </header>
+			<div class="product-form">
+            	<form id="quickAdd1ClicPhoneNo" method="post" action="">
+                    <ul class="xform">
+                        <li class="col2">
+                            <p class="phone">
+                                <label>Enter International Phone</label>
+                                <input class="xlarge" type="tel" maxlength="17" autofocus
+                                    data-mask-type="number"
+                                    data-validation-engine="validate[required]"
+                                    data-errormessage-value-missing="Please enter international phone number" />
+                            </p>
+                            <p class="name">
+                                <label>Enter Name</label>
+                                <input class="xlarge upper" type="text" maxlength="11" />
+                            </p>
+                            <p class="send-text">
+                                <span class="option"><input type="checkbox" /> Send Text</span>
+                            </p>
+                            <p class="add">
+                                <input class="green-button xlarge" type="button" value="Add" />
+                            </p>
+                        </li>
+                    </ul>
+                </form>
+                <hr/>
+                <div class="extra">
+                    <input class="green-button" type="button" value="Add Multiple Numbers" />
+                    <em>to save up your time!</em>
+                </div>
+            </div>
+		</div>		
+		<!-- END Dialogs Section -->
+    
 		<div class="wrapper">
 			<header id="header" role="siteheader">
                 <a id="logo" role="sitelogo" href="/"><img alt="1ClicMAX&trade;" src="img/logo.gif"></a>
@@ -109,7 +149,29 @@
                     </ul>
                 </div>
                 <section class="fly-box content-holder">
-                	
+                	<form id="add1ClicPhoneNo" method="post" action="">
+                        <ul class="xform product-form">
+                            <li class="col2">
+                                <p class="phone">
+                                    <label>Enter International Phone</label>
+                                    <input class="xlarge" type="tel" maxlength="17" autofocus
+                                        data-mask-type="number"
+                                        data-validation-engine="validate[required]"
+                                        data-errormessage-value-missing="Please enter international phone number" />
+                                </p>
+                                <p class="name">
+                                    <label>Enter Name</label>
+                                    <input class="xlarge upper" type="text" maxlength="11" />
+                                </p>
+                                <p class="send-text">
+                                    <span class="option"><input type="checkbox" /> Send Text</span>
+                                </p>
+                                <p class="add">
+                                    <input class="green-button xlarge" type="submit" value="Add" />
+                                </p>
+                            </li>
+                        </ul>
+                    </form>
                 </section>
             </div>
             <footer id="footer" role="sitefooter">

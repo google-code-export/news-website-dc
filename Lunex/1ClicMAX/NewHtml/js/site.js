@@ -186,7 +186,8 @@ var ui = {
 				return;	
 			}
 			// Common buttons
-			$(":button, :submit, :reset, .button").not(".gray-button").button();
+			$(":button, :submit, :reset, .button")
+				.not(".gray-button, .green-button, .red-button").button();
 			// Iconic buttons with text
 			$(".button-save").button({
 				icons: {
