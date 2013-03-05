@@ -118,7 +118,7 @@ input, select {
 	margin: 0 auto;
 	min-width: 1000px;
 }
-#header, #footer, .site-content {	
+#header, #footer, .site-content {
 	width: 100%;	
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -471,7 +471,7 @@ input, select {
 
 /* 1clicMAX POS Form */
 /* -------------------------------------------------------------------- */
-.gray-button {
+.gray-button, .green-button, .red-button {
 	display: inline-block;
 	text-align: center;
 	vertical-align: middle;
@@ -490,7 +490,21 @@ input, select {
 	zoom: 1;
 	cursor: pointer;
 }
-.gray-button:hover {
+.green-button {
+	color: #fff;
+	border-color: #290;
+	background: #270; /* Fallback */
+	background: -webkit-gradient(linear, left top, left bottom, from(#2a0), to(#270));
+	background: -moz-linear-gradient(top,  #2a0,  #270);
+}
+.red-button {
+	color: #fff;
+	border-color: #c70000;
+	background: #a00; /* Fallback */
+	background: -webkit-gradient(linear, left top, left bottom, from(#c80000), to(#a00));
+	background: -moz-linear-gradient(top,  #c80000,  #a00);
+}
+.gray-button:hover, .green-button:hover, .red-button:hover {
 	text-decoration: none;
 	border: 1px solid #fdd106;
 	background: #fdd106 url(../plg/jqui/img/ui-bg_highlight-soft_60_fdd106_1x100.png) 50% 50% repeat-x;
@@ -907,6 +921,37 @@ input.gray-button {
     width: 276px;
 	margin-left: 10px;
 	padding: 0.1em 0.4em;
+}
+/* Main Page*/
+#newCustomerDialog {
+	width: 980px;	
+}
+#quickAdd1ClicPhoneNo .xlarge,
+#oneClicProductPage #add1ClicPhoneNo .xlarge {
+	font-size: 48px !important;
+	margin: 0 !important;
+}
+#quickAdd1ClicPhoneNo input.xlarge,
+#oneClicProductPage #add1ClicPhoneNo input.xlarge {
+	margin: .1em .4em;
+}
+#quickAdd1ClicPhoneNo .xform .phone,
+#oneClicProductPage #add1ClicPhoneNo .xform .phone {
+	width: 370px;
+}
+#quickAdd1ClicPhoneNo .xform .name,
+#oneClicProductPage #add1ClicPhoneNo .xform .name {
+	width: 230px;
+	margin: 0 20px 0 10px;
+}
+#quickAdd1ClicPhoneNo .xform .send-text,
+#oneClicProductPage #add1ClicPhoneNo .xform .send-text {
+	width: 140px;
+	padding-top: 28px;
+}
+#quickAdd1ClicPhoneNo .xform .add,
+#oneClicProductPage #add1ClicPhoneNo .xform .add {
+	padding-top: 23px;
 }
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */
