@@ -923,9 +923,6 @@ input.gray-button {
 	padding: 0.1em 0.4em;
 }
 /* Main Page*/
-#newCustomerDialog {
-	width: 980px;	
-}
 #quickAdd1ClicPhoneNo .xlarge,
 #oneClicProductPage #add1ClicPhoneNo .xlarge {
 	font-size: 48px !important;
@@ -937,21 +934,104 @@ input.gray-button {
 }
 #quickAdd1ClicPhoneNo .xform .phone,
 #oneClicProductPage #add1ClicPhoneNo .xform .phone {
-	width: 370px;
+	width: 480px;
 }
 #quickAdd1ClicPhoneNo .xform .name,
 #oneClicProductPage #add1ClicPhoneNo .xform .name {
-	width: 230px;
-	margin: 0 20px 0 10px;
+	width: 190px;
+	margin: 0 0 0 10px;
 }
 #quickAdd1ClicPhoneNo .xform .send-text,
 #oneClicProductPage #add1ClicPhoneNo .xform .send-text {
-	width: 140px;
-	padding-top: 28px;
+	width: 110px;
+	text-align: center;
+    margin-top: 30px;    
 }
 #quickAdd1ClicPhoneNo .xform .add,
 #oneClicProductPage #add1ClicPhoneNo .xform .add {
-	padding-top: 23px;
+	vertical-align: bottom;
+}
+#quickAdd1ClicPhoneNo .xform .add .green-button,
+#oneClicProductPage #add1ClicPhoneNo .xform .add .green-button {
+	width: 110px;
+}
+#newCustomerDialog header {
+	position: relative;	
+}
+#newCustomerDialog header img {
+	margin-bottom: 6px;
+}
+#newCustomerDialog header .status {
+	position: absolute;
+	top: 16px;
+	right: 0;
+}
+#newCustomerDialog hr {
+	margin: 0;
+	border-style: dotted;
+	border-color: #aaa;
+}
+#newCustomerDialog .extra {
+	padding: 20px;
+}
+#newCustomerDialog .extra .green-button {
+	margin-right: 10px;
+}
+#rechargeAccountForm {
+	width: 606px;	
+}
+#rechargeAccountForm input[type=text].xlarge {
+	width: 280px;
+	padding: 0.1em 1.6em 0.1em 0;
+	font-size: 66px;
+	text-align: right;
+	background: #fff url('../img/recharge_mask.png') no-repeat 50% 50%;	
+}
+#rechargeAccountForm .buttons {
+	padding-left: 12px;
+    padding-top: 25px;
+    text-align: center;
+    width: 274px;	
+}
+#rechargeAccountForm .button-wrapper {
+	font-weight: normal;
+	text-align: center;
+	display: inline-block;	
+}
+#rechargeAccountForm .button-wrapper .green-button,
+#rechargeAccountForm .button-wrapper .red-button {
+	width: 68px;
+	height: 68px;
+	min-width: 0;
+	display: block;
+	padding: 0;
+	margin: 0 8px 5px;
+}
+#rechargeAccountForm .button-wrapper #rechargeAddButton span,
+#rechargeAccountForm .button-wrapper #rechargeVoidButton span {
+	width: 68px;
+	height: 68px;
+	display: block;
+	background: url('../img/recharge_icons.png') no-repeat 0 0;
+}
+#rechargeAccountForm .button-wrapper #rechargeVoidButton span {
+	background-position: -68px 0;
+}
+#rechargeAccountForm .button-wrapper #rechargeAddButton:hover span {
+	background-position: 0 -68px;
+}
+#rechargeAccountForm .button-wrapper #rechargeVoidButton:hover span {
+	background-position: -68px -68px;
+}
+#rechargeAccountForm .options {
+	padding: 0;	
+}
+#rechargeAccountForm .options label {
+	width: 8.5em;
+}
+#rechargeAccountForm .options .option {
+	min-width: 4.5em;
+	display: inline-block;
 }
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */

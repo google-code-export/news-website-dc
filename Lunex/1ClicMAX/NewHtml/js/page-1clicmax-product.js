@@ -2,14 +2,21 @@
 	ui.jWidget.setupDialogs();
 	form.mask.setupMaskMany([
 		{ form: "phoneInputForm" },
-		{ form: "newAccountForm" }
+		{ form: "newAccountForm" },
+		{ form: "add1ClicPhoneNo" },
+		{ form: "quickAdd1ClicPhoneNo" },
+		{ form: "rechargeAccountForm" }
 	]);
 	form.validation.setupMany([
 		{ form: "phoneInputForm", option: { binded: false } },
-		{ form: "newAccountForm" }
+		{ form: "newAccountForm" },
+		{ form: "add1ClicPhoneNo", option: { binded: false } },
+		{ form: "quickAdd1ClicPhoneNo", option: { binded: false } },
+		{ form: "rechargeAccountForm", option: { binded: true } }
 	]);
 	
-	pages.oneClicMax.showNewCustomerDialog();
+	//pages.oneClicMax.showNewCustomerDialog();
+	pages.oneClicMax.showAddMultiNumbersDialog();
 	pages.oneClicMax.newAccountForm.choosePhoneType();
 	// TODO: Execute page-scope functions here
 });
@@ -21,8 +28,25 @@ pages = $.extend(pages, {
 	oneClicMax: {
 		showNewCustomerDialog: function() {
 			if ($("#newCustomerDialog").size() > 0) {
-				ui.jWidget.showDialog("newCustomerDialog", { buttons: {} });	
+				ui.jWidget.showDialog("newCustomerDialog", { width: 980, buttons: {} });	
 			}
+		},
+		showAddMultiNumbersDialog: function() {
+			$("#addMultiNo1, #addMultiNo2").click(function() {
+				ui.jWidget.closeDialog("newCustomerDialog");
+				ui.jWidget.showDialog("addMultiNumbersDialog", {
+					width: 600,
+					buttons: {
+						"Save": function() {
+							
+							ui.jWidget.closeDialog("addMultiNumbersDialog");
+						},
+						"Cancel": function() {
+							ui.jWidget.closeDialog("addMultiNumbersDialog");
+						}	
+					}
+				});	
+			});
 		},
 		newAccountForm: {
 			choosePhoneType: function() {
