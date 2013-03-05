@@ -8,6 +8,7 @@
 	]);
 
 	pages.topUpWorld.topupForm.setupFormEvents();
+	pages.topUpWorld.slidePrintDropDown();
 	pages.topUpWorld.runLogosSlider();
 	// TODO: Execute page-scope functions here
 });
@@ -43,8 +44,16 @@ pages = $.extend(pages, {
 				
 			}	
 		},
+		slidePrintDropDown: function() {
+			$("#topupWorldProductPage .print-feature").hover(function() {
+				$(this).find(".dropdown").not(":visible").slideDown("fast");
+			},
+			function() {
+				$(this).find(".dropdown").slideUp("fast");	
+			});
+		},
 		runLogosSlider: function() {
-			var slides = $("#content .topup-logos li");
+			var slides = $("#topupWorldProductPage .topup-logos li");
 			var counter = 1;
 			var runner = function() {
 				slides.hide().removeClass("active");

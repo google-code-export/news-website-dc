@@ -1181,6 +1181,15 @@ input.ui-button,
 .ui-button-text-only .ui-button-text {
 	padding: .32em 1em;
 }
+.ui-button-text-icon-primary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+	padding: 0.4em 1em 0.3em 1.8em;
+}
+.ui-button-text-icon-primary .ui-button-icon-primary,
+.ui-button-text-icons .ui-button-icon-primary,
+.ui-button-icons-only .ui-button-icon-primary {
+	left: .8em;
+}
 .ui-button.small {
 	min-width: 34px;
 }

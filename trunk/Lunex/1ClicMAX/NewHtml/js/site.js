@@ -278,6 +278,11 @@ var ui = {
 					secondary: "ui-icon-arrowthickstop-1-e"
 				}
 			});
+			$(".button-print").button({
+				icons: {
+					primary: "ui-icon-print"
+				}
+			});
 			// Icon-only buttons
 			$(".button-icon-only").button("option", { text: false });
 		},
@@ -662,6 +667,9 @@ var form = {
 	mask: {
 		setupMaskOne: function(formId) {
 			var formId = util.html.getJqueryIdSelector(formId);
+			if (!$(formId).setMask) {
+				return;	
+			}
 			$(formId + " input[data-mask-type=us-phone]")
 				.setMask({ mask: "999-999-9999" });
 			$(formId + " input[data-mask-type=number]")
@@ -678,6 +686,9 @@ var form = {
 	validation: {
 		setupOne: function(formId, option) {
 			var formId = util.html.getJqueryIdSelector(formId);
+			if (!$(formId).validationEngine) {
+				return;	
+			}
 			var _option = $.extend({
 				showOneMessage: false,
 				binded: true,

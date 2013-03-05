@@ -108,11 +108,31 @@
                     </ul>
                 </div>
                 <section class="fly-box content-holder">
-                	<header class="fly-box-title">
-                    	<h1>Top-Up Confirmation</h1>
+                	<header class="fly-box-title clearfix">
+                    	<h1 class="left">Top-Up Result</h1>
+                        <div class="print-feature right">
+                        	<a class="button-print" href="#">Print</a>
+                            <ul class="dropdown">
+                            	<li><a href="#">8.5x11</a></li>
+                                <li><a href="#">2.25 inch</a></li>
+                                <li><a href="#">3.125 inch</a></li>
+                            </ul>
+                        </div>
                     </header>
                     <div class="clearfix">
-                    	<form id="confirmForm" class="left" method="post" action="16_topup-world-product-success.html">
+                    	<div id="resultInfo" class="left">
+                        	<section class="result-panel success">
+                            	<ul class="xform inline">
+                                	<li>
+                                    	<label>Transaction ID:</label>
+                                        <strong class="imp2">20820403</strong>
+                                    </li>
+                                    <li>
+                                    	<label>Result:</label>
+                                        <strong class="imp2 upper result">Successful</strong>
+                                    </li>
+                                </ul>
+                            </section>
                         	<section class="product-panel">
                             	<h2>Sender's Information</h2>
                                 <ul class="xform inline">
@@ -178,17 +198,10 @@
                                     </li>
                                 </ul>
                             </section>
-                            <br/>
-                            <p class="note emp">
-                            	<strong class="asterisk">*</strong>
-                            	<strong class="title">ATTENTION:</strong>
-                                All Top-Up Sales are final, no refunds are available
-                            </p>
                             <div class="xform-cmd has-sep">
-                                <a class="gray-button" href="14_topup-world-product.html">Back</a>
-                                <input type="submit" value="Submit" />
+                                <input type="button" value="Close" />
                             </div>
-                        </form>
+                        </div>
                         <aside class="right">
                         	<a href="#">
                             	<img src="res/banners/topup_world_sample.jpg" alt="" />
