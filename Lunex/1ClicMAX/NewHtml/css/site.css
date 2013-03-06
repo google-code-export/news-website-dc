@@ -72,9 +72,11 @@ input, select {
 }
 .imp {
 	font-size: 20px;
+	font-weight: bold;
 }
 .imp2 {
 	font-size: 24px;
+	font-weight: bold;
 }
 .emp {
 	color: #ec2028 !important;
@@ -461,12 +463,12 @@ input, select {
 	z-index: 990;
 }
 .site-content .print-feature .dropdown li {
-	border-bottom: 1px dotted #aaa;
-	padding: 8px 0 5px;
-	text-align: right;
+	border-bottom: 1px dotted #aaa !important;
+	padding: 8px 0 5px !important;
+	text-align: right !important;
 }
 .site-content .print-feature .dropdown li:last-child {
-	border: 0 none;	
+	border: 0 none !important;	
 }
 
 /* 1clicMAX POS Form */
@@ -651,7 +653,7 @@ input.gray-button {
 }
 .product-form {	
 	color: #222;
-	background-color: #f0f0f0;
+	background-color: #ccc;
 }
 .xform.product-form,
 .product-form .xform {
@@ -674,6 +676,76 @@ input.gray-button {
 .product-panel.xform li:last-child,
 .product-panel .xform li:last-child {
 	padding: 0;
+}
+
+/* 1clicMAX POS DataTable */
+/* -------------------------------------------------------------------- */
+.data-table .data-table-header:before,
+.data-table .data-table-header:after {
+	content: " ";
+	display: table;
+}
+.data-table .data-table-header:after {
+	clear: both;
+}
+.data-table .data-table-header {
+	width: 100%;
+	color: #fff;
+	background: #444; /* Fallback */
+	background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#444));
+	background: -moz-linear-gradient(top,  #666,  #444);
+	*zoom:1
+}
+.data-table .data-table-header li {
+	float: left;
+	font-weight: bold;
+	padding: 5px 10px;
+	border-left: 1px solid #777;
+}
+.data-table .data-table-body table {
+	width: 100%;
+	border: 1px solid #ddd;
+	border-top: 0 none;	
+}
+.data-table .data-table-body table tr td {
+	padding: 5px 10px;
+	border: 1px solid #ddd;
+	border-width: 0 1px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;	
+}
+.data-table .data-table-body table tr.alt td {
+	background: #f0f0f0;	
+}
+.data-table .data-table-body table tr:hover td {
+	background: #def;	
+}
+.data-table .data-table-body table tr td.imp {
+	font-size: 18px;	
+}
+.data-table .data-table-body table tr td .edit-link,
+.data-table .data-table-body table tr td .delete-link {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 999px;
+	vertical-align: middle;
+	background: url('../img/button_icons.png') no-repeat 0 0;
+}
+.data-table .data-table-body table tr td .edit-link {
+	background-position: 0 -112px;	
+}
+.data-table .data-table-body table tr td .edit-link:hover {
+	background-position: 0 -128px;
+}
+.data-table .data-table-body table tr td .delete-link {
+	background-position: -16px -16px;	
+}
+.data-table .data-table-body table tr td .delete-link:hover {
+	background-position: -16px -32px;
 }
 
 /* 1clicMAX POS Page: Login */
@@ -705,6 +777,7 @@ input.gray-button {
 }
 #loginPage.site-content .login-container .login .login-box {
 	padding: 20px 30px;
+	width: 330px;
 }
 #loginPage .login-container .login .login-box .notif {
 	margin-bottom: 10px;
@@ -872,6 +945,7 @@ input.gray-button {
 	margin: .2em 0;
 	text-align: center;	
 }
+
 /* 1clicMAX POS Page: 1ClicMAX Product */
 /* -------------------------------------------------------------------- */
 #oneClicProductPage #phoneInputForm .xform {
@@ -1033,6 +1107,93 @@ input.gray-button {
 	min-width: 4.5em;
 	display: inline-block;
 }
+#oneClicAccountInfo {
+	width: 304px;	
+}
+#oneClicAccountInfo header {
+	border-bottom: 1px solid #123785;
+    padding-bottom: 7px;
+	position: relative;
+}
+#oneClicAccountInfo header .print-feature {
+	position: absolute;
+	right: 0;
+	bottom: 5px;
+}
+#oneClicAccountInfo label {
+    display: inline-block;
+    width: 7.7em;
+}
+#oneClicAccountInfo ul li {
+	border-bottom: 1px solid #aaa;
+    padding: 10px 0;
+}
+#oneClicAccountInfo ul li strong {
+	color: #123785;
+}
+#oneClicAccountInfo ul li.customer-info {
+	border: 0 none;	
+}
+#oneClicAccountInfo ul li.customer-info span.group {
+	display: inline-block;
+	vertical-align: top;
+}
+#oneClicAccountInfo ul li.customer-info span.group strong {
+	display: block;
+	margin-bottom: 3px;
+}
+#oneClicAccountInfo ul li.customer-info span.group .button {
+	min-width: 60px;
+}
+#oneClicProductPage .list-tabs {
+	margin-top: 20px;	
+	margin-top: 19px;
+	display: block;
+	position: relative;
+	bottom: -1px;
+}
+#oneClicProductPage .list-tabs li {
+	display: inline-block;
+}
+#oneClicProductPage .list-tabs li a {
+	font-family: 'Roboto Condensed', Arial, sans-serif;
+	font-weight: bold;
+    font-size: 20px; 
+	color: #444;  
+    display: block;    
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px 0 16px;
+    vertical-align: middle;
+}
+#oneClicProductPage .list-tabs li a.selected,
+#oneClicProductPage .list-tabs li a:hover {
+	color: #123785;
+	border: 1px solid #123785;
+    border-width: 1px 1px 0;
+	background-color: #fafafa;
+	text-decoration: none;
+	padding-left: 15px;
+}
+#oneClicProductPage .list-tabs li a img {
+	height: 24px;
+    margin-top: 6px;
+    vertical-align: top;
+}
+#oneClicProductPage .tabs-container {
+	padding: 15px 0 0;
+	border-top: 1px solid #123785;
+}
+#oneClicProductPage .tab-content {
+	position: relative;
+}
+#oneClicProductPage #oneClicNumbersTab #addMultiNo2,
+#oneClicProductPage #usNumbersTab #addUsNo {
+	position: absolute;
+	top: -55px;
+	right: 0;	
+}
+
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */
 /* Top-Up Input */
