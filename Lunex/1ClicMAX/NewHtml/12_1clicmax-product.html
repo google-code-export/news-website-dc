@@ -228,12 +228,10 @@
                             </ul>
                         </section>
                     </div>
-                	<div class="list-tabs">
-                    	<ul class="idTabs">
-                            <li><a href="#oneClicNumbersTab">Adding <img src="img/1clic_icon.png" alt="1clicMAX&trade;" /> Numbers List</a></li>
-                            <li><a href="#usNumbersTab">Adding U.S. Numbers List</a></li>
-                        </ul>
-                    </div>
+                	<ul id="phonesListTabs">
+                        <li><a href="#oneClicNumbersTab">Adding <img src="img/1clic_icon.png" alt="1clicMAX&trade;" /> Numbers List</a></li>
+                        <li><a href="#usNumbersTab">Adding U.S. Numbers List</a></li>
+                    </ul>
                     <div class="tabs-container">
                     	<div id="oneClicNumbersTab" class="tab-content">
                             <input id="addMultiNo2" class="green-button" type="button" value="Add 1Clic&trade; Numbers" />
@@ -261,8 +259,8 @@
                                     </li>
                                 </ul>
                             </form>
-                            <br/>
-                            <div class="data-table">
+                            <!-- DataTable -->
+                            <div id="oneClicPhonesList" class="data-table">
                             	<ul class="data-table-header">
                                 	<li data-center data-width="30px">#</li>
                                     <li data-width="160px">1Clic&trade; Number</li>
@@ -331,9 +329,48 @@
                                     </table>
                                 </div>
                             </div>
+                            <!-- End of DataTable -->
                         </div>
                         <div id="usNumbersTab" class="tab-content">
                         	<input id="addUsNo" class="green-button" type="button" value="Add U.S. Phone Numbers" />
+                            <!-- DataTable -->
+                            <div id="usPhonesList" class="data-table">
+                            	<ul class="data-table-header">
+                                	<li data-center data-width="30px">#</li>
+                                    <li data-width="160px">Phone Number</li>
+                                    <li data-width="80px">Type</li>
+                                    <li data-width="120px">Language</li>
+                                    <li data-width="140px">Access Number</li>
+                                    <li data-center data-width="80px">Send Text</li>
+                                    <li data-center data-width="40px">Edit</li>
+                                    <li data-center>Delete</li>
+                                </ul>
+                                <div class="data-table-body">
+                                    <table cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td>1</td>
+                                            <td class="imp">245-646-4565</td>
+                                            <td>Mobile</td>
+                                            <td>English</td>
+                                            <td class="imp emp">408-677-5669</td>
+                                            <td><input class="button small send-text-button" type="button" value="Send" /></td>
+                                            <td><a class="edit-link" href="#" title="Edit">Edit</a></td>
+                                            <td><a class="sub-link" href="#" title="Click here to learn more">Main Number</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td class="imp">215-554-5545</td>
+                                            <td>Mobile</td>
+                                            <td>Vietnamese</td>
+                                            <td class="imp emp">408-677-5670</td>
+                                            <td><input class="button small send-text-button" type="button" value="Send" /></td>
+                                            <td><a class="edit-link" href="#" title="Edit">Edit</a></td>
+                                            <td><a class="delete-link" href="#" title="Delete">Delete</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End of DataTable -->
                         </div>
                     </div>                    
                 </section>

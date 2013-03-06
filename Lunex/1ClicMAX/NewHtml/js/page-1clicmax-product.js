@@ -1,5 +1,4 @@
-﻿$(function() {
-	ui.jWidget.setupDataTable();
+﻿$(function() {	
 	ui.jWidget.setupDialogs();
 	form.mask.setupMaskMany([
 		{ form: "phoneInputForm" },
@@ -16,7 +15,8 @@
 		{ form: "rechargeAccountForm", option: { binded: true } }
 	]);
 	
-	//pages.oneClicMax.showNewCustomerDialog();
+	pages.oneClicMax.refineTables();
+	pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.showAddMultiNumbersDialog();
 	pages.oneClicMax.slidePrintDropDown();
 	pages.oneClicMax.newAccountForm.choosePhoneType();
@@ -56,6 +56,21 @@ pages = $.extend(pages, {
 			},
 			function() {
 				$(this).find(".dropdown").slideUp("fast");	
+			});
+		},
+		refineTables: function() {
+			ui.jWidget.setupDataTable("oneClicPhonesList");
+			$("#phonesListTabs").idTabs(function(id,list,set){ 
+				$("a",set).removeClass("selected") 
+				.filter("[href='"+id+"']",set).addClass("selected"); 
+				for(i in list) 
+				  $(list[i]).hide(); 
+				$(id).fadeIn("fast", function() {
+					if (id == "#usNumbersTab") {
+						ui.jWidget.setupDataTable("usPhonesList");	
+					}
+				}); 
+				return false; 
 			});
 		},
 		newAccountForm: {
