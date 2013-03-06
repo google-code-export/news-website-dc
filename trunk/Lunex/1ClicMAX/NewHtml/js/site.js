@@ -152,28 +152,52 @@ var ui = {
 		},
 		// Required:
 		// jquery.ui.core.min.js
-		setupDataTable: function() {
-			var dataTable = $(".data-table");
-			for (var i = 0; i < dataTable.size(); i++) {
-				var headerCells = dataTable.eq(i).find(".data-table-header li");
-				var rows = dataTable.eq(i).find(".data-table-body > table tr");				
-                for (var j = 0; j < headerCells.size(); j++) {
-					var eqRowCell = rows.find("td:eq(" + j +")");
-					eqRowCell.css({ width: headerCells.eq(j).attr("data-width") });
-					headerCells.eq(j).css({ width: headerCells.eq(j).attr("data-width") });
-					if (!headerCells.eq(j).is("[data-width]")) {
-						headerCells.eq(j).css({ width: eqRowCell.width() + "px" });
-					}
-					if (headerCells.eq(j).is("[data-center]")) {
-						headerCells.eq(j).addClass("align-center");
-						eqRowCell.addClass("align-center");
-					}
-					else if (headerCells.eq(j).is("[data-right]")) {
-						headerCells.eq(j).addClass("align-right");
-						eqRowCell.addClass("align-right");
-					}
+		setupDataTables: function() {
+			var dataTables = $(".data-table");
+			for (var i = 0; i < dataTables.size(); i++) {
+				ui.jWidget.setupDataTable(dataTables.eq(i));
+			}
+		},
+		// Required:
+		// jquery.ui.core.min.js
+		setupDataTable: function(dataTableObjOrId) {
+			var dataTable = {};
+			if (typeof dataTableObjOrId == "string" || dataTableObjOrId instanceof String) {
+				var dataTableId = util.html.getJqueryIdSelector(dataTableObjOrId);
+				dataTable = $(dataTableId);
+			} else {
+				dataTable = dataTableObjOrId;
+			}
+			// Do nothing to an already setup table
+			if (dataTable.hasClass("setup")) {
+				return;	
+			}
+			var headerCells = dataTable.find(".data-table-header > li");
+			var rows = dataTable.find(".data-table-body > table tr");				
+			for (var j = 0; j < headerCells.size(); j++) {
+				var eqRowCell = rows.find("td:eq(" + j +")");
+				var dataWidth = headerCells.eq(j).attr("data-width");
+				eqRowCell.css({ width: dataWidth, "max-width": dataWidth });
+				headerCells.eq(j).css({ width: dataWidth });					
+				if (headerCells.eq(j).is("[data-center]")) {
+					headerCells.eq(j).addClass("align-center");
+					eqRowCell.addClass("align-center");
+				}
+				else if (headerCells.eq(j).is("[data-right]")) {
+					headerCells.eq(j).addClass("align-right");
+					eqRowCell.addClass("align-right");
 				}
 			}
+			for (var j = 0; j < headerCells.size(); j++) {
+				if (!headerCells.eq(j).is("[data-width]")) {
+					var eqRowCell = rows.find("td:eq(" + j +")");
+					var rowCellWidth = eqRowCell.width() + "px";
+					headerCells.eq(j).css({ width: rowCellWidth });
+					eqRowCell.css({ "max-width": rowCellWidth });
+				}
+			}
+			// Mark as setup
+			dataTable.addClass("setup");
 		},
 		// Required:
 		// jquery.ui.core.min.js

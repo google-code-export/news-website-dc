@@ -653,7 +653,7 @@ input.gray-button {
 }
 .product-form {	
 	color: #222;
-	background-color: #ccc;
+	background-color: #e5e5e5;
 }
 .xform.product-form,
 .product-form .xform {
@@ -680,6 +680,9 @@ input.gray-button {
 
 /* 1clicMAX POS DataTable */
 /* -------------------------------------------------------------------- */
+.data-table {
+	border-bottom: 1px solid #ddd;	
+}
 .data-table .data-table-header:before,
 .data-table .data-table-header:after {
 	content: " ";
@@ -702,10 +705,23 @@ input.gray-button {
 	padding: 5px 10px;
 	border-left: 1px solid #777;
 }
+.data-table .data-table-body {
+	overflow: auto;
+	display: block;
+	max-height: 324px; /* Maximum 10 data rows show */
+}
+.data-table .data-table-body.scrolled {
+	max-height: none !important;
+}
+@media(-webkit-min-device-pixel-ratio:0) {
+	.data-table .data-table-body {
+		max-height: 320px;
+	}
+}
 .data-table .data-table-body table {
 	width: 100%;
 	border: 1px solid #ddd;
-	border-top: 0 none;	
+	border-width: 0 1px;
 }
 .data-table .data-table-body table tr td {
 	padding: 5px 10px;
@@ -746,6 +762,9 @@ input.gray-button {
 }
 .data-table .data-table-body table tr td .delete-link:hover {
 	background-position: -16px -32px;
+}
+.data-table .data-table-body table tr td .sub-link {
+	font-size: 14px;	
 }
 
 /* 1clicMAX POS Page: Login */
@@ -997,6 +1016,9 @@ input.gray-button {
 	padding: 0.1em 0.4em;
 }
 /* Main Page*/
+#add1ClicPhoneNo {
+	margin-bottom: 10px;
+}
 #quickAdd1ClicPhoneNo .xlarge,
 #oneClicProductPage #add1ClicPhoneNo .xlarge {
 	font-size: 48px !important;
@@ -1145,17 +1167,17 @@ input.gray-button {
 #oneClicAccountInfo ul li.customer-info span.group .button {
 	min-width: 60px;
 }
-#oneClicProductPage .list-tabs {
+#oneClicProductPage #phonesListTabs {
 	margin-top: 20px;	
 	margin-top: 19px;
 	display: block;
 	position: relative;
 	bottom: -1px;
 }
-#oneClicProductPage .list-tabs li {
+#oneClicProductPage #phonesListTabs li {
 	display: inline-block;
 }
-#oneClicProductPage .list-tabs li a {
+#oneClicProductPage #phonesListTabs li a {
 	font-family: 'Roboto Condensed', Arial, sans-serif;
 	font-weight: bold;
     font-size: 20px; 
@@ -1166,8 +1188,8 @@ input.gray-button {
     padding: 0 15px 0 16px;
     vertical-align: middle;
 }
-#oneClicProductPage .list-tabs li a.selected,
-#oneClicProductPage .list-tabs li a:hover {
+#oneClicProductPage #phonesListTabs li a.selected,
+#oneClicProductPage #phonesListTabs li a:hover {
 	color: #123785;
 	border: 1px solid #123785;
     border-width: 1px 1px 0;
@@ -1175,7 +1197,7 @@ input.gray-button {
 	text-decoration: none;
 	padding-left: 15px;
 }
-#oneClicProductPage .list-tabs li a img {
+#oneClicProductPage #phonesListTabs li a img {
 	height: 24px;
     margin-top: 6px;
     vertical-align: top;
