@@ -41,7 +41,7 @@
                 <strong class="status">Welcome 1ClicMAX&trade;! You can add up to <span class="imp emp">30</span> 1Clic&trade; Numbers</strong>
             </header>
 			<div class="product-form">
-            	<form id="quickAdd1ClicPhoneNo" method="post" action="">
+            	<form id="quickAdd1Clic1" method="post" action="">
                     <ul class="xform">
                         <li class="col2">
                             <p class="phone">
@@ -73,8 +73,22 @@
             </div>
 		</div>
         
-        <div id="addMultiNumbersDialog" class="dialog" title="Add Multiple 1Clic&trade; Numbers">
-        	abc
+        <div id="addMulti1ClicNoDialog" class="dialog" title="Add Multiple 1Clic&trade; Numbers">
+        	<ul class="header">
+            	<li class="phone"></li>
+                <li class="name"></li>
+                <li class="send-text"></li>
+            </ul>
+            <form id="addMulti1ClicNoForm" method="post" action="">
+            	<ul class="xform">
+                	<li>
+                    	<input class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number" />
+                        <input class="xlarge inline name" type="text" maxlength="11" />
+                        <input class="send-text" type="checkbox" />
+                    </li>
+                </ul>
+            </form>
         </div>
 		<!-- END Dialogs Section -->
     
@@ -235,7 +249,7 @@
                     <div class="tabs-container">
                     	<div id="oneClicNumbersTab" class="tab-content">
                             <input id="addMultiNo2" class="green-button" type="button" value="Add 1Clic&trade; Numbers" />
-                            <form id="add1ClicPhoneNo" method="post" action="">
+                            <form id="quickAdd1Clic2" method="post" action="">
                                 <ul class="xform product-form">
                                     <li class="col2">
                                         <p class="phone">

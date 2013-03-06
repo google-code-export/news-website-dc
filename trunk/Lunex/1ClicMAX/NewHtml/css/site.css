@@ -1016,40 +1016,41 @@ input.gray-button {
 	padding: 0.1em 0.4em;
 }
 /* Main Page*/
-#add1ClicPhoneNo {
+#quickAdd1Clic2 {
 	margin-bottom: 10px;
 }
-#quickAdd1ClicPhoneNo .xlarge,
-#oneClicProductPage #add1ClicPhoneNo .xlarge {
+#quickAdd1Clic1 .xlarge,
+#oneClicProductPage #quickAdd1Clic2 .xlarge {
 	font-size: 48px !important;
 	margin: 0 !important;
 }
-#quickAdd1ClicPhoneNo input.xlarge,
-#oneClicProductPage #add1ClicPhoneNo input.xlarge {
+#quickAdd1Clic1 input.xlarge,
+#oneClicProductPage #quickAdd1Clic2 input.xlarge {
 	margin: .1em .4em;
 }
-#quickAdd1ClicPhoneNo .xform .phone,
-#oneClicProductPage #add1ClicPhoneNo .xform .phone {
+#quickAdd1Clic1 .xform .phone,
+#oneClicProductPage #quickAdd1Clic2 .xform .phone {
 	width: 480px;
 }
-#quickAdd1ClicPhoneNo .xform .name,
-#oneClicProductPage #add1ClicPhoneNo .xform .name {
+#quickAdd1Clic1 .xform .name,
+#oneClicProductPage #quickAdd1Clic2 .xform .name {
 	width: 190px;
 	margin: 0 0 0 10px;
 }
-#quickAdd1ClicPhoneNo .xform .send-text,
-#oneClicProductPage #add1ClicPhoneNo .xform .send-text {
+#quickAdd1Clic1 .xform .send-text,
+#oneClicProductPage #quickAdd1Clic2 .xform .send-text {
 	width: 110px;
 	text-align: center;
     margin-top: 30px;    
 }
-#quickAdd1ClicPhoneNo .xform .add,
-#oneClicProductPage #add1ClicPhoneNo .xform .add {
+#quickAdd1Clic1 .xform .add,
+#oneClicProductPage #quickAdd1Clic2 .xform .add {
 	vertical-align: bottom;
 }
-#quickAdd1ClicPhoneNo .xform .add .green-button,
-#oneClicProductPage #add1ClicPhoneNo .xform .add .green-button {
+#quickAdd1Clic1 .xform .add .green-button,
+#oneClicProductPage #quickAdd1Clic2 .xform .add .green-button {
 	width: 110px;
+	padding: .15em 0;
 }
 #newCustomerDialog header {
 	position: relative;	

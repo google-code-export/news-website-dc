@@ -3,20 +3,20 @@
 	form.mask.setupMaskMany([
 		{ form: "phoneInputForm" },
 		{ form: "newAccountForm" },
-		{ form: "add1ClicPhoneNo" },
-		{ form: "quickAdd1ClicPhoneNo" },
+		{ form: "quickAdd1Clic2" },
+		{ form: "quickAdd1Clic1" },
 		{ form: "rechargeAccountForm" }
 	]);
 	form.validation.setupMany([
 		{ form: "phoneInputForm", option: { binded: false } },
 		{ form: "newAccountForm" },
-		{ form: "add1ClicPhoneNo", option: { binded: false } },
-		{ form: "quickAdd1ClicPhoneNo", option: { binded: false } },
+		{ form: "quickAdd1Clic2", option: { binded: false } },
+		{ form: "quickAdd1Clic1", option: { binded: false } },
 		{ form: "rechargeAccountForm", option: { binded: true } }
 	]);
 	
 	pages.oneClicMax.refineTables();
-	pages.oneClicMax.showNewCustomerDialog();
+	//pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.showAddMultiNumbersDialog();
 	pages.oneClicMax.slidePrintDropDown();
 	pages.oneClicMax.newAccountForm.choosePhoneType();
@@ -36,16 +36,16 @@ pages = $.extend(pages, {
 		showAddMultiNumbersDialog: function() {
 			$("#addMultiNo1, #addMultiNo2").click(function() {
 				ui.jWidget.closeDialog("newCustomerDialog");
-				ui.jWidget.showDialog("addMultiNumbersDialog", {
+				ui.jWidget.showDialog("addMulti1ClicNoDialog", {
 					width: 600,
 					buttons: {
+						"Cancel": function() {
+							ui.jWidget.closeDialog("addMultiNumbersDialog");
+						},
 						"Save": function() {
 							
 							ui.jWidget.closeDialog("addMultiNumbersDialog");
-						},
-						"Cancel": function() {
-							ui.jWidget.closeDialog("addMultiNumbersDialog");
-						}	
+						}
 					}
 				});	
 			});
