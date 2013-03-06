@@ -1,4 +1,5 @@
 ﻿$(function() {
+	ui.jWidget.setupDataTable();
 	ui.jWidget.setupDialogs();
 	form.mask.setupMaskMany([
 		{ form: "phoneInputForm" },
@@ -17,6 +18,7 @@
 	
 	//pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.showAddMultiNumbersDialog();
+	pages.oneClicMax.slidePrintDropDown();
 	pages.oneClicMax.newAccountForm.choosePhoneType();
 	// TODO: Execute page-scope functions here
 });
@@ -46,6 +48,14 @@ pages = $.extend(pages, {
 						}	
 					}
 				});	
+			});
+		},
+		slidePrintDropDown: function() {
+			$("#oneClicAccountInfo .print-feature").hover(function() {
+				$(this).find(".dropdown").not(":visible").slideDown("fast");
+			},
+			function() {
+				$(this).find(".dropdown").slideUp("fast");	
 			});
 		},
 		newAccountForm: {

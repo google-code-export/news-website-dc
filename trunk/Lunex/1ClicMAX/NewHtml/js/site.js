@@ -152,6 +152,31 @@ var ui = {
 		},
 		// Required:
 		// jquery.ui.core.min.js
+		setupDataTable: function() {
+			var dataTable = $(".data-table");
+			for (var i = 0; i < dataTable.size(); i++) {
+				var headerCells = dataTable.eq(i).find(".data-table-header li");
+				var rows = dataTable.eq(i).find(".data-table-body > table tr");				
+                for (var j = 0; j < headerCells.size(); j++) {
+					var eqRowCell = rows.find("td:eq(" + j +")");
+					eqRowCell.css({ width: headerCells.eq(j).attr("data-width") });
+					headerCells.eq(j).css({ width: headerCells.eq(j).attr("data-width") });
+					if (!headerCells.eq(j).is("[data-width]")) {
+						headerCells.eq(j).css({ width: eqRowCell.width() + "px" });
+					}
+					if (headerCells.eq(j).is("[data-center]")) {
+						headerCells.eq(j).addClass("align-center");
+						eqRowCell.addClass("align-center");
+					}
+					else if (headerCells.eq(j).is("[data-right]")) {
+						headerCells.eq(j).addClass("align-right");
+						eqRowCell.addClass("align-right");
+					}
+				}
+			}
+		},
+		// Required:
+		// jquery.ui.core.min.js
 		// jquery.ui.datepicker.min.js
 		setupDatePickers: function() {
 			var dateInputs = $(".date-input");			
@@ -691,6 +716,7 @@ var form = {
 				return;	
 			}
 			var _option = $.extend({
+				autoPositionUpdate: true,
 				showOneMessage: false,
 				binded: true,
 				maxErrorsPerField: 1
