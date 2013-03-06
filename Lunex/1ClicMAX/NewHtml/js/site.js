@@ -115,7 +115,7 @@ var ui = {
 			},
 			function() {
 				dropDown.slideUp("fast");
-			});
+			});			
 		},
 		dockFooter: function() {
 			var autoDock = function() {
@@ -786,8 +786,13 @@ var form = {
 /* Default Boostrap */
 /* --------------------------------------------------------------------------- */
 $(function() {
+	$("#header").next(".site-content").hide();
 	ui.element.setupSharpLinks();
 	ui.layout.slideAccountDropDown();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
+});
+
+$(window).load(function() {
+    $("#header").next(".site-content").fadeIn(300);
 });
