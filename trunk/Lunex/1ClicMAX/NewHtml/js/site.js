@@ -128,8 +128,8 @@ var ui = {
 				} else {
 					$("#footer").removeClass(ui.clazz.docked);	
 				}
-			};
-			autoDock();
+			};			
+			autoDock();			
 			$(window).resize(function() {
                 autoDock();
             });
@@ -566,11 +566,6 @@ var ui = {
 				"class": "button-ok button-default shout-box-close",
 				"text": "OK"
 			});
-			var buttonCancel = $("<a>", {
-				"href": "#",
-				"class": "button-cancel shout-box-close",
-				"text": "Cancel"
-			});
 			var buttonYes = $("<a>", {
 				"href": "#",
 				"class": "button-yes button-default shout-box-close",
@@ -578,7 +573,7 @@ var ui = {
 			});
 			var buttonNo = $("<a>", {
 				"href": "#",
-				"class": "button-no shout-box-close",
+				"class": "button-no shout-box-close sub-button",
 				"text": "No"
 			});
 			// Auto create dialog content
@@ -610,52 +605,32 @@ var ui = {
 				.append(dialogBottom.clone());
 			confirmBox.find(".dialog-bottom").append(buttonNo.clone())
 				.append(buttonYes.clone());
-			// Auto create prompt box
-			var promptBox = $("<div>", {
-				"id": "prompt-box",
-				"class": "shout-box",
-				"title": "Prompt"
-			});
-			var promptText = $("<p>", {
-				"class": "prompt-text",
-				"text": "Please enter value:"
-			});
-			var promptInput = $("<input>", {
-				"class": "prompt-input",
-				"type": "text",				
-				"maxlength": 50
-			}).css({
-				"width": "100%"
-			});
-			promptBox.append(dialogContent.clone())
-				.append($("<hr/>"))
-				.append(dialogBottom.clone());
-			promptBox.find(".dialog-content").append(promptText)
-				.append(promptInput);
-			promptBox.find(".dialog-bottom").append(buttonCancel.clone())
-				.append(buttonOk.clone());
 			// Prepend to document
 			$(document.body).prepend(alertBox);
 			$(document.body).prepend(confirmBox);
-			$(document.body).prepend(promptBox);
 			// Setup shout boxes as dialogs
 			$(".shout-box").dialog({
 				autoOpen: false,
-				width: 400,
+				width: 500,
 				minHeight: 100,
 				modal: true,
-				resizable: false
+				resizable: false,
+				show: {
+					effect: "bounce",
+					duration: 200
+				},
+				hide: {
+					effect: "drop",
+					duration: 100
+				}
 			});			
 			// Setup shout box events
 			$(".shout-box .shout-box-close").click(function() {				
-				var targetDialog = $(this).closest(".shout-box");
-				ui.jWidget.closeDialog(targetDialog);
+				var targetDialogId = $(this).closest(".shout-box").attr("id");
+				ui.jWidget.closeDialog(targetDialogId);
 			});
 			$(".shout-box .button-ok").click(function() {
 				$(this).closest(".shout-box").trigger("ok");
-			});
-			$(".shout-box .button-cancel").click(function() {
-				$(this).closest(".shout-box").trigger("cancel");
 			});
 			$(".shout-box .button-yes").click(function() {
 				$(this).closest(".shout-box").trigger("yes");
@@ -665,41 +640,24 @@ var ui = {
 			});
 			ui.jWidget.setupButtons();
 		},
-		alert: function(text, title) {
+		alert: function(text, title, onOk) {
 			var alertBox = $("#alert-box");			
 			alertBox.find(".dialog-content").html("<p>" + text + "</p>");
 			if (title != undefined) {
 				alertBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);	
 			}
+			alertBox.unbind().bind("ok", onOk).on("dialogclose", onOk);
 			ui.jWidget.showDialog("alert-box");
 		},
-		confirm: function(text, title) {
+		confirm: function(text, title, onYes, onNo) {
 			var confirmBox = $("#confirm-box");			
 			confirmBox.find(".dialog-content").html("<p>" + text + "</p>");
 			if (title != undefined) {
 				confirmBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);	
 			}
+			confirmBox.unbind().bind("yes", onYes).bind("no", onNo).on("dialogclose", onNo);
 			ui.jWidget.showDialog("confirm-box");
-			confirmBox.find(".button-yes").focus();
-			return confirmBox;
-		},
-		prompt: function(text, title, value) {
-			var promptBox = $("#prompt-box");
-			if (text != undefined) {
-				promptBox.find(".prompt-text").text(text);
-			}
-			if (value != undefined) {
-				promptBox.find(".prompt-input").val(value);
-			}
-			if (title != undefined) {
-				promptBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);	
-			}
-			promptBox.bind("ok", function() {
-				promptBox.data("returnValue", promptBox.find(".prompt-input").val());
-			})
-			ui.jWidget.showDialog("prompt-box");
-			promptBox.find(".button-ok").focus();
-			return promptBox;
+			confirmBox.find(".button-no").focus();
 		}
 	},
 	element : {

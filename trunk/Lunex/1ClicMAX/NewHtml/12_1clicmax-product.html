@@ -169,21 +169,93 @@
         	<form method="post">
             	<ul class="xform">
                 	<li class="col2">
-                    	<p>
+                    	<p class="clic">
                         	<label>1Clic&trade; Number</label>
-                            <input class="large read-only" type="tel" readonly />
+                            <input class="large read-only" type="tel" value="213-559-2401" readonly />
                         </p>
-                        <p>
+                        <p class="phone">
                         	<label>International Phone</label>
-                            <input class="large" type="tel" autofocus />
+                            <input class="large" type="tel" value="211554554545" autofocus
+	                            data-mask-type="number"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please input international phone" />
                         </p>
-                        <p>
+                        <p class="name">
                         	<label>Name</label>
-                            <input class="large" type="text" />
+                            <input class="large upper" type="text" />
                         </p>
                     </li>
                 </ul>
             </form>
+        </div>
+        
+        <div id="addUsNoDialog" class="dialog" title="Add U.S. Phone Number">
+        	<form method="post">
+            	<ul class="xform">
+                	<li class="col2">
+                    	<p class="phone">
+                        	<label>Enter Registered Phone</label>
+                            <input class="large" type="tel" autofocus
+                            	data-mask-type="us-phone"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please input registered phone" />
+                        </p>
+                        <p class="phone-type">
+                        	<label>Select Phone Type</label>
+                            <select class="large upper">
+                            	<option value="cell">Mobile</option>
+                                <option value="land">Landline</option>
+                            </select>
+                        </p>
+                        <p class="language">
+                        	<label>Select Language</label>
+                            <select class="large upper">
+                                <option value="en">English</option>
+                                <option value="sp">Spanish</option>
+                                <option value="vi">Vietnamese</option>
+                                <option value="ca">Khmer</option>
+                                <option value="ch">Chinese</option>
+                                <option value="th">Thai/Laotian</option>
+                            </select>
+                        </p>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        
+        <div id="editUsNoDialog" class="dialog" title="Edit U.S. Phone Number">
+        	<form method="post">
+            	<ul class="xform">
+                	<li class="col2">
+                    	<p class="phone">
+                        	<label>Enter Registered Phone</label>
+                            <input class="large read-only" type="tel" value="213-559-2401" readonly />
+                        </p>
+                        <p class="phone-type">
+                        	<label>Select Phone Type</label>
+                            <select class="large upper" autofocus>
+                            	<option value="cell">Mobile</option>
+                                <option value="land">Landline</option>
+                            </select>
+                        </p>
+                        <p class="language">
+                        	<label>Select Language</label>
+                            <select class="large upper">
+                                <option value="en">English</option>
+                                <option value="sp">Spanish</option>
+                                <option value="vi">Vietnamese</option>
+                                <option value="ca">Khmer</option>
+                                <option value="ch">Chinese</option>
+                                <option value="th">Thai/Laotian</option>
+                            </select>
+                        </p>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        
+        <div id="deleteMainNoDialog" class="dialog" title="Cannot Delete Main Phone Number!">
+        	Please contact 24-hr Customer Support <strong class="emp">1-888-333-2404</strong> for help. Thank you!
         </div>
 		<!-- END Dialogs Section -->
     
@@ -290,13 +362,13 @@
                                 <li class="options">
                                 	<p>
                                     	<label class="inline">Payment Method:</label>
-                                        <span class="option"><input type="radio" name="payment" checked /> Cash</span>
-                                        <span class="option"><input type="radio" name="payment" /> Credit Card</span>
+                                        <span class="option"><input type="radio" name="payment" value="cash" checked /> Cash</span>
+                                        <span class="option"><input type="radio" name="payment" value="credit" /> Credit Card</span>
                                     </p>
                                     <p>
                                     	<label class="inline">Receive Text:</label>
-                                        <span class="option"><input type="radio" name="accepttext" checked /> Yes</span>
-                                        <span class="option"><input type="radio" name="accepttext" /> No</span>
+                                        <span class="option"><input type="radio" name="accepttext" value="yes" checked /> Yes</span>
+                                        <span class="option"><input type="radio" name="accepttext" value="no" /> No</span>
                                     </p>
                                 </li>
                             </ul>
@@ -372,8 +444,8 @@
                             <div id="oneClicPhonesList" class="data-table">
                             	<ul class="data-table-header">
                                 	<li data-center data-width="30px">#</li>
-                                    <li data-width="160px">1Clic&trade; Number</li>
-                                    <li data-width="160px">International Phone</li>
+                                    <li data-width="140px">1Clic&trade; Number</li>
+                                    <li data-width="200px">International Phone</li>
                                     <li>Name</li>
                                     <li data-center data-width="80px">Send Text</li>
                                     <li data-center data-width="40px">Edit</li>
@@ -441,7 +513,7 @@
                             <!-- End of DataTable -->
                         </div>
                         <div id="usNumbersTab" class="tab-content">
-                        	<input id="addUsNo" class="green-button" type="button" value="Add U.S. Phone Numbers" />
+                        	<input id="addUsNo" class="green-button" type="button" value="Add U.S. Phone Number" />
                             <!-- DataTable -->
                             <div id="usPhonesList" class="data-table">
                             	<ul class="data-table-header">
@@ -464,7 +536,9 @@
                                             <td class="imp emp">408-677-5669</td>
                                             <td><input class="button small send-text-button" type="button" value="Send" /></td>
                                             <td><a class="edit-link" href="#" title="Edit">Edit</a></td>
-                                            <td><a class="sub-link" href="#" title="Click here to learn more">Main Number</a></td>
+                                            <td><a class="sub-link dialog-trigger" href="#"
+                                            	data-dialog-id="deleteMainNoDialog"
+                                            	title="This is the main phone number, you can't delete it">Main Number</a></td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
