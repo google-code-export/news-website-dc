@@ -423,7 +423,7 @@ input, select {
 	padding-top: 8px;
 }
 .shout-box .dialog-content p {
-	margin: 0;
+	margin: .5em .8em 1.5em;
 }
 .shout-box .dialog-bottom {
 	text-align: right;
@@ -1251,6 +1251,44 @@ input.gray-button {
 #addMulti1ClicNoDialog #addMulti1ClicNoForm input.name {
 	width: 220px;
 	margin: 0 30px 0 10px;
+}
+#edit1ClicNoDialog .xform input.large,
+#edit1ClicNoDialog .xform select.large,
+#addUsNoDialog .xform input.large,
+#addUsNoDialog .xform select.large,
+#editUsNoDialog .xform input.large,
+#editUsNoDialog .xform select.large {
+	font-size: 36px;
+    padding: .1em .25em;
+}
+#edit1ClicNoDialog .xform li,
+#addUsNoDialog .xform li,
+#editUsNoDialog .xform li {
+	padding: 0;	
+}
+#edit1ClicNoDialog .xform p.clic {
+	width: 264px;
+}
+#edit1ClicNoDialog .xform p.phone {
+	width: 364px;
+	margin: 0 15px;
+}
+#edit1ClicNoDialog .xform p.name {
+	width: 172px;
+}
+#addUsNoDialog .xform p.phone,
+#editUsNoDialog .xform p.phone {
+	width: 264px;
+}
+#addUsNoDialog .xform p.phone-type,
+#editUsNoDialog .xform p.phone-type {
+	margin: 0 15px;
+}
+#deleteMainNoDialog {
+	width: 480px;
+	font-size: 24px;
+	line-height: 1.6em;
+	text-align: center;	
 }
 
 /* 1clicMAX POS Page: Top-Up the World Product */
