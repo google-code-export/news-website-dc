@@ -75,17 +75,112 @@
         
         <div id="addMulti1ClicNoDialog" class="dialog" title="Add Multiple 1Clic&trade; Numbers">
         	<ul class="header">
-            	<li class="phone"></li>
-                <li class="name"></li>
-                <li class="send-text"></li>
+            	<li class="phone">Enter International Phone</li>
+                <li class="name">Enter Name</li>
+                <li class="send-text">Send Text</li>
             </ul>
-            <form id="addMulti1ClicNoForm" method="post" action="">
+            <form id="addMulti1ClicNoForm" class="product-form" method="post">
             	<ul class="xform">
                 	<li>
-                    	<input class="xlarge inline phone" type="tel" maxlength="17" autofocus
-                        	data-mask-type="number" />
-                        <input class="xlarge inline name" type="text" maxlength="11" />
-                        <input class="send-text" type="checkbox" />
+                    	<input id="phone1" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name1]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name1" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText1" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone2" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name2]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name2" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText2" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone3" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name3]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name3" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText3" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone4" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name4]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name4" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText4" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone5" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name5]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name5" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText5" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone6" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name6]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name6" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText6" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone7" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name7]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name7" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText7" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone8" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name8]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name8" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText8" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone9" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name9]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name9" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText9" class="send-text" type="checkbox" />
+                    </li>
+                    <li>
+                    	<input id="phone10" class="xlarge inline phone" type="tel" maxlength="17" autofocus
+                        	data-mask-type="number"
+                            data-validation-engine="validate[condRequired[name10]]"
+                            data-errormessage-value-missing="Please enter international phone number" />
+                        <input id="name10" class="xlarge inline name" type="text" maxlength="11" />
+                        <input id="sendText10" class="send-text" type="checkbox" />
+                    </li>
+                </ul>
+            </form>
+        </div>
+        
+        <div id="edit1ClicNoDialog" class="dialog" title="Edit 1Clic&trade; Number">
+        	<form method="post">
+            	<ul class="xform">
+                	<li class="col2">
+                    	<p>
+                        	<label>1Clic&trade; Number</label>
+                            <input class="large read-only" type="tel" readonly />
+                        </p>
+                        <p>
+                        	<label>International Phone</label>
+                            <input class="large" type="tel" autofocus />
+                        </p>
+                        <p>
+                        	<label>Name</label>
+                            <input class="large" type="text" />
+                        </p>
                     </li>
                 </ul>
             </form>

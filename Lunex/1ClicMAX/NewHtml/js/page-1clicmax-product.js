@@ -5,19 +5,22 @@
 		{ form: "newAccountForm" },
 		{ form: "quickAdd1Clic2" },
 		{ form: "quickAdd1Clic1" },
-		{ form: "rechargeAccountForm" }
+		{ form: "rechargeAccountForm" },
+		{ form: "addMulti1ClicNoForm" }
 	]);
 	form.validation.setupMany([
 		{ form: "phoneInputForm", option: { binded: false } },
 		{ form: "newAccountForm" },
 		{ form: "quickAdd1Clic2", option: { binded: false } },
 		{ form: "quickAdd1Clic1", option: { binded: false } },
-		{ form: "rechargeAccountForm", option: { binded: true } }
+		{ form: "rechargeAccountForm"},
+		{ form: "addMulti1ClicNoForm" }
 	]);
 	
 	pages.oneClicMax.refineTables();
 	//pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.showAddMultiNumbersDialog();
+	pages.oneClicMax.showEdit1ClicPhoneDialog();
 	pages.oneClicMax.slidePrintDropDown();
 	pages.oneClicMax.newAccountForm.choosePhoneType();
 	// TODO: Execute page-scope functions here
@@ -37,7 +40,7 @@ pages = $.extend(pages, {
 			$("#addMultiNo1, #addMultiNo2").click(function() {
 				ui.jWidget.closeDialog("newCustomerDialog");
 				ui.jWidget.showDialog("addMulti1ClicNoDialog", {
-					width: 600,
+					width: 740,
 					buttons: {
 						"Cancel": function() {
 							ui.jWidget.closeDialog("addMultiNumbersDialog");
@@ -49,6 +52,11 @@ pages = $.extend(pages, {
 					}
 				});	
 			});
+		},
+		showEdit1ClicPhoneDialog: function() {
+			$("#oneClicPhonesList .edit-link").click(function(e) {
+                ui.jWidget.showDialog("edit1ClicNoDialog");
+            });
 		},
 		slidePrintDropDown: function() {
 			$("#oneClicAccountInfo .print-feature").hover(function() {

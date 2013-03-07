@@ -786,7 +786,8 @@ var form = {
 /* Default Boostrap */
 /* --------------------------------------------------------------------------- */
 $(function() {
-	$("#header").next(".site-content").hide();
+	//$("#header").next(".site-content").hide();
+	//$("#footer").hide();
 	ui.element.setupSharpLinks();
 	ui.layout.slideAccountDropDown();
 	ui.layout.dockFooter();
@@ -794,5 +795,6 @@ $(function() {
 });
 
 $(window).load(function() {
-    $("#header").next(".site-content").fadeIn(300);
+    //$("#header").next(".site-content").fadeIn(300);
+	//$("#footer").fadeIn(200);
 });

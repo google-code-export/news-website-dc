@@ -1216,6 +1216,42 @@ input.gray-button {
 	top: -55px;
 	right: 0;	
 }
+/* More Dialogs */
+#addMulti1ClicNoDialog .header li {
+	display: inline-block;
+	vertical-align: middle;
+}
+#addMulti1ClicNoDialog .header li.phone {
+	width: 360px;
+	margin-left: 10px;
+}
+#addMulti1ClicNoDialog .header li.name {
+	width: 220px;
+	margin: 0 10px;
+}
+#addMulti1ClicNoDialog #addMulti1ClicNoForm {
+	border-top: 1px solid #aaa;
+    margin-top: 5px;
+    padding: 10px;
+	overflow: auto;
+	max-height: 316px;
+}
+#addMulti1ClicNoDialog #addMulti1ClicNoForm .xform {
+	padding: 0;
+}
+#addMulti1ClicNoDialog #addMulti1ClicNoForm .xform li {
+	padding-bottom: 10px;
+}
+#addMulti1ClicNoDialog #addMulti1ClicNoForm input.xlarge {
+	font-size: 48px;
+}
+#addMulti1ClicNoDialog #addMulti1ClicNoForm input.phone {
+	width: 360px;
+}
+#addMulti1ClicNoDialog #addMulti1ClicNoForm input.name {
+	width: 220px;
+	margin: 0 30px 0 10px;
+}
 
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */
