@@ -631,12 +631,15 @@ var ui = {
 			});
 			$(".shout-box .button-ok").click(function() {
 				$(this).closest(".shout-box").trigger("ok");
+				return false;
 			});
 			$(".shout-box .button-yes").click(function() {
 				$(this).closest(".shout-box").trigger("yes");
+				return false;
 			});
 			$(".shout-box .button-no").click(function() {
 				$(this).closest(".shout-box").trigger("no");
+				return false;
 			});
 			ui.jWidget.setupButtons();
 		},
@@ -649,13 +652,13 @@ var ui = {
 			alertBox.unbind().bind("ok", onOk).on("dialogclose", onOk);
 			ui.jWidget.showDialog("alert-box");
 		},
-		confirm: function(text, title, onYes, onNo) {
+		confirm: function(text, title, onYes, onNo, onCancel) {
 			var confirmBox = $("#confirm-box");			
 			confirmBox.find(".dialog-content").html("<p>" + text + "</p>");
 			if (title != undefined) {
 				confirmBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);	
 			}
-			confirmBox.unbind().bind("yes", onYes).bind("no", onNo).on("dialogclose", onNo);
+			confirmBox.unbind().bind("yes", onYes).bind("no", onNo).on("dialogclose", onCancel);
 			ui.jWidget.showDialog("confirm-box");
 			confirmBox.find(".button-no").focus();
 		}
@@ -665,6 +668,13 @@ var ui = {
 			$("a[href^=#]").on("click", function() {
 				return false;
 			});
+		},
+		setupOptionsFullClick: function() {
+			$("span.option").each(function() {
+				$(this).on("click", function() {
+					$(this).find(":checkbox, :radio").not(":disabled").attr("checked", "checked");
+				});
+            });
 		}
 	}	
 };
@@ -747,6 +757,7 @@ $(function() {
 	//$("#header").next(".site-content").hide();
 	//$("#footer").hide();
 	ui.element.setupSharpLinks();
+	ui.element.setupOptionsFullClick();
 	ui.layout.slideAccountDropDown();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
