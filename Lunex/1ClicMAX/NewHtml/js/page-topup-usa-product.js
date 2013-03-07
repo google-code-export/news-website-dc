@@ -7,9 +7,8 @@
 		{ form: "topupForm", option: { binded: false } }
 	]);
 
-	pages.topUpWorld.topupForm.setupFormEvents();
-	pages.topUpWorld.slidePrintDropDown();
-	pages.topUpWorld.runLogosSlider();
+	pages.topUpUsa.topupForm.setupFormEvents();
+	pages.topUpUsa.slidePrintDropDown();
 	// TODO: Execute page-scope functions here
 });
 
@@ -17,7 +16,7 @@ if (!pages) {
 	var pages = {};	
 }
 pages = $.extend(pages, {
-	topUpWorld: {
+	topUpUsa: {
 		topupForm: {
 			setupFormEvents: function() {
 				// Phone type
@@ -40,35 +39,17 @@ pages = $.extend(pages, {
 						resetPhoneType();	
 					}
                 });
-				// Country
+				// Else
 				
-			}	
+			}
 		},
 		slidePrintDropDown: function() {
-			$("#topupWorldProductPage .print-feature").hover(function() {
+			$("#topupUsaProductPage .print-feature").hover(function() {
 				$(this).find(".dropdown").not(":visible").slideDown("fast");
 			},
 			function() {
 				$(this).find(".dropdown").slideUp("fast");	
 			});
-		},
-		runLogosSlider: function() {
-			var slides = $("#topupWorldProductPage .topup-logos li");
-			var counter = 1;
-			var runner = function() {
-				slides.hide().removeClass("active");
-				slides.eq(counter).fadeIn(800, function() {
-					$(this).addClass("active");	
-				})
-				if (counter == slides.size() - 1) {
-					counter = 0;	
-				} else {
-					counter++;	
-				}
-			};
-			var itv = window.setInterval(function() {
-				runner();
-			}, 5000);
 		}
 	}	
 });
