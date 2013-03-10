@@ -1641,7 +1641,7 @@
 				}, options.autoHideDelay);
 			} 
 			return prompt.animate({
-				"opacity": 0.87
+				"opacity": 0.97
 			});
 		},
 		/**
