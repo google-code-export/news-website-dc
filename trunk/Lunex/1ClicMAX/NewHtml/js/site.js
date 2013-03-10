@@ -661,6 +661,25 @@ var ui = {
 			confirmBox.unbind().bind("yes", onYes).bind("no", onNo).on("dialogclose", onCancel);
 			ui.jWidget.showDialog("confirm-box");
 			confirmBox.find(".button-no").focus();
+		},
+		setupTooltips: function() {
+			$('a[rel=tooltip]').mouseover(function(e) {		
+				var tip = $(this).attr("data-content");	
+				$(document.body).prepend($("<div id=\"tooltip\">").html(tip));					
+				$('#tooltip').fadeIn("slow");		
+			}).mousemove(function(e) {				
+				$('#tooltip').css("left", e.pageX + 20 );
+				var top = e.pageY;
+				if ($('#tooltip').height() > e.clientY) {					
+					top += 10;
+				}
+				else {
+					top -= $('#tooltip').height() + 20;
+				}
+				$('#tooltip').css("top", top );
+			}).mouseout(function() {
+				$("#tooltip").remove();		
+			});	
 		}
 	},
 	element : {
@@ -709,8 +728,8 @@ var form = {
 			}
 			var _option = $.extend({
 				autoPositionUpdate: true,
-				showOneMessage: false,
-				binded: true,
+				showOneMessage: true,
+				binded: false,
 				maxErrorsPerField: 1
 			}, option);
 			$(formId).validationEngine(_option);
@@ -761,6 +780,7 @@ $(function() {
 	ui.layout.slideAccountDropDown();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
+	ui.jWidget.setupShoutBoxes();
 });
 
 $(window).load(function() {
