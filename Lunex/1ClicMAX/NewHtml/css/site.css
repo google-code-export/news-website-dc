@@ -39,6 +39,9 @@ h2 {
 	font-size: 24px;
 	margin: 0 0 .8em;
 }
+h2.large {
+	font-size: 30px;
+}
 h3 {
 	font-size: 20px;
 	margin: 0 0 1em;
@@ -343,8 +346,7 @@ input, select {
 .site-content .product-tabs ul li.one-clic span {
 	background-position: 0 0;
 }
-.site-content .product-tabs ul li.topup-world a,
-.site-content .product-tabs ul li.topup-world span {
+.site-content .product-tabs ul li.topup-world a {
 	background-position: -166px 0;
 }
 .site-content .product-tabs ul li.topup-world span,
@@ -362,6 +364,17 @@ input, select {
 .site-content .product-tabs ul li.billmex a,
 .site-content .product-tabs ul li.billmex span {
 	background-position: -332px -60px;
+}
+.site-content .product-tabs ul li.ku2000 a,
+.site-content .product-tabs ul li.ku2000 span {
+	background-position: 0 -120px;
+}
+.site-content .product-tabs ul li.globe-duo a {
+	background-position: -166px -120px;
+}
+.site-content .product-tabs ul li.globe-duo span,
+.site-content .product-tabs ul li.globe-duo.selected a {
+	background-position: -332px -120px;
 }
 .site-content .fly-box,
 .site-content .stroke-box {
@@ -385,7 +398,7 @@ input, select {
 }
 .site-content .fly-box.content-holder .fly-box-title {
 	border-bottom: 1px solid #123785;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 .site-content .fly-box.content-holder .fly-box-title h1 {
 	font-size: 30px;
@@ -444,6 +457,15 @@ input, select {
 }
 #prompt-box .dialog-bottom{
 	background: url('../img/shoutbox_prompt.png') no-repeat 0 0;
+}
+#tooltip {	
+	padding: 15px;
+	background: #fafafa;
+	border: 1px dashed #123785;
+	box-shadow: 0 0 5px #555;
+	display: none;
+	position: absolute;
+	z-index: 1000;
 }
 .site-content .print-feature {
 	position: relative;
@@ -600,8 +622,14 @@ input.gray-button {
 .xform input[type=text]:focus, .xform input[type=password]:focus,
 .xform input[type=search]:focus, .xform input[type=tel]:focus, .xform input[type=email]:focus,
 .xform input[type=number]:focus, .xform textarea:focus, .xform select:focus {
-	border-color: #4a669e;
-	box-shadow: inset 0 0 .2em #cbdcff;
+	border-color: #4a669e !important;
+	box-shadow: inset 0 0 .2em #cbdcff !important;
+}
+.xform input[type=text].major, .xform input[type=password].major,
+.xform input[type=search].major, .xform input[type=email].major, .xform input[type=tel].major,
+.xform input[type=number].major, .xform textarea.major, .xform select.major{
+	border-color: #ee7000;
+	box-shadow: inset 0 0 .2em #fac7b2;
 }
 .xform input[type=text].inline, .xform input[type=password].inline,
 .xform input[type=search].inline, .xform input[type=email].inline, .xform input[type=tel].inline,
@@ -651,6 +679,14 @@ input.gray-button {
 .xform-cmd .ui-button.left, .xform-cmd .gray-button.left {
 	margin: 0 5px 0 0;
 }
+.xform .field-des {
+	font-size: 12px;
+	font-style: italic;
+	margin-left: 2px;		
+}
+.xform .data {
+	vertical-align: bottom;	
+}
 .product-form {	
 	color: #222;
 	background-color: #e5e5e5;
@@ -662,20 +698,145 @@ input.gray-button {
 .product-form .xform li {
 	padding-bottom: 16px;	
 }
+.product-form .xform li:last-child,
+.xform.product-form li:last-child {
+	padding-bottom: 0 !important;	
+}
 .product-form h2 {
 	font-size: 20px;
 	margin: 0;
 	padding: 10px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ccc;
 }
 .product-panel h2 {
 	font-size: 20px;
 	margin: 0;
 	padding-bottom: 12px;
 }
+.product-form h2 .data,
+.product-panel h2 .data {
+	color: #444;
+	padding-left: 5px;
+}
+.product-form h2 .note,
+.product-panel h2 .note {
+	font-family: 'Roboto', Tahoma, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	color: #444;	
+}
 .product-panel.xform li:last-child,
 .product-panel .xform li:last-child {
 	padding: 0;
+}
+span.option {
+	display: inline-block;
+	vertical-align: middle;
+	min-width: 5em;
+	margin-top: 4px;
+}
+span.option .child-options {
+	display: block;
+    font-size: 14px;
+    padding-left: 17px;	
+}
+span.option .child-options span.option {
+	display: inline-block !important;
+	min-width: 5em !important;
+	margin-top: 4px !important;
+	vertical-align: middle;
+}
+.result-panel {
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+}
+.result-panel.success {
+	background-color: #efe;
+}
+.result-panel.success .result {
+	color: #280;
+}
+.result-panel.fail {
+	background-color: #ffebed;
+}
+.result-panel.fail .result {
+	color: #ec222a;
+}
+.result-panel.fail hr {
+	border-color: #ffdce1;	
+}
+.result-panel .help {
+	font-style: italic;	
+}
+.result-panel .help p {
+	margin: .3em 0 0;
+	line-height: 1.5em;
+}
+.result-panel .xform li:last-child {
+	padding: 0;
+}
+
+/* 1clicMAX POS Common Forms */
+/* -------------------------------------------------------------------- */
+/* Credit Card Form */
+.cc-form {
+	padding: 20px 0 !important;
+	margin: 0 auto;
+	width: 520px;
+}
+.cc-form li {
+	padding-bottom: 12px !important;	
+}
+.cc-form li.col2 p {
+	width: 250px;	
+}
+.cc-form li.col2 p.first {
+	margin-right: 16px;	
+}
+.cc-form li.col2 .date-month {
+	width: 70px;	
+}
+.cc-form li.col2 .date-year {
+	width: 90px;
+}
+.cc-form li.col2 .date-divider {
+	font-size: 22px;
+	font-weight: normal;
+	margin: 0 5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.cc-form li.col2 .cvv-code {
+	width: 55px;
+}
+.cc-form li.col2 .cvv-des {
+	font-size: 11.5px;
+	white-space: nowrap;
+}
+.cc-form li.col2 .zip-code {
+	width: 75px;
+}
+/* Credit Card Info */
+.cc-info {
+	width: 520px;
+	margin: 0 auto;
+	display: table;
+}
+.cc-info li.col2 {
+	display: table-row;	
+}
+.cc-info li.col2 p {
+	display: table-cell;
+	padding: 5px 0;	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.cc-info li.col2 p {
+	padding-right: 20px;
+	max-width: 300px;
 }
 
 /* 1clicMAX POS DataTable */
@@ -765,6 +926,26 @@ input.gray-button {
 }
 .data-table .data-table-body table tr td .sub-link {
 	font-size: 14px;	
+}
+
+/* 1clicMAX POS ProductTable */
+/* -------------------------------------------------------------------- */
+.product-table {
+	width: 480px;
+	margin: 5px auto 20px;
+	table-layout: fixed;
+}
+.product-table tr th,
+.product-table tr td {
+	height: 40px;
+	font-weight: bold;
+	border: 1px solid #aaa;
+	text-align: center;
+	vertical-align: middle;
+}
+.product-table tr th {
+	color: #666;
+	background-color: #e5e5e5;
 }
 
 /* 1clicMAX POS Page: Login */
@@ -995,9 +1176,8 @@ input.gray-button {
 	width: 620px;
 	margin: 0 auto;	
 }
-#oneClicProductPage #newAccountForm .xform .option {
-	display: inline-block;
-	vertical-align: middle;
+#oneClicProductPage #newAccountForm .xform span.option {
+	margin-top: 0;
 	min-width: 9em;
 	width: 9em;
 }
@@ -1120,15 +1300,12 @@ input.gray-button {
 #rechargeAccountForm .button-wrapper #rechargeVoidButton:hover span {
 	background-position: -68px -68px;
 }
-#rechargeAccountForm .options {
-	padding: 0;	
-}
 #rechargeAccountForm .options label {
 	width: 8.5em;
 }
-#rechargeAccountForm .options .option {
+#rechargeAccountForm .options span.option {
+	margin-top: 0;
 	min-width: 4.5em;
-	display: inline-block;
 }
 #oneClicAccountInfo {
 	width: 304px;	
@@ -1294,9 +1471,6 @@ input.gray-button {
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */
 /* Top-Up Input */
-#topupWorldProductPage.site-content .fly-box.content-holder .fly-box-title {
-	margin-bottom: 15px;
-}
 #topupWorldProductPage.site-content .fly-box .fly-box-title .sub-title {
 	color: #123785;
 	font-size: 18px;
@@ -1308,16 +1482,6 @@ input.gray-button {
 }
 #topupWorldProductPage #topupForm .product-form .xform {
 	padding-top: 10px;	 
-}
-#topupWorldProductPage #topupForm .product-form span.option,
-#topupWorldProductPage #topupForm #senderInfo p span.option .child-options span.option {
-	display: inline-block;
-	vertical-align: middle;
-	min-width: 5em;
-	margin-top: 4px;
-}
-#topupWorldProductPage #topupForm #senderInfo li {
-	padding: 0;	
 }
 #topupWorldProductPage #topupForm #senderInfo p.first {
 	width: 210px;
@@ -1333,11 +1497,6 @@ input.gray-button {
 	display: block;
 	margin-top: 6px;
 	min-width: 0;
-}
-#topupWorldProductPage #topupForm #senderInfo p span.option .child-options {
-	display: block;
-	font-size: 14px;
-	padding-left: 17px;	
 }
 #topupWorldProductPage #topupForm #senderInfo p .child-options label {
 	width: 7.5em;		
@@ -1429,40 +1588,9 @@ input.gray-button {
 #topupWorldProductPage .fly-box .fly-box-title .print-feature {
 	margin-top: -8px;
 }
-#topupWorldProductPage .product-panel {
-	width: 598px;
-}
 #topupWorldProductPage .result-panel {
 	width: 558px;
-	padding: 20px;
-	margin-bottom: 20px;
-	background-color: #f0f0f0;
 	font-size: 18px;
-}
-#topupWorldProductPage .result-panel.success {
-	background-color: #efe;
-}
-#topupWorldProductPage .result-panel.success .result {
-	color: #280;
-}
-#topupWorldProductPage .result-panel.fail {
-	background-color: #ffebed;
-}
-#topupWorldProductPage .result-panel.fail .result {
-	color: #ec222a;
-}
-#topupWorldProductPage .result-panel.fail hr {
-	border-color: #ffdce1;	
-}
-#topupWorldProductPage .result-panel .help {
-	font-style: italic;	
-}
-#topupWorldProductPage .result-panel .help p {
-	margin: .3em 0 0;
-	line-height: 1.5em;
-}
-#topupWorldProductPage .result-panel .xform li:last-child {
-	padding: 0;
 }
 #topupWorldProductPage .result-panel .xform label {
 	width: 7.3em;	
@@ -1472,7 +1600,6 @@ input.gray-button {
 /* -------------------------------------------------------------------- */
 /* Top-Up Input */
 #topupUsaProductPage.site-content .fly-box.content-holder .fly-box-title {
-	margin-bottom: 15px;
 	background: url('../img/us_flag.jpg') no-repeat 0 0;
 	padding-left: 52px;
 }
@@ -1482,16 +1609,6 @@ input.gray-button {
 }
 #topupUsaProductPage #topupForm .product-form .xform {
 	padding-top: 10px;	 
-}
-#topupUsaProductPage #topupForm .product-form span.option,
-#topupUsaProductPage #topupForm #senderInfo p span.option .child-options span.option {
-	display: inline-block;
-	vertical-align: middle;
-	min-width: 5em;
-	margin-top: 4px;
-}
-#topupUsaProductPage #topupForm #senderInfo li {
-	padding: 0;	
 }
 #topupUsaProductPage #topupForm #senderInfo p.first {
 	width: 210px;
@@ -1507,11 +1624,6 @@ input.gray-button {
 	display: block;
 	margin-top: 6px;
 	min-width: 0;
-}
-#topupUsaProductPage #topupForm #senderInfo p span.option .child-options {
-	display: block;
-	font-size: 14px;
-	padding-left: 17px;	
 }
 #topupUsaProductPage #topupForm #senderInfo p .child-options label {
 	width: 7.5em;		
@@ -1594,41 +1706,198 @@ input.gray-button {
 #topupUsaProductPage .fly-box .fly-box-title .print-feature {
 	margin-top: -8px;
 }
-#topupUsaProductPage .product-panel {
-	width: 598px;
-}
 #topupUsaProductPage .result-panel {
 	width: 558px;
-	padding: 20px;
-	margin-bottom: 20px;
-	background-color: #f0f0f0;
 	font-size: 18px;
-}
-#topupUsaProductPage .result-panel.success {
-	background-color: #efe;
-}
-#topupUsaProductPage .result-panel.success .result {
-	color: #280;
-}
-#topupUsaProductPage .result-panel.fail {
-	background-color: #ffebed;
-}
-#topupUsaProductPage .result-panel.fail .result {
-	color: #ec222a;
-}
-#topupUsaProductPage .result-panel.fail hr {
-	border-color: #ffdce1;	
-}
-#topupUsaProductPage .result-panel .help {
-	font-style: italic;	
-}
-#topupUsaProductPage .result-panel .help p {
-	margin: .3em 0 0;
-	line-height: 1.5em;
-}
-#topupUsaProductPage .result-panel .xform li:last-child {
-	padding: 0;
 }
 #topupUsaProductPage .result-panel .xform label {
 	width: 7.3em;	
+}
+
+/* 1clicMAX POS Page: Kumusta 2000 Product */
+/* -------------------------------------------------------------------- */
+/* U.S. Phone Input */
+#ku2000ProductPage h2.large {
+	margin-bottom: 1.1em;	
+}
+#ku2000ProductPage #phoneInputForm .xform {
+	width: 578px;
+	padding: 20px 30px;
+	margin-top: 5px;
+}
+#ku2000ProductPage #phoneInputForm .bottom {
+    padding: 15px 0 0;
+    text-align: right;
+}
+/* New Account */
+#ku2000ProductPage #newAccountForm .product-form {
+	width: 598px;
+	margin-bottom: 5px;
+}
+#ku2000ProductPage #newAccountForm #customerInfo li {
+	padding-bottom: 10px;	
+}
+#ku2000ProductPage #newAccountForm #customerInfo li.col2 p {
+	width: 270px;
+}
+#ku2000ProductPage #newAccountForm #customerInfo li.col2 p.first {
+	margin-right: 16px;
+}
+#ku2000ProductPage #newAccountForm #customerInfo .imp {
+	font-size: 22px;
+}
+#ku2000ProductPage #newAccountForm #smartNumbers .important {
+	font-size: 26px;
+	padding: .1em .22em .08em;
+	margin-right: -4px;
+}
+#ku2000ProductPage #newAccountForm #smartNumbers .phone-prefix {
+	width: 48px;
+	margin-right: -2px;	
+}
+#ku2000ProductPage #newAccountForm #smartNumbers .phone-suffix {
+	width: 166px;	
+}
+#ku2000ProductPage #newAccountForm #smartNumbers .phone-name {
+	width: 105px;
+}
+#ku2000ProductPage #newAccountForm #smartNumbers p.second {
+	margin: 0 16px;
+}
+#ku2000ProductPage #newAccountForm #smartNumbers li.smart2 {
+	border-top: 1px dotted #aaa;
+    padding-top: 12px;	
+}
+#ku2000ProductPage #newAccountForm #paymentMethod {
+	padding: 10px 20px 20px;	
+}
+#ku2000ProductPage #newAccountForm #paymentMethod span.option {
+	min-width: 7em;
+}
+#ku2000ProductPage #newAccountForm #creditCard {
+	padding: 0 0 20px !important;
+	display: none;
+}
+/* Ku2000 Confirm */
+#ku2000ProductPage .product-panel {
+	width: 598px;	
+}
+#ku2000ProductPage .product-panel #customerInfo li p {
+	width: 270px;
+	margin-right: 30px;
+}
+#ku2000ProductPage .product-panel #customerInfo li p.last {
+	width: auto;
+	margin: 0;
+}
+#ku2000ProductPage .product-panel #customerInfo li label {
+	width: 7.5em;
+}
+#ku2000ProductPage .product-panel #customerInfo li p.last label {
+	width: 3.5em;
+}
+#ku2000ProductPage .product-panel #customerInfo li {
+	padding-bottom: 10px;	
+}
+/* Ku2000 Result */
+#ku2000ProductPage .fly-box .fly-box-title .gray-button,
+#ku2000ProductPage .fly-box .fly-box-title .print-feature  {
+	margin-top: -8px;
+	margin-left: 5px;
+}
+
+/* 1clicMAX POS Page: Globe Duo Product */
+/* -------------------------------------------------------------------- */
+/* U.S. Phone Input */
+#globeDuoProductPage h2.large {
+	margin-bottom: 1.1em;	
+}
+#globeDuoProductPage #phoneInputForm .xform {
+	width: 578px;
+	padding: 20px 30px;
+	margin-top: 5px;
+}
+#globeDuoProductPage #phoneInputForm .bottom {
+    padding: 15px 0 0;
+    text-align: right;
+}
+/* New Account */
+#globeDuoProductPage #newAccountForm .product-form {
+	width: 598px;
+	margin-bottom: 5px;
+}
+#globeDuoProductPage #newAccountForm #customerInfo li {
+	padding-bottom: 10px;	
+}
+#globeDuoProductPage #newAccountForm #customerInfo li.col2 p {
+	width: 270px;
+}
+#globeDuoProductPage #newAccountForm #customerInfo li.col2 p.first {
+	margin-right: 16px;
+}
+#globeDuoProductPage #newAccountForm #customerInfo .imp {
+	font-size: 22px;
+}
+#globeDuoProductPage #newAccountForm #globeNumber .important {
+	font-size: 26px;
+	padding: .1em .22em .08em;
+	margin-right: -4px;
+}
+#globeDuoProductPage #newAccountForm #globeNumber .phone-prefix {
+	width: 48px;
+	margin-right: -2px;	
+}
+#globeDuoProductPage #newAccountForm #globeNumber .phone-suffix {
+	width: 166px;	
+}
+#globeDuoProductPage #newAccountForm #globeNumber .phone-name {
+	width: 105px;
+}
+#globeDuoProductPage #newAccountForm #globeNumber p.second {
+	margin: 0 16px;
+}
+#globeDuoProductPage #newAccountForm #paymentMethod {
+	padding: 10px 20px 20px;	
+}
+#globeDuoProductPage #newAccountForm p#paymentMethod {
+	padding: 0 20px 20px;	
+}
+#globeDuoProductPage #newAccountForm #paymentMethod span.option {
+	min-width: 7em;
+}
+#globeDuoProductPage #newAccountForm #creditCard {
+	padding: 0 0 20px !important;
+	display: none;
+}
+/* Globe Duo Confirm */
+#globeDuoProductPage .product-panel {
+	width: 598px;	
+}
+#globeDuoProductPage .product-panel #customerInfo li p,
+#globeDuoProductPage .product-form #customerInfo2 li p {
+	width: 270px;
+	margin-right: 30px;
+}
+#globeDuoProductPage .product-panel #customerInfo li p.last,
+#globeDuoProductPage .product-form #customerInfo2 li p.last {
+	width: auto;
+	margin: 0;
+}
+#globeDuoProductPage .product-panel #customerInfo li label,
+#globeDuoProductPage .product-form #customerInfo2 li label {
+	width: 7.5em;
+}
+#globeDuoProductPage .product-panel #customerInfo li p.last label,
+#globeDuoProductPage .product-form #customerInfo2 li p.last label {
+	width: 3.5em;
+}
+#globeDuoProductPage .product-panel #customerInfo li,
+#globeDuoProductPage .product-form #customerInfo2 li {
+	padding-bottom: 10px;	
+}
+/* Globe Duo Result */
+#globeDuoProductPage .fly-box .fly-box-title .gray-button,
+#globeDuoProductPage .fly-box .fly-box-title .print-feature  {
+	margin-top: -8px;
+	margin-left: 5px;
 }
