@@ -38,12 +38,15 @@ pages = $.extend(pages, {
 						creditForm.slideDown("fast", function() {
 							if (autoScroll) {
 								$("#creditCard select:first").focus();
-								$(window).scrollTop(creditForm.position().top);		
+								$(window).scrollTop(creditForm.position().top);
 							}
+							ui.layout.dockFooter();
 						});
 					} else {
-						creditForm.slideUp("fast");
-					}
+						creditForm.slideUp("fast", function() {
+							ui.layout.dockFooter();
+						});
+					}					
 				};
 				checkPayments();
 				payments.click(function() {
