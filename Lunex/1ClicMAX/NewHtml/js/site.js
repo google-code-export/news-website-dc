@@ -563,17 +563,17 @@ var ui = {
 			// Auto create buttons
 			var buttonOk = $("<a>", {
 				"href": "#",
-				"class": "button-ok button-default shout-box-close",
+				"class": "button-ok button-default",
 				"text": "OK"
 			});
 			var buttonYes = $("<a>", {
 				"href": "#",
-				"class": "button-yes button-default shout-box-close",
+				"class": "button-yes button-default",
 				"text": "Yes"
 			});
 			var buttonNo = $("<a>", {
 				"href": "#",
-				"class": "button-no shout-box-close sub-button",
+				"class": "button-no sub-button",
 				"text": "No"
 			});
 			// Auto create dialog content
@@ -625,20 +625,23 @@ var ui = {
 				}
 			});			
 			// Setup shout box events
-			$(".shout-box .shout-box-close").click(function() {				
-				var targetDialogId = $(this).closest(".shout-box").attr("id");
+			var closeShoutBox = function(button) {				
+				var targetDialogId = $(button).closest(".shout-box").attr("id");
 				ui.jWidget.closeDialog(targetDialogId);
-			});
-			$(".shout-box .button-ok").click(function() {
+			};
+			$(".shout-box .button-ok").unbind().click(function() {
 				$(this).closest(".shout-box").trigger("ok");
+				closeShoutBox(this);
 				return false;
 			});
-			$(".shout-box .button-yes").click(function() {
+			$(".shout-box .button-yes").unbind().click(function() {
 				$(this).closest(".shout-box").trigger("yes");
+				closeShoutBox(this);
 				return false;
 			});
-			$(".shout-box .button-no").click(function() {
+			$(".shout-box .button-no").unbind().click(function() {
 				$(this).closest(".shout-box").trigger("no");
+				closeShoutBox(this);
 				return false;
 			});
 			ui.jWidget.setupButtons();
