@@ -1790,7 +1790,8 @@ span.option .child-options span.option {
 }
 .phi-calling-products li .item {
 	text-align: center;
-	padding: 16px 25px 0;	
+	padding: 16px 25px 0;
+	color: #222;
 }
 .phi-calling-products li .item a {
 	display: block;	
