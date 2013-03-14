@@ -1,0 +1,10 @@
+﻿$(document).ready(function(){
+	$('.printSize').hover(
+		function(){
+			$(this).find('ul').stop(true,true).slideDown();
+		},
+		function(){
+			$(this).find('ul').stop(true,true).slideUp();
+		}
+	);
+});

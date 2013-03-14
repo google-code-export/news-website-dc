@@ -261,7 +261,7 @@ input, select {
 	position: relative;
 }
 #footer.docked {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 }
 #footer #copyright {
@@ -553,11 +553,16 @@ input.gray-button {
 	font-size: 12px;
 	padding: .3em .8em .25em;
 }
+.button-print.gray-button {
+	padding: 0;
+	min-width: 100px;
+}
 .button-print .ui-icon {
 	background: url('../img/button_icons.png') no-repeat 0 0;
 }
 .button-print:hover .ui-icon,
-.button-print.ui-state-focus .ui-icon {
+.button-print.ui-state-focus .ui-icon,
+.button-print.gray-button .ui-icon {
 	background-position: 0 -16px;
 }
 .button-print .ui-button-text {
@@ -2154,4 +2159,110 @@ span.option .child-options span.option {
 #globeDuoProductPage .fly-box .fly-box-title .print-feature  {
 	margin-top: -8px;
 	margin-left: 5px;
+}
+/* Ku2000 My Account */
+#globeDuoProductPage .product-panel {
+	position: relative;	
+}
+#globeDuoProductPage .product-panel .cmd {
+	position: absolute;
+	right: 0;
+	top: -5px;
+}
+#globeDuoProductPage .product-panel:first-of-type .cmd {
+	top: 0;	
+}
+#globeDuoProductPage .product-panel:first-of-type.collapsed h2 {
+	padding-bottom: 5px;	
+}
+#globeDuoProductPage .product-panel .cmd .ui-button,
+#globeDuoProductPage .product-panel .cmd .gray-button,
+#globeDuoProductPage .product-panel .cmd .green-button {
+	min-width: 80px;
+}
+#globeDuoProductPage .open-close .save-button,
+#globeDuoProductPage .open-close .cancel-button {
+	display: inline-block;
+}
+#globeDuoProductPage .open-close.collapsed .save-button,
+#globeDuoProductPage .open-close.collapsed .cancel-button {
+	display: none !important;
+}
+#globeDuoProductPage .product-panel.has-cmd .content {
+	padding-top: 5px;
+}
+#globeDuoProductPage .product-panel .mode2 {
+	display: none;	
+}
+#globeDuoProductPage #myAccount .important {
+    font-size: 26px;
+    padding: 0.1em 0.22em 0.08em;
+	margin: .2em 0;
+}
+#globeDuoProductPage #customerInfoForm.edit-mode p.first {
+    width: 300px !important;
+	margin-right: 16px !important;
+}
+#globeDuoProductPage #customerInfoForm .important {
+    width: 174px;
+}
+#globeDuoProductPage #customerInfoForm span.option {
+	padding-right: 10px;
+}
+#globeDuoProductPage #paymentMethodForm .payment-method {
+	padding: 0 20px 10px;
+}
+#globeDuoProductPage #paymentMethodForm .payment-method span.option {
+	min-width: 6.5em;	
+}
+#globeDuoProductPage #paymentMethodForm .cc-form {
+	padding: 0 !important;
+}
+#globeDuoProductPage #paymentCcLabel {
+	padding-left: 28px;
+}
+#globeDuoProductPage .account-info {
+	width: 564px;
+	margin: 25px auto 0; 
+	padding: 0;
+}
+#globeDuoProductPage .account-info header {
+	padding-bottom: 5px;
+	position: relative;
+}
+#globeDuoProductPage .account-info header .title {
+	font-size: 18px;
+	font-weight: bold;	
+}
+#globeDuoProductPage .account-info header .account-cmd {
+	width: 100%;
+	display: block;
+	white-space: nowrap;
+	position: absolute;
+	bottom: 5px;
+	right: 0;
+}
+#globeDuoProductPage .account-info header .account-cmd .ui-button,
+#globeDuoProductPage .account-info header .account-cmd .print-feature {
+	float: right;
+	margin-left: 1px;
+}
+#globeDuoProductPage .account-info header .account-cmd .ui-button {
+	min-width: 80px;
+}
+#globeDuoProductPage .account-info .account-cnt {
+	border: 1px dashed #aaa;
+	padding: 10px;
+}
+#globeDuoProductPage .account-info .account-cnt .xform {
+	margin-bottom: 5px;
+}
+#globeDuoProductPage .account-info .account-cnt .xform li {
+	padding-bottom: 5px;
+}
+#globeDuoProductPage .account-info .account-cnt .xform li label {
+	width: 11em;
+}
+#globeDuoProductPage .account-info .account-cnt .product-table {
+	margin: 0;
 }
