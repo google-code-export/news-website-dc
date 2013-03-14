@@ -49,7 +49,7 @@ pages = $.extend(pages, {
 					}					
 				};
 				checkPayments();
-				payments.click(function() {
+				payments.change(function() {
                     checkPayments(true);
                 });
 			}	

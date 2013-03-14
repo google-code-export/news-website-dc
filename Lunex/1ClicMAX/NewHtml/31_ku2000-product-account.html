@@ -32,7 +32,23 @@
 		<script src="lib/pngfix.js"></script>
 		<![endif]-->
     </head>
-    <body>        
+    <body>
+    	<!-- Dialogs Section -->
+        <!-- TODO: All dialogs should be placed here ONLY -->
+		<div id="securityDialog" class="dialog" title="Enter Security Code">        	
+            <form id="securityForm">
+            	Please enter the customer's security code to edit the account information
+            	<ul class="xform">
+                    <li>
+                        <input class="inline" type="text" maxlength="20" autofocus
+                        	data-validation-engine="validate[required]"
+                            data-errormessage-value-missing="Please enter security code" />                        
+                    </li>
+                </ul>
+            </form>
+		</div>
+        <!-- END Dialogs Section -->
+          
 		<div class="wrapper">
 			<header id="header" role="siteheader">
                 <a id="logo" role="sitelogo" href="/"><img alt="1ClicMAX&trade;" src="img/logo.gif"></a>
@@ -181,7 +197,9 @@
                                                     <label>Phone Number:</label>
                                                     <strong class="data imp mode1">454-545-4545</strong>
                                                     <input class="inline important mode2" type="tel" value="454-545-4545"
-                                                    	data-mask-type="us-phone" />
+                                                    	data-mask-type="us-phone"
+                                                        data-validation-engine="validate[required]"
+                                                        data-errormessage-value-missing="Please enter phone number" />
                                                 </p>
                                                 <p class="last">
                                                     <label>Name:</label>
@@ -250,9 +268,7 @@
                                             <tr class="mode2">
                                             	<td class="imp emp">
                                                     <input class="inline important phone-suffix" type="tel" maxlength="10"
-                                                        data-mask-type="number"
-                                                        data-validation-engine="validate[required]"
-                                                        data-errormessage-value-missing="Please enter correct SMART number" />
+                                                        data-mask-type="number" />
                                                 </td>
                                                 <td class="upper">
                                                     <input class="important upper phone-name" type="text" maxlength="5" />
@@ -265,15 +281,27 @@
                             </section>
                             <hr/>
                             <section class="product-panel has-cmd open-close">
-                            	<h2 class="anchor">Payment Method <strong class="data">Credit Card</strong></h2>
+                            	<h2 class="anchor">Payment Method <strong id="paymentLabel" class="data">Credit Card</strong></h2>
                                 <form id="paymentMethodForm">
                                 	<div class="cmd">
-                                        <input class="mode1" type="button" value="Update Card" />
+                                        <input class="update-button mode1" type="button" value="Update Card" />
                                         <input class="edit-button mode1" type="button" value="Edit" />
                                         <input class="cancel-button gray-button mode2" type="button" value="Cancel" />
                                         <input class="save-button mode2" type="button" value="Save" />
                                     </div>
                                     <div class="content">
+                                    	<div class="mode2">
+                                        	<ul id="paymentMethod" class="xform payment-method">
+                                                <li>
+                                                    <span class="option">
+                                                        <input type="radio" name="payment" value="cash" /> Cash: $40
+                                                    </span>
+                                                    <span class="option">
+                                                        <input type="radio" name="payment" value="credit" checked /> Credit Card: $40
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <table class="product-table" cellpadding="0" cellspacing="0" border="0">
                                             <tr>
                                                 <th>Monthly Cost</th>
@@ -286,7 +314,7 @@
                                                 <td>$40.00</td>
                                             </tr>
                                         </table>
-                                        <ul class="xform inline cc-info">
+                                        <ul class="xform inline cc-info mode1">
                                             <li class="col2">
                                                 <p class="first">
                                                     <label>Card Type:</label>
@@ -338,6 +366,114 @@
                                                 </p>
                                             </li>
                                         </ul>
+                                        <div class="mode2">
+                                        	<ul id="creditCard" class="xform cc-form">
+                                                <li class="col2">
+                                                    <p class="first">
+                                                        <label>Credit Card Type</label>
+                                                        <select data-validation-engine="validate[required]"
+                                                                data-errormessage-value-missing="Please select credit card type">
+                                                            <option value="">Select One</option>
+                                                            <option value="MASTERCARD">MasterCard</option>
+                                                            <option value="VISA">Visa</option>
+                                                            <option value="DISCOVER">Discover</option>
+                                                            <option value="AMEX" selected>American Express</option>
+                                                        </select>
+                                                    </p>
+                                                    <p>
+                                                        <label>Credit Card Number</label>
+                                                        <input type="text" maxlength="16" value="378282246310005"
+                                                            data-mask-type="number"
+                                                            data-validation-engine="validate[required]"
+                                                            data-errormessage-value-missing="Please enter correct credit card number" />
+                                                    </p>
+                                                </li>
+                                                <li class="col2">
+                                                    <p class="first">
+                                                        <label>Expiration Date</label>
+                                                        <select class="inline date-month">
+                                                            <option value="01">01</option>
+                                                            <option value="02">02</option>
+                                                            <option value="03" selected>03</option>
+                                                            <option value="04">04</option>
+                                                            <option value="05">05</option>
+                                                            <option value="06">06</option>
+                                                            <option value="07">07</option>
+                                                            <option value="08">08</option>
+                                                            <option value="09">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                        </select>
+                                                        <span class="date-divider">/</span>
+                                                        <select class="inline date-year">
+                                                            <option value="13">2013</option>                                             
+                                                            <option value="14" selected>2014</option>
+                                                            <option value="15">2015</option>
+                                                            <option value="16">2016</option>
+                                                            <option value="17">2017</option>
+                                                            <option value="18">2018</option>
+                                                            <option value="19">2019</option>
+                                                            <option value="20">2020</option>
+                                                            <option value="21">2021</option>
+                                                            <option value="22">2022</option>
+                                                        </select>
+                                                    </p>
+                                                    <p>
+                                                        <label>CVV Code</label>
+                                                        <input class="inline cvv-code" type="text" maxlength="4" value="1234"
+                                                            data-mask-type="number"
+                                                            data-validation-engine="validate[required,minSize[3]]"
+                                                            data-errormessage-value-missing="Please enter correct CVV code"
+                                                            data-errormessage-range-underflow="Please enter correct CVV code" />
+                                                        <em class="field-des cvv-des">
+                                                            (The 3 or 4-digit security code 
+                                                            <a rel="tooltip" href="#" data-content="<img alt='' class='tooltip' src='res/guides/cvv-small.jpg'>">
+                                                            <img src="img/icon_help.png"></a>)
+                                                        </em>
+                                                    </p>
+                                                </li>
+                                                <li class="col2">
+                                                    <p class="first">
+                                                        <label>First Name</label>
+                                                        <input class="upper" type="text" value="Waston"
+                                                            data-validation-engine="validate[required]"
+                                                            data-errormessage-value-missing="Please enter first name" />
+                                                    </p>
+                                                    <p>
+                                                        <label>Last Name</label>
+                                                        <input class="upper" type="text" value="Nguyen"
+                                                            data-validation-engine="validate[required]"
+                                                            data-errormessage-value-missing="Please enter last name" />                                            
+                                                    </p>
+                                                </li>
+                                                <li class="col2">
+                                                    <p class="first">
+                                                        <label>Address</label>
+                                                        <input type="text" value="123 Sample Street, Ward 3"
+                                                            data-validation-engine="validate[required]"
+                                                            data-errormessage-value-missing="Please enter address" />
+                                                    </p>
+                                                    <p>
+                                                        <label>Zip Code</label>
+                                                        <input class="inline zip-code" type="text" maxlength="6" value="61720"
+                                                            data-mask-type="number"
+                                                            data-validation-engine="validate[required]"
+                                                            data-errormessage-value-missing="Please enter zip code" />
+                                                    </p>
+                                                </li>
+                                                <li class="col2">
+                                                    <p class="first">
+                                                        <label class="inline">City:</label>
+                                                        <strong class="data upper">Anchor</strong>
+                                                    </p>
+                                                    <p>
+                                                        <label class="inline">State:</label>
+                                                        <strong class="data upper">Illinois</strong>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </form>
                             </section>
