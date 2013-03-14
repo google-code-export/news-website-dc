@@ -1,5 +1,6 @@
 ﻿$(function() {	
 	ui.jWidget.setupDialogs();
+	ui.jWidget.setupTooltips();
 	form.mask.setupMaskMany([
 		{ form: "phoneInputForm" },
 		{ form: "newAccountForm" },
@@ -9,7 +10,8 @@
 		{ form: "addMulti1ClicNoForm" },
 		{ form: "edit1ClicNoDialog" },
 		{ form: "addUsNoDialog" },
-		{ form: "editUsNoDialog" }
+		{ form: "editUsNoDialog" },
+		{ form: "creditCardForm" }
 	]);
 	form.validation.setupMany([
 		{ form: "phoneInputForm", option: { binded: false } },
@@ -20,12 +22,13 @@
 		{ form: "addMulti1ClicNoForm" },
 		{ form: "edit1ClicNoDialog" },
 		{ form: "addUsNoDialog" },
-		{ form: "editUsNoDialog" }
+		{ form: "editUsNoDialog" },
+		{ form: "creditCardForm", option: { promptPosition: "topLeft", scroll: false } }
 	]);
 	
 	pages.oneClicMax.refineTabContent();
 
-	pages.oneClicMax.showNewCustomerDialog();
+	//pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.showAddMultiNumbersDialog();
 	pages.oneClicMax.showEdit1ClicPhoneDialog();
 	pages.oneClicMax.showAddUsPhoneDialog();
@@ -173,8 +176,7 @@ pages = $.extend(pages, {
 			}
 			ui.jWidget.setupDataTable("oneClicPhonesList");
 			$("#phonesListTabs").idTabs(function(id,list,set){ 
-				$("a",set).removeClass("selected") 
-				.filter("[href='"+id+"']",set).addClass("selected"); 
+				$("a",set).removeClass("selected").filter("[href='" + id + "']", set).addClass("selected"); 
 				for(i in list) 
 				  $(list[i]).hide(); 
 				$(id).fadeIn("fast", function() {
@@ -199,13 +201,54 @@ pages = $.extend(pages, {
 			}
 		},
 		rechargeAccountForm: {
-			addAmount: function() {
-			
+			addAmount: function() {				
+				$("#rechargeAddButton").click(function() {
+					var payment = $("#rechargeAccountForm :radio[name=payment]:checked").val();
+					if (form.validation.validate("rechargeAccountForm")) {
+						if (payment == "credit") {
+							ui.jWidget.showDialog("creditCardDialog", {
+								width: 600,
+								buttons: [
+									{
+										text: "Submit",
+										click: function() {
+											form.validation.hide("creditCardForm");
+											if (form.validation.validate("creditCardForm")) {
+												ui.jWidget.closeDialog("creditCardDialog");
+											}
+										}
+									}
+								],
+								open: function() {
+									var ccExtra = $(this).find(".cc-extra");
+									var ccForm = $(this).find(".cc-form");
+									ccForm.next(".cc-terms").appendTo($(this).next(".ui-dialog-buttonpane"));
+									ccExtra.find(".action :radio").unbind("change").change(function() {
+										if ($(this).val() == "new") {
+											ccForm.find(".cc-list").slideUp(100, function() {
+												ccForm.find(".cc-number").removeAttr("readonly").removeClass("read-only");
+												$(".cc-save").show();
+												form.validation.hide("creditCardForm");
+											});
+										} else {
+											ccForm.find(".cc-list").slideDown(100, function() {
+												ccForm.find(".cc-number").attr("readonly", "readonly").addClass("read-only");
+												$(".cc-save").hide();
+												form.validation.hide("creditCardForm");
+											});
+										}
+									});
+									ccExtra.find(".amount :text").val($("#rechargeAmount").val());
+									ccExtra.find(".action span.default :radio").attr("checked", "checked").change();
+								}
+							});
+						}
+					}					
+				});
 			},
 			voidAmount: function() {
 				$("#rechargeVoidButton").click(function() {
                 	var payment = $("#rechargeAccountForm :radio[name=payment]:checked").val();
-					console.log(payment);
 					if (payment == "cash") {
 						ui.jWidget.confirm(
 							"Are you sure you want to VOID this transaction?", 

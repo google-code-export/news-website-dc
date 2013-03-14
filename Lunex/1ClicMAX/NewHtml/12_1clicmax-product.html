@@ -254,9 +254,160 @@
             </form>
         </div>
         
+        <div id="creditCardDialog" class="dialog cc-dialog" title="Sale by Credit Card">
+        	<form id="creditCardForm">
+            	<ul class="xform cc-extra">
+                	<li class="col2">
+                    	<p class="first amount">
+                        	<label>$ Amount</label>
+                            <input class="inline" type="text" maxlength="6" data-mask-type="number" />.00
+                        </p>
+                    	<p class="action">
+                        	<span class="option default"><input type="radio" name="creditaction" value="new" checked /> Enter New Credit Card</span><br/>
+	                        <span class="option"><input type="radio" name="creditaction" value="update" />  Use Existing Credit Card</span>
+                        </p>
+                    </li>
+                </ul>
+            	<ul class="xform product-form cc-form">
+                    <li class="col2 cc-list">
+                        <p class="first">
+                            <label>Credit Card List</label>
+                            <select>
+                                <option value="51045">xxxxxxxxxxxx0005</option>
+                                <option value="51046">xxxxxxxxxxxx4267</option>
+                                <option value="51047">xxxxxxxxxxxx5000</option>
+                                <option value="51049">xxxxxxxxx2222</option>
+                                <option value="51052">xxxxxxxxxxxx5100</option>
+                            </select>
+                        </p>
+                        <p class="align-bottom">
+                            <input class="red-button" type="button" value="Delete" />
+                        </p>
+                    </li>
+                    <li class="col2">
+                        <p class="first">
+                            <label>Credit Card Type</label>
+                            <select data-validation-engine="validate[required]"
+                                    data-errormessage-value-missing="Please select credit card type">
+                                <option value="">Select One</option>
+                                <option value="MASTERCARD">MasterCard</option>
+                                <option value="VISA">Visa</option>
+                                <option value="DISCOVER">Discover</option>
+                                <option value="AMEX" selected>American Express</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label>Credit Card Number</label>
+                            <input class="cc-number" type="text" maxlength="16" value="378282246310005"
+                                data-mask-type="number"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please enter correct credit card number" />
+                        </p>
+                    </li>
+                    <li class="col2">
+                        <p class="first">
+                            <label>Expiration Date</label>
+                            <select class="inline date-month">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03" selected>03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <span class="date-divider">/</span>
+                            <select class="inline date-year">
+                                <option value="13">2013</option>                                             
+                                <option value="14" selected>2014</option>
+                                <option value="15">2015</option>
+                                <option value="16">2016</option>
+                                <option value="17">2017</option>
+                                <option value="18">2018</option>
+                                <option value="19">2019</option>
+                                <option value="20">2020</option>
+                                <option value="21">2021</option>
+                                <option value="22">2022</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label>CVV Code</label>
+                            <input class="inline cvv-code" type="text" maxlength="4" value="1234"
+                                data-mask-type="number"
+                                data-validation-engine="validate[required,minSize[3]]"
+                                data-errormessage-value-missing="Please enter correct CVV code"
+                                data-errormessage-range-underflow="Please enter correct CVV code" />
+                            <em class="field-des cvv-des">
+                                (The 3 or 4-digit security code 
+                                <a rel="tooltip" href="#" data-content="<img alt='' class='tooltip' src='res/guides/cvv-small.jpg'>">
+                                <img src="img/icon_help.png"></a>)
+                            </em>
+                        </p>
+                    </li>
+                    <li class="col2">
+                        <p class="first">
+                            <label>First Name</label>
+                            <input class="upper" type="text" value="Waston"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please enter first name" />
+                        </p>
+                        <p>
+                            <label>Last Name</label>
+                            <input class="upper" type="text" value="Nguyen"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please enter last name" />                                            
+                        </p>
+                    </li>
+                    <li class="col2">
+                        <p class="first">
+                            <label>Address</label>
+                            <input type="text" value="123 Sample Street, Ward 3"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please enter address" />
+                        </p>
+                        <p>
+                            <label>Zip Code</label>
+                            <input class="inline zip-code" type="text" maxlength="6" value="61720"
+                                data-mask-type="number"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please enter zip code" />
+                        </p>
+                    </li>
+                    <li class="col2">
+                        <p class="first city-state clearfix">
+                            <span class="city left">
+                                <label>City:</label>
+                                <strong class="data upper">Anchor</strong>
+                            </span>
+                            <span class="left">
+                                <label>State:</label>
+                                <strong class="data upper">Illinois</strong>
+                            </span>
+                        </p>
+                        <p>
+                            <label class="inline">Cardholder's Phone Number</label>
+                            <input type="tel" maxlength="10"
+                                data-mask-type="number"
+                                data-validation-engine="validate[required]"
+                                data-errormessage-value-missing="Please enter phone number" />
+                        </p>
+                    </li>
+                </ul>
+                <div class="cc-terms left">
+                	<p><span class="option"><input type="checkbox" /> I agree to the <a href="#">Terms & Conditions</a></span></p>
+                    <p class="cc-save"><span class="option"><input type="checkbox" /> Save customer's credit card information</span></p>
+                </div>
+            </form>
+        </div>
+        
         <div id="deleteMainNoDialog" class="dialog" title="Cannot Delete Main Phone Number!">
         	Please contact 24-hr Customer Support <strong class="emp">1-888-333-2404</strong> for help. Thank you!
-        </div>
+        </div>        
 		<!-- END Dialogs Section -->
     
 		<div class="wrapper">
@@ -343,7 +494,8 @@
                                     	<label>Enter Recharge Amount</label>
                                         <input id="rechargeAmount" class="xlarge" type="text" maxlength="3" autofocus
                                         	data-mask-type="number"
-                                            data-validation-engine="validate[min[1],max[200]]"
+                                            data-validation-engine="validate[required,min[1],max[200]]"
+                                            data-errormessage-value-missing="Please enter recharge amount"
                                             data-errormessage-range-underflow="Minimum sale is $1, please enter another amount"
                                             data-errormessage-range-overflow="Maximum sale is $200, please enter another amount" />
                                     </p>
