@@ -29,7 +29,7 @@ pages = $.extend(pages, {
 					$("#senderInfo :radio[name=phonetype]").removeAttr("checked").attr("disabled", "disabled");					
 				};
 				resetPhoneType();
-				$("#senderInfo :radio[name=phonetype]").click(function() {
+				$("#senderInfo :radio[name=phonetype]").change(function() {
 					if ($(this).val() == "cell") {
 						$("#senderInfo .child-options").slideDown("fast");
 					} else {

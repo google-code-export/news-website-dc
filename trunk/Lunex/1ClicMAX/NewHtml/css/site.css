@@ -879,6 +879,7 @@ span.option .child-options span.option {
 	padding-right: 20px;
 	max-width: 300px;
 }
+/* Credit Card Dialog */
 .cc-dialog {
 	padding: 10px 20px !important;	
 }
@@ -916,6 +917,48 @@ span.option .child-options span.option {
 .cc-terms p {
 	margin: 0;
 	padding-left: 8px;	
+}
+/* Customer Info Form */
+.customer-form {
+	padding: 10px 20px 20px !important;
+	margin: 0 auto;
+	width: 560px;
+}
+.customer-form li {
+	padding-bottom: 12px !important;	
+}
+.customer-form li.col2 p {
+	width: 250px;	
+}
+.customer-form li.col2 p.first {
+	margin-right: 16px;	
+}
+.customer-form li.col2 p.phone-type {
+	line-height: 1.2em;
+}
+.customer-form li.col2 p.phone-type span.option {
+    display: block;
+    margin-top: 6px;
+    min-width: 0;
+}
+.customer-form li.col2 p.phone-type .child-options label {
+	min-width: 6.5em;	
+}
+.customer-form li.col2 p.phone-type span.option .child-options span.option {
+	min-width: 0 !important;
+	margin-right: .8em;
+}
+.customer-form li.col2 .zip-code {
+	width: 75px;
+}
+.customer-form .city-state label {
+	padding-bottom: .25em;
+}
+.customer-form .city {
+	padding-right: 20px;
+}
+.customer-note {
+	margin-bottom: -10px;	
 }
 
 /* 1clicMAX POS DataTable */
@@ -1684,6 +1727,7 @@ span.option .child-options span.option {
 }
 #topupWorldProductPage .result-panel {
 	width: 558px;
+
 	font-size: 18px;
 }
 #topupWorldProductPage .result-panel .xform label {

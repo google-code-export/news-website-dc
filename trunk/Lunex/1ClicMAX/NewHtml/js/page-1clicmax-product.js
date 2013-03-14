@@ -11,7 +11,8 @@
 		{ form: "edit1ClicNoDialog" },
 		{ form: "addUsNoDialog" },
 		{ form: "editUsNoDialog" },
-		{ form: "creditCardForm" }
+		{ form: "creditCardForm" },
+		{ form: "custInfoForm" }
 	]);
 	form.validation.setupMany([
 		{ form: "phoneInputForm", option: { binded: false } },
@@ -23,7 +24,8 @@
 		{ form: "edit1ClicNoDialog" },
 		{ form: "addUsNoDialog" },
 		{ form: "editUsNoDialog" },
-		{ form: "creditCardForm", option: { promptPosition: "topLeft", scroll: false } }
+		{ form: "creditCardForm", option: { promptPosition: "topLeft", scroll: false } },
+		{ form: "custInfoForm", option: { promptPosition: "topLeft", scroll: false } }
 	]);
 	
 	pages.oneClicMax.refineTabContent();
@@ -33,6 +35,7 @@
 	pages.oneClicMax.showEdit1ClicPhoneDialog();
 	pages.oneClicMax.showAddUsPhoneDialog();
 	pages.oneClicMax.showEditUsPhoneDialog();
+	pages.oneClicMax.showEditCustInfoDialog();
 
 	pages.oneClicMax.confirmDelete1ClicNo();
 
@@ -142,6 +145,45 @@ pages = $.extend(pages, {
 							}
 						}
 					]
+				});
+            });
+		},
+		showEditCustInfoDialog: function() {
+			$("#editCustInfoButton").click(function(e) {
+                ui.jWidget.showDialog("custInfoDialog", {
+					width: 600,
+					buttons: [
+						{
+							text: "Cancel",
+							class: "sub-button",
+							click: function() {
+								ui.jWidget.closeDialog("custInfoDialog");	
+							}
+						},
+						{
+							text: "Save",
+							click: function() {
+								form.validation.hide("custInfoForm");
+								if (form.validation.validate("custInfoForm")) {
+									ui.jWidget.closeDialog("custInfoDialog");	
+								}	
+							}
+						}
+					],
+					open: function() {
+						var phoneType = $(this).find(".phone-type");
+						phoneType.find(":radio[name=phonetype]").change(function() {
+							if ($(this).val() == "cell") {
+								phoneType.find(".child-options").slideDown("fast", function() {
+									phoneType.find(":radio[name=accepttext]:first").attr("checked", "checked");
+								});
+							} else {
+								phoneType.find(".child-options").slideUp("fast");
+							}
+							form.validation.hide("custInfoForm");
+						});
+						phoneType.find("span.default > :radio").attr("checked", "checked").change();
+					}
 				});
             });
 		},
