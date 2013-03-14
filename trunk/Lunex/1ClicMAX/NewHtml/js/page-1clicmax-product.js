@@ -190,7 +190,7 @@ pages = $.extend(pages, {
 			choosePhoneType: function() {
 				var phoneTypeRadios = $("#newAccountForm :radio[name=phonetype]");
 				var acceptTextRadios = $("#newAccountForm :radio[name=accepttext]");
-				phoneTypeRadios.click(function() {
+				phoneTypeRadios.change(function() {
 					acceptTextRadios.removeAttr("checked");
 					if ($(this).val() == "cell") {
 						acceptTextRadios.filter("[value=yes]").attr("checked", "checked");

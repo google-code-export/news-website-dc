@@ -686,7 +686,8 @@ input.gray-button {
 	margin-left: 2px;		
 }
 .xform .data {
-	vertical-align: bottom;	
+	color: #222;
+	vertical-align: bottom;
 }
 .product-form {	
 	color: #222;
@@ -1858,7 +1859,7 @@ span.option .child-options span.option {
 	padding: 10px 20px 20px;	
 }
 #ku2000ProductPage #newAccountForm #paymentMethod span.option {
-	min-width: 7em;
+	min-width: 6.5em;
 }
 #ku2000ProductPage #newAccountForm #creditCard {
 	padding: 0 0 20px !important;
@@ -1948,6 +1949,22 @@ span.option .child-options span.option {
 }
 #ku2000ProductPage #smartNumbersForm .phone-name {
     width: 105px;
+}
+#ku2000ProductPage #paymentMethodForm .payment-method {
+	padding: 0 20px 10px;
+}
+#ku2000ProductPage #paymentMethodForm .payment-method span.option {
+	min-width: 6.5em;	
+}
+#ku2000ProductPage #paymentMethodForm .cc-form {
+	padding: 0 !important;
+}
+#securityDialog .xform li {
+	padding: 5px 0 0;
+}
+#securityDialog .xform li input[type=text] {
+	width: 180px;
+	text-align: center;
 }
 
 /* 1clicMAX POS Page: Globe Duo Product */

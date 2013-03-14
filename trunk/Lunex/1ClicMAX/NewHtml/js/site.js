@@ -717,8 +717,10 @@ var ui = {
 		},
 		setupOptionsFullClick: function() {
 			$("span.option").each(function() {
-				$(this).on("click", function() {
-					$(this).find(":checkbox, :radio").not(":disabled").attr("checked", "checked");
+				$(this).on("click", function(e) {
+					e.stopPropagation();				
+					$(this).children(":checkbox, :radio").not(":disabled").attr("checked", "checked");
+					$(this).children(":checked").change();					
 				});
             });
 		}
@@ -776,7 +778,9 @@ var form = {
 		},
 		validate: function(elemId) {
 			var elemId = util.html.getJqueryIdSelector(elemId);
-			return $(elemId).validationEngine("validate");
+			var result = $(elemId).validationEngine("validate");
+			form.validation.updatePromptsPosition(elemId);
+			return result;
 		},
 		showPrompt: function(elemId, promptText, type, promptPosition, showArrow) {
 			var elemId = util.html.getJqueryIdSelector(elemId);
