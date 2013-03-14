@@ -1,10 +1,13 @@
 ﻿$(function() {
 	ui.jWidget.setupDialogs();
+	ui.jWidget.setupTooltips();
 	form.mask.setupMaskMany([
-		{ form: "topupForm" }
+		{ form: "topupForm" },
+		{ form: "creditCardForm" }
 	]);
 	form.validation.setupMany([
-		{ form: "topupForm", option: { binded: false } }
+		{ form: "topupForm", option: { binded: false } },
+		{ form: "creditCardForm", option: { promptPosition: "topLeft", scroll: false } }
 	]);
 
 	pages.topUpWorld.topupForm.setupFormEvents();
@@ -42,6 +45,48 @@ pages = $.extend(pages, {
                 });
 				// Country
 				
+				// Credit Card
+				$("#topupForm").submit(function(e) {
+                    var payment = $(this).find(":radio[name=payment]:checked").val();
+					if (payment == "credit" && form.validation.validate("topupForm")) {
+						ui.jWidget.showDialog("creditCardDialog", {
+							width: 600,
+							buttons: [
+								{
+									text: "Submit",
+									click: function() {
+										form.validation.hide("creditCardForm");
+										if (form.validation.validate("creditCardForm")) {
+											ui.jWidget.closeDialog("creditCardDialog");
+										}
+									}
+								}
+							],
+							open: function() {
+								var ccExtra = $(this).find(".cc-extra");
+								var ccForm = $(this).find(".cc-form");
+								ccForm.next(".cc-terms").appendTo($(this).next(".ui-dialog-buttonpane"));
+								ccExtra.find(".action :radio").unbind("change").change(function() {
+									if ($(this).val() == "new") {
+										ccForm.find(".cc-list").slideUp(100, function() {
+											ccForm.find(".cc-number").removeAttr("readonly").removeClass("read-only");
+											$(".cc-save").show();
+											form.validation.hide("creditCardForm");
+										});
+									} else {
+										ccForm.find(".cc-list").slideDown(100, function() {
+											ccForm.find(".cc-number").attr("readonly", "readonly").addClass("read-only");
+											$(".cc-save").hide();
+											form.validation.hide("creditCardForm");
+										});
+									}
+								});
+								ccExtra.find(".action span.default :radio").attr("checked", "checked").change();
+							}
+						});
+						return false; // TODO: Remove and apply code
+					}
+                });
 			}	
 		},
 		slidePrintDropDown: function() {

@@ -123,7 +123,7 @@ var ui = {
 				var headerH = $("#header").outerHeight(true);				
 				var contentH = $(".site-content").outerHeight(true);
 				var footerH = $("#footer").outerHeight(true);
-				if (headerH + contentH + footerH < windowH) {
+				if (headerH + contentH + footerH - 10 < windowH) {
 					$("#footer").addClass(ui.clazz.docked);
 				} else {
 					$("#footer").removeClass(ui.clazz.docked);	
@@ -717,10 +717,21 @@ var ui = {
 		},
 		setupOptionsFullClick: function() {
 			$("span.option").each(function() {
-				$(this).on("click", function(e) {
-					e.stopPropagation();				
-					$(this).children(":checkbox, :radio").not(":disabled").attr("checked", "checked");
-					$(this).children(":checked").change();					
+				$(this).children(":checkbox, :radio").click(function(e) {
+                    e.stopPropagation();
+                });
+				$(this).on("click", function() {
+					var option = $(this).children(":checkbox, :radio").not(":disabled");
+					var radio = option.filter(":radio");
+					var checkbox = option.filter(":checkbox");
+					radio.attr("checked", "checked");
+					if (checkbox.is(":checked")) {
+						checkbox.removeAttr("checked");
+					}
+					else {
+						checkbox.attr("checked", "checked");
+					}
+					option.change();
 				});
             });
 		}

@@ -110,6 +110,15 @@ input, select {
 .align-center {
 	text-align: center !important;
 }
+.align-top {
+	vertical-align: top !important;
+}
+.align-middle {
+	vertical-align: middle !important;
+}
+.align-bottom {
+	vertical-align: bottom !important;
+}
 .left {
 	float: left;
 }
@@ -466,7 +475,7 @@ input, select {
 	box-shadow: 0 0 5px #555;
 	display: none;
 	position: absolute;
-	z-index: 1000;
+	z-index: 2000;
 }
 .site-content .print-feature {
 	position: relative;
@@ -649,7 +658,9 @@ input.gray-button {
 	font-size: 72px;
 	padding: .1em 0.25em;
 }
-
+input[type=checkbox] {
+	margin-right: 4px;
+}
 .xform input[type=button].xlarge, .xform input[type=submit].xlarge,
 .xform input[type=reset].xlarge, xform .gray-button.xlarge {
 	font-size: 36px;
@@ -867,6 +878,44 @@ span.option .child-options span.option {
 .cc-info li.col2 p {
 	padding-right: 20px;
 	max-width: 300px;
+}
+.cc-dialog {
+	padding: 10px 20px !important;	
+}
+.cc-dialog .cc-extra .amount {
+	width: 110px;
+	padding-left: 9px;
+	margin-right: 17px;
+}
+.cc-dialog .cc-extra .amount input[type=text] {
+	width: 75px;
+}
+.cc-dialog .cc-extra .action {
+	vertical-align: bottom;
+	margin-bottom: -6px;
+	padding-left: 9px;
+}
+.cc-dialog .cc-form {
+	width: 540px;
+	margin-top: 10px;
+	padding: 10px !important;
+	position: relative;
+}
+.cc-dialog .cc-form .city-state label {
+	padding-bottom: .25em;
+}
+.cc-dialog .cc-form .city {
+	padding-right: 20px;
+}
+.cc-terms {
+	padding-top: 3px !important;
+	font-weight: normal !important;
+	font-size: 14px;
+	line-height: 1.4em;
+}
+.cc-terms p {
+	margin: 0;
+	padding-left: 8px;	
 }
 
 /* 1clicMAX POS DataTable */
