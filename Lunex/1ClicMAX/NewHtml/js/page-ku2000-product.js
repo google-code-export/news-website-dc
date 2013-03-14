@@ -111,16 +111,18 @@ pages = $.extend(pages, {
 				var formElem = $("#paymentMethodForm");
 				$("#paymentMethodForm .cmd .edit-button").click(function() {
 					// TODO: Add your code here                 
-					pages.ku2000.myAccount._switchMode(formElem, true);
-					pages.ku2000.myAccount.setupPaymentMethod();
-					$("#paymentMethod").show();
-					$("#paymentLabel").hide();
+					pages.ku2000.myAccount._switchMode(formElem, true, function() {
+						pages.ku2000.myAccount.setupPaymentMethod();
+						$("#paymentMethod").show();
+						$("#paymentLabel").hide();
+					});					
                 });		
 				$("#paymentMethodForm .cmd .update-button").click(function() {
 					// TODO: Add your code here
-					pages.ku2000.myAccount._switchMode(formElem, true);
-					$("#paymentMethod").hide();
-					$("#paymentLabel").show();
+					pages.ku2000.myAccount._switchMode(formElem, true, function() {
+						$("#paymentMethod").hide();
+						$("#paymentLabel").show();
+					});					
                 });			
 				$("#paymentMethodForm .cmd .save-button").click(function() {
 					// TODO: Add your code here                    
@@ -141,7 +143,7 @@ pages = $.extend(pages, {
 					$("#paymentMethodForm #creditCard")
 				);
 			},
-			_switchMode: function(formElem, secured) {
+			_switchMode: function(formElem, secured, callback) {
 				var switchFormMode = function() {
 					var panel = formElem.parents(".product-panel");
 					if (panel.hasClass(ui.clazz.collapsed)) {
@@ -177,6 +179,7 @@ pages = $.extend(pages, {
 									if (form.validation.validate("securityForm")) {
 										switchFormMode();
 										ui.jWidget.closeDialog("securityDialog");
+										if (callback) { callback(); }
 									}
 								}
 							}						
