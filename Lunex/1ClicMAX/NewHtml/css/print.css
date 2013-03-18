@@ -166,7 +166,12 @@ footer {
 	margin-bottom:5px;
 	padding:3px 0;
 }
-
+footer img.logo {
+	vertical-align:middle;
+	border-left:#666 solid 1px;
+	margin-left:10px;
+	padding-left:10px;
+}
 .printSize{
 	/*position:absolute;
 	margin:0 0 0 478px;
@@ -244,7 +249,10 @@ footer {
 .wrapper25 {
 	width:177px;
 }
-
+.wrapper25 section,
+.wrapper3125 section {
+	margin-bottom:5px !important;
+}
 .wrapper25 header, .wrapper3125 header {
 	text-align:center;
 }
@@ -327,7 +335,6 @@ footer {
 }
 .print-content .receipt .billmex {
 	background: #f0efef;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YwZWZlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
 	background: -moz-linear-gradient(top,  #f0efef 0%, #ffffff 99%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0efef), color-stop(99%,#ffffff));
 	background: -webkit-linear-gradient(top,  #f0efef 0%,#ffffff 99%);
@@ -439,3 +446,30 @@ footer {
 	
 }
 
+/* Kumusta 2000 product */
+/* -------------------------------------------------------------------- */
+.notice-board {
+	text-align:center;
+	margin-bottom:10px;
+}
+.product-table {
+	width: 480px;
+	margin: 5px auto 10px;
+	table-layout: fixed;
+}
+.product-table tr th,
+.product-table tr td {
+	height: 30px;
+	font-weight: bold;
+	border: 1px solid #aaa;
+	text-align: center;
+	vertical-align: middle;
+}
+.product-table tr th {
+	color: #666;
+	background-color: #e5e5e5;
+}
+.wrapper25 .notice-board,
+.wrapper3125 .notice-board {
+	font-family:Arial, Helvetica, sans-serif;
+}
