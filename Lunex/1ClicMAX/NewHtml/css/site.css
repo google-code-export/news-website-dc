@@ -386,6 +386,83 @@ input, select {
 .site-content .product-tabs ul li.globe-duo.selected a {
 	background-position: -332px -120px;
 }
+.site-content .report-tabs {
+	height: 40px;
+	display: inline-block;
+	margin-top: -6px;
+	box-shadow: 0 0 4px #999;
+	position: relative;	
+	left: 0;
+	bottom: -6px;
+	z-index: 100;
+}
+@media(-webkit-min-device-pixel-ratio:0) {
+	.site-content .report-tabs {
+		margin: 0;
+		bottom: 0;
+	}
+}
+.site-content .report-tabs ul {
+	letter-spacing: 0px;
+	word-spacing: 0px;	
+	font-size: 13px;
+	/* Hide bottom shadow */
+	background-color: #fafafa;
+	padding-bottom: 5px;
+}
+.site-content .report-tabs ul li {
+	display: inline-block;
+	margin-left:-3px;
+}
+.site-content .report-tabs ul li:fisrt-of-type {
+	margin:0;
+}
+.site-content .report-tabs ul li:last-of-type {
+	margin: 0;
+	margin-left:-4px;
+}
+.site-content .report-tabs ul li a,
+.site-content .report-tabs ul li span {
+	display: block;
+	width: 110px;
+	height: 30px;
+	border-right: 1px solid #666;
+	background-color: #444;	
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #fff;
+	padding-top: 10px;
+	font-family: 'Roboto Condensed',Tahoma,sans-serif;
+	font-weight: bold;
+}
+.site-content .report-tabs ul li:first-of-type {
+	margin-left: 0px;
+}
+.site-content .report-tabs ul li.selected:first-of-type {
+	margin-left: 4px;
+}
+.site-content .report-tabs ul li a:hover {
+	border-color: #fafafa;
+	background-color: #666666;
+	transition: background-color 800ms ease 0s;
+	-moz-transition: background-color 800ms ease 0s;
+    -webkit-transition: background-color 800ms ease 0s;
+    -o-transition: background-color 800ms ease 0s;
+}
+.site-content .report-tabs ul li span,
+.site-content .report-tabs ul li.selected a  {
+	background-color: #fafafa !important;
+	border: 0 none;	
+	color: #123785;
+}
+.site-content .report-tabs ul li:last-of-type a {
+	border: 0 none;
+	margin-left: -4px;
+}
 .site-content .fly-box,
 .site-content .stroke-box {
 	background: #fafafa;
@@ -1051,6 +1128,29 @@ span.option .child-options span.option {
 .data-table .data-table-body table tr td .delete-link:hover {
 	background-position: -16px -32px;
 }
+.data-table .data-table-body table tr td .print-link,
+.data-table .data-table-body table tr td .pdf-link {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 999px;
+	vertical-align: middle;
+	background: url('../img/button_icons.png') no-repeat 0 0;
+}
+.data-table .data-table-body table tr td .print-link {
+	background-position: 0px -16px;
+}
+.data-table .data-table-body table tr td .print-link:hover {
+	background-position: 0px -32px;
+}
+.data-table .data-table-body table tr td .pdf-link {
+	background-position: -16px -64px;
+}
+.data-table .data-table-body table tr td .pdf-link:hover {
+	background-position: -16px -80px;
+}
 .data-table .data-table-body table tr td .sub-link {
 	font-size: 14px;	
 }
@@ -1283,6 +1383,122 @@ span.option .child-options span.option {
 #homePage #homeFeed footer {
 	margin: .2em 0;
 	text-align: center;	
+}
+
+/* 1clicMAX POS Page: Report Pages */
+/* -------------------------------------------------------------------- */
+#reportPage .report-form {
+	margin-bottom: 10px;
+	clear: both;
+}
+#reportPage .report-form .xform {
+	border-bottom: #ccc dashed 1px;
+}
+#reportPage .report-form p {
+	margin-right: 15px;
+	display: inline-block;
+}
+#reportPage .report-form p.retailer {
+	width: 154px;
+}
+#reportPage .report-form p.report-type {
+	width: 120xp;
+}
+#reportPage .report-form p.product-type {
+	width: 210px;
+}
+#reportPage .report-form p.payment-type {
+	width: 109px;
+}
+#reportPage .report-form p.report-date {
+	width: 130px;
+}
+#reportPage .report-form p.last {
+	margin-right: 0;
+}
+#reportPage .report-form .xform-cmd span {
+	text-align: left;
+	display: inline-block;
+	float: left;
+	font-style: italic;
+}
+#reportPage .report-form .xform-cmd-report {
+	text-align: left;
+}
+#reportPage .report-form .xform-cmd-report span {
+	float: right;
+	text-align: right;
+	padding-top: 10px;
+	font-style: normal;
+}
+#reportPage .report-form .xform-cmd-report span strong {
+	color: #ec2028;
+}
+.report-chart {
+	text-align: center;
+	margin-top: 10px;
+}
+
+/* 1clicMAX POS Page: Settings */
+/* -------------------------------------------------------------------- */
+#settingsPage .options {
+	width: 630px;
+	margin: 40px auto;
+}
+#settingsPage .options .option li {
+	margin-bottom: 20px;
+	border-bottom: #ccc dashed 1px;
+}
+#settingsPage .options .option li label {
+	display: block;
+}
+#settingsPage .options .option li p {
+	display: inline-block;
+	margin-right: 20px;
+}
+#settingsPage .options .option li p label {
+	font-weight: 700;
+}
+
+/* 1clicMAX POS Page: Invoices */
+/* -------------------------------------------------------------------- */
+#reportPage .report-form p.invoice-status {
+	width: 160px;
+}
+
+/* 1clicMAX POS Page: Transfer Funds */
+/* -------------------------------------------------------------------- */
+#transfersFundPage .options {
+	width: 335px;
+	margin: 20px auto;
+}
+#transfersFundPage .options .option li {
+	margin-bottom: 20px;
+	border-bottom: #ccc dashed 1px;
+	line-height: 9px;
+}
+#transfersFundPage .options .option li label {
+	display: block;
+}
+#transfersFundPage .options .option li p {
+	display: inline-block;
+	width: 200px;
+	margin-right: 10px;
+}
+#transfersFundPage .options .option li span {
+	vertical-align: middle;
+}
+#transfersFundPage .xform .xlarge {
+	font-size: 35px;
+	background: url(../img/transfer_mask.jpg) 3px 5px no-repeat;
+	padding-left: 26px;
+}
+#transfersFundPage .xform-cmd span {
+	display: inline-block;
+	float: left;
+	text-align: left;
+	font-size: 14px;
+	font-style: italic;
 }
 
 /* 1clicMAX POS Page: 1ClicMAX Product */
