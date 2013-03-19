@@ -92,31 +92,31 @@
                 <div class="report-tabs">
                 	<ul>
                         <li class="selected">
-                            <a href="#">Sales Report</a>
+                            <a href="04_sales-report-01.html">Sales Report</a>
                         </li>
-                        <li class="">
+                        <li>
                             <a href="#">Wallet Report</a>
                         </li>
-                        <li class="">
-                            <a href="#">Transfer Report</a>
+                        <li>
+                            <a href="05_transfers-report.html">Transfers Report</a>
                         </li>
-                        <li class="">
-                            <a href="#">Invoices</a>
+                        <li>
+                            <a href="06_invoices.html">Invoices</a>
                         </li>
-                        <li class="">
+                        <li>
                             <a href="#">Deposits</a>
                         </li>
-                        <li class="">
-                            <a href="#">Performance</a>
+                        <li>
+                            <a href="07_performance.html">Performance</a>
                         </li>
-                        <li class="">
-                            <a href="#">Transfer Funds</a>
+                        <li>
+                            <a href="08_transfer-funds.html">Transfer Funds</a>
                         </li>
-                        <li class="">
+                        <li>
                             <a href="#">Wallet</a>
                         </li>
-                        <li class="">
-                            <a href="#">Settings</a>
+                        <li>
+                            <a href="09_settings.html">Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -126,7 +126,7 @@
                         	<li>
                             	<p class="retailer">
                                     <label>Retailer</label>
-                                    <select>
+                                    <select autofocus>
                                         <option>Waston Nguyen</option>
                                         <option>Trung Chau</option>
                                     </select>
@@ -151,105 +151,106 @@
                                 <p class="payment-type">
                                     <label>Payment Type</label>
                                     <select>
+										<option>All</option>
                                         <option>Cash</option>
                                         <option>Credit Card</option>
                                     </select>
                                 </p>
                                 <p class="report-date">
                                     <label>From</label>
-                                    <input type="text" value="01/19/2013">
+                                    <input class="date-picker" type="text" data-min="+0d" data-max="+1m" data-default="+1d" />
                                 </p>
                                 <p class="report-date last">
                                     <label>To</label>
-                                    <input type="text" value="02/19/2013">
+                                    <input class="date-picker" type="text" data-min="+0d" data-max="+2m" data-default="+1m +1d" />
                                 </p>
                             </li>
                         </ul>
                         <div class="xform-cmd">
-                       	  <span>Search time range must be within 31-day period</span>
-                            <input type="submit" value="Search" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+							<span>Search time range must be within 31-day period</span>
+                            <input type="submit" value="Search" />
                         </div>
                     </section>
-                    <div class="tabs-container">
+                    <section class="report-content">
                     	<!-- DataTable -->
-                            <div id="saleReportTable" class="data-table">
-                            	<ul class="data-table-header">
-                                	<li>Products</li>
-                                    <li data-right data-width="137px">$ Sold</li>
-                                    <li data-right data-width="137px">Commission</li>
-                                    <li data-right data-width="137px">Balance Due</li>
-                                    <li data-right data-width="137px">Company Pay</li>
-                                </ul>
-                                <div class="data-table-body">
-                                	<table cellpadding="0" cellspacing="0" border="0">
-                                    	<tr>
-                                        	<td>1ClicMAX™</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr class="alt">
-                                        	<td>Top-Up the World</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>Top-Up U.S.A.</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr class="alt">
-                                        	<td>KUMUSTA™</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>Special Cards</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr class="alt">
-                                        	<td>Canta y Llama</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>KUMUSTA™ 2000</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr class="alt">
-                                        	<td>Mexico Bill Payment</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>RESIDUAL</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                            <td>$0</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- End of DataTable -->
-                    </div>                    
+						<div id="saleReportTable" class="data-table">
+							<ul class="data-table-header">
+								<li>Products</li>
+								<li data-right data-width="100px">$ Sold</li>
+								<li data-right data-width="100px">Commission</li>
+								<li data-right data-width="100px">Balance Due</li>
+								<li data-right data-width="100px">Company Pay</li>
+							</ul>
+							<div class="data-table-body">
+								<table cellpadding="0" cellspacing="0" border="0">
+									<tr>
+										<td>1ClicMAX™</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr class="alt">
+										<td>Top-Up the World</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr>
+										<td>Top-Up U.S.A.</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr class="alt">
+										<td>KUMUSTA™</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr>
+										<td>Special Cards</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr class="alt">
+										<td>Canta y Llama</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr>
+										<td>KUMUSTA™ 2000</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr class="alt">
+										<td>Mexico Bill Payment</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+									<tr>
+										<td>RESIDUAL</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+										<td>$0</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- End of DataTable -->
+                    </section>
                 </section>
             </div>
             <footer id="footer" role="sitefooter">

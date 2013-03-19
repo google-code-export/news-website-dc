@@ -690,7 +690,7 @@ input.gray-button {
 	font-weight: normal;
 	font-size: 14px;
 }
-.xform input[type=text], .xform input[type=password],
+.xform input[type=text], .xform input[type=password], .xform input[type=date],
 .xform input[type=search], .xform input[type=email], .xform input[type=tel],
 .xform input[type=number], .xform textarea, .xform select {
 	font-family: 'Roboto', Tahoma, sans-serif;
@@ -711,30 +711,30 @@ input.gray-button {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
-.xform input[type=text]:focus, .xform input[type=password]:focus,
+.xform input[type=text]:focus, .xform input[type=password]:focus, .xform input[type=date]:focus,
 .xform input[type=search]:focus, .xform input[type=tel]:focus, .xform input[type=email]:focus,
 .xform input[type=number]:focus, .xform textarea:focus, .xform select:focus {
 	border-color: #4a669e !important;
 	box-shadow: inset 0 0 .2em #cbdcff !important;
 }
-.xform input[type=text].major, .xform input[type=password].major,
+.xform input[type=text].major, .xform input[type=password].major, .xform input[type=date].major,
 .xform input[type=search].major, .xform input[type=email].major, .xform input[type=tel].major,
 .xform input[type=number].major, .xform textarea.major, .xform select.major{
 	border-color: #ee7000;
 	box-shadow: inset 0 0 .2em #fac7b2;
 }
-.xform input[type=text].inline, .xform input[type=password].inline,
+.xform input[type=text].inline, .xform input[type=password].inline, .xform input[type=date].inline,
 .xform input[type=search].inline, .xform input[type=email].inline, .xform input[type=tel].inline,
 .xform input[type=number].inline, .xform textarea.inline, .xform select.inline {
 	width: auto;
 }
-.xform input[type=text].important, .xform input[type=password].important,
+.xform input[type=text].important, .xform input[type=password].important, .xform input[type=date].important,
 .xform input[type=search].important, .xform input[type=email].important, .xform input[type=tel].important,
 .xform input[type=number].important, .xform textarea.important, .xform select.important {
 	font-size: 28px;
 	padding: .1em 0.22em;
 }
-.xform input[type=text].xlarge, .xform input[type=password].xlarge,
+.xform input[type=text].xlarge, .xform input[type=password].xlarge, .xform input[type=date].xlarge,
 .xform input[type=search].xlarge, .xform input[type=email].xlarge, .xform input[type=tel].xlarge,
 .xform input[type=number].xlarge, .xform textarea.xlarge, .xform select.xlarge {
 	font-size: 72px;
@@ -754,6 +754,15 @@ input[type=checkbox] {
 .xform input[disabled],
 .xform select[disabled] {
 	background-color: #f0f0f0;	
+}
+.xform input[type=date], .xform input.date-picker {
+	background-image: url('../img/icon_calendar.png');
+	background-repeat: no-repeat;
+	background-position: 94% 50%;
+}
+.xform input[type="date"]::-webkit-calendar-picker-indicator,
+.xform input[type="date"]::-webkit-inner-spin-button{
+    display: none;
 }
 .xform select {
 	/*-webkit-appearance: none;*/
@@ -1395,20 +1404,20 @@ span.option .child-options span.option {
 	border-bottom: #ccc dashed 1px;
 }
 #reportPage .report-form p {
-	margin-right: 15px;
+	margin-right: 10px;
 	display: inline-block;
 }
 #reportPage .report-form p.retailer {
-	width: 154px;
+	width: 160px;
 }
 #reportPage .report-form p.report-type {
-	width: 120xp;
+	width: 120px;
 }
 #reportPage .report-form p.product-type {
-	width: 210px;
+	width: 200px;
 }
 #reportPage .report-form p.payment-type {
-	width: 109px;
+	width: 129px;
 }
 #reportPage .report-form p.report-date {
 	width: 130px;
