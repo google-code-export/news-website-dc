@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Invoices - 1ClicMAX™</title>
+        <title>Invoices - 1ClicMAX&trade;</title>
         <meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<meta name="format-detection" content="telephone=no">
@@ -122,76 +122,79 @@
                 </div>
                 <section class="fly-box content-holder">
                 	<section class="report-form">
-                    	<ul class="xform">
-                        	<li>
-                                <p class="report-date">
-                                    <label>From</label>
-                                    <input type="text" value="01/19/2013">
-                                </p>
-                                <p class="report-date">
-                                    <label>To</label>
-                                    <input type="text" value="02/19/2013">
-                                </p>
-                                <p class="invoice-status">
-                                    <label>Status</label>
-                                    <select>
-                                        <option>All</option>
-                                        <option>OUTSTANDING</option>
-                                        <option>CLEARED</option>
-                                    </select>
-                                </p>
-                            </li>
-                        </ul>
-                        <div class="xform-cmd">
-                       	  <span>Search time range must be within 31-day period</span>
-                            <input type="submit" value="Search" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-                        </div>
-                    </section>
-                    <div class="tabs-container">
-                    	<!-- DataTable -->
-                            <div id="saleReportTable" class="data-table">
-                            	<ul class="data-table-header">
-                                	<li data-center data-width="155px">Date</li>
-                                    <li data-left>Invoice Number</li>
-                                    <li data-right data-width="150px">$ Amount</li>
-                                    <li data-center data-width="200px">Status</li>
-                                    <li data-center data-width="137px">Download</li>
-                                </ul>
-                                <div class="data-table-body">
-                                	<table cellpadding="0" cellspacing="0" border="0">
-                                    	<tr>
-                                        	<td>02/18/2013 13:39</td>
-                                            <td><a href="#">LMK3A006M-121216-A</a></td>
-                                            <td>$123.9</td>
-                                            <td>OUTSTANDING</td>
-                                            <td><a title="Print" href="#" class="pdf-link">Download</a></td>
-                                        </tr>
-                                        <tr class="alt">
-                                        	<td>02/18/2013 13:39</td>
-                                            <td><a href="#">LMK3A006M-121216-A</a></td>
-                                            <td>$982.3</td>
-                                            <td>CLEARED</td>
-                                            <td><a title="Print" href="#" class="pdf-link">Download</a></td>
-                                        </tr>
-                                        <tr>
-                                        	<td>02/18/2013 13:39</td>
-                                            <td><a href="#">LMK3A006M-121216-A</a></td>
-                                            <td>$123.9</td>
-                                            <td>OUTSTANDING</td>
-                                            <td><a title="Print" href="#" class="pdf-link">Download</a></td>
-                                        </tr>
-                                        <tr class="alt">
-                                        	<td>02/18/2013 13:39</td>
-                                            <td><a href="#">LMK3A006M-121216-A</a></td>
-                                            <td>$982.3</td>
-                                            <td>CLEARED</td>
-                                            <td><a title="Print" href="#" class="pdf-link">Download</a></td>
-                                        </tr>
-                                    </table>
-                                </div>
+                    	<form>
+                        	<ul class="xform">
+                                <li>
+                                    <p class="report-date">
+                                        <label>From</label>
+                                        <input autofocus class="date-picker" type="text" data-min="-2M" data-max="+0D" data-default="-2M" />
+                                    </p>
+                                    <p class="report-date last">
+                                        <label>To</label>
+                                        <input class="date-picker" type="text" data-min="-1M" data-max="+0D" data-default="-1M" />
+                                    </p>
+                                    <p class="invoice-status">
+                                        <label>Status</label>
+                                        <select>
+                                            <option>All</option>
+                                            <option>OUTSTANDING</option>
+                                            <option>PROCESSING</option>
+                                            <option>CLEARED</option>
+                                        </select>
+                                    </p>
+                                </li>
+                            </ul>
+                            <div class="xform-cmd">
+                            	<span class="note">Search time range must be within 31-day period</span>
+                                <input type="submit" value="Search" />
                             </div>
-                            <!-- End of DataTable -->
-                    </div>                    
+                        </form>
+                    </section>
+                    <section class="report-content">
+                    	<!-- DataTable -->
+                        <div class="data-table">
+                            <ul class="data-table-header">
+                                <li data-center data-width="120px">Date</li>
+                                <li data-left>Invoice Number</li>
+                                <li data-right data-width="150px">$ Amount</li>
+                                <li data-center data-width="200px">Status</li>
+                                <li data-center data-width="100px">Download</li>
+                            </ul>
+                            <div class="data-table-body">
+                                <table cellpadding="0" cellspacing="0" border="0">
+                                    <tr>
+                                        <td>Dec 16, 2012</td>
+                                        <td><a href="#">LMK3A006M-121216-A</a></td>
+                                        <td>$123.9</td>
+                                        <td>OUTSTANDING</td>
+                                        <td><a title="Print" href="#" class="pdf-link">Download</a></td>
+                                    </tr>
+                                    <tr class="alt">
+                                        <td>Dec 23, 2012</td>
+                                        <td><a href="#">LMK3A006M-121223-A</a></td>
+                                        <td>$982.3</td>
+                                        <td>CLEARED</td>
+                                        <td><a title="Print" href="#" class="pdf-link">Download</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jan 13, 2013</td>
+                                        <td><a href="#">LMK3A006M-121213-A</a></td>
+                                        <td>$123.9</td>
+                                        <td>OUTSTANDING</td>
+                                        <td><a title="Print" href="#" class="pdf-link">Download</a></td>
+                                    </tr>
+                                    <tr class="alt">
+                                        <td>Jan 27, 2013</td>
+                                        <td><a href="#">LMK3A006M-121227-A</a></td>
+                                        <td>$982.3</td>
+                                        <td>CLEARED</td>
+                                        <td><a title="Print" href="#" class="pdf-link">Download</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End of DataTable -->
+                    </section>                    
                 </section>
             </div>
             <footer id="footer" role="sitefooter">
