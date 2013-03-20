@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>KUMUSTA&trade; Cards - 1ClicMAX&trade;</title>
+        <title>Special Cards - 1ClicMAX&trade;</title>
         <meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<meta name="format-detection" content="telephone=no">
@@ -238,7 +238,7 @@
                     </div>
                 </section>
             </header>
-            <div id="kuCardProductPage" class="site-content" role="sitecontent">
+            <div id="spCardProductPage" class="site-content" role="sitecontent">
                 <div class="product-tabs">
                 	<ul>
                         <li class="one-clic">
@@ -260,13 +260,13 @@
                 </div>
                 <section class="fly-box content-holder">
                 	<header class="fly-box-title clearfix">
-                    	<h1 class="left">KUMUSTA&trade; Cards</h1>
+                    	<h1 class="left">Special Cards</h1>
                         <h2 class="sub-title right">
-                        	Unlimited Calls to the Philippines
+                        	Call GLOBE &amp; SMART mobile phones in the Philippines
                         </h2>
                     </header>
                     <div class="clearfix">
-                    	<form id="kuCardForm" class="left" method="get" action="23_ku-card-product-success.html">
+                    	<form id="spCardForm" class="left" method="get" action="26_special-card-product-success.html">
                         	<div class="product-form">
                             	<ul class="xform inline">
                                 	<li>
@@ -284,12 +284,18 @@
                                             Send PIN via Text Message <strong class="asterisk">*</strong>
                                         </label>
                                     </li>
-                                    <li>
+                                    <li class="amount">
                                     	<label>$ Amount</label>
                                         <select id="amount" name="amount">
-                                        	<option value="5">$5 for 1-Day</option>
-	                                	    <option value="40">$40 for 30-Day</option>
-                                        </select>
+                                        	<option value="5" data-desc="show40Minutes">$5 Globe Card</option>
+	                                 		<option value="5" data-desc="show35Minutes">$5 Smart Card</option>
+                                        </select
+                                    ></li>
+                                    <li>
+                                    	<label></label>
+                                    	<span id="show40Minutes" class="amount-desc active">40 Minutes to Globe Mobile Phones</span>
+                                        <span id="show35Minutes" class="amount-desc">35 Minutes to Smart Mobile Phones</span>
+                                    	<strong class="asterisk">**</strong>
                                     </li>
                                     <li>
                                     	<label>Quantity</label>
@@ -323,7 +329,9 @@
                                 <p class="note">
                                     <strong class="asterisk">*</strong>
                                     Standard text messaging rate may apply from customer's mobile provider.<br/>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;Customer must agree to receive text message receipt.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Customer must agree to receive text message receipt.<br/>
+                                    <strong class="asterisk">**</strong>
+                                    Advertised minutes are based on a single call
                                 </p>
                             </div>
                             <div class="xform-cmd">
@@ -332,7 +340,7 @@
                         </form>
                         <aside class="right">
                         	<a href="#">
-                            	<img src="res/banners/kucard_sample.jpg" alt="" />
+                            	<img src="res/banners/spcard_sample.jpg" alt="" />
                             </a>
                         </aside>
                     </div>
@@ -365,7 +373,7 @@
         <script src="plg/validation/jquery.validationEngine-en.js"></script>
         <script src="plg/validation/jquery.validationEngine.js"></script>
         <script src="js/site.js"></script>
-        <script src="js/page-ku-card-product.js"></script>
+        <script src="js/page-sp-card-product.js"></script>
 
         <!-- Google Analytics -->
         <!-- TODO: Uncomment this on production ->
