@@ -2510,7 +2510,7 @@ span.option .child-options span.option {
     margin-top: -8px;
 }
 #kuCardProductPage #kuCardForm .product-form,
-#kuCardProductPage .product-panel, {
+#kuCardProductPage .product-panel {
 	width: 598px;
 }
 #kuCardProductPage #kuCardForm .product-form ul {
@@ -2562,6 +2562,85 @@ span.option .child-options span.option {
 	text-align: right;
 }
 #kuCardProductPage .product-panel:last-of-type .xform li strong.data {
+    vertical-align: middle;
+	display: inline-block;
+	margin-top: -7px;
+}
+
+/* 1clicMAX POS Page: Special Cards */
+/* -------------------------------------------------------------------- */
+#spCardProductPage .fly-box .fly-box-title h2.sub-title {
+    color: #123785;
+    font-size: 20px;
+    margin: 4px 0 0;
+}
+#spCardProductPage .fly-box .fly-box-title .print-feature {
+    margin-top: -8px;
+}
+#spCardProductPage #spCardForm .product-form,
+#spCardProductPage .product-panel {
+	width: 598px;
+}
+#spCardProductPage #spCardForm .product-form ul {
+	width: auto;
+	margin: 0 auto;
+	display: table;
+}
+#spCardProductPage #spCardForm .product-form label {
+	width: 10em;
+	padding-right: 10px;
+	text-align: right;
+}
+#spCardProductPage #spCardForm .product-form label.option {
+	width: auto;
+	text-align: left;
+}
+#spCardProductPage #spCardForm .phone-prefix {
+	margin-right: 2px;
+    text-align: center;
+    width: 50px;
+}
+#spCardProductPage #spCardForm .phone-suffix {
+    width: 213px;
+}
+#spCardProductPage #spCardForm #amount {
+    width: 200px;
+}
+#spCardProductPage #spCardForm li.amount {
+	padding-bottom: 6px;	
+}
+#spCardProductPage #spCardForm span.amount-desc {
+	font-weight: normal;
+	font-style: italic;
+	display: none;
+}
+#spCardProductPage #spCardForm span.amount-desc.active {
+	display: inline-block;
+}
+#spCardProductPage #spCardForm #quantity {
+    width: 80px;
+}
+#spCardProductPage #spCardForm .note {
+	margin: 0;
+    padding: 0 30px 20px;	
+}
+#spCardProductPage .result-panel {
+	font-size: 18px;
+    width: 558px;
+}
+#spCardProductPage .result-panel .xform label {
+	width: 7.3em;
+}
+#spCardProductPage .product-panel .xform label {
+    width: 9.5em;
+}
+#spCardProductPage .product-panel:last-of-type .xform li h2 {
+	display: inline-block;
+    width: 7.2em;
+	padding-right: 10px;
+	text-align: right;
+}
+#spCardProductPage .product-panel:last-of-type .xform li strong.data {
     vertical-align: middle;
 	display: inline-block;
 	margin-top: -7px;

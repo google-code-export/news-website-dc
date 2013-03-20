@@ -2,17 +2,17 @@
 	ui.jWidget.setupDialogs();
 	ui.jWidget.setupTooltips();
 	form.mask.setupMaskMany([
-		{ form: "kuCardForm" },
+		{ form: "spCardForm" },
 		{ form: "creditCardForm" }
 	]);
 	form.validation.setupMany([
-		{ form: "kuCardForm", option: { binded: false } },
+		{ form: "spCardForm", option: { binded: false } },
 		{ form: "creditCardForm", option: { promptPosition: "topLeft", scroll: false } }
 	]);
 
-	pages.kuCard.kuCardForm.setupFormEvents();
-	pages.kuCard.kuCardForm.calculateTotalPrice();
-	pages.kuCard.slidePrintDropDown();
+	pages.spCard.spCardForm.setupFormEvents();
+	pages.spCard.spCardForm.calculateTotalPrice();
+	pages.spCard.slidePrintDropDown();
 	// TODO: Execute page-scope functions here
 });
 
@@ -20,11 +20,11 @@ if (!pages) {
 	var pages = {};	
 }
 pages = $.extend(pages, {
-	kuCard: {
-		kuCardForm: {
+	spCard: {
+		spCardForm: {
 			setupFormEvents: function() {
 				// Credit Card
-				$("#kuCardForm").submit(function(e) {
+				$("#spCardForm").submit(function(e) {
                     var payment = $(this).find(":radio[name=payment]:checked").val();
 					if (payment == "credit" && form.validation.validate("topupForm")) {
 						ui.jWidget.showDialog("creditCardDialog", {
@@ -71,14 +71,21 @@ pages = $.extend(pages, {
 					var result = parseInt($("#amount").val()) * parseInt($("#quantity").val());
 					$("#price").text("$" + result);
 				};
-				calc();
+				var desc = function() {
+					$("#spCardForm .amount-desc").removeClass(ui.clazz.active);
+					$("#" + $("#amount :selected").attr("data-desc")).addClass(ui.clazz.active);	
+				};
+				calc(); desc();
 				$("#amount, #quantity").change(function() {
 					calc();
+				});
+				$("#amount").change(function() {
+					desc();
 				});
 			}
 		},
 		slidePrintDropDown: function() {
-			$("#kuCardProductPage .print-feature").hover(function() {
+			$("#spCardProductPage .print-feature").hover(function() {
 				$(this).find(".dropdown").not(":visible").slideDown("fast");
 			},
 			function() {
