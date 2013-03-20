@@ -1253,6 +1253,9 @@ input.ui-button.small,
 	font-family: 'Roboto Condensed', Arial, sans-serif;
 	font-size: 20px;
 }
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 16px;
+}
 .ui-datepicker .ui-datepicker-header {
 	border: 1px solid #123785;
 	border-width: 0 0 1px;

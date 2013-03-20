@@ -10,7 +10,7 @@
         <meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<meta name="format-detection" content="telephone=no">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=1260,maximum-scale=1.0">
 
         <link href="favicon.ico" rel="icon" type="image/x-icon" />
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -122,58 +122,60 @@
                 </div>
                 <section class="fly-box content-holder">
                 	<section class="report-form">
-                    	<ul class="xform">
-                        	<li>
-                            	<p class="retailer">
-                                    <label>Retailer</label>
-                                    <select autofocus>
-                                        <option>Waston Nguyen</option>
-                                        <option>Trung Chau</option>
-                                    </select>
-                                </p>
-                                <p class="report-type">
-                                    <label>Type of Report</label>
-                                    <select>
-                                        <option>Summary</option>
-                                        <option>Details</option>
-                                    </select>
-                                </p>
-                                <p class="product-type">
-                                    <label>Type of Product</label>
-                                    <select>
-                                        <option>All</option>
-                                        <option>1ClicMAX&trade;</option>
-                                        <option>BillMEX</option>
-                                        <option>Top-Up International</option>
-                                        <option>Kumusta&trade; 2000</option>
-                                    </select>
-                                </p>
-                                <p class="payment-type">
-                                    <label>Payment Type</label>
-                                    <select>
-										<option>All</option>
-                                        <option>Cash</option>
-                                        <option>Credit Card</option>
-                                    </select>
-                                </p>
-                                <p class="report-date">
-                                    <label>From</label>
-                                    <input class="date-picker" type="text" data-min="+0d" data-max="+1m" data-default="+1d" />
-                                </p>
-                                <p class="report-date last">
-                                    <label>To</label>
-                                    <input class="date-picker" type="text" data-min="+0d" data-max="+2m" data-default="+1m +1d" />
-                                </p>
-                            </li>
-                        </ul>
-                        <div class="xform-cmd">
-							<span>Search time range must be within 31-day period</span>
-                            <input type="submit" value="Search" />
-                        </div>
+                    	<form>
+                        	<ul class="xform">
+                                <li>
+                                    <p class="retailer">
+                                        <label>Retailer</label>
+                                        <select autofocus>
+                                            <option>Waston Nguyen</option>
+                                            <option>Trung Chau</option>
+                                        </select>
+                                    </p>
+                                    <p class="report-type">
+                                        <label>Type of Report</label>
+                                        <select>
+                                            <option>Summary</option>
+                                            <option>Details</option>
+                                        </select>
+                                    </p>
+                                    <p class="product-type">
+                                        <label>Type of Product</label>
+                                        <select>
+                                            <option>All</option>
+                                            <option>1ClicMAX&trade;</option>
+                                            <option>BillMEX</option>
+                                            <option>Top-Up International</option>
+                                            <option>Kumusta&trade; 2000</option>
+                                        </select>
+                                    </p>
+                                    <p class="payment-type">
+                                        <label>Payment Type</label>
+                                        <select>
+                                            <option>All</option>
+                                            <option>Cash</option>
+                                            <option>Credit Card</option>
+                                        </select>
+                                    </p>
+                                    <p class="report-date">
+                                        <label>From</label>
+                                        <input class="date-picker" type="text" data-min="-2M" data-max="+0D" data-default="-2M" />
+                                    </p>
+                                    <p class="report-date last">
+                                        <label>To</label>
+                                        <input class="date-picker" type="text" data-min="-1M" data-max="+0D" data-default="-1M" />
+                                    </p>
+                                </li>
+                            </ul>
+                            <div class="xform-cmd">
+                                <span class="note">Search time range must be within 31-day period</span>
+                                <input type="submit" value="Search" />
+                            </div>
+                        </form>
                     </section>
                     <section class="report-content">
                     	<!-- DataTable -->
-						<div id="saleReportTable" class="data-table">
+						<div class="data-table">
 							<ul class="data-table-header">
 								<li>Products</li>
 								<li data-right data-width="100px">$ Sold</li>

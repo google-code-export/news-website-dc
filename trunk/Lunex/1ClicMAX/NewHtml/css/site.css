@@ -403,28 +403,22 @@ input, select {
 	}
 }
 .site-content .report-tabs ul {
-	letter-spacing: 0px;
-	word-spacing: 0px;	
-	font-size: 13px;
+	font-size: 0;
 	/* Hide bottom shadow */
 	background-color: #fafafa;
 	padding-bottom: 5px;
 }
 .site-content .report-tabs ul li {
+	font-size: 16px;
 	display: inline-block;
-	margin-left:-3px;
 }
-.site-content .report-tabs ul li:fisrt-of-type {
-	margin:0;
-}
+.site-content .report-tabs ul li:fisrt-of-type,
 .site-content .report-tabs ul li:last-of-type {
-	margin: 0;
-	margin-left:-4px;
+	margin:0;
 }
 .site-content .report-tabs ul li a,
 .site-content .report-tabs ul li span {
 	display: block;
-	width: 110px;
 	height: 30px;
 	border-right: 1px solid #666;
 	background-color: #444;	
@@ -435,18 +429,13 @@ input, select {
 	text-decoration: none;
 	text-transform: uppercase;
 	color: #fff;
-	padding-top: 10px;
+	padding: 10px 0 0;
 	font-family: 'Roboto Condensed',Tahoma,sans-serif;
 	font-weight: bold;
-}
-.site-content .report-tabs ul li:first-of-type {
-	margin-left: 0px;
-}
-.site-content .report-tabs ul li.selected:first-of-type {
-	margin-left: 4px;
+	width: 110px;
 }
 .site-content .report-tabs ul li a:hover {
-	border-color: #fafafa;
+	border-color: #444;
 	background-color: #666666;
 	transition: background-color 800ms ease 0s;
 	-moz-transition: background-color 800ms ease 0s;
@@ -461,7 +450,6 @@ input, select {
 }
 .site-content .report-tabs ul li:last-of-type a {
 	border: 0 none;
-	margin-left: -4px;
 }
 .site-content .fly-box,
 .site-content .stroke-box {
@@ -756,6 +744,7 @@ input[type=checkbox] {
 	background-color: #f0f0f0;	
 }
 .xform input[type=date], .xform input.date-picker {
+	padding-right: 30px;
 	background-image: url('../img/icon_calendar.png');
 	background-repeat: no-repeat;
 	background-position: 94% 50%;
@@ -1396,8 +1385,11 @@ span.option .child-options span.option {
 
 /* 1clicMAX POS Page: Report Pages */
 /* -------------------------------------------------------------------- */
+#reportPage .content-holder {
+	padding: 20px 30px 30px;
+}
 #reportPage .report-form {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	clear: both;
 }
 #reportPage .report-form .xform {
@@ -1405,6 +1397,7 @@ span.option .child-options span.option {
 }
 #reportPage .report-form p {
 	margin-right: 10px;
+	margin-top: 0;
 	display: inline-block;
 }
 #reportPage .report-form p.retailer {
@@ -1425,27 +1418,36 @@ span.option .child-options span.option {
 #reportPage .report-form p.last {
 	margin-right: 0;
 }
-#reportPage .report-form .xform-cmd span {
+#reportPage .report-form .xform-cmd {
+	margin-top: 10px;	
+}
+#reportPage .report-form .xform-cmd .note {
 	text-align: left;
 	display: inline-block;
 	float: left;
+	font-size: 14px;
 	font-style: italic;
 }
-#reportPage .report-form .xform-cmd-report {
+#reportPage .report-content .xform-report {
 	text-align: left;
+	margin-bottom: 10px;
 }
-#reportPage .report-form .xform-cmd-report span {
+#reportPage .report-content .xform-report .ui-button,
+#reportPage .report-content .xform-report .gray-button {
+	margin: 0;
+}
+#reportPage .report-content .xform-report span {
 	float: right;
 	text-align: right;
-	padding-top: 10px;
+	padding-top: 15px;
 	font-style: normal;
-}
-#reportPage .report-form .xform-cmd-report span strong {
-	color: #ec2028;
 }
 .report-chart {
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 20px;	
+}
+.report-chart img {
+	width: 100%;	
 }
 
 /* 1clicMAX POS Page: Settings */

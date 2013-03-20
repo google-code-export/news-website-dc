@@ -25,7 +25,7 @@
 /* --------------------------------------------------------------------------- */
 var settings = {
 	date: {
-		dateFormat: "{yyyy}/{MM}/{dd}"
+		dateFormat: "{dd}/{MM}/{yyyy}",
 	},
 	effect: {
 		speed: {
@@ -169,7 +169,7 @@ var ui = {
 				dataTable = dataTableObjOrId;
 			}
 			// Do nothing to an already setup table
-			if (dataTable.hasClass("setup")) {
+			if (dataTable.hasClass("no-data") || dataTable.hasClass("setup")) {
 				return;	
 			}
 			var headerCells = dataTable.find(".data-table-header > li");
@@ -203,28 +203,34 @@ var ui = {
 		// jquery.ui.core.min.js
 		// jquery.ui.datepicker.min.js
 		setupDatePickers: function() {
-			var dateInputs = $(".date-input");			
-			if (dateInputs.datepicker) {
-				dateInputs.each(function(i) {
-					var wrapper = $("<div>", { "class": "input-wrapper" });
-					var picker = $("<a>", {
-						"href": "#",
-						"class": "button-picker ui-icon ui-icon-calendar"
-					});
-					$(this).wrap(wrapper).after(picker);
-				});
-				dateInputs.datepicker({
-					dateFormat: "yy/mm/dd",
+			var datePickers = $("input.date-picker");
+			datePickers.each(function() {
+                var picker = $(this);
+				var minDate = picker.attr("data-min");
+				var maxDate = picker.attr("data-max");
+				var defDate = picker.attr("data-default");
+				var option = {
+					dateFormat: "mm/dd/yy",
+					changeMonth: true,
+					changeYear: true,
 					constrainInput: true,
-					showOn: "both",
-					showAnim: "slideDown",
-					showOtherMonths: true
-				});
-				$(".ui-datepicker-trigger").hide();
-				dateInputs.siblings(".button-picker").click(function() {
-					$(this).prev(".ui-datepicker-trigger").click();
-				});
-			}			
+					showAnim: "drop"
+				};
+				if (minDate) {
+					option = $.extend(option, {
+						minDate: minDate	
+					});
+				}
+				if (maxDate) {
+					option = $.extend(option, {
+						maxDate: maxDate	
+					});
+				}
+				picker.datepicker(option);
+				if (defDate) {
+					picker.datepicker("setDate", defDate);
+				}
+            });	
 		},
 		// Required:
 		// jquery.ui.core.min.js
@@ -623,7 +629,7 @@ var ui = {
 					effect: "drop",
 					duration: 100
 				}
-			});			
+			});
 			// Setup shout box events
 			var closeShoutBox = function(button) {				
 				var targetDialogId = $(button).closest(".shout-box").attr("id");
@@ -722,9 +728,12 @@ var ui = {
                 });
 				$(this).on("click", function() {
 					var option = $(this).children(":checkbox, :radio").not(":disabled");
+					// Radios					
 					var radio = option.filter(":radio");
-					var checkbox = option.filter(":checkbox");
+					$(":radio[name=" + radio.attr("name") + "]").removeAttr("checked");
 					radio.attr("checked", "checked");
+					// Checkboxes
+					var checkbox = option.filter(":checkbox");
 					if (checkbox.is(":checked")) {
 						checkbox.removeAttr("checked");
 					}
@@ -822,6 +831,7 @@ $(function() {
 	ui.layout.slideAccountDropDown();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
+	ui.jWidget.setupDatePickers();
 	ui.jWidget.setupShoutBoxes();
 });
 
