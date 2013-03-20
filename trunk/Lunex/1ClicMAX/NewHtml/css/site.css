@@ -88,14 +88,14 @@ input, select {
 .upper {
 	text-transform: uppercase !important;
 }
-.note {
-	font-size: 14px;
-	font-style: italic;
-}
-.note .asterisk {
+.asterisk {
 	font-size: 26px;
 	font-weight: bold;
 	color: #ec2028;
+}
+.note {
+	font-size: 14px;
+	font-style: italic;
 }
 .note .title {
 	font-weight: bold;
@@ -673,6 +673,9 @@ input.gray-button {
 	display: inline-block;
 	vertical-align: middle;
 	padding: 0;
+}
+.xform li label.option {
+	font-weight: bold;
 }
 .xform li em {
 	font-weight: normal;
@@ -1962,7 +1965,6 @@ span.option .child-options span.option {
 }
 #topupWorldProductPage .result-panel {
 	width: 558px;
-
 	font-size: 18px;
 }
 #topupWorldProductPage .result-panel .xform label {
@@ -2495,4 +2497,72 @@ span.option .child-options span.option {
 }
 #globeDuoProductPage .account-info .account-cnt .product-table {
 	margin: 0;
+}
+
+/* 1clicMAX POS Page: Kumusta Cards */
+/* -------------------------------------------------------------------- */
+#kuCardProductPage .fly-box .fly-box-title h2.sub-title {
+    color: #123785;
+    font-size: 20px;
+    margin: 4px 0 0;
+}
+#kuCardProductPage .fly-box .fly-box-title .print-feature {
+    margin-top: -8px;
+}
+#kuCardProductPage #kuCardForm .product-form,
+#kuCardProductPage .product-panel, {
+	width: 598px;
+}
+#kuCardProductPage #kuCardForm .product-form ul {
+	width: auto;
+	margin: 0 auto;
+	display: table;
+}
+#kuCardProductPage #kuCardForm .product-form label {
+	width: 10em;
+	padding-right: 10px;
+	text-align: right;
+}
+#kuCardProductPage #kuCardForm .product-form label.option {
+	width: auto;
+	text-align: left;
+}
+#kuCardProductPage #kuCardForm .phone-prefix {
+	margin-right: 2px;
+    text-align: center;
+    width: 50px;
+}
+#kuCardProductPage #kuCardForm .phone-suffix {
+    width: 213px;
+}
+#kuCardProductPage #kuCardForm #amount {
+    width: 200px;
+}
+#kuCardProductPage #kuCardForm #quantity {
+    width: 80px;
+}
+#kuCardProductPage #kuCardForm .note {
+	margin: 0;
+    padding: 0 30px 20px;	
+}
+#kuCardProductPage .result-panel {
+	font-size: 18px;
+    width: 558px;
+}
+#kuCardProductPage .result-panel .xform label {
+	width: 7.3em;
+}
+#kuCardProductPage .product-panel .xform label {
+    width: 9.5em;
+}
+#kuCardProductPage .product-panel:last-of-type .xform li h2 {
+	display: inline-block;
+    width: 7.2em;
+	padding-right: 10px;
+	text-align: right;
+}
+#kuCardProductPage .product-panel:last-of-type .xform li strong.data {
+    vertical-align: middle;
+	display: inline-block;
+	margin-top: -7px;
 }
