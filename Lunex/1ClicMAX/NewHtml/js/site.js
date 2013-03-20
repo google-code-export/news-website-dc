@@ -665,7 +665,7 @@ var ui = {
 			var confirmBox = $("#confirm-box");			
 			confirmBox.find(".dialog-content").html("<p>" + text + "</p>");
 			if (title != undefined) {
-				confirmBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);	
+				confirmBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);
 			}
 			confirmBox.unbind().bind("yes", onYes).bind("no", onNo).on("dialogclose", onCancel);
 			ui.jWidget.showDialog("confirm-box");
