@@ -1488,6 +1488,9 @@ span.option .child-options span.option {
 	border-bottom: #ccc dashed 1px;
 	line-height: 9px;
 }
+#transfersFundPage .options .option li.last {
+	margin-bottom: 0;
+}
 #transfersFundPage .options .option li label {
 	display: block;
 }
@@ -1499,10 +1502,10 @@ span.option .child-options span.option {
 #transfersFundPage .options .option li span {
 	vertical-align: middle;
 }
-#transfersFundPage .xform .xlarge {
+#transfersFundPage .xform .amount {
 	font-size: 35px;
-	background: url(../img/transfer_mask.jpg) 3px 5px no-repeat;
-	padding-left: 26px;
+	background: url('../img/transfer_mask.png') no-repeat 8px 8px;
+	padding-left: 28px;
 }
 #transfersFundPage .xform-cmd span {
 	display: inline-block;
