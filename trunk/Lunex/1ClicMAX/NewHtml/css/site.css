@@ -1386,6 +1386,102 @@ span.option .child-options span.option {
 	text-align: center;	
 }
 
+/* 1clicMAX POS Page: Reports Dashboard */
+/* -------------------------------------------------------------------- */
+#accMgtPage .accmgt-buttons ul li {
+	display: inline-block;
+	margin-right: 7px;
+	margin-bottom: 10px;
+	box-shadow: 0 0 4px #bbb;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+#accMgtPage .accmgt-buttons ul li:last-child,
+#accMgtPage .accmgt-buttons ul li.last {
+	margin-right: 0px;
+}
+#accMgtPage .accmgt-buttons ul li a {
+	display: block;
+	width: 326px;
+	height: 80px;
+	background: #fafafa url('../img/accmgt_icons.png') no-repeat 0 0;
+	border: #bbb solid 1px;
+	font-size: 24px;
+	font-family: 'Roboto Condensed',Tahoma,sans-serif;
+	font-weight: bold;
+	color: #444;
+	padding-left: 80px;
+	padding-top: 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;	
+}
+#accMgtPage .accmgt-buttons ul li a:hover {
+	color: #fff;
+	border-color: #123785;
+	background-color: #123785;
+	transition: background-color 800ms ease 0s;
+	-moz-transition: background-color 800ms ease 0s;
+    -webkit-transition: background-color 800ms ease 0s;
+    -o-transition: background-color 800ms ease 0s;
+}
+#accMgtPage .accmgt-buttons ul li.icon-chart a {
+	background-position: 0 0;
+}
+#accMgtPage .accmgt-buttons ul li.icon-invoices a {
+	background-position: 0 -80px;
+}
+#accMgtPage .accmgt-buttons ul li.icon-deposit a {
+	background-position: 0 -160px;
+}
+#accMgtPage .accmgt-buttons ul li.icon-performance a {
+	background-position: 0 -240px;
+}
+#accMgtPage .accmgt-buttons ul li.icon-transfer a {
+	background-position: 0 -320px;
+}
+#accMgtPage .accmgt-buttons ul li.icon-wallet a {
+	background-position: 0 -400px;
+}
+#accMgtPage .accmgt-buttons ul li.icon-settings a {
+	background-position: 0 -480px;
+}
+#accMgtPage .account-info {
+	width: 394px;
+	height: 340px;
+	padding: 15px;
+	margin-right: 10px;
+	float: left;
+}
+#accMgtPage .account-info .info li {
+	border-bottom: #ccc solid 1px;
+	line-height: 52px;
+}
+#accMgtPage .account-info .info li:last-child {
+	border-bottom: none;
+}
+#accMgtPage .account-info .info li label {
+	width: 9em;
+	display: inline-block;
+}
+#accMgtPage .account-info .info li strong {
+	color: #123785;
+}
+#accMgtPage .account-info .info li strong.red {
+	color: #ec2028;
+}
+#accMgtPage .sales-graph {
+	width: 596px;
+	height: 340px;
+	padding: 15px;
+}
+#accMgtPage .fly-box-title h1 {
+	font-size: 20px;
+}
+
 /* 1clicMAX POS Page: Report Pages */
 /* -------------------------------------------------------------------- */
 #reportPage .content-holder {
