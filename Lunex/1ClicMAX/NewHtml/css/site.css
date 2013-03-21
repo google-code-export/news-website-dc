@@ -211,12 +211,17 @@ input, select {
 	background: url('../img/accbar_leftend.gif') no-repeat 0 0;
 }
 #header .hcnt .account-toolbar .barinner {
+	height: 40px;
 	padding-right: 10px;
+	display: block;
 	background-color: #eaeaea;
 }
 #header .hcnt .account-toolbar .account-mgt {
 	color: #123785;
 	font-weight: bold;
+}
+#header .hcnt .account-log {
+    position: relative;
 }
 #header .hcnt .account-log .welcome {
 	display: block;
@@ -246,9 +251,13 @@ input, select {
 	line-height: 1.5em;
 	background: #fafafa;
     padding: 15px;
+	min-width: 100%;
+	white-space: nowrap;
 	box-shadow: 0 0 10px #333;
-    position: absolute;    
-    top: 81px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+    position: absolute;
 	right: 0;
 	z-index: 990;
 }
@@ -1224,8 +1233,8 @@ span.option .child-options span.option {
 }
 #loginPage .login-container .login .login-box .xform input[type=submit] {
 	margin: 8px 0;
-	padding: .5em 1em;
-	width: 100px;	
+	padding: .5em;
+	min-width: 100px;	
 }
 #loginPage .login-container .login .xman {
 	width: 386px;
