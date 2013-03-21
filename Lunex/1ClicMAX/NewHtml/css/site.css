@@ -346,7 +346,7 @@ input, select {
 	overflow: hidden;
 }
 .site-content .product-tabs ul li a:hover {
-	border-color: #fafafa;
+	border-color: #123785;
 	background-color: #EC2029;
 	transition: background-color 800ms ease 0s;
 	-moz-transition: background-color 800ms ease 0s;
@@ -2749,4 +2749,160 @@ span.option .child-options span.option {
     vertical-align: middle;
 	display: inline-block;
 	margin-top: -7px;
+}
+
+/* 1clicMAX POS Page: BillMEX Product */
+/* -------------------------------------------------------------------- */
+/* Input */
+#billMexProductPage.site-content .fly-box.content-holder .fly-box-title {
+	background: url('../img/mx_flag.jpg') no-repeat 0 0;
+	padding-left: 52px;
+}
+#billMexProductPage .product-form {
+	width: 598px;
+	margin-bottom: 5px;
+}
+#billMexProductPage .product-form .xform {
+	padding-top: 10px;	 
+}
+#billMexProductPage #custInfo p.first {
+	width: 210px;
+	margin-right: 26px;
+	vertical-align: top;
+}
+#billMexProductPage #custInfo p.phone-type {
+	width: 320px;
+	vertical-align: bottom;
+	line-height: 1.2em;
+}
+#billMexProductPage .product-form #custInfo p span.option {
+	display: block;
+	margin-top: 6px;
+	min-width: 0;
+}
+#billMexProductPage #custInfo p .child-options label {
+	width: 7.5em;		
+}
+#billMexProductPage #custInfo2 {
+	width: auto;
+	padding-top: 0;
+	padding-left: 60px;
+}
+#billMexProductPage #custInfo2 li p {
+	width: 200px;
+}
+#billMexProductPage #custInfo2 li p.first {
+	margin-right: 16px;
+}
+#billMexProductPage #custInfo2 li p.address {
+	width: 324px;
+}
+#billMexProductPage #custInfo2 li p.zip-code {
+	width: 76px;
+}
+#billMexProductPage #billCom li #company {
+	width: 458px;
+}
+#billMexProductPage #billCom li.sub {
+	padding-left: 40px;
+	position: relative;
+}
+#billMexProductPage #billCom li.sub .bullet {
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: #666;
+	display: block;
+	background: url('../img/circle_bullets.png') no-repeat 0 0;
+	position: absolute;
+	top: 0;
+	left: 0;	
+}
+#billMexProductPage #billCom li.sub .bullet.active {
+	color: #222;
+	background-position: 0 -28px;	
+}
+#billMexProductPage #billCom li.sub input {
+	width: 138px;
+}
+#billMexProductPage #billCom li.sub input.important {
+	font-size: 22px;
+	padding: .3em .35em .25em;
+}
+#billMexProductPage #recipientInfo input {
+	width: 240px;
+}
+#billMexProductPage .transaction-history {
+	width: 316px;
+	margin-top: 10px;
+	display: block;
+}
+#billMexProductPage .transaction-history h3 {
+	margin-bottom: 10px;	
+}
+#billMexProductPage .transaction-history header {
+	font-size: 18px;
+	border-bottom: 1px dotted #aaa;
+	padding-bottom: 5px;
+	margin-bottom: 4px;
+}
+#billMexProductPage .transaction-history article {
+	padding: 10px 0 8px;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+#billMexProductPage .transaction-history article.alt {
+	background-color: #f0f0f0;
+}
+#billMexProductPage .transaction-history article strong.emp {
+	display: block;
+	font-size: 20px;
+}
+#billMexProductPage .transaction-history article strong.small {
+	font-size: 14px;
+}
+#billMexProductPage .transaction-history article .cmd {
+	position: absolute;
+	top: 9px;
+	right: 0;
+}
+#billMexProductPage .transaction-history article .cmd .button {
+	display: block;
+	margin-bottom: 2px;
+}
+/* Top-Up Confirm */
+#billMexProductPage .product-panel {
+	width: 598px;
+}
+#billMexProductPage .product-panel .xform p {
+	width: 320px;
+}
+#billMexProductPage .product-panel .xform p.last {
+	width: 220px;
+	margin-left: 30px;
+}
+#billMexProductPage .product-panel .xform label {
+	width: 9.5em;
+}
+#billMexProductPage .product-panel .xform p.last label {
+	width: 7.5em;
+}
+#billMexProductPage .product-panel .xform li h2 {
+	width: 7.6em;
+	display: inline-block;
+	vertical-align: middle;
+}
+/* Top-Up Result */
+#billMexProductPage .fly-box .fly-box-title .print-feature {
+	margin-top: -8px;
+}
+#billMexProductPage .result-panel {
+	width: 558px;
+	font-size: 18px;
+}
+#billMexProductPage .result-panel .xform label {
+	width: 7.3em;	
 }
