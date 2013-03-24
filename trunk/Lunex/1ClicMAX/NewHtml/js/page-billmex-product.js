@@ -8,6 +8,7 @@
 	]);
 
 	pages.billMex.inputForm.setupFormEvents();
+	pages.billMex.refineBillAmount();
 	pages.billMex.slidePrintDropDown();
 	// TODO: Execute page-scope functions here
 });
@@ -89,6 +90,16 @@ pages = $.extend(pages, {
 					}
                 });
 			}
+		},
+		refineBillAmount: function() {
+			var minWidth = 0;
+			var prices = $("#billMexProductPage .bill-amount .data");			
+			prices.each(function() {
+                if ($(this).width() > minWidth) {
+					minWidth = $(this).width();	
+				}
+            });
+			prices.css({ "min-width": minWidth + "px" });
 		},
 		slidePrintDropDown: function() {
 			$("#billMexProductPage .print-feature").hover(function() {

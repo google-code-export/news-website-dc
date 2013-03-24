@@ -2916,15 +2916,79 @@ span.option .child-options span.option {
 	margin-left: 30px;
 }
 #billMexProductPage .product-panel .xform label {
-	width: 9.5em;
+	width: 11.5em;
 }
 #billMexProductPage .product-panel .xform p.last label {
 	width: 7.5em;
 }
-#billMexProductPage .product-panel .xform li h2 {
-	width: 7.6em;
+#billMexProductPage .product-panel .bill-amount {
+	display: table;
+	width: auto;	
+}
+#billMexProductPage .product-panel .bill-amount li {
+	padding-bottom: 20px;
+	position: relative;
+}
+#billMexProductPage .product-panel .bill-amount li.last {
+	padding-bottom: 10px;
+}
+#billMexProductPage .product-panel .bill-amount li.sum {
+	padding: 10px 0;
+	border-top: 1px dashed #aaa;
+}
+#billMexProductPage .product-panel .bill-amount li .data {
 	display: inline-block;
-	vertical-align: middle;
+	text-align: right;
+	padding-right: 10px;
+}
+#billMexProductPage .product-panel .bill-amount li .symbol {
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url('../img/bill_symbols.png') no-repeat 0 0;
+	position: absolute;
+	top: 26px;
+}
+#billMexProductPage .product-panel .bill-amount li .symbol.arrow {
+	right: 46px;
+}
+#billMexProductPage .product-panel .bill-amount li .symbol.plus {
+	background-position: 0 -16px;
+	left: 58px;
+}
+#billMexProductPage .product-panel .sub-info {
+	padding-top: 12px;	
+}
+#billMexProductPage .product-panel .sub-info li {
+	padding-left: 6em;
+	position: relative;
+}
+#billMexProductPage .product-panel .sub-info li.col2 {
+	font-size: 16px;
+}
+#billMexProductPage .product-panel .sub-info li h3 {
+	font-size: 18px;
+	margin-bottom: 0;
+	border-bottom: 1px dashed #aaa;		
+}
+#billMexProductPage .product-panel .sub-info li label,
+#billMexProductPage .product-panel .sub-info li p {
+	width: auto;
+}
+#billMexProductPage .product-panel .sub-info li label {
+	padding: 0 5px 0 20px;
+}
+#billMexProductPage .product-panel .sub-info li label.city {
+	padding-left: 40px;
+}
+#billMexProductPage .product-panel .sub-info li.col2 p.first label {
+	width: 5.5em;
+	padding: 0 !important;
+}
+#billMexProductPage .product-panel .sub-info li .button {
+	position: absolute;
+	top: 4px;
+	right: 0;
 }
 /* Top-Up Result */
 #billMexProductPage .fly-box .fly-box-title .print-feature {
@@ -2935,5 +2999,5 @@ span.option .child-options span.option {
 	font-size: 18px;
 }
 #billMexProductPage .result-panel .xform label {
-	width: 7.3em;	
+	width: 9em;	
 }
