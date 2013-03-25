@@ -777,8 +777,8 @@ input[type=checkbox] {
 .xform input[type="date"]::-webkit-inner-spin-button{
     display: none;
 }
-.xform select {
-	/*-webkit-appearance: none;*/
+.xform textarea {
+	resize: none;
 }
 .xform-cmd {
 	text-align: right;
@@ -1091,6 +1091,8 @@ span.option .child-options span.option {
 	font-weight: bold;
 	padding: 5px 10px;
 	border-left: 1px solid #777;
+	font-size: 14px;
+	white-space: nowrap;
 }
 .data-table .data-table-body {
 	overflow: auto;
@@ -1111,12 +1113,13 @@ span.option .child-options span.option {
 	border-width: 0 1px;
 }
 .data-table .data-table-body table tr td {
+	font-size: 14px;
 	padding: 5px 10px;
 	border: 1px solid #ddd;
 	border-width: 0 1px;
-	white-space: nowrap;
+	/*white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;	
+	text-overflow: ellipsis;*/
 }
 .data-table .data-table-body table tr.alt td {
 	background: #f0f0f0;	
@@ -1259,7 +1262,7 @@ span.option .child-options span.option {
 	z-index: 10;
 }
 #loginPage .login-container .advertise {
-	margin-top: 20px;
+	margin-top: 30px;
 }
 @media screen and (max-width: 1200px) {
 	#loginPage .login-container .advertise {
@@ -1282,7 +1285,6 @@ span.option .child-options span.option {
 }
 @media screen and (min-width:1600px) {
 	#loginPage .login-container .advertise {
-		margin-top: 0;
 		margin-right: 100px;
 		width: 760px;
 		display: block;
@@ -1305,6 +1307,33 @@ span.option .child-options span.option {
 }
 #loginPage #forgotPassDialog article ul {
 	margin-left: 30px;
+}
+/* Login Slider */
+#loginPage .login-container .advertise img {
+	width: 100%;
+}
+#loginPage .login-container .advertise .slider-content,
+#loginPage .login-container .advertise .slider li {
+	display: none;
+}
+#loginPage .login-container .advertise .slider-content.active,
+#loginPage .login-container .advertise .slider li.active {
+	display: block;
+}
+#loginPage .login-container .advertise .slider-content .description p {
+	margin: .3em 0;
+}
+#loginPage .login-container .advertise .slider-content h1 {
+	margin-bottom: .5em;
+}
+@media screen and (max-width:1600px) {
+    #loginPage .login-container .advertise .slider-content h1 {
+		font-size: 28px;
+	}
+}
+#loginPage .login-container .advertise .slider-wrapper {
+	position: relative;
+	margin-bottom: 20px;
 }
 
 /* 1clicMAX POS Page: Home */
@@ -1597,6 +1626,12 @@ span.option .child-options span.option {
 	width: 160px;
 }
 
+/* 1clicMAX POS Page: Deposite */
+/* -------------------------------------------------------------------- */
+#addDepositDialog .note {
+	margin-top: 0;
+}
+
 /* 1clicMAX POS Page: Transfer Funds */
 /* -------------------------------------------------------------------- */
 #transfersFundPage .options {
@@ -1633,6 +1668,53 @@ span.option .child-options span.option {
 	text-align: left;
 	font-size: 14px;
 	font-style: italic;
+}
+
+/* 1clicMAX POS Page: Wallet */
+/* -------------------------------------------------------------------- */
+#walletPage .main {
+	width: 500px;	
+}
+#walletPage .side {
+	width: 410px;		
+}
+#walletPage .main li {
+	margin-bottom: 15px;
+	border-bottom: #ccc dashed 1px;
+}
+#walletPage .main li.first {
+	padding-bottom: 5px;
+}
+#walletPage .main li.last {
+	margin-bottom: 0;
+}
+#walletPage .xform .amount {
+	font-size: 35px;
+	background: url('../img/transfer_mask.png') no-repeat 8px 8px;
+	padding-left: 28px;
+	width: 140px;
+}
+#walletPage .xform .dec {
+	font-size: 35px;
+	vertical-align: middle;
+}
+#walletPage .xform .cc {
+    width: 404px;
+}
+#walletPage .xform .cvv-code {
+    width: 56px;
+}
+#walletPage .side .auto-refill {
+	padding-left: 30px;
+	border-left: 1px solid #ddd;
+	width: 380px;
+}
+#walletPage .side .auto-refill .indent {
+	padding-left: 30px;
+}
+#walletPage .side .auto-refill .indent label {
+	width: 10em;
+	text-align: right;
 }
 
 /* 1clicMAX POS Page: 1ClicMAX Product */
