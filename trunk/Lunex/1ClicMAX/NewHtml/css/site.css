@@ -110,6 +110,9 @@ input, select {
 .align-center {
 	text-align: center !important;
 }
+.align-justify {
+	text-align: justify !important;
+}
 .align-top {
 	vertical-align: top !important;
 }
@@ -2904,7 +2907,7 @@ span.option .child-options span.option {
 	position: absolute;
 	top: 20px;
 }
-/* Top-Up Confirm */
+/* BillMEX Confirm */
 #billMexProductPage .product-panel {
 	width: 598px;
 }
@@ -2990,7 +2993,7 @@ span.option .child-options span.option {
 	top: 4px;
 	right: 0;
 }
-/* Top-Up Result */
+/* BillMEX Result */
 #billMexProductPage .fly-box .fly-box-title .print-feature {
 	margin-top: -8px;
 }
@@ -3000,4 +3003,29 @@ span.option .child-options span.option {
 }
 #billMexProductPage .result-panel .xform label {
 	width: 9em;	
+}
+
+/* 1clicMAX POS Page: Common Content */
+/* -------------------------------------------------------------------- */
+#commonContentPage {
+	color: #222;
+	padding: 0 20px;
+	text-align: justify;
+}
+#commonContentPage h2 {
+	margin: .6em 0 .4em;
+}
+#commonContentPage h2 span {
+	color: #444;
+}
+#commonContentPage p {	
+	margin: 0 0 .4em;
+}
+#commonContentPage ul {	
+	list-style: disc outside none;
+    margin-left: 2em;
+	margin-bottom: .4em;
+}
+#commonContentPage ul li {	
+	line-height: 1.6em;
 }

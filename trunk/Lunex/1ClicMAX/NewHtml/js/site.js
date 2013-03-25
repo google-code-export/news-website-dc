@@ -407,6 +407,9 @@ var ui = {
 		// jquery.ui.interations.min.js (Dragging Ability)
 		// jquery.ui.dialog.min.js
 		setupDialogs: function() {
+			if (!$(".dialog").dialog) {
+				return;
+			}
 			$(".dialog").each(function() {
 				$(this).dialog({
 					autoOpen: false,
@@ -524,6 +527,9 @@ var ui = {
 		setupPopup: function() {
 			var popup = $("<div id=\"popup\" />");
 			$(document.body).prepend(popup);
+			if (!popup.dialog) {
+				return;
+			}
 			popup.dialog({
 				autoOpen: false,
 				minWidth: 400,
@@ -566,6 +572,9 @@ var ui = {
 		// jquery.ui.button.min.js
 		// jquery.ui.dialog.min.js
 		setupShoutBoxes: function() {
+			if (!$(".shout-box").dialog) {
+				return;
+			}
 			// Auto create buttons
 			var buttonOk = $("<a>", {
 				"href": "#",
