@@ -16,6 +16,9 @@ body {
 	background-color: #eaeaea;
 	min-width: 1200px;
 }
+.js body {
+	visibility: hidden;
+}
 a {
 	color: #e40;
 	outline: 0 none;
@@ -127,6 +130,12 @@ input, select {
 }
 .right {
 	float: right;
+}
+.visible {
+	visibility: visible !important;
+}
+.invisible {
+	visibility: hidden !important;
 }
 
 /* 1clicMAX POS Layout */
@@ -3028,4 +3037,32 @@ span.option .child-options span.option {
 }
 #commonContentPage ul li {	
 	line-height: 1.6em;
+}
+
+/* 1clicMAX POS Page: Change Password */
+/* -------------------------------------------------------------------- */
+#changePassPage .fly-box {
+	width: 380px;
+	display: table;
+	margin: 100px auto 0;
+}
+@media screen and (min-height: 700px) {
+	#changePassPage .fly-box {
+		margin-top: 140px;
+	}
+}
+@media screen and (min-height: 900px) {
+	#changePassPage .fly-box {
+		margin-top: 180px;
+	}
+}
+@media screen and (min-height: 1000px) {
+	#changePassPage .fly-box {
+		margin-top: 220px;
+	}
+}
+#changePassPage .fly-box h2 span {
+	font-family: 'Roboto', Tahoma, sans-serif;
+	font-size: 16px;
+	color: #444;
 }

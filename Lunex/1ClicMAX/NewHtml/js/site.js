@@ -105,7 +105,9 @@ var ui = {
 		selected: "selected",
 		collapsed: "collapsed",
 		expanded: "expanded",
-		docked: "docked"
+		docked: "docked",
+		visible: "visible",
+		invisible: "invisible"
 	},
 	layout: {
 		slideAccountDropDown: function() {
@@ -833,8 +835,9 @@ var form = {
 /* Default Boostrap */
 /* --------------------------------------------------------------------------- */
 $(function() {
-	//$("#header").next(".site-content").hide();
-	//$("#footer").hide();
+	window.setTimeout(function() {
+		$(document.body).addClass(ui.clazz.visible);
+	}, 3000);
 	ui.element.setupSharpLinks();
 	ui.element.setupOptionsFullClick();
 	ui.layout.slideAccountDropDown();
@@ -845,6 +848,5 @@ $(function() {
 });
 
 $(window).load(function() {
-    //$("#header").next(".site-content").fadeIn(300);
-	//$("#footer").fadeIn(200);
+    $(document.body).addClass(ui.clazz.visible);
 });
