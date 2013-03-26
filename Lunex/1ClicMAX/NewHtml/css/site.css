@@ -3008,6 +3008,13 @@ span.option .child-options span.option {
 	font-size: 22px;
 	padding: .3em .35em .25em;
 }
+#billMexProductPage #billCom li.sub.one-digit {
+	display: none;
+}
+#billMexProductPage #billCom li.sub input.one-digit {
+	text-align: center;
+	width: 48px;
+}
 #billMexProductPage #billCom li.sub .field-des {
 	font-size: 14px;
 	font-style: italic;

@@ -74,6 +74,14 @@ pages = $.extend(pages, {
 						comInfoInputs.filter(".acc-number")
 							.attr("maxlength", digits)
 							.css({ width: (digits * 13.1) + 20 + "px" });
+						// Show/hide one digit number
+						var oneDigit = $(this).find(":selected").attr("data-one-digit");
+						var oneDigitPane = $("#billCom li.sub.one-digit");
+						if (oneDigit) {
+							oneDigitPane.slideDown(100);
+						} else {							
+							oneDigitPane.hide();
+						}
 						// Set description
 						var message = $(this).find(":selected").attr("data-desc");
 						if (!message) {
