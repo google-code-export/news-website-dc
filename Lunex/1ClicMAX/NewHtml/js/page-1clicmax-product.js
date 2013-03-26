@@ -83,7 +83,7 @@ pages = $.extend(pages, {
 			});
 		},
 		showEdit1ClicPhoneDialog: function() {
-			$("#oneClicPhonesList .edit-link").click(function(e) {
+			$("#oneClicPhonesList").find(".edit-link, .qedit-link").click(function(e) {
                 ui.jWidget.showDialog("edit1ClicNoDialog", {
 					width: 872,
 					buttons: [
@@ -127,7 +127,7 @@ pages = $.extend(pages, {
             });
 		},
 		showEditUsPhoneDialog: function() {
-			$("#usPhonesList .edit-link").click(function(e) {
+			$("#usPhonesList").find(".edit-link, .qedit-link").click(function(e) {
                 ui.jWidget.showDialog("editUsNoDialog", {
 					width: 842,
 					buttons: [
