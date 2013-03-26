@@ -207,7 +207,7 @@
 											  <option value="375" data-digits="26" data-bill="billsample01_small">Megacable (Cable)</option>
 											  <option value="376" data-digits="18" data-bill="billsample01_small">Movistar Servicio (Telecom)</option>
 											  <option value="359" data-digits="12" data-bill="billsample01_small">Sky (Satellite TV)</option>
-											  <option value="357" data-digits="10" data-bill="billsample01_small">Telmex (Telecom)</option>
+											  <option value="357" data-digits="10" data-bill="billsample01_small" data-one-digit="true">Telmex (Telecom)</option>
 											</optgroup>
 											<optgroup label="--------------------------------------------------------------------">
 											  <option value="366" data-digits="11" data-bill="billsample01_small" data-desc="Up to 11 Digits">Adosapaco - Agua de Oaxaca (Water)</option>
@@ -248,6 +248,10 @@
 										<label>Re-Enter Account/Phone Number</label>
 										<input class="important inline acc-number" type="tel" data-mask-type="number" disabled />
 										<span class="field-des acc-des hidden"></span>
+									</li>
+                                    <li class="sub one-digit">
+										<label>One Digit Number</label>
+										<input class="important inline one-digit" type="tel" maxlength="1" data-mask-type="number" disabled />
 									</li>
 									<li class="sub">
                                     	<span class="bullet">2</span>
