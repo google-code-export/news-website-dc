@@ -587,6 +587,19 @@ input, select {
 .site-content .print-feature .dropdown li:last-child {
 	border: 0 none !important;	
 }
+/* Demo Mode */
+body.demo-mode {
+	background: #999 url('../img/demo_bg.png');	
+}
+body.demo-mode .fly-box {
+	background: #fafafa url('../img/demo_bg.png');	
+}
+body.es.demo-mode {
+	background: #999 url('../img/demo_bg_es.png');	
+}
+body.es.demo-mode .fly-box {
+	background: #fafafa url('../img/demo_bg_es.png');
+}
 
 /* 1clicMAX POS Form */
 /* -------------------------------------------------------------------- */
