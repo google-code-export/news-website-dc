@@ -1688,21 +1688,24 @@ span.option .child-options span.option {
 #walletPage .main li.last {
 	margin-bottom: 0;
 }
-#walletPage .xform .amount {
+#walletPage .main .xform li label {
+	width: 9.5em;
+}
+#walletPage .main .xform .amount {
 	font-size: 35px;
 	background: #fff url('../img/transfer_mask.png') no-repeat 8px 8px;
 	padding-left: 28px;
 	width: 140px;
 	box-shadow: inset 0 0 .1em #ccc;
 }
-#walletPage .xform .dec {
+#walletPage .main .xform .dec {
 	font-size: 35px;
 	vertical-align: middle;
 }
-#walletPage .xform .cc {
-    width: 404px;
+#walletPage .main .xform .cc {
+    width: 248px;
 }
-#walletPage .xform .cvv-code {
+#walletPage .main .xform .cvv-code {
     width: 56px;
 }
 #walletPage .side .auto-refill {
@@ -1716,6 +1719,36 @@ span.option .child-options span.option {
 #walletPage .side .auto-refill .indent label {
 	width: 10em;
 	text-align: right;
+}
+#walletPage .side .auto-refill .refill-info li {
+	padding-bottom: 6px;	
+}
+#walletPage .side .auto-refill .refill-info li label {
+	width: 7.5em;
+}
+#walletPage .side .auto-refill .refill-info li strong {
+	width: 16em;
+	vertical-align: top;
+	display: inline-block;
+}
+#walletPage .side .auto-refill .note {
+	 line-height: 1.6em;	
+}
+#autoRefillDialog .xform li.last {
+	margin: 0;
+	padding: 0;	
+}
+#autoRefillDialog .xform li label {
+	width: 9.5em;	
+}
+#autoRefillDialog .xform li .balance,
+#autoRefillDialog .xform li .amount {
+	width: 88px;
+}
+#autoRefillDialog .xform li .note {
+	font-weight: normal;
+	display: inline-block;
+	width: 24em;
 }
 
 /* 1clicMAX POS Page: 1ClicMAX Product */
