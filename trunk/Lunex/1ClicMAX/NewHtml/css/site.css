@@ -152,7 +152,7 @@ input, select {
 	-webkit-box-sizing: border-box;
 }
 #header {
-	height: 84px;
+	height: 83px;
 	padding: 0 0 0 8px;
 	background-color: #fafafa;
 	border-bottom: 3px solid #123785;
@@ -184,7 +184,6 @@ input, select {
 #header .hcnt .account-log,
 #header .hcnt .account-toolbar {
 	display: inline-block;
-	vertical-align: middle;
 	margin: 0;
 	padding: 0;
 }
@@ -222,11 +221,11 @@ input, select {
 	padding-left: 62px;
 	background: url('../img/accbar_leftend.gif') no-repeat 0 0;
 }
-#header .hcnt .account-toolbar .barinner {
-	height: 40px;
+#header .hcnt .account-toolbar .barinner {	
 	padding-right: 10px;
-	display: block;
 	background-color: #eaeaea;
+	height: 40px;
+	display: block;
 }
 #header .hcnt .account-toolbar .account-mgt {
 	color: #123785;
@@ -1659,8 +1658,9 @@ span.option .child-options span.option {
 }
 #transfersFundPage .xform .amount {
 	font-size: 35px;
-	background: url('../img/transfer_mask.png') no-repeat 8px 8px;
+	background: #fff url('../img/transfer_mask.png') no-repeat 8px 8px;
 	padding-left: 28px;
+	box-shadow: inset 0 0 .1em #ccc;
 }
 #transfersFundPage .xform-cmd span {
 	display: inline-block;
@@ -1690,9 +1690,10 @@ span.option .child-options span.option {
 }
 #walletPage .xform .amount {
 	font-size: 35px;
-	background: url('../img/transfer_mask.png') no-repeat 8px 8px;
+	background: #fff url('../img/transfer_mask.png') no-repeat 8px 8px;
 	padding-left: 28px;
 	width: 140px;
+	box-shadow: inset 0 0 .1em #ccc;
 }
 #walletPage .xform .dec {
 	font-size: 35px;
@@ -1854,6 +1855,17 @@ span.option .child-options span.option {
 	display: block;
 	padding: 0;
 	margin: 0 8px 5px;
+}
+#rechargeBonusButton {
+	font-size: 38px;
+    padding-top: 14px !important;
+    text-align: center;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#rechargeBonusButton sup {
+	font-size: 22px;
 }
 #rechargeAccountForm .button-wrapper #rechargeAddButton span,
 #rechargeAccountForm .button-wrapper #rechargeVoidButton span {
