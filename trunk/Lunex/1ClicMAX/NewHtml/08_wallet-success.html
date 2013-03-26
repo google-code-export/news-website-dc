@@ -35,48 +35,7 @@
 		<!-- Site Init -->
 		<script src="js/site-init.js"></script>
     </head>
-    <body>
-    	<!-- Dialogs Section -->
-        <!-- TODO: All dialogs should be placed here ONLY -->
-		<div id="autoRefillDialog" class="dialog" title="Auto Refill">        	
-			<form id="autoRefillForm">
-            	<ul class="xform inline">
-                	<li>
-						<label>Select Credit Card:</label>
-                        <select class="cc inline">
-                            <option>VISA-xxxx-xxxx-xxxx-1111</option>
-                            <option>AE-xxxx-xxxx-xxxx-0005</option>
-                        </select>
-                    </li>
-                    <li>
-						<label>Cardholder's Name:</label>
-                        <strong class="imp">B A C</strong>
-                    </li>
-                    <li>
-						<label>Minimum Balance:</label>
-                        <input class="inline balance" type="text" maxlength="4" data-mask-type="number" />
-                    </li>
-                    <li>
-						<label>Auto Refill Amount:</label>
-                        <select class="inline amount">
-                        	<option value="50">$50</option>
-                            <option value="100">$100</option>
-                            <option value="200">$200</option>
-                            <option value="300">$300</option>
-                            <option value="400">$400</option>
-                            <option value="500">$500</option>
-                            <option value="1000">$1000</option>
-                        </select>
-                    </li>
-                    <li class="last">
-						<label></label>
-                        <span class="note">By enabling auto refill, our system will add credit to your account using your credit card every time your account reach or drop below the selected dollar amount of your minimum balance</span>
-                    </li>                    
-                </ul>
-            </form>
-		</div>
-		<!-- END Dialogs Section -->
-    
+    <body>    	   
 		<div class="wrapper">
 			<header id="header" role="siteheader">
                 <a id="logo" role="sitelogo" href="02_home.html"><img alt="1ClicMAX&trade;" src="img/logo.gif"></a>
@@ -166,73 +125,55 @@
                 </div>
                 <section class="fly-box content-holder clearfix">
                 	<section class="main left">
-                    	<form method="get" action="08_wallet-confirm.html">
-                        	<ul class="xform inline">
-                            	<li class="first">
-                                    <label>Current Balance:</label>
-                                    <strong class="imp2 emp">$234.89</strong>
+                    	<section class="result-panel success">
+                            <ul class="xform inline">
+                                <li>
+                                    <label>Result:</label>
+                                    <strong class="imp2 upper result">Successful</strong>
                                 </li>
                                 <li>
-                                    <label>Enter Refill Amount:</label>
-                                    <input type="text" class="inline xlarge amount align-right" maxlength="4">
-                                    <span class="dec">.00</span>
+                                    <label>Transaction ID:</label>
+                                    <strong class="imp2">20820403</strong>
                                 </li>
                                 <li>
-                                    <label>Select Credit Card:</label>
-                                    <select class="cc inline">
-                                        <option>VISA-xxxx-xxxx-xxxx-1111</option>
-                                        <option>AE-xxxx-xxxx-xxxx-0005</option>
-                                    </select>
-                                    <input class="gray-button" type="button" value="Edit" />
+                                    <label>Approval #:</label>
+                                    <strong class="imp">027B75E1W5TYY2WRKZV</strong>
                                 </li>
                                 <li>
-                                	<label class="inline">Cardholder's Name:</label>
-                                    <strong class="imp">B A C</strong>
-                                </li>
-                                <li class="last">
-                                    <label>Enter CVV Code:</label>
-                                    <input class="inline cvv-code" type="text" maxlength="4"
-                                        data-mask-type="number"
-                                        data-validation-engine="validate[required,minSize[3]]"
-                                        data-errormessage-value-missing="Please enter correct CVV code"
-                                        data-errormessage-range-underflow="Please enter correct CVV code" />
-                                    <em class="field-des cvv-des">
-                                        (The 3 or 4-digit security code 
-                                        <a rel="tooltip" href="#" data-content="<img alt='' class='tooltip' src='res/guides/cvv-small.jpg'>">
-                                        <img src="img/icon_help.png"></a>)
-                                    </em>
-                                </li>
+                                    <label>Date/Time:</label>
+                                    <strong class="imp">03/22/2013 07:23</strong>
+                                </li>                                 
                             </ul>
-                            <div class="xform-cmd">
-                                <input type="submit" value="Confirm" />
-                            </div>
-                        </form>
+                        </section>
+                    	<ul class="xform inline">
+                            <li>
+                                <label>Credit Card:</label>
+                                <strong>VISA-xxxx-xxxx-xxxx-1111</strong>
+                            </li>
+                            <li>
+                                <label class="inline">Cardholder's Name:</label>
+                                <strong class="imp">B A C</strong>
+                            </li>
+                            <li>
+                                <label>Amount Charged:</label>
+                                <strong class="imp">$25</strong>
+                            </li>
+                            <li>
+                                <label>Old Balance:</label>
+                                <strong class="imp">$234.89</strong>
+                            </li>
+                            <li class="last">
+                                <label>New Balance:</label>
+                                <strong class="imp2 emp">$259.89</strong>
+                            </li>
+                        </ul>
+                        <div class="xform-cmd">
+                            <a class="button-print gray-button" href="#">Print</a>
+                            <input type="button" value="Close" />
+                        </div>
                     </section>
                     <aside class="side right">
-                    	<div class="auto-refill">
-                            <h3>Auto Refill</h3>
-                            <p>Add Credit Automatically When You Reach Your Minimum Balance</p>
-                            <div class="indent">
-                            	<p>
-                                    <label>Minimum balance:</label> <strong>$10</strong><br/>
-                                    <label>Auto refill amount:</label> <strong>$50</strong>
-                                </p>
-                                <input id="editAutoRefill" type="button" value="Edit" />
-                                <input id="disableAutoRefill" class="gray-button" type="button" value="Disable" />
-                            </div>
-                            <hr/>
-                            <ul class="xform inline refill-info">
-                                <li>
-                                	<label>Credit Card:</label> <strong>VISA-xxxx-xxxx-xxxx-1111</strong>
-                                </li>
-                                <li>
-                                	<label>Expiration Date:</label> <strong>01 - 2013</strong>
-                                </li>
-                                <li>
-                                	<label>Billing Address:</label> <strong>23112, 1231213 SCHENECTADY, NY 12345 - USA</strong>
-                                </li>
-                            </ul>
-                        </div>
+                    	<a class="banner result" href="#"><img src="res/banners/1clicmax_sample.jpg" alt="" /></a>
                     </aside>
                 </section>
             </div>

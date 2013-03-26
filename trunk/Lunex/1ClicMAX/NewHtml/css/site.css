@@ -1734,6 +1734,10 @@ span.option .child-options span.option {
 #walletPage .side .auto-refill .note {
 	 line-height: 1.6em;	
 }
+#walletPage .side .banner img {
+	 width: 100%;
+	 height: 296px;
+}
 #autoRefillDialog .xform li.last {
 	margin: 0;
 	padding: 0;	
@@ -1749,6 +1753,20 @@ span.option .child-options span.option {
 	font-weight: normal;
 	display: inline-block;
 	width: 24em;
+}
+/* Wallet Result */
+#walletPage .main .result-panel li {
+    border: 0 none;
+	margin: 0;
+}
+#walletPage .main .result-panel li label {
+    width: 8.2em;
+}
+#walletPage .main .result-panel hr {
+    margin: .5em 0;
+}
+#walletPage .side .banner.result img {
+	 height: 494px;
 }
 
 /* 1clicMAX POS Page: 1ClicMAX Product */
