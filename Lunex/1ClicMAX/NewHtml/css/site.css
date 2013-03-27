@@ -1781,6 +1781,87 @@ span.option .child-options span.option {
 #walletPage .side .banner.result img {
 	 height: 494px;
 }
+/* Wallet CC */
+#walletCCPage .cc-tabs {
+	display: block;
+	margin: -20px 0 60px 0;
+}
+#walletCCPage .cc-tabs li {
+	width: 50%;
+	display: block;
+	float: left;	
+}
+#walletCCPage .cc-tabs li a {
+	display: block;
+	width: 100%;
+	height: 30px;	
+	line-height: 25px;
+	color: #999;
+	font-family: 'Roboto Condensed', Arial, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-width: 0 1px 1px 0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#walletCCPage .cc-tabs li a:hover,
+#walletCCPage .cc-tabs li a.selected {
+	color: #123785;
+	text-decoration: none;
+}
+#walletCCPage .cc-tabs li a.selected {
+	font-size: 20px;
+}
+#walletCCPage .cc-tabs li:last-child a {
+	border-right: 0 none;
+}
+#walletCCPage .cc-wallet {
+	display: table;
+	width: auto;
+	margin: 0 auto;	
+}
+#walletCCPage .cc-wallet li label {
+	width: 10em;
+	text-align: right;
+	padding-right: 6px;
+}
+#walletCCPage .cc-wallet li input[type=text],
+#walletCCPage .cc-wallet li input[type=tel],
+#walletCCPage .cc-wallet li select {
+	width: 398px;
+}
+#walletCCPage .cc-wallet li .field-des {
+	font-size: 14px;
+	font-weight: normal;
+	padding-left: 6px;
+}
+#walletCCPage .cc-wallet li .red-button {
+	margin-left: 8px;
+}
+#walletCCPage .cc-wallet li input.name {
+	width: 130px;
+}
+#walletCCPage .cc-wallet li input.short,
+#walletCCPage .cc-wallet li select.short {
+	width: 305px;
+}
+#walletCCPage .cc-wallet li input.short2,
+#walletCCPage .cc-wallet li select.short2 {
+	width: 90px;
+}
+#walletCCPage .cc-wallet li input.zip-code,
+#walletCCPage .cc-wallet li input.cvv-code {
+	width: 70px;
+}
+#walletCCPage .cc-wallet li label.option {
+	width: auto;
+	text-align: left;
+	padding-right: 0;
+}
 
 /* 1clicMAX POS Page: 1ClicMAX Product */
 /* -------------------------------------------------------------------- */
