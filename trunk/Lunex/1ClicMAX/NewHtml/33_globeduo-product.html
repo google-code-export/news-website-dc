@@ -36,17 +36,28 @@
 		<!-- Site Init -->
 		<script src="js/site-init.js"></script>
     </head>
-    <body>        
+    <body>
+    	<!-- Dialogs Section -->
+        <!-- TODO: All dialogs should be placed here ONLY -->
+        <div id="instDialog" class="dialog info-dialog" title="Globe Duo International Dialing Instructions">
+            <ul class="listNum">
+            	<li>From your registered US phone number, dial your Access Number.</li>
+                <li>Connect with your family and friends in the Philippines!</li>
+            </ul>
+            <strong>Globe Duo International Terms &amp; Conditions</strong>
+            <p>By using the product, user agrees to the following: 1 phone number in the United States can call up to 2 Globe phone numbers in Philippines for up to 2,000 minutes within a 30 day period. Globe phone numbers include the following Globe brands: (1) Globe Mobile Numbers; (2) Talk and Text Numbers; and (3) red Mobile Numbers. Call will be automatically cut-of fafter 60 minutes of continuous talk; user can redial and talk again after the cut-off. Unused minutes cannot be rolled over or prorated. User using credit card to purchase will be set up under autosubscription and the service will be automatically renewed on a monthly basis; user can request to be removed from auto-subscription. Service order once purchased is not refundable. User is responsible for providing correct phone numbers when order and will be liable for service charge if provided wrong phone numbers. Service price is subject to change without notice. Service cannot be used for any unlawful purposes. For latest terms and conditions, please contact Customer Service 1-888-333-6808 or visit website <a href="http://www.LunexTelecom.com" target="_blank">www.LunexTelecom.com</a></p>
+		</div>        
+		<!-- END Dialogs Section -->
+    
 		<div class="wrapper">
 			<header id="header" role="siteheader">
                 <a id="logo" role="sitelogo" href="02_home.html"><img alt="1ClicMAX&trade;" src="img/logo.gif"></a>
                 <section class="hcnt">
                     <div class="hcnt-upper">
                         <ul class="menu">
-                            <li><a href="#">Rates</a></li>
-                            <li><a href="#">Access Numbers</a></li>
                             <li><a href="#">Promotions</a></li>
-                            <li><a href="#">Instructions</a></li>
+                            <li><a class="dialog-trigger" data-dialog-id="instDialog" href="#">Instructions</a></li>
+							<li><a href="#">TV Ads</a></li>
                         </ul>
                         <span class="sep"></span>
                         <div class="customer-support">
