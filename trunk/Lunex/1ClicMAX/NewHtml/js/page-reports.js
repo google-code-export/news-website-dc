@@ -3,10 +3,14 @@ $(function() {
 	ui.jWidget.setupDialogs();
 	ui.jWidget.setupDataTables();
 	form.mask.setupMaskMany([
-		{ form: "addDepositForm" }
+		{ form: "addDepositForm" },
+		{ form: "ccEditForm" },
+		{ form: "ccAddForm" }
 	]);
 	form.validation.setupMany([
-		{ form: "addDepositForm", option: { scroll: false } }
+		{ form: "addDepositForm", option: { scroll: false } },
+		{ form: "ccEditForm" },
+		{ form: "ccAddForm" }
 	]);
 	
 	// TODO: Execute page-scope functions here
