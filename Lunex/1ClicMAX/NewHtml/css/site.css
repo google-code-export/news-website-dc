@@ -1224,6 +1224,64 @@ span.option .child-options span.option {
 	background-color: #e5e5e5;
 }
 
+/* 1clicMAX POS Page: Info Dialogs */
+/* -------------------------------------------------------------------- */
+.info-dialog {
+	width: 900px;	
+	padding-top: 10px !important;
+}
+@media screen and (min-height: 600px) {
+	.info-dialog {
+		max-height: 400px !important;
+	}
+}
+@media screen and (min-height: 700px) {
+	.info-dialog {
+		max-height: 500px !important;
+	}
+}
+@media screen and (min-height: 800px) {
+	.info-dialog {
+		max-height: 600px !important;
+	}
+}
+@media screen and (min-height: 900px) {
+	.info-dialog {
+		max-height: 700px !important;
+	}
+}
+.info-dialog h4,
+.info-dialog h5 {
+	margin: 0;
+	margin-top: 10px;
+}
+.info-dialog h4 {
+	font-size: 18px;
+}
+.info-dialog h5 {
+	font-size: 16px;
+}
+.info-dialog .ml15 {
+	margin-left: 15px;
+}
+.info-dialog p {
+	margin: 0;
+	margin-bottom: 15px;
+}
+.info-dialog ul.list,
+.info-dialog ul.listNum {
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+.info-dialog ul.list li {
+	margin-left: 15px;
+	list-style: disc;
+}
+.info-dialog ul.listNum li {
+	margin-left: 15px;
+	list-style: decimal;
+}
+
 /* 1clicMAX POS Page: Login */
 /* -------------------------------------------------------------------- */
 @media screen and (min-height: 700px) {

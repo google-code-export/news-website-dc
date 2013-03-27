@@ -36,7 +36,59 @@
 		<!-- Site Init -->
 		<script src="js/site-init.js"></script>
     </head>
-    <body>        
+    <body>
+    	<!-- Dialogs Section -->
+        <!-- TODO: All dialogs should be placed here ONLY -->
+        <div id="promoDialog" class="dialog info-dialog" title="1ClicMAX&trade; Promotions">
+            <h4>Get $1 Free To Try 1ClicMAX&trade;!</h4>            
+            <h4>International Top-Up Promotion</h4>
+            <p><a href="#">Click here for details...</a></p>
+            <h4>Get 5% Bonus</h4>
+            <p>Lunex Telecom will award an additional 5% of Pinless services towards customer purchases that total or exceed $20 starting at 12:00 AM Thursday 03/21/2013 - ending at 2:59 AM Friday 03/22/2013, EST. Cannot be combined with any other offer. Offer not applicable on prior or voided purchases.</p>
+		</div>
+        
+        <div id="instDialog" class="dialog info-dialog" title="Instructions for 1ClicMAX&trade;">
+            <h4>DIALING INSTRUCTIONS FOR 1ClicMAX&trade;</h4>
+            <div class="ml15">
+                <h5>1Clic&trade; dialing</h5>
+                <p>Dial 1Clic&trade; Number, press Talk/Send, call will be connected.</p>
+                <u>Note:</u>
+                <ul class="list">
+                	<li>The 1Clic&trade; Number can be dialed directly from phone book.</li>
+                    <li>The 1Clic&trade; Number can be set up as speed dial on the handset. After that, just 1 touch to the assigned speed dial number and hold for a few seconds, call will be connected. (this function operates differently depending on handset).</li>
+                </ul>                
+                <h5>Speed dialing</h5>
+                <strong>Set up Speed Dial &amp; Enjoy 2Step-Calling</strong>
+                <ul class="list">
+                	<li><strong>Step 1:</strong> Dial Access Number (either local or toll free)</li>
+                    <li><strong>Step 2:</strong> Press assigned speed dial for international phone number</li>
+                </ul>                
+                <h5>Pin-less dialing in 2 steps</h5>
+                <ul class="list">
+                	<li><strong>Step 1:</strong> Dial Access Number (either local or toll free)</li>
+                    <li><strong>Step 2:</strong> Dial 011 + country code + area code+ phone number + # key</li>
+                </ul>
+                <strong>Notice:</strong>
+                <ul class="list">
+                	<li>Please check with your telephone provider to make sure that the Local Access Number you dial is LOCAL to your phone service to avoid paying long distance charges.</li>
+                    <li>Do not press TALK/SEND after dialing phone numbers when using cell phones.</li>
+                </ul>
+                <strong>If dialing Toll Free Access Number:</strong>
+                <ul class="list">
+                	<li>1.888.991.5959, additional two cents per minute will apply.</li>
+                    <li>Alaska 1.888.777.0139, additional twenty cents per minute will apply.</li>
+                </ul>
+            </div>            
+            <h4>DIALING INSTRUCTIONS FOR CONECT2&trade;</h4>
+            <div class="ml15">
+                Friends/family abroad calls local in-country access number and inputs US customers phone number as below:
+                <ul class="list">
+                	<li><strong>1 + City Area Code + Number</strong></li>
+                </ul>
+            </div>
+		</div>
+		<!-- END Dialogs Section -->
+    
 		<div class="wrapper">
 			<header id="header" role="siteheader">
                 <a id="logo" role="sitelogo" href="02_home.html"><img alt="1ClicMAX&trade;" src="img/logo.gif"></a>
@@ -45,8 +97,9 @@
                         <ul class="menu">
                             <li><a href="#">Rates</a></li>
                             <li><a href="#">Access Numbers</a></li>
-                            <li><a href="#">Promotions</a></li>
-                            <li><a href="#">Instructions</a></li>
+                            <li><a class="dialog-trigger" data-dialog-id="promoDialog" href="#">Promotions</a></li>
+                            <li><a class="dialog-trigger" data-dialog-id="instDialog" href="#">Instructions</a></li>
+                            <li><a href="#">TV Ads</a></li>
                         </ul>
                         <span class="sep"></span>
                         <div class="customer-support">

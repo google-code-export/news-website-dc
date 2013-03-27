@@ -41,7 +41,16 @@
         <!-- TODO: All dialogs should be placed here ONLY -->
 		<div id="disclaimerDialog" class="dialog" title="Disclaimer" style="width:500px">
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>		
+		</div>
+        
+        <div id="instDialog" class="dialog info-dialog" title="US Prepaid Mobile Top Up Instructions">
+            Simply follow these 3 easy steps:
+            <ul class="listNum">
+            	<li>Enter the U.S. Top Up information.</li>
+                <li>Confirm all information is correct.</li>
+                <li>Click <strong>CONFIRM</strong>.</li>
+            </ul>
+		</div>
 		<!-- END Dialogs Section -->
 	
 		<div class="wrapper">
@@ -50,10 +59,9 @@
                 <section class="hcnt">
                     <div class="hcnt-upper">
                         <ul class="menu">
-                            <li><a href="#">Rates</a></li>
-                            <li><a href="#">Access Numbers</a></li>
                             <li><a href="#">Promotions</a></li>
-                            <li><a href="#">Instructions</a></li>
+                            <li><a class="dialog-trigger" data-dialog-id="instDialog" href="#">Instructions</a></li>
+                            <li><a href="#">TV Ads</a></li>
                         </ul>
                         <span class="sep"></span>
                         <div class="customer-support">
