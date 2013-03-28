@@ -2641,6 +2641,15 @@ span.option .child-options span.option {
 	padding: 0 0 20px !important;
 	display: none;
 }
+#ku2000ProductPage #paymentCcLabel {
+	padding-left: 28px;
+}
+#ku2000ProductPage .activity-table {
+	font-size: 14px;
+}
+#ku2000ProductPage .activity-table a {
+	font-weight: normal;
+}
 /* Ku2000 Confirm */
 #ku2000ProductPage .product-panel {
 	width: 598px;	
@@ -2941,8 +2950,28 @@ span.option .child-options span.option {
 #globeDuoProductPage .account-info .account-cnt .xform li label {
 	width: 11em;
 }
+#globeDuoProductPage .account-info .account-cnt .xform li a {
+	font-weight: normal;
+}
 #globeDuoProductPage .account-info .account-cnt .product-table {
 	margin: 0;
+}
+#globeDuoProductPage .activity-table {
+	font-size: 14px;
+	width: 540px;
+	margin-top: 10px !important;
+}
+#globeDuoProductPage .activity-table td {
+	padding: 5px 0;
+	border-style: dotted;
+	border-width: 0 0 1px;
+}
+#globeDuoProductPage .activity-table tr:last-child td {
+	border: 0 none;
+	padding: 5px 0 0;
+}
+#globeDuoProductPage .activity-table a {
+	font-weight: normal;
 }
 
 /* 1clicMAX POS Page: Kumusta Cards */
