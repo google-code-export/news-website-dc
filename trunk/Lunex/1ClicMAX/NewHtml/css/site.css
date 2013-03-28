@@ -99,6 +99,7 @@ input, select {
 .note {
 	font-size: 14px;
 	font-style: italic;
+	font-weight: normal !important;
 }
 .note .title {
 	font-weight: bold;
@@ -2431,6 +2432,31 @@ span.option .child-options span.option {
 #topupUsaProductPage #topupForm #recipientInfo p .phone-suffix {
 	width: 213px;
 }
+#topupUsaProductPage #topupForm #recipientInfo .amount {
+	width: 160px;
+	padding-right: 37px;
+}
+#topupUsaProductPage #topupForm #recipientInfo .con-fee {
+	width: 160px;
+	padding-right: 37px;
+}
+#topupUsaProductPage #topupForm #recipientInfo .total {
+	width: 160px;
+}
+#topupUsaProductPage #topupForm #recipientInfo .amount-pane {	    
+    position: relative;
+}
+#topupUsaProductPage #topupForm #recipientInfo .operator {	
+    font-size: 36px;
+    position: absolute;
+	bottom: 22px;
+}
+#topupUsaProductPage #topupForm #recipientInfo .operator.plus {	
+	left: 169px;
+}
+#topupUsaProductPage #topupForm #recipientInfo .operator.equal {	
+	left: 365px;
+}
 #topupUsaProductPage .transaction-history {
 	width: 316px;
 	margin-top: 10px;
@@ -2468,6 +2494,12 @@ span.option .child-options span.option {
 #topupUsaProductPage .transaction-history article .cmd .button {
 	display: block;
 	margin-bottom: 2px;
+}
+#pinInstDialog h4 {
+	margin-bottom: .6em;
+}
+#pinInstDialog .xform {
+	width: 25em;
 }
 /* Top-Up Confirm */
 #topupUsaProductPage .product-panel {
