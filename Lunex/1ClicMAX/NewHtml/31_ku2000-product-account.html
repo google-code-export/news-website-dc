@@ -264,7 +264,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="imp emp">
-                                                    <strong class="data mode1">9123456789</strong>
+                                                    <strong class="data emp mode1">9123456789</strong>
                                                     <input class="inline important major phone-suffix mode2" type="tel" maxlength="10"
                                                         value="9123456789"
                                                         data-mask-type="number"
@@ -275,7 +275,7 @@
                                                     <strong class="data mode1">Cuong</strong>
                                                     <input class="important upper phone-name mode2" type="text" maxlength="5" value="Cuong" />
                                                 </td>
-                                                <td class="imp emp">999-999-8888</td>
+                                                <td class="imp">999-999-8888</td>
                                             </tr>
                                             <tr class="mode2">
                                             	<td class="imp emp">
@@ -293,7 +293,7 @@
                             </section>
                             <hr/>
                             <section class="product-panel has-cmd open-close">
-                            	<h2 class="anchor">Payment Method <strong id="paymentLabel" class="data">Credit Card</strong></h2>
+                            	<h2 class="anchor">Payment Method <strong id="paymentLabel" class="data">Credit Card</strong></h2>								
                                 <form id="paymentMethodForm">
                                 	<div class="cmd">
                                         <input class="update-button mode1" type="button" value="Update Card" />
@@ -302,7 +302,8 @@
                                         <input class="save-button mode2" type="button" value="Save" />
                                     </div>
                                     <div class="content">
-                                    	<div class="mode2">
+										<strong class="data" id="paymentCcLabel">American Express Ending 005</strong>
+                                    	<div class="mode2">											
                                         	<ul id="paymentMethod" class="xform payment-method">
                                                 <li>
                                                     <span class="option">
@@ -493,18 +494,21 @@
                             <section class="product-panel open-close">
                             	<h2 class="anchor">Recent Acccount Activity</h2>
                                 <div class="content">
-                                	<table class="product-table loose" cellpadding="0" cellspacing="0" border="0">
+                                	<table class="product-table loose activity-table" cellpadding="0" cellspacing="0" border="0">
                                         <tr>
                                             <th>1</th>
                                             <td>$40.00 Recharge for next month paid in advance on 02/06/2013</td>
+											<td>PENDING | <a href="#">Cancel</a></td>
                                         </tr>
                                         <tr>
                                             <th>2</th>
                                             <td>Sample Activity #2</td>
+											<td></td>
                                         </tr>
                                         <tr>
                                             <th>3</th>
                                             <td>Sample Activity #3</td>
+											<td></td>
                                         </tr>
                                     </table>
                                 </div>

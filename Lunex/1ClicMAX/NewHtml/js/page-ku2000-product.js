@@ -114,27 +114,27 @@ pages = $.extend(pages, {
 					pages.ku2000.myAccount._switchMode(formElem, true, function() {
 						pages.ku2000.myAccount.setupPaymentMethod();
 						$("#paymentMethod").show();
-						$("#paymentLabel").hide();
+						$("#paymentLabel, #paymentCcLabel").hide();
 					});					
                 });		
 				$("#paymentMethodForm .cmd .update-button").click(function() {
 					// TODO: Add your code here
 					pages.ku2000.myAccount._switchMode(formElem, true, function() {
 						$("#paymentMethod").hide();
-						$("#paymentLabel").show();
+						$("#paymentLabel, #paymentCcLabel").show();
 					});					
                 });			
 				$("#paymentMethodForm .cmd .save-button").click(function() {
 					// TODO: Add your code here                    
 					if (formElem.validationEngine("validate")) {
 						pages.ku2000.myAccount._switchMode(formElem);
-						$("#paymentLabel").show();
+						$("#paymentLabel, #paymentCcLabel").show();
 					}
                 });
 				$("#paymentMethodForm .cmd .cancel-button").click(function() {
 					// TODO: Add your code here                
 					pages.ku2000.myAccount._switchMode(formElem);
-					$("#paymentLabel").show();
+					$("#paymentLabel, #paymentCcLabel").show();
                 });
 			},
 			setupPaymentMethod: function() {
