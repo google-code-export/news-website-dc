@@ -573,8 +573,12 @@ input, select {
 	display: none;
 	background: #fafafa;
     padding: 8px 15px 5px;
-	min-width: 110px;
-	box-shadow: 0 0 5px #555;
+	min-width: 100%;
+	white-space: nowrap;
+	box-shadow: 0 0 5px #555;	
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
     position: absolute;    
     top: 32px;
 	right: 0;
@@ -1281,6 +1285,21 @@ span.option .child-options span.option {
 .info-dialog ul.listNum li {
 	margin-left: 15px;
 	list-style: decimal;
+}
+
+/* 1clicMAX Promo Code */
+/* -------------------------------------------------------------------- */
+.promo-code-outer {
+	display: block;
+	width: 100%;
+	height: 60px; 
+	background: #4581E3;
+	text-align: center;
+	line-height: 60px;
+}
+.promo-code-outer a {
+	color: #fff;
+	font-size: 20px;
 }
 
 /* 1clicMAX POS Page: Login */
