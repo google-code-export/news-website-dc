@@ -518,6 +518,7 @@ input, select {
 }
 .popup #popup iframe {
 	background: #fafafa url('../img/loader.gif') no-repeat 50% 50%;	
+	margin-top: -20px;
 }
 .shout-box {
 	min-width: 300px;
@@ -1300,6 +1301,21 @@ span.option .child-options span.option {
 .promo-code-outer a {
 	color: #fff;
 	font-size: 20px;
+}
+#createPromoDialog ol {
+	list-style: inside decimal;
+	text-indent: 15px;
+	padding: 5px 0 20px;	
+}
+#createPromoDialog .xform {
+	display: table;
+	width: auto;
+	margin: 0 auto;
+}
+#createPromoDialog .xform li label {
+	width: 10.5em;
+	padding-right: 5px;
+	text-align: right;
 }
 
 /* 1clicMAX POS Page: Login */
