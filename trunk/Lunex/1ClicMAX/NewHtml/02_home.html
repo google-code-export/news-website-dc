@@ -19,6 +19,7 @@
 		<link rel="stylesheet" href="css/font.css">
         <link rel="stylesheet" href="plg/jqui/jquery-ui.css">
         <link rel="stylesheet" href="plg/nivo/nivo-slider.css">
+        <link rel="stylesheet" href="plg/validation/jquery.validationEngine.css">
         <link rel="stylesheet" href="css/site.css">
 		<!--[if IE ]>
 		<link rel="stylesheet" href="css/site-ie.css" />
@@ -45,7 +46,36 @@
         <div id="youtubePopupContent" class="popup-content">
         	<iframe width="640" height="480" data-src="http://www.youtube.com/embed/QwlqFvEg5xU" frameborder="0" allowfullscreen></iframe>
         </div>
+        <div id="promoCodePopupContent" class="popup-content">
+        	<iframe width="660" height="380" data-src="http://t.sales.lunexgroup.com/promotion/result-promo-code" frameborder="0" allowfullscreen></iframe>        	
+        </div>
         <!-- END Popup Contents Section -->
+		
+		<!-- Dialogs Section -->
+        <!-- TODO: All dialogs should be placed here ONLY -->
+		<div id="createPromoDialog" class="dialog" title="Create Promo Code">
+        	Please enter the 6 -8 characters promo code following the rules below:
+            <ol>
+            	<li>Start with a letter of the alphabet</li>
+				<li>Include at least 1 number</li>
+            </ol>
+			<form id="abc" method="get" action="">
+            	<ul class="xform inline">
+                    <li>
+                        <label>Promo Code:</label>
+                        <input class="inline upper important align-center" type="text" maxlength="8" size="8"
+                        	autofocus
+                        	data-validation-engine="validate[required]"
+                            data-errormessage-value-missing="Please enter promo code" />
+                    </li>
+                    <li>
+                        <label>Re-Enter Promo Code:</label>
+                        <input class="inline upper important align-center" type="text" maxlength="8" size="8" />
+                    </li>
+                </ul>
+            </form>
+		</div>
+		<!-- END Dialogs Section -->
     	
     	<div class="wrapper">
         	<header id="header" role="siteheader">
@@ -81,7 +111,7 @@
                                     Prepaid Credit: <strong class="emp">$234.89</strong>
                                 </span>
                                 <span class="sep"></span>
-                                <a href="#">Create Promo Code</a>
+                                <a id="createPromoLink" href="#">Create Promo Code</a>
                                 <span class="sep"></span>
                                 <a class="account-mgt" href="03_accmgt-prepaid.html">Acccount Management</a>
                             </div>
@@ -208,7 +238,8 @@
         <script src="plg/jqui/jquery-ui.min.js"></script>
         <script src="plg/nivo/jquery.nivo.slider.pack.js"></script>
         <script src="plg/jquery.hoverIntent.min.js"></script>
-        <script src="plg/jquery.iframe.js"></script>        
+        <script src="plg/validation/jquery.validationEngine-en.js"></script>
+        <script src="plg/validation/jquery.validationEngine.js"></script>  
         <script src="js/site.js"></script>
         <script src="js/page-home.js"></script>
 

@@ -1,9 +1,14 @@
 ﻿$(function() {
 	ui.jWidget.setupPopup();
+	ui.jWidget.setupDialogs();
+	form.validation.setupMany([
+		{ form: "createPromoDialog form", option: { promptPosition: "topLeft", binded: false } }
+	]);
 	
 	pages.homep.handleProductsHover();
 	pages.homep.setupSlider();
-	pages.homep.showPromoPopup();
+	//pages.homep.showPromoPopup();
+	pages.homep.allowCreatePromoCode();
 	// TODO: Execute page-scope functions here
 });
 
@@ -39,6 +44,31 @@ pages = $.extend(pages, {
 		showPromoPopup: function() {			
 			ui.jWidget.showPopup($("#startupPopupContent").html(), null,
 				function() { console.log("Open!") }, function() { console.log('Close!') })
+		},
+		allowCreatePromoCode: function() {			
+			$("#createPromoLink").click(function() {
+				ui.jWidget.showDialog("createPromoDialog", {
+					width: 600,
+					buttons: [
+						{
+							text: "Cancel",
+							class: "sub-button",
+							click: function() {
+								ui.jWidget.closeDialog("createPromoDialog");
+							}
+						},
+						{
+							text: "Create",
+							click: function() {
+								if (form.validation.validate("createPromoDialog form")) {
+									ui.jWidget.showPopup($("#promoCodePopupContent").html());
+									ui.jWidget.closeDialog("createPromoDialog");	
+								}								
+							}
+						}
+					]
+				});
+			});
 		}
 	}	
 });
