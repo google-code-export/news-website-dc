@@ -795,6 +795,9 @@ input[type=checkbox] {
 .xform input[type="date"]::-webkit-inner-spin-button{
     display: none;
 }
+.xform select {
+	padding: .24em .3em .18em;	
+}
 .xform textarea {
 	resize: none;
 }
@@ -2291,6 +2294,32 @@ span.option .child-options span.option {
 	font-size: 24px;
 	line-height: 1.6em;
 	text-align: center;	
+}
+/* Info Dialogs */
+#ratesDialog .country-list {
+	width: 330px;
+	margin-right: 10px;
+}
+#ratesDialog .country-code {
+	width: 140px;
+	margin-right: 10px;
+}
+#ratesDialog .phone-number {
+	width: 202px;
+	margin-right: 10px;
+}
+#ratesDialog .table-title,
+#ratesDialog .letter-buttons {
+	margin: 15px 0 10px;	
+}
+#ratesDialog .letter-buttons a {
+	min-width: auto;	
+}
+#ratesDialog .letter-buttons a .ui-button-text {
+	padding: .2em .45em;
+}
+#ratesDialog .bottom {
+	margin: 15px 0 0;	
 }
 
 /* 1clicMAX POS Page: Top-Up the World Product */
