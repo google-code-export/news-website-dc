@@ -429,9 +429,9 @@ var ui = {
 					},
 					buttons: {
 						// Default button
-						"OK": function() {
+						/*"OK": function() {
 							$(this).dialog("close")
-						}
+						}*/
 					}
 				});
 			});

@@ -12,7 +12,8 @@
 		{ form: "addUsNoDialog" },
 		{ form: "editUsNoDialog" },
 		{ form: "creditCardForm" },
-		{ form: "custInfoForm" }
+		{ form: "custInfoForm" },
+		{ form: "ratesDialog form" }
 	]);
 	form.validation.setupMany([
 		{ form: "phoneInputForm", option: { binded: false } },
@@ -36,6 +37,7 @@
 	pages.oneClicMax.showAddUsPhoneDialog();
 	pages.oneClicMax.showEditUsPhoneDialog();
 	pages.oneClicMax.showEditCustInfoDialog();
+	pages.oneClicMax.showRatesDialog();
 
 	pages.oneClicMax.confirmDelete1ClicNo();
 
@@ -183,6 +185,15 @@ pages = $.extend(pages, {
 							form.validation.hide("custInfoForm");
 						});
 						phoneType.find("span.default > :radio").attr("checked", "checked").change();
+					}
+				});
+            });
+		},
+		showRatesDialog: function() {
+			$("#ratesLink").click(function() {
+                ui.jWidget.showDialog("ratesDialog", {
+					open: function() {
+						ui.jWidget.setupDataTable("ratesTable");
 					}
 				});
             });

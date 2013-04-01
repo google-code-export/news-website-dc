@@ -66,7 +66,10 @@ pages = $.extend(pages, {
 								}								
 							}
 						}
-					]
+					],
+					close: function() {
+						form.validation.hide("createPromoDialog form")
+					}
 				});
 			});
 		}
