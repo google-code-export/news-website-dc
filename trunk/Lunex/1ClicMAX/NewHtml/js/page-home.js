@@ -1,6 +1,7 @@
 ﻿$(function() {
 	ui.jWidget.setupPopup();
 	ui.jWidget.setupDialogs();
+	ui.jWidget.setupTvAds();
 	form.validation.setupMany([
 		{ form: "createPromoDialog form", option: { promptPosition: "topLeft", binded: false } }
 	]);
@@ -36,9 +37,6 @@ pages = $.extend(pages, {
 			});
 		},
 		setupSlider: function() {
-			$("#homeSlider a.open-youtube").click(function() {
-				ui.jWidget.showPopup($("#youtubePopupContent").html());				
-            });
 			$("#homeSlider .nivoSlider").nivoSlider({ pauseTime: 5000 });
 		},
 		showPromoPopup: function() {			

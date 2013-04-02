@@ -1,5 +1,6 @@
 ﻿$(function() {	
 	ui.jWidget.setupDialogs();
+	ui.jWidget.setupTvAds();
 	ui.jWidget.setupTooltips();
 	form.mask.setupMaskMany([
 		{ form: "phoneInputForm" },
@@ -31,7 +32,7 @@
 	
 	pages.oneClicMax.refineTabContent();
 
-	//pages.oneClicMax.showNewCustomerDialog();
+	pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.showAddMultiNumbersDialog();
 	pages.oneClicMax.showEdit1ClicPhoneDialog();
 	pages.oneClicMax.showAddUsPhoneDialog();

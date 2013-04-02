@@ -1,5 +1,6 @@
 ﻿$(function() {
 	ui.jWidget.setupDialogs();
+	ui.jWidget.setupTvAds();
 	ui.jWidget.setupTooltips();
 	form.mask.setupMaskMany([
 		{ form: "topupForm" },

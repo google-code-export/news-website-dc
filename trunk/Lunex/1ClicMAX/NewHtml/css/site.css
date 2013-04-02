@@ -1544,6 +1544,29 @@ span.option .child-options span.option {
 	margin: .2em 0;
 	text-align: center;	
 }
+#tvAdsDialog {
+	width: 680px;	
+}
+#tvAdsDialog .playlist {
+	display: block;
+	overflow: auto;
+	max-height: 300px;
+}
+@media screen and (max-height: 800px) {
+	#tvAdsDialog .playlist {
+		max-height: 220px !important;
+	}
+}
+@media screen and (max-height: 700px) {
+	#tvAdsDialog .playlist {
+		max-height: 100px !important;
+	}
+}
+#tvAdsDialog .playlist p {
+	margin: 0;
+	padding: .4em 0;
+	border-bottom: 1px solid #ddd;
+}
 
 /* 1clicMAX POS Page: Reports Dashboard */
 /* -------------------------------------------------------------------- */
