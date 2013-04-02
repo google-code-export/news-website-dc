@@ -2321,6 +2321,107 @@ span.option .child-options span.option {
 #ratesDialog .bottom {
 	margin: 15px 0 0;	
 }
+#accessNumDialog .content-tabs {
+	margin-top: 9px;
+	display: block;
+	position: relative;
+	bottom: -1px;
+}
+#accessNumDialog .content-tabs li {
+	display: inline-block;
+	text-align: center;
+	width: 33%;
+}
+#accessNumDialog .content-tabs li a {
+	font-family: 'Roboto Condensed', Arial, sans-serif;
+	font-weight: bold;
+    font-size: 20px; 
+	color: #444;  
+    display: block;    
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+#accessNumDialog .content-tabs li a.selected,
+#accessNumDialog .content-tabs li a:hover {
+	color: #123785;
+	border: 1px solid #123785;
+    border-width: 1px 1px 0;
+	background-color: #fafafa;
+	text-decoration: none;
+}
+#accessNumDialog .content {
+    border-top: 1px solid #123785;
+    padding: 20px 0 0;
+}
+#accessNumDialog .states-list {
+	padding: 15px 0 5px;
+}
+#accessNumDialog .states-list ul {
+	width: 25%;
+}
+#accessNumDialog .countries-list {
+	padding: 0 0 5px;
+}
+#accessNumDialog .countries-list ul {
+	width: 20%;
+}
+#accessNumDialog .access-numbers ul {
+	width: 50%;
+	padding-top: 5px;
+}
+#accessNumDialog .states-list ul li,
+#accessNumDialog .countries-list ul li,
+#accessNumDialog .access-numbers ul li {
+	padding: 5px 0;
+	border-bottom: 1px solid #ddd;
+}
+#accessNumDialog .access-numbers ul li {
+	position: relative;
+	border-right: 1px solid #ddd;
+}
+#accessNumDialog .access-numbers ul.last li {
+	padding-left: 10px;
+	border-right: 0 none;
+}
+#accessNumDialog .states-list ul li:hover,
+#accessNumDialog .countries-list ul li:hover,
+#accessNumDialog .access-numbers ul li:hover {
+	border-color: #e40;
+}
+#accessNumDialog .states-list ul li a,
+#accessNumDialog .countries-list ul li a,
+#accessNumDialog .access-numbers ul li a {
+	color: #666;
+	text-decoration: none !important;
+	display: block;
+}
+#accessNumDialog .states-list ul li a:first-letter,
+#accessNumDialog .countries-list ul li a:first-letter,
+#accessNumDialog .access-numbers ul li a:first-letter {
+	font-weight: bold;
+}
+#accessNumDialog .states-list ul li a:hover,
+#accessNumDialog .countries-list ul li a:hover,
+#accessNumDialog .access-numbers ul li a:hover {
+	color: #e40;
+}
+#accessNumDialog .states-list ul li a.active,
+#accessNumDialog .countries-list ul li a.active,
+#accessNumDialog .access-numbers ul li a.active {
+	color: #e40;
+	font-weight: bold;
+}
+#accessNumDialog .access-numbers ul li strong {
+	position: absolute;
+	right: 10px;
+}
+#accessNumDialog .access-numbers ul.last li strong {
+	right: 0;
+}
+#accessNumDialog .states {
+	width: 320px;	
+}
 
 /* 1clicMAX POS Page: Top-Up the World Product */
 /* -------------------------------------------------------------------- */
