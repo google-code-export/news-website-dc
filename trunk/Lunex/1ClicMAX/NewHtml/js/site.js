@@ -789,9 +789,9 @@ var form = {
 				return;	
 			}
 			$(formId + " input[data-mask-type=us-phone]")
-				.setMask({ mask: "999-999-9999" });
+				.setMask({ mask: "999-999-9999", autoTab: false });
 			$(formId + " input[data-mask-type=number]")
-				.setMask({ mask: "9", type: "repeat" });
+				.setMask({ mask: "9", type: "repeat", autoTab: false });
 		},
 		setupMaskMany: function(formArr) {
 			for (var i = 0; i < formArr.length; i++) {

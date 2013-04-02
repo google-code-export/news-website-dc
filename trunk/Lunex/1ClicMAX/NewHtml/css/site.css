@@ -205,6 +205,10 @@ input, select {
 	color: #999;
 	text-transform: uppercase;
 }
+#header .hcnt .menu li.promotion {
+	background: url('../img/icon_gift.gif') no-repeat 10px 10px;
+	padding-left: 30px;
+}
 #header .hcnt .lang-selector select {
 	color: #123785;
 }
