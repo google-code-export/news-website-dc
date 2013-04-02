@@ -2377,38 +2377,40 @@ span.option .child-options span.option {
 	border-bottom: 1px solid #ddd;
 }
 #accessNumDialog .access-numbers ul li {
+	font-size: 14px;
 	position: relative;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #ddd !important;
 }
 #accessNumDialog .access-numbers ul.last li {
 	padding-left: 10px;
-	border-right: 0 none;
+	border-right: 0 none !important;
 }
 #accessNumDialog .states-list ul li:hover,
 #accessNumDialog .countries-list ul li:hover,
 #accessNumDialog .access-numbers ul li:hover {
+	color: #e40;
 	border-color: #e40;
 }
+#accessNumDialog .states-list ul li:hover a,
+#accessNumDialog .countries-list ul li:hover a {
+	color: #e40;
+}
 #accessNumDialog .states-list ul li a,
-#accessNumDialog .countries-list ul li a,
-#accessNumDialog .access-numbers ul li a {
+#accessNumDialog .countries-list ul li a {
 	color: #666;
 	text-decoration: none !important;
 	display: block;
 }
 #accessNumDialog .states-list ul li a:first-letter,
-#accessNumDialog .countries-list ul li a:first-letter,
-#accessNumDialog .access-numbers ul li a:first-letter {
+#accessNumDialog .countries-list ul li a:first-letter {
 	font-weight: bold;
 }
 #accessNumDialog .states-list ul li a:hover,
-#accessNumDialog .countries-list ul li a:hover,
-#accessNumDialog .access-numbers ul li a:hover {
+#accessNumDialog .countries-list ul li a:hover {
 	color: #e40;
 }
 #accessNumDialog .states-list ul li a.active,
-#accessNumDialog .countries-list ul li a.active,
-#accessNumDialog .access-numbers ul li a.active {
+#accessNumDialog .countries-list ul li a.active {
 	color: #e40;
 	font-weight: bold;
 }
