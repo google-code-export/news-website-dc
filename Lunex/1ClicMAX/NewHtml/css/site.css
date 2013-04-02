@@ -1300,14 +1300,32 @@ span.option .child-options span.option {
 .promo-code-outer {
 	display: block;
 	width: 100%;
-	height: 60px; 
-	background: #4581E3;
+	height: 40px; 
+	background: #123785;
 	text-align: center;
-	line-height: 60px;
 }
 .promo-code-outer a {
 	color: #fff;
 	font-size: 20px;
+	text-decoration: none;
+}
+.promo-code-outer a strong {
+	color: #ee0;
+}
+.promo-code-outer .promo-code-wrapper {
+	width: 1000px;
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+}
+.promo-code-outer .promo-code-wrapper .bucks {
+	position: absolute;
+	z-index: 100;
+}
+.promo-code-outer .promo-code-wrapper .gap {
+	padding-left: 110px;	
 }
 #createPromoDialog ol {
 	list-style: inside decimal;
