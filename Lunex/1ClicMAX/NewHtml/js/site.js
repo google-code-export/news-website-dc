@@ -724,6 +724,27 @@ var ui = {
 				anchor.prepend(anchorButton);
 				updateTitle(anchorButton);
             });
+		},
+		setupTvAds: function() {
+			if (!$("#tvAdsDialog").dialog()) return;
+			var loadVideo = function() {
+				var selectedSrc = $("#tvAdsDialog :radio:checked").attr("data-src");
+				$("#tvAdsDialog iframe").attr("src", selectedSrc);
+			}
+			var unloadVideo = function() {
+				$("#tvAdsDialog iframe").removeAttr("src");
+			}
+			$("#tvAdsDialog :radio").change(function() {
+				loadVideo();	
+			});
+			$("#tvAdsDialog").dialog("option", {
+				open: function() {
+					loadVideo();
+				},
+				close: function() {
+					unloadVideo();
+				}
+			});
 		}
 	},
 	element : {

@@ -42,10 +42,7 @@
         <!-- TODO: All popup contents should be placed here ONLY -->
     	<div id="startupPopupContent" class="popup-content">
         	<iframe frameborder="0" width="670" height="530" data-src="http://b.sales.lunexgroup.com/promotion/promotions-north-gate-financial" name="iframe_1362338742171"></iframe>
-        </div>
-        <div id="youtubePopupContent" class="popup-content">
-        	<iframe width="640" height="480" data-src="http://www.youtube.com/embed/QwlqFvEg5xU" frameborder="0" allowfullscreen></iframe>
-        </div>
+        </div>        
         <div id="promoCodePopupContent" class="popup-content">
         	<iframe width="660" height="380" data-src="http://t.sales.lunexgroup.com/promotion/result-promo-code" frameborder="0" allowfullscreen></iframe>        	
         </div>
@@ -59,7 +56,7 @@
             	<li>Start with a letter of the alphabet</li>
 				<li>Include at least 1 number</li>
             </ol>
-			<form id="abc" method="get" action="">
+			<form method="get" action="">
             	<ul class="xform inline">
                     <li>
                         <label>Promo Code:</label>
@@ -75,6 +72,20 @@
                 </ul>
             </form>
 		</div>
+        
+        <div id="tvAdsDialog" class="dialog" title="TV Ads">
+        	<iframe width="640" height="380" frameborder="0" allowfullscreen></iframe>
+            <div class="playlist">
+            	<p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/ddld1Ao8CAg" /> KUMUSTA 2000 – 2 cents per minute to call Philippines mobile. 02/07/2013</label></p>
+                <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/QwlqFvEg5xU" checked /> SAM MILBY-1ClicMAX&trade;-Just 1Clic to call the Philippines. 10/18/2012 </label></p>
+                <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/MMEeirzTb4Q" /> 1ClicMAX&trade; – 9.9c/min Philippines 05/09/2012</label></p>
+                <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/_DQJy6E7wSY" /> 9.9 cents per minute to call Philippines 02/16/2012</label></p>
+                <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/oZSd0Z2O3fg" /> Happy Valentine’s Day – Gift a Load to Philippines 02/13/2012</label></p>
+                <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/anq-4Hn1bnA" /> Gift a load to Philippine mobile 12/02/2011</label></p>
+                <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/fPGKd1QBvIA" /> $1 FREE CALL SA PILIPINAS 09/08/2011</label></p>
+                <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/2XsadRQjy5o" /> PIN-LESS The Future of International Calling 07/23/2011</label></p>
+            </div>
+        </div>
 		<!-- END Dialogs Section -->
     	
     	<div class="wrapper">
@@ -84,7 +95,7 @@
                     <div class="hcnt-upper">
                         <ul class="menu">
                             <li><a href="#">Promotions</a></li>
-                            <li><a href="#">TV Ads</a></li>
+                            <li><a class="dialog-trigger" data-dialog-id="tvAdsDialog" href="#">TV Ads</a></li>
                         </ul>
                         <span class="sep"></span>
                         <div class="customer-support">
@@ -147,14 +158,14 @@
                         </li>
                         <li class="billmex">
                             <a href="40_billmex-product.html">BillMEX</a>
-                        </li>     
+                        </li>
                     </ul>
                 </nav>
                 <div id="mainContent" class="clearfix">
                     <section id="homeSlider" class="fly-box left">
                         <div class="slider-wrapper theme-default">
                             <div class="nivoSlider">
-                                <a class="open-youtube" href="#">
+                                <a class="dialog-trigger" data-dialog-id="tvAdsDialog" href="#">
                                 	<img src="res/home/slide01.jpg" data-thumb="res/home/slide01.jpg" alt="" />
                                 </a>
                                 <a href="#">

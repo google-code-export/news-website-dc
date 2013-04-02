@@ -1,5 +1,6 @@
 ﻿$(function() {	
 	ui.jWidget.setupDialogs();
+	ui.jWidget.setupTvAds();
 	ui.jWidget.setupTooltips();
 	ui.jWidget.setupOpenClose();
 	form.mask.setupMaskMany([
