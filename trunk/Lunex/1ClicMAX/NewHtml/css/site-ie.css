@@ -1,3 +1,9 @@
 body {
 	font: normal normal 16px 'Roboto', Tahoma, sans-serif;
 }
+
+/* 1clicMAX POS Page: 1ClicMAX Product */
+/* -------------------------------------------------------------------- */
+#oneClicProductPage #mainForm h1 {
+	margin: -.4em 0 .3em;
+}
