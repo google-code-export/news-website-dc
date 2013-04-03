@@ -337,29 +337,39 @@ input, select {
 		bottom: 0;
 	}
 }
-.site-content .product-tabs ul {
-	letter-spacing: 0px;
-	word-spacing: 0px;	
-	font-size: 0;
+.site-content .product-tabs .product-tabs-mask {
 	/* Hide bottom shadow */
 	background-color: #fafafa;
 	padding-bottom: 5px;
 }
+.site-content .product-tabs ul {
+	letter-spacing: 0px;
+	word-spacing: 0px;	
+	font-size: 0;
+	width: 1000px;
+	height: 60px;
+	display: block;
+	background-color: #123785;
+}
+.site-content .product-tabs ul.last-tab {
+	background-color: #fafafa !important;
+}
+.site-content .product-tabs ul.last-tab-hover {
+	background-color: #EC2029;
+}
 .site-content .product-tabs ul li {
-	display: inline-block;	
+	display: inline-block;
 }
 .site-content .product-tabs ul li:last-of-type {
 	margin: 0;
 }
-.site-content .product-tabs ul li a,
-.site-content .product-tabs ul li span {
+.site-content .product-tabs ul li a {
 	display: block;
-	width: 166px;
 	height: 60px;
 	border-right: 1px solid #2753B2;
-	background-color: #123785;	
-	background-image: url('../img/product_logos_medium.png');
+	background-color: #123785;
 	background-repeat: no-repeat;
+	background-position: 50% 0;
 	text-indent: 999px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -372,7 +382,6 @@ input, select {
     -webkit-transition: background-color 800ms ease 0s;
     -o-transition: background-color 800ms ease 0s;
 }
-.site-content .product-tabs ul li span,
 .site-content .product-tabs ul li.selected a  {
 	background-color: #fafafa !important;
 	border: 0 none;	
@@ -380,39 +389,44 @@ input, select {
 .site-content .product-tabs ul li:last-of-type a {
 	border: 0 none;
 }
-.site-content .product-tabs ul li.one-clic a,
-.site-content .product-tabs ul li.one-clic span {
-	background-position: 0 0;
+.site-content .product-tabs ul li.one-clic a {
+	background-image: url('../img/products/1clicmax_tab.png');
+}
+.site-content .product-tabs ul li.super-1clic a {
+	background-image: url('../img/products/super1clic_tab.png');
+}
+.site-content .product-tabs ul li.mega-1clic a {
+	background-image: url('../img/products/mega1clic_tab.png');
 }
 .site-content .product-tabs ul li.topup-world a {
-	background-position: -166px 0;
+	background-image: url('../img/products/itu_tab.png');
 }
-.site-content .product-tabs ul li.topup-world span,
+.site-content .product-tabs ul li.topup-world.es a {
+	background-image: url('../img/products/itu_tab_es.png');
+}
 .site-content .product-tabs ul li.topup-world.selected a {
-	background-position: -332px 0;
+	background-position: 50% -60px;
 }
-.site-content .product-tabs ul li.topup-usa a,
-.site-content .product-tabs ul li.topup-usa span {
-	background-position: 0 -60px;
+.site-content .product-tabs ul li.topup-usa a {
+	background-image: url('../img/products/dtu_tab.png');
 }
-.site-content .product-tabs ul li.phi-calling a,
-.site-content .product-tabs ul li.phi-calling span {
-	background-position: -166px -60px;
+.site-content .product-tabs ul li.topup-usa.es a {
+	background-image: url('../img/products/dtu_tab_es.png');
 }
-.site-content .product-tabs ul li.billmex a,
-.site-content .product-tabs ul li.billmex span {
-	background-position: -332px -60px;
+.site-content .product-tabs ul li.phi-calling a {
+	background-image: url('../img/products/phicall_tab.png');
 }
-.site-content .product-tabs ul li.ku2000 a,
-.site-content .product-tabs ul li.ku2000 span {
-	background-position: 0 -120px;
+.site-content .product-tabs ul li.phi-calling.es a {
+	background-image: url('../img/products/phicall_tab_es.png');
+}
+.site-content .product-tabs ul li.billmex a {
+	background-image: url('../img/products/billmex_tab.png');
+}
+.site-content .product-tabs ul li.ku2000 a {
+	background-image: url('../img/products/ku2000_tab.png');
 }
 .site-content .product-tabs ul li.globe-duo a {
-	background-position: -166px -120px;
-}
-.site-content .product-tabs ul li.globe-duo span,
-.site-content .product-tabs ul li.globe-duo.selected a {
-	background-position: -332px -120px;
+	background-image: url('../img/products/globe_tab.png');
 }
 .site-content .report-tabs {
 	height: 40px;
@@ -1122,6 +1136,9 @@ span.option .child-options span.option {
 	font-size: 14px;
 	white-space: nowrap;
 }
+.data-table .data-table-header li:last-of-type {
+	border-right: 1px solid #777;
+}
 .data-table .data-table-body {
 	overflow: auto;
 	display: block;
@@ -1153,7 +1170,7 @@ span.option .child-options span.option {
 	background: #f0f0f0;	
 }
 .data-table .data-table-body table tr:hover td {
-	background: #def;	
+	background: #def !important;	
 }
 .data-table .data-table-body table tr td.imp {
 	font-size: 18px;	
@@ -1473,12 +1490,12 @@ span.option .child-options span.option {
 /* 1clicMAX POS Page: Home */
 /* -------------------------------------------------------------------- */
 #homePage #productsNav {
-	text-align: center;	
+	/*text-align: center;*/	
 }
 #homePage #productsNav ul li {
 	display: inline-block;
-	margin-right: 5.2px;
-	padding-bottom: 13px;
+	margin-right: 6px;
+	padding-bottom: 10px;
 	background: url('../img/product_box_shadow.png') no-repeat 50% 100%;
 }
 #homePage #productsNav ul li:last-of-type {
@@ -1486,11 +1503,11 @@ span.option .child-options span.option {
 }
 #homePage #productsNav ul li a {
 	display: block;
-	width: 192px;
-	height: 100px;
-	background-color: #123785;	
-	background-image: url('../img/product_logos_large.png');
+	width: 134px;
+	height: 70px;
+	background-color: #123785;
 	background-repeat: no-repeat;
+	background-position: 0 0;
 	text-indent: 999px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -1503,19 +1520,34 @@ span.option .child-options span.option {
     -o-transition: background-color 500ms ease 0s;
 }
 #homePage #productsNav ul li.one-clic a {
-	background-position: 0 0;
+	background-image: url('../img/products/1clicmax_home.png');
+}
+#homePage #productsNav ul li.super-1clic a {
+	background-image: url('../img/products/super1clic_home.png');
+}
+#homePage #productsNav ul li.mega-1clic a {
+	background-image: url('../img/products/mega1clic_home.png');
 }
 #homePage #productsNav ul li.topup-world a {
-	background-position: -192px 0;
+	background-image: url('../img/products/itu_home.png');
+}
+#homePage #productsNav ul li.topup-world.es a {
+	background-image: url('../img/products/itu_home_es.png');
 }
 #homePage #productsNav ul li.topup-usa a {
-	background-position: -384px 0;
+	background-image: url('../img/products/dtu_home.png');
+}
+#homePage #productsNav ul li.topup-usa.es a {
+	background-image: url('../img/products/dtu_home_es.png');
 }
 #homePage #productsNav ul li.phi-calling a {
-	background-position: 0 -100px;
+	background-image: url('../img/products/phicall_home.png');
+}
+#homePage #productsNav ul li.phi-calling.es a {
+	background-image: url('../img/products/phicall_home_es.png');
 }
 #homePage #productsNav ul li.billmex a {
-	background-position: -192px -100px;
+	background-image: url('../img/products/billmex_home.png');
 }
 #homePage #mainContent,
 #homePage .product-desc {
@@ -2268,6 +2300,21 @@ span.option .child-options span.option {
 	position: absolute;
 	top: -55px;
 	right: 0;	
+}
+#oneClicProductPage #oneClicNumbersTab a.conect2 {
+	padding: 5px 0;
+	background-color: #eee;
+	text-align: center;
+	width: 268px;
+}
+#oneClicProductPage #oneClicNumbersTab .data-table .data-table-header li.conect2,
+#oneClicProductPage #oneClicNumbersTab .data-table td.conect2 {
+	color: #444;
+	background-color: #eee;
+	border-color: #ddd;
+}
+#oneClicProductPage #oneClicNumbersTab .data-table tr.alt td.conect2 {
+	background-color: #e5e5e5;
 }
 /* More Dialogs */
 #addMulti1ClicNoDialog .header li {

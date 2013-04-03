@@ -119,6 +119,20 @@ var ui = {
 				dropDown.slideUp("fast");
 			});			
 		},
+		setProductTabWidths: function() {
+			var tabsWell = $(".site-content .product-tabs ul");
+			var tabs = $(".site-content .product-tabs ul li");
+			tabs.css({
+				"max-width": (100 / tabs.size()).round(3) + "%",
+				"min-width": 100 / tabs.size() + "%"
+			});
+			if (tabs.last().hasClass("selected")) {
+				tabsWell.addClass("last-tab");
+			}
+			tabs.last().hover(function() {
+				tabsWell.toggleClass("last-tab-hover");
+			});			
+		},
 		dockFooter: function() {
 			var autoDock = function() {
 				var windowH = $(window).height();
@@ -811,6 +825,7 @@ var form = {
 				autoPositionUpdate: true,
 				showOneMessage: true,
 				binded: false,
+				scroll: false,
 				maxErrorsPerField: 1
 			}, option);
 			$(formId).validationEngine(_option);
@@ -862,6 +877,7 @@ $(function() {
 	ui.element.setupSharpLinks();
 	ui.element.setupOptionsFullClick();
 	ui.layout.slideAccountDropDown();
+	ui.layout.setProductTabWidths();
 	ui.layout.dockFooter();
 	ui.jWidget.setupButtons();
 	ui.jWidget.setupDatePickers();
