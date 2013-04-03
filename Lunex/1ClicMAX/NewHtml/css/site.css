@@ -1370,7 +1370,7 @@ span.option .child-options span.option {
 }
 #loginPage .login-container .login {
 	height: 420px;
-	padding: 30px 300px 0 0;
+	padding: 30px 0 0;
 	position: relative;	
 }
 #loginPage.site-content .login-container .login .login-box {
@@ -1383,9 +1383,9 @@ span.option .child-options span.option {
 #loginPage .login-container .login .login-box .xform input[type=submit] {
 	margin: 8px 0;
 	padding: .5em;
-	min-width: 100px;	
+	min-width: 100px;
 }
-#loginPage .login-container .login .xman {
+/*#loginPage .login-container .login .xman {
 	width: 386px;
 	height: 433px;
 	background: url('../img/xman.png') no-repeat 0 0;
@@ -1394,7 +1394,7 @@ span.option .child-options span.option {
 	right: 0;
 	top: 0;
 	z-index: 10;
-}
+}*/
 #loginPage .login-container .advertise {
 	margin-top: 30px;
 }
@@ -1406,21 +1406,21 @@ span.option .child-options span.option {
 @media screen and (min-width:1200px) {
 	#loginPage .login-container .advertise {
 		margin-right: 60px;
-		width: 500px;
+		width: 540px;
 		display: block;
 	}
 }
 @media screen and (min-width:1400px) {
 	#loginPage .login-container .advertise {
 		margin-right: 80px;
-		width: 640px;
+		width: 680px;
 		display: block;
 	}
 }
 @media screen and (min-width:1600px) {
 	#loginPage .login-container .advertise {
 		margin-right: 100px;
-		width: 760px;
+		width: 800px;
 		display: block;
 	}
 }
