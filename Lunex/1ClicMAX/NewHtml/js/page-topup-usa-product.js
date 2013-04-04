@@ -9,6 +9,7 @@
 	]);
 
 	pages.topUpUsa.topupForm.setupFormEvents();
+	pages.topUpUsa.refineTopUpAmount();
 	pages.topUpUsa.slidePrintDropDown();
 	// TODO: Execute page-scope functions here
 });
@@ -43,6 +44,16 @@ pages = $.extend(pages, {
 				// Else
 				
 			}
+		},
+		refineTopUpAmount: function() {
+			var minWidth = 0;
+			var prices = $("#topupUsaProductPage .topup-amount .data");
+			prices.each(function() {
+                if ($(this).width() > minWidth) {
+					minWidth = $(this).width();	
+				}
+            });
+			prices.css({ "min-width": minWidth + "px" });
 		},
 		slidePrintDropDown: function() {
 			$("#topupUsaProductPage .print-feature").hover(function() {
