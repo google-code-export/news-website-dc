@@ -964,6 +964,21 @@ span.option .child-options span.option {
 .open-close.collapsed .content {
 	display: none;
 }
+.ajax-loader {
+	display: none;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 9999px;
+	background: url('../img/ajax-loader.gif') no-repeat 50% 50%;
+}
+.page-ajax-loader {
+	height:	100px !important;	
+	overflow: hidden !important;
+	white-space: nowrap;
+	text-indent: 9999px;
+	background: url('../img/loader.gif') no-repeat 50% 50% !important;
+}
 
 /* 1clicMAX POS Common Forms */
 /* -------------------------------------------------------------------- */
@@ -3705,3 +3720,67 @@ span.option .child-options span.option {
 	font-size: 16px;
 	color: #444;
 }
+
+/* BUG FIXES: Trung Chau */
+/* -------------------------------------------------------------------- */
+/* 2013/04/04 */
+#topupWorldProductPage #topupForm #senderInfo p .child-options label {
+	width: 8em;
+}
+#topupWorldProductPage #topupForm #recipientInfo p .phone-prefix {
+	width: 84px;
+	text-align:center;
+}
+#topupWorldProductPage #topupForm #recipientInfo p .phone-suffix {
+	width: 180px;
+}
+#topupWorldProductPage .note {
+	width:598px;
+}
+#topupUsaProductPage .transaction-history article strong.small {
+	display:inline-block;
+	width:237px;
+}
+#topupUsaProductPage #topupForm #senderInfo p .child-options label {
+	width: 8em;		
+}
+#topupUsaProductPage #topupForm #recipientInfo p.first {
+	white-space:nowrap;
+}
+#topupUsaProductPage .product-panel .xform p.last label {
+	width: 8em;
+}
+#topupUsaProductPage .note {
+	width:598px;
+}
+#topupUsaProductPage #topupForm #recipientInfo .note {
+	width:568px;
+}
+#topupUsaProductPage .result-pin {
+	font-weight:bold;
+	font-size:18px;
+	text-align:center;
+}
+#topupUsaProductPage .product-panel .xform li h2 {
+	padding-bottom:0;
+}
+#topupUsaProductPage.site-content .fly-box .fly-box-title .sub-title {
+	color: #123785;
+	font-size: 18px;
+	margin: 4px 0 0;
+}
+.cc-dialog .cc-form .city {
+	padding-right: 10px;
+	min-width:110px;
+	display:inline-block;
+}
+.cc-dialog .cc-form .state {
+	min-width:80px;
+	display:inline-block;
+}
+.es #spCardProductPage #spCardForm .product-form label {width:15em;}
+.es #spCardProductPage .result-panel .xform label {width:12.5em;}
+.es #spCardProductPage .product-panel .xform label {width:15.5em;}
+.es #kuCardProductPage #kuCardForm .product-form label {width:15em;}
+.es #kuCardProductPage .result-panel .xform label {width:12.5em;}
+.es #kuCardProductPage .product-panel .xform label {width:15.5em;}
