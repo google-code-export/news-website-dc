@@ -759,6 +759,85 @@ var ui = {
 					unloadVideo();
 				}
 			});
+		},
+		setupButtonAjaxLoader: function() {
+			var ajaxTimeout = 5000;
+			var buttons = $(".has-ajax-loader");
+			var resetLoader = function() {
+				$(".ajax-loader").addClass("hidden");
+				buttons.show();
+			};
+			buttons.each(function() {
+				var button = $(this);
+				var proccessAjax = function() {
+					button.hide();
+                    button.next(".ajax-loader").removeClass("hidden");
+					if (button.hasClass("auto")) {
+						window.setTimeout(function() {
+							resetLoader();
+						}, ajaxTimeout);	
+					}					
+				};
+                button.after($("<span class=\"ajax-loader hidden\">Processing...</span>").css({
+					width: button.outerWidth() + "px",
+					height: button.outerHeight() + "px",
+					"marginTop": button.css("marginTop"),
+					"marginRight": button.css("marginRight"),
+					"marginBottom": button.css("marginBottom"),
+					"marginLeft": button.css("marginLeft"),
+					"display": button.css("display")
+				}));
+				if (button.hasClass("auto")) {
+					button.click(function() {
+						proccessAjax();
+					});
+				} else {
+					button.bind("ajaxBegin", function() {
+						proccessAjax();
+					});
+				}
+            });
+			// $.ajaxSetup({ timeout: ajaxTimeout });				
+			$(document).ajaxComplete(function() {
+				resetLoader();
+			});			
+		},
+		showPageAjaxLoader: function(timeout) {
+			var _timeout = timeout;
+			if (!timeout) {
+				_timeout = 0;
+			}
+			var pageLoader = $("<div class=\"dialog page-ajax-loader\">Processing...</div>");
+			if (!pageLoader.dialog) {
+				return;
+			}			
+			$(document.body).find(".page-ajax-loader").parents(".ui-dialog").remove();
+			$(document.body).prepend(pageLoader);
+			pageLoader.dialog({
+				width: 160,
+				height: 160,
+				modal: true,
+				resizable: false,
+				show: {
+					effect: "drop",
+					duration: 200
+				},
+				hide: {
+					effect: "drop",
+					duration: 300
+				},
+				open: function() {
+					$(this).prev(".ui-dialog-titlebar").remove();
+				}
+			});
+			$(document).ajaxComplete(function() {
+				pageLoader.dialog("close");
+			});
+			if (_timeout > 0) {
+				window.setTimeout(function() {
+					pageLoader.dialog("close");
+				}, _timeout);	
+			}
 		}
 	},
 	element : {
@@ -882,6 +961,7 @@ $(function() {
 	ui.jWidget.setupButtons();
 	ui.jWidget.setupDatePickers();
 	ui.jWidget.setupShoutBoxes();
+	ui.jWidget.setupButtonAjaxLoader();
 });
 
 $(window).load(function() {
