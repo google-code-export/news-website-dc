@@ -2812,6 +2812,38 @@ span.option .child-options span.option {
 	display: inline-block;
 	vertical-align: middle;
 }
+#topupUsaProductPage .product-panel .topup-amount {
+	display: table;
+	width: auto;	
+}
+#topupUsaProductPage .product-panel .topup-amount li {
+	padding-bottom: 20px;
+	position: relative;
+}
+#topupUsaProductPage .product-panel .topup-amount li.last {
+	padding-bottom: 10px;
+}
+#topupUsaProductPage .product-panel .topup-amount li.sum {
+	padding: 10px 0;
+	border-top: 1px dashed #aaa;
+}
+#topupUsaProductPage .product-panel .topup-amount li .data {
+	display: inline-block;
+	text-align: right;
+	padding-right: 10px;
+}
+#topupUsaProductPage .product-panel .topup-amount li .symbol {
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url('../img/bill_symbols.png') no-repeat 0 0;
+	position: absolute;
+	top: 26px;
+}
+#topupUsaProductPage .product-panel .topup-amount li .symbol.plus {
+	background-position: 0 -16px;
+	left: 50px;
+}
 /* Top-Up Result */
 #topupUsaProductPage .fly-box .fly-box-title .print-feature {
 	margin-top: -8px;
