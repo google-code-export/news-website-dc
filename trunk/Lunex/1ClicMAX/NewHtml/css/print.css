@@ -268,6 +268,12 @@ footer img.logo {
 .wrapper25 header .logo, .wrapper3125 header .logo {
 	float:none;
 }
+.wrapper3125 .logo {
+	max-width:190px;
+}
+.wrapper25 .logo {
+	max-width:177px;
+}
 .wrapper25 .print-content .receipt label, .wrapper3125 .print-content .receipt label {
 	width:auto;
 }
