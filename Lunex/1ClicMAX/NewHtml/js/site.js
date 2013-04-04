@@ -697,22 +697,31 @@ var ui = {
 			confirmBox.find(".button-no").focus();
 		},
 		setupTooltips: function() {
-			$("a[rel=tooltip]").mouseover(function(e) {		
+			$("a[rel=tooltip]").hover(function(e) {		
 				var tip = $(this).attr("data-content");	
 				$(document.body).prepend($("<div id=\"tooltip\">").html(tip));					
 				$("#tooltip").fadeIn("slow");		
-			}).mousemove(function(e) {				
-				$("#tooltip").css("left", e.pageX + 20 );
+			},
+			function() {
+				$("#tooltip").remove();		
+			}).mousemove(function(e) {
 				var top = e.pageY;
+				var left = e.pageX;
 				if ($("#tooltip").height() > e.clientY) {					
 					top += 10;
 				}
 				else {
 					top -= $("#tooltip").height() + 20;
 				}
-				$("#tooltip").css("top", top );
-			}).mouseout(function() {
-				$("#tooltip").remove();		
+				if (left + $("#tooltip").width() > $(window).width()) {
+					left -= $("#tooltip").width() + 50;	
+				} else {
+					left = e.pageX + 20;
+				}
+				$("#tooltip").css({
+					"top": top + "px",
+					"left": left + "px"
+				});
 			});	
 		},
 		setupOpenClose: function() {
@@ -846,6 +855,39 @@ var ui = {
 				return false;
 			});
 		},
+		setupDisabledLinks: function() {
+			$("a.disabled").on("hover, click", function(e) {
+				e.preventDefault();
+			});
+			var toggleDisable = function() {
+				$(".gray-button, .green-button, .red-button").each(function() {
+					var button = $(this);
+					if (button.hasClass("disabled")) {
+						button.wrap($("<div class=\"disable-wrapper\" />").css({
+							position: "relative"
+						}));
+						button.after($("<div class=\"disable-mask\" />").css({
+							position: "absolute",
+							display: "block",
+							width: button.outerWidth() + "px",
+							height: button.outerHeight() + "px",
+							background: "#fff",
+							opacity: 0.2,
+							"zIndex": 100,
+							left: button.css("marginLeft"),
+							top: button.css("marginTop")
+						}));
+					} else {
+						button.parents(".disable-wrapper").after(button);
+						button.prev(".disable-wrapper").remove();
+					}
+				});
+			};
+			toggleDisable();
+			$(document).ajaxComplete(function() {
+				toggleDisable();
+			});
+		},
 		setupOptionsFullClick: function() {
 			$("span.option").each(function() {
 				$(this).children(":checkbox, :radio").click(function(e) {
@@ -954,6 +996,7 @@ $(function() {
 		$(document.body).addClass(ui.clazz.visible);
 	}, 3000);
 	ui.element.setupSharpLinks();
+	ui.element.setupDisabledLinks();
 	ui.element.setupOptionsFullClick();
 	ui.layout.slideAccountDropDown();
 	ui.layout.setProductTabWidths();

@@ -27,6 +27,10 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+a.disabled {
+	opacity: .5;
+	cursor: default;
+}
 h1, h2, h3, h4, h5, h6, .htext {
 	font-family: 'Roboto Condensed', Arial, sans-serif;
 	font-weight: bold;
@@ -2139,7 +2143,12 @@ span.option .child-options span.option {
 #quickAdd1Clic1 .xform .add .green-button,
 #oneClicProductPage #quickAdd1Clic2 .xform .add .green-button {
 	width: 110px;
-	padding: .15em 0;
+	height: 70px;
+	padding: 0;
+}
+.es #quickAdd1Clic1 .xform .add .green-button,
+.es #oneClicProductPage #quickAdd1Clic2 .xform .add .green-button {
+	font-size: 28px !important;
 }
 #newCustomerDialog header {
 	position: relative;	
