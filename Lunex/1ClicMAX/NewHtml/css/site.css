@@ -1575,44 +1575,49 @@ span.option .child-options span.option {
 #homePage .product-desc {
 	display: none;
 	width: 100%;
-	height: 400px;
-	line-height: 340px;
+	height: 510px;
+	line-height: 450px;
 	text-align: center;
 }
-#homePage #homeSlider {
+#homePage #mainContent {
 	width: 100%;
 	padding: 15px 15px 5px;
 }
-#homePage #homeSlider .theme-default .nivoSlider {
+#homePage #mainContent .theme-default .nivoSlider {
 	box-shadow: none;
 }
-#homePage #homeSlider .theme-default .nivo-controlNav {
+#homePage #mainContent .theme-default .nivo-controlNav {
 	padding: 5px 0;
 }
-#homePage #homeFeed {
-	width: 100%;
-	padding: 15px;
-	margin-top: 20px;
+#homePage #mainContent hr {
+	margin: .8em 0 0;	
 }
-#homePage #homeFeed h3 a {
-	font-family: 'Roboto', Tahoma, sans-serif;
-	font-size: 16px;
-	line-height: 1em;
-	margin-top: 5px;
-}
-#homePage #homeFeed .feeds {
+#homePage #mainContent .feeds {
 	overflow: hidden;
 	white-space: nowrap;
-	height: 40px;
-	line-height: 40px;
+	width: 864px;
+	height: 50px;
+	line-height: 50px;
+	position: relative;
 }
-#homePage #homeFeed .feeds a {
+#homePage #mainContent .feeds .roller {
+	position: absolute;
+	left: 0;
+}
+#homePage #mainContent .feeds a {
 	padding-left: 18px;
-	margin-right: 20px;
+	padding-right: 20px;
 	background: url('../img/item_bullet.png') no-repeat 0 3px;
 }
+#homePage #mainContent .view-all {
+	height: 50px;
+	line-height: 50px;
+	padding-left: 20px;
+	font-weight: bold;
+	background: url("../img/nm_shadow.png") no-repeat 0 50%;
+}
 #tvAdsDialog {
-	width: 680px;	
+	width: 680px;
 }
 #tvAdsDialog .playlist {
 	display: block;
