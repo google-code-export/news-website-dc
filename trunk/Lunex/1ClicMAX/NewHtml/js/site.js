@@ -713,8 +713,8 @@ var ui = {
 				else {
 					top -= $("#tooltip").height() + 20;
 				}
-				if (left + $("#tooltip").width() > $(window).width()) {
-					left -= $("#tooltip").width() + 50;	
+				if (left + $("#tooltip").width() + 60 > $(window).width()) {
+					left -= $("#tooltip").width() + 60;	
 				} else {
 					left = e.pageX + 20;
 				}
@@ -807,7 +807,7 @@ var ui = {
 				}
             });
 			// $.ajaxSetup({ timeout: ajaxTimeout });				
-			$(document).ajaxComplete(function() {
+			$(document).ajaxStop(function() {
 				resetLoader();
 			});			
 		},
@@ -839,7 +839,7 @@ var ui = {
 					$(this).prev(".ui-dialog-titlebar").remove();
 				}
 			});
-			$(document).ajaxComplete(function() {
+			$(document).ajaxStop(function() {
 				pageLoader.dialog("close");
 			});
 			if (_timeout > 0) {
@@ -884,7 +884,7 @@ var ui = {
 				});
 			};
 			toggleDisable();
-			$(document).ajaxComplete(function() {
+			$(document).ajaxStop(function() {
 				toggleDisable();
 			});
 		},

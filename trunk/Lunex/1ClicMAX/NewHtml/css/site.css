@@ -1155,9 +1155,6 @@ span.option .child-options span.option {
 	font-size: 14px;
 	white-space: nowrap;
 }
-.data-table .data-table-header li:last-of-type {
-	border-right: 1px solid #777;
-}
 .data-table .data-table-body {
 	overflow: auto;
 	display: block;
@@ -1172,7 +1169,7 @@ span.option .child-options span.option {
 	}
 }
 .data-table .data-table-body table {
-	width: 100%;
+	width: 100%;	
 	border: 1px solid #ddd;
 	border-width: 0 1px;
 }
@@ -1185,6 +1182,9 @@ span.option .child-options span.option {
 	overflow: hidden;
 	text-overflow: ellipsis;*/
 }
+.data-table .data-table-body table tr td.text-wrap {
+	word-wrap: break-word;
+}
 .data-table .data-table-body table tr.alt td {
 	background: #f0f0f0;	
 }
@@ -1192,7 +1192,7 @@ span.option .child-options span.option {
 	background: #def !important;	
 }
 .data-table .data-table-body table tr td.imp {
-	font-size: 18px;	
+	font-size: 15px;	
 }
 .data-table .data-table-body table tr td .edit-link,
 .data-table .data-table-body table tr td .delete-link {
@@ -1580,45 +1580,36 @@ span.option .child-options span.option {
 	text-align: center;
 }
 #homePage #homeSlider {
-	width: 598px;
-	height: 400px;
-	padding: 10px;
+	width: 100%;
+	padding: 15px 15px 5px;
 }
 #homePage #homeSlider .theme-default .nivoSlider {
 	box-shadow: none;
-}
-#homePage #homeSlider .theme-default .nivoSlider img {
-	width: 100%;
-	height: 340px;
 }
 #homePage #homeSlider .theme-default .nivo-controlNav {
 	padding: 5px 0;
 }
 #homePage #homeFeed {
-	width: 394px;
-	height: 400px;
-	padding: 10px 20px;
-}
-#homePage #homeFeed article {
-	margin-bottom: 10px;
-	border-bottom: 1px solid #ddd;
-}
-#homePage #homeFeed article .content {
-	display: block;
 	width: 100%;
-	max-height: 6em;
+	padding: 15px;
+	margin-top: 20px;
+}
+#homePage #homeFeed h3 a {
+	font-family: 'Roboto', Tahoma, sans-serif;
+	font-size: 16px;
+	line-height: 1em;
+	margin-top: 5px;
+}
+#homePage #homeFeed .feeds {
 	overflow: hidden;
+	white-space: nowrap;
+	height: 40px;
+	line-height: 40px;
 }
-#homePage #homeFeed article .content p {
-	margin: .2em 0;
-}
-#homePage #homeFeed article footer {
-	margin: .5em 0;
-	text-align: right;	
-}
-#homePage #homeFeed footer {
-	margin: .2em 0;
-	text-align: center;	
+#homePage #homeFeed .feeds a {
+	padding-left: 18px;
+	margin-right: 20px;
+	background: url('../img/item_bullet.png') no-repeat 0 3px;
 }
 #tvAdsDialog {
 	width: 680px;	
@@ -2276,6 +2267,9 @@ span.option .child-options span.option {
 }
 #oneClicAccountInfo ul li.customer-info span.group .button {
 	min-width: 60px;
+}
+#oneClicPhonesList table {
+	table-layout: fixed;	
 }
 #oneClicProductPage #phonesListTabs {
 	margin-top: 20px;	
