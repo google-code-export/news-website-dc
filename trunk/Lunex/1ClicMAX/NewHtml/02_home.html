@@ -86,6 +86,51 @@
                 <p><label><input type="radio" name="video" data-src="https://www.youtube.com/embed/2XsadRQjy5o" /> PIN-LESS The Future of International Calling 07/23/2011</label></p>
             </div>
         </div>
+        
+        <div id="msgListDialog" class="dialog info-dialog" title="New Messages">
+        	<!-- TODO: Load message list here via AJAX -->
+            <article class="clearfix">
+            	<a class="title" href="#"><strong>AFRICA Challenge is Back!</strong></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                <a class="button small right" href="#">Read more...</a>
+            </article>
+            <hr/>
+            <article class="clearfix">
+            	<a class="title" href="#"><strongUPDATE - New T-Mobile Discount></strong></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                <a class="button small right" href="#">Read more...</a>
+            </article>
+            <hr/>
+            <article class="clearfix">
+            	<a class="title" href="#"><strong>Special Feature CONECT2 - New Offer!</strong></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                <a class="button small right" href="#">Read more...</a>
+            </article>
+            <hr/>
+            <article class="clearfix">
+            	<a class="title" href="#"><strong>What Do You Expect from Your Phone?</strong></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                <a class="button small right" href="#">Read more...</a>
+            </article>
+            <hr/>
+            <article class="clearfix">
+            	<a class="title" href="#"><strong>Cheapest Price on Earth!</strong></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                <a class="button small right" href="#">Read more...</a>
+            </article>
+        </div>
+        
+        <div id="msgDetailsDialog" class="dialog info-dialog">
+        	<!-- TODO: Load message content here via AJAX -->
+        	<p class="align-center"><img src="http://i2.cdn.turner.com/cnn/dam/assets/111004040613-tim-cook-iphone-jan011-story-top.jpg" alt="" /></p>
+            <p>Apple is kicking off production on a new iPhone in the coming months and could announce the device this summer, according to a report in The Wall Street Journal. The phone would have the same size and shape as the iPhone 5, and Apple might also be working on a cheaper model to sell in developing countries, the report said.</p>
+            <p>The Journal story contained no details about what features the next iPhone might contain, although each new iPhone model has historically boasted a more powerful processor and an upgraded camera.</p>
+            <p>It wouldn't be shocking for Apple to release an iPhone in the summer. The company has released a new iPhone model every year since the device debuted in 2007, and the release dates have all been in the summer or fall. The iPhone 5 came out in September 2012, the iPhone 4S in October 2011, and the three versions before that in the summer months.</p>
+            <p>One possible launchpad for the as-yet-unnamed new device could be Apple's annual Worldwide Developers Conference, typically held each June in San Francisco. Exact dates for WWDC 2013 have not been announced.</p>
+            <p>The Journal report's more interesting nuggets are about the cheaper, more colorful iPhone version. The report says Apple has been "working on different color shells" for the less expensive model.</p>
+            <p>There have been rumblings about a cheaper iPhone for a while now. The company has often put quality above affordability, but to be competitive in the booming Asia and South America markets, it will need to drop the price of its lower-end phones. Older, less expensive iPhone versions continue to sell well but are still pricey when compared with the array of cheap Android handsets.</p>
+            <p>The Wall Street Journal cites people "familiar with the device's production" as sources for its report.</p>
+        </div>
 		<!-- END Dialogs Section -->
     	
     	<div class="wrapper">
@@ -167,44 +212,44 @@
                         </li>
                     </ul>
                 </nav>
-                <div id="mainContent">
-                    <section id="homeSlider" class="fly-box">
-                        <div class="slider-wrapper theme-default">
-                            <div class="nivoSlider">
-                                <a class="dialog-trigger" data-dialog-id="tvAdsDialog" href="#">
-                                	<img src="res/home/slide01.jpg" data-thumb="res/home/slide01.jpg" alt="" />
-                                </a>
-                                <a href="#">
-                                	<img src="res/home/slide02.jpg" data-thumb="res/home/slide02.jpg" alt="" />
-                                </a>
-                                <a href="#">
-                                	<img src="res/home/slide03.jpg" data-thumb="res/home/slide03.jpg" alt="" />
-                                </a>
-                                <a href="#">
-                                	<img src="res/home/slide04.jpg" data-thumb="res/home/slide04.jpg" alt="" />
-                                </a>
-                                <a href="#">
-                                	<img src="res/home/slide05.jpg" data-thumb="res/home/slide05.jpg" alt="" />
-                                </a>
-                                <a href="#">
-                                	<img src="res/home/slide06.jpg" data-thumb="res/home/slide06.jpg" alt="" />
-                                </a>
+                <div id="mainContent" class="fly-box">
+                    <div class="slider-wrapper theme-default">
+                        <div class="nivoSlider">
+                            <a class="dialog-trigger" data-dialog-id="tvAdsDialog" href="#">
+                                <img src="res/home/slide01.jpg" data-thumb="res/home/slide01.jpg" alt="" />
+                            </a>
+                            <a href="#">
+                                <img src="res/home/slide02.jpg" data-thumb="res/home/slide02.jpg" alt="" />
+                            </a>
+                            <a href="#">
+                                <img src="res/home/slide03.jpg" data-thumb="res/home/slide03.jpg" alt="" />
+                            </a>
+                            <a href="#">
+                                <img src="res/home/slide04.jpg" data-thumb="res/home/slide04.jpg" alt="" />
+                            </a>
+                            <a href="#">
+                                <img src="res/home/slide05.jpg" data-thumb="res/home/slide05.jpg" alt="" />
+                            </a>
+                            <a href="#">
+                                <img src="res/home/slide06.jpg" data-thumb="res/home/slide06.jpg" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="clearfix">
+                    	<div class="feeds left">
+                            <div class="roller">
+                            	<a href="#">AFRICA Challenge is Back!</a>
+                                <a href="#">UPDATE - New T-Mobile Discount</a>
+                                <a href="#">Special Feature CONECT2 - New Offer!</a>
+                                <a href="#">What Do You Expect from Your Phone?</a>
+                                <a href="#">Cheapest Price on Earth!</a>
                             </div>
                         </div>
-                    </section>
-                    <section id="homeFeed" class="fly-box">
-                    	<h3 class="clearfix">
-                        	New Messages
-                            <a class="right" href="#">View All</a>
-                        </h3>
-                        <div class="feeds">
-                        	<a href="#">AFRICA Challenge is Back!</a>
-                            <a href="#">UPDATE - New T-Mobile Discount</a>
-                            <a href="#">Special Feature CONECT2 - New Offer!</a>
-                            <a href="#">What Do You Expect from Your Phone?</a>
-                            <a href="#">Cheapest Price on Earth!</a>
+                        <div class="view-all right">
+                        	<a id="viewAllMsgs" href="#">View All</a>
                         </div>
-                    </section>
+                    </div>
                 </div>
                 <div id="oneClicDesc" class="product-desc fly-box">
                 	<strong class="upper" style="font-size:30px">1ClicMAX&trade; Description</strong>
@@ -260,6 +305,7 @@
         <script src="plg/jqui/jquery-ui.min.js"></script>
         <script src="plg/nivo/jquery.nivo.slider.pack.js"></script>
         <script src="plg/jquery.hoverIntent.min.js"></script>
+		<script src="plg/jquery-scroller.min.js"></script>
         <script src="plg/validation/jquery.validationEngine-en.js"></script>
         <script src="plg/validation/jquery.validationEngine.js"></script>  
         <script src="js/site.js"></script>

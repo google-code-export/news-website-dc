@@ -8,6 +8,7 @@
 	
 	pages.homep.handleProductsHover();
 	pages.homep.setupSlider();
+	pages.homep.setupMsgRoller();
 	//pages.homep.showPromoPopup();
 	pages.homep.allowCreatePromoCode();
 	// TODO: Execute page-scope functions here
@@ -37,7 +38,27 @@ pages = $.extend(pages, {
 			});
 		},
 		setupSlider: function() {
-			$("#homeSlider .nivoSlider").nivoSlider({ pauseTime: 5000 });
+			$("#mainContent .nivoSlider").nivoSlider({ pauseTime: 5000 });
+		},
+		setupMsgRoller: function() {
+			$("#mainContent .feeds").setScroller({
+				velocity: 80
+			});
+			$("#viewAllMsgs").click(function() {
+                ui.jWidget.showDialog("msgListDialog", {
+					open: function() {
+						// TODO: AJAX here
+					}	
+				});
+            });
+			$("#mainContent .feeds a, #msgListDialog article a").click(function() {
+                ui.jWidget.showDialog("msgDetailsDialog", {
+					open: function() {
+						// TODO: AJAX here
+						$(this).dialog("option", { title: "Sample Message Title" }); // Got this from AJAX result	
+					}	
+				});
+            });
 		},
 		showPromoPopup: function() {			
 			ui.jWidget.showPopup($("#startupPopupContent").html(), null,
