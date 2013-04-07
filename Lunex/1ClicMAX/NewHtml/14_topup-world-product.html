@@ -492,58 +492,54 @@
                             </div>
                         </form>
                         <aside class="right">
-                        	<a href="#">
+                        	<div id="sideBanner">
                             	<img src="res/banners/topup_world_sample.jpg" alt="" />
-                            </a>
-                            <ul class="topup-logos">
-                            	<li class="active">
-                                	<img src="res/banners/topup_world_logos01.jpg" alt="" />
-                                </li>
-                                <li>
-                                	<img src="res/banners/topup_world_logos02.jpg" alt="" />
-                                </li>
-                                <li>
-                                	<img src="res/banners/topup_world_logos03.jpg" alt="" />
-                                </li>
-                                <li>
-                                	<img src="res/banners/topup_world_logos04.jpg" alt="" />
-                                </li>
-                            </ul>
-                            <div class="express-topup">
-                                <h3>Express Top-Up</h3>
-                                <header class="clearfix">
-                                	<span class="left">Mobile Number</span>
-                                    <span class="right">Top-Up</span>
-                                </header>
-                                <article>
-                                	<strong class="emp">011-84-1111111111</strong>
-                                    <strong>Vietnam - All Mobile | $20</strong>
-                                    <div class="cmd">
-                                    	<a class="button small" href="#">Select</a>
-                                        <a class="gray-button small" href="#">Delete</a>
-                                    </div>
-                                </article>
-                                <article class="alt">
-                                	<strong class="emp">011-521-1111111111</strong>
-                                    <strong>Mexico - Telcel | $12</strong>
-                                    <div class="cmd">
-                                    	<a class="button small" href="#">Select</a>
-                                        <a class="gray-button small" href="#">Delete</a>
-                                    </div>
-                                </article>
-                                <article>
-                                	<strong class="emp">011-502-1111111111</strong>
-                                    <strong>Guatemala - Tigo | $11</strong>
-                                    <div class="cmd">
-                                    	<a class="button small" href="#">Select</a>
-                                        <a class="gray-button small" href="#">Delete</a>
-                                    </div>
-                                </article>
                             </div>
-                            <div class="express-topup">
-                            	<h3>Express Top-Up</h3>
-                                <p><em>There is no Top-Up history for this US phone number</em></p>
-                            </div>
+                            <div id="sideContent" class="hidden">
+                                <h3>
+                                	<ul class="idTabs clearfix">
+                                        <li class="left"><a href="#transHistory">Express Top-Up</a></li>
+                                        <li class="right"><a href="#promotions">Promotions</a></li>
+                                    </ul>
+                                </h3>
+                                <div id="transHistory" class="express-topup">
+                                    <header class="clearfix">
+                                        <span class="left">Mobile Number</span>
+                                        <span class="right">Top-Up</span>
+                                    </header>
+                                    <article>
+                                        <strong class="emp">011-84-1111111111</strong>
+                                        <strong>Vietnam - All Mobile | $20</strong>
+                                        <div class="cmd">
+                                            <a class="button small" href="#">Select</a>
+                                            <a class="gray-button small" href="#">Delete</a>
+                                        </div>
+                                    </article>
+                                    <article class="alt">
+                                        <strong class="emp">011-521-1111111111</strong>
+                                        <strong>Mexico - Telcel | $12</strong>
+                                        <div class="cmd">
+                                            <a class="button small" href="#">Select</a>
+                                            <a class="gray-button small" href="#">Delete</a>
+                                        </div>
+                                    </article>
+                                    <article>
+                                        <strong class="emp">011-502-1111111111</strong>
+                                        <strong>Guatemala - Tigo | $11</strong>
+                                        <div class="cmd">
+                                            <a class="button small" href="#">Select</a>
+                                            <a class="gray-button small" href="#">Delete</a>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="express-topup">
+                                    <h3>Express Top-Up</h3>
+                                    <p><em>There is no Top-Up history for this US phone number</em></p>
+                                </div>
+                                <div id="promotions">
+                                    <img src="res/banners/topup_world_sample.jpg" alt="" />
+                                </div>
+                            </div>                            
                         </aside>
                     </div>
                 </section>
@@ -571,6 +567,7 @@
         <script src="lib/jquery-1.7.2.min.js"></script>
 		<script src="lib/sugar-1.3.9.min.js"></script>
         <script src="plg/jqui/jquery-ui.min.js"></script>
+        <script src="plg/jquery.idTabs.min.js"></script>
         <script src="plg/jquery.meio.mask.min.js"></script>
         <script src="plg/validation/jquery.validationEngine-en.js"></script>
         <script src="plg/validation/jquery.validationEngine.js"></script>
