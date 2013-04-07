@@ -1120,7 +1120,9 @@ span.option .child-options span.option {
 	padding-bottom: .25em;
 }
 .customer-form .city {
-	padding-right: 20px;
+	margin-right: 20px;
+	display: inline-block;
+	min-width: 110px;
 }
 .customer-note {
 	margin-bottom: -10px;	
@@ -1154,6 +1156,9 @@ span.option .child-options span.option {
 	border-left: 1px solid #777;
 	font-size: 14px;
 	white-space: nowrap;
+}
+.data-table .data-table-header li:last-of-type {
+	border-right: 0 none;
 }
 .data-table .data-table-body {
 	overflow: auto;
@@ -2094,6 +2099,9 @@ span.option .child-options span.option {
 	background: url('../img/new_label.png') no-repeat 0 0;
 	padding-left: 80px;
 }
+.es #oneClicProductPage #newAccountForm .xform li.refer-a-friend {
+	background: url('../img/new_label_es.png') no-repeat 0 0;
+}
 #oneClicProductPage #newAccountForm .xform li.refer-a-friend label.big {
 	font-size: 24px;
 	color: #123785;
@@ -2819,6 +2827,9 @@ span.option .child-options span.option {
 	width: 7.6em;
 	display: inline-block;
 	vertical-align: middle;
+}
+#topupUsaProductPage .product-panel .xform li h2.nofee {
+	padding-bottom: 0px;
 }
 #topupUsaProductPage .product-panel .topup-amount {
 	display: table;
@@ -3824,3 +3835,30 @@ span.option .child-options span.option {
 .es #kuCardProductPage #kuCardForm .product-form label {width:15em;}
 .es #kuCardProductPage .result-panel .xform label {width:12.5em;}
 .es #kuCardProductPage .product-panel .xform label {width:15.5em;}
+
+/* 2013/04/05 */
+#topupWorldProductPage #sideContent {
+	width: 316px;
+	display: block;
+}
+#topupWorldProductPage #sideContent h3 {
+	margin-bottom: 0;
+}
+#topupWorldProductPage #sideContent h3 ul li a {
+	font-size: 16px;
+	color: #666;
+	text-decoration: none !important;
+}
+#topupWorldProductPage #sideContent h3 ul li a.selected {
+	font-size: 20px;
+	color: #123785;
+}
+#topupWorldProductPage #sideContent #promotions {
+	margin-top:10px;
+}
+.es #topupWorldProductPage #topupForm #senderInfo p.first {width:242px;}
+.es #topupWorldProductPage #topupForm #senderInfo p.phone-type {width:289px;}
+.es #topupWorldProductPage .product-panel .xform p {width:363px;}
+.es #topupWorldProductPage .product-panel .xform label {width:14em;}
+.es #topupWorldProductPage .product-panel .xform p.last {margin-left:15px; width:212px;}
+.es #topupWorldProductPage .product-panel .xform p.last label {width:8em;}

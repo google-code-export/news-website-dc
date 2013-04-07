@@ -73,6 +73,9 @@ ol, ul {
 	.printSize {display:none !important;}
 	body {font-size:12px !important;}
 }
+.upper {
+	text-transform:uppercase !important;
+}
 
 /* 1ClicMAX product */
 /* -------------------------------------------------------------------- */
@@ -135,10 +138,12 @@ header h3 {
 	width:178px;
 	display:inline-block;
 }
+.es .print-content .receipt label {
+	width:206px;
+}
 .print-content .receipt .last label {
 	width:135px;
 }
-
 .print-content .instruction p {
 	margin-bottom:10px;
 }
@@ -312,7 +317,7 @@ footer img.logo {
 }
 .wrapper25 .print-content .receipt strong.large,
 .wrapper3125 .print-content .receipt strong.large {
-	font-size:12px;
+	font-size:9px;
 	vertical-align:auto;
 	word-break: break-all;
 	display:inline-block;
@@ -324,6 +329,33 @@ footer img.logo {
 .wrapper25 .print-content .receipt .tbl .title h3,
 .wrapper3125 .print-content .receipt .tbl .title h3 {
 	font-size:12px;
+}
+.print-content .receipt li.convFee strong {
+	display:inline-block;
+	text-align:right;
+	width:77px;
+}
+.print-content .receipt .tbl li span.convFeeSymb {
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url('../img/bill_symbols.png') no-repeat 0 0;
+	background-position:0 -16px;
+	margin-left:50px;
+}
+.print-content .receipt .tbl p.convFeeSum {
+	border-top:1px dashed #AAAAAA;
+	margin-top:10px;
+	padding-top:10px;
+	width:auto;
+}
+.wrapper25 .print-content .receipt li.convFee label,
+.wrapper3125 .print-content .receipt li.convFee label {
+	width:100px;
+}
+.wrapper25 .print-content .receipt li.convFee strong,
+.wrapper3125 .print-content .receipt li.convFee strong {
+	width:47px;
 }
 
 /* BillMEX product */
