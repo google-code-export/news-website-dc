@@ -819,9 +819,10 @@ var ui = {
 			var pageLoader = $("<div class=\"dialog page-ajax-loader\">Processing...</div>");
 			if (!pageLoader.dialog) {
 				return;
-			}			
-			$(document.body).find(".page-ajax-loader").parents(".ui-dialog").remove();
-			$(document.body).prepend(pageLoader);
+			}
+			if ($(".page-ajax-loader").size() == 0) {
+				$(document.body).prepend(pageLoader);	
+			}
 			pageLoader.dialog({
 				width: 160,
 				height: 160,
@@ -910,6 +911,20 @@ var ui = {
 					option.change();
 				});
             });
+		},
+		setupInputPlacehoder: function() {
+			var hasPlaceholder = $("input[placeholder*=], textarea[placeholder*=]");
+			if (!hasPlaceholder.placeholder) {
+				return;
+			}
+			hasPlaceholder.placeholder();
+		},
+		setupInputAutofocus: function() {
+			$(".wrapper [autofocus*=]").focus();
+			if (!$(".dialog").dialog) return;
+			$(".dialog").on("dialogopen", function() {
+				$(this).find("[autofocus*=]").focus();
+			});
 		}
 	}	
 };
@@ -998,6 +1013,7 @@ $(function() {
 	ui.element.setupSharpLinks();
 	ui.element.setupDisabledLinks();
 	ui.element.setupOptionsFullClick();
+	ui.element.setupInputPlacehoder();
 	ui.layout.slideAccountDropDown();
 	ui.layout.setProductTabWidths();
 	ui.layout.dockFooter();
@@ -1009,4 +1025,5 @@ $(function() {
 
 $(window).load(function() {
     $(document.body).addClass(ui.clazz.visible);
+	ui.element.setupInputAutofocus();
 });
