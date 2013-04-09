@@ -2,8 +2,63 @@ body {
 	font: normal normal 16px 'Roboto', Tahoma, sans-serif;
 }
 
+/* 1clicMAX POS Layout */
+/* -------------------------------------------------------------------- */
+.lt-ie9 header, .lt-ie9 footer {
+	margin: 0;
+}
+.lt-ie9 #header, .lt-ie9 #header .hcnt, .lt-ie9 #footer {
+	margin: 0;
+}
+.lt-ie9 .site-content .product-tabs {
+	margin: 0;
+	bottom: 0;
+}
+.lt-ie9 .site-content .product-tabs .product-tabs-mask {
+	padding-bottom: 0;
+}
+.lt-ie9 .site-content .fly-box.content-holder {
+	margin-top: -4px;
+}
+
+/* 1clicMAX POS Form */
+/* -------------------------------------------------------------------- */
+.lt-ie9 .xform input[type=text], .lt-ie9 .xform input[type=password], .lt-ie9 .xform input[type=date],
+.lt-ie9 .xform input[type=search], .lt-ie9 .xform input[type=email], .lt-ie9 .xform input[type=tel],
+.lt-ie9 .xform input[type=number], .lt-ie9 .xform textarea {
+	padding: .44em .4em .10em;
+}
+.lt-ie9 .xform select {
+	padding: .34em .4em .2em;
+}
+.lt-ie9 .xform input[type=text].important, .lt-ie9 .xform input[type=password].important, .lt-ie9 .xform input[type=date].important,
+.lt-ie9 .xform input[type=search].important, .lt-ie9 .xform input[type=email].important, .lt-ie9 .xform input[type=tel].important,
+.lt-ie9 .xform input[type=number].important, .lt-ie9 .xform textarea.important, .lt-ie9 .xform select.important {
+	padding: .2em 0.22em 0;
+}
+.lt-ie9 .xform input[type=text].xlarge, .lt-ie9 .xform input[type=password].xlarge, .lt-ie9 .xform input[type=date].xlarge,
+.lt-ie9 .xform input[type=search].xlarge, .lt-ie9 .xform input[type=email].xlarge, .lt-ie9 .xform input[type=tel].xlarge,
+.lt-ie9 .xform input[type=number].xlarge, .lt-ie9 .xform textarea.xlarge, .lt-ie9 .xform select.xlarge {
+	padding: .2em 0.25em 0;
+}
+
 /* 1clicMAX POS Page: 1ClicMAX Product */
 /* -------------------------------------------------------------------- */
 #oneClicProductPage #phoneInputForm h1 {
 	margin: -.4em 0 .25em;
+}
+.lt-ie9 #oneClicProductPage #phoneInputForm h1 {
+	margin: -.2em 0 .25em;
+}
+#oneClicProductPage.site-content .fly-box.content-holder .fly-box-title h1 {
+	line-height:0.8em;
+}
+#oneClicProductPage.site-content .fly-box .fly-box-title {
+	line-height: 1em;
+}
+.lt-ie9 #rechargeAccountForm input[type=text].xlarge {
+	padding: .2em 1.6em 0 0;
+}
+.lt-ie9 #oneClicAccountInfo, .lt-ie9 #oneClicAccountInfo header {
+	margin: 0;
 }

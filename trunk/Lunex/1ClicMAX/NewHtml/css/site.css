@@ -810,6 +810,9 @@ input[type=checkbox] {
 .xform select[disabled] {
 	background-color: #f0f0f0;	
 }
+.placeholder {
+	color: #aaa !important;
+}
 .xform input[type=date], .xform input.date-picker {
 	padding-right: 30px;
 	background-image: url('../img/icon_calendar.png');
@@ -1048,33 +1051,34 @@ span.option .child-options span.option {
 .cc-dialog {
 	padding: 10px 20px !important;	
 }
-.cc-dialog .cc-extra .amount {
+.cc-extra .amount {
 	width: 110px;
 	padding-left: 9px;
 	margin-right: 17px;
 }
-.cc-dialog .cc-extra .amount input[type=text] {
+.cc-extra .amount input[type=text] {
 	width: 75px;
 }
-.cc-dialog .cc-extra .action {
+.cc-extra .action {
 	vertical-align: bottom;
 	margin-bottom: -6px;
 	padding-left: 9px;
 }
-.cc-dialog .cc-form {
+.cc-form {
 	width: 540px;
 	margin-top: 10px;
 	padding: 10px !important;
 	position: relative;
 }
-.cc-dialog .cc-form .city-state label {
+.cc-form .city-state label {
 	padding-bottom: .25em;
 }
-.cc-dialog .cc-form .city {
+.cc-form .city {
 	padding-right: 20px;
 }
 .cc-terms {
-	padding-top: 3px !important;
+	padding-left: 3px;
+	padding-top: 10px;
 	font-weight: normal !important;
 	font-size: 14px;
 	line-height: 1.4em;
@@ -1289,22 +1293,22 @@ span.option .child-options span.option {
 }
 @media screen and (min-height: 600px) {
 	.info-dialog {
-		max-height: 400px !important;
+		max-height: 500px !important;
 	}
 }
 @media screen and (min-height: 700px) {
 	.info-dialog {
-		max-height: 500px !important;
+		max-height: 600px !important;
 	}
 }
 @media screen and (min-height: 800px) {
 	.info-dialog {
-		max-height: 600px !important;
+		max-height: 700px !important;
 	}
 }
 @media screen and (min-height: 900px) {
 	.info-dialog {
-		max-height: 700px !important;
+		max-height: 800px !important;
 	}
 }
 .info-dialog h4,
@@ -3823,12 +3827,12 @@ span.option .child-options span.option {
 	font-size: 18px;
 	margin: 4px 0 0;
 }
-.cc-dialog .cc-form .city {
+.cc-form .city {
 	padding-right: 10px;
 	min-width:110px;
 	display:inline-block;
 }
-.cc-dialog .cc-form .state {
+.cc-form .state {
 	min-width:80px;
 	display:inline-block;
 }
