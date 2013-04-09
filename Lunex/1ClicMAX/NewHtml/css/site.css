@@ -1042,10 +1042,13 @@ span.option .child-options span.option {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: 1.5em;
+	vertical-align: top;
 }
-.cc-info li.col2 p {
+.cc-info li.col2 p.first {
 	padding-right: 20px;
 	max-width: 300px;
+	white-space: normal;
 }
 /* Credit Card Dialog */
 .cc-dialog {
@@ -1775,7 +1778,7 @@ span.option .child-options span.option {
 	width: 200px;
 }
 #reportPage .report-form p.payment-type {
-	width: 129px;
+	/*width: 129px;*/
 }
 #reportPage .report-form p.report-date {
 	width: 130px;
@@ -2184,7 +2187,8 @@ span.option .child-options span.option {
 	margin-right: 10px;
 }
 #rechargeAccountForm {
-	width: 606px;	
+	width: 606px;
+	position: relative;
 }
 #rechargeAccountForm input[type=text].xlarge {
 	width: 280px;
@@ -2243,9 +2247,27 @@ span.option .child-options span.option {
 #rechargeAccountForm .options label {
 	width: 8.5em;
 }
+.es #rechargeAccountForm .options label {
+	width: 8.2em;
+}
 #rechargeAccountForm .options span.option {
 	margin-top: 0;
 	min-width: 4.5em;
+}
+.es #rechargeAccountForm .options span.option {
+	min-width: 5.2em;
+}
+#rechargeAccountForm .refer-number {
+	display: block;
+	width: 173px;
+	white-space: nowrap;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+#rechargeAccountForm .refer-number label {
+	color: #222;
+	display: block;
 }
 #oneClicAccountInfo {
 	width: 304px;	
@@ -2423,8 +2445,8 @@ span.option .child-options span.option {
 	margin: 0 15px;
 }
 #deleteMainNoDialog {
-	width: 480px;
-	font-size: 24px;
+	width: 500px;
+	font-size: 20px;
 	line-height: 1.6em;
 	text-align: center;	
 }
@@ -2935,11 +2957,17 @@ span.option .child-options span.option {
 	padding: 20px 30px;
 	margin-top: 5px;
 }
+#ku2000ProductPage #phoneInputForm {
+		
+}
 #ku2000ProductPage #phoneInputForm .bottom {
     padding: 15px 0 0;
     text-align: right;
 }
 /* New Account */
+#ku2000ProductPage #newAccountForm {
+	width: 598px;
+}
 #ku2000ProductPage #newAccountForm .product-form {
 	width: 598px;
 	margin-bottom: 5px;
@@ -2998,6 +3026,9 @@ span.option .child-options span.option {
 	font-weight: normal;
 }
 /* Ku2000 Confirm */
+#ku2000ProductPage #confirmForm {
+	width: 598px;
+}
 #ku2000ProductPage .product-panel {
 	width: 598px;	
 }
@@ -3019,12 +3050,18 @@ span.option .child-options span.option {
 	padding-bottom: 10px;	
 }
 /* Ku2000 Result */
+#ku2000ProductPage #resultInfo {
+	width: 598px;
+}
 #ku2000ProductPage .fly-box .fly-box-title .gray-button,
 #ku2000ProductPage .fly-box .fly-box-title .print-feature  {
 	margin-top: -8px;
 	margin-left: 5px;
 }
 /* Ku2000 My Account */
+#ku2000ProductPage #myAccount {
+	width: 598px;
+}
 #ku2000ProductPage .product-panel #accountInfo label {
 	width: 12em;
 }
