@@ -32,7 +32,7 @@
 	
 	pages.oneClicMax.refineTabContent();
 
-	pages.oneClicMax.showNewCustomerDialog();
+	//pages.oneClicMax.showNewCustomerDialog();
 	pages.oneClicMax.showAddMultiNumbersDialog();
 	pages.oneClicMax.showEdit1ClicPhoneDialog();
 	pages.oneClicMax.showAddUsPhoneDialog();
