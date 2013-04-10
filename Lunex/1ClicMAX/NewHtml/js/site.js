@@ -770,12 +770,7 @@ var ui = {
 			});
 		},
 		setupButtonAjaxLoader: function() {
-			var ajaxTimeout = 5000;
-			var buttons = $(".has-ajax-loader");
-			var resetLoader = function() {
-				$(".ajax-loader").addClass("hidden");
-				buttons.show();
-			};
+			var buttons = $(".has-ajax-loader");			
 			buttons.each(function() {
 				var button = $(this);
 				var proccessAjax = function() {
@@ -786,6 +781,10 @@ var ui = {
 							resetLoader();
 						}, ajaxTimeout);	
 					}					
+				};
+				var resetLoader = function() {
+					button.next(".ajax-loader").addClass("hidden");
+					button.show();
 				};
                 button.after($("<span class=\"ajax-loader hidden\">Processing...</span>").css({
 					width: button.outerWidth() + "px",
@@ -804,12 +803,13 @@ var ui = {
 					button.bind("ajaxBegin", function() {
 						proccessAjax();
 					});
+				}			
+				if (!button.hasClass("manual")) {
+					$(document).ajaxStop(function() {
+						resetLoader();
+					});	
 				}
-            });
-			// $.ajaxSetup({ timeout: ajaxTimeout });				
-			$(document).ajaxStop(function() {
-				resetLoader();
-			});			
+            });						
 		},
 		showPageAjaxLoader: function(timeout) {
 			var _timeout = timeout;

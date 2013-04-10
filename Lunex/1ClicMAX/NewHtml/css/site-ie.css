@@ -4,7 +4,7 @@ body {
 
 /* 1clicMAX POS Layout */
 /* -------------------------------------------------------------------- */
-.lt-ie9 header, .lt-ie9 footer {
+header, footer {
 	margin: 0;
 }
 .lt-ie9 #header, .lt-ie9 #header .hcnt, .lt-ie9 #footer {
@@ -61,4 +61,32 @@ body {
 }
 .lt-ie9 #oneClicAccountInfo, .lt-ie9 #oneClicAccountInfo header {
 	margin: 0;
+}
+
+/* 1clicMAX POS Page: Kumusta 2000 Product */
+/* -------------------------------------------------------------------- */
+#ku2000ProductPage #phoneInputForm h1 {
+	margin: -.4em 0 .25em;
+}
+.lt-ie9 #ku2000ProductPage #phoneInputForm h1 {
+	margin: -.2em 0 .25em;
+}
+#ku2000ProductPage #phoneInputForm h2 {
+	margin: -.3em 0 .8em;
+}
+
+/* 1clicMAX POS Page: Globe Duo Product */
+/* -------------------------------------------------------------------- */
+#globeDuoProductPage #phoneInputForm h1 {
+	margin: -.4em 0 .25em;
+}
+.lt-ie9 #globeDuoProductPage #phoneInputForm h1 {
+	margin: -.2em 0 .25em;
+}
+#globeDuoProductPage #phoneInputForm h2 {
+	margin: -.3em 0 .8em;
+}
+#globeDuoProductPage .fly-box .fly-box-title .gray-button,
+#globeDuoProductPage .fly-box .fly-box-title .print-feature  {
+	margin-top: 2px;
 }

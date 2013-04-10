@@ -3205,17 +3205,27 @@ span.option .child-options span.option {
 }
 #globeDuoProductPage .product-panel #customerInfo li p,
 #globeDuoProductPage .product-form #customerInfo2 li p {
-	width: 270px;
-	margin-right: 30px;
+	width: 320px;
+	margin-right: 20px;
+}
+.es #globeDuoProductPage .product-panel #customerInfo li p,
+.es #globeDuoProductPage .product-form #customerInfo2 li p {
+	width: 360px;
 }
 #globeDuoProductPage .product-panel #customerInfo li p.last,
-#globeDuoProductPage .product-form #customerInfo2 li p.last {
+#globeDuoProductPage .product-form #customerInfo2 li p.last,
+.es #globeDuoProductPage .product-form #customerInfo2 li p.last,
+.es #globeDuoProductPage .product-form #customerInfo2 li p.last {
 	width: auto;
 	margin: 0;
 }
 #globeDuoProductPage .product-panel #customerInfo li label,
 #globeDuoProductPage .product-form #customerInfo2 li label {
 	width: 7.5em;
+}
+.es #globeDuoProductPage .product-panel #customerInfo li label,
+.es #globeDuoProductPage .product-form #customerInfo2 li label {
+	width: 10em;
 }
 #globeDuoProductPage .product-panel #customerInfo li p.last label,
 #globeDuoProductPage .product-form #customerInfo2 li p.last label {
