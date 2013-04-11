@@ -484,3 +484,141 @@ footer img.logo {
 .wrapper3125 .notice-board {
 	font-family:Arial, Helvetica, sans-serif;
 }
+
+/* Report print */
+/* ------------------*/
+
+.reportPrint {
+	width:900px;
+}
+
+.data-table {
+	border-bottom: 1px solid #ddd;
+}
+.reportPrint .data-table {
+	font-size:12px;
+}
+.reportPrint .print-content .receipt .tbl p {
+	width:283px;
+}
+.reportPrint .print-content .receipt label {
+	width:auto;
+}
+
+.data-table .data-table-header:before,
+.data-table .data-table-header:after {
+	content: " ";
+	display: table;
+}
+.data-table .data-table-header:after {
+	clear: both;
+}
+.data-table .data-table-header {
+	width: 100%;
+	color: #fff;
+	background: #666;
+	*zoom:1
+}
+.data-table .data-table-header li {
+	float: left;
+	font-weight: bold;
+	padding: 5px 5px;
+	border-left: 1px solid #777;
+	font-size: 13px;
+	/*white-space: nowrap;*/
+	word-break:break-all;
+}
+.data-table .data-table-header li:last-of-type {
+	border-right: 0 none;
+}
+.data-table .data-table-body {
+	overflow: auto;
+	display: block;
+	/*max-height: 324px;  Maximum 10 data rows show */
+}
+.data-table .data-table-body.scrolled {
+	max-height: none !important;
+}
+@media(-webkit-min-device-pixel-ratio:0) {
+	.data-table .data-table-body {
+		/*max-height: 320px;*/
+	}
+}
+.data-table .data-table-body table {
+	width: 100%;	
+	border: 1px solid #ddd;
+	border-width: 0 1px;
+}
+.data-table .data-table-body table tr td {
+	font-size: 13px;
+	padding: 5px 5px;
+	border: 1px solid #ddd;
+	border-width: 0 1px;
+	word-break:break-all;
+}
+@media only print {
+	.data-table .data-table-body table tr {
+		border-bottom:#ddd solid 1px;
+	}
+}
+.data-table .data-table-body table tr td.text-wrap {
+	word-wrap: break-word;
+}
+.data-table .data-table-body table tr.alt td {
+	background: #f0f0f0;	
+}
+.data-table .data-table-body table tr:hover td {
+	background: #def !important;	
+}
+.data-table .data-table-body table tr td.imp {
+	font-size: 15px;	
+}
+.data-table .data-table-body table tr td .edit-link,
+.data-table .data-table-body table tr td .delete-link {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 999px;
+	vertical-align: middle;
+	background: url('../img/button_icons.png') no-repeat 0 0;
+}
+.data-table .data-table-body table tr td .edit-link {
+	background-position: 0 -112px;	
+}
+.data-table .data-table-body table tr td .edit-link:hover {
+	background-position: 0 -128px;
+}
+.data-table .data-table-body table tr td .delete-link {
+	background-position: -16px -16px;	
+}
+.data-table .data-table-body table tr td .delete-link:hover {
+	background-position: -16px -32px;
+}
+.data-table .data-table-body table tr td .print-link,
+.data-table .data-table-body table tr td .pdf-link {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-indent: 999px;
+	vertical-align: middle;
+	background: url('../img/button_icons.png') no-repeat 0 0;
+}
+.data-table .data-table-body table tr td .print-link {
+	background-position: 0px -16px;
+}
+.data-table .data-table-body table tr td .print-link:hover {
+	background-position: 0px -32px;
+}
+.data-table .data-table-body table tr td .pdf-link {
+	background-position: -16px -64px;
+}
+.data-table .data-table-body table tr td .pdf-link:hover {
+	background-position: -16px -80px;
+}
+.data-table .data-table-body table tr td .sub-link {
+	font-size: 14px;	
+}

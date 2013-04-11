@@ -7,4 +7,5 @@
 			$(this).find('ul').stop(true,true).slideUp();
 		}
 	);
+	ui.jWidget.setupDataTables("reportTablePrint");
 });
