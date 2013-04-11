@@ -340,14 +340,9 @@ var ui = {
 					primary: "ui-icon-minusthick"
 				}
 			});
-			$(".button-import").button({
+			$(".button-custom").button({
 				icons: {
-					primary: "ui-icon-arrowthickstop-1-e"
-				}
-			});
-			$(".button-export").button({
-				icons: {
-					secondary: "ui-icon-arrowthickstop-1-e"
+					primary: "ui-icon-check"
 				}
 			});
 			$(".button-print").button({
@@ -607,6 +602,11 @@ var ui = {
 				"class": "button-no sub-button",
 				"text": "No"
 			});
+			var buttonCustom = $("<a>", {
+				"href": "#",
+				"class": "button-custom",
+				"text": "&nbsp;"
+			});
 			// Auto create dialog content
 			var dialogContent = $("<div>", {
 				"class": "dialog-content"
@@ -636,9 +636,21 @@ var ui = {
 				.append(dialogBottom.clone());
 			confirmBox.find(".dialog-bottom").append(buttonNo.clone())
 				.append(buttonYes.clone());
+			// Auto create custom confirm box
+			var customConfirmBox = $("<div>", {
+				"id": "custom-confirm-box",
+				"class": "shout-box",
+				"title": "Custom Confirm"
+			});
+			customConfirmBox.append(dialogContent.clone())
+				.append($("<hr/>"))
+				.append(dialogBottom.clone());
+			customConfirmBox.find(".dialog-bottom").prepend(buttonCustom.clone().addClass("button-custom1"))
+				.prepend(buttonCustom.clone().addClass("button-custom2"));
 			// Prepend to document
 			$(document.body).prepend(alertBox);
 			$(document.body).prepend(confirmBox);
+			$(document.body).prepend(customConfirmBox);
 			// Setup shout boxes as dialogs
 			$(".shout-box").dialog({
 				autoOpen: false,
@@ -695,6 +707,25 @@ var ui = {
 			confirmBox.unbind().bind("yes", onYes).bind("no", onNo).on("dialogclose", onCancel);
 			ui.jWidget.showDialog("confirm-box");
 			confirmBox.find(".button-no").focus();
+		},
+		confirmCustom: function(text, title, buttons, onCancel) {
+			var confirmBox = $("#custom-confirm-box");			
+			confirmBox.find(".dialog-content").html("<p>" + text + "</p>");
+			if (title != undefined) {
+				confirmBox.closest(".ui-dialog").find(".ui-dialog-title").text(title);
+			}
+			confirmBox.find(".button-custom1 .ui-button-text").text(buttons[0].text);
+			confirmBox.find(".button-custom1").removeClass("button-custom").addClass(buttons[0].clazz).unbind("click").click(function() {
+				buttons[0].click();	
+				ui.jWidget.closeDialog("custom-confirm-box");
+			});
+			confirmBox.find(".button-custom2 .ui-button-text").text(buttons[1].text);
+			confirmBox.find(".button-custom2").removeClass("button-custom").addClass(buttons[1].clazz).unbind("click").click(function() {
+				buttons[1].click();
+				ui.jWidget.closeDialog("custom-confirm-box");
+			});
+			confirmBox.on("dialogclose", onCancel);
+			ui.jWidget.showDialog("custom-confirm-box");
 		},
 		setupTooltips: function() {
 			$("a[rel=tooltip]").hover(function(e) {		
