@@ -778,6 +778,12 @@ input.gray-button {
 	border-color: #ee7000;
 	box-shadow: inset 0 0 .2em #fac7b2;
 }
+.xform input[type=text].major2, .xform input[type=password].major2, .xform input[type=date].major2,
+.xform input[type=search].major2, .xform input[type=email].major2, .xform input[type=tel].major2,
+.xform input[type=number].major2, .xform textarea.major2, .xform select.major2 {
+	border-color: #1fa92e;
+	box-shadow: inset 0 0 .2em #bafab2;
+}
 .xform input[type=text].inline, .xform input[type=password].inline, .xform input[type=date].inline,
 .xform input[type=search].inline, .xform input[type=email].inline, .xform input[type=tel].inline,
 .xform input[type=number].inline, .xform textarea.inline, .xform select.inline {
@@ -1591,8 +1597,13 @@ span.option .child-options span.option {
 	display: none;
 	width: 100%;
 	height: 510px;
-	line-height: 450px;
-	text-align: center;
+	padding: 0;	
+}
+#homePage .product-desc img {
+	width: 1000px;
+	height: 510px;
+	display: block;
+	background: #fafafa url('../img/loader.gif') no-repeat 50% 50%;
 }
 #homePage #mainContent {
 	width: 100%;
@@ -2672,12 +2683,13 @@ span.option .child-options span.option {
 #topupWorldProductPage #topupForm #recipientInfo p.first {
 	margin-right: 16px;
 }
-#topupWorldProductPage #topupForm #recipientInfo p .phone-prefix {
-	width: 67px;
+#topupWorldProductPage #topupForm #recipientInfo .phone-prefix {
+	width: 160px;
 	margin-right: 2px;
+	text-align: center;
 }
-#topupWorldProductPage #topupForm #recipientInfo p .phone-suffix {
-	width: 196px;
+#topupWorldProductPage #topupForm #recipientInfo .phone-suffix {
+	width: 390px;
 }
 #topupWorldProductPage #topupForm #recipientInfo .phi-special {
 	color: #123785;
