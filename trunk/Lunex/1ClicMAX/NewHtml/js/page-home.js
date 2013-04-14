@@ -30,15 +30,27 @@ pages = $.extend(pages, {
 					over: function() {
 						$("#homePage .product-desc").hide();
 						$("#mainContent").hide();
-						$("#homePage .product-desc").eq(i).fadeIn("fast");
+						$("#homePage .product-desc").eq(i).fadeIn("fast", function() {
+							var img = $(this).find("img");
+							img.attr("src", img.attr("data-src"));
+							img.removeAttr("data-src");
+						});
+						ui.layout.dockFooter();
 					},
-					out: $.noop,
+					out: function() {
+						ui.layout.dockFooter();
+					},
 					interval: 200	
 				});
 			});
 		},
 		setupSlider: function() {
-			$("#mainContent .nivoSlider").nivoSlider({ pauseTime: 5000 });
+			$("#mainContent .nivoSlider").nivoSlider({
+				pauseTime: 5000,
+				afterLoad: function() {				
+					ui.layout.dockFooter();
+				}
+			});
 		},
 		setupMsgRoller: function() {
 			$("#mainContent .feeds").setScroller({

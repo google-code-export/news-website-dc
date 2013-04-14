@@ -438,24 +438,22 @@
                                         </span>
                                         <a class="dialog-trigger show-disclaimer" data-dialog-id="disclaimerDialog" href="#">Disclaimer</a>
                                     </li>
-                                    <li class="col2">
-                                        <p class="first">
-                                            <label>Enter Mobile Number</label>
-                                            <input class="inline disabled important phone-prefix" type="tel" maxlength="3" disabled />
-                                            <input id="topupMobileNo" class="inline disabled important phone-suffix" type="tel" maxlength="15" disabled
-                                            	 data-mask-type="number"
-                                            	 data-validation-engine="validate[required]"
-                                                 data-errormessage-value-missing="Please enter Top-Up Mobile number" />
-                                        </p>
-                                        <p>
-                                            <label>Re-Enter Mobile Number</label>
-                                            <input class="inline disabled important phone-prefix" type="tel" maxlength="3" disabled />
-                                            <input class="inline disabled important phone-suffix" type="tel" maxlength="15" disabled
-                                            	data-mask-type="number"
-                                                data-validation-engine="validate[equals[topupMobileNo]]"
-                                                data-errormessage-pattern-mismatch="Top-Up Mobile number doesn't match" />
-                                        </p>
+                                    <li>
+                                        <label>Enter Mobile Number</label>
+										<input class="inline disabled important major phone-prefix" type="tel" maxlength="9" disabled />
+										<input id="topupMobileNo" class="inline disabled important major phone-suffix" type="tel" maxlength="15" disabled
+											 data-mask-type="number"
+											 data-validation-engine="validate[required]"
+											 data-errormessage-value-missing="Please enter Top-Up Mobile number" />
                                     </li>
+									<li>
+										<label>Re-Enter Mobile Number</label>
+										<input class="inline disabled important major2 phone-prefix" type="tel" maxlength="9" disabled />
+										<input class="inline disabled important major2 phone-suffix" type="tel" maxlength="15" disabled
+											data-mask-type="number"
+											data-validation-engine="validate[equals[topupMobileNo]]"
+											data-errormessage-pattern-mismatch="Top-Up Mobile number doesn't match" />
+									</li>
                                     <li class="col2">
                                         <p class="first">
                                             <label>$ Amount</label>
