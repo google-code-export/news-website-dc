@@ -25,7 +25,7 @@
 /* --------------------------------------------------------------------------- */
 var settings = {
 	date: {
-		dateFormat: "{dd}/{MM}/{yyyy}",
+		dateFormat: "{dd}/{MM}/{yyyy}"
 	},
 	effect: {
 		speed: {

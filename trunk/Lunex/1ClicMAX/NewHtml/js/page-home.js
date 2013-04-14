@@ -83,7 +83,7 @@ pages = $.extend(pages, {
 					buttons: [
 						{
 							text: "Cancel",
-							class: "sub-button",
+							"class": "sub-button",
 							click: function() {
 								ui.jWidget.closeDialog("createPromoDialog");
 							}
