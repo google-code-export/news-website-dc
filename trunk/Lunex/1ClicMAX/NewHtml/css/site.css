@@ -209,10 +209,15 @@ input, select {
 	color: #999;
 	text-transform: uppercase;
 }
+#header .hcnt .menu li.home {
+	background: url('../img/icon_home.png') no-repeat 8px 9px;
+	padding-left: 30px;
+}
 #header .hcnt .menu li.promotion {
 	background: url('../img/icon_gift.gif') no-repeat 10px 10px;
 	padding-left: 30px;
 }
+#header .hcnt .menu li.home a,
 #header .hcnt .menu li.promotion a {
 	color: #ec2028;
 }
@@ -2684,12 +2689,12 @@ span.option .child-options span.option {
 	margin-right: 16px;
 }
 #topupWorldProductPage #topupForm #recipientInfo .phone-prefix {
-	width: 160px;
+	width: 146px;
 	margin-right: 2px;
 	text-align: center;
 }
 #topupWorldProductPage #topupForm #recipientInfo .phone-suffix {
-	width: 390px;
+	width: 404px;
 }
 #topupWorldProductPage #topupForm #recipientInfo .phi-special {
 	color: #123785;
