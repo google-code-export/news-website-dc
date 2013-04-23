@@ -3796,12 +3796,15 @@ span.option .child-options span.option {
 	background-position: 0 -16px;
 	left: 58px;
 }
-#billMexProductPage .product-panel .sub-info {
-	padding-top: 12px;	
+#billMexProductPage .product-panel p.name label {
+	text-indent: 40px;
 }
-#billMexProductPage .product-panel .sub-info li {
-	padding-left: 6em;
-	position: relative;
+#billMexProductPage .product-panel .sub-info {
+	background: #eee;
+    border: 1px solid #ccc;
+    margin: 10px 0 20px 40px;
+    padding: 15px;
+	width: auto;
 }
 #billMexProductPage .product-panel .sub-info li.col2 {
 	font-size: 16px;
@@ -3822,13 +3825,8 @@ span.option .child-options span.option {
 	padding-left: 40px;
 }
 #billMexProductPage .product-panel .sub-info li.col2 p.first label {
-	width: 5.5em;
+	width: 4.5em;
 	padding: 0 !important;
-}
-#billMexProductPage .product-panel .sub-info li .button {
-	position: absolute;
-	top: 4px;
-	right: 0;
 }
 /* BillMEX Result */
 #billMexProductPage .fly-box .fly-box-title .print-feature {
