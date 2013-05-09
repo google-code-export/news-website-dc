@@ -8,10 +8,8 @@ body {
 	font-size: 16px;
 	color: #222;
 	background: #fafafa;
-}
-
-@media only screen and (max-width: 1199px) {
-	body {
+	
+	@media only screen and (max-width: 1366px) {
 		font-size: 14px;
 	}
 }
@@ -25,6 +23,7 @@ strong, b {
 }
 
 a {
+	color: #a20;
 	text-decoration: none;
 	
 	&:hover {
@@ -51,14 +50,79 @@ h1, h2, h3, h4, h5, h6 {
 	display: none;
 }
 
+/* LAYOUT STYLES */
+/* -------------------------------------------------------------------- */
+
+#pageMenuBar {
+    display: block;
+	width: 100%;
+    height: 3.75em;
+	background: #fff url("../img/pmenu_bg.jpg");
+	box-shadow: 0 0 .4em #555;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+    left: 0;	
+	
+	.lunex-logo {		
+		position: absolute;
+		top: .4375em;
+		left: 10px;
+		
+		img {
+			height: 2.875em;
+		}
+	}
+	
+	.menu-bar {
+		display: block;
+		float: right;
+		
+		li {
+			float: left;
+			line-height: 3.75em;
+			border-left: 1px solid #e7e7e7;
+		}
+		
+		.menu {			
+			.font-osc-b;
+			color: #666;
+			text-transform: uppercase;
+			padding: 0 1.25em;
+			height: 3.75em;
+			display: block;
+
+			&:hover {
+				color: @color-root;
+			}
+			
+			&.selected {
+				color: #fff;
+				background: @color-root;
+			}
+		}
+	}
+}
+
+#footer {
+	width: 100%;
+	height: 10em;
+	background: @color-root;
+}
+
 /* PAGE STYLES */
 /* -------------------------------------------------------------------- */
 
 .page {
-	width: 100%;	
+	width: 100%;
+	min-height: 800px;
 	padding: 2.5em 0;
 	background: #fafafa;
 	border-bottom: 1px solid #ddd;
+	
+	&.current {
+		padding-top: 6.25em;
+	}
 	
 	hr {
 		margin: 0;
@@ -85,7 +149,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #home {
-	height: 900px;
+	height: 100px;
 	background-color: #eee;	
 }
 
@@ -111,10 +175,4 @@ h1, h2, h3, h4, h5, h6 {
 
 #help {
 	background-color: #f5f5f5;
-}
-
-#footer {
-	width: 100%;
-	height: 10em;
-	background: #0e57a4;
 }
