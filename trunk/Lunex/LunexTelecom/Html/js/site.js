@@ -5,6 +5,10 @@
 var ui = {
 	layout: {
 		setupPageScroll: function(speed) {
+			var PageOffset = function(page) {
+				this.start = $("#" + page).offset().top - 1;
+				this.end = this.start + $("#" + page).outerHeight();
+			};
 			// Set extra padding to current section
 			var setExtraPadding = function(target) {
 				if ("#" + $(".page.current").attr("id") != target) {
@@ -14,13 +18,14 @@ var ui = {
 			};
 			// At page load
 			var menuBar = $("#pageMenuBar");
+			var scrolltBtn = $("#scrollTopButton");
 			var defaultTarget = window.location.hash;
 			if (defaultTarget) {
 				setExtraPadding(defaultTarget);
 				menuBar.find(".menu[href^=" + defaultTarget + "]").addClass("selected");	
 			}
 			// Smooth link scroll
-			menuBar.find(".menu[href^=#]").click(function(e) {
+			menuBar.find(".menu[href^=#]").add("#home .menu[href^=#]").add(scrolltBtn).click(function(e) {
 				e.preventDefault();
 				var target = this.hash,
 				$target = $(target);
@@ -30,6 +35,7 @@ var ui = {
 				}, speed, "swing", function () {
 					window.location.hash = target;
 				});
+				console.log('smooth!');
 			});
 			// Show/hide menu bar
 			var toggleMenuBar = function() {
@@ -37,23 +43,38 @@ var ui = {
 					menuBar.fadeOut("fast");
 				} else {
 					menuBar.slideDown("fast").animate(
-						{ opacity: .9 },
+						{ opacity: .8 },
 						{ queue: false, duration: "slow" }
 					);
-				}	
-			};
-			// Set selected menu
-			var selectMenu = function() {
-				if (menuBar.offset().top == $(".page").offset().top) {
-					//$("#pageMenuBar .menu[href*=#]").removeClass("selected");
-					//$menu.addClass("selected").hide().fadeIn(200);
-					console.log("ring!!!!");
 				}
 			};
+			// Set selected menu
+			var selectPageMenu = function() {
+				var menuBarOffet = menuBar.offset().top;				
+				$(".page").each(function() {
+                    var page = $(this).attr("id");
+					if (page != "home") {
+						var pageObjOffset = new PageOffset(page);
+						if (menuBarOffet >= pageObjOffset.start && menuBarOffet < pageObjOffset.end) {
+							var currentPage = $("#pageMenuBar .menu[href^=#" + page + "]");
+							if (!currentPage.hasClass("selected")) {
+								$("#pageMenuBar .menu[href^=#]").removeClass("selected");
+								currentPage.addClass("selected").hide().fadeIn(200);
+							}
+						}	
+					}
+                });
+			};
+			// Position scrollTop button
+			var posScrollTopButton = function() {
+				// TODO: Code here
+			};
 			toggleMenuBar();
+			posScrollTopButton();
 			$(window).scroll(function() {
                 toggleMenuBar();
-				selectMenu();				
+				selectPageMenu();
+				posScrollTopButton();			
             });
 		}
 	}
